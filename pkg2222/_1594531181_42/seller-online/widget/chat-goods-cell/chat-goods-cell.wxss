@@ -1,0 +1,44 @@
+@import "../../../__wuBaseWxss__/1.wxss";
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 422rpx;
+    height: auto;
+}
+
+.goods-image {
+    width: 422rpx;
+    height: 330rpx;
+}
+
+.title {
+    margin-top: 20rpx;
+    font-size: 32rpx;
+    color: #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.info {
+    margin: 8rpx 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.info__stock-price {
+    font-family: WeChat Sans Std;
+    font-weight: bold;
+    font-size: 32rpx;
+    color: #EA8046;
+}
+
+.info__market-price {
+    margin-left: 14rpx;
+    font-family: WeChat Sans Std;
+    font-size: 24rpx;
+    color: #000;
+    text-decoration: line-through;
+}

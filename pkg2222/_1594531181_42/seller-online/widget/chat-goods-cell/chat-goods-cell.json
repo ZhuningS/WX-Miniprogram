@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "image-view": "../../../libs/mmuxwxappdevkit/widget/image-view/image-view",
+        "chat-base-cell": "../chat-base-cell/chat-base-cell"
+    }
+}

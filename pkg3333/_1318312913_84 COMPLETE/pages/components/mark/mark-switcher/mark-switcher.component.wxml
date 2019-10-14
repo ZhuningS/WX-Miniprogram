@@ -1,0 +1,10 @@
+<qm-button catchtap="handleRootTap" class="{{rootClassNames}}" isFloat="{{isFloat}}" theme="{{theme}}">
+    <block wx:if="{{type==='comment'}}">
+        <qm-icon comClass="animation-pulse" name="liked" size="small" theme="{{theme}}" wx:if="{{isMarked}}"></qm-icon>
+        <qm-icon comClass="animation-pulse" name="like" size="small" theme="{{theme}}" wx:else></qm-icon>
+    </block>
+    <block wx:else>
+        <qm-icon comClass="animation-pulse" name="marked" theme="{{theme}}" wx:if="{{isMarked}}"></qm-icon>
+        <qm-icon comClass="animation-pulse" name="mark" theme="{{theme}}" wx:else></qm-icon>
+    </block>
+</qm-button>

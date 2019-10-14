@@ -1,0 +1,32 @@
+<view bindtap="_closeThisDialog" class="dialog-content move  {{animation?'md-show':''}}" wx:if="{{isShowChooseDateDialog}}">
+    <view catchtap="close" class="dialog-outer">
+        <view class="diialog-head">
+            <view bindtap="_closeThisDialog" class="cancle-txt">取消</view>
+            <view class="flex"></view>
+            <view class="title-txt">请选择预约时间</view>
+            <view class="flex"></view>
+            <view bindtap="{{chooseHour==''?'':'_confirm'}}" class="confirm-txt {{chooseHour==''?'right-tip':''}}">确定</view>
+        </view>
+        <view class="time-content">
+            <scroll-view scrollY class="left-col">
+                <view bindtap="_chooseDay" class="{{item.isChoose?'left-choose':'left-normal'}}" data-index="{{index}}" data-time="{{item.reserveDate}}" wx:if="{{item.status!=3}}" wx:for="{{dataList}}" wx:key="{{index}}">
+          {{item.week}}
+        </view>
+            </scroll-view>
+            <scroll-view scrollY class="right-col" scrollTop="{{scrollTop}}">
+                <view bindtap="{{dataList[currentIndex].status!=1?'_chooseDetailTime':''}}" class="right-row " data-index="{{index}}" wx:for="{{dataList[currentIndex].reserveTimeList}}" wx:key="{{index}}">
+                    <view wx:if="{{item.status==1&&dataList[currentIndex].status==2}}"></view>
+                    <view class="right-row " wx:else>
+                        <view class="right-time {{item.hasBooked?'time-choosed':''}} {{dataList[currentIndex].status==1?'right-tip':''}}">
+              {{item.timeStr}}
+            </view>
+                        <view class="flex"></view>
+                        <view class="right-tip" wx:if="{{dataList[currentIndex].status==1}}">
+              不可预约
+            </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,87 @@
+@import "../../../__wuBaseWxss__/0.wxss";
+
+.addr-tit {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding: 0 28rpx;
+    background-color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.addr-tit text {
+    font-size: 32rpx;
+}
+
+.manage {
+    color: #2fb42e;
+}
+
+.addr-list-wrap {
+    padding: 0 28rpx;
+    background-color: #fff;
+}
+
+.addr-info text {
+    font-size: 28rpx;
+}
+
+.addr-list {
+    width: 100%;
+    border-top: 2rpx solid #eee;
+    display: flex;
+    flex-direction: row;
+}
+
+.addr-list .img-wrap {
+    width: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addr-list .default-wrap {
+    width: 120rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addr-list image {
+    width: 40rpx;
+    height: 40rpx;
+    vertical-align: middle;
+}
+
+.addr-list .addr-info {
+    flex: 1;
+    line-height: 40rpx;
+    padding: 10rpx 20rpx 10rpx 30rpx;
+}
+
+.addr-info .name-phone {
+    display: flex;
+    padding: 10rpx 0 6rpx;
+}
+
+.addr-info .addr {
+    padding: 6rpx 0 10rpx;
+}
+
+.user-name {
+    margin-right: 40rpx;
+}
+
+.addr-list .edit {
+    width: 70rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ef5b6b;
+}
+
+.edit text {
+    font-size: 14px;
+}

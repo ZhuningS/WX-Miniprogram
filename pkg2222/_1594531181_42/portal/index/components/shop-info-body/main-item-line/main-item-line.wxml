@@ -1,0 +1,12 @@
+<view class="main-item-wrap wrap" style="{{styleObj}}">
+    <view bindtap="onItemClick" class="line-item" data-item="{{item}}" wx:for="{{component.comm_products}}" wx:key="{{item}}">
+        <text class="line-item-text">{{item.name}}</text>
+        <text class="line-item-text">{{item.desc}}</text>
+        <image-view class="line-item-img" mode="widthFix" src="{{item.pic_url+'/0'}}"></image-view>
+        <view bindtap="onItemClick" class="line-item-action" data-item="{{item}}" wx:if="{{item.shelf_info.pre_sale}}">
+            <text class="line-item-action-text">新品预售</text>
+        </view>
+        <view class="line-item-active-mask"></view>
+    </view>
+    <exposure-block info="{{exposureInfo}}"></exposure-block>
+</view>

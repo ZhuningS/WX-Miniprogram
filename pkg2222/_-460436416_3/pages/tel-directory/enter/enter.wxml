@@ -1,0 +1,97 @@
+<form bindsubmit="tel_formSubmit" reportSubmit="true">
+    <input hidden name="id" value="{{id}}"></input>
+    <view bindtap="chooseimg_bind" class="cell white_bg flex flexCCen flexMBtw mb10 arrowR" wx:if="{{id>0}}">
+        <view class="cellLf lineText">商家图片</view>
+        <image class="shopPic mr15" mode="aspectFill" src="{{this_t_logo==null?'/images/default.png':this_t_logo}}"></image>
+        <input hidden name="t_logo" value="{{this_t_logo}}"></input>
+    </view>
+    <view bindtap="chooseimg_bind" class="cell white_bg flex flexCCen flexMBtw mb10 arrowR" wx:else>
+        <view class="cellLf lineText">商家图片</view>
+        <image class="shopPic mr15" mode="aspectFill" src="{{this_t_img==null?'/images/default.png':this_t_img}}"></image>
+    </view>
+    <view class="cell white_bg flex flexCCen flexMBtw mb10">
+        <view class="cellLf lineText">商家名称</view>
+        <input class="inp sub" name="t_name" placeholder="请填写" value="{{t_name}}"></input>
+    </view>
+    <view class="cell white_bg flex flexCCen flexMBtw gridXb">
+        <view class="cellLf lineText">联系人</view>
+        <input class="inp sub" name="t_contact_name" placeholder="请填写" value="{{t_contact_name}}"></input>
+    </view>
+    <view class="cell white_bg flex flexCCen flexMBtw mb10">
+        <view class="cellLf lineText">联系电话</view>
+        <input class="inp sub" name="t_contact_phone" placeholder="请填写" type="number" value="{{t_contact_phone}}"></input>
+    </view>
+    <view class="cell white_bg flex flexCCen flexMBtw mb10">
+        <view class="cellLf lineText">商家微信号</view>
+        <input class="inp sub" name="t_contact_weixin" placeholder="请填写" value="{{t_contact_weixin}}"></input>
+    </view>
+    <view bindtap="choose_t_map" class="cell white_bg flex flexCCen flexMBtw  arrowR">
+        <view class="cellLf lineText">商家地址</view>
+        <input disabled class="inp mr15 sub" placeholder="请选择" value="{{this_t_address}}"></input>
+        <view class="coor sub display_hide"> 真嘎大锅饭；里卡多</view>
+    </view>
+    <view class="cell white_bg flex flexCCen flexMBtw  arrowR">
+        <view class="cellLf lineText">选择分类</view>
+        <picker bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" class="sub picker" mode="multiSelector" range="{{multiArray}}" value="{{multiIndex[0]==-1?'请选择':multiIndex}}" wx:if="{{id>0}}">
+            <view wx:if="{{is_edit_cate==0}}">{{one_cate}} > {{two_cate}}</view>
+            <view wx:else>
+                <view wx:if="{{multiIndex[0]!=-1}}">{{multiArray[0][ multiIndex[0] ]}} > {{multiArray[1][ multiIndex[1] ]}}</view>
+                <view wx:if="{{multiIndex[0]==-1}}">请选择</view>
+            </view>
+        </picker>
+        <picker bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" class="sub picker" mode="multiSelector" range="{{multiArray}}" value="{{multiIndex[0]==-1?'请选择':multiIndex}}" wx:else>
+            <view wx:if="{{multiIndex[0]!=-1}}">{{multiArray[0][ multiIndex[0] ]}} > {{multiArray[1][ multiIndex[1] ]}}</view>
+            <view wx:if="{{multiIndex[0]==-1}}">请选择</view>
+        </picker>
+    </view>
+    <view class="cell white_bg   gridXt mb10">
+        <view class="flex flexMBtw">
+            <view class="mr10">商家介绍</view>
+        </view>
+        <textarea autoHeight class="textarea mt10" maxlength="-1" name="t_info" placeholder="请填写" value="{{t_info}}"></textarea>
+        <view class="" wx:if="{{id>0}}">
+            <view class="upPicBox" wx:for="{{add_img_all}}">
+                <image class="uploadPic" mode="aspectFill" src="{{item}}"></image>
+                <view bindtap="del_pic_bind" class="cancalBox" id="{{index}}">
+                    <text class="iconfont icon-shanchu"></text>
+                </view>
+            </view>
+            <view bindtap="chooseimg_bind_all" class="upBtn"></view>
+        </view>
+        <view class="" wx:else>
+            <view class="upPicBox" wx:for="{{postimg}}">
+                <image class="uploadPic" mode="aspectFill" src="{{item}}"></image>
+                <view bindtap="del_pic_bind_all" class="cancalBox" id="{{index}}">
+                    <text class="iconfont icon-shanchu"></text>
+                </view>
+            </view>
+            <view bindtap="chooseimg_bind_all" class="upBtn"></view>
+        </view>
+    </view>
+    <block wx:if="{{this_tel_config.pay_check==1}}">
+        <view wx:if="{{updata.t_ispay==2||updata.t_ispay==1&&updata.is_out==1||updata.t_ispay==0||updata.length==0}}">
+            <view class="">
+                <view class="butui grey f14">入驻费用：入驻缴纳的费用不能退还</view>
+                <view class="cell white_bg flex flexCCen flexMBtw  arrowR">
+                    <view>选择入驻时长</view>
+                    <picker bindchange="selectDuration" class="sub picker" range="{{durationArr}}" rangeKey="year" value="{{durIndex}}">
+                        <view>{{durationArr[durIndex].year}}个月</view>
+                    </picker>
+                </view>
+                <view class="cell white_bg flex flexCCen flexMBtw gridXt mb10">
+                    <view>价格</view>
+                    <view class="subColor">{{durationArr[durIndex].amount}} 元</view>
+                </view>
+            </view>
+            <view class="notice f14 grey">
+                <text class="iconfont icon-zhuyi"></text>
+                <text>入驻时长从审核成功开始计算天数</text>
+            </view>
+            <button class="btn mainColor_bg f16" disabled="{{buttonIsDisabled}}" formType="submit" loading="{{submitIsLoading}}">申请入驻（需支付{{durationArr[durIndex].amount}}元）</button>
+        </view>
+        <view wx:else>
+            <button class="btn mainColor_bg f16" disabled="{{buttonIsDisabled}}" formType="submit" loading="{{submitIsLoading}}">{{this_check_str}}</button>
+        </view>
+    </block>
+    <button class="btn mainColor_bg f16" disabled="{{buttonIsDisabled}}" formType="submit" loading="{{submitIsLoading}}" wx:else>{{this_check_str}}</button>
+</form>

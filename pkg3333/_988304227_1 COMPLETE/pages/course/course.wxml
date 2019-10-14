@@ -1,0 +1,40 @@
+<view id="header">
+    <view style="height:{{headerHeight}}rpx;"></view>
+    <view class="capsule">
+        <view bindtap="reportTee" class="seat"></view>
+        <image mode="widthFix" src="../../assets/images/arr_left_black.png"></image>
+        <text>时间历程</text>
+    </view>
+</view>
+<view class="container">
+    <scroll-view scrollY class="timeLine" hidden="{{!nullData}}" style="top: {{top+68}}rpx; height: {{height}}rpx;">
+        <view class="model" wx:for="{{list}}" wx:key="{{index}}">
+            <view class="time">{{item.dateTime}}</view>
+            <view class="box" wx:for="{{item.trees}}" wx:key="{{item}}">
+                <view class="item">
+                    <image hidden="{{item.isSuccess==0}}" src="../../assets/images/ic_tree@3x.png"></image>
+                    <image hidden="{{item.isSuccess==1}}" src="../../assets/images/ic_dead_tree_one@3x.png"></image>
+                    <view class="black"></view>
+                    <image src="../../assets/images/ic_greenery@3x.png"></image>
+                    <view class="white"></view>
+                </view>
+                <view class="right">
+                    <view class="title">{{item.endTime}} {{item.isSuccess==0?'你扼杀了一课枫树':'你种下了一颗十分钟的枫树'}}</view>
+                    <view class="info">
+                        <view class="timeSlot">{{item.startTime}} - {{item.endTime}}</view>
+                        <view class="totalTime">
+                            <text>{{item.treeTime}}</text>
+                            <image src="../../assets/images/ic_time_two@3x.png"></image>
+                        </view>
+                        <image src="{{item.img}}"></image>
+                    </view>
+                    <view class="desc">{{item.startTime}} 你种下了一课枫树树苗</view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="noneData" hidden="{{nullData}}" style="top: {{top+350}}rpx;">
+        <image mode="widthFix" src="../../assets/images/img_default@2x.png"></image>
+    </view>
+    <image class="bird" mode="widthFix" src="../../assets/images/img_bird@3x.png" style="top: {{top+24}}rpx;"></image>
+</view>

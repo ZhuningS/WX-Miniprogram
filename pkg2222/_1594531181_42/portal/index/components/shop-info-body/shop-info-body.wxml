@@ -1,0 +1,8 @@
+<view class="wrap">
+    <block wx:for="{{components}}" wx:key="{{item}}">
+        <scroll-item-list bind:onClickCb="onClickScrollCallback" component="{{item}}" widthValue="710" wx:if="{{item.type=='OFFICIAL_MALL_BANNER'}}"></scroll-item-list>
+        <main-item-line bind:onClickCb="onClickGoodsCallback" component="{{item}}" wx:if="{{item.type=='OFFICIAL_MALL_SHELF_FIXED'}}"></main-item-line>
+        <banner product="{{item.product}}" wx:elif="{{item.type=='OFFICIAL_MALL_SINGLE_PRODUCT'}}"></banner>
+        <category-line bind:onClickCb="onClickCategoryCallback" component="{{item}}" wx:elif="{{item.type=='OFFICIAL_MALL_GROUP'}}"></category-line>
+    </block>
+</view>

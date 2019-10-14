@@ -1,0 +1,97 @@
+<view class="{{currentSkin}} {{maskStatus=='show'?'shopCar_mask':''}}">
+    <view class="shop-head f fc">
+        <view class="f fc f1">
+            <text bindtap="changeAll" class="dzicon icon-zhifuchenggong f40 skin_txt" wx:if="{{vm.allStatus}}"></text>
+            <text bindtap="changeAll" class="dzicon icon-kongxinyuan f40 ccc" wx:else></text>
+            <text class="f30 ml20">全选</text>
+        </view>
+        <view bindtap="delShop" class="del f24 f fc fc-h {{vm.itemStatus?'skin_br':'deln'}}">删除</view>
+    </view>
+    <view style="height:80rpx;"></view>
+    <view class="shop-wrap">
+        <view class="shop-box f fc" wx:if="{{vm.length!=0}}" wx:for="{{vm.list}}" wx:for-index="parentindex" wx:key="key">
+            <text catchtap="changeItem" class="dzicon icon-zhifuchenggong f40 skin_txt" data-wpychangeitem-a="{{parentindex}}" wx:if="{{item.goodsMsg.sel}}"></text>
+            <text catchtap="changeItem" class="dzicon icon-kongxinyuan f40 ccc" data-wpychangeitem-a="{{parentindex}}" wx:else></text>
+            <view class="shop-base f1 f">
+                <image bindtap="showImg" data-wpyshowimg-a="{{item.SpecImg||item.goodsMsg.img}}" src="{{item.SpecImg||item.goodsMsg.img}}"></image>
+                <view class="w-100 f fv fj">
+                    <text class="line line1">{{item.goodsMsg.name}}</text>
+                    <view bindtap="showMask" class="shop-spec f fc" data-wpyshowmask-a="{{parentindex}}" wx:if="{{item.SpecInfo!=''}}">
+                        <text class="line line1">{{item.SpecInfo}}</text>
+                        <text class="dzicon icon-xiala"></text>
+                    </view>
+                    <view class="shop-price f">
+                        <wxc-price class="f30 skin_txt t-b f1" icon="sub">{{item.priceStr}}</wxc-price>
+                        <view class="shop-play f">
+                            <text bindtap="less" class="dzicon icon-jianhao" data-wpyless-a="{{parentindex}}"></text>
+                            <input bindinput="setValue" class="f fc" data-wpysetvalue-a="{{parentindex}}" type="number" value="{{item.Count}}"></input>
+                            <text bindtap="add" class="dzicon icon-jiahao1" data-wpyadd-a="{{parentindex}}"></text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style="height:100rpx"></view>
+    <view class="shop-footer f">
+        <view class="shop-info f1 f f-end fc">
+            <text>合计：</text>
+            <wxc-price>{{vm.total}}</wxc-price>
+        </view>
+        <form bindsubmit="navOrder" reportSubmit="true">
+            <button class="shop-pay skin_bg ml20" formType="submit">去结算({{vm.num}})</button>
+        </form>
+    </view>
+    <wxc-mask class="w-100" locked="true" status="{{maskStatus}}">
+        <view class="shopCar_mask">
+            <view catchtap="hideMask" class="close"></view>
+            <view>
+                <view bindtap="$comShop$hideMask" class="c-shop-bg" data-com-index="{{parentindex}}"></view>
+                <view class="c-shop">
+                    <view class="c-item">
+                        <image bindtap="$comShop$preview" class="img" data-com-index="{{parentindex}}" data-wpypreview-a="{{vm_sp.selImg}}" mode="aspectFill" src="{{vm_sp.selImg}}"></image>
+                        <view class="c-price f fv fj">
+                            <view class="f fc mt10">
+                                <block wx:if="{{vm_sp.type=='good'||vm_sp.type=='miaosha'}}">
+                                    <text class="p-price f32">￥{{vm_sp.danMaiPrice}}</text>
+                                    <text class="f26 ml10 line-thor rel" wx:if="{{vm_sp.yuanJiaPrice!=0}}">￥{{vm_sp.yuanJiaPrice}}</text>
+                                </block>
+                                <text class="p-price f32" wx:if="{{vm_sp.type=='goodShop'}}">{{vm_sp.danMaiPrice}}</text>
+                                <block wx:if="{{vm_sp.type=='group'}}">
+                                    <text class="p-price f32" wx:if="{{vm_sp.isgroup==0}}">￥{{vm_sp.danMaiPrice}}</text>
+                                    <text class="p-price f32" wx:if="{{vm_sp.isgroup==1}}">￥{{vm_sp.groupPrice}}</text>
+                                    <text class="f26 ml10 line-thor rel" wx:if="{{vm_sp.discount!=100}}">￥{{vm_sp.yuanJiaPrice}}</text>
+                                </block>
+                            </view>
+                            <text class="f26 ccc" wx:if="{{vm_sp.stockLimit&&vm_sp.btn!='yuyue'}}">库存{{vm_sp.stock}}件</text>
+                            <text class="f26 ccc" wx:if="{{vm_sp.pickspecification.length!=0&&vm_sp.specInfo!=''}}">{{vm_sp.specInfo}}</text>
+                        </view>
+                    </view>
+                    <view class="c-sel f fv">
+                        <scroll-view scrollY class="w-100" style="max-height:400rpx">
+                            <block wx:if="{{$comShop$pickspecification.length!=0}}" wx:for="{{vm_sp.pickspecification}}" wx:for-index="$comShop$parentindex" wx:for-item="$comShop$this" wx:key="$comShop$key">
+                                <text class="line line1 c-name">{{$comShop$this.name}}</text>
+                                <view class="c-pic f fw" style="border-bottom:{{vm_sp.btn!='yuyue'?'border-bottom:1px solid #f5f5f5':'none'}}">
+                                    <text bindtap="$comShop$changeSpec" class="c-val {{$comShop$item.sel?'skin_bg':'btn-no'}}" data-c="{{$comShop$childindex}}" data-com-index="{{parentindex}}" data-p="{{$comShop$parentindex}}" wx:for="{{$comShop$this.items}}" wx:for-index="$comShop$childindex" wx:for-item="$comShop$item" wx:key="$comShop$key">{{$comShop$item.name}}</text>
+                                </view>
+                            </block>
+                            <view class="mh20 f fc fj" wx:if="{{vm_sp.btn!='yuyue'}}">
+                                <text class="f30">数量</text>
+                                <view class="f fc f40">
+                                    <view bindtap="$comShop$less" class="count" data-com-index="{{parentindex}}" data-wpyless-a="{{vm_sp.pageIndex}}">-</view>
+                                    <input bindinput="$comShop$setNum" class="count" data-com-index="{{parentindex}}" disabled="{{disable}}" maxlength="6" style="font-size:28rpx;" type="number" value="{{vm_sp.totalCount}}"></input>
+                                    <view bindtap="$comShop$add" class="count" data-com-index="{{parentindex}}" data-wpyadd-a="{{vm_sp.pageIndex}}">+</view>
+                                </view>
+                            </view>
+                        </scroll-view>
+                    </view>
+                    <form bindsubmit="$comShop$addShop" data-com-index="{{parentindex}}" reportSubmit="true">
+                        <button class="shop-btn skin_bg" formType="submit">确定</button>
+                    </form>
+                </view>
+            </view>
+        </view>
+    </wxc-mask>
+    <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+    <wxc-abnor bind:abnortap="onAbnorTap" type="CART" wx:if="{{vm.list.length==0}}"></wxc-abnor>
+</view>

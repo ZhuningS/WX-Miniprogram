@@ -1,0 +1,188 @@
+.dialog-content {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    display: flex;
+    align-items: flex-end;
+    z-index: 998;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.check_goods_type_bg_1 {
+    animation: bg_block 0.3s linear;
+    opacity: 0.5;
+}
+
+@-webkit-keyframes bg_block {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes bg_block {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+.check_goods_type_bg_2 {
+    animation: bg_hidden 0.3s linear;
+}
+
+@-webkit-keyframes bg_hidden {
+    0% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes bg_hidden {
+    0% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.dialog-outer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+}
+
+.diialog-head {
+    position: relative;
+    width: 100%;
+    height: 80rpx;
+    background-color: #f7f8f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+}
+
+.dialog-title {
+    align-content: center;
+    width: 750rpx;
+}
+
+.close-view {
+    position: absolute;
+    top: 0;
+    right: 0rpx;
+    height: 80rpx;
+    width: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-close {
+    width: 29rpx;
+    height: 29rpx;
+}
+
+.data-list-view {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    height: 500rpx;
+    overflow-y: auto;
+}
+
+.data-col {
+    border-bottom: 1rpx solid #e2e2e2;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100rpx;
+    width: 690rpx;
+}
+
+.data-col text {
+    font-size: 30rpx;
+}
+
+.data-col .image {
+    margin-right: 20rpx;
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 35rpx;
+}
+
+.data-col .gouxuan {
+    width: 34rpx;
+    height: 22rpx;
+}
+
+.flex {
+    display: flex;
+    flex: 1;
+}
+
+.normal-txt {
+    color: #222222;
+}
+
+.disable {
+    color: #888888;
+}
+
+.margin-left {
+    margin-left: 30rpx;
+}
+
+.cancle-txt {
+    height: 80rpx;
+    width: 80rpx;
+    margin-left: 30rpx;
+    line-height: 80rpx;
+    color: #555555;
+}
+
+.title-txt {
+    font-size: 32rpx;
+    color: #222222;
+}
+
+.confirm-txt {
+    color: #ff7800;
+    margin-right: 30rpx;
+}
+
+.right-tip {
+    color: #aaa;
+}
+
+.move .dialog-outer {
+    transform: translateY(20%);
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.md-show.move .dialog-outer {
+    transform: translateY(0);
+    opacity: 1;
+}

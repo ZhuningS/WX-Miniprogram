@@ -1,0 +1,37 @@
+.mSwiper {
+    position: relative;
+    height: 310rpx;
+}
+
+.mSwiper_full {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.mSwiper__inner {
+    width: 100%;
+}
+
+.mSwiper__inner__img {
+    width: 100%;
+    opacity: 0;
+}
+
+.mSwiper__swiper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.mSwiperItem,.mSwiperItem__img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

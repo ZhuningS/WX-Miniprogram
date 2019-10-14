@@ -1,0 +1,48 @@
+.card-wrap {
+    background: #F7F7F7;
+}
+
+.card-icon {
+    width: 120rpx;
+    height: 120rpx;
+    margin-left: 315rpx;
+    border-radius: 60rpx;
+}
+
+.card-nickname {
+    margin-top: 36rpx;
+    font-size: 17px;
+    text-align: center;
+    line-height: 21px;
+}
+
+.card-blank {
+    background: #F7F7F7;
+}
+
+.card-blank.scopes {
+    height: 20rpx;
+}
+
+.card-blank.media {
+    height: 96rpx;
+}
+
+.card-media__img {
+    width: 100%;
+    display: block;
+}
+
+.card-media__video {
+    width: 100%;
+    display: block;
+}
+
+.video-mute__btn {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    width: 34px;
+    height: 34px;
+    z-index: 100000000;
+}

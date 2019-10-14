@@ -1,0 +1,21 @@
+<view class="wrap" style="height: {{screenHeight}}px" wx:if="{{rows.length>0}}">
+    <view class="mini-feature__wrap">
+        <view class="mini-feature">
+            <view class="mini-feature__rows {{index==0?'':'between'}}" wx:for="{{rows}}" wx:for-item="row">
+                <navigator appId="{{col.appId}}" bindtap="onClickCol" class="mini-feature__col {{colIndex==0?'borderRight':''}}" data-col="{{col}}" display="{{!Util.shouldJumpWebView(col.jumpUrl)}}" path="{{col.jumpUrl}}" target="miniProgram" wx:for="{{row.cols}}" wx:for-index="colIndex" wx:for-item="col">
+                    <image class="mini-feature__img" src="{{col.img}}" style="{{col.img.length==0?'width : 0':''}}"></image>
+                    <view class="mini-feature__text">
+                        <view class="mini-feature__title">{{col.title}}</view>
+                        <view class="mini-feature__subTitle">{{col.subTitle}}</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="Util">
+var shouldJumpWebView = (function(url) {
+    return (url.indexOf("http") == 0)
+});
+module.exports.shouldJumpWebView = shouldJumpWebView;
+</wxs>

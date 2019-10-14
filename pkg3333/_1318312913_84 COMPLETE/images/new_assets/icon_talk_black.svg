@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="11550 5615 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill-rule: evenodd;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="Path_848" data-name="Path 848" class="cls-1" d="M-80,450h20v20H-80Z"/>
+    </clipPath>
+  </defs>
+  <g id="icon_talk_black" transform="translate(11444 5810)">
+    <g id="icon_talk_black-2" data-name="icon_talk_black" class="cls-2" transform="translate(186 -645)">
+      <g id="Rectangle_Stroke_" data-name="Rectangle (Stroke)">
+        <path id="Path_847" data-name="Path 847" class="cls-3" d="M11,14h5V0H0V14H5l3,3ZM8,12.757,9.757,11H13V3H3v8H6.243Z" transform="translate(-78 452)"/>
+      </g>
+    </g>
+  </g>
+</svg>

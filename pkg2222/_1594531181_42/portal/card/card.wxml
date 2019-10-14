@@ -1,0 +1,16 @@
+<navigation-bar backgroundColor="#F7F7F7" title=""></navigation-bar>
+<view class="card-wrap" style="{{'height:'+screenHeight+'px'}}">
+    <block wx:if="logo_url && logo_url.length > 0">
+        <image class="card-icon" src="{{logo_url?logo_url+'/0':''}}"></image>
+        <view class="card-nickname">{{brand_name}}</view>
+        <brand-base bind:phonecall="onPhoneCall" desc="{{brand_desc}}" scopes="{{scopes}}"></brand-base>
+        <view class="card-blank scopes"></view>
+        <block wx:for="{{media}}">
+            <image class="card-media__img" mode="widthFix" src="{{item.thumb_url}}" style="height: {{screenWidth*10000/item.aspect_ratio}}px" wx:if="{{item.media_type=='OFFICIAL_MEDIA_IMAGE'}}"></image>
+            <video autoplay="true" bindfullscreenchange="onClickVideoFullScreen" class="card-media__video" controls="{{true}}" loop="true" muted="{{item.muted}}" poster="{{item.thumb_url}}" src="{{item.video_url}}" style="height: {{screenWidth*10000/item.aspect_ratio}}px" wx:else>
+                <cover-image bindtap="onClickMuteBtn" class="video-mute__btn" data-media="{{media}}" data-muted="{{item.muted}}" src="{{item.voiceImg}}"></cover-image>
+            </video>
+        </block>
+        <view class="card-blank media"></view>
+    </block>
+</view>

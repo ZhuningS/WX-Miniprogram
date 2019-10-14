@@ -1,0 +1,151 @@
+.imgBg {
+    position: relative;
+    overflow-x: hidden;
+}
+
+.imgBg image {
+    width: 100%;
+    height: 430rpx;
+}
+
+.imgBg > view {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 50rpx;
+    line-height: 50rpx;
+    background: #27ccaa;
+    overflow: hidden;
+    padding: 0 20rpx;
+}
+
+.imgBg > view text {
+    color: #fff;
+}
+
+.imgBg > view > text:nth-child(1) {
+    font-size: 22rpx;
+    float: right;
+    margin-right: 40rpx;
+}
+
+.imgBg > view > text:nth-child(2) {
+    font-size: 24rpx;
+    float: left;
+}
+
+.listText {
+    padding: 20rpx 30rpx 0;
+    background: #fff;
+}
+
+.listText > view {
+    border-bottom: 1px solid #cccccc;
+}
+
+.listText > view:last-child {
+    border-bottom: 0px;
+}
+
+.listText .name {
+    color: #333333;
+    font-weight: 700;
+    font-size: 30rpx;
+    padding-bottom: 15rpx;
+}
+
+.listText .text {
+    overflow: hidden;
+    height: 70rpx;
+    line-height: 70rpx;
+}
+
+.listText > view > text:nth-child(1) {
+    color: #333333;
+    font-size: 28rpx;
+    float: left;
+    font-weight: 600;
+}
+
+.listText > view > text:nth-child(2) {
+    color: #666666;
+    font-size: 24rpx;
+    float: right;
+}
+
+.listBox {
+    background: #fff;
+    padding: 20rpx 30rpx;
+    margin-top: 20rpx;
+}
+
+.listBox-hade {
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 20rpx;
+}
+
+.listBox-hade text {
+    border-left: 6rpx solid #27ccaa;
+    color: #333333;
+    font-weight: 600;
+    font-size: 30rpx;
+    padding-left: 15rpx;
+}
+
+.listBox-body {
+    padding: 15rpx 0 0;
+    overflow: hidden;
+}
+
+.listBox-body .text {
+    color: #666666;
+    font-size: 24rpx;
+    line-height: 40rpx;
+    text-indent: 2em;
+}
+
+.userInfo {
+    width: 16%;
+    float: left;
+    text-align: center;
+}
+
+.userInfo image {
+    display: inline-block;
+    width: 80rpx;
+    height: 80rpx;
+    margin: 0 auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.userInfo text {
+    color: #333333;
+    font-size: 24rpx;
+    font-weight: 600;
+    display: block;
+}
+
+.btnBox {
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    background: #fff;
+    padding: 10rpx 20rpx;
+    box-sizing: border-box;
+}
+
+.btnBox text {
+    color: #fff;
+    font-size: 36rpx;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    background: #27ccaa;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 40rpx;
+}

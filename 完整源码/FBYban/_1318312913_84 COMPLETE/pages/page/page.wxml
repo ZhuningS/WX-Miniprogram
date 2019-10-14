@@ -1,0 +1,34 @@
+<import src="../components/nav.wxml"></import>
+<import src="../components/cover.wxml"></import>
+<import src="../components/timeline.wxml"></import>
+<import src="../components/more.wxml"></import>
+<import src="../components/widgets.wxml"></import>
+<import src="../components/onboard.wxml"></import>
+<qm-loading isInitial isLoading="{{!isInited}}"></qm-loading>
+<view class="main-content {{showShareCard?'blur':''}}">
+    <view class="publication-status-preview" wx:if="{{publication&&publication.status!=='published'}}">
+    预览版本
+  </view>
+    <template is="page-nav" data="{{pages:pages,currentPageSibling:currentPageSibling,currentPage:currentPage,config:config}}" wx:if="{{pages.length>1}}"></template>
+    <view>
+        <view class="no-page-notice" wx:if="{{noPage}}">
+            <view class="no-page-notice-text">
+        小程序还没有配置导航页，请到轻芒小程序+ 后台进行导航页配置。
+      </view>
+        </view>
+        <template is="page-timeline" data="{{events:events,route:route}}"></template>
+        <template is="more" data="{{marked:marked,currentCate:currentCate,subscribed:subscribed,config:config,more:more}}" wx:if="{{events.length!==0}}"></template>
+        <template is="error" data wx:if="{{error}}"></template>
+        <qm-loading class="page-footer-loading-wrap" comClass="page-footer-loading" isLoading="{{hasMore||loading}}"></qm-loading>
+        <view class="qm-brand-logo">
+            <image src="/images/new_assets/icon_qm_brand.svg"></image>
+        </view>
+        <explore-hop-card showContact="{{showContact}}"></explore-hop-card>
+        <explore-partner-bar isShow="{{isShowPartnerBar}}"></explore-partner-bar>
+    </view>
+</view>
+<view catchtap="clearAddToDesktop" class="tip-ctn animated fadeInThenFadeOut" style="position:fixed; z-index: 99999; top: 0; right: 5px;" wx:if="{{tipsOn.addToDesktop}}">
+    <view class="tip-triangle__top" style="right: 70px;"></view>
+    <view class="tip-content" style="top:10px">{{tipsOn.addToDesktop}}</view>
+</view>
+<include src="../components/global.wxml"></include>

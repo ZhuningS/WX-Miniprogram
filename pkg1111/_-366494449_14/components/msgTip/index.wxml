@@ -1,0 +1,18 @@
+<template name="msgTip">
+    <button plain bindgetphonenumber="_getmobile" class="nobutton" formType="submit" hoverClass="none" openType="getPhoneNumber" wx:if="{{hasMobile==0}}">
+        <view class="msgtip {{msgStatus==2?'fadeOut':''}} {{msgStatus==1?'fadeIn':''}}">
+            <view class="avatar">
+                <image mode="aspectFill" src="{{cardAvatar}}"></image>
+            </view>
+            <view class="msgContent">您有新的消息</view>
+            <view class="num">{{offline}}</view>
+        </view>
+    </button>
+    <view bindtap="_jumpToChat" class="msgtip {{msgStatus==2?'fadeOut':''}} {{msgStatus==1?'fadeIn':''}}" wx:if="{{hasMobile==1}}">
+        <view class="avatar">
+            <image mode="aspectFill" src="{{cardAvatar}}"></image>
+        </view>
+        <view class="msgContent">您有新的消息</view>
+        <view class="num">{{offline}}</view>
+    </view>
+</template>

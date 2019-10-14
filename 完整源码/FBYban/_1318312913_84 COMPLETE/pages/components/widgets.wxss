@@ -1,0 +1,611 @@
+.fixed-tween {
+    position: absolute;
+    z-index: 10003;
+}
+
+.video-play-mask {
+    background-color: rgba(0,0,0,0.6);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.video-player {
+    z-index: 20000;
+}
+
+.mark-info-ctn .avatar-ctn {
+    margin-top: -2px;
+    margin-right: -5px;
+}
+
+.mark-info-ctn .avatar-ctn:last-of-type {
+    margin-right: 4px;
+}
+
+.mark-info-ctn .info {
+    display: inline-flex;
+    margin-left: 5px;
+    font-size: 16px;
+    line-height: 25px;
+    max-height: 25px;
+    color: rgba(0,0,0,0.4);
+}
+
+.article-actions-ctn {
+    display: flex;
+    height: 20px;
+}
+
+.loading-spinner {
+    left: 50%;
+    height: 20px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    width: 20px;
+}
+
+.note-ctn {
+    margin-bottom: 5px;
+}
+
+.note-ctn .note {
+    background-color: #21CA7F;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 20px;
+    white-space: pre-line;
+}
+
+.note-ctn .triangle {
+    border: 10px #21CA7F solid;
+    border-bottom-color: transparent!important;
+    border-right-color: transparent!important;
+    display: inline-block;
+    height: 0;
+    margin-left: 20px;
+    width: 0;
+}
+
+.magazine-cover {
+    box-sizing: border-box;
+    margin-top: 40px;
+}
+
+.magazine-cover .fragment-ctn .border {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #000000;
+}
+
+.magazine-cover .fragment-ctn .border.top {
+    top: 0;
+    left: 0;
+    margin-bottom: 20px;
+}
+
+.magazine-cover .fragment-ctn .border.bottom {
+    bottom: 0;
+    right: 0;
+    margin-top: 20px;
+}
+
+.magazine-cover .title-ctn {
+    align-items: center;
+    display: flex;
+    margin: 0 0 10px;
+}
+
+.magazine-cover .title-ctn .title {
+    flex: 1;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.magazine-cover .title-ctn .icon {
+    height: 20px;
+    width: 20px;
+}
+
+.magazine-cover .article {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.magazine-cover .subscribtion {
+    background-color: #FFFFFF;
+    color: rgba(0,0,0,0.4);
+    display: inline-block;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 5px;
+    padding: 0 15px;
+}
+
+.magazine-cover .push {
+    color: #FFFFFF;
+    display: flex;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+    margin: 30px 0 0 0;
+    padding: 0;
+}
+
+.magazine-cover .push .icon {
+    margin-right: 5px;
+    margin-top: 2px;
+}
+
+.rank-ctn,.rank-ctn-me {
+    margin-top: 40px;
+}
+
+.rank-ctn .tip,.rank-ctn-me .tip {
+    color: rgba(0,0,0,0.2);
+    flex: 1;
+    font-size: 14px;
+    height: 20px;
+    margin-left: 60rpx;
+    margin-top: 0;
+    text-align: left;
+}
+
+.rank-item {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    margin-bottom: 20px;
+    padding: 0 60rpx;
+    width: 100%;
+}
+
+.rank-item .rank {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 10px;
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+.rank-item .avatar-ctn {
+    margin-right: 20px;
+}
+
+.rank-item .progress-ctn {
+    color: rgba(0,0,0,0.2);
+    flex: 1;
+    height: 15px;
+    margin-top: 0;
+    text-align: left;
+    width: 100%;
+    display: flex;
+}
+
+.rank-item .progress-ctn .progress {
+    background-color: #EEEEEE;
+    height: 100%;
+}
+
+.rank-item .progress-ctn .value {
+    color: rgba(0,0,0,0.4);
+    font-size: 12px;
+    line-height: 15px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.error-ctn {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 90px;
+}
+
+.error-ctn .image {
+    height: 75px;
+    width: 125px;
+    margin-bottom: 16rpx;
+}
+
+.error-ctn .tip {
+    color: rgba(0,0,0,0.2);
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.share-card-ctn {
+    position: fixed;
+    z-index: 10002;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    box-sizing: border-box;
+}
+
+.share-card-ctn .share-card-image-container {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80rpx 80rpx;
+    box-sizing: border-box;
+}
+
+.share-card-ctn .share-card-image-container .share-card-image {
+    width: 100%;
+    height: 100%;
+}
+
+.share-card-ctn .share-card-image-container .share-card-image-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+}
+
+.share-card-ctn .share-bar-ctn {
+    width: 100%;
+    border-bottom: 1px rgba(0,0,0,0.05) solid;
+    display: block;
+    background-color: #FFFFFF;
+}
+
+.share-card-ctn .share-bar-ctn .header {
+    display: block;
+    line-height: 60px;
+    font-size: 12px;
+    width: 100;
+    text-align: center;
+}
+
+.share-card-ctn .share-bar-ctn .actions-ctn {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.share-card-ctn .share-bar-ctn .actions-ctn .action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.share-card-ctn .share-bar-ctn .actions-ctn .action .caption {
+    color: #000000;
+}
+
+.share-card-ctn .share-bar-ctn .actions-ctn .action .icon {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+}
+
+.share-card-ctn .body-ctn {
+    align-items: center;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 100rpx;
+    right: 100rpx;
+    top: 60rpx;
+}
+
+.share-card-ctn .body-ctn .image-ctn {
+    width: 100%;
+    min-height: 200rpx;
+}
+
+.share-card-ctn .body-ctn .button {
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0 25px;
+}
+
+.share-card-ctn .close-ctn {
+    bottom: 30rpx;
+    left: 325rpx;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    height: 100rpx;
+    width: 100rpx;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1),0 20px 20px rgba(0,0,0,0.05);
+}
+
+.share-card-ctn .close-ctn .close {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.toast-ctn {
+    position: fixed;
+    margin: 0 auto;
+    width: 100vw;
+    top: 30%;
+    background: rgba(0,0,0,0);
+    text-align: center;
+}
+
+.toast-ctn .toast-title {
+    display: inline-block;
+    padding: 20rpx;
+    font-size: 14px;
+    width: auto;
+    background-color: rgba(172,172,172,0.7);
+    color: white;
+}
+
+.toast-ctn .toast-intro {
+    padding: 20rpx;
+    margin: 0 50rpx;
+    width: auto;
+    background-color: rgba(66,66,66,0.7);
+    font-size: 16px;
+    line-height: 32px;
+    color: white;
+}
+
+.toast-ctn .toast-intro .toast-title {
+    background: #ACACAC;
+    padding: 0 20rpx;
+    margin-top: 40rpx;
+    margin-bottom: 20rpx;
+}
+
+.tip-ctn {
+    position: absolute;
+    width: auto;
+}
+
+.tip-ctn .tip-content {
+    position: relative;
+    display: block;
+    background: #000000;
+    color: #FFFFFF;
+    font-size: 14px;
+    line-height: 16px;
+    max-width: 570rpx;
+    padding: 10px 30rpx;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.05);
+}
+
+.tip-ctn .tip-close {
+    position: absolute;
+    right: -5px;
+    top: 0px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: #000000;
+    line-height: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 12px;
+}
+
+.tip-ctn .tip-triangle__bottom,.tip-ctn .tip-triangle__top,.tip-ctn .tip-triangle__left,.tip-ctn .tip-triangle__right {
+    position: absolute;
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border: 5px #000000 solid;
+}
+
+.tip-ctn .tip-triangle__bottom {
+    border-left-color: transparent!important;
+    border-right-color: transparent!important;
+    border-bottom-color: transparent!important;
+}
+
+.tip-ctn .tip-triangle__top {
+    border-left-color: transparent!important;
+    border-right-color: transparent!important;
+    border-top-color: transparent!important;
+}
+
+.tip-ctn .tip-triangle__left {
+    border-top-color: transparent!important;
+    border-bottom-color: transparent!important;
+    border-right-color: transparent!important;
+}
+
+.tip-ctn .tip-triangle__right {
+    border-top-color: transparent!important;
+    border-bottom-color: transparent!important;
+    border-left-color: transparent!important;
+}
+
+.float-bar,.float-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 10000;
+    bottom: 30rpx;
+    height: 50px;
+    font-size: 14px;
+    background-color: #000000;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1),0 20px 20px rgba(0,0,0,0.05);
+    color: #FFFFFF;
+    transition: all .2s linear;
+}
+
+.float-button {
+    border-radius: 25px;
+    width: 50px;
+    right: 30rpx;
+}
+
+.float-button .icon {
+    height: 20px;
+    width: 20px;
+}
+
+.float-button .hopCard-image.small {
+    width: 20px;
+    height: 20px;
+}
+
+.float-button .hopCard-image.big {
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+}
+
+.float-bar {
+    width: 690rpx;
+    left: 30rpx;
+}
+
+.dialog-ctn {
+    background: rgba(0,0,0,0.4);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10005;
+}
+
+.dialog-ctn .dialog-content {
+    background: #FFFFFF;
+    box-sizing: border-box;
+    margin-left: 50%;
+    position: absolute;
+    padding: 20px 60rpx;
+    top: 80px;
+    text-align: left;
+    transform: translate(-50%,0);
+    width: 490rpx;
+}
+
+.dialog-ctn .dialog-content.center {
+    margin-top: 50%;
+    transform: translate(-50%,-50%);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog-ctn .dialog-content .icon {
+    height: 36px;
+    width: 36px;
+    margin-bottom: 40px;
+}
+
+.dialog-ctn .dialog-content .subheading {
+    display: block;
+    margin-top: 40px;
+}
+
+.dialog-ctn .dialog-content .description {
+    display: block;
+    margin-top: 40px;
+    max-height: 160px;
+}
+
+.dialog-ctn .dialog-content .input {
+    margin: 40rpx 0 0;
+    padding: 20rpx 30rpx;
+    background: #F2F2F2;
+    width: 570rpx;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.dialog-ctn .dialog-content .input-placeholder {
+    font-size: 14px;
+    color: rgba(0,0,0,0.2);
+    line-height: 20px;
+}
+
+.dialog-ctn .dialog-content .actions-vertical-ctn {
+    display: inline-flex;
+    flex-direction: column;
+    float: right;
+    text-align: right;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.dialog-ctn .dialog-content .actions-vertical-ctn .button {
+    margin-bottom: 10px;
+}
+
+.dialog-ctn .dialog-content .actions-vertical-ctn .button:last-of-type {
+    margin-bottom: 0;
+}
+
+.dialog-ctn .dialog-content .actions-vertical-ctn .dark {
+    margin-bottom: 10px;
+}
+
+.dialog-ctn .dialog-content .actions-horizontal-ctn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.dialog-ctn .dialog-close {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.dialog-ctn .large {
+    padding: 20px 30rpx;
+    width: 690rpx;
+}

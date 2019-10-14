@@ -1,0 +1,69 @@
+@import "../../../__wuBaseWxss__/8.wxss";
+
+page {
+    background: #000;
+}
+
+.bg-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    filter: blur(30rpx);
+    opacity: .7;
+    transform: scale(1.2,1.2);
+}
+
+.contenter {
+    width: 750rpx;
+    height: 100vh;
+    padding: 40rpx 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.business {
+    padding: 100rpx 40rpx;
+    line-height: 1.4;
+}
+
+.huibai {
+    color: #fff;
+    opacity: 0.7;
+}
+
+scroll-view {
+    height: 100%;
+}
+
+.title .line {
+    border-bottom: 1rpx solid #ccc;
+    position: relative;
+    top: -20rpx;
+}
+
+.coupon {
+    padding: 40rpx;
+    word-break: break-all;
+}
+
+.juan-list {
+    padding: 6rpx 0;
+    line-height: 1.5;
+}
+
+.redbg,.greenbg,.orangebg {
+    padding: 2rpx 8rpx;
+    border-radius: 3rpx;
+}
+
+.redbg {
+    background: #ea4e52;
+}
+
+.greenbg {
+    background: #09bb07;
+}
+
+.orangebg {
+    background: #ff9d2b;
+}

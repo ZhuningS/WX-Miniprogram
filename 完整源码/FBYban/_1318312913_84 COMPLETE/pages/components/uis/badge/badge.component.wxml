@@ -1,0 +1,3 @@
+<view class="{{rootClassNames}}">
+    <text class="badge-info">{{badgeInfo}}</text>
+</view>

@@ -1,0 +1,14 @@
+<template name="notice">
+    <navigator class="notice" url="/pages/activity/list/index">
+        <view class="notice_wrap">
+            <view class="text_style2">
+                <text style="font-size:26rpx;line-height:8rpx;">茂业活动</text>
+            </view>
+            <view style="width: 100%">
+                <swiper autoplay="true" circular="true" class="notice_swiper" interval="3000" vertical="true">
+                    <swiper-item wx:for="{{list}}" wx:key="title">{{item.name}}</swiper-item>
+                </swiper>
+            </view>
+        </view>
+    </navigator>
+</template>

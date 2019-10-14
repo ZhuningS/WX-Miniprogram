@@ -1,0 +1,45 @@
+<import src="../../components/login/index.wxml"></import>
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view hidden="{{!dataLoaded}}">
+    <image src="https://img.weixin.sundayer.cn/card/TOP-bg@3x.png" style="height:240rpx"></image>
+    <image class="avatar" src="{{coupon.card_user_avatar}}"></image>
+    <view style="text-align:center;margin-top:60rpx;font-size:36rpx;color:#333">{{coupon.card_user_name}}</view>
+    <view class="origin">{{storeInfo.name}}</view>
+    <view class="coupon">
+        <view class="top">
+            <view class="discount">
+                <text style="font-size:88rpx;font-weight:bold;margin-right:12rpx">{{coupon.discount}}</text>
+                <text>折</text>
+            </view>
+            <view>
+                <view>
+          {{coupon.typeTips}}
+        </view>
+                <view>
+                    <block wx:if="{{coupon.time_type=='1'}}">
+            领券后{{coupon.time_days}}天有效
+          </block>
+                    <block wx:else>
+            有效期:{{coupon.time_begin1}}至{{coupon.time_end1}}
+          </block>
+                </view>
+            </view>
+        </view>
+        <view class="tips">
+            <image src="{{coupon.card_user_avatar}}"></image>
+      来自{{coupon.card_user_name}}为您定制的特权专享优惠券
+    </view>
+    </view>
+    <view bindtap="_recive" class="accept-btn">立即领取</view>
+</view>
+<view class="overwrap" wx:if="{{success}}">
+    <view>
+        <image src="/images/coupon/success@3x.png"></image>
+        <view style="text-align:center;color:#666;font-size:28rpx">恭喜您，成功领取优惠券！</view>
+        <view class="btnwrap">
+            <view bindtap="_jump" class="btn void" data-opentype="redirectTo" data-url="/pages/coupon/index?card_id={{coupon.card_user_id}}">去看看</view>
+            <view bindtap="_jump" class="btn" data-opentype="redirectTo" data-url="/pages/shop/index">去使用</view>
+        </view>
+    </view>
+</view>
+<template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>

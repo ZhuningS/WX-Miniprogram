@@ -1,0 +1,37 @@
+<include src="/components/index.wxml"></include>
+<import src="../../../utils/wxParse/wxParse.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view bindtap="_jumpToCard" class="shareCard" data-cardid="{{cardInfo.id}}" hidden="{{!showCardInfo}}" style="position:relative">
+        <view class="avatar">
+            <image src="{{cardInfo.avatar}}"></image>
+        </view>
+        <view class="center">
+            <text class="name">{{cardInfo.name}}</text>
+            <text class="position">{{cardInfo.position}}</text>
+        </view>
+        <view class="right">TA的名片 ></view>
+    </view>
+    <view class="act__title">{{actInfo.title}}</view>
+    <view class="act_date">{{actInfo.dateline}}<button class="nobutton" openType="share" style="display:inline-block;margin-left: 20rpx; color: #004198; font-size: 28rpx">转发</button>
+    </view>
+    <view class="act__detail">
+        <view class="act__detail__content wxParseContainer">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+        </view>
+        <view class="dataState">
+            <view style="margin-right: 40rpx;">
+                <image src="/images/icon/view.png"></image>
+                <text>{{actInfo.views}}人浏览</text>
+            </view>
+            <view>
+                <image src="/images/icon/zan.png"></image>
+                <text>{{actInfo.upnum}}人点赞</text>
+            </view>
+        </view>
+    </view>
+</view>
+<template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>

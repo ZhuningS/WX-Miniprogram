@@ -1,0 +1,10 @@
+@import "../comment/main.wxss";
+
+.swiper.data-v-6483ab36 {
+    margin-top: 10rpx;
+}
+
+.swiper .slide-image.data-v-6483ab36 {
+    width: 33%;
+    height: 250rpx;
+}

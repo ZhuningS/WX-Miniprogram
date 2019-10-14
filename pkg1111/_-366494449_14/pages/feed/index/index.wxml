@@ -1,0 +1,141 @@
+<include src="/components/index.wxml"></include>
+<include src="/components/im/index.wxml"></include>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view bindtap="_jumpToCard" class="shareCard" data-cardid="{{cardInfo.id}}" hidden="{{!showCardInfo}}" style="position:relative">
+        <view class="avatar">
+            <image src="{{cardInfo.avatar}}"></image>
+        </view>
+        <view class="center">
+            <text class="name">{{cardInfo.name}}</text>
+            <text class="position">{{cardInfo.position}}</text>
+        </view>
+        <view class="right">查看名片 ></view>
+    </view>
+    <official-account wx:if="{{account.title=='forum'&&account.pos==1}}"></official-account>
+    <view class="actList" wx:if="{{actList&&actList.length>0}}">
+        <view class="actItem" wx:for="{{actList}}" wx:key="id">
+            <view class="left">
+                <image src="{{item.card_avatar}}"></image>
+            </view>
+            <view class="right" wx:if="{{item.card_user_id>0&&item.spread_id=='0'}}">
+                <button class="nobutton forward" data-id="{{item.id}}" data-img="{{item.thumbs[0]||item.card_avatar}}" data-name="{{item.card_name}}" openType="share">转发</button>
+                <view class="c-name">{{item.card_name}}</view>
+                <view class="content_user">{{item.content}}</view>
+                <view class="imgList">
+                    <block wx:if="{{item.thumbs.length>1}}">
+                        <image bindtap="previewImg" data-url="{{itemName}}" data-urls="{{item.thumbs}}" mode="aspectFill" src="{{itemName}}?imageView2/2/w/200/format/jpg/q/90" wx:for="{{item.thumbs}}" wx:for-item="itemName"></image>
+                    </block>
+                    <block wx:else>
+                        <image bindtap="previewImg" class="oneImage" data-url="{{itemName}}" data-urls="{{item.thumbs}}" mode="widthFix" src="{{itemName}}?imageView2/2/w/200/format/jpg/q/90" wx:for="{{item.thumbs}}" wx:for-item="itemName"></image>
+                    </block>
+                </view>
+                <view bindtap="_jump" class="videoWrap" data-url="/pages/video/index?url={{item.video_url}}" style="{{item.video.height>item.video.width?'width: 300rpx':''}}" wx:if="{{item.video_url!=''}}">
+                    <image mode="widthFix" src="{{item.video.thumb}}" style="{{item.video.height>item.video.width?'width:300rpx':''}}"></image>
+                    <view class="play">
+                        <image src="/images/card/play.png"></image>
+                    </view>
+                </view>
+                <view style="font-size: 24rpx;color: #999; margin: 20rpx 0;">{{item.timeHints}}
+            </view>
+                <view class="{{item.ups.length>0||item.replies.length>0?'comment':'comment2'}}">
+                    <view class="pl-comment">
+                        <view class="pl-comment-body dz_btn {{currentIndex!==''&&currentIndex===index?'dz_btnShow':''}}">
+                            <view bindtap="clickZan" class="btn" data-i="{{index}}" data-id="{{item.id}}">
+                                <image src="/images/card/heart_icon.png" style="width: 32rpx; height: 32rpx;"></image>
+                                <text wx:if="{{item.isup==0}}">点赞</text>
+                                <text wx:if="{{item.isup==1}}">取消</text>
+                            </view>
+                            <view bindtap="_showKeyboard" class="btn" data-i="{{index}}" data-id="{{item.id}}">
+                                <image src="/images/card/com_icon.png"></image>
+                                <text>评论</text>
+                            </view>
+                        </view>
+                        <view bindtap="showComments" class="pl-comment-right" data-index="{{index}}">
+                            <image src="/images/card/PL.png"></image>
+                        </view>
+                    </view>
+                    <view class="talkMod" wx:if="{{item.ups.length>0}}">
+                        <view class="heart">
+                            <image src="/images/card/zan_b.png"></image>
+                        </view>
+                        <view class="nickname" wx:for="{{item.ups}}">{{item.nickname}},</view>
+                    </view>
+                    <view style="border-bottom: 1px solid #e6e6e6;height:2px;margin: 10rpx 0" wx:if="{{item.ups.length>0&&item.replies.length>0}}"></view>
+                    <view class="zanMod" wx:if="{{item.replies.length>0}}">
+                        <view wx:for="{{item.replies}}">
+                            <text>{{item.nickname}}</text>: {{item.content}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="right" wx:if="{{item.card_user_id<=0||item.spread_id>0}}">
+                <button class="nobutton forward" data-id="{{item.id}}" data-img="{{item.thumb}}?imageView2/2/w/800/format/jpg/q/90" data-name="{{item.card_name}}" data-spreadid="{{item.spread_id}}" data-title="{{item.title}}" data-type="{{item.spread_id!=''&&item.spread_id!=0?'isAct':'isCompany'}}" openType="share">转发</button>
+                <view class="c-name">
+                    <text class="card_name">{{item.card_name}}</text>
+                    <text class="gs" wx:if="{{item.spread_id!='0'&&item.spread_id!=''}}">活动</text>
+                    <text class="gs" wx:else>公司</text>
+                </view>
+                <view bindtap="_jump" class="content" data-url="/pages/act/index/index?id={{item.spread_id}}" wx:if="{{item.spread_id!='0'&&item.spread_id!=''}}">
+                    <image class="actItem__img" mode="widthFix" src="{{item.thumb}}?imageView2/2/w/800/format/jpg/q/90"></image>
+                    <view class="actItem__title">{{item.title}}</view>
+                </view>
+                <view bindtap="_jump" class="content" data-url="/pages/feed/detail/index?id={{item.id}}" wx:else>
+                    <image class="actItem__img" mode="widthFix" src="{{item.thumb}}?imageView2/2/w/800/format/jpg/q/90"></image>
+                    <view class="actItem__title">{{item.title}}</view>
+                </view>
+                <view bindtap="_jump" data-url="/pages/act/index/index?id={{item.spread_id}}" style="font-size: 28rpx;color: #0061b2; margin: 20rpx;" wx:if="{{item.spread_id!='0'&&item.spread_id!=''}}">查看详情</view>
+                <view bindtap="_jump" data-url="/pages/feed/detail/index?id={{item.id}}" style="font-size: 28rpx;color: #0061b2; margin: 20rpx;" wx:else>查看详情</view>
+                <view style="font-size: 24rpx;color: #999; margin: 20rpx;">{{item.timeHints}}</view>
+                <view class="{{item.ups.length>0||item.replies.length>0?'comment':'comment2'}}">
+                    <view class="pl-comment">
+                        <view class="pl-comment-body dz_btn {{currentIndex!==''&&currentIndex===index?'dz_btnShow':''}}">
+                            <view bindtap="clickZan" class="btn" data-i="{{index}}" data-id="{{item.id}}">
+                                <image src="/images/card/heart_icon.png" style="width: 32rpx; height: 32rpx;"></image>
+                                <text wx:if="{{item.isup==0}}">点赞</text>
+                                <text wx:if="{{item.isup==1}}">取消</text>
+                            </view>
+                            <view bindtap="_showKeyboard" class="btn" data-i="{{index}}" data-id="{{item.id}}">
+                                <image src="/images/card/com_icon.png"></image>
+                                <text>评论</text>
+                            </view>
+                        </view>
+                        <view bindtap="showComments" class="pl-comment-right" data-index="{{index}}">
+                            <image src="/images/card/PL.png"></image>
+                        </view>
+                    </view>
+                    <view class="talkMod" wx:if="{{item.ups.length>0}}">
+                        <view class="heart">
+                            <image src="/images/card/zan_b.png"></image>
+                        </view>
+                        <view class="nickname" wx:for="{{item.ups}}">{{item.nickname}},</view>
+                    </view>
+                    <view style="border-bottom: 1px solid #e6e6e6;height:2px;margin: 10rpx 0" wx:if="{{item.ups.length>0&&item.replies.length>0}}"></view>
+                    <view class="zanMod" wx:if="{{item.replies.length>0}}">
+                        <view wx:for="{{item.replies}}">
+                            <text>{{item.nickname}}</text>: {{item.content}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="noResult" wx:else>
+        <image src="/images/card/search-wu@3x.png" style="width: 320rpx; height: 320rpx;"></image>
+        <view>暂无动态</view>
+    </view>
+    <view class="loadingWrap" wx:if="{{loadingShow}}">
+        <image src="/images/loading.png"></image>
+        <text>正在加载</text>
+    </view>
+    <official-account wx:if="{{account.title=='forum'&&account.pos==2}}"></official-account>
+</view>
+<template is="tabbar" data="{{tabbar:tabbar,data:'forum'}}" wx:if="{{(invite==''||!invite)&&isShowTab}}"></template>
+<template is="im" data="{{hasMobile:hasMobile,msgNum:msgNum}}"></template>
+<view class="keyboard" wx:if="{{showKeyboard==1}}">
+    <input focus bindblur="bindKeyBlur" bindinput="bindKeyInput" class="input" cursorSpacing="20" placeholder="评论" placeholderStyle="color:#888" type="text"></input>
+    <button bindtap="_send" class="send">发送</button>
+</view>
+<template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>
+<template is="msgTip" data="{{...msgInfo,msgStatus:msgStatus,cardAvatar:cardAvatar,hasMobile:hasMobile}}"></template>

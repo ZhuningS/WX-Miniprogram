@@ -1,0 +1,7 @@
+<navigator appId="{{hopCard.appId}}" class="float-button animated {{showHopCard?'fadeIn':'fadeOut'}}" hoverClass="none" openType="navigate" path="{{hopCard.path}}" style="right:auto;left:30rpx;background-color:#fff;" target="miniProgram" wx:if="{{hopCard.cover&&hopCard.type==='miniProgram'}}">
+    <image class="hopCard-image {{hopCard.size}}" src="{{hopCard.cover}}"></image>
+</navigator>
+<button bindtap="{{enableContact?'handleContactTap':'handleHopcardTap'}}" class="float-button animated {{showHopCard||showContact?'fadeIn':'fadeOut'}}" hoverClass="none" openType="{{enableContact?'contact':''}}" sessionFrom="{{enableContact?contactSession:''}}" style="right:auto;left:30rpx;background-color:#fff;" wx:elif="{{hopCard.cover||enableContact}}">
+    <image src="./icons/icon_gift.svg" style="width:20px;height:20px;" wx:if="{{enableContact}}"></image>
+    <image class="hopCard-image {{hopCard.size}}" src="{{hopCard.cover}}" wx:else></image>
+</button>

@@ -1,0 +1,105 @@
+<view class="{{currentSkin}}">
+    <view class="se-hear f fc">
+        <image bindtap="preview" data-wpypreview-a="{{vm.GroupImage}}" mode="aspectFill" src="{{vm.GroupImage}}"></image>
+        <view class="f fv f44">
+            <view class="t-b" wx:if="{{vm.State!=2}}">仅剩<text class="t-b cred">{{vm.GroupSize-vm.GroupUserList.length}}</text>个名额</view>
+            <view wx:else>{{vm.GroupName}}</view>
+            <wxc-price class="mt30 cred t-b">{{vm.GroupPrice}}</wxc-price>
+            <wxc-price class="mt30 f26 ccc">{{vm.OriginalPrice}}</wxc-price>
+        </view>
+    </view>
+    <view class="bg-w mt20 se-user">
+        <view class="f fw fc fc-h" wx:if="{{vm.State!=-4}}">
+            <view class="rel" wx:for="{{vm.GroupUserList}}" wx:key="key">
+                <image mode="aspectFill" src="{{item.HeadImgUrl||'http://j.vzan.cc/content/city/images/voucher/10.jpg'}}"></image>
+                <text class="tuanzhang" wx:if="{{item.Id==vm.SponsorUserId}}">团长</text>
+            </view>
+            <image src="http://j.vzan.cc/miniapp/img/group2/icon_blankuser.png" wx:for="{{vm.GroupSize-vm.GroupUserList.length}}" wx:key="key"></image>
+        </view>
+        <view class="mt40">
+            <button bindtap="goJoin" class="f28 cfff btn-invit skin_bg br0" data-wpygojoin-a="{{vm.GoodId}}" data-wpygojoin-b="{{vm.Id}}" wx:if="{{vm.State==1&&!haveJoin}}">去参团</button>
+            <button class="f28 cfff btn-invit skin_bg br0" wx:if="{{vm.State==-1&&haveJoin||vm.State==-4}}">拼团时间逾期 去首页看看吧</button>
+            <button class="f28 cfff btn-invit skin_bg br0" openType="share" wx:if="{{vm.State==1&&haveJoin}}">邀请好友拼团 {{userCutdown.timeInter}} 后结束</button>
+            <button bindtap="goHome" class="f28 cfff btn-invit skin_bg br0" wx:if="{{vm.State==2}}">拼团人数已够 去首页看看吧</button>
+        </view>
+    </view>
+    <view class="mt20 bg-w gpIng" wx:if="{{groupList!=0&&showIng&&vm.State!=-4}}">
+        <view bindtap="showMask" class="gp-more f fc">
+            <text>查看更多</text>
+            <text class="dzicon icon-xiala-copy-right"></text>
+        </view>
+        <view class="gp-show">
+            <view class="gp-item f fc" wx:if="{{index<3}}" wx:for="{{groupList}}" wx:key="key">
+                <image class="gp-img" mode="aspectFill" src="{{item.UserLogo}}"></image>
+                <text class="f32 pl20 f1 line lin1">{{item.UserName||''}}</text>
+                <view class="f24 tr mr10">
+                    <view class="cffb0">差 <text class="cred">{{item.GroupSize-item.GroupUserList.length}}</text> 人成团</view>
+                    <view class="c999">剩余{{item.countdown}}</view>
+                </view>
+                <view bindtap="goCheck" class="gp-joinbtn skin_bg" data-wpygocheck-a="{{item.Id}}" wx:if="{{item.haveJoin}}">查看详情</view>
+                <view bindtap="goJoin" class="gp-joinbtn skin_bg" data-wpygojoin-a="{{item.GoodId}}" data-wpygojoin-b="{{item.Id}}" wx:else>去参团</view>
+            </view>
+        </view>
+    </view>
+    <view class="se-olt f fv">
+        <view class="se-item f fj" wx:if="{{vm.State!=2}}">
+            <text class="f32" style="width:150rpx">商品名称</text>
+            <text class="c666 line1 line f1">{{vm.GroupName}}</text>
+        </view>
+        <view class="se-item f fj fc" wx:if="{{vm.State==2}}">
+            <text class="f32">收货人</text>
+            <text class="c666">{{vm.Name}}</text>
+        </view>
+        <view class="se-item f fj fc" wx:if="{{vm.State==2}}">
+            <text class="f32">收货地址</text>
+            <text class="c666">{{vm.Address}}</text>
+        </view>
+        <view class="se-item f fj fc">
+            <text class="f32">参团时间</text>
+            <text class="c666">{{vm.StartDate}}</text>
+        </view>
+        <view bindtap="showMoreToast" class="se-item f fj fc">
+            <text class="f32">拼团须知</text>
+            <view class="f fc c666">参与方式、拼团成功、拼团失败<text class="dzicon icon-xiala-copy-right c123"></text>
+            </view>
+        </view>
+    </view>
+    <view class="mask" wx:if="{{showMore}}">
+        <view bindtap="showMask" class="mask-bg"></view>
+        <view class="mask-main">
+            <view class="rel">
+                <view class="m-title">正在开团</view>
+                <scroll-view scrollY class="m-scroll">
+                    <view class="m-item f fc fc-h" wx:for="{{groupList}}" wx:key="key">
+                        <image class="m-logo" src="{{item.UserLogo}}"></image>
+                        <view class="f1 f fv">
+                            <view class="f ml20">
+                                <text>{{item.UserName||''}} </text>
+                                <text class="f24 c999 ml20">还差{{item.GroupSize-item.GroupUserList.length}}人</text>
+                            </view>
+                            <view class="f24 c999 ml20">剩余{{item.countdown}}</view>
+                        </view>
+                        <view bindtap="goCheck" class="m-btn  skin_bg" data-wpygocheck-a="{{item.Id}}" wx:if="{{item.haveJoin}}">查看详情</view>
+                        <view bindtap="goJoin" class="m-btn  skin_bg" data-wpygojoin-a="{{item.GoodId}}" data-wpygojoin-b="{{item.Id}}" wx:else>去参团</view>
+                    </view>
+                </scroll-view>
+                <view class="m-tip c999 f24 f1">仅显示最多10个在开团的人</view>
+                <view bindtap="showMask" class="dzicon icon-zhuanyebaniconkuozhan_Close f80 mask-cancle"></view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{showToast}}">
+        <view bindtap="showMoreToast" class="mask-bg"></view>
+        <view class="showmore">
+            <text class="show-title f32 t-b f1">拼团规则</text>
+            <view class="t-b mt30">1.参与方式</view>
+            <text>开团邀请好友参团或参加别人的团，并在规定时间内成团，未达到拼团人数，钱款将自动原路退还。</text>
+            <view class="t-b mt30">2.拼团成功</view>
+            <text>拼团有效期内，支付人数达到规定人数视为拼团成功，商家即进入发货流程。拼团成功后不可退款，如有异议请自行与商家协商。
+                                                                                                </text>
+            <view class="t-b mt30">3.拼团失败</view>
+            <text>拼团有效期内支付人数未能达到规定人数视为拼团失败，拼团失败的订单，系统会在1-7个工作日内发起退款，发起退款后1-10个工作日内订单金额将原路退回。</text>
+            <view bindtap="showMoreToast" class="dzicon icon-zhuanyebaniconkuozhan_Close f80 mask-cancle"></view>
+        </view>
+    </view>
+</view>

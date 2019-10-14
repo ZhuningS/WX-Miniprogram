@@ -1,0 +1,72 @@
+.logistics .commodity-avator-wrap {
+    width: 122rpx;
+    height: 122rpx;
+}
+
+.logistics .commodity-avator {
+    width: 120rpx;
+    height: 120rpx;
+    display: inline-block;
+}
+
+.logistics .count {
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.logistics .br-cc {
+    border: 1px solid transparent;
+}
+
+.logistics .pt5 {
+    padding-top: 5rpx;
+}
+
+.logistics .c-light-blue {
+    color: #2a99d3;
+}
+
+.logistics .logistics-title {
+    height: 90rpx;
+    line-height: 90rpx;
+    padding: 0 20rpx;
+    border-bottom: 1px solid #ccc;
+}
+
+.logistics .icon-query {
+    margin-left: 10rpx;
+    font-size: 30rpx;
+}
+
+.logistics .logistics-item {
+    border-left: 1px solid #ccc;
+    justify-content: flex-end;
+    padding-left: 40rpx;
+}
+
+.logistics .logistics-address {
+    border-bottom: 1px solid #ccc;
+    padding-right: 40rpx;
+    width: 100%;
+}
+
+.logistics .logistics-address .icon-Choice_xuanze {
+    font-size: 26rpx;
+    background-color: #fff;
+}
+
+.logistics .logistics-address .status-pos {
+    top: 18rpx;
+    left: -52rpx;
+}
+
+.logistics .logistics-address .status-point {
+    height: 24rpx;
+    width: 24rpx;
+    background: #ccc;
+    border-radius: 100%;
+}

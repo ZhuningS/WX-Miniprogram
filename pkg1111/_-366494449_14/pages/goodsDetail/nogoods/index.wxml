@@ -1,0 +1,7 @@
+<view style=" width: 403rpx;margin:  180rpx auto; text-align: center">
+    <view>
+        <image src="/images/card/wushangpin@3x.png" style="width: 320rpx; height: 320rpx;"></image>
+    </view>
+    <view style="font-size: 24rpx;color: #999; margin-top: 40rpx;  white-space: nowrap">不好意思，您来晚了，商品已经下架啦！</view>
+    <view bindtap="_jump" data-url="/pages/shop/index" style="width: 300rpx;font-size: 32rpx; line-height: 80rpx; color: #fff;border-radius: 10rpx; background: #19b00b; margin: 60rpx auto 0;">浏览其他商品</view>
+</view>

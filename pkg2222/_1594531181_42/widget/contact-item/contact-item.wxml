@@ -1,0 +1,14 @@
+<view class="wrap">
+    <block wx:for="{{contactViewData}}">
+        <view class="wrap-line">
+            <view class="wrap-content">
+                <view class="contact-title {{item.disable?'offline':''}}" style="{{item.subTitle.length!=0?'':'margin: 72rpx 0'}}">
+                    {{item.title}}
+                </view>
+                <view class="contact-subTitle {{item.disable?'offline':''}}" wx:if="{{item.subTitle.length!=0}}">{{item.subTitle}}</view>
+            </view>
+            <button bindtap="onClickContactItem" class="contact-icon__btn contact-icon {{item.icon}}" data-index="{{index}}" hoverClass="{{item.icon+'_active'}}" openType="{{item.type}}" sendMessageImg="{{item.messageInfo.img}}" sendMessagePath="{{item.messageInfo.path}}" sendMessageTitle="{{item.messageInfo.title}}" sessionFrom="{{item.messageInfo.sessionFrom}}" showMessageCard="{{item.showMessage}}"></button>
+        </view>
+        <view class="line" wx:if="{{index!=contactViewData.length-1}}"></view>
+    </block>
+</view>

@@ -1,0 +1,74 @@
+<view class="container">
+    <view class="head">
+        <view class="rel">
+            <image class="ab ud" mode="aspectFill" src="{{yellow_info.is_houtai==1?url3:''}}{{yellow_info.logo}}"></image>
+        </view>
+        <view>
+            <view>{{yellow_info.company_name}}</view>
+            <view>
+                <text style="max-width:300rpx;">{{yellow_info.type_name}}</text>
+                <text>入驻日期：{{yellow_info.sh_time}}</text>
+            </view>
+        </view>
+    </view>
+    <view bindtap="phone" class="tel" data-tel="{{yellow_info.link_tel}}">
+        <text> 电话:</text>
+        <text>{{yellow_info.link_tel}}</text>
+    </view>
+    <view bindtap="address" class="address">
+        <view>详细地址</view>
+        <view>
+            <image mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/address3.png"></image>
+            <text class=" gobyndsingle">{{yellow_info.company_address}}</text>
+            <text>导航</text>
+        </view>
+    </view>
+    <view class="detail">
+        <view>
+            商家介绍:
+        </view>
+        <view>{{yellow_info.content}}</view>
+    </view>
+</view>
+<view class="footer">
+    <view bindtap="shouye">
+        <view class="icon rel">
+            <image class="ab udlr" mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/index.png"></image>
+        </view>
+        <view class="nav_title center">首页</view>
+    </view>
+    <view class="rel">
+        <view class="icon rel">
+            <image class="ab udlr" mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/nav1.png"></image>
+        </view>
+        <view class="nav_title center">
+            <text>转发</text>
+        </view>
+        <button openType="share"></button>
+    </view>
+    <view bindtap="address">
+        <view class="icon rel">
+            <image class="ab udlr" mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/nav.png"></image>
+        </view>
+        <view class="nav_title center">导航</view>
+    </view>
+    <view bindtap="phone" class="nav_phone" style="background:#42a6f7">
+        <view>一键拨号</view>
+        <view>{{yellow_info.link_tel}}</view>
+    </view>
+</view>
+<view wx:if="{{userid==yellow_info.user_id}}">
+    <view bindtap="hyxf" class="dq_time">
+        <view style="font-size:30rpx">入驻到期时间
+<text style="color:red" wx:if="{{yellow_info.time_over==1}}">已到期</text>
+        </view>
+        <view style="font-size:26rpx;color:red;display:flex;align-items:center;justify-content:center">
+            <image src="../image/tishi.png" style="width:50rpx;height:50rpx;margin-right:5rpx"></image>
+{{yellow_info.dq_time}}</view>
+    </view>
+    <view class="base" wx:if="{{iszd==true}}">
+        <view class="rel">入驻期限收费</view>
+        <view bindtap="selected" class="array rel" id="{{index}}" wx:for="{{renew}}">{{item.money}}元/{{item.days}}天</view>
+        <view bindtap="qxzd" class="rel">关闭</view>
+    </view>
+</view>

@@ -1,0 +1,36 @@
+.c-gt {
+    width: 100%;
+}
+
+.c-gt .c-gt-title {
+    color: #666;
+    font-size: 24rpx;
+    padding: 30rpx 0;
+}
+
+.c-gt .c-gt-title .icon-xiantiao- {
+    color: #d0d0d0;
+}
+
+.c-gt .c-gt-title .rote {
+    transform: rotate(180deg);
+}
+
+.c-gt .c-gt-main {
+    width: 100%;
+    background-color: #fff;
+    padding: 30rpx 15rpx 0 30rpx;
+}
+
+.c-gt .c-gt-main .c-gt-main-item {
+    width: 220rpx;
+    margin-bottom: 30rpx;
+    margin-right: 15rpx;
+}
+
+.c-gt .c-gt-main .c-gt-main-item>image {
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 5rpx;
+    flex-shrink: 0;
+}

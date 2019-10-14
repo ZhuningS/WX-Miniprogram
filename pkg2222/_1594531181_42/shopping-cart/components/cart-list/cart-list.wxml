@@ -1,0 +1,7 @@
+<view class="wrapper" wx:if="{{merchantList.length!==0}}">
+    <cart-list-section isLastOne="{{index==merchantList.length-1}}" section="{{section}}" wx:for="{{merchantList}}" wx:for-item="section" wx:key="section.appid"></cart-list-section>
+</view>
+<view class="cart-empty" wx:if="{{merchantList.length===0}}">
+    <image mode="aspectFit" src="../../res/img/icon-empty-cart.png"></image>
+    <view class="title">待购商品暂时为空</view>
+</view>

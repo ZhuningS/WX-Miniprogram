@@ -1,0 +1,38 @@
+.st-icon {
+    width: 210rpx;
+    height: 210rpx;
+    border-radius: 100%;
+    margin-top: 100rpx;
+}
+
+.pt40 {
+    padding-top: 40rpx;
+}
+
+.st-bottom {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.st-bottom .bottom {
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.st-bottom .st-btn {
+    width: 470rpx;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    font-size: 36rpx;
+    border-radius: 49rpx;
+}
+
+.st-bottom .btn-default {
+    background-color: #FBFAFC;
+    border: 1px solid #D6D5D6;
+}

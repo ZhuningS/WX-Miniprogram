@@ -1,0 +1,23 @@
+<view class="logoin-bg">
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="tc user-msg">
+            <image class="user-img" mode="aspectFill" src="{{this_user_info.user_headimg}}"></image>
+        </view>
+        <view class="">
+            <view class="moble">
+                <view class="list flex gridXb f16">
+                    <text class="mr10 f20 grey iconfont icon-mobilefill"></text>
+                    <input bindinput="check_phone_bind" class="sub" name="user_true_phone" placeholder="请输入手机号"></input>
+                    <button bindtap="send_phone_code_bind" class="f14 yanzheng" disabled="{{yzm_btn_disabled}}">{{yzm_btn_text}}</button>
+                </view>
+                <view class="list flex gridXb f16">
+                    <text class="mr10 f20 grey iconfont icon-yaochi"></text>
+                    <input class="sub" name="user_phone_yzm" placeholder="请输入验证码"></input>
+                </view>
+            </view>
+            <view class="m20">
+                <button disabled="{{btn_disabled}}" formType="submit" hoverClass="none" loading="{{submitIsLoading}}" type="primary">立即验证</button>
+            </view>
+        </view>
+    </form>
+</view>

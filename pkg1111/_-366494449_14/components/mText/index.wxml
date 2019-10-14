@@ -1,0 +1,17 @@
+<template name="mText">
+    <view bindtap="_jump" class="mtext" data-url="/pages/goodsDetail/detail/index?id={{dataset.linkData.id}}" style="margin-bottom:{{style.marginBottom}};margin-top:{{style.marginTop}};padding-left:{{style.paddingLeft}};padding-right:{{style.paddingRight}};line-height:{{style.lineHeight}};background:{{style.backgroundColor}}; text-align: {{style.textAlign}};color:{{style.color}};font-size:{{style.fontSize}};font-style:{{style.fontStyle}};font-weight:{{style.fontWeight}};text-decoration: {{style.textDecoration}}" wx:if="{{dataset.linkType=='goods'}}">
+        {{dataset.text}}
+        </view>
+    <view bindtap="_jump" class="mtext" data-url="/pages/goodsDetail/detailMs/index?id={{dataset.linkData.id}}" style="margin-bottom:{{style.marginBottom}};margin-top:{{style.marginTop}};padding-left:{{style.paddingLeft}};padding-right:{{style.paddingRight}};line-height:{{style.lineHeight}};background:{{style.backgroundColor}}; text-align: {{style.textAlign}};color:{{style.color}};font-size:{{style.fontSize}};font-style:{{style.fontStyle}};font-weight:{{style.fontWeight}};text-decoration: {{style.textDecoration}}" wx:if="{{dataset.linkType=='msgoods'}}">
+        {{dataset.text}}
+        </view>
+    <view bindtap="_jump" class="mtext" data-url="{{dataset.linkData.path}}" style="margin-bottom:{{style.marginBottom}};margin-top:{{style.marginTop}};padding-left:{{style.paddingLeft}};padding-right:{{style.paddingRight}};line-height:{{style.lineHeight}};background:{{style.backgroundColor}}; text-align: {{style.textAlign}};color:{{style.color}};font-size:{{style.fontSize}};font-style:{{style.fontStyle}};font-weight:{{style.fontWeight}};text-decoration: {{style.textDecoration}}" wx:if="{{dataset.linkType=='page'}}">
+        {{dataset.text}}
+        </view>
+    <view bindtap="_jump" class="mtext" data-url="/pages/goodsDetail/detailGroup/index?id={{dataset.linkData.id}}" style="margin-bottom:{{style.marginBottom}};margin-top:{{style.marginTop}};padding-left:{{style.paddingLeft}};padding-right:{{style.paddingRight}};line-height:{{style.lineHeight}};background:{{style.backgroundColor}}; text-align: {{style.textAlign}};color:{{style.color}};font-size:{{style.fontSize}};font-style:{{style.fontStyle}};font-weight:{{style.fontWeight}};text-decoration: {{style.textDecoration}}" wx:if="{{dataset.linkType=='tggoods'}}">
+        {{dataset.text}}
+        </view>
+    <view class="mtext" style="margin-bottom:{{style.marginBottom}};margin-top:{{style.marginTop}};padding-left:{{style.paddingLeft}};padding-right:{{style.paddingRight}};line-height:{{style.lineHeight}};background:{{style.backgroundColor}}; text-align: {{style.textAlign}};color:{{style.color}};font-size:{{style.fontSize}};font-style:{{style.fontStyle}};font-weight:{{style.fontWeight}};text-decoration: {{style.textDecoration}}" wx:if="{{!dataset.linkType||dataset.linkType==''}}">
+        {{dataset.text}}
+        </view>
+</template>

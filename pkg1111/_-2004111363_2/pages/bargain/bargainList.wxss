@@ -1,0 +1,140 @@
+.c-barLst {
+    width: 100%;
+}
+
+.c-barLst .c-barLst-top {
+    width: 100%;
+    height: 100rpx;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 0 50rpx;
+}
+
+.c-barLst .c-barLst-top>view {
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.c-barLst .c-barLst-main {
+    width: 100%;
+    margin-top: 20rpx;
+}
+
+.c-barLst .c-barLst-main .c-barLst-item:last-child {
+    margin-bottom: 0;
+}
+
+.c-barLst .c-barLst-main .c-barLst-item {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    padding-left: 30rpx;
+}
+
+.c-barLst .c-barLst-main .c-barLst-item .c-barLst-item-top {
+    width: 100%;
+    padding: 30rpx 30rpx 30rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.c-barLst .c-barLst-main .c-barLst-item .c-barLst-item-pro {
+    width: 100%;
+    padding: 30rpx 30rpx 30rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.c-barLst .c-barLst-main .c-barLst-item .c-barLst-item-pro>image {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 5rpx;
+    margin-right: 30rpx;
+    flex-shrink: 0;
+}
+
+.c-barLst .c-barLst-main .c-barLst-item .c-barLst-item-bottom {
+    width: 100%;
+    padding: 30rpx;
+}
+
+.c-barLst .c-barLst-main .c-barLst-item .c-barLst-item-bottom .c-barLst-item-btn {
+    width: 100%;
+    margin-top: 50rpx;
+}
+
+.c-barLst .c-barLst-main .c-barLst-item .c-barLst-item-bottom .c-barLst-item-btn>text,.c-barLst .c-barLst-main .c-barLst-item .c-barLst-item-bottom .c-barLst-item-btn button {
+    width: 146rpx;
+    height: 50rpx;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 26rpx;
+    border-radius: 25rpx;
+    border: 1px solid #a1a2a3;
+}
+
+.c-barLst .c-barLst-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.c-barLst .c-barLst-mask .c-barLst-mask-bg {
+    width: 100vh;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+}
+
+.c-barLst .c-barLst-mask .c-barLst-mask-main {
+    position: fixed;
+    width: 500rpx;
+    height: 630rpx;
+    top: 50%;
+    left: 50%;
+    margin-left: -250rpx;
+    margin-top: -315rpx;
+}
+
+.c-barLst .c-barLst-mask .c-barLst-mask-main .c-barLst-mask-main-item {
+    width: 500rpx;
+    height: 630rpx;
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding-top: 80rpx;
+}
+
+.c-barLst .c-barLst-mask .c-barLst-mask-main .c-barLst-mask-main-item .c-barLst-mask-main-logo {
+    position: absolute;
+    top: -80rpx;
+    left: 50%;
+    width: 168rpx;
+    margin-left: -84rpx;
+}
+
+.c-barLst .c-barLst-mask .c-barLst-mask-main .c-barLst-mask-main-item scroll-view {
+    width: 100%;
+    height: 550rpx;
+    padding: 0 30rpx;
+}
+
+.c-barLst .c-barLst-mask .c-barLst-mask-main .c-barLst-mask-main-item scroll-view .c-barLst-mask-scroll {
+    width: 100%;
+    margin-bottom: 40rpx;
+}
+
+.c-barLst .c-barLst-mask .c-barLst-mask-main .c-barLst-mask-main-item scroll-view .c-barLst-mask-scroll .c-barLst-mask-scroll-userImg {
+    width: 58rpx;
+    height: 58rpx;
+    margin-right: 20rpx;
+    border-radius: 50%;
+}
+
+.c-barLst .c-barLst-mask .c-barLst-icon {
+    position: fixed;
+    bottom: 10%;
+    left: 43%;
+    font-size: 80rpx;
+    color: #fff;
+}

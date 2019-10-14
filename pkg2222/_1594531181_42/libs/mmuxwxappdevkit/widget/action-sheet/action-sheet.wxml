@@ -1,0 +1,20 @@
+<view class="action-sheet-wrap">
+    <view animation="{{actionSheetMaskAnimation}}" bindtap="onClickMask" class="action-sheet-mask" hidden="{{!showActionSheet}}"></view>
+    <view animation="{{actionSheetAnimation}}" class="action-sheet-content" hidden="{{!showActionSheet}}">
+        <view class="action-sheet-title" wx:if="{{title.length>0}}">{{title}}</view>
+        <view class="weui-cell" hoverClass="action-sheet-button__hover" style="{{item.desc?'':'padding-top: 25rpx; padding-bottom: 25rpx;'}}" wx:for="{{items}}">
+            <view class="weui-cell__bd weui-cell_primary action-sheet-item" style="color: {{item.color}};">
+                {{item.content}}
+                <view class="action-sheet-desc" wx:if="{{item.desc}}">
+                    {{item.desc}}
+                </view>
+            </view>
+            <navigator appId="{{item.userInfo.appid}}" bindtap="onClickItem" data-content="{{item.content}}" data-extra="{{item.extra}}" data-index="{{index}}" data-type="{{item.type}}" data-userinfo="{{item.userInfo}}" extParams="{{item.userInfo.extParams}}" innerClass="action-sheet-button" path="{{item.userInfo.path}}" showWeappBack="{{item.userInfo.showWeAppBack}}" wx:if="{{item.type=='miniProgram'}}"></navigator>
+            <button bindtap="onClickItem" class="action-sheet-button" data-content="{{item.content}}" data-extra="{{item.extra}}" data-index="{{index}}" data-type="{{item.type}}" data-userinfo="{{item.userInfo}}" openType="{{item.type=='contact'?'contact':item.type=='share'?'share':''}}" wx:else></button>
+        </view>
+        <view style="height: 6px; background: #EDEDED;"></view>
+        <view bindtap="onClickItem" data-index="-1" data-type="cancel" hoverClass="action-sheet-button__hover" style="{{phoneModel=='iPhoneX'?'padding-bottom: 27px;':''}}">
+            <view class="action-sheet-item action-sheet-cancel {{phoneModel}}">取消</view>
+        </view>
+    </view>
+</view>

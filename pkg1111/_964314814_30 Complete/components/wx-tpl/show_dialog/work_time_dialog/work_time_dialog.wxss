@@ -1,0 +1,139 @@
+.dialog-content {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    display: flex;
+    align-items: flex-end;
+    z-index: 1000;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.dialog-outer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+}
+
+.diialog-head {
+    position: relative;
+    width: 100%;
+    height: 80rpx;
+    background-color: #f7f8f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 20rpx;
+    border-top-right-radius: 20rpx;
+    font-size: 28rpx;
+}
+
+.flex {
+    display: flex;
+    flex: 1;
+}
+
+.cancle-txt {
+    height: 80rpx;
+    width: 80rpx;
+    line-height: 80rpx;
+    margin-left: 30rpx;
+    color: #555555;
+}
+
+.title-txt {
+    font-size: 32rpx;
+    color: #222222;
+}
+
+.confirm-txt {
+    color: #ff7800;
+    margin-right: 30rpx;
+}
+
+.time-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.left-col {
+    display: flex;
+    width: 250rpx;
+    height: 560rpx;
+    background-color: #f7f8f9;
+    flex-direction: column;
+    font-size: 26rpx;
+}
+
+.right-col {
+    display: flex;
+    height: 560rpx;
+    flex: 1;
+    background-color: #fff;
+}
+
+.left-choose {
+    color: #222222;
+    background-color: #fff;
+    width: 250rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    display: flex;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-normal {
+    width: 250rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888888;
+    background-color: #f7f8f9;
+}
+
+.right-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 26rpx;
+}
+
+.right-time {
+    width: 250rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-tip {
+    display: flex;
+    color: #aaaaaa;
+    margin-right: 30rpx;
+}
+
+.move .dialog-outer {
+    transform: translateY(20%);
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.md-show.move .dialog-outer {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.time-choosed {
+    color: #ff7800;
+}

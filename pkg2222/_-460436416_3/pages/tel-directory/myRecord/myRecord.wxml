@@ -1,0 +1,38 @@
+<view class="topBox white_bg gridXb flex flexMArd">
+    <view bindtap="change_this_type_bind" class="tab {{this_type_id==1?'topTab_on mainColor':''}}" data-type="1">我的收藏</view>
+    <view bindtap="change_this_type_bind" class="tab {{this_type_id==2?'topTab_on mainColor':''}}" data-type="2">浏览记录</view>
+    <view bindtap="change_this_type_bind" class="tab {{this_type_id==3?'topTab_on mainColor':''}}" data-type="3">拨号记录</view>
+</view>
+<view class="mainBox">
+    <view>
+        <view class="white_bg mb10" wx:for="{{this_tel_data}}">
+            <view class="time flex flexMBtw gridXb  f14">
+                <view>{{item.update_time}}</view>
+                <view bindtap="delete_data_bind" class="iconfont icon-shanchu" id="{{item.id}}"></view>
+            </view>
+            <view class="item ">
+                <view class="mr10 flex flexCCen flexMBtw">
+                    <view catchtap="go_detail_bind" class="sub flex flexCCen" id="{{item.tel_info.id}}">
+                        <image class="itemPic mr10" mode="aspectFill" src="{{item.tel_info.t_logo}}"></image>
+                        <view class="titBox sub ">
+                            <view class="lineText">{{item.tel_info.t_name}}</view>
+                            <view class="grey f14">
+                                <text class="iconfont icon-dianhua mr5"></text>
+                                <text>{{item.tel_info.yincang_t_contact_phone}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view catchtap="onCallTap" class="telBox mainColor_bg flex MCCen" data-mobile="{{item.tel_info.t_contact_phone}}" data-telid="{{item.tel_id}}">
+                        <text class="iconfont icon-dianhua"></text>
+                    </view>
+                </view>
+                <view catchtap="openLocation" class="itemBot grey f14 flex flexMBtw" data-address="{{item.tel_info.t_address}}" data-lat="{{item.tel_info.t_lat}}" data-lng="{{item.tel_info.t_lng}}" data-name="{{item.tel_info.t_name}}">
+                    <view class="sub mr15 lineText">
+                        <text></text>
+                        <text>{{item.tel_info.t_address}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

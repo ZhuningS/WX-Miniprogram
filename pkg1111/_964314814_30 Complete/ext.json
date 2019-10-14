@@ -1,0 +1,59 @@
+{
+    "extEnable": true,
+    "extAppid": "wx3b6ef5f344f16d4a",
+    "ext": {
+        "name": "浙江万仟科技有限公司",
+        "attr": {
+            "xcxId": 26109,
+            "codeVersion": "v1.4.9",
+            "shopMHost": "https://mmis.197.com/",
+            "pcisHost": "https://pcis.197.com/",
+            "newsHost": "https://news.197.com/",
+            "host": "https://x1.197.com/",
+            "tabBar": {
+                "color": "#222",
+                "selectedColor": "#ff7800",
+                "backgroundColor": "#fff",
+                "borderStyle": "#e6e6e6",
+                "list": [
+                    {
+                        "pagePath": "page/index/custom-page/custom-page-5/custom-page-5",
+                        "text": "企业文化",
+                        "iconPath": "image/shenghuo_normal.png",
+                        "selectedIconPath": "image/shenghuo_press.png"
+                    },
+                    {
+                        "pagePath": "page/discover/discover",
+                        "text": "产品中心",
+                        "iconPath": "image/sc_normal.png",
+                        "selectedIconPath": "image/sc_press.png"
+                    },
+                    {
+                        "pagePath": "page/message/index",
+                        "text": "首页",
+                        "iconPath": "image/home_normal.png",
+                        "selectedIconPath": "image/home_press.png"
+                    },
+                    {
+                        "pagePath": "page/index/shequn/shequn_tab",
+                        "text": "每日动态",
+                        "iconPath": "image/new_normal.png",
+                        "selectedIconPath": "image/new_press.png"
+                    },
+                    {
+                        "pagePath": "page/my/my",
+                        "text": "我的",
+                        "iconPath": "image/me_normal.png",
+                        "selectedIconPath": "image/me_press.png"
+                    }
+                ]
+            },
+            "orgId": 270945
+        },
+        "ald_config": {
+            "app_key": "19b9544462b6a0c6415bc578992eb14d",
+            "getLocation": 1,
+            "getUserinfo": 1
+        }
+    }
+}

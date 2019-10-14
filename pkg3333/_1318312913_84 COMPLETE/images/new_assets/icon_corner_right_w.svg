@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="2258 192 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="Path_811" data-name="Path 811" class="cls-1" d="M-144,415h20v20h-20Z"/>
+    </clipPath>
+  </defs>
+  <g id="icon_corner_right_w" transform="translate(1693 -1004)">
+    <g id="action_share" class="cls-2" transform="translate(709 781)">
+      <path id="Path_809" data-name="Path 809" class="cls-1" d="M10.121,8l-8,8L0,13.879,5.879,8,0,2.121,2.121,0Z" transform="translate(-135 417)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+<form bindsubmit="onPushSubmit">
+    <view class="contenter">
+        <view class="notice-list bgwhite flex">
+            <view class="list-title mr10">选择图片</view>
+            <view bindtap="onChooseCoverTap" class="addimg tc">
+                <text class="iconfont icon-add"></text>
+                <image mode="aspectFill" src="{{coverPath}}"></image>
+                <input hidden="true" name="coverPath" value="{{coverPath}}"></input>
+            </view>
+        </view>
+        <view class="notice-list bgwhite flex">
+            <view class="list-title mr10">通知标题</view>
+            <input class="sub grey" name="title" placeholder="通知标题"></input>
+        </view>
+        <view class="notice-list bgwhite flex mt10">
+            <view class="list-title mr10">通知正文</view>
+            <textarea class="sub" maxlength="3000" name="remark" placeholder="正文必填（最多3000个汉字）"></textarea>
+        </view>
+        <view class="m20">
+            <button class="send-notice transition-duration-150" formType="submit" type="primary">发布通知</button>
+        </view>
+    </view>
+</form>

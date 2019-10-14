@@ -1,0 +1,116 @@
+.contenter {
+    padding: 0 20rpx;
+}
+
+.notice-list:first-child {
+    margin-top: 30rpx;
+}
+
+.notice-list {
+    position: relative;
+    background: #fff;
+    margin-bottom: 30rpx;
+    border-radius: 6rpx;
+    overflow: hidden;
+    box-shadow: 0 6rpx 0 #e8e8e8;
+}
+
+.vote-img image {
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.vote-content {
+    position: relative;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+
+.notice-list-content {
+    min-height: 54rpx;
+    white-space: normal;
+    word-break: break-all;
+}
+
+.flating-group {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.flating-group button {
+    float: right;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #1aad19;
+    color: white;
+}
+
+.flating-group button::after {
+    border: 0;
+}
+
+.aside-float {
+    position: fixed;
+    bottom: 120rpx;
+    right: 40rpx;
+    z-index: 1;
+}
+
+.aside-float button {
+    width: 92rpx;
+    height: 92rpx;
+    line-height: 92rpx;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 20rpx #1aad19;
+}
+
+.flating-group button::after {
+    border: 0;
+}
+
+.nothing .line {
+    height: 1px;
+    background: #ddd;
+    margin-top: 22rpx;
+}
+
+.tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+    background: #fff;
+    box-shadow: 0 -2rpx 2rpx #eee;
+}
+
+.tab-sub {
+    line-height: 92rpx;
+    font-size: 36rpx;
+    position: relative;
+}
+
+.tab-sub-active {
+    font-weight: bold;
+    color: #09bb07;
+}
+
+.tab-sub-active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 20%;
+    width: 60%;
+    height: 2px;
+    bottom: 0;
+}
+
+@import "../../../__wuBaseWxss__/3.wxss";

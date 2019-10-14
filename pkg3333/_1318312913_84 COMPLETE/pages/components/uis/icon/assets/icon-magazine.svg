@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="3178 396 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        opacity: 0;
+      }
+
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="icon_magazine" transform="translate(3047 38)">
+    <path id="Path_897" data-name="Path 897" class="cls-1" d="M126,353h20v20H126Z" transform="translate(5 5)"/>
+    <path id="Path_898" data-name="Path 898" class="cls-2" d="M3,15H13V3H3ZM0,18V0H16V18Z" transform="translate(133 359)"/>
+  </g>
+</svg>

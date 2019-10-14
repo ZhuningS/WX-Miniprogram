@@ -1,0 +1,74 @@
+.t-search {
+    width: 100%;
+    height: 100rpx;
+    background: #ebebeb;
+    padding: 20rpx 30rpx;
+}
+
+.t-search .search {
+    width: 100%;
+    height: 60rpx;
+    background: #fff;
+    padding: 16rpx 30rpx;
+    color: #C5C4CC;
+}
+
+.t-first {
+    width: 200rpx;
+    height: 92vh;
+    float: left;
+}
+
+.t-first .t-firstname {
+    height: 100rpx;
+    line-height: 100rpx;
+    padding: 0 30rpx;
+    text-align: center;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.t-sec {
+    width: 520rpx;
+    height: 92vh;
+    float: right;
+}
+
+.t-sec .pt40 {
+    padding-top: 40rpx;
+    padding-bottom: 30rpx;
+}
+
+.t-sec .sec {
+    width: 154rpx;
+    height: 54rpx;
+    text-align: center;
+    line-height: 54rpx;
+    font-size: 24rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.t-sec .imgItem {
+    width: 170rpx;
+    font-size: 26rpx;
+    color: #666;
+    margin-bottom: 20rpx;
+}
+
+.t-sec .imgItem>image {
+    width: 150rpx;
+    height: 150rpx;
+    margin-bottom: 14rpx;
+    background-image: url('http://j.vzan.cc/miniapp/img/enterprise/blank_150x150.png');
+    background-size: cover;
+}
+
+.sel {
+    background: #f7f7f7;
+    color: #000;
+}
+
+.selnone {
+    background: #fff;
+    color: #666;
+}

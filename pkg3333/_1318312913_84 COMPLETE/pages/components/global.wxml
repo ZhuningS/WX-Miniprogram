@@ -1,0 +1,64 @@
+<import src="./widgets.wxml"></import>
+<qm-tween class="fixed-tween" duration="218" isVisible="{{showShareCard}}">
+    <view bindtap="closeShareCard" class="share-card-ctn">
+        <view class="share-card-image-container">
+            <block wx:if="{{shareData.poster||shareData.shareImage||shareData.image}}">
+                <image class="share-card-image" mode="aspectFit" src="{{shareData.poster||shareData.shareImage||shareData.image}}"></image>
+                <image class="share-card-image-loading" mode="aspectFit" src="/images/spinner_gray.svg"></image>
+            </block>
+        </view>
+        <view class="share-bar-ctn-replacement"></view>
+        <view class="share-bar-ctn">
+            <view class="header">分享</view>
+            <view class="actions-ctn">
+                <view bindtap="shareToMoment" class="action" data-content="{{shareData.content}}" data-doc-id="{{shareData.docId}}" data-id="{{shareData.id}}" data-mid="{{shareData.mid}}" data-share-image="{{shareData.shareImage}}" data-type="{{shareData.type}}">
+                    <image class="icon" mode="aspectFit" src="/images/icon-moments.svg"></image>
+                    <view class="caption">生成分享海报</view>
+                </view>
+                <button bindtap="share" class="action" data-content="{{shareData.content}}" data-doc-id="{{shareData.docId}}" data-id="{{shareData.id}}" data-image="{{shareData.image}}" data-mid="{{shareData.mid}}" data-name="{{shareData.name}}" data-path="{{shareData.path}}" data-title="{{shareData.title}}" data-type="{{shareData.type}}" data-uri="{{shareData.uri}}" hoverClass="none" openType="share">
+                    <image class="icon" mode="aspectFit" src="/images/icon-wechat.svg"></image>
+                    <view class="caption">转发给好友</view>
+                </button>
+            </view>
+        </view>
+    </view>
+</qm-tween>
+<view class="toast-ctn animated {{toast.show?'fadeInDown':'fadeOutUp'}}" wx:if="{{toast&&toast.ticket}}">
+    <view class="toast-intro" wx:if="{{toast.intro}}">
+        <view>{{toast.intro}}</view>
+        <view class="toast-title">{{toast.title}}</view>
+    </view>
+    <view class="toast-title" wx:else>{{toast.title}}</view>
+</view>
+<qm-tween class="fixed-tween" isVisible="{{currentPlaying.id&&!currentPlaying.noMask}}">
+    <view bindtouchstart="stopPlaying" class="video-play-mask"></view>
+</qm-tween>
+<qm-tween class="fixed-tween" isVisible="{{modalDialog&&modalDialog.action}}">
+    <view class="dialog-ctn">
+        <view class="dialog-content">
+            <image class="icon" src="{{modalDialog.icon}}" wx:if="{{false}}"></image>
+            <view class="subheading" wx:if="{{modalDialog.title}}">{{modalDialog.title}}</view>
+            <view class="description" wx:if="{{modalDialog.intro}}">{{modalDialog.intro}}</view>
+            <view class="actions-vertical-ctn">
+                <view bindtap="onModalDialogDone" class="button">{{modalDialog.action}}</view>
+                <view bindtap="onModalDialogCanceled" class="button border" wx:if="{{modalDialog.cancel}}">
+          {{modalDialog.cancel}}
+        </view>
+            </view>
+        </view>
+    </view>
+</qm-tween>
+<qm-tween class="fixed-tween" isVisible="{{inputDialog&&inputDialog.action!==undefined}}">
+    <form bindreset="onInputDialogCanceled" bindsubmit="onInputDialogDone">
+        <view catchtouchmove="hack" class="dialog-ctn">
+            <view class="dialog-content large" style="top:60rpx;">
+                <textarea autoFocus="{{inputDialog.action}}" bindconfirm="onInputDialogDone" class="textarea" fixed="{{true}}" maxlength="-1" name="input" placeholder="{{inputDialog.tip}}" placeholderClass="textarea-placeholder" value="{{inputDialog.input}}" wx:if="{{inputDialog.style==='area'}}"></textarea>
+                <input autoFocus="{{inputDialog.action}}" bindconfirm="onInputDialogDone" class="input" fixed="{{true}}" name="input" placeholder="{{inputDialog.tip}}" placeholderClass="textarea-placeholder" type="{{inputDialog.style}}" value="{{inputDialog.input}}" wx:else></input>
+                <view class="actions-horizontal-ctn">
+                    <button class="button border" formType="reset">{{inputDialog.cancel}}</button>
+                    <button class="button" formType="submit">{{inputDialog.action}}</button>
+                </view>
+            </view>
+        </view>
+    </form>
+</qm-tween>

@@ -1,0 +1,242 @@
+page {
+    background: #f7f7f7;
+    position: relative;
+    min-height: 100%;
+}
+
+page .container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 64rpx;
+}
+
+page .container .header {
+    font-size: 32rpx;
+    box-sizing: border-box;
+    padding: 16rpx;
+    color: #333;
+}
+
+page .container .simply .section {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+page .container .simply .section:last-child {
+    border: none;
+}
+
+page .container .simply .section .item {
+    box-sizing: border-box;
+    height: 90rpx;
+    line-height: 90rpx;
+    padding: 0 30rpx;
+    position: relative;
+    font-size: 34rpx;
+}
+
+page .container .simply .section .item:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #e5e5e5;
+    color: #e5e5e5;
+    left: 30rpx;
+    z-index: 2;
+}
+
+page .container .simply .section .item.checked:after {
+    content: " ";
+    position: absolute;
+    right: 0;
+    width: 30rpx;
+    height: 90rpx;
+    margin-right: 30rpx;
+    background: url('data:image/png;base64,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') no-repeat right center;
+    background-size: 32rpx auto;
+}
+
+page .container .simply .section .item.with-arrow {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAnCAYAAAGXojOmAAAABGdBTUEAALGPC/xhBQAAAoJJREFUSA21lelqFUEQhaNxibsm7usvX0AUjXEBEVFxJc/pM4j4Q1AUUVxQNDEJQRTjgiAI4Xq+cU7TU3fuzDWMB87trqrT1T3d1X1HRmowHX3Tq6MHO8lWOYps1IbbDXSc4Kq9abCjFYdVbtepkwRpOkfL4FJmF+o0gsDBUpWLiv6R6GGtx8XKcItwNgfi8lD34q7MyXnUOWnXi5W8a6ODFBWF7H4Hs/OpJ4kKd/429b9eKqlvZZLaQRZbxwJv2FBbGRTF1vGZ12x40CCxdZvUuVwaS64kB/OWUrOwp/7duszU0vVsVFp3Ll4jwc06kX2IWcptO9SmTJmv0qXU8lkqwWgci45ouyB2KMC+fowC2wgRbRHHRT7uk9gHhPPiTpFNnxBZ72exAoSAMt4tbhR3icviFzHBQhwfxH0ip7RH/C1+FQvkQhwz4gFxTNwr/hK/if3vi3zvxUMiu7Bf/Cn+iBnlK/BOvxwEdcAM39tO5IpEfGB6xOg3oqlGqc8im9oHg4SXFOQAwENxsU54UQGOFDwW5+lE4QX5thEQnoqzdEAuPC+bAgHPRbYowcKz8lAY4JX4puhlPwhPixQEQPCy6IUfhBQCYCqmbETrVfARHlaaE2UqKuhJY9qWIElPiRRJxFs5nkXnMLZXyh5MitR2xGs5XkRnk+2k1lD6UyJXMoLETNCKmNQDeD3OiDwOEWwJWzMQg5J6AH8q58TtdmQth8mh9qEtqQfwPJB8qx1Z+0j9ucwe/p0uB/FQcY8250nU74lc4QX8w64UbQ4eDFbuN8Exkt9baVIn4b5yuXMsc8orQdNK7//rSjvd005Pv9M67fRGdXr3O3+l/tt72unL/wd7Ol6zFNFRRwAAAABJRU5ErkJggg==') no-repeat right center;
+    background-size: 16rpx auto;
+    margin-right: 30rpx;
+}
+
+page .container .simply .section .item.with-arrow:before {
+    border: none;
+}
+
+page .container .complex .title {
+    font-size: 24rpx;
+    color: #888;
+    padding: 16rpx 30rpx;
+}
+
+page .container .complex .item {
+    background: rgba(255,0,0,0.1);
+    background: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 32rpx;
+}
+
+page .container .complex .item .row {
+    display: flex;
+    flex-direction: row;
+    height: 54rpx;
+}
+
+page .container .complex .item .row .label {
+    width: 6em;
+    font-size: 32rpx;
+    color: #999;
+    line-height: 54rpx;
+}
+
+page .container .complex .item .row .info {
+    flex: 1;
+    font-size: 30rpx;
+    text-align: right;
+    line-height: 54rpx;
+}
+
+page .container .complex .item textarea {
+    font-size: 28rpx;
+    color: #888;
+    height: 260rpx;
+    width: 100%;
+}
+
+page .container .complex .item .content-length {
+    font-size: 28rpx;
+    color: #888;
+    text-align: right;
+    padding-top: 28rpx;
+    padding-bottom: 28rpx;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+page .container .complex .item .imgs {
+    height: auto;
+    width: 100%;
+}
+
+page .container .complex .item .imgs.hover {
+    opacity: 0.5;
+}
+
+page .container .complex .item .imgs .status {
+    display: flex;
+    flex-direction: row;
+    padding-top: 32rpx;
+    padding-bottom: 32rpx;
+}
+
+page .container .complex .item .imgs .status .title {
+    color: #888;
+    font-size: 28rpx;
+    padding: 0;
+}
+
+page .container .complex .item .imgs .status .counter {
+    color: #888;
+    font-size: 28rpx;
+    padding: 0;
+    flex: 1;
+    text-align: right;
+}
+
+page .container .complex .item .imgs .imgs-previews {
+    display: flex;
+    flex-direction: row;
+}
+
+page .container .complex .item .imgs .imgs-previews .btn-add-img,page .container .complex .item .imgs .imgs-previews .img {
+    margin-right: 20rpx;
+    width: 128rpx;
+    height: 128rpx;
+    box-sizing: border-box;
+    border: 1px solid #e5e5e5;
+}
+
+page .container .complex .item .imgs .imgs-previews .btn-add-img image,page .container .complex .item .imgs .imgs-previews .img image {
+    width: 100%;
+    height: 100%;
+}
+
+page .container .complex .item .imgs .imgs-previews .btn-add-img.hover,page .container .complex .item .imgs .imgs-previews .img.hover {
+    opacity: 0.5;
+}
+
+page button {
+    font-size: 36rpx;
+    margin: 30rpx;
+}
+
+.report-success-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 9999;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100rpx;
+    padding-left: 32rpx;
+    padding-right: 32rpx;
+}
+
+.report-success-container .tips {
+    font-size: 32rpx;
+    color: #171717;
+    margin-top: 40rpx;
+}
+
+.report-success-container button {
+    width: 100%;
+    font-size: 32rpx;
+    margin: 40rpx;
+}
+
+.image-viewer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-viewer .img {
+    width: 100%;
+    flex: 1;
+}
+
+.image-viewer .btn-delete {
+    height: 120rpx;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-viewer .btn-delete.hover {
+    opacity: 0.5;
+}
+
+.image-viewer .btn-delete image {
+    width: 44rpx;
+    height: 44rpx;
+}

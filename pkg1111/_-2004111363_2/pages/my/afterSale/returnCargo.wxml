@@ -1,0 +1,63 @@
+<view class="return-cargo {{currentSkin}}">
+    <view class="bg-w pt20">
+        <view class="f fj header" wx:for="{{shipmentsInfo}}" wx:key="key">
+            <image class="commodity-avator" src="{{item.Img}}"></image>
+            <view class="f fv ml20 width75">
+                <view class="title">
+                    <text class="line line2">{{item.Name}}</text>
+                </view>
+                <view class="specification c999 mt10 f22 f fj">
+                    <text>{{item.Attr}}</text>
+                    <text>x{{item.Count}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bg-w f fj fc pl20 pr20 hl100 mt20">
+        <text class="t-b">收货人: </text>
+        <input bindinput="bindManInput" class="f1 ml20 hl80" placeholder="请填写收货人"></input>
+    </view>
+    <view class="bg-w mt20">
+        <view class="hl100 pl20 bbgray f fv">
+            <view class="f fj fc pr20">
+                <text class="t-b">物流公司：</text>
+                <view bindtap="selectCompany" class="f24 c999 picker">
+                    <text>{{selectCompanyInfo.title}}</text>
+                    <text class="dzicon icon-xiala-copy-right"></text>
+                </view>
+            </view>
+        </view>
+        <view class="f fj pl20 pr20 hl100 fc">
+            <text class="t-b">物流单号: </text>
+            <input bindinput="bindOrderInput" class="f1 ml20 hl80" placeholder="请填写物流单号"></input>
+        </view>
+        <view class="f fj pl20 pr20 hl100 fc">
+            <text class="t-b">收货地址: </text>
+            <input bindinput="bindAddressInput" class="f1 ml20 hl80" placeholder="请填写收货地址"></input>
+        </view>
+        <view class="f fj pl20 pr20 hl100 fc">
+            <text class="t-b">备注信息: </text>
+            <input bindinput="bindMarkInput" class="f1 ml20 hl80" placeholder="请填写备注信息"></input>
+        </view>
+    </view>
+    <view class="bg-w f fj hl100 pl20 mt20 fc">
+        <text class="t-b">联系电话: </text>
+        <input bindinput="bindPhoneInput" class="f1 ml20 hl80" placeholder="请填写联系电话"></input>
+    </view>
+    <button bindtap="submitForm" class="btn-confirm skin_bg f36 cfff" hoverClass="bgD32A7C">确定</button>
+    <view class="similar f fv fc {{$similar$isCancel?'top0-similar':''}}" style="{{'background-color:'+$similar$bgColor}}">
+        <button bindtap="$similar$show" class="bg-w dzicon icon-xiala-copy arrow-top mt40 {{$similar$isCancel?'':'fadeIn'}} animation-breathe"></button>
+        <view class="bg-w similar-header mt40 f fj fc width80 {{$similar$isCancel?'':'fadeIn'}}">
+            <input bindinput="$similar$handleInput" class="input f30" placeholder="{{$similar$placeholder}}" placeholderClass="c999" type="text"></input>
+            <text class="dzicon f50 icon-sousuo_rearch cfff"></text>
+        </view>
+        <view class="bg-w mt40 width80 list {{$similar$isCancel?'':'fadeIn'}}">
+            <scroll-view scrollY style="height:70vh;">
+                <view class="item f fj" wx:for="{{$similar$list}}" wx:key="{{index}}">
+                    <text>{{item.title}}</text>
+                    <text bindtap="$similar$select" class="f24 label cfff" data-item="{{item}}">选择</text>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,18 @@
+{
+    "backgroundColor": "#000000",
+    "navigationBarBackgroundColor": "#F7F7F7",
+    "usingComponents": {
+        "error-page": "../../libs/mmuxwxappdevkit/widget/error-page/error-page",
+        "navigation-bar": "../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar",
+        "brand-base": "../../widget/brand-base/brand-base",
+        "image-view": "../../libs/mmuxwxappdevkit/widget/image-view/image-view",
+        "address-item": "../../widget/address-item/address-item",
+        "contact-item": "../../widget/contact-item/contact-item",
+        "action-sheet": "../../libs/mmuxwxappdevkit/widget/action-sheet/action-sheet",
+        "mini-feature": "../../widget/mini-feature/mini-feature",
+        "manage-product": "../../widget/manage-product/manage-product",
+        "mp-article": "../../widget/mp-article/mp-article",
+        "modal": "../../libs/mmuxwxappdevkit/widget/modal/modal",
+        "navigator": "../../libs/mmuxwxappdevkit/widget/navigator/navigator"
+    }
+}

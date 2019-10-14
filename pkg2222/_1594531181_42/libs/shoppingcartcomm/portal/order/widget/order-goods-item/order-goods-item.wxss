@@ -1,0 +1,117 @@
+.goods-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.goods-item .main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40rpx;
+    padding-bottom: 52rpx;
+    background: linear-gradient(white,white) padding-box,repeating-linear-gradient(-45deg,#ECECEC 0,#ECECEC 3px,white 0,white 8px);
+}
+
+.goods-item .main .item-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 162rpx;
+    height: 162rpx;
+    overflow: hidden;
+}
+
+.goods-item .main .item-image-container .item-image {
+    width: 100%;
+}
+
+.goods-item .main .info {
+    flex: 1;
+    box-sizing: border-box;
+    padding-left: 40rpx;
+    font-size: 28rpx;
+}
+
+.goods-item .main .info .desc {
+    margin-top: 16rpx;
+    color: #B2B2B2;
+}
+
+.goods-item .main .info .price {
+    margin-top: 30rpx;
+    font-size: 30rpx;
+    font-family: "WeChat Sans Std";
+}
+
+.goods-item .dash_border {
+    padding: 1px;
+    border-top: 1px dashed transparent;
+    background: linear-gradient(white,white) padding-box,repeating-linear-gradient(-45deg,#ECECEC 0,#ECECEC 3px,white 0,white 8px);
+}
+
+.goods-item .goods-item-section {
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 30rpx;
+}
+
+.goods-item .goods-item-section .label {
+    width: 280rpx;
+}
+
+.goods-item .goods-item-section .label__err_tip {
+    margin-right: 20rpx;
+    font-size: 28rpx;
+    color: #000;
+}
+
+.goods-item .goods-item-section .label__left_count {
+    text-align: right;
+    font-size: 26rpx;
+    color: #CE392A;
+}
+
+.goods-item .goods-item-section .content {
+    width: 260rpx;
+    padding-left: 20rpx;
+    text-align: right;
+}
+
+.goods-item .goods-item-section .flex__all {
+    flex: 1;
+}
+
+.goods-item .goods-item-section:last-child {
+    border-bottom: none;
+    padding-bottom: 40rpx;
+}
+
+.goods-item-section .label.min {
+    width: auto;
+    margin-right: 22rpx;
+}
+
+.goods-item-section.remarks {
+    padding-top: 0;
+}
+
+.remarks .placeholder {
+    font-size: 30rpx;
+    color: rgba(0,0,0,0.5);
+    line-height: 48rpx;
+    text-align: right;
+}
+
+.remarks .input {
+    font-size: 30rpx;
+    color: #000;
+    line-height: 48rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

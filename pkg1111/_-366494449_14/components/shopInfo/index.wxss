@@ -1,0 +1,81 @@
+.shop-panel {
+    background-color: #fff;
+    padding: 30rpx 30rpx 30rpx;
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #eee;
+}
+
+.shop-logo {
+    height: 160rpx;
+    width: 160rpx;
+    margin: 8rpx 0 0 8rpx;
+}
+
+.shop-infos {
+    flex: 1;
+    color: #666;
+    margin: -2rpx 40rpx 0 30rpx;
+}
+
+.shop-name {
+    font-size: 32rpx;
+    color: #000;
+    margin-bottom: 6rpx;
+}
+
+.shop-info-item {
+    margin-bottom: 6rpx;
+    font-size: 26rpx;
+}
+
+.shop-info-item text {
+    font-size: 26rpx;
+}
+
+.shop-info-item .lab {
+    display: inline-block;
+    width: 120rpx;
+}
+
+.shop-info-item text {
+    flex: 1;
+}
+
+.shop-phone {
+    color: #555;
+    font-weight: 300;
+    float: right;
+    padding-left: 40rpx;
+    border-left: 1px solid #eee;
+}
+
+.shop-panel .img_wrap {
+    width: 180rpx;
+    height: 180rpx;
+    border: 1px solid #efefef;
+    background: #fff;
+    display: inline-block;
+}
+
+.shop-pos {
+    color: #555;
+    font-weight: normal;
+    padding: 16rpx 30rpx;
+    overflow: hidden;
+}
+
+.shop-info {
+    background: #fff;
+}
+
+.shop-des {
+    font-size: 26rpx;
+    color: #666;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 42rpx;
+    height: 120rpx;
+}

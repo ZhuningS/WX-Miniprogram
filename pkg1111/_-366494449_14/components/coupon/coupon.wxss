@@ -1,0 +1,127 @@
+.coupon-tem {
+    width: 690rpx;
+    height: 200rpx;
+    margin: 30rpx auto 0;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.coupon-tem>image {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.corner {
+    width: 94rpx;
+    height: 84rpx;
+    position: absolute;
+    right: 5rpx;
+    top: 4rpx;
+    transform: scale(1.1);
+}
+
+.corner image {
+    width: 100%;
+    height: 100%;
+}
+
+.coupon-tem .left {
+    width: 160rpx;
+}
+
+.discount {
+    font-size: 72rpx;
+    color: #fff;
+    line-height: 60rpx;
+    text-align: center;
+}
+
+.discount>text {
+    font-size: 30rpx;
+    color: #fff;
+    margin-left: -20rpx;
+}
+
+.tip {
+    width: 77rpx;
+    height: 28rpx;
+    font-size: 22rpx;
+    color: #fff;
+    line-height: 28rpx;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fe8686;
+    border-radius: 4rpx;
+}
+
+.coupon-tem .mid {
+    width: 378rpx;
+    margin-left: 30rpx;
+    text-align: left;
+}
+
+.cou-title {
+    font-size: 32rpx;
+    color: #282828;
+    font-weight: bold;
+}
+
+.cou-time {
+    font-size: 26rpx;
+    color: #fe8686;
+    line-height: 40rpx;
+    margin: 16rpx 0 0;
+}
+
+.cou-time text {
+    white-space: nowrap;
+    color: #fe8686;
+}
+
+.cou-info {
+    font-size: 22rpx;
+    color: #999;
+}
+
+.coupon-tem .right {
+    width: 128rpx;
+    margin-right: 24rpx;
+}
+
+.right .remain {
+    font-size: 22rpx;
+    color: #666;
+}
+
+.right .prog {
+    width: 128rpx;
+    height: 8rpx;
+    border-radius: 8rpx;
+    overflow: hidden;
+    margin: 10rpx 0 20rpx;
+}
+
+.right .btn {
+    width: 128rpx;
+    height: 48rpx;
+    text-align: center;
+    line-height: 48rpx;
+    background-color: #f75a5a;
+    border-radius: 8rpx;
+    font-size: 24rpx;
+    color: #fff;
+}
+
+.coupon-tem .over {
+    color: #ccc;
+}
+
+.coupon-tem .bgover {
+    background-color: #ccc;
+}

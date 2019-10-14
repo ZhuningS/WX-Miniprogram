@@ -1,0 +1,55 @@
+.notice-list {
+    padding: 20rpx 30rpx;
+}
+
+.list-title {
+    width: 160rpx;
+}
+
+.notice-list textarea {
+    height: 500rpx;
+    padding: 6rpx 0;
+}
+
+.bgwhite {
+    background: #fff;
+}
+
+.addimg {
+    width: 160rpx;
+    height: 160rpx;
+    position: relative;
+}
+
+.normal .addimg text {
+    display: block;
+    width: 160rpx;
+    height: 160rpx;
+    line-height: 160rpx;
+    font-size: 80rpx;
+    color: #ddd;
+    border: 2rpx solid #ddd;
+}
+
+.addimg image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.addimg {
+    vertical-align: top;
+}
+
+.addimg .iconfont {
+    display: block;
+    line-height: 150rpx;
+    font-size: 100rpx;
+    border: 2rpx dashed;
+}
+
+.adding-tip {
+    line-height: 80rpx;
+}

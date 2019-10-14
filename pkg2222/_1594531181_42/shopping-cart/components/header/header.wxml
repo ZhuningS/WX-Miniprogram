@@ -1,0 +1,5 @@
+<view class="wrapper">
+    <view class="headimg">
+        <open-data class="headimg" type="userAvatarUrl"></open-data>
+    </view>
+</view>

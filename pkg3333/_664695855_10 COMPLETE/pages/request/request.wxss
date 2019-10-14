@@ -1,0 +1,221 @@
+.page {
+    font-size: 14px;
+}
+
+.page__bd {
+    padding: 10px;
+}
+
+.request-form {
+    padding: 13px 0 0 0;
+    display: block;
+}
+
+.request-form .input-label {
+    background: #f3f3f3;
+    display: flex;
+    margin: 11px 0 0 0;
+    padding: 15px 15px 15px 0;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.request-form .input-label label {
+    width: 70px;
+    display: inline-block;
+    border-right: 1px solid #dedede;
+    color: #717171;
+    font-size: 14px;
+    text-align: center;
+}
+
+.request-form .input-label .input-label-content {
+    padding-left: 14px;
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+}
+
+.request-form .input-label .input-label-content.lack {
+    color: #ff6900;
+}
+
+.request-form .input-label .input-label-content.error {
+    border: 1px solid #ff6900;
+    margin: -15px -20px -15px 0;
+    padding: 15px 0 15px 11px;
+    border-radius: 0 4px 4px 0;
+    background: right top no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAlCAMAAADyQNAxAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAVUExURUdwTPmuef9pAP9pAP/////38P6BKqW3tZsAAAADdFJOUwBy8S3FHSAAAABySURBVDjLjdFBCoBAEAPBVlf//2RPgutkx865IIHAth99rnPAPztODLtQjIaNMSaVWVGRVZVYUIElVVlUhWX1ZQv1YSs1s6Wa2FrlF1CMhjWNL9arh/2osg3FUAzFUAzFUAzFUAzFUAzFUAzFUAzFlOIGQhUHmRo89SQAAAAASUVORK5CYII=);
+    background-size: 19px;
+}
+
+.hots-item-cate.active {
+    background: top no-repeat url('data:image/png;base64,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');
+    background-size: 46%;
+    background-position: 50% 4px;
+}
+
+.hots-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hots-item {
+    flex: 1;
+    text-align: center;
+    font-size: 12px;
+}
+
+.hots-item-cate {
+    padding: 13px 0;
+    position: relative;
+    font-size: 13px;
+    color: #666;
+    line-height: 14px;
+}
+
+.hots-img {
+    width: 50rpx;
+    height: 50rpx;
+    display: block;
+    margin: 0 auto 22rpx auto;
+}
+
+.hots-checked {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+}
+
+.button-submit {
+    margin: 38px 15px 10px 15px;
+    color: white;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+    padding: 12px;
+    background: linear-gradient(to right,#ff811c,#ff5c00);
+    border-radius: 5px;
+}
+
+.arrow {
+    position: relative;
+    height: 6px;
+    width: 6px;
+}
+
+.arrow:after {
+    content: ' ';
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    border-width: 1px 1px 0 0;
+    border-color: #ff6900;
+    border-style: solid;
+    transform: matrix(0.71,0.71,-0.71,0.71,0,0);
+    position: absolute;
+    top: 50%;
+    right: 2px;
+}
+
+.arrow.curr:after {
+    border-color: #717171;
+}
+
+.weui-actionsheet {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    transform: translate(0,100%);
+    backface-visibility: hidden;
+    z-index: 5000;
+    width: 100%;
+    background-color: #efeff4;
+    transition: transform 0.3s;
+    transition: transform 0.3s,-webkit-transform 0.3s;
+}
+
+.weui-actionsheet_toggle {
+    transform: translate(0,0);
+}
+
+.weui-mask {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.category-actionsheet {
+    height: 438px;
+    background: white;
+    border-top: 1px solid #ccc;
+}
+
+.category-actionsheet-title {
+    padding: 18px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    position: relative;
+    line-height: 1;
+    text-align: center;
+}
+
+.category-actionsheet-title .cancel {
+    color: #ff6900;
+    position: absolute;
+    right: 13px;
+    top: 15px;
+    font-size: 14px;
+}
+
+.category-actionsheet-tab {
+    padding: 0px 17px;
+    font-size: 14px;
+    color: #333;
+    height: 22px;
+}
+
+.category-actionsheet-tab label {
+    padding: 6px 0;
+}
+
+.category-actionsheet-tab label.active {
+    padding-bottom: 4px;
+    color: #ff6900;
+    border-bottom: 2px solid #ff6900;
+}
+
+.category-actionsheet-tab label+label {
+    margin-left: 30px;
+}
+
+.category-item {
+    padding: 13px 0;
+    margin: 0 16px;
+    border-top: 1px solid #eee;
+}
+
+.category-item-name {
+    width: 109px;
+    display: inline-block;
+}
+
+.category-item-subtitle {
+    font-size: 12px;
+    line-height: 0.8;
+    color: #777;
+}
+
+.panel__title {
+    font-size: 16px;
+    line-height: 16px;
+    color: #333;
+    padding-bottom: 17px;
+}

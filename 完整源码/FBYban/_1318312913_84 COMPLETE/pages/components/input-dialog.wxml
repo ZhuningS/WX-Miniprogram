@@ -1,0 +1,11 @@
+<template name="input-dialog">
+    <view bindtap="onTapInputDialogMask" catchtouchmove="hack" class="black_mask50 animated fadeIn quick" wx:if="{{!hideInputDialog}}">
+        <view catchtap="onTapInputDialog" class="inputdialog">
+            <textarea autoFocus="{{true}}" bindconfirm="onInputDialogConfirm" bindinput="onInputDialogInput" fixed="{{true}}" name="input" placeholder="{{isTalk?'我想说':'添加笔记'}}" value="{{inputContent}}"></textarea>
+            <view class="flex_row">
+                <view catchtap="onTapInputDialogCancel" class="button_negative">取消</view>
+                <view catchtap="onTapInputDialogFinish" class="button_positive">{{isTalk?'发出':'完成'}}</view>
+            </view>
+        </view>
+    </view>
+</template>

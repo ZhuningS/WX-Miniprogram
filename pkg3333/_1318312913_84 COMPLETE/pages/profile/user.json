@@ -1,0 +1,14 @@
+{
+    "usingComponents": {
+        "qm-avatar": "../components/uis/avatar/avatar.component",
+        "qm-button": "../components/uis/button/button.component",
+        "qm-icon": "../components/uis/icon/icon.component",
+        "qm-loading": "../components/uis/loading/loading.component",
+        "qm-tween": "../components/uis/tween/tween.component",
+        "qm-place-element": "../components/uis/place-element/place-element.component",
+        "qm-placeholder": "../components/uis/placeholder/placeholder.component",
+        "tabs-nav": "../components/widgets/tabs-nav/tabs-nav.component",
+        "universe-card": "../components/cards/universe-card/universe-card.component",
+        "duet-waterfall": "../components/containers/duet-waterfall/duet-waterfall.component"
+    }
+}

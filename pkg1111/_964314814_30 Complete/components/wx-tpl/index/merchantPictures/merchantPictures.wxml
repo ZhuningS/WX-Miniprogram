@@ -1,0 +1,3 @@
+<view class="merchant_pictures">
+    <image bindtap="showImg" data-src="{{item}}" mode="aspectFill" src="{{item}}" wx:if="{{idx<=2}}" wx:for="{{imgList}}" wx:for-index="idx" wx:key="item"></image>
+</view>

@@ -1,0 +1,28 @@
+<view class="select">
+    <view class="select-box clearfix">
+        <view class="select-input">
+            <image class="select-icon" src="../img/select.png"></image>
+            <input bindinput="getValue" class="select-input-style" placeholder="搜索品牌广告服务" type="text" value="{{inputText}}"></input>
+            <image bindtap="deleteValue" class="close-icon" src="../img/close.png" wx:if="{{close}}"></image>
+        </view>
+        <button bindtap="goTo" class="select-btn" disabled="{{ifUse}}" hoverClass="select-btn-hover" hoverStartTime="1" type="default">搜索
+        </button>
+    </view>
+</view>
+<view class="content clearfix" wx:if="{{history}}">
+    <view class="content-title">历史搜索</view>
+    <navigator class="content-box" url="/pages/consult/consult?keyWord={{item}}" wx:for="{{historyAttr}}">
+        <view class="content-box-label">{{item}}</view>
+    </navigator>
+</view>
+<view class="content clearfix">
+    <view class="content-title">热门搜索</view>
+    <view class="content-box">
+        <navigator class="content-box-label" url="/pages/consult/consult?keyWord=LOGO设计">LOGO设计</navigator>
+        <navigator class="content-box-label" url="/pages/consult/consult?keyWord=微信营销">微信营销</navigator>
+        <navigator class="content-box-label" url="/pages/consult/consult?keyWord=包装设计">包装设计</navigator>
+        <navigator class="content-box-label" url="/pages/consult/consult?keyWord=APP推广">APP推广</navigator>
+        <navigator class="content-box-label" url="/pages/consult/consult?keyWord=网店装修">网店装修</navigator>
+        <navigator class="content-box-label" url="/pages/consult/consult?keyWord=小程序开发">小程序开发</navigator>
+    </view>
+</view>

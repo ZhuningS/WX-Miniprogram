@@ -1,0 +1,155 @@
+<view class="contenter">
+    <view class="btn-area f18 flex tc">
+        <view class="nav active sub" id="1" wx:if="{{tabTit==1}}">普通投票</view>
+        <view bindtap="tabBind" class="nav sub" id="1" wx:else>普通投票</view>
+        <view class="nav active sub" id="2" wx:if="{{tabTit==2}}">图片投票</view>
+        <view bindtap="tabBind" class="nav sub" id="2" wx:else>图片投票</view>
+    </view>
+    <form bindsubmit="onPushSubmit" wx:if="{{tabTit==1}}">
+        <input hidden="{{true}}" name="type" style="display:none;" value="0"></input>
+        <view class="normal mt10">
+            <view class="normal-content flex">
+                <view bindtap="onChooseCoverTap" class="addimg tc">
+                    <text class="iconfont icon-add"></text>
+                    <image mode="aspectFill" src="{{coverPath}}"></image>
+                    <input hidden="true" name="coverPath" value="{{coverPath}}"></input>
+                </view>
+                <view class="normal-text sub ml10">
+                    <textarea maxlength="255" name="remark" placeholder="请输入投票主题（4~255个字）"></textarea>
+                </view>
+            </view>
+            <view class="vote-choose tc mt10">
+                <view class="vote-list gridXb flex" wx:for="{{textRule}}" wx:key="{{index}}">
+                    <input bindinput="onTextOptionChange" data-index="{{index}}" maxlength="16" name="rule[{{index}}]" value="{{item}}"></input>
+                    <text catchtap="onDelTextOptionTap" class="list-del iconfont icon-delete tc grey fr" data-index="{{index}}" wx:if="{{index>1}}"></text>
+                </view>
+                <view bindtap="onAddTextOptionTap" class="vote-list green f16">
+                    <text>+添加选项</text>
+                </view>
+            </view>
+            <view class="tips">
+                <text class="f12 grey">最多支持10个选项，每项不得超过16个字</text>
+            </view>
+            <view class="list gridXb flex">
+                <view class="list-title">开始时间</view>
+                <view class="star-time fr tr sub grey">
+                    <input class="hidden" name="start_time" type="text" value="{{start_date}} {{start_time}}"></input>
+                    <view class="picker">
+                        <picker bindchange="bindDateChange" data-bind="start_date" mode="date" start="{{init_start_date}}" value="{{start_date}}">
+                            <text>{{start_date}}</text>
+                        </picker>
+                    </view>
+                    <view class="picker" style="{{isFullDay?'display:none;':''}}">
+                        <picker bindchange="bindDateChange" data-bind="start_time" end="23:59" mode="time" start="00:00" value="{{start_time}}">
+                            <text>{{start_time}}</text>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            <view class="list gridXb flex" style="{{isFullDay?'display:none;':''}}">
+                <view class="list-title">结束时间</view>
+                <view class="star-time fr tr sub grey">
+                    <input class="hidden" name="end_time" type="text" value="{{end_date}} {{end_time}}"></input>
+                    <view class="picker">
+                        <picker bindchange="bindDateChange" data-bind="end_date" mode="date" start="{{init_start_date}}" value="{{end_time}}">
+                            <text>{{end_date}}</text>
+                        </picker>
+                    </view>
+                    <view class="picker">
+                        <picker bindchange="bindDateChange" data-bind="end_time" end="23:59" mode="time" start="00:00">
+                            <text>{{end_time}}</text>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            <view class="porwer f16 mt10 flex">
+                <text>设为私密投票</text>
+                <view class="sub tr">
+                    <switch bindchange="onPrivateChange" checked="{{is_private?'checked':''}}" type="switch"></switch>
+                    <input hidden="{{true}}" name="is_private" style="display:none;" value="{{is_private}}"></input>
+                </view>
+            </view>
+            <view class="tips">
+                <text class="f12 grey">私密投票将不会出现在投票广场</text>
+            </view>
+            <view class="m15">
+                <button class="transition-duration-150" formType="submit" hoverClass="none" type="primary">发布</button>
+            </view>
+        </view>
+    </form>
+    <form bindsubmit="onPushSubmit2" wx:if="{{tabTit==2}}">
+        <input hidden="{{true}}" name="type" style="display:none;" value="1"></input>
+        <view class="normal mt10">
+            <view class="normal-content flex">
+                <view bindtap="onChooseCoverTap" class="addimg tc">
+                    <text class="iconfont icon-add"></text>
+                    <image mode="aspectFill" src="{{coverPath}}"></image>
+                    <input hidden="{{true}}" name="coverPath" style="display:none;" value="{{coverPath}}"></input>
+                </view>
+                <view class="normal-text sub ml10">
+                    <textarea maxlength="255" name="remark" placeholder="请输入投票主题（4~255个字）"></textarea>
+                </view>
+            </view>
+        </view>
+        <view class="pic">
+            <view class="imgs">
+                <view class="img-list mt10 ml10" wx:for="{{imgRule}}" wx:key="{{index}}">
+                    <image bindtap="onChooseImageTap" data-index="{{index}}" mode="aspectFill" src="{{item.img}}"></image>
+                    <view class="tc">
+                        <input hidden="{{true}}" name="rule[{{index}}][img]" style="display:none;" value="{{item.img}}"></input>
+                        <input bindblur="onImgTextOptionBlur" data-index="{{index}}" maxlength="10" name="rule[{{index}}][title]" placeholder="选填1，10字以内" value="{{item.title}}"></input>
+                    </view>
+                </view>
+                <view bindtap="onAddImgOptionTap" class="img-list addimg tc mt10 ml10">
+                    <text class="iconfont icon-add green"></text>
+                    <view class="f12 grey adding-tip">最多可添加十个选项</view>
+                </view>
+            </view>
+            <view class="list gridXb flex">
+                <view class="list-title">开始时间</view>
+                <view class="star-time fr tr sub grey">
+                    <input class="hidden" name="start_time" type="text" value="{{start_date}} {{start_time}}"></input>
+                    <view class="picker">
+                        <picker bindchange="bindDateChange" data-bind="start_date" mode="date" start="{{init_start_date}}" value="{{start_date}}">
+                            <text>{{start_date}}</text>
+                        </picker>
+                    </view>
+                    <view class="picker" style="{{isFullDay?'display:none;':''}}">
+                        <picker bindchange="bindDateChange" data-bind="start_time" end="23:59" mode="time" start="00:00" value="{{start_time}}">
+                            <text>{{start_time}}</text>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            <view class="list gridXb flex" style="{{isFullDay?'display:none;':''}}">
+                <view class="list-title">结束时间</view>
+                <view class="star-time fr tr sub grey">
+                    <input class="hidden" name="end_time" type="text" value="{{end_date}} {{end_time}}"></input>
+                    <view class="picker">
+                        <picker bindchange="bindDateChange" data-bind="end_date" mode="date" start="{{init_start_date}}" value="{{end_time}}">
+                            <text>{{end_date}}</text>
+                        </picker>
+                    </view>
+                    <view class="picker">
+                        <picker bindchange="bindDateChange" data-bind="end_time" end="23:59" mode="time" start="00:00">
+                            <text>{{end_time}}</text>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            <view class="porwer f16 mt10 flex">
+                <text>设为私密投票</text>
+                <view class="sub tr">
+                    <switch bindchange="onPrivateChange" checked="{{is_private?'checked':''}}" type="switch"></switch>
+                    <input hidden="{{true}}" name="is_private" style="display:none;" value="{{is_private}}"></input>
+                </view>
+            </view>
+            <view class="tips">
+                <text class="f12 grey">私密投票将不会出现在投票广场</text>
+            </view>
+            <view class="m15">
+                <button class="transition-duration-150" formType="submit" hoverClass="none" type="primary">发布</button>
+            </view>
+        </view>
+    </form>
+</view>

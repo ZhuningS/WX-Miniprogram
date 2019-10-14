@@ -1,0 +1,7 @@
+<view class="more-lst">
+    <view bindtap="navDetail" class="lst f fv fc" data-wpynavdetail-a="{{item.Id}}" data-wpynavdetail-b="{{item.fromOrderId}}" wx:for="{{vm}}" wx:key="key">
+        <image mode="widthFix" src="http://j.vzan.cc/miniapp/img/lijianjin/smoneybg3.png"></image>
+        <view class="lst-open">领取</view>
+        <view class="lst-txt c999">快领取吧~</view>
+    </view>
+</view>

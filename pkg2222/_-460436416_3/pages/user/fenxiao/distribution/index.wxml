@@ -1,0 +1,42 @@
+<view class="glo_load_view" wx:if="{{glo_is_load}}">
+    <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+    <text>正在努力加载</text>
+</view>
+<block wx:else>
+    <view class="apply-state-box" wx:if="{{status==3}}">
+        <view class="apply-state-cont">
+            <view class="apply-state-tit">审核失败</view>
+            <view class="f14">申请已被拒绝</view>
+        </view>
+    </view>
+    <view class="apply-state-box" wx:if="{{status==1}}">
+        <view class="apply-state-cont">
+            <view class="apply-state-tit">审核中...</view>
+            <view class="f14">请随时关注本页面，等待审核完毕</view>
+        </view>
+    </view>
+    <import src="../../../../wxParse/wxParse.wxml"></import>
+    <view class="dec-cont">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+    </view>
+    <view class="bottom-fiexd" wx:if="{{status!=1}}">
+        <button bindtap="show_apply" class="apply-btn">分销商申请</button>
+    </view>
+    <view class="apply-pup floatBox" wx:if="{{show_apply}}">
+        <form bindsubmit="submit" reportSubmit="true">
+            <view class="pop-cont mid">
+                <view catchtap="show_apply" class="recharge-colse"></view>
+                <view class="tc fb f18">申请分销商</view>
+                <input class="pop-tel-inp" name="name" placeholder="请输入您的姓名" placeholderStyle="font-size: 14px;"></input>
+                <input bindblur="set_phone" class="pop-tel-inp" maxlength="11" name="phone" placeholder="请输入您的手机号" placeholderStyle="font-size: 14px;" type="number"></input>
+                <view class="pop-check-box flex mt10">
+                    <input class="pop-tel-check sub mr10" maxlength="4" name="yzm" placeholder="请输入验证码" placeholderStyle="font-size: 14px;" type="number"></input>
+                    <button catchtap="onGetVerifyCodeTap" class="get-code" disabled="{{yzm_btn_disabled}}">{{yzm_btn_text}}</button>
+                </view>
+                <view class="apply-tips">商家收到申请将与您联系审核</view>
+                <button class="pop-sure-btn" formType="submit">立即申请</button>
+            </view>
+            <view class="floatBox floatBoxBg" style="display:block;"></view>
+        </form>
+    </view>
+</block>

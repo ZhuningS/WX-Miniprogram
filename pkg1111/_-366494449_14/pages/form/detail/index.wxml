@@ -1,0 +1,22 @@
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view bindtap="_jumpToCard" class="shareCard" data-cardid="{{formDetail.card_user_id}}" style="position:relative">
+        <view class="avatar">
+            <image src="{{formDetail.avatar}}"></image>
+        </view>
+        <view class="center">
+            <text class="name">{{formDetail.name}}</text>
+            <text class="position">{{formDetail.position}}</text>
+        </view>
+        <view class="right">TA的名片 ></view>
+    </view>
+    <view class="formDetail">
+        <view class="formItem" wx:for="{{formDetail.options}}">
+            <label>{{item.name}}:</label>
+            <view style="margin-left: 20rpx">{{item.value}}</view>
+        </view>
+    </view>
+</view>

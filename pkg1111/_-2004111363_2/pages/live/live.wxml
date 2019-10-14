@@ -1,0 +1,66 @@
+<view class="live">
+    <view wx:if="{{showhide}}">
+        <video controls customCache="{{false}}" poster="{{vm_live.cover}}" src="{{vm_live.playurl}}"></video>
+        <scroll-view>
+            <view class="scroll f">
+                <view bindtap="showMask" class="sc-item rel" data-wpyshowmask-a="{{item.id}}" wx:for="{{vm}}" wx:for-index="parentIndex" wx:key="key">
+                    <image mode="aspectFill" src="{{item.img_fmt}}"></image>
+                    <wxc-price class="f26 cfff sc-ab" icon="sub">{{item.priceStr}}</wxc-price>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="l-mask" wx:if="{{showhide==false}}">
+        <view bindtap="hide" class="dzicon icon-zhuanyebaniconkuozhan_Close f50 l-cancle"></view>
+        <view class="w-100 f fv pw20">
+            <view class="l-main f">
+                <image bindtap="showImg" data-wpyshowimg-a="{{vm_sec.selImg}}" mode="aspectFill" src="{{vm_sec.selImg}}"></image>
+                <view class="f fv fj f1 cfff ml20">
+                    <text class="f32 line line1">{{vm_sec.name}}</text>
+                    <view class="f fc fj">
+                        <wxc-price class="f36 l-price" icon="sub">{{vm_sec.itemPrice}}</wxc-price>
+                        <view class="f fc l-count">
+                            <text catchtap="less">-</text>
+                            <input disabled value="{{vm_sec.totalCount}}"></input>
+                            <text catchtap="add">+</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <block wx:if="{{vm_sec.pickspecification!=''}}">
+                <block wx:for="{{vm_sec.pickspecification}}" wx:for-index="parentindex" wx:for-item="this" wx:key="key">
+                    <view class="w-100 l-title">{{this.name}}</view>
+                    <scroll-view>
+                        <view class="w100 f">
+                            <view class="mr10 f" wx:for="{{this.items}}" wx:for-index="childindex" wx:key="key">
+                                <text catchtap="choose" class="l-sel {{item.sel?'bgfa':'bg7d'}}" data-wpychoose-a="{{parentindex}}" data-wpychoose-b="{{childindex}}">{{item.name}}</text>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </block>
+            </block>
+            <view class="f fv fc fc-h f-sa c666" style="height:470rpx;" wx:else>
+                <image mode="aspectFill" src="http://j.vzan.cc/miniapp/img/enterprise/no_pro.png" style="width:200rpx;height:180rpx;"></image>
+                <text class="c928 f26 mt10">请把我加入购物车吧</text>
+            </view>
+            <view class="f fc mt40">
+                <form bindsubmit="goShop" data-wpygoshop-a="shop" reportSubmit="true">
+                    <button class="btn l-btn" formType="submit">加入购物车</button>
+                </form>
+                <form bindsubmit="goShop" data-wpygoshop-a="buy" reportSubmit="true">
+                    <button class="btn l-btn ml10" formType="submit">立即购买</button>
+                </form>
+                <view bindtap="navShop" class="dzicon icon-gouwuche l-shop"></view>
+            </view>
+            <scroll-view scrollX class="scroll-ab">
+                <view class="scroll f">
+                    <view bindtap="showMask" class="sc-item rel" data-wpyshowmask-a="{{item.id}}" wx:for="{{vm}}" wx:for-index="parentIndex" wx:key="key">
+                        <image mode="aspectFill" src="{{item.img_fmt}}"></image>
+                        <wxc-price class="f26 cfff sc-ab" icon="sub">{{item.discountPricestr}}</wxc-price>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>
+<wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>

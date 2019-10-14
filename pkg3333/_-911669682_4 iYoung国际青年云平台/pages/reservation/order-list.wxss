@@ -1,0 +1,52 @@
+.no-content-img {
+    width: 50%;
+}
+
+.order-list {
+    background: #fff;
+    border-radius: 6rpx;
+    margin-bottom: 20rpx;
+    padding: 30rpx;
+    word-break: break-all;
+}
+
+.case-title {
+    line-height: 80rpx;
+}
+
+.case-name {
+    font-weight: bold;
+}
+
+.time {
+    line-height: 50rpx;
+}
+
+.pay,.refund {
+    display: inline-block;
+}
+
+.pay button,.refund button {
+    padding: 0 20rpx;
+    line-height: 60rpx;
+    border-radius: 2rpx;
+    width: auto;
+    font-size: 28rpx;
+    transition: all 0.15s linear;
+}
+
+.pay button::after,.refund button::after {
+    border: none;
+}
+
+.refund button {
+    color: gray;
+}
+
+.refund button:active {
+    color: red;
+}
+
+button.shibai {
+    color: #f66;
+}

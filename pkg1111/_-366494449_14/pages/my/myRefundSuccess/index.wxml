@@ -1,0 +1,8 @@
+<view class="pay_wrap2">
+    <view class="content2">
+        <image src="/images/card/icon_suc.png" style="width: 128rpx; height: 128rpx;"></image>
+        <view style="font-weight:400;font-size:34rpx;">退款申请提交成功</view>
+        <view style="font-size:24rpx;color:#999;border-bottom: 1px dashed #efefef;padding-bottom: 30rpx">工作人员会尽快完成您的退款申请审核，请耐心等待</view>
+        <view bindtap="_jump" class="btn-sy" data-openType="reLaunch" data-url="/pages/shop/index">返回</view>
+    </view>
+</view>

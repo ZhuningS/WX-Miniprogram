@@ -1,0 +1,26 @@
+<template name="tips">
+    <view animation="{{animation}}" class="tips_container {{class}}" style="top:{{top}}; bottom:{{bottom}}; left:{{left}}; right:{{right}}; " wx:if="{{arrow==='top-left'}}">
+        <view class="tips_triangle_topleft"></view>
+        <view class="tips">{{message}}</view>
+    </view>
+    <view animation="{{animation}}" class="tips_container {{class}}" style="align-items:flex-end;top:{{top}}; bottom:{{bottom}}; left:{{left}}; right:{{right}}; " wx:elif="{{arrow==='top-right'}}">
+        <view class="tips_triangle_topright"></view>
+        <view class="tips">{{message}}</view>
+    </view>
+    <view animation="{{animation}}" class="tips_container {{class}}" style="top:{{top}}; bottom:{{bottom}}; left:{{left}}; right:{{right}};" wx:elif="{{arrow==='bottom-left'}}">
+        <view class="tips">{{message}}</view>
+        <view class="tips_triangle_bottomleft"></view>
+    </view>
+    <view animation="{{animation}}" class="tips_container {{class}}" style="align-items:flex-end;top:{{top}}; bottom:{{bottom}}; left:{{left}}; right:{{right}};" wx:elif="{{arrow==='bottom-right'}}">
+        <view class="tips">{{message}}</view>
+        <view class="tips_triangle_bottomright"></view>
+    </view>
+    <view animation="{{animation}}" class="tips_container {{class}}" style="align-items:center;margin:{{margin}};top:{{top}};bottom:{{bottom}}; left:{{left}}; right:{{right}}; " wx:elif="{{arrow==='bottom'}}">
+        <view class="tips">{{message}}</view>
+        <view class="tips_triangle_bottom"></view>
+    </view>
+    <view animation="{{animation}}" class="tips_container {{class}}" style="position:absolute;top:{{top}}; bottom:{{bottom}}; left:{{left}}; right:{{right}};" wx:elif="{{arrow==='bottom-left-absolute'}}">
+        <view class="tips">{{message}}</view>
+        <view class="tips_triangle_bottomleft"></view>
+    </view>
+</template>

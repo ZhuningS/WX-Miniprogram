@@ -1,0 +1,13 @@
+{
+    "backgroundColor": "#FFFFFF",
+    "usingComponents": {
+        "error-page": "../../libs/mmuxwxappdevkit/widget/error-page/error-page",
+        "item-line": "./components/category-line/category-line",
+        "navigation-bar": "../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar",
+        "image-view": "../../libs/mmuxwxappdevkit/widget/image-view/image-view",
+        "search-view": "../../widget/search-view/search-view",
+        "empty-page": "../../widget/empty-page/empty-page",
+        "goods-filter": "../../widget/goods-filter/goods-filter",
+        "filter-item": "../../widget/goods-filter/filter-item"
+    }
+}

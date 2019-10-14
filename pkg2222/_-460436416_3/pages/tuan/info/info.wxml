@@ -1,0 +1,237 @@
+<view class="glo_load_view" wx:if="{{glo_is_load}}">
+    <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+    <text>正在努力加载</text>
+</view>
+<block wx:else>
+    <view class="no-content tc" wx:if="{{is_del}}">
+        <image class="no-content-img mb10" mode="widthFix" src="http://www.ixiaochengxu.cc/resource/images/common/no-message.png"></image>
+        <view class="f16">商品已下架!</view>
+        <view class="mt20">
+            <button plain bindtap="bind_go_home" size="mini" type="primary">返回首页</button>
+        </view>
+    </view>
+    <block wx:if="{{is_del!=true}}">
+        <import src="../../../wxParse/wxParse.wxml"></import>
+        <page>
+            <view class="swiper">
+                <swiper autoplay="true" current="0" duration="600" indicatorDots="true" interval="3000">
+                    <swiper-item wx:for="{{goods_info.g_photo}}" wx:key="index">
+                        <image mode="aspectFill" src="{{item}}"></image>
+                    </swiper-item>
+                </swiper>
+            </view>
+            <view class="gd-info">
+                <view class="gd-info-top clearfix">
+                    <text class="gd-now-price pink mr10">
+                        <text>￥</text>
+                        <text class="f20">{{goods_info.tuan_price}}</text>
+                    </text>
+                    <text class="delLine linght">￥{{goods_info.market_price}}</text>
+                    <view class="gd-tags">
+                        <text class="gd-tags-item">拼团立减{{goods_info.tuan_lijian}}元</text>
+                    </view>
+                    <view class="gd-tips linght f12">
+                        <text class="gd-sc">已有<text class="pink">{{goods_info.tuan_all_num}}</text>人参团</text>
+                        <text class="gd-time">{{shengTime}}</text>
+                    </view>
+                </view>
+                <view class="gd-info-tit mt10 f16">
+                    <text>{{goods_info.g_name}}</text>
+                </view>
+                <view class="gd-info-dec linght f12">
+                    <text>{{goods_info.g_description}}</text>
+                </view>
+            </view>
+            <view class="activity-item gridXt" wx:if="{{goods_info.tuan_type==1&&is_join!=true}}">
+                <view>团长返佣：
+        <text class="red tips-font">￥{{goods_info.award}}+</text>
+                </view>
+                <view class="rebate-desc">
+                    <text bindtap="bind_help" class="iconfont icon-question help"></text>
+                </view>
+            </view>
+            <block wx:if="{{!is_join}}">
+                <view class="gd-o-team mt10" wx:if="{{goods_tuan_list&&goods_info.tuan_type==0}}">
+                    <view bindtap="show_more_tuan" class="gd-o-tit f16 flex arrowR">
+                        <view class="sub">正在进行的团·可直接参与</view>
+                        <view class="grey f12 right-more">更多</view>
+                    </view>
+                    <view class="gd-o-list f12">
+                        <view bindtap="join_bind" class="gd-o-item flex gridXt" id="{{item.id}}" wx:if="{{index<2}}" wx:for="{{goods_tuan_list}}">
+                            <view class="gd-o-avatar mr10">
+                                <image mode="aspectFill" src="{{item.user_headimgurl}}"></image>
+                            </view>
+                            <view class="gd-o-name sub mr10">
+                                <view class="lineText">{{item.user_nickname}}</view>
+                                <view class="grey">
+                                    <text>还差{{item.tuan_num-item.tuan_buy_num}}人,{{item.tuan_sheng_time}}</text>
+                                </view>
+                            </view>
+                            <view class="gd-o-btn">
+                                <button size="mini" type="primary">去参团</button>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <view class="floatBox popup-pintuan" wx:if="{{is_show_tuan}}">
+                <view class="pintuan-content mid">
+                    <view class="gd-o-list f12">
+                        <view bindtap="join_bind" class="gd-o-item flex" id="{{item.id}}" wx:for="{{goods_tuan_list}}">
+                            <view class="gd-o-avatar mr10">
+                                <image mode="aspectFill" src="{{item.user_headimgurl}}"></image>
+                            </view>
+                            <view class="gd-o-name sub mr10">
+                                <view class="lineText">{{item.user_nickname}}</view>
+                                <view class="grey">
+                                    <text>还差{{item.tuan_num-item.tuan_buy_num}}人,{{item.tuan_sheng_time}}</text>
+                                </view>
+                            </view>
+                            <view class="gd-o-btn">
+                                <button size="mini" type="primary">去参团</button>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="show_more_tuan" class="close">×</view>
+                </view>
+                <view bindtap="show_more_tuan" class="floatBox floatBoxBg" style="display:block"></view>
+            </view>
+            <view class="pt-play mt10">
+                <view class="pt-tit f16">拼团玩法</view>
+                <view class="flex gridXt tc f12 grey mt10">
+                    <view class="pt-item sub">
+                        <text class="iconfont icon-pay"></text>
+                        <view>支付开团或者参团</view>
+                    </view>
+                    <view class="pt-item sub">
+                        <text class="iconfont icon-friend"></text>
+                        <view>邀请好友参团</view>
+                    </view>
+                    <view class="pt-item sub">
+                        <text class="iconfont icon-deliver"></text>
+                        <view>人数达到分别发货</view>
+                    </view>
+                    <view class="pt-item sub">
+                        <text class="iconfont icon-sponsor"></text>
+                        <view>人数不够自动退款</view>
+                    </view>
+                </view>
+            </view>
+            <view class="gd-desc mt10">
+                <view class="gd-desc-tit f16 gridXb">商品详情</view>
+                <view class="gd-desc-box">
+                    <view class="wxParse">
+                        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+                    </view>
+                </view>
+            </view>
+            <view class="gd-desc mt10">
+                <view class="gd-desc-tit f16 gridXb">商品评价</view>
+                <view class="gd-desc-box">
+                    <view class="flex gridXb gd-desc-item" wx:for="{{goods_info.comment_list}}" wx:key="{{index}}">
+                        <view class="desc-user-img">
+                            <image mode="aspectFill" src="{{item.headimgurl}}"></image>
+                        </view>
+                        <view class="sub ml15">
+                            <view>
+                                <view class="f16">{{item.nickname}}</view>
+                                <text class="iconfont score-star icon-favorfill" wx:for="{{item.p_fenshu}}" wx:key="{{index}}"></text>
+                                <text class="grey f12 fr">{{item.ctime}}</text>
+                            </view>
+                            <view class="mt5">
+                                <view>{{item.content}}</view>
+                                <view class="desc-content-img clearfix" wx:if="{{item.is_show_comment_iamge}}">
+                                    <image mode="aspectFill" src="{{itemImage}}" wx:for="{{item.imageArray}}" wx:for-item="itemImage"></image>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="" wx:if="{{goods_info.is_comment}}">
+                        <text>暂无评价！</text>
+                    </view>
+                </view>
+            </view>
+            <view class="group-nav mt10">
+                <view class="group-f flex gridXt tc" wx:if="{{!is_join}}">
+                    <view bindtap="gohome_bind" class="back-home">
+                        <view class="iconfont icon-home"></view>
+                        <view class="f12">首页</view>
+                    </view>
+                    <view class="back-home">
+                        <button openType="contact"></button>
+                        <view class="iconfont icon-comment"></view>
+                        <view class="f12">客服</view>
+                    </view>
+                    <view class="group-btn sub">
+                        <view bindtap="buy_one_bind" class="o-buy">
+                            <view>￥{{goods_info.shop_price}}</view>
+                            <view>单独购买</view>
+                        </view>
+                    </view>
+                    <view class="group-btn sub">
+                        <view bindtap="buy_tuan_bind" class="t-buy">
+                            <view>￥{{goods_info.tuan_price}}</view>
+                            <view>{{goods_info.tuan_num}}人团</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="group-f flex gridXt tc" wx:if="{{is_join}}">
+                    <view class="group-btn sub" wx:if="{{is_order==false}}">
+                        <view bindtap="buy_tuan_bind" class="t-buy">
+                            <view>￥{{goods_info.tuan_price}}</view>
+                            <view>一键参团</view>
+                        </view>
+                    </view>
+                    <view class="group-btn sub" wx:if="{{is_order}}">
+                        <view bindtap="buy_order_bind" class="t-buy">
+                            <view>￥{{goods_info.tuan_price}}</view>
+                            <view>订单详情</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="add-cart-box" wx:if="{{is_add_cart_view}}">
+                <view class="layout">
+                    <text bindtap="add_cart_close_bind" class="iconfont icon-close add-cart-close"></text>
+                    <view class="layout-info gridXb flex">
+                        <image height="40" mode="aspectFill" src="{{goods_info.g_img}}" width="40"></image>
+                        <view class="sub ml10">
+                            <view class="g-lineText">{{goods_info.g_name}}</view>
+                            <view class="red f18">￥ {{goods_true_price}}</view>
+                        </view>
+                    </view>
+                    <view class="options">
+                        <view class="options-item flex gridXb clearfix" wx:for="{{goods_specification}}" wx:for-item="itemType">
+                            <view class="name" style="line-height:28px;">
+                                <text>{{itemType.name}}：</text>
+                            </view>
+                            <view class="options-s sub">
+                                <block wx:for="{{itemType.values}}" wx:for-item="itemVal">
+                                    <text bindtap="select_attr_bind" class="options-ss gridFourRadio active" data-type="{{itemType.name}}" id="{{itemVal.id}}" wx:if="{{itemVal.ischeck}}">{{itemVal.label}}</text>
+                                    <text bindtap="select_attr_bind" class="options-ss gridFourRadio" data-type="{{itemType.name}}" id="{{itemVal.id}}" wx:else>{{itemVal.label}}</text>
+                                </block>
+                            </view>
+                        </view>
+                        <view class="options-item  gridXb clearfix">
+                            <view class="count-set tc fr flex">
+                                <view bindtap="bind_cart_number_jian" class="sub flase">
+                                    <text class="iconfont icon-move"></text>
+                                </view>
+                                <view class="sub number">
+                                    <input class="buy-couts" disabled="true" type="number" value="{{cart_default_number}}"></input>
+                                </view>
+                                <view bindtap="bind_cart_number_jia" class="sub">
+                                    <text class="iconfont icon-add"></text>
+                                </view>
+                            </view>
+                            <view class="name" style="line-height:30px;">
+                                <text>购买数量：</text>
+                            </view>
+                        </view>
+                    </view>
+                    <button bindtap="goods_add_cart" class="add-cart-btn" disabled="{{btn_add_cart_disabled}}" loading="{{submitIsLoading}}">确定</button>
+                </view>
+            </view>
+        </page>
+    </block>
+</block>

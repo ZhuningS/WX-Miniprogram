@@ -1,0 +1,30 @@
+<template name="mNav">
+    <view class="nav" style="margin-top: {{style.marginTop||0}}; margin-bottom: {{style.marginBottom}} ">
+        <block wx:for="{{dataset.imgList}}">
+            <view bindtap="_jump" class="blockItem" data-url="/pages/goodsDetail/detail/index?id={{item.linkData.id}}" style="width:{{100/layout.columnNum}}%" wx:if="{{item.linkType=='goods'}}">
+                <image class="blockItem__img" mode="aspectFit" src="{{item.img}}" wx:if="{{item.img!=''}}"></image>
+                <view class="blockItem__text">{{item.title}}</view>
+            </view>
+            <view bindtap="_jump" class="blockItem" data-url="/pages/goodsDetail/detailMs/index?id={{item.linkData.id}}" style="width:{{100/layout.columnNum}}%" wx:if="{{item.linkType=='msgoods'}}">
+                <image class="blockItem__img" mode="aspectFit" src="{{item.img}}" wx:if="{{item.img!=''}}"></image>
+                <view class="blockItem__text">{{item.title}}</view>
+            </view>
+            <view bindtap="_jump" class="blockItem" data-url="/pages/goodsDetail/detailGroup/index?id={{item.linkData.id}}" style="width:{{100/layout.columnNum}}%" wx:if="{{item.linkType=='tggoods'}}">
+                <image class="blockItem__img" mode="aspectFit" src="{{item.img}}" wx:if="{{item.img!=''}}"></image>
+                <view class="blockItem__text">{{item.title}}</view>
+            </view>
+            <view bindtap="_jump" class="blockItem" data-url="{{item.linkData.path}}" style="width:{{100/layout.columnNum}}%" wx:if="{{item.linkType=='page'}}">
+                <image class="blockItem__img" mode="aspectFit" src="{{item.img}}" wx:if="{{item.img!=''}}"></image>
+                <view class="blockItem__text">{{item.title}}</view>
+            </view>
+            <view bindtap="_jump" class="blockItem" data-url="/pages/shop/home/index?id={{item.linkData.sid}}" style="width:{{100/layout.columnNum}}%" wx:if="{{item.linkType=='shop'}}">
+                <image class="blockItem__img" mode="aspectFit" src="{{item.img}}" wx:if="{{item.img!=''}}"></image>
+                <view class="blockItem__text">{{item.title}}</view>
+            </view>
+            <view bindtap="_jump" class="blockItem" style="width:{{100/layout.columnNum}}%" wx:if="{{item.linkType==''}}">
+                <image class="blockItem__img" mode="aspectFit" src="{{item.img}}" wx:if="{{item.img!=''}}"></image>
+                <view class="blockItem__text">{{item.title}}</view>
+            </view>
+        </block>
+    </view>
+</template>

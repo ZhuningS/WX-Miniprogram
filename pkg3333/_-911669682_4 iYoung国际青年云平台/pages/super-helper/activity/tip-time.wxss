@@ -1,0 +1,15 @@
+.tip-list {
+    background: #fff;
+    padding: 0 30rpx;
+    line-height: 100rpx;
+}
+
+.tip-list radio {
+    width: 90rpx;
+    text-align: center;
+}
+
+.tip-list text {
+    display: inline-block;
+    width: 600rpx;
+}

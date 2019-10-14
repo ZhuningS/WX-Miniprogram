@@ -1,0 +1,14 @@
+<view class="list">
+    <radio-group catchchange="radioChange" class="radio-group">
+        <view class="item" wx:for="{{allAddress}}" wx:key="{{item.id}}">
+            <view bindtap="addrss_bind" class="right arrowR" data-id="{{item.id}}">
+                <text class="h1">{{item.consignee}}({{item.mobile}})</text>
+                <text class="p linght">{{item.province}}{{item.city}}{{item.district}}{{item.address}}</text>
+            </view>
+        </view>
+    </radio-group>
+</view>
+<view bindtap="addrss_bind" class="item addto" data-id="0">
+    <button class="lable" formType="submit">
+        <text class="iconfont icon-add"></text> 添加新地址</button>
+</view>

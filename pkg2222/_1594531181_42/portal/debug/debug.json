@@ -1,0 +1,7 @@
+{
+    "enablePullDownRefresh": false,
+    "navigationBarTitleText": "调试",
+    "usingComponents": {
+        "navigation-bar": "../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar"
+    }
+}

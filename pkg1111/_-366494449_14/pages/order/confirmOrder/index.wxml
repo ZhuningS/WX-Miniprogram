@@ -1,0 +1,191 @@
+<import src="../../../components/shopInfoSmall/index.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view wx:if="{{isNeedAddr==1}}">
+        <form bindsubmit="_goToAddr" reportSubmit="true" wx:if="{{noAddr?true:false}}">
+            <button class="no-addr nobutton" formType="submit">
+                <text>新增收货地址</text>
+                <image class="icon-arrow" src="/images/icon/arrow.png"></image>
+            </button>
+        </form>
+        <form bindsubmit="_goToAddr" reportSubmit="true" wx:else>
+            <button class="nobutton" formType="submit">
+                <view class="address" id="J-address">
+                    <view class="addr-wrap">
+                        <view>
+                            <i class="icon-addr"></i>
+                            <view class="addr-user">
+                                <text style="margin-right: 20rpx">收件人:</text>
+                                <text class="user-name">{{address.name}}</text>
+                                <text class="tel">{{address.tel}}</text>
+                            </view>
+                            <view class="addr-addr">
+                                <text>{{address.province}}{{address.city}}{{address.county}}{{address.address}}</text>
+                            </view>
+                        </view>
+                        <i class="icon-arrow"></i>
+                    </view>
+                </view>
+            </button>
+        </form>
+    </view>
+    <view class="contant">
+        <view class="cart-section">
+            <view class="buyer">
+                <image src="{{card_avatar}}" style="width: 48rpx; height: 48rpx;"></image>{{card_name}}的商城</view>
+            <block wx:for="{{goodsList}}" wx:for-item="shop">
+                <view class="cart-list" wx:for="{{shop.goods}}" wx:for-item="goods">
+                    <view class="img-wrap">
+                        <image class="my-pic" mode="aspectFill" src="{{goods.thumb}}"></image>
+                    </view>
+                    <view class="goods-info">
+                        <view class="goods-title">
+                            <text>{{goods.name}}</text>
+                        </view>
+                        <view class="goods-attr">
+                            <text style="font-size:24rpx">{{goods.aname}}</text>
+                        </view>
+                        <view class="price-wrap">
+                            <view class="price">
+                                <text style="font-size:24rpx">¥</text>
+                                <block wx:if="{{isgroups=='1'}}">
+                    {{goods.price}}
+                  </block>
+                                <block wx:elif="{{isseckill=='1'}}">
+                    {{goods.price}}
+                  </block>
+                                <block wx:else>
+                    {{goods.price}}
+                  </block>
+                            </view>
+                            <view class="goods-amount">
+                                <text>×{{goods.num}}</text>
+                            </view>
+                        </view>
+                        <view class="couponprice" wx:if="{{goods.pay==='0.00'||goods.pay&&useCoupon&&goodsLen>1}}">-￥{{goods.pay}}</view>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="goods-trans-wrap">
+        <view class="member-wrap" hidden="{{!radioItems[0].checked}}">
+            <text>运费</text>
+            <text class="price price-total" wx:if="{{feetrans>0}}">¥ {{feetrans}}</text>
+            <text class="price price-total" wx:else>包邮</text>
+        </view>
+        <view class="coupon-wrap" wx:if="{{card_discount>0}}">
+            <text class="coupon-name">特权折扣优惠</text>
+            <text class="coupon coupon-total">- ¥{{discount_price}}</text>
+        </view>
+        <block wx:if="{{isgroups!=1&&isseckill!=1}}">
+            <view class="coupon-wrap" wx:if="{{orderId}}">
+                <text class="coupon-name">优惠券</text>
+                <text class="coupon coupon-total" style="color: #aaa">{{'订单已生成,无法使用优惠券'}}</text>
+            </view>
+            <block wx:else>
+                <view class="coupon-wrap" wx:if="{{couponListLen.length==0}}">
+                    <text class="coupon-name">优惠券</text>
+                    <text class="coupon coupon-total" style="color: #aaa">暂无可用优惠券</text>
+                </view>
+                <form bindsubmit="_toggleCouponsList" reportSubmit="true" wx:else>
+                    <button class="nobutton" formType="submit">
+                        <view class="coupon-wrap">
+                            <text class="coupon-name">优惠券</text>
+                            <view class="coupon coupon-total" wx:if="{{!couponAmout||!useCoupon}}">
+                                <view style="color: #fff; background: #e8542d;line-height:32rpx;padding:4rpx 12rpx;  margin-right: 10rpx;display:flex;align-items:center;">
+                                    <image src="/images/coupon/coupon.png" style="width:32rpx;height: 32rpx;margin-right: 4rpx;"></image>
+                                    <text style="font-size: 22rpx;">{{couponListLen}}张可用</text>
+                                </view>
+                            </view>
+                            <view class="coupon coupon-total" style="color:#ff5c53; font-size: 32rpx;" wx:else>- <text style="font-size:28rpx;">¥</text>{{couponAmout}}</view>
+                            <image class="icon-arrow" src="/images/icon/arrow.png"></image>
+                        </view>
+                    </button>
+                </form>
+            </block>
+        </block>
+        <view bindtap="_chooseInvoce" class="member-wrap" wx:if="{{isAuthInvoice==0&&isinvoice==1}}">
+            <text>发票</text>
+            <text class="price price-total" style="margin-right: 10rpx" wx:if="{{invoice_title!=''}}">{{invoice_title}}</text>
+            <text class="price price-total" style="color: #aaa; margin-right: 10rpx" wx:else>如需开票请选择填写开票信息</text>
+            <view catchtap="_clearInvoice" style="display:flex; align-items:center" wx:if="{{invoice_title!=''}}">
+                <image src="/images/new/icon_close.png" style="width: 32rpx;height: 32rpx;"></image>
+            </view>
+            <i class="icon-arrow" wx:else></i>
+        </view>
+        <button bindopensetting="_chooseInvoce2" openType="openSetting" style="padding:0; text-align: left" wx:if="{{isAuthInvoice==1&&isinvoice==1}}">
+            <view class="member-wrap">
+                <text>发票</text>
+                <text class="price price-total" style="margin-right: 10rpx" wx:if="{{invoice_title!=''}}">{{invoice_title}}</text>
+                <text class="price price-total" style="color: #666 ;margin-right: 10rpx" wx:else>请选择发票抬头</text>
+                <i class="icon-arrow"></i>
+            </view>
+        </button>
+        <view class="goods-trans goods-trans_last">
+            <view class="price price-total">
+                <text style="color:#666;margin-right:20rpx">合计</text>
+                <text style="margin-right:5rpx">¥</text>
+                <text style="font-size:36rpx" wx:if="{{toPayAmount>=0}}">{{toPayAmount}}</text>
+                <text style="font-size:36rpx" wx:else>0.00</text>
+            </view>
+        </view>
+    </view>
+    <view class="payagain-hint-wrap" wx:if="{{orderId}}">
+        <text class="payagain-hint">提示:您使用微信支付的订单已生成,本次操作,微信支付将作为您唯一支付方式。</text>
+    </view>
+    <view class="btn-wrap">
+        <block wx:if="{{cardIndex==0}}">
+            <form bindsubmit="{{wrong?'':'skip'}}" reportSubmit="true" wx:if="{{orderId}}">
+                <button class="btn-primary" formType="submit" style="{{wrong?'background:#ccc !important':''}}">重新确认付款</button>
+            </form>
+            <form bindsubmit="{{wrong?'':'skip'}}" reportSubmit="true" wx:else>
+                <button class="btn-primary" formType="submit" style="{{wrong?'background:#ccc !important':''}}">
+                    <image src="/images/new/icon_weixin.png" style="position:relative;top:20rpx;width:64rpx;height:64rpx;"></image>
+          确认付款
+        </button>
+            </form>
+        </block>
+    </view>
+    <view class="zan-dialog {{showDialog?'zan-dialog--show':''}}">
+        <view bindtap="_toggleCouponsList" class="zan-dialog__mask"></view>
+        <view class="zan-dialog__container">
+            <view class="choose-coupon">
+                <view wx:if="{{useCoupon}}">
+                    <text>使用优惠券</text>
+                </view>
+                <view wx:else>
+                    <text>不使用优惠券</text>
+                </view>
+                <view>
+                    <switch checked bindchange="_switch1Change"></switch>
+                </view>
+            </view>
+            <scroll-view scrollY="true" wx:if="{{useCoupon}}">
+                <radio-group bindchange="radioChange">
+                    <label class="coupon-list" wx:for="{{couponList}}">
+                        <radio checked="{{item.checked}}" class="weui-check" value="{{item.id}}"></radio>
+                        <view class="coupon-list__money">
+                            <text>{{item.coupon_info.discount}}</text>
+                            <text style="font-size: 24rpx;">折</text>
+                        </view>
+                        <view class="coupon-list__con">
+                            <text class="coupon-name">{{item.coupon_info.type==1?item.coupon_info.typeTips:'参与'+item.coupon_info.typeTips}},无使用门槛</text>
+                            <text class="coupon-other">{{item.coupon_info.title}}</text>
+                        </view>
+                        <view class="coupon-list__icon">
+                            <image src="/images/selected.png" wx:if="{{item.checked}}"></image>
+                            <image src="/images/select_int.png" wx:else></image>
+                        </view>
+                    </label>
+                </radio-group>
+            </scroll-view>
+            <view class="zan-loadmore zan-loadmore--nodata" wx:elif="{{!useCoupon}}">
+                <view class="zan-loadmore__tips">{{'土豪,您的优惠券列表已关闭!'}}</view>
+            </view>
+        </view>
+    </view>
+</view>

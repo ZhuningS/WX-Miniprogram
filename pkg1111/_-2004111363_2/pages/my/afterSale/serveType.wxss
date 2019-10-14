@@ -1,0 +1,26 @@
+.serve-type .header {
+    padding: 20rpx 31rpx 20rpx 20rpx;
+}
+
+.serve-type .header .commodity-avator {
+    height: 150rpx;
+    width: 150rpx;
+    background-color: #eee;
+}
+
+.serve-type .header .title {
+    font-size: 28rpx;
+}
+
+.serve-type .body .item {
+    padding: 24rpx 20rpx 24rpx 14rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.serve-type .body .item .item-bottom {
+    padding-left: 44rpx;
+}
+
+.serve-type .width75 {
+    width: 75%;
+}

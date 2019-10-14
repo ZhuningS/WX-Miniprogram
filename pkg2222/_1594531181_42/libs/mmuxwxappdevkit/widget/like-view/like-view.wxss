@@ -1,0 +1,243 @@
+.mini-feature_likePanel {
+}
+
+.mini_feature_likeAction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 0 32rpx;
+    padding: 42rpx 0;
+    border-top: 1rpx solid rgba(0,0,0,0.08);
+}
+
+.likeAction__wrap {
+    margin: 0 100rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.mini_feature_likeBtn {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.before-avatar-icon {
+    width: 24rpx;
+    height: 24rpx;
+    margin-top: 12px;
+}
+
+.reverse {
+    transform: rotate(180deg);
+}
+
+.mini_feature_likeTip {
+    font-size: 28rpx;
+    color: #888;
+    margin-left: 24rpx;
+    display: inline-block;
+    width: 87rpx;
+}
+
+.mini_feature_likeList {
+    display: flex;
+    flex-direction: column;
+    margin: 60rpx 0rpx 0 0rpx;
+}
+
+.mini_feature_haslikePanel {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 36rpx;
+    width: 476rpx;
+    margin: 36rpx auto 0;
+    justify-content: center;
+}
+
+.mini_feature_likeItem {
+    width: 56rpx;
+    height: 56rpx;
+    margin-left: 6rpx;
+    margin-right: 6rpx;
+    margin-bottom: 12rpx;
+}
+
+.mini_feature_likeItem.background {
+    background: #EFEDEA;
+}
+
+.mini_feature_actionInput {
+    margin: 0 40rpx 44rpx 40rpx;
+    padding: 0 40rpx;
+    min-height: 96rpx;
+    line-height: 96rpx;
+    background: rgba(0,0,0,0.03);
+    border-radius: 8rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.unlike_action_input {
+    height: 150rpx;
+    align-items: start;
+    padding-top: 38rpx;
+}
+
+.input {
+    font-size: 14px;
+    color: rgba(0,0,0,0.90);
+    letter-spacing: 0.18px;
+    text-align: left;
+    line-height: 16px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex: 1;
+}
+
+.placeholder {
+    color: #AAAAAA;
+}
+
+.count-word {
+    position: absolute;
+    right: 24rpx;
+    bottom: 24rpx;
+    opacity: 0.3;
+    font-size: 13px;
+    color: #000000;
+    letter-spacing: 0.17px;
+    text-align: left;
+    line-height: 16px;
+}
+
+.count-word.warning {
+    color: #df483c;
+    opacity: 1;
+}
+
+.comment-area {
+    border-top: 20rpx solid #F7F7F7;
+    padding: 0 38rpx 0 42rpx;
+    background: #FFF;
+}
+
+.comment-area__tip {
+    margin: 46rpx 0 40rpx 0;
+    font-size: 14px;
+    color: #888888;
+    line-height: 14px;
+}
+
+.comment-area__likeWrap {
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-area__avatars {
+    flex: 1;
+    margin-left: 20rpx;
+    padding-bottom: 24rpx;
+    border-bottom: 1rpx solid #ECECEC;
+}
+
+.no-border {
+    border: none;
+}
+
+.avatar {
+    float: left;
+    width: 28px;
+    height: 28px;
+    margin: 4px;
+}
+
+.comment-area__commentWrap {
+    display: flex;
+    flex-direction: row;
+}
+
+.icon-comment {
+    min-width: 24rpx;
+    width: 24rpx;
+    height: 24rpx;
+    margin-top: 44rpx;
+}
+
+.comment-area__comments {
+    flex: 1;
+    margin-left: 28rpx;
+}
+
+.comment-area__comment-item {
+    margin: 44rpx 0 50rpx 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.operation-space {
+    padding-bottom: 22.75rpx;
+}
+
+.comment-avatar {
+    min-width: 64rpx;
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 6rpx;
+}
+
+.comment-info {
+    flex: 1;
+    margin-left: 32rpx;
+    position: relative;
+}
+
+.comment-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.comment-header__nickname {
+    flex: 1;
+    margin-right: 20rpx;
+    font-size: 14px;
+    color: #000;
+    letter-spacing: 0;
+    line-height: 17px;
+}
+
+.comment-header__createtime {
+    opacity: 0.3;
+    font-size: 12px;
+    color: #000000;
+    text-align: right;
+}
+
+.comment-body {
+    margin-top: 16rpx;
+    opacity: 0.9;
+    font-size: 16px;
+    color: rgba(0,0,0,0.90);
+    letter-spacing: 0;
+}
+
+.comment-operation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    left: -10px;
+    bottom: -26px;
+}
+
+.delete {
+    padding: 5px 10px;
+    font-size: 13px;
+    color: #576B95;
+}

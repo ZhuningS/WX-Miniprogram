@@ -1,0 +1,18 @@
+<view class="wrap">
+    <image bindtap="onInfoClick" class="brand-logo" data-click-type="0" mode="aspectFill" src="{{headerObj.icon_url}}"></image>
+    <view class="brand-info-wrap" style="{{fromMain?'padding-left: 0':''}}">
+        <text bindtap="onInfoClick" class="brand-name" data-click-type="0">{{headerObj.brand_name}}</text>
+        <image class="brand-name__arrow-right" src="../../../../assets/icon-arrow-right-light.png" wx:if="{{!fromMain}}"></image>
+    </view>
+    <view class="info-wrap">
+        <view bindtap="onInfoClick" class="info-item" data-click-type="0">
+            <image class="info-item-icon" src="http://wxappthumb.tc.qq.com/250/20350/stodownload?filekey=30270201010420301e020200fa040253480410e2c6f559fff6ba52ca373a059594cdf90202078d0400&hy=SH&storeid=32303137313031323132333131303030306436366333303061656531306231366161333230613030303030306661&bizid=1023"></image>
+            <text class="info-item-text">地址</text>
+        </view>
+        <view class="info-item-separator"></view>
+        <view bindtap="onInfoClick" class="info-item" data-click-type="1">
+            <image class="info-item-icon" src="http://wxappthumb.tc.qq.com/250/20350/stodownload?filekey=30270201010420301e020200fa0402534804105cacf7d698f528c37b9e67a6272dc2c5020207580400&hy=SH&storeid=32303137313031323132333134343030303163366336303061656531306231376161333230613030303030306661&bizid=1023"></image>
+            <text class="info-item-text">电话</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,56 @@
+<view class="contenter">
+    <view class="show-card">
+        <view class="f16 show-card-text">
+            <text>{{remark}}</text>
+        </view>
+        <view class="list-bottom">
+            <view class="mt10 grey flex">
+                <text>开始日期：{{begin_time}} </text>
+                <text class="sub tr">打卡天数：{{cycle}}天</text>
+            </view>
+            <view class="userinfo mt5 flex">
+                <view class="sub">
+                    <image mode="aspectFill" src="{{headimgurl?headimgurl:'/images/default.png'}}"></image>
+                    <text class="user-name ml5 mr10">{{nickname?nickname:'您的昵称'}}</text>
+                    <text class="green mr5">{{people}}</text>
+                    <text>人参与</text>
+                </view>
+                <view hidden="{{!is_del}}">
+                    <text catchtap="onDeleteTap" class="iconfont icon-delete"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="punch-btn">
+        <view>
+            <button bindtap="onSignedTap" class="f16 transition-duration-150 {{!my_partake?'hidden':''}}" hidden="{{!my_partake}}" type="primary">今日打卡</button>
+            <button bindtap="onPartakeTap" class="f16 transition-duration-150 {{my_partake?'hidden':''}}" hidden="{{my_partake}}" type="primary">我要参与</button>
+        </view>
+        <view wx:if="{{my_partake.count>0}}">
+            <button bindtap="onNavigateTap" class="f16 mt20 transition-duration-150" data-url="awards?id={{id}}" type="default">我的成就卡</button>
+        </view>
+        <view class="tc mt10">
+            <text class="grey">今日已有{{user_count}}人打卡</text>
+        </view>
+    </view>
+    <view class="time-day">
+        <view class="day">
+            <view catchtap="tabBarEvent" class="day-num {{item==tabBar?'bgcolor':'endbg'}} write tc mr10 mb10 f14" data-tab-bar="{{item}}" wx:for="{{days}}" wx:key="{{index}}">第{{item}}天</view>
+        </view>
+        <view class="info-content transition-duration-150 active-bg" wx:for="{{user_lists}}" wx:key="{{index}}">
+            <view class="card-info mb20">
+                <view class="card-info-img   tc">
+                    <image mode="aspectFill" src="{{item.headimgurl?item.headimgurl:'/images/default.png'}}"></image>
+                </view>
+                <view class="card-info-contant">
+                    <image mode="aspectFill" src="{{item.img}}" wx:if="{{item.img}}"></image>
+                    <text class="f16">{{item.content}}</text>
+                    <view class="time">
+                        <text class="f14 mt10">{{item.create_time}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<duoguan_ad ad_type="duoguan_clocking_info_bottom"></duoguan_ad>

@@ -1,0 +1,134 @@
+@import "../../__wuBaseWxss__/10.wxss";
+
+.shopCar_mask {
+    width: 100vh;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.close {
+    width: 100%;
+    height: 100vh;
+}
+
+.shop-head {
+    width: 100%;
+    height: 80rpx;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 20rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.shop-head .del {
+    width: 100rpx;
+    height: 40rpx;
+    border-radius: 20rpx;
+}
+
+.shop-head .deln {
+    border: 1px solid #666;
+    color: #666;
+}
+
+.shop-wrap {
+    width: 100%;
+    padding: 0 20rpx;
+    background: #fff;
+    margin-top: 20rpx;
+}
+
+.shop-wrap .shop-box {
+    width: 100%;
+}
+
+.shop-wrap .shop-box .shop-base {
+    padding: 30rpx 0;
+    margin-left: 30rpx;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.shop-wrap .shop-box .shop-base>image {
+    width: 180rpx;
+    height: 180rpx;
+    margin-right: 30rpx;
+    flex-shrink: 0;
+}
+
+.shop-wrap .shop-box .shop-base .shop-spec {
+    font-size: 20rpx;
+    color: #999;
+}
+
+.shop-wrap .shop-box .shop-base .shop-spec>text:first-child {
+    max-width: 358rpx;
+    padding: 0 10rpx;
+}
+
+.shop-wrap .shop-box .shop-base .shop-spec>text:last-child {
+    padding: 0 10rpx;
+}
+
+.shop-wrap .shop-box .shop-base .shop-spec>text {
+    height: 36rpx;
+    line-height: 36rpx;
+    background: #FAFAFA;
+}
+
+.shop-wrap .shop-box .shop-base .shop-price {
+    width: 100%;
+}
+
+.shop-wrap .shop-box .shop-base .shop-price .shop-play {
+    height: 40rpx;
+}
+
+.shop-wrap .shop-box .shop-base .shop-price .shop-play>input {
+    width: 53rpx;
+    height: 40rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #999;
+    min-height: 0;
+}
+
+.shop-wrap .shop-box .shop-base .shop-price .shop-play>text {
+    width: 40rpx;
+    height: 40rpx;
+    background: #F7F5F5;
+    font-size: 20rpx;
+    color: #ccc;
+    text-align: center;
+    line-height: 40rpx;
+}
+
+.shop-wrap .shop-box .shop-base:last-child {
+    border-bottom: none;
+}
+
+.shop-footer {
+    width: 100%;
+    height: 100rpx;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #eee;
+}
+
+.shop-footer .shop-info {
+    font-size: 30rpx;
+    color: #333;
+    height: 100rpx;
+}
+
+.shop-footer .shop-pay {
+    width: 300rpx;
+    height: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+    font-size: 34rpx;
+    font-weight: bold;
+}

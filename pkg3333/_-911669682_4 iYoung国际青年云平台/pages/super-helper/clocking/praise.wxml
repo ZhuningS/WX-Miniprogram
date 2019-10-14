@@ -1,0 +1,16 @@
+<form bindsubmit="onPushSubmit">
+    <view class="contenter flex flexC">
+        <view class="title mt15 f12 grey">
+            <text class="f16 black">设置成就称号</text>(点击称号可修改)
+    </view>
+        <view class="content f16 sub">
+            <view class="list flex gridXb" wx:for="{{data}}" wx:key="{{index}}">
+                <text>第{{index+1}}天</text>
+                <input class="sub grey" name="{{index}}" value="{{item}}"></input>
+            </view>
+        </view>
+        <view class="btn-box">
+            <button class="f16" formType="submit" type="primary">确定</button>
+        </view>
+    </view>
+</form>

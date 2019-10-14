@@ -1,0 +1,26 @@
+<template name="Card$2280119c">
+    <navigator class="_a data-v-8fa503d2" url="{{detailUrl}}">
+        <view class="_div data-v-8fa503d2 book-card">
+            <view catchtap="handleProxy" class="_div data-v-8fa503d2 thumb" data-comkey="{{$k}}" data-eventid="{{'0'}}">
+                <image class="_image data-v-8fa503d2 img" mode="aspectFit" src="{{book.image}}"></image>
+            </view>
+            <view class="_div data-v-8fa503d2 detail">
+                <view class="_div data-v-8fa503d2 row">
+                    <view class="_div data-v-8fa503d2 right"> {{book.rate*2}}
+            <template is="Rate$08696102" data="{{...$root[$kk+'0'],$root:$root}}"></template>
+                    </view>
+                    <view class="_div data-v-8fa503d2 left text-primary"> {{book.title}} </view>
+                </view>
+                <view class="_div data-v-8fa503d2 row ">
+                    <view class="_div data-v-8fa503d2 right text-primary"> 浏览:{{book.count}} </view>
+                    <view class="_div data-v-8fa503d2 left"> {{book.author}} </view>
+                </view>
+                <view class="_div data-v-8fa503d2 row">
+                    <view class="_div data-v-8fa503d2 right"> {{book.user_info.nickName}} </view>
+                    <view class="_div data-v-8fa503d2 left">{{book.publisher}}</view>
+                </view>
+            </view>
+        </view>
+    </navigator>
+</template>
+<import src="Rate$08696102"></import>

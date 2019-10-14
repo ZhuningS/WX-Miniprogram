@@ -1,0 +1,154 @@
+.bird {
+    width: 265rpx;
+    position: absolute;
+    right: 0;
+    top: 208rpx;
+}
+
+.model {
+    margin-top: 53rpx;
+}
+
+.container .model:first-child {
+    margin-top: 0;
+}
+
+.timeLine {
+    position: absolute;
+    width: 100%;
+    padding: 0 50rpx;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.noneData {
+    position: absolute;
+    width: 100%;
+    padding: 0 50rpx;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+.noneData image {
+    width: 220rpx;
+}
+
+.noneData view {
+    font-size: 32rpx;
+    color: #fff;
+    margin-top: 20rpx;
+}
+
+.item image {
+    width: 60rpx;
+    height: 60rpx;
+    vertical-align: bottom;
+}
+
+.item .black {
+    height: 195rpx;
+    width: 4rpx;
+    background: #22442A;
+    border-radius: 2rpx;
+    margin: 10rpx 0 10rpx 28rpx;
+}
+
+.item .white {
+    height: 60rpx;
+    width: 4rpx;
+    background: #fff;
+    border-radius: 2rpx;
+    margin: 10rpx 0 10rpx 28rpx;
+}
+
+.model .box:last-child .item .white {
+    display: none;
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.time {
+    font-size: 30rpx;
+    color: #333;
+    display: inline-block;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    height: 56rpx;
+    text-align: center;
+    line-height: 56rpx;
+    background: rgba(255,255,255,1);
+    border-radius: 28px;
+    margin: 0 auto 47rpx auto;
+    position: relative;
+}
+
+.container .model:first-child .time::after {
+    display: none;
+}
+
+.time::after {
+    content: '';
+    width: 4rpx;
+    height: 128rpx;
+    background: #fff;
+    position: absolute;
+    top: -40rpx;
+    left: -175rpx;
+}
+
+.box .right {
+    text-align: left;
+}
+
+.box .right .title {
+    font-size: 30rpx;
+    color: #666;
+    margin: 20rpx 0 13rpx 0;
+}
+
+.box .right .info {
+    width: 540rpx;
+    height: 187rpx;
+    background: rgba(255,255,255,0.8);
+    border-radius: 10rpx;
+    margin-bottom: 24rpx;
+    padding: 22rpx 0 24rpx 0;
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+}
+
+.box .right .desc {
+    font-size: 30rpx;
+    color: #666;
+}
+
+.timeSlot {
+    text-align: center;
+    font-size: 30rpx;
+}
+
+.totalTime {
+    font-size: 28rpx;
+    color: #22442A;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+}
+
+.totalTime image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 10rpx;
+}
+
+.box .right .info>image {
+    width: 80rpx;
+    height: 90rpx;
+    margin-top: 20rpx;
+}

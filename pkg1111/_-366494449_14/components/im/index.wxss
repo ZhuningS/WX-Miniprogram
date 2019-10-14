@@ -1,0 +1,34 @@
+.msg2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 200rpx;
+    height: 104rpx;
+    width: 104rpx;
+    border-radius: 100%;
+    background: rgba(97,184,58,0.9);
+    font-size: 30rpx;
+    right: 30rpx;
+    text-align: center;
+    z-index: 100;
+}
+
+.msg2 image {
+    width: 46rpx;
+    height: 74rpx;
+}
+
+.msg2 .redpoint {
+    width: 38rpx;
+    height: 38rpx;
+    position: absolute;
+    border-radius: 100%;
+    background: red;
+    top: -6rpx;
+    right: -6rpx;
+    line-height: 38rpx;
+    font-size: 22rpx;
+    color: #fff;
+    text-align: center;
+}

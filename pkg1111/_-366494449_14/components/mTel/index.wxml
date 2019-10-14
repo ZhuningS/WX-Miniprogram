@@ -1,0 +1,6 @@
+<template name="mTel">
+    <view class="telWrap">
+        <view bindtap="_callPhone" class="tel" data-phone="{{dataset.text}}">
+            <image src="/images/card/telphone.png"></image>{{dataset.text}}</view>
+    </view>
+</template>

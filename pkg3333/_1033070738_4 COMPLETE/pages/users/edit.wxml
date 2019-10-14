@@ -1,0 +1,48 @@
+<view class="page">
+    <view class="page__bd">
+        <form bindsubmit="submit">
+            <view class="avatar-wrap">
+                <image bindtap="updateAvatar" class="avatar" src="{{user.avatar}}"></image>
+            </view>
+            <view class="weui-cells__title">姓名</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__bd">
+                        <input class="weui-input" name="name" placeholder="请输入姓名" value="{{user.name}}"></input>
+                    </view>
+                    <view class="weui-cell__ft" wx:if="{{errors.name}}">
+                        <icon color="#E64340" size="23" type="warn"></icon>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-cells__tips error-message" wx:if="{{errors.name}}">{{errors.name[0]}}</view>
+            <view class="weui-cells__title">邮箱</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__bd">
+                        <input class="weui-input" name="email" placeholder="请输入邮箱" value="{{user.email}}"></input>
+                    </view>
+                    <view class="weui-cell__ft" wx:if="{{errors.email}}">
+                        <icon color="#E64340" size="23" type="warn"></icon>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-cells__tips error-message" wx:if="{{errors.email}}">{{errors.email[0]}}</view>
+            <view class="weui-cells__title">个人简介</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <textarea class="weui-textarea introduction" name="introduction" placeholder="请输入简介" value="{{user.introduction}}"></textarea>
+                    </view>
+                    <view class="weui-cell__ft" wx:if="{{errors.introduction}}">
+                        <icon color="#E64340" size="23" type="warn"></icon>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-cells__tips error-message" wx:if="{{errors.introduction}}">{{errors.introduction[0]}}</view>
+            <view class="weui-btn-area">
+                <button class="weui-btn" formType="submit" type="primary">修改</button>
+            </view>
+        </form>
+    </view>
+</view>

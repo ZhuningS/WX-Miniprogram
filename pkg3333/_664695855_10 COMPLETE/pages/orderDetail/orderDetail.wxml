@@ -1,0 +1,50 @@
+<view class="order-detail">
+    <view class="{{detail.state==7?'detail-info-fail':'detail-info '}}">
+        <view class="{{detail.state==7?'detail-title-fail':'detail-title '}} clearfix">
+            <text class="{{detail.state==7?'detail-title-content-fail':'detail-title-content'}}">{{detail.title==null?'':detail.title}}</text>
+            <image class="icon-right" src="../img/icon-right-fail.png" wx:if="{{detail.state==7}}"></image>
+            <image class="icon-right" src="../img/icon-right.png" wx:if="{{detail.state!=7}}"></image>
+        </view>
+        <view class="detail-content">
+            <view class="content-body">
+                <text class="{{detail.state==7?'content-state-fail':'content-state'}}">订单状态</text>
+                <text class="state-info" wx:if="{{detail.state==1}}">待托管</text>
+                <text class="state-info" wx:if="{{detail.state==2}}">进行中</text>
+                <text class="state-info" wx:if="{{detail.state==5}}">交易成功</text>
+                <text class="state-info-fail" wx:if="{{detail.state==7}}">交易失败</text>
+            </view>
+            <view class="content-body">
+                <text class="{{detail.state==7?'content-state-fail':'content-state'}}">订单编号</text>
+                <text class="{{detail.state==7?'state-info-fail':'state-info'}}">{{detail.taskId==null?'':detail.taskId}}</text>
+            </view>
+            <view class="content-body">
+                <text class="{{detail.state==7?'content-state-fail':'content-state'}}">下单时间</text>
+                <text class="{{detail.state==7?'state-info-fail':'state-info'}}">{{detail.createTime==null?'':detail.createTime}}</text>
+            </view>
+            <view class="content-body">
+                <text class="{{detail.state==7?'content-state-fail':'content-state'}}">订单金额</text>
+                <text class="{{detail.state==7?'state-info-fail':'state-color'}}" wx:if="{{detail.amount!=null}}">{{detail.amount==''?'待确定':'￥'+detail.amount}}</text>
+                <text class="hosting" wx:if="{{detail.state==2}}">已托管{{detail.amount==''?0:detail.amount}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="detail-shop clearfix" wx:if="{{detail.mode!==13}}">
+        <text class="shop">服 务 商</text>
+        <view class="shop-name" wx:if="{{!detail.shopId}}">待定</view>
+        <navigator class="shop-name" url="/pages/detail/detail?shopId={{detail.shopId}}" wx:else>{{shop.brandname==null?'':shop.brandname}}</navigator>
+    </view>
+    <button bindtap="goPay" class="detail-btn btn-money" wx:if="{{detail.mode!==13&&detail.state==1}}">{{payText}}</button>
+    <button bindtap="goAppDownload" class="detail-btn btn-money" wx:if="{{detail.mode===13}}">去猪八戒App查看需求
+        ></button>
+    <button bindtap="cancelOrder" class="detail-btn btn-cancel" wx:if="{{detail.state==1}}">取消订单</button>
+    <view class="process">
+        <image class="process-img" src="../img/detail-process.png"></image>
+    </view>
+    <view class="guide-down" wx:if="{{guideDes}}">
+        <view class="guide-box">
+            <view class="guide-title">提示</view>
+            <view class="guide-des">{{guideDes}}</view>
+            <view bindtap="cancelBox" class="guide-btn">确定</view>
+        </view>
+    </view>
+</view>

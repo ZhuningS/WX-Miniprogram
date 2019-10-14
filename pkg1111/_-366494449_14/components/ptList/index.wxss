@@ -1,0 +1,285 @@
+.page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+}
+
+.page .search {
+    margin-bottom: -20rpx;
+}
+
+.page .searchTip {
+    margin-top: 20rpx;
+}
+
+.page__bd {
+    flex: 1;
+    position: relative;
+}
+
+.page__bd__scroll {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.groupScroll {
+    background-color: #fff;
+    height: 81rpx;
+    margin-bottom: 2rpx;
+}
+
+.groupList {
+    padding: 0 10rpx;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.groupItem {
+    height: 80rpx;
+    line-height: 80rpx;
+    color: #333;
+    font-size: 26rpx;
+    margin: 0 30rpx;
+    flex-shrink: 0;
+}
+
+.groupItem.active {
+    color: #c00;
+    border-bottom: 4rpx solid #c00;
+}
+
+.catPanel {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.catPanel:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.curCat {
+    height: 85rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+    font-size: 14px;
+    float: right;
+}
+
+.curCat__icon {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAaCAYAAACkVDyJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTk4NkU0QkY1ODhBMTFFNjg0Qzk4OUFFNzQxMDgwNzEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTk4NkU0QkU1ODhBMTFFNjg0Qzk4OUFFNzQxMDgwNzEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQxMkI0RDQyMjNBNzExRTY4RTU5QzJGQTUxMTg5NkQwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQxMkI0RDQzMjNBNzExRTY4RTU5QzJGQTUxMTg5NkQwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+OxafcQAAAD1JREFUeNpiZGBg+M+AAIxQGlmMqoBxICykCPz//3/UwlELRy0ctXAQFm2jZemohaMWjlo4WpYOsbIUIMAAMQJH2eVwQFEAAAAASUVORK5CYII=) no-repeat center center;
+    background-size: contain;
+    width: 21rpx;
+    height: 21rpx;
+    margin-right: 18rpx;
+}
+
+.curCat__name {
+    color: #000;
+    max-width: 188rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 40rpx;
+    line-height: 40rpx;
+    overflow: hidden;
+}
+
+.catList {
+    position: absolute;
+    top: 85rpx;
+    right: 0;
+    width: 33%;
+    background-color: #fff;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+    z-index: 10;
+}
+
+.catList__item {
+    text-align: center;
+    border-bottom: 1rpx solid #eee;
+    color: #313131;
+    display: block;
+    height: 85rpx;
+    line-height: 85rpx;
+    padding: 0 24rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.goodsList {
+    font-size: 0;
+}
+
+.goods {
+    display: inline-block;
+    font-size: 22rpx;
+    width: 50%;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    background: #f3f3f3;
+}
+
+.goods:nth-child(odd) .goods_wrap {
+    margin-left: 0rpx;
+}
+
+.goods:nth-child(even) .goods_wrap {
+    margin-right: 0rpx;
+}
+
+.goods_wrap {
+    margin: 6rpx;
+    background-color: #fff;
+    padding: 0;
+    line-height: 1;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 0;
+}
+
+button.goods_wrap::after {
+    border-radius: 0;
+    border: none;
+}
+
+.goods__imgWrap {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20rpx;
+}
+
+.goods__imgWrap:after {
+    content: ' ';
+    display: block;
+    margin-top: 100%;
+}
+
+.goods__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #eee;
+}
+
+.goodsInfoWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rpx 0 10rpx 20rpx;
+}
+
+.goods__name {
+    font-size: 26rpx;
+    color: #444;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding: 0 20rpx;
+    line-height: 42rpx;
+    min-height: 84rpx;
+}
+
+.goods__price {
+    color: #dd2450;
+    font-size: 38rpx;
+    line-height: 46rpx;
+}
+
+.goods__price .pin {
+    border: 1px solid #ccc;
+    line-height: 24rpx;
+    color: #999;
+    white-space: nowrap;
+    padding: 0rpx 0;
+    font-size: 20rpx;
+}
+
+.goods__price .pin .pin1 {
+    border-right: 1px solid #ccc;
+    color: #999;
+    white-space: nowrap;
+    padding: 0rpx 10rpx;
+    font-size: 20rpx;
+    display: inline-block;
+    background: #f5f5f5;
+}
+
+.goods__price .pin .pin2 {
+    display: inline-block;
+    padding: 0 10rpx;
+}
+
+.goods__price .pin text {
+    font-size: 20rpx!important;
+}
+
+.goods__agio {
+    flex: 1;
+    font-size: 20rpx;
+    color: #fff;
+    background: #ef5b6b;
+}
+
+.gModList__salesVolume {
+    flex: 1;
+    text-align: right;
+}
+
+.gModList__salesVolume__item {
+    display: inline-block;
+    padding: 0 4rpx;
+}
+
+.goods__price__unit {
+    font-size: 12px;
+}
+
+.more-loading {
+    display: flex;
+    padding: 20rpx;
+    justify-content: center;
+}
+
+.more-loading text {
+    color: #666;
+}
+
+.searchTip {
+    background-color: #fff;
+    text-align: center;
+    font-size: 28rpx;
+    color: #888;
+    padding: 200rpx 0 600rpx;
+}
+
+.button-pin {
+    font-size: 38rpx;
+    padding: 6rpx 14rpx;
+    background: #dd2450;
+    color: #fff;
+    align-items: center;
+    line-height: normal;
+    display: inline-block;
+    margin-right: 20rpx;
+    font-weight: 300;
+    border-radius: 4rpx;
+}

@@ -1,0 +1,31 @@
+<view class="{{currentSkin}}">
+    <view class="data-empty" wx:if="{{vm.loadall&&!vm.ispost&&vm.list.length==0}}">
+        <view class="tc p20">空空如也</view>
+    </view>
+    <view class="chatList">
+        <view class="u-list">
+            <view bindtap="clickToCaht" class="f fc u-item rel" data-headimg="{{item.tuserHeadImg}}" data-index="{{index}}" data-nickname="{{item.tuserNicename}}" data-userid="{{item.tuserId}}" data-wpyclicktocaht-a="{{item}}" wx:for="{{vm.list}}" wx:key="key">
+                <view class="rel">
+                    <image class="u-img" src="{{item.tuserHeadImg}}"></image>
+                    <view class="mess-tip skin_bg" wx:if="{{item.unReadCount!=0}}">{{item.unReadCount}}</view>
+                </view>
+                <view class="f fv u-item-r f1">
+                    <view class="f">
+                        <view class="u-name f1">{{item.tuserNicename}}</view>
+                        <view class="u-time" wx:if="{{item.message}}">{{item.message.sendDate}}</view>
+                    </view>
+                    <view class="u-lastmsg vertical-1">
+                        <block wx:if="{{item.message}}">
+                            <block wx:if="{{item.message.msgType==0}}">
+                                        {{item.message.msg||'　'}}
+                                    </block>
+                            <block wx:if="{{item.message.msgType==1}}">
+                                        [图片]
+                                    </block>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

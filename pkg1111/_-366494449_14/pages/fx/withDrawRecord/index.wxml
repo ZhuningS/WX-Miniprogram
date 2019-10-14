@@ -1,0 +1,24 @@
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view class="recordList" hidden="{{!dataLoaded}}">
+    <block wx:if="{{recordList&&recordList.length>0}}">
+        <view class="item" wx:for="{{recordList}}">
+            <view>
+                <view class="money">{{item.money}}元</view>
+                <view class="time">申请时间：{{item.create_time}}</view>
+                <view class="time">提现卡号：{{item.newcard_no}}</view>
+            </view>
+            <view class="status" wx:if="{{item.state==0||item.state==2}}">
+              {{item.state2}}
+               <view bindtap="_viewReason" data-reason="{{item.reason}}" style="font-size:24rpx; color: #666; margin-top: 10rpx;">查看驳回原因</view>
+            </view>
+            <view class="status green" wx:if="{{item.state==1||item.state==3}}">{{item.state2}}
+              </view>
+        </view>
+    </block>
+    <view class="nodata" wx:else>
+        <image class="icon" mode="aspectFit" src="/images/card/noorder.png"></image>
+        <view>
+            <text>您还没有申请过提现哦～</text>
+        </view>
+    </view>
+</view>

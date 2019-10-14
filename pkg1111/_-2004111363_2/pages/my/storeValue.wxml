@@ -1,0 +1,18 @@
+<view class="{{currentSkin}}">
+    <view class="tc">
+        <image class="st-icon" src="https://j.vzan.cc/miniapp/img/enterprise/ico_chuzhi.png"></image>
+        <view class="pt40 f32 c333">储值余额</view>
+        <view class="f70 c333">￥{{vm.AccountMoneyStr||0}}</view>
+    </view>
+    <view class="st-bottom">
+        <navigator hoverClass="none" openType="navigate" url="/pages/my/storePay">
+            <view class="st-btn skin_bg">去支付</view>
+        </navigator>
+        <navigator hoverClass="none" openType="navigate" url="/pages/my/mysavePrice?type=save">
+            <view class="st-btn mt40  btn-default">充值</view>
+        </navigator>
+        <navigator hoverClass="none" openType="navigate" url="/pages/my/mysavePrice?type=history">
+            <view class="c999 mt40 tc">查看账单记录</view>
+        </navigator>
+    </view>
+</view>

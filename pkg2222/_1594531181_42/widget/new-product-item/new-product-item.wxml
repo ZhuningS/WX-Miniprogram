@@ -1,0 +1,23 @@
+<view class="wrapper">
+    <view class="wrapper-image">
+        <image-view class="item-image" mode="aspectFit" src="{{product.pic_url+'/0'}}"></image-view>
+    </view>
+    <view class="wrapper-info">
+        <text class="info__title">{{product.product_name}}</text>
+        <text class="info__price" wx:if="{{product.releaseTimeTips}}">{{product.releaseTimeTips}}</text>
+        <view class="info__buy" wx:if="{{product.jump_type=='OFFICIAL_JUMPTYPE_WXAPAGE_ITEM_DETAIL'||product.jump_type=='OFFICIAL_JUMPTYPE_CUSTOM'}}">
+            <text class="info__buy-text">{{product.action||'购买'}}</text>
+            <image class="info__buy-icon" src="../../assets/icon-arrow-right-light.png"></image>
+        </view>
+    </view>
+    <view bindtap="onClickNewProductItem" class="cover" hoverClass="weui-cell_active" hoverStayTime="200" wx:if="{{product.jump_type=='OFFICIAL_JUMPTYPE_WXAPAGE_ITEM_DETAIL'||product.jump_type=='OFFICIAL_JUMPTYPE_CUSTOM'}}"></view>
+</view>
+<wxs module="PriceUtil">
+module.exports.fixPrice = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num < 0 || num.toString() === 'NaN') {
+        return (' -')
+    };
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+</wxs>

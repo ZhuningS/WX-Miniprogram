@@ -1,0 +1,34 @@
+<include src="/components/index.wxml"></include>
+<include src="/components/im/index.wxml"></include>
+<import src="../../utils/wxParse/wxParse.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}" style="">
+    <official-account wx:if="{{account.title=='mall'&&account.pos==1}}"></official-account>
+    <block wx:for="{{page_content}}" wx:for-item="mod">
+        <template is="searchBar" data="{{...mod.content,cartAmount:cartAmount}}" wx:if="{{mod.name=='SearchBar'&&mod.content}}"></template>
+        <template is="shopHead" data="{{...mod.content}}" wx:if="{{mod.name=='ShopSign'&&mod.content}}"></template>
+        <template is="mShophead" data="{{...mod.content}}" wx:if="{{mod.name=='ShopInfo'&&mod.content}}"></template>
+        <template is="mBanner" data="{{...mod.content}}" wx:if="{{mod.name=='MSwiper'&&mod.content}}"></template>
+        <template is="mNav" data="{{...mod.content}}" wx:elif="{{mod.name=='HomeCatList'&&mod.content}}"></template>
+        <template is="mCoupon" data="{{...mod.content,couponList:couponList}}" wx:elif="{{mod.name=='HomeCardList'&&couponList}}"></template>
+        <template is="mMemberCard" data="{{...mod.content}}" wx:elif="{{mod.name=='MemCardList'&&mod.content}}"></template>
+        <template is="mTitle" data="{{...mod.content}}" wx:if="{{mod.name=='MTitle'&&mod.content}}"></template>
+        <template is="mText" data="{{...mod.content}}" wx:if="{{mod.name=='MText'&&mod.content}}"></template>
+        <template is="mCateList" data="{{cateList:cateList,current:current,toId:toId}}" wx:if="{{mod.name=='CateList'&&cateList}}"></template>
+        <template is="mGoodsList" data="{{...mod.content}}" wx:elif="{{mod.name=='GoodsList'&&mod.content}}"></template>
+        <template is="mGroup" data="{{...mod.content,isPay:isPay}}" wx:elif="{{mod.name=='GroupBuy'&&mod.content}}"></template>
+        <template is="mSeckill" data="{{...mod.content,isPay:isPay,timeArr:timeArr}}" wx:elif="{{mod.name=='Seckill'&&mod.content}}"></template>
+        <template is="mBargain" data="{{...mod.content,isPay:isPay,kantimeArr:kantimeArr}}" wx:elif="{{mod.name=='CutList'&&mod.content}}"></template>
+        <template is="mImage" data="{{...mod.content}}" wx:elif="{{mod.name=='MImage'&&mod.content}}"></template>
+        <template is="mImageList" data="{{...mod.content}}" wx:elif="{{mod.name=='MImageList'&&mod.content}}"></template>
+        <template is="mCase" data="{{...mod.content}}" wx:elif="{{mod.name=='MCase'&&mod.content}}"></template>
+        <template is="mVideo" data="{{...mod.content}}" wx:elif="{{mod.name=='MVideo'&&mod.content}}"></template>
+        <template is="mTel" data="{{...mod.content}}" wx:elif="{{mod.name=='MTelphone'&&mod.content}}"></template>
+    </block>
+</view>
+<template is="im" data="{{hasMobile:hasMobile,msgNum:msgNum}}"></template>
+<template is="msgTip" data="{{...msgInfo,msgStatus:msgStatus,cardAvatar:cardAvatar,hasMobile:hasMobile}}"></template>
+<template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>

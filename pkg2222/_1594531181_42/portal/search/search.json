@@ -1,0 +1,9 @@
+{
+    "backgroundColor": "#FFFFFF",
+    "usingComponents": {
+        "navigation-bar": "../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar",
+        "image-view": "../../libs/mmuxwxappdevkit/widget/image-view/image-view",
+        "search-view": "../../widget/search-view/search-view"
+    },
+    "enablePullDownRefresh": false
+}

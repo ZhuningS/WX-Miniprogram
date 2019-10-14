@@ -1,0 +1,31 @@
+.bgwhite {
+    background-color: white;
+}
+
+.gridYr::before {
+    transform: scale(0.5,0.5);
+    background: #ddd;
+}
+
+.user-info {
+    padding-top: 90rpx;
+    padding-bottom: 20rpx;
+}
+
+.user-info .avatar {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+}
+
+.nickname {
+    font-weight: bold;
+}
+
+.user-info .title {
+    font-weight: bold;
+}
+
+@import "../tpl.wxss";
+
+@import "../../../__wuBaseWxss__/1.wxss";

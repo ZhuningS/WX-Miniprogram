@@ -1,0 +1,121 @@
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view hidden="{{!dataLoaded}}">
+    <view class="card_shop">
+        <image src="{{groupInfo.avatar}}"></image>{{groupInfo.card_name}}的商城</view>
+    <view bindtap="_jump" class="group_goods" data-url="/pages/goodsDetail/detailGroup/index?id={{groupInfo.goodsid}}">
+        <view class="goods_img">
+            <image mode="aspectFill" src="{{groupInfo.thumb}}"></image>
+        </view>
+        <view class="goods_info">
+            <view class="name mulellipsis">{{groupInfo.name}}</view>
+            <view class="ellipsis" style="font-size:24rpx; color: #aaa">{{groupInfo.shorttitle}}</view>
+            <view class="num">{{groupInfo.total}}人团</view>
+            <view class="price">¥{{groupInfo.price}}
+        <text class="old">¥{{groupInfo.priceshow}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="group_status ">
+        <block wx:if="{{groupInfo.issuccess==0}}">
+            <view class="text1">拼团中</view>
+            <view class="t2">仅差{{person}}人拼团成功</view>
+            <view class="t3 timeDown">距结束
+        <view>{{lastTimeStr.h}}</view>:
+        <view>{{lastTimeStr.m}}</view>:
+        <view>{{lastTimeStr.s}}</view>
+            </view>
+        </block>
+        <view class="text1" style="margin: 0 auto" wx:else>拼团成功</view>
+    </view>
+    <view class="group_team">
+        <view class="team_group">
+            <view class="avatar" wx:for="{{groupInfo.users}}">
+                <image class="icon_avatar" src="{{item.logo}}"></image>
+                <image class="icon_tuanzhang" src="/images/card/tuanzhang@3x.png" wx:if="{{item.ishead==1}}"></image>
+            </view>
+            <view class="avatar" wx:for="{{person}}">
+                <image class="icon_avatar" src="/images/card/jiaren@3x.png"></image>
+            </view>
+        </view>
+        <view bindtap="_buy" class="group_btn_join" wx:if="{{groupInfo.is_team==0&&groupInfo.issuccess==0}}">参加拼团</view>
+        <button class="group_btn_join" openType="share" wx:if="{{groupInfo.is_team==1&&groupInfo.issuccess==0}}">邀请好友拼单</button>
+    </view>
+    <view style="display:flex; padding: 0 0 30rpx 0; justify-content: center; background: #fff" wx:if="{{groupInfo.issuccess==1&&groupInfo.order_id!=0}}">
+        <view bindtap="_jump" class="btn-order" data-openType="redirectTo" data-url="/pages/order/orderDetail/index?id={{groupInfo.order_id}}&isgroups=1">查看订单</view>
+        <view bindtap="_jump" class="btn-order2" data-opentype="redirectTo" data-url="/pages/shop/index">更多商品</view>
+    </view>
+    <view bindtap="_jump" class="backtocard" data-opentype="redirectTo" data-url="/pages/card/index?id={{groupInfo.card_user_id}}" wx:if="{{invite!=''}}">返回名片</view>
+    <view class="group_play">
+        <view class="title">拼团玩法</view>
+        <view class="body">
+            <image src="http://img.weixin.sundayer.cn/card/navagation.png" style="width: 500rpx;height: 40rpx;"></image>
+            <view class="text">
+                <text>开团/参团</text>
+                <text>邀请好友</text>
+                <text>满员发货</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="panel-cm" style="display:{{panel.isShow?'block':'none'}}">
+    <view animation="{{panel.opacityAnimation}}" class="panel-mask"></view>
+    <view animation="{{panel.animation}}" class="panel-content">
+        <scroll-view scrollY="{{true}}">
+            <view class="panel-g-item dib-wrap">
+                <image class="goodsImg" mode="aspectFill" src="{{groupInfo.picture[0]}}"></image>
+                <view class="g-mid dib">
+                    <view class="g-title">
+                        <text>{{groupInfo.name}}</text>
+                    </view>
+                    <view class="price">
+                        <text>￥{{groupInfo.price}}</text>
+                    </view>
+                </view>
+                <form bindsubmit="_closePanel" reportSubmit="true">
+                    <button class="nobutton" formType="submit" style="padding: 30rpx;">
+                        <view class="panel-close dib"></view>
+                    </button>
+                </form>
+            </view>
+            <view class="cm-content">
+                <view wx:for="{{skuList}}" wx:for-index="groupIndex" wx:key="id">
+                    <view class="sku-label">
+                        <text>{{item.name}}</text>
+                    </view>
+                    <view bindtap="_selectSku" class="sku-btn {{sku.selected?'sku-btn-selected':''}}" data-group-index="{{groupIndex}}" data-sku-index="{{skuIndex}}" wx:for="{{item.data}}" wx:for-index="skuIndex" wx:for-item="sku" wx:key="id">
+                        <text>{{sku.name}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="cm-amount clearfix">
+                <view class="stock-num">
+                    <text>库存量：{{num}}</text>
+                    <text class="limitNum" wx:if="{{actInfo&&actInfo.limit_num}}">限购{{actInfo.limit_num}}件</text>
+                </view>
+                <view class="my-bnt">
+                    <form bindsubmit="_minus" class="dib" data-min="{{0}}" reportSubmit="true">
+                        <button class="nobutton" formType="submit">
+                            <view class="bnt {{counter.minusDisabled?'disabled':''}}">
+                                <text>－</text>
+                            </view>
+                        </button>
+                    </form>
+                    <input bindinput="_changeNum" class="ipt" type="number" value="{{num>0?counter.number:0}}"></input>
+                    <form bindsubmit="_add" class="dib" data-max="{{num}}" reportSubmit="true">
+                        <button class="nobutton" formType="submit">
+                            <view class="bnt {{counter.addDisabled?'disabled':''}}">＋</view>
+                        </button>
+                    </form>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="cm-foot">
+            <form bindsubmit="{{num>0?'_confirmBuy':''}}" reportSubmit="true">
+                <button class="btn-primary groupBuyBtn_lg" formType="submit" style="{{num>0?'':'background:#ccc'}}">我要参团</button>
+            </form>
+        </view>
+    </view>
+</view>

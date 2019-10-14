@@ -1,0 +1,39 @@
+<view class="c-subLst {{currentSkin}}">
+    <view class="c-subLst-main" wx:for="{{vm.list}}" wx:key="key">
+        <view class="c-subLst-main-status f fc">
+            <text style="background-color:{{item.state==1?'#666':'#09BB07'}}"></text>
+            <text>{{item.state==1?'待商家确认':'商家已确认'}}</text>
+        </view>
+        <view class="f30" style="margin-bottom:30rpx;">{{item.remark.goods.name}}</view>
+        <block wx:for="{{item.formdatajson}}" wx:for-index="i" wx:for-item="info" wx:key="i">
+            <view class="c-subLst-main-same f" wx:if="{{info[0]=='预约时间'}}">
+                <text>预约时间：</text>
+                <text class="skin_txt f1 line line1">{{info[1]}}</text>
+            </view>
+            <view class="c-subLst-main-same f" wx:if="{{info[0]=='地址'}}">
+                <text>预约地区：</text>
+                <text class="f1 line line1">{{info[1]}}</text>
+            </view>
+            <view class="c-subLst-main-same f" wx:if="{{info[0]=='详细地址'}}">
+                <text>详细街道：</text>
+                <text class="f1 line line1">{{info[1]}}</text>
+            </view>
+            <view class="c-subLst-main-same f" wx:if="{{info[0]=='姓名'}}">
+                <text>姓 名：</text>
+                <text class="f1 line line1">{{info[1]}}</text>
+            </view>
+            <view class="c-subLst-main-same f" wx:if="{{info[0]=='年龄'}}">
+                <text>年 龄：</text>
+                <text class="f1 line line1">{{info[1]}}</text>
+            </view>
+            <view class="c-subLst-main-same f" wx:if="{{info[0]=='手机号码'}}">
+                <text>手机号码：</text>
+                <text class="f1 line line1">{{info[1]}}</text>
+            </view>
+        </block>
+        <view class="c-subLst-main-same f" wx:if="{{item.money}}">
+            <text>预约费用：</text>
+            <text class="f1 line line1">{{item.money}}元</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,25 @@
+.pay_wrap2 {
+    background: #fff;
+    width: 90%;
+    margin: 50rpx auto 80rpx;
+    border-radius: 18rpx;
+    padding-bottom: 10rpx;
+}
+
+.pay_wrap2 .content2 {
+    padding: 40rpx 0;
+    text-align: center;
+}
+
+.pay_wrap2 .content2 view {
+    padding: 6rpx 0;
+}
+
+.btn-sy {
+    border: 1px solid #999;
+    border-radius: 40rpx;
+    color: #999;
+    width: 200rpx;
+    font-size: 28rpx;
+    margin: 30rpx auto 0;
+}

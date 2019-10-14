@@ -1,0 +1,303 @@
+page {
+    background: #eee;
+}
+
+.select-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 999;
+}
+
+.select {
+    padding: 0 30rpx 10px 30rpx;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+}
+
+.select-input {
+    border-radius: 40rpx;
+    height: 33px;
+    background-color: #f0f0f0;
+    position: relative;
+    float: left;
+    width: 78%;
+}
+
+.select-icon {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.select-input-style {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    width: 70%;
+}
+
+.close-icon {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+}
+
+.select-btn {
+    float: right;
+    width: 20%;
+    height: 33px;
+    line-height: 33px;
+    border-radius: 40rpx;
+    color: #fff;
+    background: #ff6900;
+    font-size: 14px;
+}
+
+.select-btn::after {
+    border: 0;
+}
+
+.select-btn-hover {
+    background: #de5d03;
+}
+
+.choose-location {
+    height: 90px;
+    width: 100%;
+}
+
+.location-all,.location-local {
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    padding: 0 30rpx;
+    position: relative;
+}
+
+.location-all {
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+}
+
+.choose-right {
+    float: right;
+    font-size: 22px;
+}
+
+.top-bar {
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.box-label {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.top-bar-box {
+    justify-content: space-between;
+    padding: 0 30rpx;
+}
+
+.icon-price,.icon-country {
+    display: inline-block;
+    margin-left: 10rpx;
+}
+
+.icon-price {
+    height: 44px;
+    vertical-align: middle;
+}
+
+.icon-price:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: 14px;
+    background: rgba(0,0,0,0);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 4px solid #bbb;
+}
+
+.icon-price:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    margin-top: 4px;
+    background: rgba(0,0,0,0);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #bbb;
+}
+
+.active {
+    color: #ff6900;
+    box-sizing: border-box;
+}
+
+.icon-price.top:before {
+    border-bottom: 4px solid #ff6900;
+}
+
+.icon-price.bottom:after {
+    border-top: 4px solid #ff6900;
+}
+
+.icon-country {
+    background: rgba(0,0,0,0);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #ff6900;
+    vertical-align: middle;
+}
+
+.scroll-content {
+    margin-top: 89px;
+    background: #fff;
+}
+
+.list {
+    overflow: hidden;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+}
+
+.list-img {
+    width: 85px;
+    height: 85px;
+    margin: 30rpx 30rpx;
+    float: left;
+}
+
+.list-content {
+    height: 85px;
+    margin-left: 230rpx;
+    margin-top: 30rpx;
+    margin-right: 30rpx;
+}
+
+.list-content-title {
+    font-size: 14px;
+    height: 38px;
+    line-height: 19px;
+    color: #484848;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.list-price {
+    color: #ed722e;
+    height: 17px;
+    line-height: 17px;
+    margin-top: 10rpx;
+    margin-bottom: 20rpx;
+}
+
+.list-price-icon {
+    font-size: 12px;
+    float: left;
+}
+
+.list-price-count {
+    font-size: 16px;
+}
+
+.label {
+    background: #ffa922;
+    font-size: 8px;
+    float: left;
+    border-radius: 7rpx;
+    position: relative;
+    padding-left: 14px;
+    color: #fff;
+    height: 17px;
+    line-height: 17px;
+    margin-left: 12px;
+    padding-right: 10rpx;
+    vertical-align: middle;
+}
+
+.phone {
+    position: absolute;
+    height: 8px;
+    width: 6px;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-51%);
+    background: url(http://bgl.zbjimg.com/bgl%2Fbjclound%2Fpic.png%2Forigine%2F777bdec8-6ab0-4703-a56d-14c09c1fe087?imageMogr2/auto-orient/strip/quality/90) no-repeat;
+    background-size: 100%;
+}
+
+.list-content-local {
+    font-size: 10px;
+    color: #b0b0b0;
+}
+
+.go-top {
+    width: 84rpx;
+    height: 84rpx;
+    position: fixed;
+    right: 20rpx;
+    bottom: -100rpx;
+}
+
+.go-top-show {
+    transition: bottom .5s;
+    bottom: 80rpx;
+}
+
+.loading-title {
+    display: block;
+    font-size: 30rpx;
+    color: #b0b0b0;
+    width: 100%;
+    text-align: center;
+    margin-top: 10rpx;
+}
+
+.box-shadow {
+    background-color: rgba(0,0,0,.5);
+    pointer-events: auto;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.none-box {
+    font-size: 30rpx;
+    color: #8f8f8f;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 350rpx;
+    text-align: center;
+}
+
+.none-img {
+    width: 210rpx;
+    height: 184rpx;
+    margin-bottom: 10rpx;
+}

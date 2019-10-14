@@ -1,0 +1,271 @@
+@import "../../../__wuBaseWxss__/0.wxss";
+
+.write-addr {
+    padding: 0 28rpx 20rpx;
+    background-color: #fff;
+}
+
+.name,.tel,.provinces,.detailed-address,.postcode {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    border-bottom: 2rpx solid #eee;
+}
+
+.write-addr text {
+    display: inline-block;
+    width: 180rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 16px;
+}
+
+.write-addr input {
+    flex: 1;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 28rpx;
+}
+
+.linkage {
+    flex: 1;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+button {
+    font-size: 16px;
+}
+
+.addr-list-wrap {
+    padding: 0 28rpx;
+    background-color: #fff;
+    margin-bottom: 100rpx;
+}
+
+.addr-tit {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding: 0 28rpx;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addr-tit text {
+    font-size: 16px;
+}
+
+.addr-list {
+    width: 100%;
+    border-top: 2rpx solid #eee;
+}
+
+.addr-list .default-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.default-wrap text {
+    font-size: 14px;
+    display: inline-block;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+.default {
+    line-height: 60rpx;
+    vertical-align: middle;
+}
+
+.addr-list .addr-info {
+    line-height: 40rpx;
+}
+
+.addr-info text {
+    font-size: 28rpx;
+}
+
+.addr-info .name-phone {
+    padding: 10rpx 0 6rpx;
+}
+
+.addr-info .addr {
+    padding: 6rpx 0 10rpx;
+}
+
+.user-name {
+    display: inline-block;
+    margin-right: 40rpx;
+}
+
+.user-phone {
+    display: inline-block;
+}
+
+.addr-handle {
+    height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addr-list .edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit text {
+    font-size: 28rpx;
+    color: #ef5b6b;
+}
+
+.add-addr {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    background-color: #f65c59;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    border-radius: 0;
+}
+
+.add-addr text {
+    font-size: 32rpx;
+    color: #fff;
+}
+
+.citypickers {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+    background: rgba(0,0,0,0.7);
+    color: #000;
+    z-index: 2002;
+}
+
+.citybody {
+    position: fixed;
+    bottom: 0px;
+    background: #eee;
+}
+
+.cityheader {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 4;
+}
+
+.city-cancel {
+    float: left;
+    margin: 20rpx;
+    color: #818181;
+}
+
+.city-true {
+    float: right;
+    margin: 20rpx;
+    font-size: 40px;
+    color: #666;
+}
+
+.nav-item {
+    color: #313131;
+    flex: 1;
+    text-align: center;
+    line-height: 35px;
+    height: 35px;
+}
+
+.nav-item.selected {
+    color: #e53947;
+    border-bottom: 2px solid #e53947;
+}
+
+.default image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+    vertical-align: middle;
+}
+
+.default-addr {
+    color: #2fb42e;
+}
+
+.zan-toptips {
+    display: block;
+    position: fixed;
+    -webkit-transform: translateZ(0) translateY(-100%);
+    width: 100%;
+    min-height: 50px;
+    top: 0;
+    line-height: 50px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 110;
+    transition: all 0.4s ease;
+}
+
+.zan-toptips-show {
+    -webkit-transform: translateZ(0) translateY(0);
+}
+
+.nodata {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    text-align: center;
+}
+
+.nodata .icon {
+    display: block;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.nodata text {
+    color: #666;
+    line-height: 1;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.nodata .btn-wrap {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+.nodata .btnl {
+    background-color: transparent;
+    width: auto;
+    line-height: 36px;
+    padding: 0 37px;
+    font-size: 15px;
+}
+
+.btn-margin {
+    margin-top: 30rpx;
+}
+
+.btn-del {
+    background-color: #e92424;
+    color: #fff;
+}

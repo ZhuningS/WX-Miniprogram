@@ -1,0 +1,11 @@
+<view catchtap="handleArticleMetaTap" class="{{rootClassNames}}">
+    <view class="article-body">
+        <view class="article-title">
+      {{articleData.title}}
+    </view>
+        <view class="article-snippet" wx:if="{{articleData.snippet}}">
+      {{articleData.snippet}}
+    </view>
+    </view>
+    <image lazyLoad class="article-cover" mode="aspectFill" src="{{articleData.coverUrl}}" wx:if="{{articleData.coverUrl}}"></image>
+</view>

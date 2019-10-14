@@ -1,0 +1,8 @@
+<view class="shengming fadeInDown">
+    <view class="content">
+        <rich-text class="richText" nodes="{{config.statement}}"></rich-text>
+    </view>
+    <view class="footer">
+        <button catchtap="onBackTap" class="f16 mt20" type="primary">我已阅读</button>
+    </view>
+</view>

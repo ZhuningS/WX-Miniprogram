@@ -1,0 +1,95 @@
+@-webkit-keyframes loadingIn {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 80px;
+    }
+}
+
+@keyframes loadingIn {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 80px;
+    }
+}
+
+@-webkit-keyframes spinnerBounce {
+    0%,100% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+@keyframes spinnerBounce {
+    0%,100% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}
+
+.loading {
+    position: relative;
+}
+
+.loading.type-initial {
+    position: fixed;
+    z-index: 30000;
+    top: 0;
+    left: 0;
+    width: 100vw!important;
+    height: 100vh!important;
+    background: #FFFFFF;
+}
+
+.loading.type-initial .initial-spinner {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    width: 36px;
+    height: 36px;
+    transform: translate3d(-50%,-50%,0);
+}
+
+.loading.type-initial .double-bounce1,.loading.type-initial .double-bounce2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #333333;
+    opacity: 0.5;
+    animation: spinnerBounce 1.5s infinite ease-in-out;
+}
+
+.loading.type-initial .double-bounce2 {
+    animation-delay: -0.75s;
+}
+
+.loading.type-loadMore.with-tween {
+    height: 80px;
+}
+
+.loading.type-loadMore.with-tween .loadMore-spinner {
+    left: 50%;
+    height: 20px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 54%;
+    width: 20px;
+}
+
+.loading.type-loadMore.with-tween.status-loaded {
+    transition: 268ms;
+}

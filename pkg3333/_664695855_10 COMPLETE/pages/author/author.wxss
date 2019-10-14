@@ -1,0 +1,70 @@
+.zbj-author {
+    padding: 0 60rpx;
+}
+
+.author-icon {
+    text-align: center;
+    padding: 72rpx 0;
+    border-bottom: 2px solid #d8d8d8;
+}
+
+.author-img {
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.author-title {
+    color: #282828;
+    font-size: 40rpx;
+    font-weight: 600;
+    display: block;
+}
+
+.author-content {
+    font-weight: 600;
+    font-size: 32rpx;
+    color: #000000;
+    padding: 66rpx 0 44rpx 0;
+}
+
+.author-info {
+    color: #979797;
+    font-weight: 600;
+    font-size: 28rpx;
+}
+
+.info-icon {
+    width: 8rpx;
+    height: 8rpx;
+    background: #888888;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 30rpx;
+}
+
+.author-btn {
+    margin-top: 84rpx;
+}
+
+.btn {
+    display: inline-block;
+    font-size: 36rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-radius: 4rpx;
+}
+
+.btn-no {
+    color: #666666;
+    background: #f6f6f6;
+    margin-right: 24rpx;
+}
+
+.btn-yes {
+    color: #ffffff;
+    background: #ff6900;
+}
+
+.btn::after {
+    border: 0;
+}

@@ -1,0 +1,17 @@
+.more-items {
+    margin-bottom: 120rpx;
+}
+
+.more-items .magazine-cover {
+    display: inline-block;
+    margin-right: 30rpx;
+    width: 630rpx;
+}
+
+.more-items .magazine-cover:first-child {
+    margin-left: 60rpx;
+}
+
+.more-items .magazine-cover:last-child {
+    margin-right: 60rpx;
+}

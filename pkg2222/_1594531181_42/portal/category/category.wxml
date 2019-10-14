@@ -1,0 +1,44 @@
+<navigation-bar title=""></navigation-bar>
+<search-view bindsearch="onClickSearch" placeHolder="{{placeHolder}}" query="{{query}}"></search-view>
+<view class="container {{isLoadAll?'with-filter':''}}">
+    <block wx:if="{{!isLoadAll}}">
+        <view class="header-wrap" wx:if="{{groupName&&groupImgUrl}}">
+            <view class="header-inner-wrap">
+                <text class="header-category-name">{{groupName}}</text>
+                <view class="header-category-sep"></view>
+                <image-view class="header-category-img" mode="aspectFit" src="{{groupImgUrl+'/0'}}"></image-view>
+            </view>
+        </view>
+        <view class="line"></view>
+    </block>
+    <block wx:else>
+        <goods-filter bindonclickdropdownitem="onClickDropDownItem" bindonclickfilteritem="onClickFilterItem" bindonclosedropdown="onCloseDropDown" items="{{filterItems}}" wx:if="{{isLoadAll}}">
+            <filter-item align="-1" datasource="{{filterDropdownDs}}" selected="{{filterDropdownSelected}}" title="{{groupName}}" type="dropdown"></filter-item>
+            <filter-item selected="{{filterNewOrder}}" title="最新上架" type="default"></filter-item>
+            <filter-item align="1" order="{{filterPriceOrder}}" selected="{{filterPriceOrder!=0}}" title="价格" type="order"></filter-item>
+        </goods-filter>
+    </block>
+    <view class="item-list">
+        <view bindtap="onProductClick2" class="line-item-wrap {{index==lines.length-1?'line-item-wrap__no-border':''}}" data-item="{{item}}" wx:for="{{lines}}" wx:key="id">
+            <view class="line-item-inner-wrap">
+                <image-view class="line-item-img" imgStyle="width: 200rpx; height: 200rpx;" mode="aspectFill" src="{{item.url+'/162'}}"></image-view>
+                <view class="line-item-text__wrap">
+                    <text class="line-item-text__title">{{item.text}}</text>
+                    <text class="line-item-text__price">{{item.extra}}</text>
+                    <text class="line-item-text__market-price" wx:if="{{item.extra2&&item.extra2.length>0}}">{{item.extra2}}</text>
+                    <text class="line-item-text__saleDate" wx:if="{{item.saleDateTips.length>0}}">{{item.saleDateTips}}</text>
+                </view>
+            </view>
+            <view class="line-item-active-mask"></view>
+        </view>
+    </view>
+    <view class="no-more-footer" wx:if="{{footerTip}}">
+        <text>{{footerTip}}</text>
+    </view>
+    <view class="error-area">
+        <error-page errorTitle="{{errorTitle}}" warningText="{{warningText}}" wx:if="{{hasError}}"></error-page>
+    </view>
+    <view wx:if="{{hasLoaded&&(!lines||lines.length<=0)}}">
+        <empty-page title="暂无上架商品"></empty-page>
+    </view>
+</view>

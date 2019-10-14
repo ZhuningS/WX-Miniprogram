@@ -1,0 +1,42 @@
+<view class="order-not-login" wx:if="{{isLogin==false}}">
+    <image class="not-login-img" src="../img/zbj-order-no.png"></image>
+    <view class="not-login-title">您还没有登录，请登录后查看订单</view>
+    <botton bindtap="goLogin" class="not-login-btn">立即登录</botton>
+</view>
+<view class="order-me" wx:if="{{isLogin}}">
+    <scroll-view bindscrolltolower="loadOrder" class="order-list" scrollY="true" style="height:{{scrollHeight}}px">
+        <view class="user-info clearfix">
+            <image class="user-img" src="{{userInfo.avatarUrl}}"></image>
+            <view class="user-content">
+                <text class="user-name">{{userInfo.nickName==null?'':userInfo.nickName}}</text>
+                <text class="user-phone">{{userInfo.mobile==null?'':userInfo.mobile}}</text>
+            </view>
+        </view>
+        <view class="order-not-login" wx:if="{{noOrder==true}}">
+            <image class="not-login-img" src="../img/zbj-order-no.png"></image>
+            <view class="not-login-title">您还没有订单，快去下单吧！</view>
+        </view>
+        <view wx:if="{{noOrder==false}}">
+            <navigator class="order-info" url="/pages/orderDetail/orderDetail?taskId={{item.taskId}}" wx:for="{{orders}}" wx:key="id">
+                <view class="order-title clearfix">
+                    <view class="order-title-info">{{item.title==null?'':item.title}}</view>
+                </view>
+                <view class="order-content clearfix">
+                    <view class="order-money">
+                        金额：<text class="order-money-num" wx:if="{{item.amount!=null}}">{{item.mode!==13||item.amount?'¥'+item.amount:'待定'}}</text>
+                    </view>
+                    <button class="order-hosting" wx:if="{{item.mode!==13&&item.state==1}}">托管赏金</button>
+                    <text class="order-result doing" wx:if="{{item.state==2}}">进行中</text>
+                    <text class="order-result success" wx:if="{{item.state==5}}">交易成功</text>
+                    <text class="order-result fail" wx:if="{{item.state==7}}">交易失败</text>
+                </view>
+            </navigator>
+            <view class="loading" hidden="{{!loading}}">正在加载...</view>
+            <view class="loading" hidden="{{loading}}">没有更多数据了！</view>
+            <view class="order-kefu">
+                <image class="kefu-img" src="../img/order-kefu.png"></image>
+                <text class="kefu-info"> 联系客服：400-188-6666</text>
+            </view>
+        </view>
+    </scroll-view>
+</view>

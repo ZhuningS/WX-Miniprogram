@@ -1,0 +1,11 @@
+<template name="redpop">
+    <view class="mask"></view>
+    <view class="redpop" style="">
+        <view class="red" style="position: relative">
+            <image bindtap="_jump" data-url="/pages/coupon/index" src="../../../images/new/tanchuang.png" style="width:580rpx;height:731rpx"></image>
+            <view bindtap="_close_red" class="btn-close">
+                <image src="/images/new/X.png"></image>
+            </view>
+        </view>
+    </view>
+</template>

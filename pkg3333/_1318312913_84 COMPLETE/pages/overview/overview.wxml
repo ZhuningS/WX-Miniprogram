@@ -1,0 +1,102 @@
+<template name="cat-section">
+    <view class="page">
+        <view bindtap="gotoCategory" class="category-name" data-cid="{{cate.section.events[0].category.cid}}" wx:if="{{!isSingle}}">
+            <view style="display:flex;align-items:center;">
+                <text>{{cate.section.events[0].category.name}}</text>
+                <qm-icon name="corner-right"></qm-icon>
+            </view>
+            <image catchtap="onTapProcessCategory" class="icon" data-cid="{{cate.section.events[0].category.id}}" data-status="{{isHidden?'forbidden':'shown'}}" mode="aspectFill" src="/images/new_assets/icon_menu.svg" wx:if="{{config.enableSubscribe}}"></image>
+        </view>
+        <view class="cate-ctn" wx:if="{{config.enableSubscribe}}">
+            <form reportSubmit bindsubmit="hackForm">
+                <view class="cate" wx:if="{{index>=1}}" wx:for="{{cate.section.events}}" wx:key="{{ index }}">
+                    <navigator navigate class="label1" hoverClass="none" url="/pages/magazine/magazine?id={{item.magazine.id}}&content=subscribed"># {{item.magazine.name}}
+          </navigator>
+                    <view wx:if="{{subscribed[item.magazine.id]}}">
+                        <button bindtap="onTapUnsubscribe" class="button border width-60" data-mid="{{item.magazine.id}}" formType="submit" hoverClass="none">已订阅
+            </button>
+                    </view>
+                    <view wx:else>
+                        <button bindtap="onTapSubscribe" class="button" data-mid="{{item.magazine.id}}" formType="submit" hoverClass="none">订阅
+            </button>
+                    </view>
+                </view>
+            </form>
+        </view>
+        <view class="tags" wx:else>
+            <view class="tags-ctn">
+                <template is="card-explore-category" data="{{...item,color:cate.section.events[0].category.color,style:'half'}}" wx:if="{{index>=1}}" wx:for="{{cate.section.events}}" wx:key="{{ index }}"></template>
+            </view>
+        </view>
+    </view>
+</template>
+<import src="../components/card.wxml"></import>
+<import src="../components/widgets.wxml"></import>
+<block wx:if="{{!error}}">
+    <view class="bar">
+        <view class="input-wrapper">
+            <input bindconfirm="search" bindinput="onInput" class="input" confirmType="search" placeholder="{{config.enableMagazine?'轻芒什么都有':'搜索想要的文章…'}}"></input>
+        </view>
+        <view bindtap="search" class="button white">搜索</view>
+    </view>
+    <view class="loading-ctn" wx:if="{{loading}}">
+        <template is="loading" data="{{loading:loading}}"></template>
+    </view>
+    <view class="section-title" wx:if="{{config.enableFollow&&!loading}}">
+        <view style="display:inline-block;position:relative;flex-grow:2;">
+            <navigator navigate class="avatar-ctn" hoverClass="none" style="z-index:{{10-index}}" url="/pages/profile/user?uid={{item.user.uid}}" wx:if="{{index<4}}" wx:for="{{users}}" wx:key="{{ index }}">
+                <image lazyLoad class="avatar small" src="{{item.user.avatar}}"></image>
+            </navigator>
+        </view>
+        <navigator class="button text" openType="navigate" url="/pages/user/list?type=follow">管理</navigator>
+        <navigator class="button text" openType="navigate" style="display:flex;align-items:center;padding-right:0;" url="/pages/explore/list?section=users">发现更多的人
+        <image class="icon compact" src="/images/new_assets/icon_corner_small_right.svg"></image>
+        </navigator>
+    </view>
+    <view class="recent-publication-container" wx:if="{{recentPublications.length}}">
+        <view class="title">最近访问的小程序</view>
+        <scroll-view scrollWithAnimation scrollX class="publication-container">
+            <view class="publication-wrapper">
+                <view bindtap="handleClickPublication" class="publication-item" data-publication="{{publication}}" wx:for="{{recentPublications}}" wx:for-item="publication" wx:key="index">
+                    <image class="logo" mode="aspectFill" src="{{publication.logo}}" wx:if="{{publication.logo}}"></image>
+                    <view class="logo" wx:else></view>
+                    <view class="title">{{publication.name}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="" wx:if="{{config.enableSubscribe&&!loading}}">
+        <view class="page">
+            <view class="page-name">
+                <view class="title">
+                    <view class="name">我的杂志</view>
+                    <view class="buttons">
+                        <navigator class="button text" openType="navigate" url="/pages/user/list?type=magazine">管理杂志</navigator>
+                    </view>
+                </view>
+            </view>
+            <view class="tags">
+                <view class="tags-ctn">
+                    <magazine-name-list enableCreate events="{{subMagazines}}"></magazine-name-list>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view is="single-card-seperator" wx:if="{{cates&&cates.length>0&&config.enableSubscribe}}"></view>
+    <view wx:for="{{cates}}" wx:for-item="cate" wx:key="{{ index }}">
+        <template is="cat-section" data="{{cate:cate,config:config,subscribed:subscribed,isHidden:false,isSingle:cates.length===1}}"></template>
+    </view>
+    <view class="page background" wx:if="{{hiddenCates&&hiddenCates.length>0}}">
+        <template is="single-card-label" data="{{ label:{title:'已隐藏分类',description:'如果你想看到它们的内容，点击后它们将重新被显示出来'} }}"></template>
+        <template is="cat-section" data="{{cate:cate,config:config,subscribed:subscribed,isHidden:true}}" wx:for="{{hiddenCates}}" wx:for-item="cate" wx:key="{{ index }}"></template>
+    </view>
+    <block wx:if="{{about}}">
+        <view style="position:fixed;height:72px;width:100%;bottom:0;font-size:20px;background-color:#fff;text-align:center;font-size:14px;">
+            <view style="margin-top:8px;">{{about.copyright}}</view>
+            <view style="font-size:12px;margin-top:8px;">使用轻芒小程序+，免费拥有自己的小程序</view>
+        </view>
+        <view style="position:relative; height:72px;"></view>
+    </block>
+</block>
+<template is="error" data wx:else></template>
+<include src="../components/global.wxml"></include>

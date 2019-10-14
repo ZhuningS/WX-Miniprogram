@@ -1,0 +1,14 @@
+@import "../../../__wuBaseWxss__/10.wxss";
+
+.time {
+    font-size: 14px;
+}
+
+.type {
+    position: absolute;
+    right: 0;
+    padding: 20rpx;
+    font-size: 36rpx;
+    top: 50%;
+    margin-top: -46rpx;
+}

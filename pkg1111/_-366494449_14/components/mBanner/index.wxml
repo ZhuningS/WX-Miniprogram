@@ -1,0 +1,29 @@
+<template name="mBanner">
+    <view class="mSwiper" style="margin-top:{{style.marginTop}};margin-bottom:{{style.marginBottom}};height:{{style.height}}" wx:if="{{dataset.imgList&&dataset.imgList.length>0}}">
+        <view class="mSwiper__inner">
+            <image class="mSwiper__inner__img" mode="widthFix" src="{{dataset.imgList[0].img}}"></image>
+        </view>
+        <swiper autoplay="{{true}}" circular="{{true}}" class="mSwiper__swiper" duration="{{500}}" indicatorDots="{{true}}" interval="{{5000}}">
+            <swiper-item class="mSwiper__swiperItem" wx:for="{{dataset.imgList}}">
+                <view bindtap="_jump" class="mSwiperItem" data-url="/pages/goodsDetail/detail/index?id={{item.linkData.id}}" wx:if="{{item.linkType=='goods'}}">
+                    <image class="mSwiperItem__img" mode="widthFix" src="{{item.img}}"></image>
+                </view>
+                <view bindtap="_jump" class="mSwiperItem" data-url="/pages/goodsDetail/detailMs/index?id={{item.linkData.id}}" wx:if="{{item.linkType=='msgoods'}}">
+                    <image class="mSwiperItem__img" mode="widthFix" src="{{item.img}}"></image>
+                </view>
+                <view bindtap="_jump" class="mSwiperItem" data-url="/pages/goodsDetail/detailGroup/index?id={{item.linkData.id}}" wx:if="{{item.linkType=='tggoods'}}">
+                    <image class="mSwiperItem__img" mode="widthFix" src="{{item.img}}"></image>
+                </view>
+                <view bindtap="_jump" class="mSwiperItem" data-url="{{item.linkData.path}}" wx:if="{{item.linkType=='page'}}">
+                    <image class="mSwiperItem__img" mode="widthFix" src="{{item.img}}"></image>
+                </view>
+                <view bindtap="_jump" class="mSwiperItem" data-url="/pages/shop/home/index?id={{item.linkData.sid}}" wx:if="{{item.linkType=='shop'}}">
+                    <image class="mSwiperItem__img" mode="widthFix" src="{{item.img}}"></image>
+                </view>
+                <view class="mSwiperItem" wx:if="{{item.linkType==''}}">
+                    <image class="mSwiperItem__img" mode="widthFix" src="{{item.img}}"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</template>

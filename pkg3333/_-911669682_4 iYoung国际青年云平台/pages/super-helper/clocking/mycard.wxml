@@ -1,0 +1,26 @@
+<view class="contenter">
+    <view class="show-card mt20">
+        <view bindtap="onNavigateTap" class="card-list transition-duration-150 active-bg" data-id="{{item.id}}" data-url="detail?id={{item.id}}" wx:for="{{data}}" wx:key="{{index}}">
+            <view class="text f16 lineText3">{{item.remark}}</view>
+            <view class="list-bottom flex mt10">
+                <view class="time grey sub">
+                    <text class="iconfont icon-peoplefill mr5"></text>
+                    <text class="green">{{item.people}}</text>
+                    <text class="mr10">人已参与</text>
+                    <text>{{item.start_time}}-{{item.end_time}}</text>
+                </view>
+                <view class="punch-badge f12 grey">打卡第{{item.signedDay}}天</view>
+            </view>
+        </view>
+        <view class="nothing tc linght flex mb10" hidden="{{hasMore}}">
+            <text class="sub line mr10"></text>
+            <text>没有更多了</text>
+            <text class="sub line ml10"></text>
+        </view>
+    </view>
+</view>
+<view class="flating-group">
+    <button bindtap="onNavigateTap" class="transition-duration-150 active-bg" data-url="write" hoverClass="none" type="primary">
+        <text class="iconfont icon-add"></text>
+    </button>
+</view>

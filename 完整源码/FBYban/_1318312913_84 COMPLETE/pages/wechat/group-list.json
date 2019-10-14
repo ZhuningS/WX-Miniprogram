@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "玩家",
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+        "qm-loading": "../components/uis/loading/loading.component"
+    }
+}

@@ -1,0 +1,46 @@
+.c-gv {
+    background-color: #fff;
+    width: 100%;
+    padding: 30rpx;
+}
+
+.c-gv .c-gv-title {
+    width: 100%;
+}
+
+.c-gv .c-gv-main {
+    width: 100%;
+}
+
+.c-gv .c-gv-main .c-gv-main-user {
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.c-gv .c-gv-main .c-gv-main-imgs {
+    width: 100%;
+    margin-top: 30rpx;
+}
+
+.c-gv .c-gv-main .c-gv-main-imgs>image {
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 5rpx;
+}
+
+.c-gv .c-gv-main .c-gv-main-imgs .c-gv-main-tip {
+    position: absolute;
+    bottom: 5rpx;
+    right: 5rpx;
+    width: 65rpx;
+    height: 28rpx;
+    text-align: center;
+    line-height: 28rpx;
+    background-color: #fff;
+    color: #333;
+    font-size: 20rpx;
+    border-radius: 14rpx;
+    opacity: .6;
+}

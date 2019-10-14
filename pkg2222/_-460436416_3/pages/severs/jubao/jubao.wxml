@@ -1,0 +1,8 @@
+<form bindsubmit="onPushSubmit" class="form-group" reportSubmit="true">
+    <view class="form-item">
+        <textarea class="jubao-content mt10" maxlength="255" name="remark" placeholder="请填写举报原因"></textarea>
+    </view>
+    <view class="form-btn-item">
+        <button formType="submit" type="primary">提交</button>
+    </view>
+</form>

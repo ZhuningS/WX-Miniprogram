@@ -1,0 +1,83 @@
+{
+    "pages": [
+        "pages/explore/explore",
+        "pages/page/page",
+        "pages/explore/list",
+        "pages/explore/segment",
+        "pages/modify/modify",
+        "pages/modify/add",
+        "pages/create/create",
+        "pages/management/management",
+        "pages/overview/overview",
+        "pages/profile/profile",
+        "pages/profile/user",
+        "pages/profile/edit",
+        "pages/magazine/magazine",
+        "pages/magazine/recommend",
+        "pages/article/article",
+        "pages/article/preview",
+        "pages/article/picker",
+        "pages/search/search",
+        "pages/user/list",
+        "pages/account/login",
+        "pages/social/social",
+        "pages/group/group",
+        "pages/group/member",
+        "pages/post/post",
+        "pages/post/create",
+        "pages/post/quickReply",
+        "pages/post/list",
+        "pages/vote/initiate",
+        "pages/vote/status",
+        "pages/vote/optionUsers",
+        "pages/product/order",
+        "pages/form/form",
+        "pages/web/web",
+        "pages/wechat/group-list",
+        "pages/live/live"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "backgroundColor": "#FFF",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "轻芒杂志",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 800
+    },
+    "tabBar": {
+        "color": "#ccc",
+        "selectedColor": "#000",
+        "borderStyle": "white",
+        "backgroundColor": "#fff",
+        "position": "bottom",
+        "list": [
+            {
+                "pagePath": "pages/overview/overview",
+                "text": "目录",
+                "iconPath": "images/new_assets/tab_overview.png",
+                "selectedIconPath": "images/new_assets/tab_overview_a.png"
+            },
+            {
+                "pagePath": "pages/explore/explore",
+                "text": "杂志",
+                "iconPath": "images/new_assets/tab_subscribed.png",
+                "selectedIconPath": "images/new_assets/tab_subscribed_a.png"
+            },
+            {
+                "pagePath": "pages/profile/profile",
+                "text": "马克",
+                "iconPath": "images/new_assets/tab_profile.png",
+                "selectedIconPath": "images/new_assets/tab_profile_a.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 20000,
+        "downloadFile": 60000
+    },
+    "navigateToMiniProgramAppIdList": [
+        "wx3e0a5430ef91b0e8"
+    ],
+    "debug": true
+}

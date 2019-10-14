@@ -1,0 +1,31 @@
+<view class="wrap">
+    <view class="wrap-time" wx:if="{{time}}">
+        <view class="time">{{time}}</view>
+    </view>
+    <view class="msg msg_align-left" wx:if="{{message.current_user_id===message.to_user_id}}">
+        <image class="avatar" mode="aspectFit" src="{{message.userinfo.profile_photo?message.userinfo.profile_photo+'/64':'../../assets/avatar_default.jpeg'}}"></image>
+        <block wx:if="{{hasBubble}}">
+            <view class="arrow arrow_left" style="border-right-color: {{backgroundColor||'#FFF'}};"></view>
+            <view class="bubble msg_received" style="background: {{backgroundColor||'#FFF'}};">
+                <slot></slot>
+            </view>
+        </block>
+        <view class="no-bubble" wx:else>
+            <slot></slot>
+        </view>
+    </view>
+    <view class="msg msg_align-right" wx:else>
+        <image catchtap="onClickStatus" class="icon-status" src="../../assets/loading.gif" wx:if="{{hasLoading&&message.status==1}}"></image>
+        <image catchtap="onClickStatus" class="icon-status" src="../../assets/message_sendfail.png" wx:if="{{message.status==2}}"></image>
+        <block wx:if="{{hasBubble}}">
+            <view class="bubble msg_sent" style="background: {{backgroundColor||'#91ED61'}};">
+                <slot></slot>
+            </view>
+            <view class="arrow arrow_right" style="border-left-color: {{backgroundColor||'#91ED61'}};"></view>
+        </block>
+        <view class="no-bubble" wx:else>
+            <slot></slot>
+        </view>
+        <image class="avatar" mode="aspectFit" src="{{message.userinfo.profile_photo?message.userinfo.profile_photo+'/64':'../../assets/avatar_default.jpeg'}}"></image>
+    </view>
+</view>

@@ -1,0 +1,88 @@
+<view class="{{currentSkin}}">
+    <view bindtap="addressModel" class="g-address f fv fc-h skin_bg">
+        <view class="w-100 f fc fj f32">
+            <view class="f fc fj">
+                <text>收货人：{{vm_goods.address.userName}}</text>
+                <text>{{vm_goods.address.telNumber}}</text>
+            </view>
+            <view class="dzicon icon-xiala-copy-right ml20"></view>
+        </view>
+        <view class="mt20" wx:if="{{vm_goods.address!=''}}">{{vm_goods.address.provinceName}}{{vm_goods.address.cityName}}{{vm_goods.address.countyName}}{{vm_goods.address.detailInfo}}</view>
+    </view>
+    <view class="g-goods">
+        <view class="g-total f fc fj">
+            <text class="f30">购物清单</text>
+            <view>
+                <text class="c666">共{{vm_goods.totalCount}}件</text>
+                <text class="c666 ml10">小计</text>
+                <wxc-price class="p-price f32">{{vm_goods.totalPrice}}</wxc-price>
+            </view>
+        </view>
+        <view style="padding-left:30rpx;">
+            <view bindtap="$comItem$pathGood" class="f fc fj" data-com-index="{{undefined}}" data-wpypathgood-a="{{$comItem$item.orderDtl.FoodGoodsId}}" style="padding:30rpx 30rpx 30rpx 0;border-bottom:1px solid #eee;" wx:for="{{vm_goods.list}}" wx:for-index="$comItem$index" wx:for-item="$comItem$item" wx:key="$comItem$key">
+                <image catchtap="$comItem$showimg" class="g-img" data-com-index="{{undefined}}" data-wpyshowimg-a="{{$comItem$item.ImgUrl}}" mode="aspectFill" src="{{$comItem$item.ImgUrl}}"></image>
+                <view class="g-content f1 f fv fj">
+                    <view>
+                        <text class="f26 c33 line line1">{{$comItem$item.Introduction}}</text>
+                        <text class="w-100 c666 mt20 f24 c666" style="display:inline-block" wx:if="{{$comItem$item.SpecInfo!='undefined'||$comItem$item.SpecInfo!=''}}">{{$comItem$item.SpecInfo}}</text>
+                    </view>
+                    <view class="f fj">
+                        <view wx:if="{{$comItem$item.type=='good'||$comItem$item.type=='miaosha'}}">
+                            <wxc-price class="c333 t-b f30">{{$comItem$item.discountPrice}}</wxc-price>
+                            <wxc-price class="ml10 f26" delColor="#666" status="del" wx:if="{{$comItem$item.oldPrice!=0&&$comItem$item.discountPrice!=$comItem$item.oldPrice}}">{{$comItem$item.oldPrice}}</wxc-price>
+                        </view>
+                        <view wx:else>
+                            <wxc-price class="c333 t-b f30">{{$comItem$item.discountPrice}}</wxc-price>
+                            <wxc-price class="ml10 f26" delColor="#666" status="del" wx:if="{{$comItem$item.discount!=100&&$comItem$item.discountPrice!=$comItem$item.oldPrice}}">{{$comItem$item.oldPrice}}</wxc-price>
+                        </view>
+                        <text class="c333 f26">x{{$comItem$item.Count}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="g-mode">
+        <view class="g-dis f fc fj">
+            <text class="f32">配送方式</text>
+            <text class="c666 mr20">商家配送</text>
+        </view>
+        <view class="g-dis f fc fj">
+            <text class="f32">支付方式</text>
+            <picker bindchange="payMode" range="{{vm_goods.payArray}}" value="{{payIndex}}">
+                <view class="f fc c666">
+                    <text>当前选择:{{vm_goods.payArray[payIndex]}}</text>
+                    <text class="dzicon icon-xiala-copy-right ml10"></text>
+                </view>
+            </picker>
+        </view>
+        <view class="g-dis f fc fj">
+            <text class="f32">留言说明</text>
+            <input bindinput="setMess" class="ml20 f1 c666 tr" placeholder="注意防摔、尽快发货" value="{{vm_goods.message}}"></input>
+        </view>
+    </view>
+    <view class="g-mode">
+        <view class="g-dis f fc fj">
+            <text class="f32">商品总额</text>
+            <wxc-price class="c666 f32 g-add">{{vm_goods.originalPrice}}</wxc-price>
+        </view>
+        <view class="g-dis f fc fj" wx:if="{{barShow==false}}">
+            <text class="f32">折扣优惠</text>
+            <wxc-price class="c666 f32 g-less">{{vm_goods.lessPrice}}</wxc-price>
+        </view>
+        <view class="g-dis f fc fj">
+            <text class="f32">快递运费</text>
+            <wxc-price class="c666 f32 g-add">{{vm_goods.fee}}</wxc-price>
+        </view>
+    </view>
+    <view style="height:150rpx;width:100%;"></view>
+    <view class="pay-btn f fc fj">
+        <view class="ml20">
+            <text class="f30">应付：</text>
+            <wxc-price class="p-price f32">{{vm_goods.totalPrice}}</wxc-price>
+        </view>
+        <form bindsubmit="payRequest" data-wpypayrequest-a="1" reportSubmit="true">
+            <button class="pay-button skin_bg" formType="submit">{{vm_goods.payArray[payIndex]}}</button>
+        </form>
+    </view>
+</view>
+<wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>

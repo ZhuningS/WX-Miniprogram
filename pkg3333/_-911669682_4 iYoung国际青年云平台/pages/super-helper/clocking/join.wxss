@@ -1,0 +1,109 @@
+page {
+    box-sizing: border-box;
+    padding: 0 30rpx;
+}
+
+.userInfo {
+    padding: 100rpx 0 40rpx;
+}
+
+.user-img {
+    width: 180rpx;
+    height: 180rpx;
+    margin: 0 auto 20rpx;
+}
+
+.user-img image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 8rpx solid #fff;
+}
+
+.show-card .title {
+    position: relative;
+    padding: 0 30rpx;
+}
+
+.show-card .title::before {
+    content: "";
+    width: 16rpx;
+    height: 56rpx;
+    background: #09bb07;
+    border-radius: 10rpx;
+    display: block;
+    position: absolute;
+    top: -6rpx;
+    left: 0;
+}
+
+.card-list {
+    margin: 0 auto 30rpx;
+    border-radius: 6rpx;
+    background: #fff;
+    padding: 30rpx;
+    box-shadow: 0 6rpx #eee;
+}
+
+.card-list .text {
+    min-height: 100rpx;
+    word-break: break-all;
+}
+
+.time {
+    line-height: 56rpx;
+}
+
+.punch-badge {
+    background-color: rgba(0,0,0,0.05);
+    padding: 0 30rpx;
+    border-radius: 100rpx;
+    line-height: 56rpx;
+    height: 56rpx;
+}
+
+.flating-group {
+    position: fixed;
+    bottom: 40rpx;
+    left: 0;
+    right: 0;
+    padding: 0 40rpx;
+}
+
+.flating-group button {
+    float: right;
+    width: 96rpx;
+    height: 96rpx;
+    line-height: 96rpx;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #1aad19;
+    color: white;
+}
+
+.flating-group button::after {
+    border: 0;
+}
+
+.nothing {
+    width: 70%;
+    margin: 20rpx auto;
+}
+
+.nothing .line {
+    height: 1px;
+    background: #ddd;
+    margin-top: 22rpx;
+}
+
+.green {
+    color: #09bb07;
+}
+
+.show-card .title::before,button[type="primary"] {
+    background: #09bb07;
+}
+
+.flating-group button {
+    box-shadow: 0 0 10px rgba(9,181,7,0.8);
+}

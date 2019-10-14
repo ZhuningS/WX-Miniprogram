@@ -1,0 +1,6 @@
+<button class="{{rootClassNames}}" disabled="{{isDisabled}}" formType="{{formType}}">
+    <view>
+        <qm-icon name="{{iconName}}" wx:if="{{iconName}}"></qm-icon>
+        <slot></slot>
+    </view>
+</button>

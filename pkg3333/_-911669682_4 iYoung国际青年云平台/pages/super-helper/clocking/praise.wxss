@@ -1,0 +1,33 @@
+.contenter {
+    height: 100vh;
+}
+
+.title {
+    padding: 0 30rpx;
+    line-height: 80rpx;
+}
+
+.content {
+    background: #fff;
+    padding: 0 30rpx;
+    line-height: 92rpx;
+}
+
+.content.sub {
+    overflow-y: auto;
+}
+
+.list text,.list input {
+    height: 92rpx;
+    vertical-align: top;
+}
+
+.list text {
+    width: 140rpx;
+}
+
+.btn-box {
+    width: 750rpx;
+    padding: 20rpx 160rpx;
+    background: rgba(200,200,200,0.4);
+}

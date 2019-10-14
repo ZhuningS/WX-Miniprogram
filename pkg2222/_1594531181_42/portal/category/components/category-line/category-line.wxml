@@ -1,0 +1,8 @@
+<view class="wrap" style="{{styleObj}}">
+    <view bindtap="onItemClick" class="line-item" data-item="{{item.item}}" wx:if="{{lineData}}" wx:for="{{lineData.items}}" wx:key="id">
+        <text class="line-item-text">{{item.text}}</text>
+        <view class="line-item-text-separator"></view>
+        <image-view class="line-item-img" src="{{item.url}}"></image-view>
+        <text class="line-item-extra">{{item.extra}}</text>
+    </view>
+</view>

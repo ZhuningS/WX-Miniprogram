@@ -1,0 +1,11 @@
+<chat-base-cell hasBubble="{{false}}" hasLoading="{{false}}" message="{{message}}">
+    <view bindtap="onContentClick" class="content">
+        <image-view mode="aspectFill" src="{{url}}" style="width:{{width}}rpx; height:{{height}}rpx;"></image-view>
+        <view class="percentage" wx:if="{{message.islocal}}">
+            <view class="percentage-inner">
+                <image class="loading" src="../../assets/loading.gif"></image>
+                <view class="percentage-text">{{message.upload_percentage||0}}%</view>
+            </view>
+        </view>
+    </view>
+</chat-base-cell>

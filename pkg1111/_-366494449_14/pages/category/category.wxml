@@ -1,0 +1,83 @@
+<import src="/components/tabbar/index.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view hidden="{{!dataLoaded}}">
+    <view class="top_search">
+        <view class="search_read_only">
+            <navigator class="search_content" url="/pages/shop/search/index">
+                <image src="/images/category/seach-32@3x.png"></image>
+                <view class="search_input">搜索商品</view>
+            </navigator>
+        </view>
+    </view>
+    <view class="classify" style="height:{{windowHeight-44}}px">
+        <scroll-view scrollY class="classify_catetory" scrollWithAnimation="true" style="height:{{windowHeight-44}}px;padding-bottom: 200rpx">
+            <view bindtap="changeCate" class="name {{item.active?'active':''}}" data-index="{{index}}" wx:for="{{rootcateList}}" wx:key="item">
+                <text>{{item.name}}</text>
+            </view>
+        </scroll-view>
+        <scroll-view scrollY class="classify_detail" scrollWithAnimation="true" style="height:{{windowHeight-44}}px;">
+            <view class="children" wx:if="{{childcateList.length>0}}">
+                <navigator class="children_item" hoverClass="none" url="/pages/goodsList/list/index?title={{item.name}}&&cid={{item.id}}" wx:for="{{childcateList}}" wx:key="index">
+                    <image class="child_image" src="{{item.icon||'/images/card/MR-fenlei@3x.png'}}"></image>
+                    <view class="child_name">{{item.name}}</view>
+                </navigator>
+            </view>
+            <block wx:else>
+                <view class="noResult" wx:if="{{goodsList&&goodsList.length<=0&&groupList&&groupList.length<=0}}">
+                    <view style="font-size: 24rpx;">暂无商品分类</view>
+                </view>
+                <view class="good-mod" style="padding-bottom: 120rpx;" wx:else>
+                    <view>
+                        <view class="goodsList">
+                            <view bindtap="_jump" class="goods" data-url="/pages/goodsDetail/detailGroup/index?id={{item.goodsid}}" wx:for="{{groupList}}" wx:key="id">
+                                <view class="goods_wrap">
+                                    <image src="/images/card/biaoqian@3x.png" style="width:72rpx;height: 72rpx; position: absolute; left: 0; top: 0; z-index: 99"></image>
+                                    <view class="goods__imgWrap">
+                                        <image class="goods__img" lazyLoad="true" mode="aspectFill" src="{{item.thumb}}"></image>
+                                    </view>
+                                    <view class="goodsInfoWrap1">
+                                        <view class="goods__name">{{item.name}}</view>
+                                        <view class="goods__price">
+                                            <view>
+                                                <text class="goods__price__unit">￥</text>{{item.price}}
+                      </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                            <view bindtap="_jump" class="goods" data-url="/pages/goodsDetail/detail/index?id={{item.id}}" wx:for="{{goodsList}}" wx:key="id">
+                                <view class="goods_wrap">
+                                    <view class="goods__imgWrap">
+                                        <image class="goods__img" lazyLoad="true" mode="aspectFill" src="{{item.thumb}}"></image>
+                                    </view>
+                                    <view class="goodsInfoWrap">
+                                        <view class="goods__name">{{item.name}}</view>
+                                        <view class="label_discount" wx:if="{{item.discount>0}}">专享{{item.discount}}折</view>
+                                        <block wx:else></block>
+                                        <view class="goods__price_style02" style="position:static; justify-content: space-between" wx:if="{{item.discount>0}}">
+                                            <view style="display:flex;align-items:baseline;">
+                                                <text class="goods__price__unit">￥</text>{{item.price_discount}}
+                        </view>
+                                            <view class="priceshow">
+                                                <text class="goods__price__unit_2">￥</text>{{item.price}}
+                        </view>
+                                        </view>
+                                        <view class="goods__price_style02" style="position:static; justify-content: space-between" wx:else>
+                                            <view style="display:flex;align-items:baseline;">
+                                                <text class="goods__price__unit">￥</text>{{item.price}}
+                        </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+</view>
+<template is="tabbar" data="{{tabbar:tabbar,data:'categories'}}" wx:if="{{isShowTab}}"></template>

@@ -1,0 +1,28 @@
+@import "../../__wuBaseWxss__/1.wxss";
+
+.c-barLst-top {
+    width: 100%;
+    height: 100rpx;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 0 50rpx;
+}
+
+.c-barLst-top>view {
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.cpl-btn {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    height: 100rpx;
+    line-height: 100rpx;
+}

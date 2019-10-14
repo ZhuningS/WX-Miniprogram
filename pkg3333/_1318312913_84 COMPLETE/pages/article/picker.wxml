@@ -1,0 +1,22 @@
+<import src="../components/card.wxml"></import>
+<import src="../components/widgets.wxml"></import>
+<form bindsubmit="query">
+    <view class="bar">
+        <view class="input-wrapper">
+            <input bindconfirm="query" class="input" confirmType="search" name="text" placeholder="搜索文章或粘贴链接"></input>
+        </view>
+        <button class="button white" formType="submit">搜索</button>
+    </view>
+</form>
+<view catchtap="gotoPreview" class="card single-card card-article" data-doc-id="{{item.article.docIdString}}" wx:for="{{events}}">
+    <view class="more-content">
+        <view class="content-ctn">
+            <view class="headline1">{{item.article.title}}</view>
+            <view class="description">{{item.article.snippet}}</view>
+        </view>
+        <image lazyLoad class="cover" mode="aspectFill" src="{{item.article.covers[0].url}}" wx:if="{{item.article.covers.length>0}}"></image>
+    </view>
+</view>
+<view class="loading-ctn">
+    <template is="loading" data="{{loading:loading}}"></template>
+</view>

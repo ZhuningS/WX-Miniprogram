@@ -1,0 +1,83 @@
+.onboard {
+    position: relative;
+    padding-bottom: 50px;
+    padding: 0 60rpx 60px;
+    width: 630rpx;
+    background-color: #FFFFFF;
+}
+
+.login-ctn {
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.login-ctn .login {
+    display: flex;
+}
+
+.login-ctn .login .name {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+
+.login-ctn .login .icon {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+}
+
+.users-ctn {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.users-ctn .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300rpx;
+    margin-bottom: 30px;
+}
+
+.users-ctn .user-info .name {
+    font-weight: bold;
+    font-size: 16px;
+    height: 25px;
+    max-height: 25px;
+    margin-top: 5px;
+}
+
+.users-ctn .user-info .intro {
+    font-weight: 300;
+    font-size: 12px;
+    height: 25px;
+    max-height: 25px;
+    overflow: hidden;
+}
+
+.users-ctn .user-info .button {
+    margin-top: 5px;
+}
+
+.header-ctn {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.header-ctn .caption {
+    margin-top: 5px;
+}
+
+.footer-ctn {
+    margin: 40px 0;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+}

@@ -1,0 +1,154 @@
+@import "../../../__wuBaseWxss__/13.wxss";
+
+@import "../../../__wuBaseWxss__/2.wxss";
+
+page {
+    padding-bottom: 30rpx;
+}
+
+.topPic {
+    width: 100%;
+    height: 280rpx;
+}
+
+.topLf {
+    width: auto;
+    margin: o 30rox;
+    height: 68rpx;
+    line-height: 68rpx;
+    border-radius: 10rpx;
+    padding-left: 30rpx;
+}
+
+.icon-sousuo {
+    font-size: 40rpx;
+    color: #fff;
+    line-height: 68rpx;
+    padding-left: 30rpx;
+}
+
+.seaInp {
+    width: 100%;
+    height: 100%;
+    line-height: 68rpx;
+}
+
+.allservice {
+    padding: 30rpx;
+    background-color: #fff;
+}
+
+.allservice:active {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.swiper {
+    width: 100%;
+    height: 300rpx;
+}
+
+.swiper swiper-item {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper .wx-swiper-dots.wx-swiper-dots-horizontal {
+    bottom: 0;
+}
+
+.tabBox .sub {
+    padding: 40rpx 0;
+}
+
+.tabBox .sub:active {
+    background-color: rgba(0,0,0,0.05);
+}
+
+.tabPic {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+
+.tabFont {
+    font-size: 26rpx;
+}
+
+.cishuBox {
+    padding: 20rpx 30rpx;
+}
+
+.enterBox {
+    width: auto;
+    height: 80rpx;
+    margin: 20rpx 15rpx;
+    line-height: 80rpx;
+    border-radius: 80rpx;
+    overflow: hidden;
+}
+
+.enterBoxLf {
+    padding: 0 30rpx;
+}
+
+.enterBoxLf .lineText {
+    max-width: 62%;
+}
+
+.enterBoxLf .grey {
+    color: #666;
+}
+
+.enterBtn {
+    color: #fff;
+    padding: 0 30rpx;
+}
+
+.enterBtn:active {
+    opacity: 0.85;
+}
+
+.listTab {
+    padding: 30rpx 0;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.topBox {
+    padding: 20rpx 30rpx;
+}
+
+.seaBox {
+    line-height: 68rpx;
+    border-radius: 10rpx;
+}
+
+.tabBox {
+    color: #666;
+}
+
+.tabBox .sub {
+    position: relative;
+    display: inline-block;
+    width: 30%;
+    margin: 0 1.666666666%;
+    padding: 30rpx 0;
+}
+
+.tabBox .sub .picker {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tabBox .iconfont {
+    font-size: 24rpx;
+    color: #999;
+}

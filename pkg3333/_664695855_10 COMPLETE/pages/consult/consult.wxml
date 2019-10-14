@@ -1,0 +1,57 @@
+<view class="select-nav">
+    <view class="select">
+        <view class="select-box clearfix">
+            <view class="select-input">
+                <image class="select-icon" src="../img/select.png"></image>
+                <input bindblur="getValue" bindconfirm="goTo" bindinput="highLight" class="select-input-style" placeholder="搜索品牌广告服务" type="text" value="{{inputText}}"></input>
+                <image bindtap="deleteValue" class="close-icon" src="../img/close.png" wx:if="{{close}}"></image>
+            </view>
+            <button bindtap="goTo" class="select-btn" disabled="{{ifUse}}" hoverClass="select-btn-hover" hoverStartTime="1" type="default">搜索
+            </button>
+        </view>
+    </view>
+    <view class="box top-bar top-bar-box">
+        <view bindtap="filterTab" class="box-label {{index==current?' active':''}}" data-index="{{index}}" wx:for="{{tabTxt}}" wx:key="top_bar">
+            <text>{{item}}</text>
+            <text class="icon-price {{tag==1?'top':tag==2?'bottom':''}}" data-id="2" wx:if="{{item=='价格'}}"></text>
+        </view>
+        <view bindtap="selectArea" class="active">
+            <text>{{locationChoose}}</text>
+            <text class="icon-country"></text>
+        </view>
+    </view>
+    <view class="location" hidden="{{!show}}">
+        <view bindtap="choose" class="location-all {{index==isActive?'active':''}}" data-id="{{index}}" wx:for="{{location}}">{{item}}
+                <icon class="choose-right" color="#ff6900" hidden="{{index==isActive?false:true}}" size="14" type="success_no_circle"></icon>
+        </view>
+    </view>
+</view>
+<scroll-view bindscroll="scroll" bindscrolltolower="getMore" class="scroll-content" hidden="{{!ifData}}" scrollTop="{{scrollTop}}" scrollY="true" style="height:{{scrollHeight-89}}px;">
+    <navigator class="list" openType="redirect" url="/pages/shops/index?serviceId={{item.serviceId}}" wx:for="{{listData}}" wx:key="id">
+        <image class="list-img" src="{{item.imageUrl}}"></image>
+        <view class="list-content">
+            <view class="list-content-title">
+                {{item.subject}}
+            </view>
+            <view class="list-price clearfix">
+                <view class="list-price-icon">
+                    ¥<text class="list-price-count">{{item.amountApp==''?item.amount:item.amountApp}}/次</text>
+                </view>
+                <view class="label" hidden="{{item.amountApp==''||item.lessMoney==0?true:false}}">
+                    <text class="phone"></text>已省{{item.lessMoney}}
+                </view>
+            </view>
+            <view class="list-content-local">
+                {{item.position}} | 成交{{item.sales}}笔
+            </view>
+        </view>
+    </navigator>
+    <view class="loading-title" hidden="{{loading}}">玩命加载中...</view>
+    <view class="loading-title" hidden="{{!loading}}">没有更多数据了</view>
+</scroll-view>
+<image bindtap="goTop" class="go-top {{showGoTop==true?'go-top-show':''}}" src="../img/go-top.png"></image>
+<view bindtap="removeMode" class="box-shadow" hidden="{{!show}}">></view>
+<view class="none-box" hidden="{{ifData}}">
+    <image class="none-img" src="../img/none.png"></image>
+    <view>抱歉! 暂无相关服务</view>
+</view>

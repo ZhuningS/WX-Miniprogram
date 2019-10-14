@@ -1,0 +1,12 @@
+<view id="header">
+    <view style="height:{{headerHeight}}rpx;"></view>
+    <view class="capsule">
+        <view bindtap="reportTee" class="seat"></view>
+        <image mode="widthFix" src="../../assets/images/arr_left_black.png"></image>
+        <text>生成分享海报</text>
+    </view>
+</view>
+<view class="container" style="padding-top: {{top+41}}rpx;">
+    <canvas canvasId="myCanvas" class="canvas"></canvas>
+    <button bindtap="save" class="save" hoverClass="none" plain="true">保存图片</button>
+</view>

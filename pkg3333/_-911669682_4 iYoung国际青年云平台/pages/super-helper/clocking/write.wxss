@@ -1,0 +1,45 @@
+.title {
+    padding: 0 60rpx;
+    position: relative;
+}
+
+.title::before {
+    content: "";
+    width: 16rpx;
+    height: 50rpx;
+    background: #09bb07;
+    border-radius: 10rpx;
+    display: block;
+    position: absolute;
+    top: -2rpx;
+    left: 30rpx;
+}
+
+textarea {
+    width: 750rpx;
+    margin: 0 auto;
+    padding: 30rpx;
+    background: #fff;
+}
+
+.set {
+    background: #fff;
+    padding: 0 30rpx;
+    line-height: 80rpx;
+}
+
+.picker,.set-list-right {
+    padding-right: 50rpx;
+}
+
+radio {
+    color: #333;
+}
+
+.jiang {
+    font-size: 32rpx;
+}
+
+.porwer {
+    padding: 10rpx 30rpx;
+}

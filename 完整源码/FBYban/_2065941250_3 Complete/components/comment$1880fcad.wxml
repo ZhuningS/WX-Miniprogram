@@ -1,0 +1,13 @@
+<template name="comment$1880fcad">
+    <view class="_div data-v-312503d2 container">
+        <template is="CommentList$6e31a6eb" data="{{...$root[$kk+'0'],$root:$root}}" wx:if="{{userinfo.openId}}"></template>
+        <view class="_div data-v-312503d2" wx:if="{{userinfo.openId}}">
+            <view class="_div data-v-312503d2 page-title">我的图书</view>
+            <template is="Card$2280119c" data="{{...$root[$kk+'1-'+index],$root:$root}}" wx:for="{{books}}" wx:for-item="book" wx:key="book.id"></template>
+            <view class="_div data-v-312503d2 page-content" wx:if="{{!books.length}}">暂时还没添加图书，快去添加几本吧</view>
+        </view>
+        <view class="_div data-v-312503d2 text-footer" wx:else> 需要登录，才能看到自己的评论和图书信息 </view>
+    </view>
+</template>
+<import src="CommentList$6e31a6eb"></import>
+<import src="Card$2280119c"></import>

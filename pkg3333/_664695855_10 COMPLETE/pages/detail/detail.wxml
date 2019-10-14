@@ -1,0 +1,52 @@
+<view class="detail-min">
+    <scroll-view bindscrolltolower="loadMore" scrollY="true" style="height:{{scrollHeight}}px">
+        <view class="detail-shop">
+            <image class="detail-shop-image" src="{{shop.logoUrl}}"></image>
+            <view class="detail-shop-title">
+                <view class="detail-shop-name buhuanhang">{{shop.brandname}}</view>
+                <view class="detail-shop-loaction buhuanhang">{{shop.cityName}}</view>
+            </view>
+            <view class="detail-shop-type" wx:if="{{shop.authType==2}}">认证企业</view>
+        </view>
+        <view class="detail-shop-num">
+            <view>
+                <text class="detail-shop-money buhuanhang">{{shop.lastQuarterIncome}}</text>
+                <text class="detail-shop-moun buhuanhang">近3月收入</text>
+            </view>
+            <view class="money-center">
+                <text class="detail-shop-money buhuanhang">{{shop.lastQuarterIncomeTimes}}</text>
+                <text class="detail-shop-moun buhuanhang">成交量</text>
+            </view>
+            <view>
+                <text class="detail-shop-money buhuanhang">{{shop.goodCommentRatio}}</text>
+                <text class="detail-shop-moun buhuanhang">好评率</text>
+            </view>
+        </view>
+        <view class="detail-three">
+            <view wx:if="{{shopShow.security.isPromiseFinishTitle!=null}}">{{shopShow.security.isPromiseFinishTitle}}</view>
+            <view wx:if="{{shopShow.security.isPromiseCreateTitle!=null}}">{{shopShow.security.isPromiseCreateTitle}}</view>
+            <view wx:if="{{shopShow.security.isPromiseMaintainTitle!=null}}">{{shopShow.security.isPromiseMaintainTitle}}</view>
+            <view wx:if="{{shopShow.security.isPromiseSourceCodeTitle!=null}}">{{shopShow.security.isPromiseSourceCodeTitle}}</view>
+        </view>
+        <view class="shop-message" wx:if="{{shop.selfinfo!=''}}">
+            <view class="shop-messge-title">店铺简介</view>
+            <view class="shop-messgae-detail">{{shop.selfinfo==null?'':shop.selfinfo}}</view>
+        </view>
+        <view class="shop-server">
+            <view class="shop-server-title">全部服务</view>
+            <view class="shop-server-min">
+                <navigator class="server-url" openType="redirect" url="/pages/shops/index?serviceId={{item.serviceId}}" wx:for="{{shopService}}" wx:key="id">
+                    <image src="{{item.imgUrl}}"></image>
+                    <view class="server-url-title">{{item.title==null?'':item.title}}</view>
+                    <view class="server-url-pic">
+            ￥{{item.appPrice==''?item.price:item.appPrice}}
+            <text hidden="{{item.appPrice==0||item.appPrice==''||item.price==null||item.lessMoney==0?true:false}}">省{{item.lessMoney}}</text>
+                    </view>
+                </navigator>
+            </view>
+            <view class="loading" hidden="{{!loading}}">正在加载...</view>
+            <view class="loading" hidden="{{loading}}">没有更多数据了！</view>
+        </view>
+        <view bindtap="callShop" class="phone-call">联系店铺</view>
+    </scroll-view>
+</view>

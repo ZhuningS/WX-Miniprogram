@@ -1,0 +1,21 @@
+<template name="more">
+    <form reportSubmit bindsubmit="hackForm">
+        <view class="page" wx:if="{{more.length>0}}">
+            <block wx:if="{{!currentCate}}">
+                <template is="single-card-label" data="{{ label:{title:'更多内容…',description:'如果上面的内容还不够看，你也可以继续…'} }}"></template>
+                <template is="single-card-{{item.type}}" data="{{marked:marked,config:config,...item}}" wx:for="{{more}}" wx:key="{{ index }}"></template>
+            </block>
+            <block wx:else>
+                <template is="single-card-label" data="{{ label:{title:'进一步深入…',description:'进入你想进一步了解的细分兴趣。'} }}"></template>
+                <view class="section">
+                    <scroll-view scrollWithAnimation scrollX class="scroll-view">
+                        <template is="card-magazine" data="{{config:config,subscribed:subscribed,...item.section}}" wx:if="{{item.type==='section'&&item.section.type==='magazine'}}" wx:for="{{more}}" wx:key="{{ index }}"></template>
+                    </scroll-view>
+                </view>
+                <template is="single-card-{{item.type}}" data="{{marked:marked,enableMagazine:enableMagazine,...item}}" wx:for="{{more}}" wx:key="{{ index }}"></template>
+            </block>
+        </view>
+    </form>
+</template>
+<import src="../components/card.wxml"></import>
+<import src="../components/widgets.wxml"></import>

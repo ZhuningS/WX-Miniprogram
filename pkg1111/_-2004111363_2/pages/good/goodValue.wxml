@@ -1,0 +1,56 @@
+<view class="{{currentSkin}}">
+    <view class="c-gv">
+        <view class="c-gv-main" wx:for="{{vm.list}}" wx:for-index="parentIndex" wx:key="key">
+            <view class="c-gv-main-top f fc">
+                <image src="{{item.GoodsImg}}"></image>
+                <view bindtap="changeValue" class="f fc {{item.Praise==emItem.state?'skin_txt':'c123'}}" data-wpychangevalue-a="{{emItem.state}}" data-wpychangevalue-b="{{parentIndex}}" style="margin-right:40rpx;" wx:for="{{vm.emijo}}" wx:for-item="emItem" wx:key="key">
+                    <text class="{{emItem.icon}} f40"></text>
+                    <text class="ml20">{{emItem.txt}}</text>
+                </view>
+            </view>
+            <view class="c-gv-main-more">
+                <textarea bindinput="changeMess" data-wpychangemess-a="{{parentIndex}}" placeholder="您的评价会让商家做的更好~" placeholderStyle="color:#d9d8d9" value="{{item.Comment}}"></textarea>
+                <view class="w-100 f fw">
+                    <view class="rel" style="margin:0 20rpx 20rpx 0" wx:for="{{item.imgUrl}}" wx:for-index="i" wx:for-item="imgItem" wx:key="key">
+                        <image bindtap="preView" class="c-gv-main-uploadImg" data-wpypreview-a="{{vm.img}}" data-wpypreview-b="{{index}}" mode="aspectFill" src="{{imgItem}}"></image>
+                        <text bindtap="deleImg" class="c-gv-main-close dzicon icon-guanbi1" data-wpydeleimg-a="{{parentIndex}}" data-wpydeleimg-b="{{i}}"></text>
+                    </view>
+                    <view bindtap="changeImg" class="c-gv-main-upload f fv fc fc-h" data-wpychangeimg-a="{{parentIndex}}">
+                        <text class="dzicon icon-zhaoxiangji f40"></text>
+                        <text class="f24 mt10" wx:if="{{item.imgUrl.length==0}}">添加图片</text>
+                        <text class="f24" wx:else>{{item.imgUrl.length}}/8</text>
+                    </view>
+                </view>
+            </view>
+            <view class="c-gv-main-hidename f fc">
+                <text bindtap="changeAnon" class="dzicon icon-Choice_xuanze {{item.Anonymous?'skin_txt':'c123'}}" data-wpychangeanon-a="{{parentIndex}}"></text>
+                <text class="f26">匿名</text>
+            </view>
+        </view>
+        <view class="c-gv-star">
+            <view>评分</view>
+            <view class="c-gv-star-main f fv">
+                <view class="f fc" wx:for="{{vm.starLst}}" wx:for-index="sParentIndex" wx:key="key">
+                    <text style="margin-right:30rpx;">{{item.title}}</text>
+                    <text bindtap="changeStar" class="{{star.icon}} f40 mr20 {{star.sel?'skin_txt':'c123'}}" data-wpychangestar-a="{{item}}" data-wpychangestar-b="{{sParentIndex}}" data-wpychangestar-c="{{starIndex}}" wx:for="{{item.list}}" wx:for-index="starIndex" wx:for-item="star" wx:key="key"></text>
+                    <text style="margin-left:30rpx;color:#666">{{item.name||''}}</text>
+                </view>
+            </view>
+        </view>
+        <view style="height:100rpx"></view>
+        <view bindtap="postValue" class="c-gv-btn skin_bg">发布</view>
+        <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+        <view class="c-gv-mask f fc-h" wx:if="{{vm.showMask}}">
+            <view class="c-gv-bg"></view>
+            <view class="c-gv-mask-main f fv fc">
+                <view class="dzicon icon-Choice_xuanze skin_txt"></view>
+                <view class="f fv fc mt30">
+                    <text class="f36 t-b">感谢您的评价</text>
+                    <text class="c666 mt20">我们会努力做的更好</text>
+                </view>
+                <view bindtap="pathGo" class="v-mbtn skin_br">查看我的评价</view>
+            </view>
+            <view bindtap="hideMask" class="dzicon icon-zhuanyebaniconkuozhan_Close c-gv-mask-close"></view>
+        </view>
+    </view>
+</view>

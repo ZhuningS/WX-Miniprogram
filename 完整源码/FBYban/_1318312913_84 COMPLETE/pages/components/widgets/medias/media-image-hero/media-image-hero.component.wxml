@@ -1,0 +1,4 @@
+<view class="{{rootClassNames}}" style="padding-top: {{wrapPaddingTop}};background-color: {{backgroundColor}};">
+    <premium-label hasPaid="{{hasPaid}}" isPremium="{{isPremium}}" size="{{cardSize}}" wx:if="{{isHideTitle&&isPremium}}"></premium-label>
+    <image catchtap="previewImage" class="media-image-hero" mode="{{imageMode}}" src="{{mediaData.coverUrl}}"></image>
+</view>

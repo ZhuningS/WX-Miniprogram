@@ -1,0 +1,40 @@
+.avatar {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+    background-size: cover;
+    border-radius: 50%;
+    background-color: #F6F6F6;
+}
+
+.avatar.size-small {
+    height: 23px;
+    width: 23px;
+}
+
+.avatar.size-medium {
+    height: 40px;
+    width: 40px;
+}
+
+.avatar.size-large {
+    height: 48px;
+    width: 48px;
+}
+
+.avatar.size-huge {
+    height: 64px;
+    width: 64px;
+}
+
+.avatar.is-float {
+    overflow: hidden;
+    margin-right: -7px;
+    flex-shrink: 0;
+    border: 2px solid #FFFFFF;
+}
+
+.avatar.is-float.size-small {
+    width: 25px;
+    height: 25px;
+}

@@ -1,0 +1,144 @@
+<navigation-bar title="订单详情"></navigation-bar>
+<view class="wrap" wx:if="{{orderList.length>0}}">
+    <block wx:for="{{orderList}}" wx:for-index="orderIndex" wx:for-item="orderInfo" wx:key="order_id">
+        <view class="section">
+            <view class="header">配送信息</view>
+            <view class="row no-padding">
+                <view class="express-brief" wx:if="{{orderInfo.status==3&&orderInfo.express_package_info_list.length==0}}">
+                    <view class="title">待发货</view>
+                    <view class="desc">暂无物流信息</view>
+                </view>
+                <block wx:else>
+                    <view class="express-item" wx:for="{{orderInfo.express_package_info_list}}" wx:for-item="expressInfo" wx:key="express_code">
+                        <view bindtap="goToExpressDetail" class="express-item-inner" data-express-code="{{expressInfo.express_code}}" data-status="{{expressInfo.status}}" hoverClass="{{expressInfo.status===0?'weui-cell_active':''}}" hoverStayTime="200">
+                            <view class="title">{{Util.fixExpressTitle(expressInfo)}}</view>
+                            <view class="wrap-desc" wx:if="{{expressInfo.status!=9999}}">
+                                <view class="desc">{{expressInfo.status==undefined&&'物流信息获取中...'||expressInfo.status==-1&&'获取失败，请点击重试'||expressInfo.express_info_list[0].accept_address||'暂无物流信息'}}</view>
+                                <image class="icon-arrow-right" mode="aspectFit" src="../../assets/icon-arrow-right-light.png" wx:if="{{expressInfo.status===0}}"></image>
+                            </view>
+                            <view class="time">{{expressInfo.express_info_list[0].accept_time}}</view>
+                            <view class="pics" wx:if="{{orderInfo.isMultiExpressOrder}}">
+                                <image class="pic" mode="aspectFill" src="{{goodsMap[item.item_code+item.sku_id]&&goodsMap[item.item_code+item.sku_id].thumb_url+'/162'}}" wx:if="{{index<5}}" wx:for="{{expressInfo.express_goods_info_list}}" wx:key="{{item.item_code+item.sku_id}}"></image>
+                                <image class="pic" mode="aspectFill" src="../../assets/icon-express-more.png" wx:if="{{expressInfo.express_goods_info_list.length>5}}"></image>
+                            </view>
+                        </view>
+                        <view class="dash-line" wx:if="{{index<orderInfo.express_package_info_list.length+orderInfo.unexpress_package_info_list.length-1}}"></view>
+                    </view>
+                    <view class="express-item" wx:if="{{orderInfo.unexpress_package_info_list.length}}">
+                        <view class="express-item-inner">
+                            <view class="title">{{'待发货：共'+orderInfo.unexpress_package_info_list.length+'件商品'}}</view>
+                            <view class="time"></view>
+                            <view class="pics" wx:if="{{orderInfo.isMultiExpressOrder}}">
+                                <image class="pic" mode="aspectFill" src="{{goodsMap[item.item_code+item.sku_id]&&goodsMap[item.item_code+item.sku_id].thumb_url+'/162'}}" wx:if="{{index<5}}" wx:for="{{orderInfo.unexpress_package_info_list}}" wx:key="{{item.item_code+item.sku_id}}"></image>
+                                <image class="pic" mode="aspectFill" src="../../assets/icon-express-more.png" wx:if="{{orderInfo.unexpress_package_info_list.length>5}}"></image>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="section">
+            <view class="header">收件信息</view>
+            <view class="row">
+                <view class="express-info__name">{{orderInfo.ext_info.express_info.name}} {{orderInfo.ext_info.express_info.phone}}</view>
+                <view class="express-info__address">{{orderInfo.ext_info.express_info.address}}</view>
+            </view>
+        </view>
+        <view class="section">
+            <view class="header">商品信息</view>
+            <view class="row">
+                <navigator appId="{{orderInfo.ext_info.brand_info.wxappid}}" display="{{isWxaBinded}}" path="/portal/index/index" target="miniProgram">
+                    <view bindtap="goToShop" class="shop-header" data-appid="{{orderInfo.ext_info.brand_info.wxappid}}">
+                        <image class="logo" mode="aspectFit" src="{{orderInfo.ext_info.brand_info.brand_icon&&orderInfo.ext_info.brand_info.brand_icon+'/0'}}"></image>
+                        <text class="name">{{orderInfo.ext_info.brand_info.brand_name}}</text>
+                        <image class="icon-arrow-right" mode="aspectFit" src="../../assets/icon-arrow-right-dark.png" wx:if="{{isWxaBinded}}"></image>
+                    </view>
+                </navigator>
+                <view class="shop-item" wx:for="{{orderInfo.ext_info.product_info.item_list}}" wx:key="{{item.sku_id}}">
+                    <image class="thumb" mode="aspectFill" src="{{item.thumb_url+'/162'}}"></image>
+                    <view class="info">
+                        <text class="title">{{item.title}}</text>
+                        <text class="desc" wx:if="{{item.desc}}">{{item.desc}}</text>
+                        <view class="wrap-price">
+                            <text class="unit-price">{{Util.fixPrice(item.unit_price)}}</text>
+                            <text class="quantity">×{{item.amount}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="section" wx:if="{{orderInfo.ext_info.remarks}}">
+            <view class="header">买家留言</view>
+            <view class="row">
+                <view class="remarks">{{orderInfo.ext_info.remarks}}</view>
+            </view>
+        </view>
+        <view class="section {{orderIndex==orderList.length-1?'last':''}}">
+            <view class="header">订单信息</view>
+            <view class="row">
+                <view class="order-info">
+                    <view class="label">订单编号</view>
+                    <view class="content">{{orderInfo.trans_id}}</view>
+                </view>
+                <view class="order-info">
+                    <view class="label">下单日期</view>
+                    <view class="content">{{orderInfo.formated_pay_finish_time}}</view>
+                </view>
+                <view class="order-info">
+                    <view class="label">商品合计</view>
+                    <view class="content price">{{Util.CalcGoodsTotalPrice(orderInfo.totalPrice,orderInfo.ext_info.express_info.price)}}</view>
+                </view>
+                <view class="order-info">
+                    <view class="label">配送运费</view>
+                    <view class="content price">{{Util.fixExpressFee(orderInfo.ext_info.express_info.price)}}</view>
+                </view>
+                <view class="line"></view>
+                <view class="order-info total">
+                    <view class="label">实际付款</view>
+                    <view class="content price total-price">{{Util.fixPrice(orderInfo.totalPrice)}}</view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view bindtap="contactBrand" class="btn-contact {{phoneModel}}">
+        <text class="text">联系商家客服</text>
+    </view>
+    <action-sheet bShow="{{showActionSheet}}" bindhide="hideActionSheet" bindoncustomclick="clickActionSheet" items="{{actionSheetItems}}" style="display: block;"></action-sheet>
+</view>
+<wxs module="Util">
+module.exports.fixPrice = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num.toString() === 'NaN') {
+        return ('-')
+    };
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+module.exports.CalcGoodsTotalPrice = (function(pay, express_fee) {
+    var num = parseInt(pay, 10) - (parseInt(express_fee, 10) || 0);
+    if (typeof num !== 'number' || num.toString() === 'NaN') {
+        return ('-')
+    };
+    if (num <= 0) num = 0;;
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+module.exports.fixExpressFee = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num.toString() === 'NaN') {
+        return ('-')
+    };
+    if (num === 0) {
+        return ('免运费')
+    };
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+module.exports.fixExpressTitle = (function(expressInfo) {
+    var title = expressInfo.express_company_name;
+    if (expressInfo.express_code) {
+        title += (' (' + expressInfo.express_code + ') ')
+    };
+    if (expressInfo.express_goods_info_list.length) {
+        title += ('：共' + expressInfo.express_goods_info_list.length + '件商品')
+    };
+    return (title)
+});
+</wxs>

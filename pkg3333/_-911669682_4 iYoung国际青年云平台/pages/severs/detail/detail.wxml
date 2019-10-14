@@ -1,0 +1,147 @@
+<duoguan_ad ad_type="duoguaninfo_info_top"></duoguan_ad>
+<view class="top bgwhite">
+    <view class="flex f16" style="align-items:center;">
+        <view catchtap="onNavigateTap" class="sub " data-url="../lists/lists?cid={{cid}}&title={{category.title}}&&childCid={{cid2}}">#{{category.title}}
+      <text wx:if="{{cid2>0}}">●{{category2.title}}</text>#</view>
+        <view catchtap="onSetValueTap" class="aside-more arrowB" data-name="isShowActionMenu" data-value="{{true}}"></view>
+    </view>
+    <view class="floatBox {{isShowActionMenu?'active':''}}" hidden="{{!isShowActionMenu}}">
+        <view class="more-content {{isShowActionMenu?'active':''}} bgwhite tc  f14">
+            <view catchtap="{{is_top>0?'onToggleTopTap':'onSetValueTap'}}" class="item gridXb" data-name="isShowTop" data-value="{{true}}" wx:if="{{is_admin}}">{{is_top!=0?'取消置顶':'置顶'}}</view>
+            <view catchtap="onCheckTap" class="item gridXb" wx:if="{{is_admin&&status==0}}">审核</view>
+            <view catchtap="onDeleteTap" class="item gridXb" wx:if="{{currentUid==uid||is_admin}}">删除</view>
+            <view catchtap="onEditTap" class="item gridXb" data-id="{{id}}" data-index="{{cid}}" data-title="{{category.title}}" wx:if="{{currentUid==uid||is_admin}}">编辑</view>
+            <view catchtap="onPullBlackTap" class="item gridXb" wx:if="{{is_admin&&currentUid!=uid}}">拉黑</view>
+            <view catchtap="onNavigateTap" class="item gridXb" data-url="../jubao/jubao?id={{id}}">举报</view>
+        </view>
+        <view catchtap="onSetValueTap" class="floatBox floatBoxBg" data-name="isShowActionMenu" data-value="{{false}}" style="display:block;"></view>
+    </view>
+    <view class="flex mt15" style="align-items:center;">
+        <image catchtap="onNavigateTap" class="user-img" data-url="../frd_info/frd_info?uid={{uid}}&vest_id={{vest_id}}" mode="aspectFill" src="{{user.headimgurl}}"></image>
+        <view class="sub ml10 user-msg">
+            <view>
+                <text class="lineText">{{user.nickname}}</text>
+                <text class="grey f12 ml10">{{create_time}}</text>
+                <text class="grey f12 ml10">浏览量：{{click}}</text>
+            </view>
+            <view class="flex grey f12" wx:if="{{address!=''}}">
+                <text class="mr5 iconfont icon-locationfill"></text>
+                <view catchtap="onOpenMapTap" class="sub lineText">{{address}}</view>
+                <view class="ml10">{{distance?distance:'离您0米'}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view catchtap="onPreviewTap" class="content f18" data-urls="{{imgs}}">
+    <rich-text catchlongtap="onContentActionTap" class="rich-text" nodes="{{content}}" style="{{style}}" wx:if="{{isUseRichText}}"></rich-text>
+    <text catchlongtap="onContentActionTap" wx:else>{{content}}</text>
+    <image class="mt10" data-index="{{index}}" mode="widthFix" src="{{item}}" style="width:100%;" wx:for="{{imgs}}" wx:key="{{index}}"></image>
+    <view class="body-tags mt10" wx:if="{{tags.length}}">
+        <button class="body-tags-item" plain="true" wx:for="{{tags}}" wx:key="{{index}}">{{item}}</button>
+    </view>
+</view>
+<import src="../tpl.wxml"></import>
+<duoguan_ad ad_type="duoguaninfo_info_bottom"></duoguan_ad>
+<template is="recommend-list" data="{{data:recommend}}"></template>
+<view class="bgwhite mt10">
+    <view class="co-title f16 gridXb">全部评论（{{comment}}）</view>
+    <view class="comment f14" wx:if="{{data.length&&config.show_comment!==0}}">
+        <view catchlongtap="onShowDeleteCommentTap" class="co-item flex gridXb" data-id="{{item.id}}" data-index="{{index}}" data-show="{{currentUid==item.uid||currentUid==uid?1:0||is_admin}}" data-uid="{{item.uid}}" wx:for="{{data}}" wx:key="{{item.id}}">
+            <view class="co-userimg">
+                <image src="{{item.headimgurl}}"></image>
+            </view>
+            <view class="sub ml15">
+                <view class="flex grey name">
+                    <text class="sub lineText">{{item.nickname}}</text>
+                </view>
+                <view catchtap="onCopyCommentTap" class="f16 mt5" data-key="{{item.content}}">{{item.content}}</view>
+                <view class="flex mt10 grey" style="align-items:center;">
+                    <view class="sub">{{item.create_time}}</view>
+                    <view catchtap="onNavigateTap" class="co-caozuo iconfont icon-jubao linght" data-url="../jubao/jubao?uid={{item.uid}}"></view>
+                    <view catchtap="onShowCommentTap" class="co-caozuo iconfont icon-huifu" data-index="{{index}}" data-nickname="{{item.nickname}}" data-reply-id="{{item.id}}" data-uid="{{item.uid}}"></view>
+                </view>
+                <view class="co-answerb mt10" wx:if="{{item.reply_list.length}}">
+                    <view catchlongtap="onShowDeleteCommentTap" class="co-answer" data-id="{{item.id}}" data-index="{{index}}" data-reply-index="{{replyIndex}}" data-show="{{currentUid==item.uid||currentUid==uid?1:0||is_admin}}" wx:for="{{item.reply_list}}" wx:for-index="replyIndex" wx:key="{{item.id}}">
+                        <text catchtap="onShowCommentTap" class="blue" data-index="{{index}}" data-nickname="{{item.nickname}}" data-reply-id="{{item.reply_id}}" data-reply-index="{{replyIndex}}" data-uid="{{item.uid}}">{{item.nickname}}</text> 回复
+            <text catchtap="onShowCommentTap" class="blue" data-index="{{index}}" data-nickname="{{item.reply_nickname}}" data-reply-id="{{item.reply_id}}" data-reply-index="{{replyIndex}}" data-uid="{{item.reply_uid}}">{{item.reply_nickname}}：</text>
+                        <text catchtap="onCopyCommentTap" data-key="{{item.content}}">{{item.content}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="bottom-btn-box">
+    <view class="flex tc bgwhite gridXt">
+        <view class="sub flex f20">
+            <view catchtap="onNavigateTap" class="sub bottom-btn" data-type="switchTab" data-url="{{appIndexPath?appIndexPath:'../index/index'}}">
+                <view class="iconfont icon-home"></view>
+                <view class="f12 grey">首页</view>
+            </view>
+            <block wx:if="{{config.show_share==1}}">
+                <button catchtap="toShare" class="sub share bottom-btn" wx:if="{{config.posters_status==1}}">
+                    <view class="iconfont icon-share"></view>
+                    <view class="f12 grey">分享</view>
+                </button>
+                <button class="sub share bottom-btn" openType="share" wx:else>
+                    <view class="iconfont icon-share"></view>
+                    <view class="f12 grey">分享</view>
+                </button>
+            </block>
+            <view catchtap="onShowCommentTap" class="sub bottom-btn" data-doc-id="{{id}}" data-nickname="{{user.nickname}}" wx:if="{{config.show_comment!==0}}">
+                <view class="iconfont icon-comment"></view>
+                <view class="f12 grey">评论</view>
+            </view>
+            <view catchtap="onGoodTap" class="bottom-btn zan-btn sub {{is_good?'green':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:if="{{config.show_good!==0}}">
+                <view class="iconfont {{is_good?'icon-appreciatefill':'icon-appreciate'}} {{isActive?'zanactive':''}}"></view>
+                <view class="f12 {{is_good?'':'grey'}}">{{good}}</view>
+            </view>
+        </view>
+        <button catchtap="onCallTap" class="contact-btn" data-mobile="{{mobile}}" disabled="{{mobile==''}}" type="primary">联系Ta</button>
+    </view>
+</view>
+<view class="floatBox" wx:if="{{show_comment}}">
+    <view class="pinglun-input">
+        <view class="flex f16">
+            <text class="sub">评论</text>
+            <text catchtap="onHideCommentTap" class="close tc grey">×</text>
+        </view>
+        <form bindsubmit="onCommentSubmit" reportSubmit="true">
+            <view class="input-box mt10">
+                <textarea cursorSpacing="115" fixed="true" focus="true" name="content" placeholder="{{comment_placeholder}}" placeholderClass="linght"></textarea>
+            </view>
+            <view class="flex mt10">
+                <view class="sub linght f12">
+                    <text class="mr5 iconfont icon-wran"></text>请遵循用户协议</view>
+                <button class="send-btn f16" formType="submit" type="primary">发送</button>
+            </view>
+        </form>
+    </view>
+    <view catchtap="onHideCommentTap" class="floatBox floatBoxBg" style="display:block;"></view>
+</view>
+<view class="floatBox" hidden="{{!isShowTop}}" style="z-index:1;">
+    <view class="zhiding-choose mid">
+        <view class="f16 tc">选择置顶时间</view>
+        <view class="mt15 tc grey">
+            <picker bindchange="onTopDayChange" mode="selector" range="{{['永久',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]}}">{{top_day==0?'永久':top_day+'天'}}</picker>
+        </view>
+        <view class="flex tc mt20 zhiding-btn">
+            <view catchtap="onToggleTopTap" class="sub green">确定</view>
+            <view catchtap="onSetValueTap" class="sub" data-name="isShowTop" data-value="{{false}}">取消</view>
+        </view>
+    </view>
+    <view class="floatBox floatBoxBg" style="display:block;"></view>
+</view>
+<view class="shade_bg {{is_share?'':'display_hide'}}">
+    <view class="class_share white_bg tc bounce">
+        <view class="shareBox flex ">
+            <button class="sub" openType="share">
+                <view class="subIconBox  mb15">
+                    <text class="iconfont icon-weixin"></text>
+                </view>
+                <view>发送给朋友</view>
+            </button>
+        </view>
+        <view catchtap="closeShare" class="cancleBtn  gridXt">取消</view>
+    </view>
+</view>

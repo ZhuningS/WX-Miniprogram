@@ -1,0 +1,567 @@
+.icon_20px {
+    width: 20px;
+    height: 20px;
+}
+
+.avatar {
+    background-image: url(http://statics01.qingmang.mobi/profile_default.svg);
+    background-size: cover;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+}
+
+.avatar .small {
+    height: 23px;
+    width: 23px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    height: 30px;
+    width: 100%;
+    padding: 0 15px;
+    margin-top: 50rpx;
+    box-sizing: border-box;
+    color: #fff;
+    background: #000;
+    flex-shrink: 0;
+    min-width: 120rpx;
+}
+
+.button.disable {
+    background: rgba(0,0,0,0.05);
+    color: rgba(0,0,0,0.2);
+    border: initial;
+}
+
+.meta-vote .title {
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 0;
+    word-break: break-all;
+}
+
+.meta-vote .content {
+    margin-top: 12px;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 16px;
+    color: #999;
+    display: block;
+}
+
+.meta-vote .voteMeta {
+    color: #999999;
+    padding: 0 0 0 8rpx;
+    font-size: 12px;
+    line-height: 14px;
+    border-left: 1rpx solid;
+    margin-top: 28rpx;
+}
+
+.meta-vote .voteMeta .userList {
+    display: flex;
+    align-items: center;
+}
+
+.meta-vote .voteMeta .userList .users-ctn {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+}
+
+.meta-vote .voteMeta .userList .users-ctn .user {
+    box-shadow: 0 0 5px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.05);
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    height: 27px;
+    width: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meta-vote .voteMeta .userList .users-ctn .user .avatar-ctn {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    vertical-align: inherit;
+}
+
+.meta-vote .voteMeta .userList .users-ctn .user .avatar-ctn .avatar {
+    width: 23px;
+    height: 23px;
+}
+
+.meta-vote .voteMeta .userList .users-ctn .user+.user {
+    margin-left: -6px;
+}
+
+.meta-vote .voteMeta .deadline {
+    margin-top: 4rpx;
+}
+
+.meta-vote .bottom-ctn {
+    margin-top: 36rpx;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row-reverse;
+    align-items: center;
+}
+
+.meta-vote .bottom-ctn .users-ctn {
+    position: relative;
+    display: flex;
+    width: auto;
+    align-items: center;
+}
+
+.meta-vote .bottom-ctn .users-ctn .user {
+    position: relative;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.05);
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meta-vote .bottom-ctn .users-ctn .user .avatar-ctn {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.meta-vote .bottom-ctn .users-ctn .user .avatar-ctn .avatar {
+    width: 26px;
+    height: 26px;
+}
+
+.meta-vote .bottom-ctn .users-ctn .user+.user {
+    margin-left: -12rpx;
+}
+
+.meta-vote .bottom-ctn .users-ctn .user.number {
+    background-image: none;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meta-vote .bottom-ctn .users-ctn .meta {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.meta-vote .left-shadow {
+    position: absolute;
+    left: -4px;
+    top: 26rpx;
+    height: 100%;
+    width: 4px;
+    margin: -20rpx 0;
+    border: 1rpx solid #CCC;
+    border-right: none;
+    border-bottom: none;
+    background-color: #F9F9F9;
+    transform: skewY(-45deg);
+    box-sizing: border-box;
+}
+
+.meta-vote .bottom-shadow {
+    position: absolute;
+    bottom: -4px;
+    left: 17rpx;
+    height: 4px;
+    width: 100%;
+    margin: 0 -20rpx;
+    border: 1rpx solid #CCC;
+    border-top: none;
+    box-sizing: border-box;
+    background-color: #F9F9F9;
+    transform: skewX(-45deg);
+}
+
+.meta-vote .options-ctn {
+    margin-top: 24rpx;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.meta-vote .options-ctn .image-option {
+    position: relative;
+}
+
+.meta-vote .options-ctn .image-option .border {
+    position: relative;
+    width: 276rpx;
+    height: 276rpx;
+    overflow: visible;
+}
+
+.meta-vote .options-ctn .image-option .border .image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn {
+    margin-top: 20rpx;
+    height: 100rpx;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .option-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10rpx;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .button {
+    width: 100%;
+    height: 70rpx;
+    transform: translateX(-5rpx);
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .percentage {
+    height: 8rpx;
+    max-width: 100%;
+    background-color: #DE5956;
+    transition: all 1s;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10rpx;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .result .users-ctn {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .result .users-ctn .user {
+    box-shadow: 0 0 5px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.05);
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    height: 27px;
+    width: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .result .users-ctn .user .avatar-ctn {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    vertical-align: inherit;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .result .users-ctn .user .avatar-ctn .avatar {
+    width: 23px;
+    height: 23px;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .result .users-ctn .user+.user {
+    margin-left: -6px;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .result .users-ctn .user.number {
+    background-image: none;
+    background-color: #fff;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meta-vote .options-ctn .image-option .result-ctn .result .users-ctn .percent {
+    margin-left: 10rpx;
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+}
+
+.meta-vote .options-ctn .text-option {
+    position: relative;
+    width: 100%;
+    transform: translateX(2rpx);
+    box-sizing: border-box;
+}
+
+.meta-vote .options-ctn .text-option .border {
+    position: relative;
+    padding: 20rpx 20rpx 20rpx 20rpx;
+    border: 1rpx #CCCCCC solid;
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.meta-vote .options-ctn .text-option .border .text-ctn {
+    font-size: 14px;
+    line-height: 18px;
+    word-break: normal;
+    max-width: 375rpx;
+    min-width: 40rpx;
+}
+
+.meta-vote .options-ctn .text-option .border .text-ctn .selected {
+    position: relative;
+    z-index: -1;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    justify-content: center;
+    margin-left: 5rpx;
+    transform: translateY(3rpx);
+}
+
+.meta-vote .options-ctn .text-option .border .percentage {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    height: 8rpx;
+    transition: all 1s;
+    background-color: #DE5956;
+}
+
+.meta-vote .options-ctn .text-option .border .users-ctn {
+    margin-top: 0;
+    margin-left: 10rpx;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.meta-vote .options-ctn .text-option .border .users-ctn .user {
+    box-shadow: 0 0 5px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.05);
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    height: 27px;
+    width: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meta-vote .options-ctn .text-option .border .users-ctn .user .avatar {
+    height: 23px;
+    width: 23px;
+}
+
+.meta-vote .options-ctn .text-option .border .users-ctn .user+.user {
+    margin-left: -6px;
+}
+
+.meta-vote .options-ctn .text-option .border .users-ctn .user.number {
+    background-image: none;
+    background-color: #fff;
+    font-size: 10px;
+}
+
+.meta-vote .options-ctn .text-option .border .users-ctn .percent {
+    margin-left: 10rpx;
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+}
+
+.meta-vote .options-ctn .text-option+.text-option {
+    margin-top: 33rpx;
+}
+
+.meta-vote .options-ctn.pair {
+    position: relative;
+    width: 100%;
+    transform: translateX(2rpx);
+}
+
+.meta-vote .options-ctn.pair .status-ctn {
+    position: relative;
+    width: 100%;
+}
+
+.meta-vote .options-ctn.pair .status-ctn .border {
+    position: relative;
+    height: 120rpx;
+    width: 100%;
+    border: 1rpx #CCCCCC solid;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.meta-vote .options-ctn.pair .status-ctn .border .vote-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.meta-vote .options-ctn.pair .status-ctn .border .vote-area view {
+    flex: 1;
+    height: 100%;
+}
+
+.meta-vote .options-ctn.pair .status-ctn .border .vote-area view+view {
+    border-left: 1rpx solid #CCCCCC;
+}
+
+.meta-vote .options-ctn.pair .status-ctn .border .option {
+    background-color: #93CFD8;
+    position: relative;
+    height: 100%;
+    min-width: 1%;
+    transition: all 1s;
+}
+
+.meta-vote .options-ctn.pair .status-ctn .border .option+.option {
+    background-color: #DE5956;
+    border-left: 1rpx solid #FFFFFF;
+}
+
+.meta-vote .options-ctn.pair .users-ctn {
+    margin-top: 0;
+    margin-left: 10rpx;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.meta-vote .options-ctn.pair .users-ctn .user {
+    box-shadow: 0 0 5px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.05);
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    height: 27px;
+    width: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meta-vote .options-ctn.pair .users-ctn .user .avatar {
+    height: 23px;
+    width: 23px;
+}
+
+.meta-vote .options-ctn.pair .users-ctn .user+.user {
+    margin-left: -6px;
+}
+
+.meta-vote .options-ctn.pair .users-ctn .user.number {
+    background-image: none;
+    background-color: #fff;
+    font-size: 10px;
+}
+
+.meta-vote .options-ctn.pair .users-ctn .percent {
+    margin-left: 10rpx;
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+}
+
+.meta-vote .options-ctn.pair .text-option {
+    display: block;
+    width: calc(50% - 10rpx);
+    padding: 22rpx 0;
+    box-sizing: border-box;
+    margin-top: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.meta-vote .options-ctn.pair .text-option .result {
+    display: flex;
+    align-items: center;
+}
+
+.meta-vote .options-ctn.pair .text-option .result .users-ctn {
+    margin-left: 0;
+    margin-right: 15rpx;
+    width: auto;
+    display: flex;
+}
+
+.meta-vote .options-ctn.pair .text-option .result .percent {
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+}
+
+.meta-vote .options-ctn.pair .text-option .text-ctn {
+    flex: 1;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 18px;
+    word-break: break-all;
+    margin-top: 10rpx;
+}
+
+.meta-vote .options-ctn.pair .text-option .text-ctn .selected {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    transform: translateY(3rpx);
+    margin-left: 5rpx;
+}
+
+.meta-vote .options-ctn.pair .text-option+.text-option .result {
+    flex-flow: row-reverse;
+}
+
+.meta-vote .options-ctn.pair .text-option+.text-option .result .users-ctn {
+    flex-flow: row-reverse;
+    margin-right: 0;
+    margin-left: 15rpx;
+}
+
+.meta-vote .options-ctn.pair .text-option+.text-option .result .users-ctn .user+.user {
+    margin-right: -4px;
+    margin-left: 0;
+}
+
+.meta-vote .options-ctn.pair .text-option+.text-option .text-ctn {
+    flex: 1;
+    text-align: right;
+}
+
+.meta-vote .button.large {
+    margin-top: 70rpx;
+}

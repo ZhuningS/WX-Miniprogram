@@ -1,0 +1,109 @@
+.tab-margin {
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+.tab-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 750rpx;
+    background-color: #FFFFFF;
+    color: #000000;
+    z-index: 10003;
+}
+
+.tab-nav .item {
+    display: inline-flex;
+    height: 60px;
+    align-items: center;
+    font-weight: bold;
+    color: rgba(0,0,0,0.2);
+    font-size: 20px;
+    line-height: 25px;
+    padding: 0 30rpx;
+}
+
+.tab-nav .item.selected {
+    color: #000000;
+}
+
+.tab-nav .item:first-child {
+    padding-left: 60rpx;
+}
+
+.tab-nav .item:last-child {
+    padding-right: 60rpx;
+}
+
+.tab-nav.fixed {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab-nav.fixed .item {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.tab-nav.left {
+    display: flex;
+}
+
+page {
+    padding-bottom: 80px;
+}
+
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.header .button {
+    background-color: #FFFFFF;
+    color: rgba(0,0,0,0.2);
+    flex: 1;
+    font-size: 16px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.header .button.selected {
+    color: #000000;
+}
+
+.providers {
+    align-items: center;
+    display: flex;
+    margin: 30px 0;
+    padding: 0 60rpx;
+}
+
+.providers .icon {
+    height: 40px;
+    margin-right: 20px;
+    width: 40px;
+}
+
+.providers .title {
+    flex: 1;
+    font-size: 14px;
+}
+
+.button-ctn {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.tip {
+    color: rgba(0,0,0,0.2);
+    font-size: 14px;
+    margin-top: 40px;
+    text-align: center;
+}

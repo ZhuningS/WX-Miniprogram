@@ -1,0 +1,7 @@
+<view class="{{rootClassNames}}">
+    <qm-button catchtap="handleCreateMagazineTap" comClass="create-button" wx:if="{{enableCreate}}">
+        <qm-icon name="create" theme="light"></qm-icon>
+    </qm-button>
+    <magazine-name catchtap="handleMagazineNameTap" data-id="{{item.magazine.id}}" name="{{item.magazine.name}}" wx:for="{{events}}" wx:key="id"></magazine-name>
+    <slot></slot>
+</view>

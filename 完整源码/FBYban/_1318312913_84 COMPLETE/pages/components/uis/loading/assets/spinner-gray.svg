@@ -1,0 +1,30 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+  /* <![CDATA[ */
+    .path {
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-width: 30;
+      stroke: #ccc;
+      transform-origin: 50% 50%;
+    }
+
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 0,470;
+        stroke-dashoffset: 0;
+        transform: rotate(-90deg);
+      }
+      50% {
+        stroke-dasharray: 353,470;
+        stroke-dashoffset: -118;
+      }
+      to {
+        stroke-dasharray: 0,470;
+        stroke-dashoffset: -470;
+        transform: rotate(270deg);
+      }
+    }
+  /* ]]> */
+  </style>
+  <circle cx="100" cy="100" r="75" fill="none"  class="path"></circle>
+</svg>

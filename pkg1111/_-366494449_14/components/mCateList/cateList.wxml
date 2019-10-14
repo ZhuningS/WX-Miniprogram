@@ -1,0 +1,42 @@
+<template name="mCateList">
+    <view style="margin-top:{{style.marginTop}};margin-bottom:{{style.marginBottom}};">
+        <view class="{{isFixed==1?'showItems fixbar':'showItems'}}" style="top:{{isFixed==1?'96rpx':'0'}}">
+            <scroll-view scrollIntoView="{{toId}}" scrollWithAnimation="true" scrollX="true">
+                <view bindtap="_changeItem" class="{{current==0?'active':''}}" data-index="0" id="s0">全部</view>
+                <view bindtap="_changeItem" class="{{current==index+1?'active':''}}" data-cid="{{item.id}}" data-index="{{index+1}}" id="s{{index+1}}" wx:for="{{cateList.catelist}}">
+                {{item.name}}
+              </view>
+            </scroll-view>
+            <view bindtap="_jump" class="category" data-url="/pages/category/category">
+                <image src="/images/category/more@3x.png"></image>
+            </view>
+        </view>
+        <view class="{{layout.ty=='hor'?'newGoodStyle':'newGoodStyle2'}}">
+            <block wx:if="{{cateList.item.length>0}}">
+                <view bindtap="_jump" class="newgoodsItem" data-url="/pages/goodsDetail/detail/index?id={{item.id}}" wx:for="{{cateList.item}}" wx:key="id">
+                    <view class="newgoodsItemWrap">
+                        <view class="newgoodsImgWrap">
+                            <image class="newgoodsImg" lazyLoad="true" mode="aspectFill" src="{{item.thumb}}"></image>
+                        </view>
+                        <view class="newgoodsInfoWrap">
+                            <view class="newgoodsName">{{item.name}}</view>
+                            <view class="shortitle" wx:if="{{layout=='single'}}">{{item.shorttitle}} </view>
+                            <view class="newgoodsPrice">
+                                <view>
+                                    <text class="goods__price__unit">￥</text>{{item.price}}
+                    </view>
+                                <view class="newpriceshow">
+                                    <text class="goods__price__unit_2">￥</text>{{item.priceshow}}
+                    </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <view class="noResult" wx:else>
+                <image src="/images/card/wushangpin@3x.png" style="width: 240rpx; height: 240rpx;"></image>
+                <view>暂无商品</view>
+            </view>
+        </view>
+    </view>
+</template>

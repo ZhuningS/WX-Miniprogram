@@ -1,0 +1,11 @@
+<form reportSubmit bindsubmit="collectNotificationFormId">
+    <view class="{{rootClassNames}}">
+        <block wx:for="{{events}}" wx:key="id">
+            <block wx:if="{{item.type==='section'}}"></block>
+            <button formType="submit" hoverClass="none" wx:elif="{{item.type==='mark'||item.type==='article'||item.type==='image'||item.type==='post'}}">
+                <universe-card event="{{item}}"></universe-card>
+            </button>
+            <block wx:else></block>
+        </block>
+    </view>
+</form>

@@ -1,0 +1,124 @@
+<template name="orderDetail">
+    <view class="orderCard">
+        <view class="orderCard__tit">
+            <view class="orderCard__tag">
+                {{orderInfo.order_number}}
+            </view>
+            <view class="orderStatus">
+                {{orderInfo.title}}
+            </view>
+        </view>
+        <view class="orderCard__item">
+            <view class="order__item__tit">
+                下单时间
+            </view>
+            <view class="order__item__con">
+                {{orderInfo.create_time}}
+            </view>
+        </view>
+        <view class="orderCard__item">
+            <view class="order__item__tit">
+                订单编号
+            </view>
+            <view class="order__item__con">
+                {{orderInfo.order_id}}
+            </view>
+        </view>
+        <block wx:if="{{orderInfo.order_state==1}}">
+            <view class="orderCard__item">
+                <view class="order__item__tit">
+                    订单金额
+                </view>
+                <view class="order__item__con">
+                    {{orderInfo.order_amount}}
+                </view>
+            </view>
+            <view class="orderCard__item">
+                <view class="order__item__tit">
+                    优惠金额
+                </view>
+                <view class="order__item__con">
+                    {{orderInfo.coupon_pay_amount}}
+                </view>
+            </view>
+        </block>
+        <view class="orderCard__item">
+            <view class="order__item__tit">
+                店铺
+            </view>
+            <view class="shopName">
+                {{orderInfo.shop_title}}
+            </view>
+        </view>
+        <view class="orderCard__price">
+            <block wx:if="{{orderInfo.order_state==0}}">
+                <view class="orderCard__price__lab">订单金额:</view>￥{{orderInfo.order_amount}}
+            </block>
+            <block wx:else>
+                <view class="orderCard__price__lab">实际支付:</view>￥{{orderInfo.pay_amount}}
+            </block>
+        </view>
+    </view>
+    <view class="orderDetail">
+        <view class="goodsList2" wx:for="{{orderGoods}}">
+            <view class="goodsList__item">
+                <view class="goodsList__item__tit">
+                        销售码
+                    </view>
+                <view class="goodsList__item__con">
+                        {{item.sales_code}}
+                    </view>
+            </view>
+            <view class="goodsList__item">
+                <view class="goodsList__item__tit">
+                        单价
+                    </view>
+                <view class="goodsList__item__con">
+                        ￥{{item.price}}
+                    </view>
+            </view>
+            <view class="goodsList__item">
+                <view class="goodsList__item__tit">
+                        数量
+                    </view>
+                <view class="goodsList__item__con">
+                        {{item.amount}}
+                    </view>
+            </view>
+            <view class="goodsList__item">
+                <view class="goodsList__item__tit">
+                        货号
+                    </view>
+                <view class="goodsList__item__con">
+                        {{item.huohao}}
+                    </view>
+            </view>
+            <view class="goodsList__item">
+                <view class="goodsList__item__tit">
+                        规格
+                    </view>
+                <view class="goodsList__item__con">
+                        {{item.guige}}
+                    </view>
+            </view>
+            <view class="goodsList__item">
+                <view class="goodsList__item__tit">
+                        小计
+                    </view>
+                <view class="goodsList__item__con">
+                        {{item.sub_total}}
+                    </view>
+            </view>
+        </view>
+        <view class="orderDetail__footer">
+            <view class="goodsList__item">
+                <view class="goodsList__item__tit">
+                    备注：
+                </view>
+                <view class="goodsList__item__con">
+                    {{orderInfo.remark}}
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

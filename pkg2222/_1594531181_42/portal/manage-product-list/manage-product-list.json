@@ -1,0 +1,8 @@
+{
+    "backgroundColor": "#FFF",
+    "usingComponents": {
+        "navigation-bar": "../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar",
+        "new-product-item": "../../widget/new-product-item/new-product-item",
+        "image-view": "../../libs/mmuxwxappdevkit/widget/image-view/image-view"
+    }
+}

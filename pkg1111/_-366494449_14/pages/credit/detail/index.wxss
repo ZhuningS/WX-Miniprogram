@@ -1,0 +1,93 @@
+.score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 140rpx;
+    padding: 0 40rpx;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.score .left .time {
+    font-size: 24rpx;
+    color: #aaa;
+}
+
+.score .left .name {
+    font-size: 32rpx;
+    color: #333;
+}
+
+.score .points {
+    font-size: 48rpx;
+    color: #3aaf49;
+}
+
+.rule-btn {
+    width: 128rpx;
+    height: 48rpx;
+    position: fixed;
+    top: 32rpx;
+    right: 0;
+    font-size: 24rpx;
+    text-align: center;
+    line-height: 48rpx;
+    border-radius: 24rpx 0 0 24rpx;
+    color: #333;
+    background-color: rgba(255,255,255,.4);
+}
+
+.rules {
+    width: 580rpx;
+    height: 628rpx;
+    padding: 20rpx 40rpx 40rpx;
+    border-radius: 16rpx;
+    position: fixed;
+    z-index: 4;
+    top: 280rpx;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #fff;
+    overflow: auto;
+}
+
+.rules .rules-tit {
+    font-size: 36rpx;
+    color: #333;
+    text-align: center;
+    line-height: 48rpx;
+    margin: 24rpx 0 20rpx;
+}
+
+.rules .rules-item {
+    margin-bottom: 20rpx;
+    font-size: 26rpx;
+    line-height: 34rpx;
+    color: #888;
+}
+
+.overwrap {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.6);
+}
+
+.close {
+    width: 48rpx;
+    height: 88rpx;
+    position: fixed;
+    top: 194rpx;
+    right: 60rpx;
+    z-index: 9999;
+}
+
+.rule_btn {
+    margin: 20rpx 40rpx;
+    font-size: 24rpx;
+    text-align: right;
+    color: #3aaf49;
+}

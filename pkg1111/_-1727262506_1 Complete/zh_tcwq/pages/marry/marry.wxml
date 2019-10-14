@@ -1,0 +1,63 @@
+<scroll-view bindscrolltolower="EventHandle" scrollY="true" style="height:{{windowHeight}}px;">
+    <view>
+        <view class="marry">
+            <view bindtap="wole" class="{{activeIndex1==1?'color1':'color2'}}">全部</view>
+            <scroll-view class="scroll_view_x" scrollX="true">
+                <view bindtap="tabClick" class="classification gobyndsingle {{activeIndex==index?'color1':'color2'}}" id="{{index}}" wx:for="{{classification}}" wx:for-item="post">
+          {{post.name}}
+        </view>
+            </scroll-view>
+        </view>
+        <view>
+            <view class="weui-tab__content content" wx:if="{{classification_info.length!=0}}" wx:for="{{classification_info}}" wx:for-item="post">
+                <view class="content_top">
+                    <view class="content_left">
+                        <image class="content_img" src="{{post.tz.user_img}}" wx:if="{{post.tz.user_img!=null}}"></image>
+                        <image class="content_img" src="{{url3}}{{post.tz.user_img2}}" wx:elif="{{post.tz.user_img2!=''}}"></image>
+                        <image class="content_img" src="{{url3}}{{post.tz.logo}}" wx:else></image>
+                        <view class="content_zhong">
+                            <view class="content_name">{{post.tz.user_name}}</view>
+                            <view class="content_text">
+                                <view class="content_zheng" wx:if="{{post.tz.type2_name!=null}}">{{post.tz.type2_name}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="phone" class="content_right" data-id="{{post.tz.user_tel}}">
+                        <view class="rel">
+                            <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/phone1.gif"></image>
+                        </view>
+                        <view>拨打电话</view>
+                    </view>
+                </view>
+                <view class="content_wen gobyndsingle">
+          {{post.tz.details}}
+        </view>
+                <view class="content_wen">
+                    <view style="border:1rpx solid {{item.number}};color:{{item.number}}" wx:for="{{post.label}}">{{item.label_name}}</view>
+                </view>
+                <view class="content_picture" wx:if="{{item.tz.img!=''}}">
+                    <image src="{{post.tz.is_houtai==1?url3:''}}{{item}}" wx:for="{{post.tz.img}}"></image>
+                </view>
+                <view class="content_chakan">
+                    <view class="content_info">{{post.tz.time}}发布</view>
+                    <view bindtap="see" class="content_info2" data-id="{{post.tz.id}}">查看详情>></view>
+                </view>
+                <view class="content_liulan">
+                    <image class="eye" src="https://api.cnmmsc.org/apitc/img/image/liulan.png"></image>
+                    <view class="content_num">{{post.tz.views}}</view>
+                    <view class="content_ren">人浏览</view>
+                    <image bindtap="thumbs_up" class="zan" data-id="{{post.tz.id}}" data-num="{{post.tz.givelike}}" src="https://api.cnmmsc.org/apitc/img/image/zan.png" wx:if="{{thumbs_ups==null}}"></image>
+                    <image class="zan" src="https://api.cnmmsc.org/apitc/img/image/thumbs_up.png" wx:if="{{thumbs_ups==true}}"></image>
+                    <view class="zannum" wx:if="{{thumbs_up==null}}">{{post.tz.givelike}}</view>
+                    <view class="zannum" wx:if="{{thumbs_up!=null}}">{{thumbs_up}}</view>人点赞
+          <view class="kuang"></view>
+                </view>
+            </view>
+            <view class="none_info rel" wx:if="{{classification_info.length==0}}">
+                <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/tie2.png"></image>
+            </view>
+            <view style="color:#999;background:#fff;text-align:center;font-size:26rpx;padding:20rpx 0 60rpx 0;" wx:if="{{classification_info.length==0}}">该分类暂无发布的帖子</view>
+        </view>
+    </view>
+</scroll-view>
+<view class="loading rel"></view>

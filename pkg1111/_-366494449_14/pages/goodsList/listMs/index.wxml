@@ -1,0 +1,51 @@
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="page" hidden="{{!dataLoaded}}" style="min-height: {{winHei}}px">
+    <view class="showItems">
+        <scroll-view scrollIntoView="{{toId}}" scrollWithAnimation="true" scrollX="true">
+            <view bindtap="_changeItem" class="{{current==0?'active':''}}" data-index="0" id="s0">全部</view>
+            <view bindtap="_changeItem" class="{{current==index+1?'active':''}}" data-cid="{{item.id}}" data-index="{{index+1}}" id="s{{index+1}}" wx:for="{{catelist}}">
+          {{item.name}}
+        </view>
+        </scroll-view>
+    </view>
+    <view class="page__bd">
+        <view class="{{double?'newGoodStyle2':'newGoodStyle'}}" wx:if="{{goodsList.length>0}}">
+            <view bindtap="_jump" class="newgoodsItem" data-url="/pages/goodsDetail/detailMs/index?id={{item.id}}" wx:for="{{goodsList}}" wx:key="id">
+                <view class="newgoodsItemWrap">
+                    <view class="newgoodsImgWrap">
+                        <image class="newgoodsImg" lazyLoad="true" mode="aspectFill" src="{{item.thumb}}"></image>
+                    </view>
+                    <view class="newgoodsInfoWrap">
+                        <view class="newgoodsName">{{item.name}}</view>
+                        <view style="display:flex;align-items:center">
+                            <view style="color: #aaa;font-size:22rpx;display:flex;align-items:center">
+                                <block wx:if="{{item.seckillstatus==1}}">距结束</block>
+                                <block wx:elif="{{item.seckillstatus==2}}">距开始</block>
+                                <view wx:if="{{timeArr[index].timeStr.d}}">
+                                    <text style="color:#666;font-size:22rpx;margin:0 4rpx">{{timeArr[index].timeStr.d}}</text>天</view>
+                            </view>
+                            <view class="timeDown">
+                                <view>{{timeArr[index].timeStr.h}}</view>:<view>{{timeArr[index].timeStr.m}}</view>:<view>{{timeArr[index].timeStr.s}}</view>
+                            </view>
+                        </view>
+                        <view class="newgoodsPrice">
+                            <view>
+                                <text class="goods__price__unit">￥</text>{{item.seckill_money}}
+                        </view>
+                            <view class="newpriceshow">
+                                <text class="goods__price__unit_2">￥</text>{{item.price}}
+                        </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="noResult" wx:else>
+            <image src="/images/card/wushangpin@3x.png" style="width: 240rpx; height: 240rpx;"></image>
+            <view>暂无商品</view>
+        </view>
+    </view>
+</view>

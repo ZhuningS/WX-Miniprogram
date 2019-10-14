@@ -1,0 +1,128 @@
+.wrap {
+    padding-bottom: 20rpx;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+}
+
+.userinfo-nickname {
+    color: #aaa;
+}
+
+.usermotto {
+    margin-top: 200px;
+}
+
+.more {
+    position: absolute;
+    color: #9e9e9e;
+    font-size: 24rpx;
+    padding: 0 10rpx 0 20rpx;
+    right: 16rpx;
+}
+
+.mod {
+    position: relative;
+    border-bottom: 1px solid #f3f3f3;
+    padding: 32rpx 0 12rpx 0;
+    background: #fff;
+}
+
+.mod_title {
+    text-align: center;
+    line-height: 32rpx;
+}
+
+.mod_title_line {
+    border-top: 1px solid #9e9e9e;
+    height: 20rpx;
+    position: relative;
+    width: 230rpx;
+    margin: 0 auto;
+}
+
+.mod_title_top {
+    position: absolute;
+    top: -16rpx;
+    background: #fff;
+    left: 50%;
+    padding: 0 10rpx;
+    width: 144rpx;
+    margin-left: -70rpx;
+    text-align: center;
+}
+
+.sy_mod {
+    margin-top: 16rpx;
+}
+
+.icon_fission {
+    position: fixed;
+    right: 20rpx;
+    bottom: 150rpx;
+    width: 115rpx;
+    height: 125rpx;
+}
+
+.icon_fission image {
+    width: 115rpx;
+    height: 125rpx;
+}
+
+.activePop {
+    position: fixed;
+    top: 5%;
+    z-index: 999;
+    width: 750rpx;
+    height: 805rpx;
+}
+
+@-webkit-keyframes first1 {
+    from {
+        top: -100%;
+    }
+
+    to {
+        top: 5%;
+    }
+}
+
+@keyframes first1 {
+    from {
+        top: -100%;
+    }
+
+    to {
+        top: 5%;
+    }
+}
+
+.activePop-body {
+    height: 600rpx;
+    width: 500rpx;
+    border-radius: 10rpx;
+    z-index: 999999;
+    position: fixed;
+    margin-left: -375rpx;
+    left: 50%;
+}
+
+.closePop {
+    text-align: center;
+    margin-top: 12px;
+    position: absolute;
+    bottom: -100rpx;
+    left: 50%;
+    margin-left: -40rpx;
+    z-index: 9999999;
+}

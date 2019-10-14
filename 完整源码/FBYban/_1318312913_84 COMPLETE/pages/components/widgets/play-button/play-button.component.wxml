@@ -1,0 +1,6 @@
+<view class="{{rootClassNames}}">
+    <view class="info-duration" wx:if="{{duration}}">
+    {{formattedTime}}
+  </view>
+    <qm-icon comClass="icon-play" name="play-triangular" theme="light"></qm-icon>
+</view>

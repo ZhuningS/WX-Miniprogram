@@ -1,0 +1,73 @@
+.list-ctn {
+    position: relative;
+    min-height: 100vh;
+    background: rgba(0,0,0,0.8);
+}
+
+.list-ctn .card-video {
+    position: relative;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+    width: 750rpx;
+}
+
+.list-ctn .card-video .video-player {
+    position: relative;
+}
+
+.list-ctn .card-video .loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.list-ctn .card-video .mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: -40px -60rpx;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.playing-ctn {
+    flex: auto;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 750rpx;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.playing-ctn .loading {
+    position: relative;
+    top: 48%;
+    left: 345rpx;
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.playing-ctn .video-player-ctn {
+    background: #000000;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 40px 60rpx 40px;
+}
+
+.playing-ctn .video-player-ctn .video-playing {
+    width: 750rpx;
+    height: 420rpx;
+    margin: 0 -60rpx;
+}
+
+.playing-ctn .video-player-ctn .description {
+    color: #FFFFFF;
+}
+
+.playing-ctn .video-player-ctn .caption {
+    color: rgba(255,255,255,0.5);
+}

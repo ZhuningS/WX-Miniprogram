@@ -1,0 +1,33 @@
+<navigation-bar title=""></navigation-bar>
+<search-view bindsearch="onClickSearch" placeHolder="{{placeHolder}}" query="{{inputVal}}"></search-view>
+<view class="search-wrap">
+    <view class="search-result item-list">
+        <view bindtap="onClickSearchResult" class="line-item-wrap {{index==lines.length-1?'line-item-wrap__no-border':''}}" data-index="{{index}}" data-item="{{item}}" wx:for="{{result}}" wx:key="base.item_code">
+            <view class="line-item-inner-wrap">
+                <image-view class="line-item-img" mode="aspectFill" src="{{item.pics[0].pic_url+'/162'}}"></image-view>
+                <view class="line-item-text__wrap">
+                    <text class="line-item-text__title">{{item.base.item_name}}</text>
+                    <text class="line-item-text__price">¥{{Util.formatPrice(item.stocks[0].stock_price)}}</text>
+                </view>
+            </view>
+            <view class="line-item-active-mask"></view>
+        </view>
+    </view>
+    <view class="no-more-footer" wx:if="{{footerTip&&footerTip.length>0}}">
+        <text>{{footerTip}}</text>
+    </view>
+</view>
+<wxs module="Util">
+var formatPrice = (function(price) {
+    var priceStr = "" + (price / 100);
+    var priceArr = priceStr.split('.');
+    if (priceArr.length == 1) {
+        return (priceStr + ".00")
+    } else if (priceArr[(1)].length == 1) {
+        return (priceStr + "0")
+    } else {
+        return (priceStr)
+    }
+});
+module.exports.formatPrice = formatPrice;
+</wxs>

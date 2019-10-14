@@ -1,0 +1,12 @@
+.mtitle {
+    display: flex;
+    padding: 0 20rpx;
+    font-size: 28rpx;
+    position: relative;
+    background: #fff;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.mtitle .title {
+    color: #000;
+}

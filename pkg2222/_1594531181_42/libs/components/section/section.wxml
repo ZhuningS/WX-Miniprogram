@@ -1,0 +1,6 @@
+<view class="container {{isLastOne?'last':''}}">
+    <view class="title">{{title}}</view>
+    <view class="body">
+        <slot></slot>
+    </view>
+</view>

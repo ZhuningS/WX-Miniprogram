@@ -1,0 +1,62 @@
+<view class="contenter">
+    <view class="userInfo write bgcolor">
+        <view class="userInfo-bottom flex">
+            <view class="user-img mr10">
+                <image mode="aspectFill" src="{{headimgurl?headimgurl:'/images/default.png'}}"></image>
+            </view>
+            <view class="user-msg sub mt10">
+                <view>{{people}}人参与</view>
+                <view class="f16">{{nickname}} 创建</view>
+            </view>
+            <view bindtap="onNavigateTap" class="btn-send tc ml10 transition-duration-150 active-bg" data-url="index">我的活动</view>
+        </view>
+    </view>
+    <view class="active-box">
+        <view class="active-title f16">
+            <text>{{title}}</text>
+        </view>
+        <view class="active-content mt10 f16 gridXb">
+            <text>{{content}}</text>
+        </view>
+        <view class="content-list gridXb">
+            <text class="iconfont icon-time mr5 grey f16"></text>
+            <block wx:if="{{is_fullday==1}}">
+        {{start_time}} 全天
+      </block>
+            <block wx:else>
+        {{start_time}} - {{end_time}}
+      </block>
+        </view>
+        <view bindtap="onOpenMapTap" class="content-list gridXb transition-duration-150 active-bg flex" data-address="{{address}}" data-lat="{{latitude}}" data-lng="{{longitude}}" data-title="{{title}}">
+            <text class="iconfont icon-location mr5 grey f16"></text>
+            <text class="sub address-padding-right">{{address}}</text>
+            <text class="arrowR"></text>
+        </view>
+        <view catchtap="onViewQRCodeTap" class="content-list gridXb transition-duration-150 active-bg flex" data-type="enroll" wx:if="{{is_show_qrcode}}">
+            <text class="iconfont icon-saoyisao mr5 grey f16"></text>
+            <text class="sub">报名二维码</text>
+            <text class="arrowR"></text>
+        </view>
+        <view catchtap="onViewQRCodeTap" class="content-list gridXb transition-duration-150 active-bg flex" data-type="signed" wx:if="{{is_show_qrcode}}">
+            <text class="iconfont icon-erweima1 mr5 grey f16"></text>
+            <text class="sub">签到二维码</text>
+            <text class="arrowR"></text>
+        </view>
+        <view bindtap="onNavigateTap" class="content-list gridXb flex transition-duration-150 active-bg" data-url="people?id={{id}}&uid={{uid}}">
+            <text class="iconfont icon-friend mr5 grey f16"></text>
+            <text class="people-look">{{people}}人参与</text>
+            <view class="peo-msg sub tr arrowR">
+                <image class="fr" src="{{item.headimgurl?item.headimgurl:'/images/default.png'}}" wx:for="{{user_lists}}" wx:key="{{index}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="bottom-btn tc flex">
+        <view bindtap="onDeleteTap" class="sub" wx:if="{{is_show_delete_button}}">
+            <button class="f14" type="warn">删除活动</button>
+        </view>
+        <view bindtap="onNavigateTap" class="sub" data-backup-url="take-in?id={{id}}" data-url="write-msg?id={{id}}&enroll_info={{enroll_info}}" wx:if="{{is_show_sign_button}}">
+            <button class="f14" type="primary">我要报名</button>
+        </view>
+    </view>
+</view>
+<duoguan_ad ad_type="duoguan_activity_info_bottom"></duoguan_ad>

@@ -1,0 +1,4 @@
+<import src="../components/widgets.wxml"></import>
+<view>
+    <template is="loading" data></template>
+</view>

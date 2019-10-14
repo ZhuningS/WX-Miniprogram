@@ -1,0 +1,91 @@
+.showItems {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    padding-right: 0;
+}
+
+.newGoodStyle,.newGoodStyle2 {
+    background: transparent;
+}
+
+.page__bd {
+    position: relative;
+    top: 80rpx;
+}
+
+.goods-wrap {
+    background-color: #fff;
+    margin: 20rpx 0;
+    padding: 10rpx 0;
+}
+
+.goods-wrap .title {
+    font-size: 32rpx;
+    color: #555;
+    margin: 10rpx 40rpx 0;
+}
+
+.goods-wrap .price {
+    font-size: 42rpx;
+    color: #f65c59;
+    margin: 10rpx 40rpx;
+}
+
+.goods-wrap .price .old {
+    color: #999;
+    margin: 20rpx;
+    text-decoration: line-through;
+    font-weight: 300;
+}
+
+.btn-go {
+    float: right;
+    line-height: 50rpx;
+    font-size: 0;
+}
+
+.btn-go .btn {
+    box-sizing: border-box;
+    display: inline-block;
+    background: #f65c59;
+    color: #fff;
+    padding: 0 30rpx;
+    font-size: 28rpx;
+    font-weight: 300;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 4rpx;
+}
+
+.btn-go .text {
+    box-sizing: border-box;
+    display: inline-block;
+    background: #fdeceb;
+    color: #ff5c53;
+    padding: 0 30rpx;
+    font-weight: 300;
+    height: 60rpx;
+    line-height: 60rpx;
+    border: 1px solid #ff5c53;
+}
+
+.goods-wrap .time {
+    line-height: 60rpx;
+    border-top: 1px solid #f1f1f1;
+    overflow: hidden;
+}
+
+.goods-wrap .left {
+    font-size: 22rpx;
+    color: #666;
+    float: left;
+    margin-left: 40rpx;
+}
+
+.goods-wrap .right {
+    font-size: 24rpx;
+    float: right;
+    margin-right: 40rpx;
+    color: #999;
+}

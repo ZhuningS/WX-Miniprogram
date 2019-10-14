@@ -1,0 +1,43 @@
+<template name="page-timeline">
+    <form reportSubmit bindsubmit="hackForm" wx:if="{{events&&events.length}}">
+        <view class="timeline card-container page-timeline" style="background-color: #FFFFFF;">
+            <block wx:for="{{events}}" wx:key="id">
+                <button class="hack-form-submit page-card" formType="submit" hoverClass="none" wx:if="{{item.type==='text'||item.type==='richText'||item.type==='image'||item.type==='swiper'}}">
+                    <page-card event="{{item}}" route="{{route}}"></page-card>
+                </button>
+                <button class="hack-form-submit page-card" formType="submit" hoverClass="none" wx:if="{{item.type==='section'&&(item.section.type==='magazine'||item.section.type==='magazines')}}">
+                    <page-card event="{{item}}" route="{{route}}"></page-card>
+                </button>
+                <button class="hack-form-submit article-card page-card" formType="submit" hoverClass="none" wx:if="{{item.type==='article'}}">
+                    <universe-card catch:reload="init" event="{{item}}" hideComponentPadding="{{true}}" magazine="{{item.magazine}}" magazineConfig="{{item.magazineInfo.config}}" route="{{route}}" wx:if="{{!item.isDeleted}}"></universe-card>
+                </button>
+                <view class="page-timeline-ad-container page-card" wx:elif="{{item.type==='ads'}}">
+                    <ad style="width: 670rpx;" unitId="{{item.ads.code}}"></ad>
+                </view>
+            </block>
+        </view>
+    </form>
+</template>
+<template name="timeline">
+    <form reportSubmit bindsubmit="hackForm" wx:if="{{events&&events.length}}">
+        <view class="timeline card-container {{style==='no-title'?'no-title-bar':''}} {{isWhiteBg?'white':''}}">
+            <block wx:for="{{events}}" wx:key="id">
+                <template is="section-{{item.section.type}}" data="{{route:route,itemsStatus:itemsStatus,subscribed:subscribed,followed:followed,marked:marked,currentPlaying:currentPlaying,config:config,uiSwitch:uiSwitch,currentMorePos:currentMorePos,index:index,tipsOn:tipsOn,style:item.style,...item.section}}" wx:if="{{item.type==='section'}}"></template>
+                <button class="hack-form-submit" formType="submit" hoverClass="none" wx:elif="{{item.type==='mark'||item.type==='article'||item.type==='image'||item.type==='post'}}">
+                    <universe-card catch:reload="init" event="{{item}}" magazine="{{magazine}}" magazineConfig="{{magazineConfig}}" route="{{route}}" wx:if="{{!item.isDeleted}}"></universe-card>
+                </button>
+                <button class="hack-form-submit" formType="submit" hoverClass="none" wx:elif="{{item.type==='text'||item.type==='richText'}}">
+                    <page-card catch:reload="init" event="{{item}}" route="{{route}}" wx:if="{{!item.isDeleted}}"></page-card>
+                </button>
+                <view class="timeline-ad-container" wx:elif="{{item.type==='ads'}}">
+                    <ad style="width: 670rpx;" unitId="{{item.ads.code}}"></ad>
+                </view>
+                <template is="single-card-{{item.type}}" data="{{cover:cover,user:user,itemsStatus:itemsStatus,currentCate:currentCate,score:score,marked:marked,followed:followed,currentPlaying:currentPlaying,config:config,tipsOn:tipsOn,...item,mid:mid,magazine:magazine}}" wx:else></template>
+            </block>
+            <view catchtap="onTapAllTopics" class="button center more-topics-handler" wx:if="{{hasMoreTopics}}">显示全部</view>
+        </view>
+    </form>
+</template>
+<import src="../components/section.wxml"></import>
+<import src="../components/card.wxml"></import>
+<import src="../components/widgets.wxml"></import>

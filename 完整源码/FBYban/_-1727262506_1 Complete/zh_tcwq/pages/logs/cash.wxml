@@ -1,0 +1,109 @@
+<view class="font cash_font">
+    <form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
+        <view class="cash">
+            <view class="cash_left">可提现金额：¥{{money}}</view>
+        </view>
+        <view class="cash_box">
+            <view class="cash_left">提现金额</view>
+            <view class="cash_money">¥
+        <input bindinput="bindblur" class="cash_box_text" name="value" type="digit" value="{{tx_money}}"></input>
+            </view>
+        </view>
+        <view class="cash_style">
+            <view class="cash_style_title">提现方式</view>
+            <view class="">
+                <view bindtap="check" class="stylewei" wx:if="{{system.tx_type==2}}">
+                    <view class="stylewei_left">
+                        <image class="stylewei_img" src="https://api.cnmmsc.org/apitc/img/image/weixin.png"></image>
+                        <view class="stylewei_text">提现到微信钱包</view>
+                    </view>
+                    <view class="stylewei_right" wx:if="{{hidden==true}}"></view>
+                    <icon color="#42a6f7" size="20" type="success" wx:if="{{hidden2==true}}"></icon>
+                </view>
+                <view class="cash_style3 {{cash_wei==false?' cash_zhi':''}}" wx:if="{{system.tx_type==2}}">
+                    <view class="cash_style2 {{cash_wei2==false?' cash_zhi2':''}}">
+                        <view class="cash_write">
+                            <view class="write_left">姓名</view>
+                            <input class="write_inp" maxlength="-1" name="wxname" placeholder="请输入姓名" placeholderStyle="color:#ccc;" type="text"></input>
+                        </view>
+                        <view class="cash_write">
+                            <view class="write_left">微信账号</view>
+                            <input class="write_inp" maxlength="-1" name="wxka" placeholder="请填写微信账号" placeholderStyle="color:#ccc;" type="text"></input>
+                        </view>
+                        <view class="cash_write">
+                            <view class="write_left">确认账号</view>
+                            <input class="write_inp" maxlength="-1" name="wxkahao" placeholder="请确认账号" placeholderStyle="color:#ccc;" type="text"></input>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="check2" class="stylewei" wx:if="{{system.tx_type==1}}">
+                    <view class="stylewei_left">
+                        <image class="stylewei_img2" src="https://api.cnmmsc.org/apitc/img/image/zhifubao.png"></image>
+                        <view class="stylewei_text">提现到支付宝</view>
+                    </view>
+                    <view class="stylewei_right" wx:if="{{hidden3==true}}"></view>
+                    <icon color="#FF5555" size="20" type="success" wx:if="{{hidden4==true}}"></icon>
+                </view>
+                <view class="cash_style3 {{cash_zhi==false?' cash_zhi':''}}" wx:if="{{system.tx_type==1}}">
+                    <view class="cash_style2 {{cash_zhi2==false?' cash_zhi2':''}}">
+                        <view class="cash_write">
+                            <view class="write_left">姓名</view>
+                            <input class="write_inp" maxlength="-1" name="zfname" placeholder="请输入姓名" placeholderStyle="color:#ccc;" type="text"></input>
+                        </view>
+                        <view class="cash_write">
+                            <view class="write_left">支付宝账号</view>
+                            <input class="write_inp" maxlength="-1" name="zfka" placeholder="请填写支付宝账号" placeholderStyle="color:#ccc;" type="text"></input>
+                        </view>
+                        <view class="cash_write">
+                            <view class="write_left">确认账号</view>
+                            <input class="write_inp" maxlength="-1" name="zfkahao" placeholder="请确认账号" placeholderStyle="color:#ccc;" type="text"></input>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="check3" class="stylewei" wx:if="{{system.tx_type==3}}">
+                    <view class="stylewei_left">
+                        <image class="stylewei_img" src="https://api.cnmmsc.org/apitc/img/image/yinhangka.png"></image>
+                        <view class="stylewei_text">提现到银行卡</view>
+                    </view>
+                    <view class="stylewei_right" wx:if="{{hidden5==true}}"></view>
+                    <icon color="#FF5555" size="20" type="success" wx:if="{{hidden6==true}}"></icon>
+                </view>
+                <view class="cash_style3 {{cash_ka==false?' cash_ka':''}}" wx:if="{{system.tx_type==3}}">
+                    <view class="cash_style2 {{cash_ka2==false?' cash_ka2':''}}">
+                        <view class="cash_write">
+                            <view class="write_left">姓名</view>
+                            <input class="write_inp" maxlength="-1" name="ylname" placeholder="请输入姓名" placeholderStyle="color:#ccc;" type="text"></input>
+                        </view>
+                        <view class="cash_write">
+                            <view class="write_left">选择银行</view>
+                            <picker bindchange="bindPickerChange" range="{{objectArray}}" rangeKey="name" value="{{index}}">
+                                <view class="picker">
+                  {{objectArray[index].name||'选择银行'}}
+                </view>
+                            </picker>
+                        </view>
+                        <view class="cash_write">
+                            <view class="write_left">银行卡号</view>
+                            <input class="write_inp" maxlength="-1" name="ylka" placeholder="请填写银行卡号" placeholderStyle="color:#ccc;" type="text"></input>
+                        </view>
+                        <view class="cash_write">
+                            <view class="write_left">确认卡号</view>
+                            <input class="write_inp" maxlength="-1" name="ylkahao" placeholder="请确认银行卡号" placeholderStyle="color:#ccc;" type="text"></input>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="cash_btn">
+            <button class="cash_btnin" wx:if="{{button==false}}">提现</button>
+            <button class="cash_btnin1" formType="submit" wx:if="{{button==true}}">提现</button>
+        </view>
+        <view class="cash_info">
+            <view>详细说明</view>
+            <view>提现门槛为{{tx_price}}元</view>
+            <view>提现手续费为{{tx_sxf1}}%</view>
+            <view>本次提现将扣除手续费¥{{sxf}}元</view>
+            <view>本次提现实际到账金额¥{{sh_money}}元</view>
+        </view>
+    </form>
+</view>

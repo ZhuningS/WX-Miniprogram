@@ -1,0 +1,74 @@
+.c-vas-mask {
+    position: fixed;
+    top: 10vh;
+    left: 8%;
+    z-index: 7;
+}
+
+.c-vas-mask .c-vas-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #000;
+    opacity: .6;
+    z-index: 7;
+}
+
+.c-vas-mask .c-vas-cancle {
+    position: fixed;
+    top: 30rpx;
+    left: 45%;
+    z-index: 8;
+    font-size: 70rpx;
+    color: #fff;
+}
+
+.c-vas-mask .c-vas-main {
+    position: fixed;
+    top: 10vh;
+    left: 6%;
+    z-index: 8;
+    width: 95%;
+    height: 75vh;
+}
+
+.c-vas-mask .c-vas-bottom {
+    position: fixed;
+    width: 100%;
+    padding: 0 80rpx;
+    z-index: 8;
+    bottom: 2vh;
+    left: 0;
+}
+
+.c-vas-mask .c-vas-bottom .c-vas-btn {
+    font-size: 26rpx;
+    text-align: center;
+    color: #fff;
+}
+
+.c-vas-mask .c-vas-bottom .c-vas-btn .dzicon {
+    font-size: 60rpx;
+    width: 96rpx;
+    height: 96rpx;
+    text-align: center;
+    line-height: 96rpx;
+    border-radius: 50%;
+    margin-top: 20rpx;
+}
+
+.c-vas-mask .c-vas-bottom .c-vas-btn text {
+    margin-top: 10rpx;
+}
+
+.c-vas-mask .c-vas-bottom .c-vas-btn .c-vas-share {
+    color: #fff;
+    background: #FF9E40;
+}
+
+.c-vas-mask .c-vas-bottom .c-vas-btn .c-vas-save {
+    color: #fff;
+    background: #FF6B6B;
+}

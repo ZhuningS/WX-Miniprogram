@@ -1,0 +1,26 @@
+.mcase {
+    font-size: 0;
+    position: relative;
+}
+
+.mcase .arrange:nth-child(1) {
+    width: 50%;
+}
+
+.mcase .arrange:nth-child(2) {
+    position: absolute;
+    width: 50%;
+    right: 0;
+    top: 0;
+}
+
+.mcase .arrange:nth-child(3) {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    bottom: 0;
+}
+
+.mcase .arrange .inner image {
+    width: 100%;
+}

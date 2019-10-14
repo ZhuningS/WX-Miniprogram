@@ -1,0 +1,173 @@
+.order-not-login {
+    text-align: center;
+    padding-top: 180rpx;
+}
+
+.not-login-img {
+    width: 220rpx;
+    height: 220rpx;
+}
+
+.not-login-title {
+    color: #8f8f8f;
+    font-size: 16px;
+    padding: 20rpx 0;
+}
+
+.not-login-btn {
+    color: #ffffff;
+    font-size: 16px;
+    background: #ff6900;
+    width: 100px;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+}
+
+page {
+    background: #eee;
+}
+
+.user-info {
+    background: #41455b;
+    padding: 0 60rpx;
+    height: 220rpx;
+}
+
+.user-img {
+    float: left;
+    width: 128rpx;
+    height: 128rpx;
+    border-radius: 50%;
+    margin-top: 36rpx;
+    border: 2px solid #3e404b;
+}
+
+.user-content {
+    padding-top: 64rpx;
+    margin-left: 158rpx;
+}
+
+.user-name {
+    color: #ffffff;
+    font-size: 36rpx;
+}
+
+.user-phone {
+    color: #a4a8bc;
+    font-size: 26rpx;
+    display: block;
+    margin-top: 18rpx;
+}
+
+.order-list {
+    height: 200rpx;
+}
+
+.order-info {
+    margin-top: 20rpx;
+    padding: 38rpx 30rpx 22rpx 30rpx;
+    background: #fff;
+}
+
+.order-title {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20rpx;
+}
+
+.order-img {
+    width: 70rpx;
+    height: 70rpx;
+    float: left;
+}
+
+.order-title-info {
+    color: #333333;
+    font-size: 14px;
+    overflow: hidden;
+    line-height: 20px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.order-content {
+    background: #fff;
+    padding-top: 26rpx;
+}
+
+.order-money {
+    color: #8f8f8f;
+    font-size: 14px;
+    float: left;
+}
+
+.order-money-num {
+    color: #ff6900;
+    font-size: 16px;
+}
+
+.order-hosting {
+    color: #ff6900;
+    font-size: 14px;
+    width: 96px;
+    height: 34px;
+    line-height: 34px;
+    background: #fff;
+    border: 1px solid #ff6900;
+    float: right;
+    margin: 0 30rpx 0 0;
+}
+
+.order-hosting::after {
+    border: 0;
+}
+
+.order-result {
+    font-size: 28rpx;
+    float: right;
+    padding-right: 30rpx;
+}
+
+.success {
+    color: #ff9c00;
+}
+
+.fail {
+    color: #9e9e9e;
+}
+
+.doing {
+    color: #79bc61;
+}
+
+.order-kefu {
+    position: static;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+}
+
+.kefu-img {
+    width: 10px;
+    height: 10px;
+}
+
+.kefu-info {
+    color: #8e8e8e;
+    font-size: 12px;
+}
+
+.loading {
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    padding: 12rpx 0;
+}

@@ -1,0 +1,83 @@
+.c-ms {
+    width: 100%;
+    background-color: #fff;
+    padding: 0 30rpx 30rpx 30rpx;
+}
+
+.c-ms .c-ms-countDonw {
+    width: 100%;
+    margin-top: 30rpx;
+}
+
+.c-ms .c-ms-countDonw .ms-line {
+    color: #d0d0d0;
+}
+
+.c-ms .c-ms-countDonw .ms-time {
+    width: 45rpx;
+    text-align: center;
+    padding: 5rpx 0;
+    font-size: 24rpx;
+    color: #444;
+    border-radius: 5rpx;
+    border: 1px solid #d9d8d9;
+    margin: 0 8rpx;
+    font-weight: bold;
+}
+
+.c-ms .c-ms-countDonw .ms-radius {
+    font-size: 22rpx;
+    font-weight: bold;
+    color: #333;
+}
+
+.c-ms .c-ms-main {
+    width: 100%;
+}
+
+.c-ms .c-ms-main .c-ms-main-item:last-child {
+    border-bottom: none;
+}
+
+.c-ms .c-ms-main .c-ms-main-item {
+    width: 100%;
+    padding: 30rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.c-ms .c-ms-main .c-ms-main-item>image {
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 5rpx;
+    flex-shrink: 0;
+    margin-right: 30rpx;
+}
+
+.c-ms .c-ms-main .c-ms-main-item .c-ms-main-content {
+    height: 220rpx;
+}
+
+.c-ms .c-ms-main .c-ms-main-item .c-ms-main-content .c-ms-main-price {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.c-ms .c-ms-main .c-ms-main-item .c-ms-main-btn {
+    width: 140rpx;
+    height: 66rpx;
+    text-align: center;
+    line-height: 66rpx;
+    border-radius: 5rpx;
+}
+
+.c-ms .c-ms-more {
+    color: #666;
+    width: 260rpx;
+    text-align: center;
+    height: 56rpx;
+    line-height: 56rpx;
+    border-radius: 5rpx;
+    border: 1px solid #d0d0d0;
+    margin: 30rpx auto 0 auto;
+}

@@ -1,0 +1,148 @@
+.c-gv {
+    width: 100%;
+}
+
+.c-gv .c-gv-main {
+    width: 100%;
+    padding-left: 30rpx;
+    margin-bottom: 25rpx;
+    background-color: #fff;
+}
+
+.c-gv .c-gv-main .c-gv-main-top {
+    width: 100%;
+    height: 110rpx;
+    padding-right: 30rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.c-gv .c-gv-main .c-gv-main-top>image {
+    width: 70rpx;
+    height: 70rpx;
+    margin-right: 50rpx;
+    border-radius: 5rpx;
+}
+
+.c-gv .c-gv-main .c-gv-main-more {
+    width: 100%;
+    padding: 30rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.c-gv .c-gv-main .c-gv-main-more>textarea {
+    width: 100%;
+    height: 140rpx;
+    margin-bottom: 30rpx;
+}
+
+.c-gv .c-gv-main .c-gv-main-more .c-gv-main-uploadImg {
+    width: 170rpx;
+    height: 170rpx;
+}
+
+.c-gv .c-gv-main .c-gv-main-more .c-gv-main-close {
+    font-size: 40rpx;
+    position: absolute;
+    top: -20rpx;
+    right: -10rpx;
+    opacity: .8;
+    z-index: 1;
+}
+
+.c-gv .c-gv-main .c-gv-main-more .c-gv-main-upload {
+    width: 170rpx;
+    height: 170rpx;
+    border: 2px dotted #d0d0d0;
+}
+
+.c-gv .c-gv-main .c-gv-main-more .c-gv-main-upload>text {
+    color: #d9d8d9;
+}
+
+.c-gv .c-gv-main .c-gv-main-hidename {
+    width: 100%;
+    padding: 30rpx 0;
+}
+
+.c-gv .c-gv-main .c-gv-main-hidename .dzicon {
+    font-size: 40rpx;
+    margin-right: 30rpx;
+}
+
+.c-gv .c-gv-star {
+    width: 100%;
+    margin-top: 25rpx;
+    background-color: #fff;
+    padding: 30rpx;
+}
+
+.c-gv .c-gv-star .c-gv-star-main {
+    width: 100%;
+    margin-top: 30rpx;
+}
+
+.c-gv .c-gv-star .c-gv-star-main>view {
+    margin-bottom: 30rpx;
+}
+
+.c-gv .c-gv-btn {
+    width: 100%;
+    height: 100rpx;
+    text-align: center;
+    line-height: 100rpx;
+    font-size: 30rpx;
+    margin-top: 80rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.c-gv .c-gv-mask {
+    width: 100%;
+}
+
+.c-gv .c-gv-mask .c-gv-bg {
+    width: 100%;
+    height: 100vh;
+    background: #000000;
+    opacity: .4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.c-gv .c-gv-mask .c-gv-mask-main {
+    position: fixed;
+    top: 200rpx;
+    left: 50%;
+    margin-left: -260rpx;
+    width: 520rpx;
+    height: 480rpx;
+    background: #fff;
+    z-index: 4;
+}
+
+.c-gv .c-gv-mask .c-gv-mask-main .dzicon {
+    font-size: 140rpx;
+    opacity: .3;
+    margin-top: 10rpx;
+}
+
+.c-gv .c-gv-mask .c-gv-mask-main .v-mbtn {
+    width: 260rpx;
+    height: 68rpx;
+    text-align: center;
+    line-height: 68rpx;
+    margin-top: 60rpx;
+}
+
+.c-gv .c-gv-mask .c-gv-mask-close {
+    font-size: 95rpx;
+    color: #fff;
+    position: fixed;
+    bottom: 350rpx;
+    z-index: 4;
+    left: 50%;
+    margin-left: -45rpx;
+}

@@ -1,0 +1,42 @@
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="form" hidden="{{!dataLoaded}}">
+    <form bindreset="" bindsubmit="_formSubmit" reportSubmit="true">
+        <view class="form__item">
+            <view class="required">*</view>
+            <view class="label">退款金额(元)</view>
+            <view class="controller">
+                <input name="money" placeholder="输入退款金额" type="text" value="{{money}}"></input>
+            </view>
+        </view>
+        <view class="form__item">
+            <view class="required">*</view>
+            <view class="label">退款原因</view>
+            <picker bindchange="bindPickerChange" mode="selector" range="{{array}}" value="{{index}}">
+                <view class="picker">{{array[index]||'选择退款原因'}}</view>
+            </picker>
+            <image src="/images/icon/arrow.png" style="width:24rpx; height: 24rpx;"></image>
+        </view>
+        <view class="form__item">
+            <view class="controller">
+                <textarea name="remark2" placeholder="填写其他退款原因" style="height: 200rpx; margin-left: 22rpx;" value=""></textarea>
+            </view>
+        </view>
+        <view class="form__item">
+            <view class="required"></view>
+            <view class="label">上传附件</view>
+            <view class="controller">
+                <view class="imgBox">
+                    <view class="thubnail" wx:for="{{photosShow}}">
+                        <image mode="aspectFit" src="{{item}}"></image>
+                        <view bindtap="_delPhotos" class="remove-item" data-index="{{index}}">-</view>
+                    </view>
+                    <image bindtap="_uploadPic" class="addImg" src="/images/card/picture@3x.png"></image>
+                </view>
+            </view>
+        </view>
+        <button class="btn-formcom" formType="submit">申请退款</button>
+    </form>
+</view>

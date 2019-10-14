@@ -1,0 +1,25 @@
+.telWrap {
+    padding: 20rpx 20rpx;
+    background: #fff;
+}
+
+.telWrap .tel {
+    padding: 40rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    width: 100%;
+    font-size: 46rpx;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6rpx;
+    background: #3385ff;
+}
+
+.telWrap .tel image {
+    height: 54rpx;
+    width: 54rpx;
+    margin-right: 10rpx;
+}

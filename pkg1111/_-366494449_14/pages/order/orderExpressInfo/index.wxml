@@ -1,0 +1,27 @@
+<view class="trans">
+    <image class="trans__img" mode="aspectFill" src="/images/trans/car.png"></image>
+    <view class="trans__info">
+        <view class="trans__info__item">承运单位：{{deliveryname}}</view>
+        <view class="trans__info__item">运单编号：{{deliveryno}}</view>
+    </view>
+</view>
+<view class="trans-detail">
+    <view class="logistics-title">物流跟踪</view>
+    <block wx:if="{{logisticsDetails&&logisticsDetails.length>0}}">
+        <view class="logistics-info" wx:for="{{logisticsDetails}}">
+            <image class="img-wrap-new" src="/images/icon-circle-2.png" wx:if="{{item.onOff}}"></image>
+            <image class="img-wrap" src="/images/icon-circle-3.png" wx:else></image>
+            <view class="logistics-con-wrap">
+                <view class="logistics-con">
+                    <text>{{item.context}}</text>
+                </view>
+                <view class="logistics-date">
+                    <text>{{item.time}}</text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view class="logistics-info logistics-info_nodata" wx:else>
+      暂无物流信息
+    </view>
+</view>

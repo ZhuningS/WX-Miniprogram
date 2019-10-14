@@ -1,0 +1,185 @@
+<import src="/pages/store/store-common/storetpl.wxml"></import>
+<template is="load_bg" data="{{is_show_load_bg:is_show_load_bg}}"></template>
+<form bindsubmit="order_formSubmit" reportSubmit="true">
+    <block wx:if="{{buy_type==1}}">
+        <view class="top-content detail-item mt10 gridXb">
+            <view class="flex">
+                <view class="goods-img mr10">
+                    <image mode="aspectFill" src="{{goods_data.g_img}}"></image>
+                </view>
+                <view class="sub flexC">
+                    <view class="sub">{{goods_data.g_name}}</view>
+                    <view class="fb f16">￥{{goods_data.shop_price}}</view>
+                </view>
+            </view>
+            <view class="flex mt15 flex-center">
+                <view class="sub">数量</view>
+                <view>
+                    <view bindtap="goods_number_change" class="num-btn" id="jian">-</view>
+                    <input class="buy-couts" disabled="true" name="goodsNum" type="number" value="{{goodsNum}}"></input>
+                    <view bindtap="goods_number_change" class="num-btn" id="jia">+</view>
+                </view>
+            </view>
+        </view>
+        <view class="ui-cells">
+            <view class="flex ui-cell">
+                <view class="sub">小计</view>
+                <view class="red">
+          ￥{{shop_amount}}
+        </view>
+            </view>
+        </view>
+        <view class="ui-cells mt10">
+            <view bindtap="showMyCards" class="ui-cell flex flex-between ">
+                <view>优惠券</view>
+                <view class="red f14 right-more arrowR" wx:if="{{usecard}}">{{usecard.title}}</view>
+                <block wx:else>
+                    <view class="red f14 right-more arrowR" wx:if="{{mycard.length<=0}}">暂无优惠券</view>
+                    <view class="red f14 right-more arrowR" wx:else>未使用优惠券</view>
+                </block>
+            </view>
+            <view class="ui-cell flex gridXt">
+                <view class="sub">实付金额</view>
+                <view class="red">
+                    <text>￥{{pay_amount}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="bottom-fixed-box"></view>
+        <view class="flex ui-cells bottom-fixed gridXt">
+            <view class="sub f16 self-center total-price">需支付
+        <text class="red fb">
+                    <text>￥{{pay_amount}}</text>
+                </text>
+            </view>
+            <button bindtap="go_select_paytype_bind" class="pay-now" type="primary">立即支付</button>
+        </view>
+    </block>
+    <block wx:if="{{buy_type==2&&data_list['glist']}}">
+        <view class="no-content tc" wx:if="{{data_list.length<=0||data_list.glist.length<=0}}">
+            <text class="no-content-icon iconfont icon-yemianwuneirong"></text>
+            <view class="no-content-font">购物车暂无商品</view>
+        </view>
+        <block wx:else>
+            <view class="m15">
+                <radio-group wx:if="{{store_info.store_is_waimai==1&&store_info.store_is_diannei==1}}">
+                    <view class="top-content">
+                        <label bindtap="delivery_method_select" class="flex" data-delivery_type="2">
+                            <view class="sub">商家配送</view>
+                            <radio></radio>
+                        </label>
+                    </view>
+                    <view class="ui-cells ui-cell gridXt">
+                        <label bindtap="delivery_method_select" class="flex" data-delivery_type="1">
+                            <view class="sub">到店自提</view>
+                            <radio></radio>
+                        </label>
+                    </view>
+                </radio-group>
+                <view class="ui-cells mt10" wx:if="{{order_type==1}}">
+                    <view class="ui-cell gridXb flex">
+                        <view>取货人姓名</view>
+                        <input class="sub ml10 tr f14" name="name" placeholder="请输入取货人姓名" placeholderClass="lightgrey" value="{{name}}"></input>
+                    </view>
+                    <view class="ui-cell gridXb flex">
+                        <view>取货人电话</view>
+                        <input class="sub ml10 tr f14" name="tel" placeholder="请输入取货人联系电话" placeholderClass="lightgrey" value="{{tel}}"></input>
+                    </view>
+                </view>
+                <block wx:if="{{order_type==2}}">
+                    <view bindtap="select_address_bind" class="top-content flex arrowR" wx:if="{{address_info}}">
+                        <text class="lightgrey mr10 iconfont icon-locationfill" style="font-size:32rpx;"></text>
+                        <view class="sub">
+                            <view class="lineText">{{address_info.all_address}}</view>
+                            <view class="mt10 grey">
+                                <text>{{address_info.name}}</text>
+                                <text class="ml10">{{address_info.mobile}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="select_address_bind" class="top-content flex arrowR" wx:else>
+                        <text class="lightgrey mr10 iconfont icon-locationfill" style="font-size:32rpx;"></text>
+                        <view class="sub">
+                            <view class="lineText">请选择地址</view>
+                        </view>
+                    </view>
+                </block>
+                <view class="mt10 ui-cells">
+                    <view class="ui-cell gridXb shop-name">
+                        <text class="mr10 iconfont icon-shop" style="font-size:36rpx;"></text>
+                        <text>{{store_info.store_name}}{{store_info.store_quyu==''?'':'('+store_info.store_quyu+')'}}</text>
+                    </view>
+                    <view class="ui-cell flex" wx:for="{{data_list.glist}}">
+                        <view class="out-goods-img mr10">
+                            <image mode="aspectFill" src="{{item.goods_img}}"></image>
+                        </view>
+                        <view class="sub mr15 flexC">
+                            <view class="sub lineText2" wx:if="{{item.goods_attr}}">{{item.goods_name}} ({{item.goods_attr}})</view>
+                            <view class="sub lineText2" wx:else>{{item.goods_name}}</view>
+                            <view class="grey">×{{item.goods_number}}</view>
+                        </view>
+                        <view class="self-bottom fb">￥{{item.goods_price}}</view>
+                    </view>
+                    <view class="ui-cell gridXt">
+                        <view class="flex flex-between" wx:if="{{order_type==2}}">
+                            <view>配送费</view>
+                            <view class="fb">+￥{{store_info.waimai_peisong_jiner}}</view>
+                        </view>
+                        <view bindtap="showMyCards" class="mt10 flex flex-between " wx:if="{{usecard}}">
+                            <view>优惠券</view>
+                            <view class="red f14 right-more arrowR">{{usecard.title}}</view>
+                        </view>
+                        <block wx:else>
+                            <view class="mt10 flex flex-between " wx:if="{{mycard.length<=0}}">
+                                <view>优惠券</view>
+                                <view class="red f14">暂无优惠券</view>
+                            </view>
+                            <view bindtap="showMyCards" class="mt10 flex flex-between " wx:else>
+                                <view>优惠券</view>
+                                <view class="red f14 right-more arrowR">未使用优惠券</view>
+                            </view>
+                        </block>
+                    </view>
+                    <view class="ui-cell gridXt flex">
+                        <view class="sub">
+                            <textarea cursorSpacing="50" name="post_info" placeholder="给商家留言" placeholderClass="lightgrey" style="width:100%;height:150rpx;transform:scale({{is_show_remark}})"></textarea>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom-fixed-box"></view>
+            <view class="flex ui-cells bottom-fixed gridXt">
+                <view class="sub f16 self-center total-price">
+                    <view>需支付
+            <text class="red fb">
+                            <text>￥{{pay_amount}}</text>
+                        </text>
+                    </view>
+                    <view class="f12 grey mt5" wx:if="{{order_type==2&&more_need_maney>0}}">满{{store_info.waimai_limit_jiner}}起送</view>
+                </view>
+                <button bindtap="go_select_paytype_bind" class="pay-now" disabled="{{more_need_maney>0?true:false}}" type="primary" wx:if="{{order_type==2}}">{{more_need_maney>0?'还差'+more_need_maney+'元':'确认下单'}}</button>
+                <button bindtap="go_select_paytype_bind" class="pay-now" type="primary" wx:else>确认下单</button>
+            </view>
+        </block>
+    </block>
+    <view class="floatBox fbox" wx:if="{{select_pay_type}}">
+        <view class="fxz">
+            <view class="f18 tc" wx:if="{{pay_type_index!=3}}">支付金额
+        <view class="f18 mt20 red">￥
+          <text>{{pay_amount}}</text>
+                    <input name="goods_id" style="display:none;" type="text" value="{{goods_data.id}}" wx:if="{{buy_type==1}}"></input>
+                </view>
+            </view>
+            <radio-group bindchange="payTypeChange" class="mt15 f16" name="pay_type">
+                <label class="radio">
+                    <radio checked="{{1==pay_type_index}}" value="1" wx:if="{{store_info.is_pay_on_wx==1}}">微信支付</radio>
+                    <radio checked="{{2==pay_type_index}}" value="2" wx:if="{{store_type==1&&is_member==1}}">余额支付</radio>
+                    <radio checked="{{3==pay_type_index}}" value="3" wx:if="{{order_type==2&&store_info.is_pay_on_delivery==1}}">货到付款</radio>
+                </label>
+            </radio-group>
+            <button class="mt20" disabled="{{btn_submit_disabled}}" formType="submit" loading="{{submitIsLoading}}" type="primary">{{pay_type_index!=3?'立即支付':'确认到付'}}</button>
+        </view>
+        <view bindtap="go_select_paytype_bind" class="fbg"></view>
+    </view>
+</form>
+<include src="../store-coupon/index.wxml"></include>

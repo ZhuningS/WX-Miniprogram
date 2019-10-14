@@ -1,0 +1,129 @@
+<import src="../components/widgets.wxml"></import>
+<import src="../components/card.wxml"></import>
+<import src="../components/timeline.wxml"></import>
+<view class="timeline card-container">
+    <view style="display: flex; justify-content: center;margin-top: 40rpx;">
+        <official-account style="width: 670rpx;"></official-account>
+    </view>
+    <universe-card bind:processcommentevent="handleProcessCommentEvent" bind:reload-post-event="loadPost" bind:select-option-event="handleSelectOptionEvent" bind:show-modal-dialog="handleShowModalDialogEvent" bindreplycommentevent="handleReplyCommentEvent" catchloadPreReply="handleLoadPreReply" event="{{postEvent}}" inPostPage="{{true}}" route="{{route}}" wx:if="{{postEvent}}"></universe-card>
+</view>
+<view class="loading-ctn" wx:if="{{loading}}">
+    <template is="loading" data="{{loading:loading}}"></template>
+</view>
+<template is="post-group-actions" data="{{relation:magazine.relation,needLogin:needLogin,id:magazine.id,action:enterConfig}}"></template>
+<form reportSubmit bindsubmit="sendReply" class="handler-ctn">
+    <view class="reply-ctn" hoverClass="none" wx:if="{{relation.enableDiscuss&&!showShareCard}}">
+        <view class="quick-reply-wrapper" wx:if="{{relation.role.type==='admin'&&postEvent.post.tips.length}}">
+            <scroll-view scrollX class="quick-reply-container">
+                <text catchtap="onTapQuickReply" class="quick-reply" data-text="{{item}}" wx:for="{{postEvent.post.tips}}" wx:key="*this">{{item}}</text>
+            </scroll-view>
+        </view>
+        <view catchtap="closeCommentTip" class="tip-ctn" style="bottom: 55px; right: 40rpx;" wx:if="{{showTip}}">
+            <view class="tip-content">
+        发表观点，让更多人看到你的态度。
+      </view>
+            <view class="tip-triangle__bottom" style="right:280rpx;"></view>
+        </view>
+        <view class="upload-btn">
+            <image catchtap="selectImage" class="icon" src="/images/new_assets/icon_photo.svg"></image>
+        </view>
+        <view class="input-wrapper">
+            <textarea autoHeight autoFocus="{{autoReply}}" bindconfirm="sendReply" class="input" cursorSpacing="6" fixed="{{true}}" focus="{{autoReply}}" name="input" placeholder="{{commentTip?commentTip:'有何看法？展开讲讲'}}" showConfirmBar="{{true}}" value="{{commentContent}}"></textarea>
+        </view>
+    </view>
+</form>
+<view id="post-end" style="height:80px;width:100%;float:right;clear:both;"></view>
+<view id="post-end-with-reply" style="height:30px;width:100%;float:right;clear:both;" wx:if="{{relation.role.type==='admin'&&postEvent.post.tips.length}}"></view>
+<include src="../components/global.wxml"></include>
+<wxs module="card">
+var magazineStyle = (function(color) {
+    return ('')
+});
+var generateId = (function(type, id, xiaohua, strategy) {
+    var result = type + '-' + id + '-';
+    if (xiaohua) {
+        result += 'xiaohua'
+    } else if (strategy) {
+        result += strategy
+    } else {
+        result += "unknown"
+    };
+    return (result)
+});
+var formatPostStatus = (function(status) {
+    var texts = [];
+    if ((status & 16) > 0) {
+        texts.push('置顶')
+    };
+    if ((status & 32) > 0) {
+        texts.push('试读')
+    };
+    return (texts.join(' · '))
+});
+var hexToRgba = (function(color, alpha) {
+    var rgba = 'rgba(';
+    rgba += parseInt(color.substring(0, 2), 16) + ',';
+    rgba += parseInt(color.substring(2, 4), 16) + ',';
+    rgba += parseInt(color.substring(4, 6), 16) + ',';
+    rgba += alpha + ')';
+    return (rgba)
+});
+var countMarkFontSize = (function(text, size) {
+    var textCount = text.length;
+    var radio = 2;
+    if (size === 'small') {
+        if (textCount < 12) {
+            return (35 * radio)
+        } else if (textCount < 24) {
+            return (25 * radio)
+        } else if (textCount < 30) {
+            return (21 * radio)
+        } else if (textCount < 48) {
+            return (17 * radio)
+        } else if (textCount < 70) {
+            return (15 * radio)
+        } else if (textCount < 80) {
+            return (13 * radio)
+        } else if (textCount < 108) {
+            return (12 * radio)
+        } else {
+            return (11 * radio)
+        }
+    } else {
+        if (textCount < 15) {
+            return (46 * radio)
+        } else if (textCount < 24) {
+            return (38 * radio)
+        } else if (textCount < 28) {
+            return (32 * radio)
+        } else if (textCount < 40) {
+            return (30 * radio)
+        } else if (textCount < 45) {
+            return (28 * radio)
+        } else if (textCount < 54) {
+            return (26 * radio)
+        } else if (textCount < 60) {
+            return (24 * radio)
+        } else if (textCount < 77) {
+            return (22 * radio)
+        } else if (textCount < 84) {
+            return (20 * radio)
+        } else if (textCount < 104) {
+            return (19 * radio)
+        } else if (textCount < 135) {
+            return (17 * radio)
+        } else if (textCount < 170) {
+            return (15 * radio)
+        } else {
+            return (13 * radio)
+        }
+    }
+});
+module.exports = ({
+    generateId: generateId,
+    magazineStyle: magazineStyle,
+    formatPostStatus: formatPostStatus,
+    hexToRgba: hexToRgba,
+    countMarkFontSize: countMarkFontSize,
+});
+</wxs>

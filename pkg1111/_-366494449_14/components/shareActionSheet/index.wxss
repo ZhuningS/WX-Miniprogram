@@ -1,0 +1,64 @@
+.actionSheet {
+    display: none;
+}
+
+.actionSheet.show {
+    display: block;
+}
+
+.actionSheet__mask {
+    background-color: rgba(0,0,0,0);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.actionSheet__content {
+    box-shadow: 0 0 5rpx #ccc;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1001;
+    background-color: #fff;
+    transform: translate(0,100%);
+}
+
+.shareList {
+    display: flex;
+}
+
+.shareItem {
+    padding: 40rpx 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.shareItem__icon {
+    width: 80rpx;
+    height: 80rpx;
+    margin-bottom: 20rpx;
+}
+
+.shareItem__text {
+    color: #333;
+    font-size: 28rpx;
+}
+
+.actionSheet__cancel {
+    color: #000;
+    background-color: #f7f7f7;
+    font-size: 30rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+}
+
+.shareItem__icon_loading {
+}

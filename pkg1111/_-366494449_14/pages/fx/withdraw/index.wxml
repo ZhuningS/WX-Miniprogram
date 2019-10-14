@@ -1,0 +1,25 @@
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view class="withdraw">
+    <view class="account">
+        <block wx:if="{{bankList&&bankList.length>0}}">
+            <text style="font-size: 28rpx;">收款账户</text>
+            <picker bindchange="bindPickerChange" data-id="{{bankList[index].id}}" range="{{bankList}}" rangeKey="card_no" value="{{index}}">
+                <view class="picker no">
+                      {{bankList[index].card_no}}
+                  </view>
+            </picker>
+        </block>
+        <block wx:else>
+            <text style="flex:1;font-size: 28rpx;">收款账户</text>
+            <text bindtap="_jump" data-url="/pages/fx/bank/index" style="color: #999; font-size: 28rpx;">未绑定银行卡, 马上绑定</text>
+        </block>
+        <image src="/images/icon/arrow.png" style="width:24rpx;height: 24rpx;"></image>
+    </view>
+    <view class="money">
+        <view style="color:#333; font-size: 28rpx">提现金额</view>
+        <view style="font-size: 80rpx; margin-top: 20rpx;">
+            <text style="font-size:48rpx;position:relative;bottom:4rpx;margin-right:20rpx; font-weight: blod">¥</text>{{money}}</view>
+    </view>
+    <view bindtap="_withDraw" class="btn-withdraw" wx:if="{{money>0&&bankno!=''}}">提现</view>
+    <view class="btn-withdraw" style="color: #f5f5f5;background: #999" wx:else>提现</view>
+</view>

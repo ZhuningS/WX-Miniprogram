@@ -1,0 +1,126 @@
+<view class="{{rootClassNames}}">
+    <view class="title">
+    {{vote?'['+vote.config.actions.vote+'] ':''}}{{vote.title}}
+  </view>
+    <view class="content" wx:if="{{inPostPage}}">
+        <text style="color: #000; margin-right: 5rpx">{{'['+vote.displayOptionType+']'}}</text>
+        <text>  {{vote.description}}</text>
+    </view>
+    <view class="options-ctn" wx:if="{{vote.options[0].cover}}">
+        <view class="image-option {{index>1?'noline1':''}}" wx:for="{{vote.options}}" wx:for-item="option" wx:key="id">
+            <view class="border">
+                <image catchtap="handleTapSelectOption" class="image {{option.selected?'selected':''}}" data-has-voted="{{vote.relation.voted}}" data-id="{{option.id}}" data-index="{{index}}" data-is-expired="{{vote.isExpired}}" data-is-voted="{{option.isVoted}}" mode="aspectFill" src="{{option.cover}}"></image>
+                <view class="left-shadow"></view>
+                <view class="bottom-shadow"></view>
+            </view>
+            <view class="result-ctn">
+                <view class="option-label" wx:if="{{!vote.relation.voted&&!vote.isExpired}}">
+                    <view style="color: #999999;">选项 {{index+1}}</view>
+                    <image class="selected icon_20px" src="/images/new_assets/icon_img_selected.svg" wx:if="{{option.selected}}">️
+            </image>
+                </view>
+                <view class="percentage" style="{{'width:'+(vote.relation.voted||vote.isExpired?option.percentage:0)+'%;'}}"></view>
+                <view class="result">
+                    <view class="users-ctn" wx:if="{{vote.relation.voted||vote.isExpired}}">
+                        <view class="user" style="z-index:{{10-index}}" wx:if="{{index<=1&&item.avatar&&!vote.isAnonymous}}" wx:for="{{option.users}}" wx:key="uid">
+                            <view catchtap="handleUserAvatarTap" class="avatar-ctn" data-uid="{{item.user.uid}}" hoverClass="none">
+                                <image lazyLoad class="avatar small" src="{{item.avatar}}"></image>
+                            </view>
+                        </view>
+                        <view catchtap="handleUserNumberTap" class="user number avatar small" data-option-id="{{option.id}}" data-vote-id="{{vote.id}}">
+              +{{option.voteNumber}}
+            </view>
+                        <view class="percent" wx:if="{{vote.relation.voted||vote.isExpired}}">
+              {{option.percentage+'%'}}
+            </view>
+                    </view>
+                    <image class="selected icon_20px" src="/images/new_assets/icon_img_selected.svg" wx:if="{{vote.relation.voted&&option.isVoted}}"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="options-ctn pair" wx:elif="{{vote.options.length===2}}">
+        <view class="status-ctn">
+            <view class="border">
+                <view class="vote-area" wx:if="{{!vote.relation.voted&&!vote.isExpired}}">
+                    <view catchtap="handleTapSelectOption" data-has-voted="{{vote.relation.voted}}" data-id="{{vote.options[0].id}}" data-is-expired="{{vote.isExpired}}" data-is-voted="{{vote.options[0].isVoted}}"></view>
+                    <view catchtap="handleTapSelectOption" data-has-voted="{{vote.relation.voted}}" data-id="{{vote.options[1].id}}" data-is-expired="{{vote.isExpired}}" data-is-voted="{{vote.options[1].isVoted}}"></view>
+                </view>
+                <view catchtap="handleTapSelectOption" class="option" data-has-voted="{{vote.relation.voted}}" data-id="{{vote.options[0].id}}" data-is-expired="{{vote.isExpired}}" data-is-voted="{{vote.options[0].isVoted}}" style="{{vote.options[0].percentage==='unvoted'?'width:1%;':'width:'+vote.options[0].percentage+'%'}}"></view>
+                <view catchtap="handleTapSelectOption" class="option" data-has-voted="{{vote.relation.voted}}" data-id="{{vote.options[1].id}}" data-is-expired="{{vote.isExpired}}" data-is-voted="{{vote.options[1].isVoted}}" style="{{vote.options[0].percentage==='unvoted'?'width:1%':'flex:1'}}"></view>
+            </view>
+            <view class="left-shadow"></view>
+            <view class="bottom-shadow"></view>
+        </view>
+        <view catchtap="handleTapSelectOption" class="text-option" data-has-voted="{{vote.relation.voted}}" data-id="{{option.id}}" data-is-expired="{{vote.isExpired}}" data-is-voted="{{option.isVoted}}" wx:for="{{vote.options}}" wx:for-item="option" wx:key="id">
+            <view class="result" wx:if="{{vote.relation.voted||vote.isExpired}}">
+                <view class="users-ctn" wx:if="{{option.voteNumber>-1}}">
+                    <view class="user" style="z-index:{{10-index}}" wx:if="{{option.users.length&&index<=1&&item.avatar&&!post.vote.isAnonymous}}" wx:for="{{option.users}}" wx:key="uid">
+                        <view catchtap="handleUserAvatarTap" class="avatar-ctn" data-uid="{{item.user.uid}}" hoverClass="none">
+                            <image lazyLoad class="avatar small" src="{{item.avatar}}"></image>
+                        </view>
+                    </view>
+                    <view catchtap="handleUserNumberTap" class="user number avatar small" data-option-id="{{option.id}}" data-vote-id="{{vote.id}}">
+            +{{option.voteNumber}}
+          </view>
+                </view>
+                <view class="percent">
+          {{option.percentage==='unvoted'?'0%':option.percentage+'%'}}
+        </view>
+            </view>
+            <view class="text-ctn">
+                <text>{{option.text}}</text>
+                <image class="selected" src="./images/icon_img_selected.svg" wx:if="{{option.selected}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="options-ctn" wx:else>
+        <view catchtap="handleTapSelectOption" class="text-option" data-has-voted="{{vote.relation.voted}}" data-id="{{option.id}}" data-index="{{index}}" data-is-expired="{{vote.isExpired}}" data-is-voted="{{option.isVoted}}" wx:for="{{vote.options}}" wx:for-item="option" wx:key="id">
+            <view class="border">
+                <view class="text-ctn">
+                    <text>{{option.text}}</text>
+                    <image class="selected" src="/images/new_assets/icon_img_selected.svg" wx:if="{{vote.relation.voted&&option.isVoted||option.selected}}">️
+          </image>
+                </view>
+                <view class="users-ctn" wx:if="{{(vote.relation.voted||vote.isExpired)&&option.voteNumber>-1}}">
+                    <view class="user" style="z-index:{{10-index}}" wx:if="{{index<=1&&item.avatar&&!vote.isAnonymous}}" wx:for="{{option.users}}" wx:key="uid">
+                        <view catchtap="handleUserAvatarTap" class="avatar-ctn" data-uid="{{item.uid}}" hoverClass="none">
+                            <image lazyLoad class="avatar small" src="{{item.avatar}}"></image>
+                        </view>
+                    </view>
+                    <view catchtap="handleUserNumberTap" class="user number avatar small" data-option-id="{{option.id}}" data-vote-id="{{vote.id}}">
+            +{{option.voteNumber}}
+          </view>
+                    <view class="percent" wx:if="{{vote.relation.voted||vote.isExpired}}">
+            {{option.percentage==='unvoted'?'0%':option.percentage+'%'}}
+          </view>
+                </view>
+                <view class="percentage" style="{{'width:'+(vote.relation.voted||vote.isExpired?option.percentage:0)+'%;'}}"></view>
+            </view>
+            <view class="left-shadow"></view>
+            <view class="bottom-shadow"></view>
+        </view>
+    </view>
+    <view class="voteMeta">
+        <view catchtap="handleUserListTap" class="userList" wx:if="{{vote.totalVoteNumber}}">
+            <view class="users-ctn" wx:if="{{vote.relation.voted||vote.isExpired}}">
+                <view class="user" style="z-index:{{3-index}}" wx:if="{{!vote.isAnonymous&&index<=2&&item.user.avatar}}" wx:for="{{vote.userList}}" wx:key="user.uid">
+                    <view catchtap="handleUserAvatarTap" class="avatar-ctn" data-uid="{{item.user.uid}}" hoverClass="none">
+                        <image lazyLoad class="avatar small" src="{{item.user.avatar}}"></image>
+                    </view>
+                </view>
+            </view>
+            <view style="margin-left: 4rpx;">
+        等 {{vote.totalVoteNumber}} 人正在参加
+      </view>
+        </view>
+        <view class="deadline" wx:if="{{!vote.isExpired}}">
+      截止日期：{{vote.displayDeadline}}
+    </view>
+        <view class="deadline" wx:else>
+      {{vote.config.actions.vote}}已结束
+    </view>
+    </view>
+    <button catchtap="_onSubmitVote" class="button {{vote.isExpired?'disable':''}}" wx:if="{{!vote.relation.voted&&vote.optionType!=='single'&&inPostPage}}">{{vote.isExpired?'已结束':'提交'+vote.config.actions.vote}}
+  </button>
+</view>

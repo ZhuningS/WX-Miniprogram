@@ -1,0 +1,70 @@
+.sell-hear {
+    width: 100%;
+    height: 160rpx;
+}
+
+.sell-hear>view {
+    width: 50%;
+}
+
+.sell {
+    width: 100%;
+    color: #333;
+    margin-top: 20rpx;
+}
+
+.sell .hear {
+    width: 100%;
+    height: 120rpx;
+    line-height: 120rpx;
+    background: #fff;
+    padding: 0 20rpx;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.sell .p-main {
+    width: 100%;
+    height: 210rpx;
+    background: #fff;
+    padding: 0 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.sell .p-main>image {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+}
+
+.sell .p-main .p-right {
+    margin-left: 20rpx;
+}
+
+.sell .o-main {
+    padding: 0 40rpx;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.sell .o-main .o-num {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.sell .o-main .o-pro {
+    width: 100%;
+    height: 272rpx;
+}
+
+.sell .o-main .o-pro>image {
+    width: 110rpx;
+    height: 110rpx;
+}
+
+.sell .o-main .o-pro .o-right {
+    margin-left: 20rpx;
+    height: 110rpx;
+}

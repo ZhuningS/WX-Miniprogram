@@ -1,0 +1,5 @@
+<view class="loadmore">
+    <view class="loading {{!loading?'hide':''}}"></view>
+    <view class="tips {{!loading?'hide':''}}">正在加载</view>
+    <view class="finished {{!finished?'hide':''}}">没有更多了</view>
+</view>

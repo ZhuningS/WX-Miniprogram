@@ -1,0 +1,40 @@
+.related-article-entry {
+    display: flex;
+    width: 100%;
+}
+
+.related-article-entry .entry-body {
+    flex: 1;
+}
+
+.related-article-entry .entry-thumb {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    margin-left: 16px;
+}
+
+.related-article-entry .info-title {
+    line-height: 20px;
+    margin-bottom: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.related-article-entry .info-snippet {
+    line-height: 20px;
+    font-size: 14px;
+    color: #999999;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}

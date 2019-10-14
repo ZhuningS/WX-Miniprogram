@@ -1,0 +1,86 @@
+.gOlt-h {
+    background-color: #f20033;
+    color: #fff;
+    padding: 30rpx 20rpx;
+    font-size: 26rpx;
+    line-height: 2;
+}
+
+.gOlt-t {
+    font-size: 30rpx;
+    color: #121212;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.gOlt-info {
+    padding: 20rpx;
+    padding-left: 0;
+}
+
+.gOlt-img {
+    width: 160rpx;
+    height: 160rpx;
+    margin-right: 20rpx;
+}
+
+.jia,.jian {
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 8rpx;
+    justify-content: center;
+    line-height: normal;
+    font-size: 36rpx;
+    border: 2rpx solid #f20033;
+}
+
+.jia {
+    color: #fff;
+    background-color: #f20033;
+}
+
+.jian {
+    color: #f20033;
+}
+
+.order-num {
+    min-width: 50rpx;
+    justify-content: center;
+    color: #f20033;
+}
+
+.gOlt-m {
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 1px solid #f0f0f0;
+    padding-right: 20rpx;
+}
+
+.gOlt-m:last-child {
+    border-bottom: 0;
+}
+
+.blank-120 {
+    height: 120rpx;
+}
+
+.bottomBar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-left: 20rpx;
+}
+
+.bottomBar text {
+    color: #f20033;
+}
+
+.btn-pay {
+    width: 300rpx;
+    height: 100rpx;
+    background: #ef0000;
+    text-align: center;
+    color: #fff;
+    line-height: 100rpx;
+}

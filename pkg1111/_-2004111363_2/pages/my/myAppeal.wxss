@@ -1,0 +1,14 @@
+.appeal .appeal-tips {
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.appeal .appeal-item {
+    border-bottom: 1px solid #ccc;
+    height: 90rpx;
+    line-height: 90rpx;
+}
+
+.appeal .appeal-item:last-child {
+    border-bottom: none;
+}

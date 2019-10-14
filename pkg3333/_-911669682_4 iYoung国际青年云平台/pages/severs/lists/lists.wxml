@@ -1,0 +1,41 @@
+<form bindsubmit="onLoadChooseCateTap" reportSubmit="true">
+    <view class="info-title-box mb10" wx:if="{{categorys.length}}">
+        <scroll-view class="info-title f16 grey" scrollX="true" style="height:92rpx;">
+            <button class="title-item {{childCid==0?'active':''}}" data-cid="0" formType="submit">全部</button>
+            <button class="title-item {{childCid==item.id?'active':''}}" data-cid="{{item.id}}" formType="submit" wx:for="{{categorys}}" wx:key="{{item.id}}">{{item.title}}</button>
+        </scroll-view>
+    </view>
+</form>
+<form bindsubmit="onToggleTagTap" reportSubmit="true">
+    <view class="screen-tags">
+        <button class="tags-item {{item.active?'active':''}}" data-index="{{index}}" formType="submit" wx:for="{{tags}}" wx:key="{{index}}">{{item.text}}</button>
+    </view>
+</form>
+<form bindsubmit="onSetShowChooseCategory" data-is-show="{{true}}" reportSubmit="true" wx:if="{{!isLoading&&!data.length}}">
+    <view class="no-content tc">
+        <image class="no-content-img" mode="widthFix" src="http://www.ixiaochengxu.cc/resource/images/common/no-message.png"></image>
+        <view>暂时还没有{{title}}信息~</view>
+        <button class="mt15" formType="submit" size="mini" type="primary">去发布</button>
+    </view>
+</form>
+<import src="../tpl.wxml"></import>
+<template is="doc-list" data="{{data:data,comment:comment,config:config,cate_invalid:true,hasMore:hasMore,isLoading:isLoading}}"></template>
+<view class="floatBox" hidden="{{!isShowChooseCategory}}">
+    <view class="bgwhite pup-content tc">
+        <view class="pop-item-box">
+            <view catchtap="onWriteChooseCateTap" class="pop-item gridXb" data-index="{{index}}" wx:for="{{categorys}}" wx:key="{{item.id}}">{{item.title}}</view>
+        </view>
+        <view catchtap="onSetShowChooseCategory" class="pop-item pop-item-cancel gridXt" data-is-show="{{false}}">取消</view>
+    </view>
+    <view catchtap="onSetShowChooseCategory" class="floatBox floatBoxBg" data-is-show="{{false}}" style="display:{{isShowChooseCategory?'block':'none'}}"></view>
+</view>
+<view class="aside-float" hidden="{{!config}}">
+    <form bindsubmit="onSetShowChooseCategory" data-is-show="{{true}}" reportSubmit="true" wx:if="{{config.show_push||config.show_push===undefined}}">
+        <button class="iconfont icon-add" formType="submit" type="primary" wx:if="{{!config.custom_push_btn}}"></button>
+        <button formType="submit" style="font-size:24rpx" type="primary" wx:else>{{config.custom_push_btn_text}}</button>
+    </form>
+    <block wx:if="{{config.show_service||config.show_service===undefined}}">
+        <button class="iconfont icon-kefu" openType="contact" type="primary" wx:if="{{!config.custom_service_btn}}"></button>
+        <button openType="contact" style="font-size:24rpx" type="primary" wx:else>{{config.custom_service_btn_text}}</button>
+    </block>
+</view>

@@ -1,0 +1,22 @@
+page {
+    background: #FFFFFF;
+}
+
+.wrap {
+}
+
+.logo {
+    width: 120rpx;
+    height: 120rpx;
+    margin-left: 315rpx;
+    border-radius: 60rpx;
+}
+
+.brand_name {
+    display: block;
+    font-size: 17px;
+    text-align: center;
+    line-height: 21px;
+    margin-top: 36rpx;
+    margin-bottom: 40rpx;
+}

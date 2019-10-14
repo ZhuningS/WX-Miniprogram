@@ -1,0 +1,36 @@
+<view class="__indexUser">
+    <view class="bannerBg">
+        <image src="../image/banner1.png"></image>
+        <view class="settingBtn">
+            <image src="../image/settingIcon.png"></image>
+        </view>
+        <view class="userPhotoBox">
+            <image src="{{userInfoList.headPic}}"></image>
+            <text wx:if="{{userInfoList.truename==null || userInfoList.truename==''}}">{{userInfoList.nickname}}</text>
+            <text wx:else>{{userInfoList.truename}}</text>
+        </view>
+        <view class="tipListBox">
+            <view>
+                <view bindtap="clickIndexView" data-item-path="../indexCode/indexCode" data-item-title="积分码">
+                    <image src="../image/icon/user/icon1.png"></image>
+                    <text>积分码</text>
+                </view>
+                <view>
+                    <text>{{peopleNum}}分</text>
+                    <text>我的积分</text>
+                </view>
+                <view>
+                    <image src="../image/icon/user/icon2.png"></image>
+                    <text>我的荣誉</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="userList">
+        <ul>
+            <li wx:for="{{dataList1}}" wx:key="index" wx:for-item="item" bindtap="clickIndexView" data-item-path="{{item.path}}" data-item-title="{{item.name}}">
+                {{item.name}}
+            </li>
+        </ul>
+    </view>
+</view>

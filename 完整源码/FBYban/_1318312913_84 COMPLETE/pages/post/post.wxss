@@ -1,0 +1,614 @@
+page {
+    background-color: #EBEBEB;
+}
+
+.reply-ctn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 11;
+    box-sizing: border-box;
+    background: white;
+    height: auto;
+    padding: 10px 40rpx 10px 20rpx;
+    width: 750rpx;
+    bottom: 0;
+    overflow: visible;
+}
+
+.reply-ctn .quick-reply-wrapper {
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    width: 100%;
+    padding: 5px 30rpx 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #FFF;
+}
+
+.reply-ctn .quick-reply-wrapper .quick-reply-container {
+    width: 100%;
+}
+
+.reply-ctn .quick-reply-wrapper .quick-reply-container .quick-reply {
+    border: 1rpx solid #999;
+    font-size: 14px;
+    color: black;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    height: 80rpx;
+    border-radius: 40rpx;
+    white-space: nowrap;
+}
+
+.reply-ctn .quick-reply-wrapper .quick-reply-container .quick-reply+.quick-reply {
+    margin-left: 10rpx;
+}
+
+.reply-ctn .upload-btn {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    padding: 10px;
+}
+
+.reply-ctn .input-wrapper {
+    flex: 1;
+    height: auto;
+    display: flex;
+    align-items: center;
+    background: rgba(0,0,0,0.05);
+    padding: 10px 0;
+}
+
+.reply-ctn .input {
+    min-height: 20px;
+}
+
+.reply-ctn .button {
+    flex-shrink: 0;
+    padding: 0 10px;
+    line-height: 40px;
+    height: 40px;
+}
+
+.inline-comments {
+    display: none;
+}
+
+.timeline {
+    background-color: #FFFFFF;
+}
+
+.timeline.withQuickReply {
+    padding: 20rpx;
+    box-sizing: border-box;
+}
+
+.single-card-vote {
+    margin: 0 60rpx 50rpx;
+}
+
+.single-card-vote .title {
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 0;
+    word-break: break-all;
+}
+
+.single-card-vote .content {
+    margin-top: 12px;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 16px;
+    color: #999999;
+    display: block;
+}
+
+.single-card-vote .deadline {
+    margin-top: 28rpx;
+}
+
+.single-card-vote .bottom-ctn {
+    margin-top: 36rpx;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row-reverse;
+    align-items: center;
+}
+
+.single-card-vote .bottom-ctn .users-ctn {
+    position: relative;
+    display: flex;
+    width: auto;
+    align-items: center;
+}
+
+.single-card-vote .bottom-ctn .users-ctn .user {
+    position: relative;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.05);
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.single-card-vote .bottom-ctn .users-ctn .user .avatar-ctn {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.single-card-vote .bottom-ctn .users-ctn .user .avatar-ctn .avatar {
+    width: 26px;
+    height: 26px;
+}
+
+.single-card-vote .bottom-ctn .users-ctn .user+.user {
+    margin-left: -12rpx;
+}
+
+.single-card-vote .bottom-ctn .users-ctn .user.number {
+    background-image: none;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-card-vote .bottom-ctn .users-ctn .meta {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.single-card-vote .left-shadow {
+    position: absolute;
+    z-index: -1;
+    left: -4px;
+    top: 26rpx;
+    height: 100%;
+    width: 4px;
+    margin: -20rpx 0;
+    border: 1rpx solid #CCCCCC;
+    border-right: none;
+    border-bottom: none;
+    background-color: #F9F9F9;
+    transform: skewY(-45deg);
+    box-sizing: border-box;
+}
+
+.single-card-vote .bottom-shadow {
+    position: absolute;
+    z-index: -1;
+    bottom: -4px;
+    left: 17rpx;
+    height: 4px;
+    width: 100%;
+    margin: 0 -20rpx;
+    border: 1rpx solid #CCCCCC;
+    border-top: none;
+    box-sizing: border-box;
+    background-color: #F9F9F9;
+    transform: skewX(-45deg);
+}
+
+.single-card-vote .options-ctn {
+    margin-top: 56rpx;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.single-card-vote .options-ctn .image-option {
+    position: relative;
+}
+
+.single-card-vote .options-ctn .image-option .border {
+    position: relative;
+    width: 295rpx;
+    height: 295rpx;
+    overflow: visible;
+}
+
+.single-card-vote .options-ctn .image-option .border .image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn {
+    margin-top: 20rpx;
+    height: 100rpx;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .option-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10rpx;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .button {
+    width: 100%;
+    height: 70rpx;
+    transform: translateX(-5rpx);
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .percentage {
+    height: 8rpx;
+    max-width: 100%;
+    background-color: #DE5956;
+    transition: all 1s;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10rpx;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .result .users-ctn {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .result .users-ctn .user {
+    box-shadow: 0 0 5px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.05);
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+    height: 27px;
+    width: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .result .users-ctn .user .avatar-ctn {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    vertical-align: inherit;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .result .users-ctn .user .avatar-ctn .avatar {
+    width: 23px;
+    height: 23px;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .result .users-ctn .user+.user {
+    margin-left: -6px;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .result .users-ctn .user.number {
+    background-image: none;
+    background-color: #FFFFFF;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-card-vote .options-ctn .image-option .result-ctn .result .users-ctn .percent {
+    margin-left: 10rpx;
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+}
+
+.single-card-vote .options-ctn .text-option {
+    position: relative;
+    width: 100%;
+    transform: translateX(2rpx);
+    box-sizing: border-box;
+}
+
+.single-card-vote .options-ctn .text-option .border {
+    position: relative;
+    padding: 20rpx 20rpx 20rpx 20rpx;
+    border: 1rpx #CCCCCC solid;
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.single-card-vote .options-ctn .text-option .border .text-ctn {
+    font-size: 14px;
+    line-height: 18px;
+    word-break: normal;
+    max-width: 375rpx;
+    min-width: 40rpx;
+}
+
+.single-card-vote .options-ctn .text-option .border .text-ctn .selected {
+    position: relative;
+    z-index: -1;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    justify-content: center;
+    margin-left: 5rpx;
+    transform: translateY(3rpx);
+}
+
+.single-card-vote .options-ctn .text-option .border .percentage {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    height: 8rpx;
+    transition: all 1s;
+    background-color: #DE5956;
+}
+
+.single-card-vote .options-ctn .text-option .border .users-ctn {
+    margin-top: 0;
+    margin-left: 10rpx;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.single-card-vote .options-ctn .text-option .border .users-ctn .user {
+    box-shadow: 0 0 5px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.05);
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    height: 27px;
+    width: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-card-vote .options-ctn .text-option .border .users-ctn .user .avatar {
+    height: 23px;
+    width: 23px;
+}
+
+.single-card-vote .options-ctn .text-option .border .users-ctn .user+.user {
+    margin-left: -6px;
+}
+
+.single-card-vote .options-ctn .text-option .border .users-ctn .user.number {
+    background-image: none;
+    background-color: #FFFFFF;
+    font-size: 10px;
+}
+
+.single-card-vote .options-ctn .text-option .border .users-ctn .percent {
+    margin-left: 10rpx;
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+}
+
+.single-card-vote .options-ctn .text-option+.text-option {
+    margin-top: 33rpx;
+}
+
+.single-card-vote .options-ctn.pair {
+    position: relative;
+    width: 630rpx;
+    transform: translateX(2rpx);
+}
+
+.single-card-vote .options-ctn.pair .status-ctn {
+    position: relative;
+    width: 100%;
+}
+
+.single-card-vote .options-ctn.pair .status-ctn .border {
+    position: relative;
+    height: 120rpx;
+    width: 100%;
+    border: 1rpx #CCCCCC solid;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.single-card-vote .options-ctn.pair .status-ctn .border .vote-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.single-card-vote .options-ctn.pair .status-ctn .border .vote-area view {
+    flex: 1;
+    height: 100%;
+}
+
+.single-card-vote .options-ctn.pair .status-ctn .border .vote-area view+view {
+    border-left: 1rpx solid #CCCCCC;
+}
+
+.single-card-vote .options-ctn.pair .status-ctn .border .option {
+    background-color: #93CFD8;
+    position: relative;
+    height: 100%;
+    min-width: 1%;
+    transition: all 1s;
+}
+
+.single-card-vote .options-ctn.pair .status-ctn .border .option+.option {
+    background-color: #DE5956;
+    border-left: 1rpx solid #FFFFFF;
+}
+
+.single-card-vote .options-ctn.pair .users-ctn {
+    margin-top: 0;
+    margin-left: 10rpx;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.single-card-vote .options-ctn.pair .users-ctn .user {
+    box-shadow: 0 0 5px rgba(0,0,0,0.1),0 10px 10px rgba(0,0,0,0.05);
+    border-radius: 50%;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    height: 27px;
+    width: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-card-vote .options-ctn.pair .users-ctn .user .avatar {
+    height: 23px;
+    width: 23px;
+}
+
+.single-card-vote .options-ctn.pair .users-ctn .user+.user {
+    margin-left: -6px;
+}
+
+.single-card-vote .options-ctn.pair .users-ctn .user.number {
+    background-image: none;
+    background-color: #FFFFFF;
+    font-size: 10px;
+}
+
+.single-card-vote .options-ctn.pair .users-ctn .percent {
+    margin-left: 10rpx;
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+}
+
+.single-card-vote .options-ctn.pair .text-option {
+    display: block;
+    width: 300rpx;
+    padding: 22rpx 0;
+    box-sizing: border-box;
+    margin-top: 0;
+    box-shadow: none;
+    border: none;
+}
+
+.single-card-vote .options-ctn.pair .text-option .result {
+    display: flex;
+    align-items: center;
+}
+
+.single-card-vote .options-ctn.pair .text-option .result .users-ctn {
+    margin-left: 0;
+    margin-right: 15rpx;
+    width: auto;
+    display: flex;
+}
+
+.single-card-vote .options-ctn.pair .text-option .result .percent {
+    font-size: 14px;
+    line-height: 14px;
+    height: 14px;
+}
+
+.single-card-vote .options-ctn.pair .text-option .text-ctn {
+    flex: 1;
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 18px;
+    word-break: break-all;
+    margin-top: 10rpx;
+}
+
+.single-card-vote .options-ctn.pair .text-option .text-ctn .selected {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    transform: translateY(3rpx);
+    margin-left: 5rpx;
+}
+
+.single-card-vote .options-ctn.pair .text-option+.text-option .result {
+    flex-flow: row-reverse;
+}
+
+.single-card-vote .options-ctn.pair .text-option+.text-option .result .users-ctn {
+    flex-flow: row-reverse;
+    margin-right: 0;
+    margin-left: 15rpx;
+}
+
+.single-card-vote .options-ctn.pair .text-option+.text-option .result .users-ctn .user+.user {
+    margin-right: -4px;
+    margin-left: 0;
+}
+
+.single-card-vote .options-ctn.pair .text-option+.text-option .text-ctn {
+    flex: 1;
+    text-align: right;
+}
+
+.single-card-vote .button.large {
+    margin-top: 70rpx;
+}
+
+.timeline {
+    background-color: #EBEBEB;
+    overflow: hidden;
+}
+
+.timeline universe-card {
+    margin-top: 40rpx;
+    padding: 0 40rpx;
+}
+
+.timeline universe-card.section-article {
+    margin-top: 0;
+}
+
+.timeline universe-card.section-article .card-component-root {
+    border-top: 1px solid #F2F2F2;
+}
+
+.timeline universe-card:last-child {
+    margin-bottom: 40rpx;
+}
+
+.timeline.white {
+    background-color: #fff;
+}
+
+.no-title-bar .card .top-ctn {
+    height: 0;
+}
+
+.no-title-bar .card .top-ctn .mark-info-ctn {
+    visibility: hidden;
+}
+
+.no-title-bar .card-article .content-ctn .headline2 {
+    margin-top: 20px;
+}
+
+.no-title-bar .card-mark .top-ctn {
+    height: 20px;
+}
+
+.no-title-bar .single-card:first-of-type {
+    margin-top: 40px;
+}

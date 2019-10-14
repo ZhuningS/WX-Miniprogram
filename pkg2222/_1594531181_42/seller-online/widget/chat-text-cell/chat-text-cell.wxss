@@ -1,0 +1,5 @@
+.content {
+    color: #000;
+    font-size: 32rpx;
+    word-break: break-all;
+}

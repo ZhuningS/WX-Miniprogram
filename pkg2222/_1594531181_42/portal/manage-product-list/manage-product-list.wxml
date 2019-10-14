@@ -1,0 +1,12 @@
+<navigation-bar backgroundColor="#FFFFFF" title=""></navigation-bar>
+<view class="wrapper">
+    <view class="wrapper-header">
+        <view class="wrapper-header-text">
+            <text class="wrapper-header-text__topic">{{title}}</text>
+        </view>
+        <view class="line"></view>
+    </view>
+    <view class="wrapper-body">
+        <new-product-item bindproductclick="onProductClick" data-index="{{index}}" product="{{item}}" wx:for="{{products}}" wx:key="name"></new-product-item>
+    </view>
+</view>

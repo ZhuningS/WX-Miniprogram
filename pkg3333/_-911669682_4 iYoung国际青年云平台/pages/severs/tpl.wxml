@@ -1,0 +1,169 @@
+<template name="recommend-list">
+    <view class="recommend mt10" wx:if="{{data.length}}">
+        <view class="recommend-title grey gridXb">为你推荐</view>
+        <swiper class="doc-list">
+            <swiper-item catchtap="onNavigateTap" class="list-item" data-type="redirect" data-url="./detail?id={{item.id}}" wx:for="{{data}}" wx:key="{{item.id}}">
+                <view class="list-item-header">
+                    <view class="header-left">
+                        <image class="avatar" mode="aspectFill" src="{{item.headimgurl}}"></image>
+                    </view>
+                    <view class="header-inner">
+                        <view>
+                            <text class="nickname lineText">{{item.nickname}}</text>
+                            <view class="wallet mr5" wx:if="{{item.wallet_id>0}}">
+                                <text class="hongbao-ico iconfont icon-hongbao"></text> 红包福利
+                            </view>
+                        </view>
+                        <view>
+                            <text>{{item.create_time}}</text>
+                        </view>
+                    </view>
+                    <view class="header-right"></view>
+                </view>
+                <view class="list-item-body">
+                    <view class="body-content">{{item.content}}</view>
+                    <view catchtap="onPreviewTap" class="body-imgs" data-urls="{{item.imgs}}" wx:if="{{item.imgs.length}}">
+                        <view class="body-imgs-item" wx:if="{{imgIndex<3}}" wx:for="{{item.imgs}}" wx:for-index="imgIndex" wx:for-item="img" wx:key="{{imgIndex}}">
+                            <image data-index="{{imgIndex}}" mode="aspectFill" src="{{img}}?imageView2/1/w/136/h/136/q/75|imageslim"></image>
+                            <view class="body-imgs-more" data-index="{{imgIndex}}" wx:if="{{imgIndex==2&&item.imgs.length>3}}">+{{item.imgs.length-3}}</view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</template>
+<template name="simple-comment-list">
+    <view class="simple-comment-list">
+        <view class="comment-list-item" wx:for="{{data}}" wx:key="{{item.id}}">
+            <text class="blue mr5">{{item.nickname}}:</text>
+            <text>{{item.content}}</text>
+            <view class="reply-list">
+                <view class="reply-list-item" wx:for="{{item.reply_list}}" wx:key="{{item.id}}">
+                    <text class="blue">{{item.nickname}}</text> 回复
+                    <text class="blue mr5">{{item.reply_nickname}}:</text>
+                    <text>{{item.content}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="doc-list-tips">
+    <view class="nothing tc linght flex mt10 mb10" hidden="{{hasMore}}">
+        <text class="sub line mr10"></text>
+        <text>没有更多了</text>
+        <text class="sub line ml10"></text>
+    </view>
+    <view class="linght tc mt10 mb10" hidden="{{!isLoading}}">
+        <text class="loading-icon mr10 f18"></text>
+        <text>正在加载中...</text>
+    </view>
+</template>
+<template name="doc-list-item-body">
+    <view class="list-item-body">
+        <view class="body-content">
+            <text catchtap="onNavigateTap" class="classify red" data-invalid="{{cate_invalid===true}}" data-url="../lists/lists?cid={{item.cid}}&title={{item.category_title}}&childCid={{item.cid2}}">#{{item.category_title}}<block wx:if="{{item.cid2>0}}">●{{item.category2_title}}</block>#  </text>
+            <text> {{item.content}}</text>
+        </view>
+        <view catchtap="onPreviewTap" class="body-imgs" data-urls="{{item.imgs}}" wx:if="{{item.imgs.length}}">
+            <view class="body-imgs-item" wx:if="{{imgIndex<3}}" wx:for="{{item.imgs}}" wx:for-index="imgIndex" wx:for-item="img" wx:key="{{imgIndex}}">
+                <image data-index="{{imgIndex}}" mode="aspectFill" src="{{img}}?imageView2/1/w/136/h/136/q/75|imageslim"></image>
+                <view class="body-imgs-more" data-index="{{imgIndex}}" wx:if="{{imgIndex==2&&item.imgs.length>3}}">+{{item.imgs.length-3}}</view>
+            </view>
+        </view>
+        <view class="body-tags" wx:if="{{item.tags.length}}">
+            <button class="body-tags-item" plain="true" wx:for="{{item.tags}}" wx:key="{{index}}">{{item}}</button>
+        </view>
+        <view class="body-address" wx:if="{{item.address}}">
+            <text class="iconfont icon-locationfill"></text> {{item.address}}
+        </view>
+    </view>
+</template>
+<template name="my-doc-list">
+    <view class="doc-list">
+        <view catchtap="onNavigateTap" class="list-item" data-url="../detail/detail?id={{item.id}}" style="{{styles[item.cid].list_item}}" wx:for="{{data}}" wx:key="{{item.id}}">
+            <view class="list-item-header">
+                <view class="header-left">
+                    <image catchtap="onNavigateTap" class="avatar" data-url="../frd_info/frd_info?uid={{item.uid}}" mode="aspectFill" src="{{item.headimgurl}}"></image>
+                </view>
+                <view class="header-inner">
+                    <view>
+                        <text class="nickname mr5">{{item.nickname}}</text>
+                        <text class="red mr5" wx:if="{{item.is_admin}}">管理员</text>
+                        <view class="wallet mr5" wx:if="{{item.wallet_id>0}}">
+                            <text class="hongbao-ico iconfont icon-hongbao"></text> 红包福利
+                        </view>
+                    </view>
+                    <view class="linght">{{item.create_time}}</view>
+                </view>
+                <view class="header-right">
+                    <view class="top" wx:if="{{item.is_top>0}}"></view>
+                    <view class="status-text">
+                        <block wx:if="{{item.is_pay>0}}">
+                            <text class="red" wx:if="{{item.is_pay==1}}">未支付</text>
+                            <text class="grey" wx:elif="{{item.is_pay==2&&item.status==0}}">已支付待审核</text>
+                        </block>
+                        <block wx:else>
+                            <text class="red" wx:if="{{item.status==0}}">正在审核</text>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <template is="doc-list-item-body" data="{{item:item}}"></template>
+            <view class="list-item-footer">
+                <view class="footer-item footer-item-action">
+                    <view catchtap="onDelTap" class="btn btn-danger" data-id="{{item.id}}" data-index="{{index}}">删除</view>
+                    <view catchtap="onEditTap" class="btn btn-primary" data-id="{{item.id}}" data-index="{{item.cid}}" data-title="{{item.category_title}}">编辑</view>
+                    <view catchtap="onPayTap" class="btn btn-primary" data-doc-id="{{item.id}}" wx:if="{{item.is_pay==1}}">支付</view>
+                </view>
+            </view>
+            <template is="simple-comment-list" data="{{data:item.comment_list}}" wx:if="{{item.comment_list.length&&config.show_comment!==0}}"></template>
+        </view>
+        <template is="doc-list-tips" data="{{hasMore:hasMore,isLoading:isLoading}}"></template>
+    </view>
+</template>
+<template name="doc-list">
+    <form>
+        <view class="doc-list">
+            <view catchtap="onNavigateTap" class="list-item" data-url="../detail/detail?id={{item.id}}" style="{{styles[item.cid].list_item}}" wx:for="{{data}}" wx:key="{{item.id}}">
+                <view class="list-item-header">
+                    <view class="header-left">
+                        <image catchtap="onNavigateTap" class="avatar" data-url="../frd_info/frd_info?uid={{item.uid}}&vest_id={{item.vest_id}}" mode="aspectFill" src="{{item.headimgurl}}"></image>
+                    </view>
+                    <view class="header-inner">
+                        <view>
+                            <text class="nickname mr5 lineText">{{item.nickname}}</text>
+                            <text class="red mr5" wx:if="{{item.is_admin}}">管理员</text>
+                            <text class="red mr5" wx:if="{{item.status==0}}">正在审核</text>
+                        </view>
+                        <view class="linght">{{item.create_time}}</view>
+                    </view>
+                    <view class="header-right">
+                        <view class="top" wx:if="{{item.is_top>0}}"></view>
+                        <button catchtap="onCallTap" class="contact" data-mobile="{{item.mobile}}" plain="true" wx:if="{{item.mobile}}">联系Ta</button>
+                    </view>
+                </view>
+                <template is="doc-list-item-body" data="{{item:item}}"></template>
+                <view class="list-item-footer">
+                    <view class="footer-item footer-item-view grey flex">
+                        <view class="icon-btn sub" wx:if="{{config.show_read_count!==0}}">
+                            <text class="iconfont icon-attention"></text> {{item.click}}
+                        </view>
+                        <view class="sub" wx:if="{{config.show_comment!==0}}">
+                            <text class="iconfont icon-comment"></text> {{item.comment}}
+                        </view>
+                        <view catchtap="onGoodTap" class="sub {{item.is_good?'green':''}}" data-id="{{item.id}}" data-index="{{index}}" wx:if="{{config.show_good!==0}}">
+                            <text class="iconfont icon-appreciate {{item.is_good?'icon-appreciatefill':'icon-appreciate'}}"></text> {{item.good}}
+                        </view>
+                        <view class="sub icon-btn" wx:if="{{config.show_share!==0}}">
+                            <button catchtap="onEmptyTap" class="share-btn" data-index="{{index}}" openType="share"></button>
+                            <text class="iconfont icon-share"></text>分享
+                        </view>
+                    </view>
+                </view>
+                <template is="simple-comment-list" data="{{data:item.comment_list}}" wx:if="{{item.comment_list.length&&config.show_comment!==0}}"></template>
+            </view>
+            <template is="doc-list-tips" data="{{hasMore:hasMore,isLoading:isLoading}}"></template>
+        </view>
+    </form>
+</template>

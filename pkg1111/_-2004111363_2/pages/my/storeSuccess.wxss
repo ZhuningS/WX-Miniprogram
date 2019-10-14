@@ -1,0 +1,17 @@
+.orderSuccess {
+    text-align: center;
+    padding-top: 60rpx;
+}
+
+.paytime {
+    position: fixed;
+    bottom: 20rpx;
+    text-align: center;
+    width: 100%;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.paymoney {
+    font-size: 80rpx;
+}

@@ -1,0 +1,8 @@
+<view bindtap="onClickArticle" class="article-wrap" data-title="{{title}}" data-url="{{url}}" hoverClass="weui-cell_active">
+    <view class="article-left">
+        <view class="article-title">{{title}}</view>
+        <view class="article-date">{{date}}</view>
+    </view>
+    <image class="article-thumb" mode="aspectFill" src="{{thumbUrl}}"></image>
+</view>
+<view class="article-line" wx:if="{{seperator}}"></view>

@@ -1,0 +1,45 @@
+<form bindsubmit="formSubmit" reportSubmit="{{true}}">
+    <view>
+        <view class="account-item gridXb">
+            <view>所属银行</view>
+            <view class="grey f14">
+                <picker bindchange="changeBankList" range="{{bank_list}}" rangeKey="name" value="{{picker_index}}">{{bank_list[picker_index]['name']}}</picker>
+            </view>
+        </view>
+        <view class="account-item gridXb">
+            <view>银行卡卡号</view>
+            <view class="grey f14 tr">
+                <input bindinput="inputBankNo" name="bank_no" placeholder="请填写您的银行卡号" placeholderClass="greylight" type="number" value="{{bank_no}}"></input>
+            </view>
+        </view>
+    </view>
+    <view class="mt10">
+        <view class="account-item gridXb">
+            <view>持卡人姓名</view>
+            <view class="grey f14 tr">
+                <input bindinput="inputTrueName" name="true_name" placeholder="请填写您的姓名" placeholderClass="greylight" type="text" value="{{true_name}}"></input>
+            </view>
+        </view>
+        <view class="account-item gridXb">
+            <view>银行预留电话</view>
+            <view class="grey f14 tr">
+                <input bindinput="inputTelephone" name="telephone" placeholder="请填写银行预留电话" placeholderClass="greylight" type="number" value="{{telephone}}"></input>
+            </view>
+        </view>
+    </view>
+    <view class="mt20">
+        <view class="red tc f14">
+            <text class="greylight iconfont icon-fxicon-3"></text> 请确认所填写为真实信息且无错误，
+        </view>
+        <view class="red tc f14">
+            否则会出现提现错误
+        </view>
+        <view class="grey tc f14" wx:if="{{customer_service_phone==''?false:true}}">
+            <text></text> 客服电话：{{customer_service_phone}}
+        </view>
+        <view class="btnBox tc ">
+            <button class="save-btn" formType="submit">确认</button>
+            <button catchtap="navigateBack" class="return-btn save-btn">返回</button>
+        </view>
+    </view>
+</form>

@@ -1,0 +1,30 @@
+.c-list {
+    width: 100%;
+    padding: 0 30rpx;
+    background-color: #fff;
+}
+
+.c-list .c-news-small-main:last-child {
+    border-bottom: none;
+}
+
+.c-list .c-news-small-main {
+    width: 100%;
+    padding: 30rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.c-list .c-news-small-main>image {
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 5rpx;
+    margin-left: 30rpx;
+    flex-shrink: 0;
+}
+
+.c-icon-other-main {
+    position: fixed;
+    bottom: 10%;
+    right: 30rpx;
+    z-index: 87;
+}

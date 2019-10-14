@@ -1,0 +1,43 @@
+page {
+    background: #EBEFF2;
+}
+
+.kefu {
+    width: 100%;
+}
+
+.kefu_one {
+    position: relative;
+    background-color: white;
+    border-radius: 10rpx;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100rpx;
+    font-size: 30rpx;
+    border: none;
+    margin-top: 20rpx;
+}
+
+.kefu_one>image {
+    width: 70rpx;
+    height: 70rpx;
+    margin: 0 30rpx;
+}
+
+.kefu_two {
+    margin-top: 20rpx;
+}
+
+.more {
+    position: absolute;
+    right: 30rpx;
+    color: gray;
+}
+
+.kfbtn {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: transparent;
+}

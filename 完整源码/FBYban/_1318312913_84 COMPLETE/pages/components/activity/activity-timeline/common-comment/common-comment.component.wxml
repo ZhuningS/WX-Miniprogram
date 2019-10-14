@@ -1,0 +1,49 @@
+<view catchtap="handleSlimCommentTap" class="slim-comment" wx:if="{{comment.size==='slim'}}">
+    <view class="comment-header">
+        <view class="comment-header-relation">
+            <text class="user">{{comment.user.name||'匿名用户'}}</text>
+            <block wx:if="{{comment.isReply}}">
+                <text> 回复 </text>
+                <text class="user">{{comment.replyName||'匿名用户'}}</text>
+            </block>
+            <text>：</text>
+        </view>
+        <view class="comment-header-markCount {{comment.isMarked?'isMarked':''}} ">
+            <view>{{comment.displayMarkCount}}</view>
+            <mark-switcher bindmarkevent="handleMarkCommentEvent" isMarked="{{comment.isMarked}}" markArgsData="{{comment.markArgsData}}" type="{{'comment'}}"></mark-switcher>
+        </view>
+    </view>
+    <view class="comment-body">
+        <view class="comment-body-text" wx:if="{{comment.type==='text'}}">
+        {{comment.content}}
+      </view>
+        <image catchtap="handleCommentImageTap" class="comment-body-image" data-url="{{comment.content}}" mode="widthFix" src="{{comment.content}}" wx:if="{{comment.type==='image'}}"></image>
+    </view>
+</view>
+<view catchlongpress="handleProcessComment" catchtap="handleReplyCommentTap" class="rich-comment {{comment.isSelf?'isSelf':''}}" comment="{{comment}}" wx:if="{{comment.size==='rich'}}">
+    <qm-avatar catchtap="handleUserInfoTap" data-uid="{{comment.user.uid}}" size="small" url="{{comment.user.avatar}}"></qm-avatar>
+    <view class="comment-section">
+        <view class="comment-content" wx:if="{{comment.type==='text'}}">
+            <text class="user">{{comment.user.name||'匿名用户'}}</text>
+            <block wx:if="{{comment.isReply}}">
+                <text> 回复 </text>
+                <text class="user">{{comment.replyName||'匿名用户'}}</text>
+            </block>
+            <text>：</text>
+            <text>{{comment.content}}</text>
+        </view>
+        <view class="comment-content" wx:else>
+            <image catchtap="handleCommentImageTap" data-url="{{comment.content}}" mode="widthFix" src="{{comment.content}}" style="width: 100%;"></image>
+        </view>
+        <view class="comment-infos">
+            <view class="time-divider"></view>
+            <view class="comment-time">
+          {{comment.displayTime}}
+        </view>
+            <view class="comment-markCount {{comment.isMarked?'isMarked':''}} ">
+                <view>{{comment.displayMarkCount}}</view>
+                <mark-switcher bindmarkevent="handleMarkCommentEvent" isMarked="{{comment.isMarked}}" markArgsData="{{comment.markArgsData}}" type="{{'comment'}}"></mark-switcher>
+            </view>
+        </view>
+    </view>
+</view>

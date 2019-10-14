@@ -1,0 +1,3 @@
+<view class="{{rootClassNames}}">
+    <universe-card isPin comClass="universe-card" event="{{event}}" wx:for="{{mediaEvents}}" wx:for-item="event" wx:key="timestamp"></universe-card>
+</view>

@@ -1,0 +1,245 @@
+<view class="c-group {{currentSkin}}">
+    <swiper indicatorDots autoplay="true" class="com-slider w-100" duration="300" indicatorActiveColor="#a1a2a3" indicatorColor="#fff" interval="5000" wx:if="{{vm.slideimgs_fmt}}">
+        <swiper-item wx:for="{{vm.slideimgs_fmt}}" wx:for-index="$comSlider$index" wx:for-item="$comSlider$item" wx:key="$comSlider$key">
+            <image bindtap="$comSlider$imgFunc" class="w-100" data-com-index="{{undefined}}" data-wpyimgfunc-a="{{vm}}" id="{{$comSlider$index}}" mode="widthFix" src="{{$comSlider$item||'http://j.vzan.cc/miniapp/img/enterprise/blank_150x150.png'}}"></image>
+        </swiper-item>
+    </swiper>
+    <image class="w-100" mode="widthFix" src="{{vm.img_fmt}}" wx:if="{{vm.slideimgs_fmt==''&&vm.img_fmt!=''}}"></image>
+    <view class="c-group-main">
+        <view class="c-group-top fj f fc skin_bg">
+            <view class="f fv ">
+                <text class="f40 t-b">￥{{vm.EntGroups.GroupPriceStr||0}}</text>
+                <text class="mt10 f24">单买价￥{{vm.EntGroups.OriginalPriceStr||0}}</text>
+            </view>
+            <view class="f30 t-b">{{vm.EntGroups.GroupSize||0}}人团</view>
+        </view>
+        <view class="c-group-title f">
+            <view class="f fv f1">
+                <text class="f30 line line2">{{vm.name||''}}</text>
+                <text class="f24 c999 mt20">已售{{vm.salesCount+vm.virtualSalesCount||0}}</text>
+            </view>
+            <view bindtap="openCanvas" class="f fv c999">
+                <text class="dzicon icon-Forward_fenxiang f47"></text>
+                <text class="f24 mt10">分享</text>
+            </view>
+        </view>
+        <view class="c-group-now">
+            <view class="c-group-now-item f fc" wx:if="{{index<vm.showNum}}" wx:for="{{vm.groupNow}}" wx:key="key">
+                <view class="f fc f1">
+                    <image class="c-group-now-logo" src="{{item.UserLogo||'http://j.vzan.cc/content/city/images/voucher/10.jpg'}}"></image>
+                    <text>{{item.UserName||'神秘用户'}} </text>
+                </view>
+                <view class="f fv">
+                    <text class="f26">还差<text class="skin_txt">{{item.GroupSize-item.GroupUserList.length}}</text>人成团</text>
+                    <text class="f22 c999 mt10">剩余{{item.countdown}}</text>
+                </view>
+                <form bindsubmit="navCheck" data-wpynavcheck-a="{{item.GoodId}}" data-wpynavcheck-b="{{item.Id}}" reportSubmit="true" wx:if="{{item.moreJoin}}">
+                    <button class="c-group-now-btn skin_bg" formType="submit">去参团</button>
+                </form>
+                <view bindtap="goShare" class="c-group-now-btn skin_bg" data-wpygoshare-a="{{item.Id}}" wx:if="{{item.moreJoin==false}}">详情</view>
+            </view>
+            <view bindtap="showMoreGroup" class="c-group-now-more f fc fc-h" wx:if="{{vm.groupNow.length>3}}">
+                <text>{{vm.showGroupMore?'收起':'更多'}}</text>
+                <text class="dzicon icon-xiala {{vm.showGroupMore?'c-group-now-up':'c-group-now-down'}}"></text>
+            </view>
+        </view>
+        <view class="c-group-mode">
+            <view class="c-group-mode-title f fj">
+                <text class="f30 t-b">拼团玩法</text>
+                <text bindtap="showRule" class="f26 c666">详细规则<text class="dzicon icon-xiala-copy-right"></text>
+                </text>
+            </view>
+            <view class="c-group-mode-main f fc">
+                <text class="num f fc fc-h">1</text>
+                <text class="ml10">开团/参团</text>
+                <text class="dzicon icon-xiala-copy-right c123" style="margin:0 30rpx"></text>
+                <text class="num f fc fc-h">2</text>
+                <text class="ml10">邀请好友</text>
+                <text class="dzicon icon-xiala-copy-right c123" style="margin:0 30rpx"></text>
+                <view class="f fv">
+                    <view class="f">
+                        <text class="num f fc fc-h">3</text>
+                        <text class="ml10">满员发货</text>
+                    </view>
+                    <view class="f22 c999 mt10">不满自动退款</view>
+                </view>
+            </view>
+        </view>
+        <view class="c-group-mask" wx:if="{{vm.showRule}}">
+            <view bindtap="showRule" class="bg"></view>
+            <view class="main">
+                <view class="main-title">拼团活动规则</view>
+                <view class="f fv">
+                    <text>1.拼团有效期是自开团起的{{vm.EntGroups.ValidDateLength}}小时内，如果距离活动结束时间小于{{vm.EntGroups.ValidDateLength}}小时，则已活动时间为准。</text>
+                    <text class="mt10">2.拼团有效期内，支付人数达到规定人数视为拼团成功，商家即进入发货流程。拼团成功后不可退款，如有异议请自行与商家协商。</text>
+                    <text class="mt10">3.拼团有效期内支付人数未能达到规定人数视为拼团失败，拼团失败的订单，系统会在1-7个工作日内发起退款，发起退款后1-10个工作日内订单金额将原路退回。</text>
+                </view>
+                <view bindtap="showRule" class="main-btn skin_txt">确定</view>
+            </view>
+        </view>
+        <view wx:if="{{showShopCar}}">
+            <view bindtap="$comShop$hideMask" class="c-shop-bg" data-com-index="{{index}}"></view>
+            <view class="c-shop">
+                <view class="c-item">
+                    <image bindtap="$comShop$preview" class="img" data-com-index="{{index}}" data-wpypreview-a="{{vm.selImg}}" mode="aspectFill" src="{{vm.selImg}}"></image>
+                    <view class="c-price f fv fj">
+                        <view class="f fc mt10">
+                            <block wx:if="{{vm.type=='good'||vm.type=='miaosha'}}">
+                                <text class="p-price f32">￥{{vm.danMaiPrice}}</text>
+                                <text class="f26 ml10 line-thor rel" wx:if="{{vm.yuanJiaPrice!=0}}">￥{{vm.yuanJiaPrice}}</text>
+                            </block>
+                            <text class="p-price f32" wx:if="{{vm.type=='goodShop'}}">{{vm.danMaiPrice}}</text>
+                            <block wx:if="{{vm.type=='group'}}">
+                                <text class="p-price f32" wx:if="{{vm.isgroup==0}}">￥{{vm.danMaiPrice}}</text>
+                                <text class="p-price f32" wx:if="{{vm.isgroup==1}}">￥{{vm.groupPrice}}</text>
+                                <text class="f26 ml10 line-thor rel" wx:if="{{vm.discount!=100}}">￥{{vm.yuanJiaPrice}}</text>
+                            </block>
+                        </view>
+                        <text class="f26 ccc" wx:if="{{vm.stockLimit&&vm.btn!='yuyue'}}">库存{{vm.stock}}件</text>
+                        <text class="f26 ccc" wx:if="{{vm.pickspecification.length!=0&&vm.specInfo!=''}}">{{vm.specInfo}}</text>
+                    </view>
+                </view>
+                <view class="c-sel f fv">
+                    <scroll-view scrollY class="w-100" style="max-height:400rpx">
+                        <block wx:if="{{$comShop$pickspecification.length!=0}}" wx:for="{{vm.pickspecification}}" wx:for-index="$comShop$parentindex" wx:for-item="$comShop$this" wx:key="$comShop$key">
+                            <text class="line line1 c-name">{{$comShop$this.name}}</text>
+                            <view class="c-pic f fw" style="border-bottom:{{vm.btn!='yuyue'?'border-bottom:1px solid #f5f5f5':'none'}}">
+                                <text bindtap="$comShop$changeSpec" class="c-val {{$comShop$item.sel?'skin_bg':'btn-no'}}" data-c="{{$comShop$childindex}}" data-com-index="{{index}}" data-p="{{$comShop$parentindex}}" wx:for="{{$comShop$this.items}}" wx:for-index="$comShop$childindex" wx:for-item="$comShop$item" wx:key="$comShop$key">{{$comShop$item.name}}</text>
+                            </view>
+                        </block>
+                        <view class="mh20 f fc fj" wx:if="{{vm.btn!='yuyue'}}">
+                            <text class="f30">数量</text>
+                            <view class="f fc f40">
+                                <view bindtap="$comShop$less" class="count" data-com-index="{{index}}" data-wpyless-a="{{vm.pageIndex}}">-</view>
+                                <input bindinput="$comShop$setNum" class="count" data-com-index="{{index}}" disabled="{{disable}}" maxlength="6" style="font-size:28rpx;" type="number" value="{{vm.totalCount}}"></input>
+                                <view bindtap="$comShop$add" class="count" data-com-index="{{index}}" data-wpyadd-a="{{vm.pageIndex}}">+</view>
+                            </view>
+                        </view>
+                    </scroll-view>
+                </view>
+                <form bindsubmit="$comShop$addShop" data-com-index="{{index}}" reportSubmit="true">
+                    <button class="shop-btn skin_bg" formType="submit">确定</button>
+                </form>
+            </view>
+        </view>
+        <view class="c-gv mt20" wx:if="{{vm.valueLst.list.length}}">
+            <view class="c-gv-title f fj">
+                <text class="f30 t-b">评价({{vm.valueLst.count}})</text>
+                <text bindtap="$comValue$pathNav" class="f24 c999" data-com-index="{{index}}" data-wpypathnav-a="{{vm.valueLst.list[0].GoodsId}}">更多<text class="dzicon icon-xiala-copy-right"></text>
+                </text>
+            </view>
+            <view class="c-gv-main f fv">
+                <view class="f fc f26 mt30">
+                    <image class="c-gv-main-user" src="{{vm.valueLst.list[0].HeadImgUrl||'http://j.vzan.cc/content/city/images/voucher/10.jpg'}}"></image>
+                    <text class="f26">{{vm.valueLst.list[0].Anonymous?'匿名':vm.valueLst.list[0].NickName}}</text>
+                </view>
+                <view class="f26 mt30">{{vm.valueLst.list[0].Comment?vm.valueLst.list[0].Comment:'该用户暂无评论'}}</view>
+                <view class="f24 c999 f mt30">
+                    <text>{{vm.valueLst.list[0].AddTimeStr}}</text>
+                    <text style="margin-left:20rpx">{{vm.valueLst.list[0].GoodsSpecification}}</text>
+                </view>
+                <view class="c-gv-main-imgs f {{vm.valueLst.list[0].CommentImgs.length>=3?'fj':''}} rel">
+                    <image src="{{$comValue$item.thumbnail}}" style="margin-right:{{vm.valueLst.list[0].CommentImgs.length<3?'10':'0'}}rpx" wx:if="{{$comValue$index<3}}" wx:for="{{vm.valueLst.list[0].CommentImgs}}" wx:for-index="$comValue$index" wx:for-item="$comValue$item" wx:key="$comValue$key"></image>
+                    <text class="c-gv-main-tip" wx:if="{{vm.valueLst.list[0].CommentImgs.length>3}}">共{{vm.valueLst.list[0].CommentImgs.length}}张</text>
+                </view>
+            </view>
+        </view>
+        <view class="c-gr" wx:if="{{vm.IndutypeList.length||vm.content_fmt}}">
+            <view class="c-gr-title f fc fc-h">
+                <text class="dzicon icon-xiantiao-"></text>
+                <text style="margin:0 30rpx;">图文详情</text>
+                <text class="dzicon icon-xiantiao- rote"></text>
+            </view>
+            <view class="c-gr-info" style="padding-bottom:{{vm.IndutypeList.length>3?'0':'30rpx'}}" wx:if="{{vm.IndutypeList.length}}">
+                <view class="f30 t-b">参数</view>
+                <view class="f fc f26 mt30" wx:if="{{$comRich$index<$comRich$num}}" wx:for="{{vm.IndutypeList}}" wx:for-index="$comRich$index" wx:for-item="$comRich$item" wx:key="$comRich$key">
+                    <text class="c999" style="width:120rpx">{{$comRich$item.PKey}}</text>
+                    <text style="margin-left:40rpx">{{$comRich$item.PValue}}</text>
+                </view>
+                <view bindtap="$comRich$showMoreInfo" class="f fc fc-h w-100 f24" data-com-index="{{index}}" data-wpyshowmoreinfo-a="{{vm.IndutypeList.length}}" style="padding:30rpx 0" wx:if="{{vm.IndutypeList.length>3}}">
+                    <text>{{$comRich$showMore?'收起':'更多'}}</text>
+                    <text class="dzicon icon-xiala {{$comRich$showMore?'c-gr-up':'c-gr-down'}} ml10"></text>
+                </view>
+            </view>
+            <block wx:if="{{vm.content_fmt}}">
+                <import src="../../lib/wxParse/wxParse.wxml"></import>
+                <view class="c-gr-rich {{vm.IndutypeList.length?'mt20':''}}">
+                    <template is="wxParse0" data="{{item:item}}" wx:for="{{vm.content_fmt.nodes}}" wx:key="{{index}}"></template>
+                </view>
+            </block>
+        </view>
+        <view style="height:120rpx"></view>
+        <view class="c-group-btn f">
+            <navigator class="c-good-btn-icon f fc fc-h fv" openType="reLaunch" url="/pages/index/index">
+                <text class="dzicon icon-shouye2 f40"></text>
+                <text class="mt5">首页</text>
+            </navigator>
+            <view wx:if="{{vm.imswitch}}">
+                <button bindgetuserinfo="$comImBtn$getUser" class="c-good-btn-icon f fc-h fc fv" data-com-index="{{index}}" openType="getUserInfo" wx:if="{{vm.userInfo.newUser}}">
+                    <text class="dzicon icon-kefu f36"></text>
+                    <text class="f28 mt10">客服</text>
+                </button>
+                <view wx:if="{{vm.userInfo.newUser==false}}">
+                    <button class="c-good-btn-icon f fc-h fc fv" openType="contact" wx:if="{{vm.wxServer}}">
+                        <text class="dzicon icon-kefu f36"></text>
+                        <text class="f28 mt10">客服</text>
+                    </button>
+                    <view bindtap="$comImBtn$gochat" class="c-good-btn-icon f fc-h fc fv" data-com-index="{{index}}" wx:else>
+                        <text class="dzicon icon-kefu f36"></text>
+                        <text class="mt10">客服</text>
+                    </view>
+                </view>
+            </view>
+            <view class="f1 f fc" wx:if="{{vm.userInfo.newUser==false}}">
+                <form bindsubmit="goBuy" class="f1" data-wpygobuy-a="0" reportSubmit="true" wx:if="{{showGroup}}">
+                    <button class="c-group-btn-main btnBuySingle f fv fc-h" formType="submit">
+                        <text>单独购买</text>
+                        <text>￥{{vm.priceStr}}</text>
+                    </button>
+                </form>
+                <form bindsubmit="goBuy" class="f1" data-wpygobuy-a="1" reportSubmit="true" wx:if="{{showGroup}}">
+                    <button class="c-group-btn-main btnBuyGroup f fv fc-h" formType="submit">
+                        <text>一键开团</text>
+                        <text>￥{{vm.GASDetailList.length>0?vm.GASDetailList[0].groupPrice:vm.EntGroups.GroupPriceStr}}</text>
+                    </button>
+                </form>
+                <form bindsubmit="goBuy" class="f1" data-wpygobuy-a="1" reportSubmit="true" wx:if="{{showGroup==false}}">
+                    <button class="c-group-btn-main btnBuyGroup f fv fc-h" formType="submit">
+                        <text>去参团</text>
+                        <text>￥{{vm.GASDetailList.length>0?vm.GASDetailList[0].groupPrice:vm.EntGroups.GroupPriceStr}}</text>
+                    </button>
+                </form>
+            </view>
+            <view class="f1 f fc" wx:if="{{vm.userInfo.newUser}}">
+                <button bindgetuserinfo="getUser" class="c-group-btn-main btnBuySingle f fv fc-h" openType="getUserInfo" wx:if="{{showGroup}}">
+                    <text>单独购买</text>
+                    <text>￥{{vm.priceStr}}</text>
+                </button>
+                <button bindgetuserinfo="getUser" class="c-group-btn-main btnBuyGroup f fv fc-h" openType="getUserInfo" wx:if="{{showGroup}}">
+                    <text>一键开团</text>
+                    <text>￥{{vm.GASDetailList.length>0?vm.GASDetailList[0].groupPrice:vm.EntGroups.GroupPriceStr}}</text>
+                </button>
+                <button bindgetuserinfo="getUser" class="c-group-btn-main btnBuyGroup f fv fc-h" openType="getUserInfo" wx:if="{{showGroup==false}}">
+                    <text>去参团</text>
+                    <text>￥{{vm.GASDetailList.length>0?vm.GASDetailList[0].groupPrice:vm.EntGroups.GroupPriceStr}}</text>
+                </button>
+            </view>
+        </view>
+        <view class="c-vas-mask" hidden="{{showCanvas==false}}">
+            <view bindtap="$comCanvas$hidemask" class="c-vas-bg"></view>
+            <view bindtap="$comCanvas$hidemask" class="dzicon icon-zhuanyebaniconkuozhan_Close c-vas-cancle"></view>
+            <canvas canvasId="firstCanvas" class="c-vas-main"></canvas>
+            <view class="c-vas-bottom f fc fsa">
+                <view bindtap="$comCanvas$saveQrcode" class="c-vas-btn f fv fc" data-wpysaveqrcode-a="0" data-wpysaveqrcode-b="{{$comCanvas$vm}}">
+                    <view class="dzicon icon-Choice_xuanze  c-vas-save"></view>
+                    <text>保存图片</text>
+                </view>
+                <view class="c-vas-btn f fv fc">
+                    <button class="dzicon icon-Forward_fenxiang c-vas-share" openType="share"></button>
+                    <text>分享给朋友</text>
+                </view>
+            </view>
+        </view>
+        <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+    </view>
+</view>

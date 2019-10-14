@@ -1,0 +1,9 @@
+<template name="loading-view">
+    <view class="loading-view">
+        <view class="loader" wx:if="{{!loaded&&!error}}"></view>
+        <image src="/images/tip_error.png" style="width: 275rpx; height: 150rpx;" wx:if="{{error}}"></image>
+        <view class="text__meta" wx:if="{{error||loaded&&info}}">
+      {{error?error:info}}
+    </view>
+    </view>
+</template>

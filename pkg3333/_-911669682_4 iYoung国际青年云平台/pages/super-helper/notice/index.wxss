@@ -1,0 +1,82 @@
+page {
+    box-sizing: border-box;
+    padding: 0 30rpx;
+}
+
+.notice-list {
+    min-height: 80px;
+    background: #fff;
+    margin-bottom: 30rpx;
+    border-radius: 6rpx;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 6rpx #eee;
+}
+
+.notice-list:first-child {
+    margin-top: 20rpx;
+}
+
+.notice-list-content {
+    display: block;
+    word-break: break-all;
+}
+
+.aside-float {
+    position: fixed;
+    bottom: 120rpx;
+    right: 40rpx;
+    z-index: 1;
+}
+
+.aside-float button {
+    width: 92rpx;
+    height: 92rpx;
+    line-height: 92rpx;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 20rpx #1aad19;
+}
+
+.flating-group button::after {
+    border: 0;
+}
+
+.nothing .line {
+    height: 1px;
+    background: #ddd;
+    margin-top: 22rpx;
+}
+
+.tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+    background: #fff;
+    box-shadow: 0 -2rpx 2rpx #eee;
+}
+
+.tab-sub {
+    line-height: 92rpx;
+    font-size: 36rpx;
+    position: relative;
+}
+
+.tab-sub-active {
+    font-weight: bold;
+    color: #09bb07;
+}
+
+.tab-sub-active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 20%;
+    width: 60%;
+    height: 2px;
+    bottom: 0;
+}
+
+@import "../../../__wuBaseWxss__/3.wxss";

@@ -1,0 +1,31 @@
+<loading hidden="{{dataLoaded}}">
+    加载中...
+</loading>
+<view class="addr-list-wrap">
+    <form bindsubmit="_select" data-index="{{index}}" reportSubmit="true" wx:for="{{addrList}}">
+        <button class="nobutton" formType="submit">
+            <view class="addr-list">
+                <view class="img-wrap">
+                    <image data-index="{{index}}" src="../../../images/select_int.png" wx:if="{{!addrList[index].selected}}"></image>
+                    <image data-index="{{index}}" src="../../../images/selected.png" wx:if="{{addrList[index].selected}}"></image>
+                </view>
+                <view class="addr-info">
+                    <view class="name-phone">
+                        <view class="user-name">
+                            <text>{{item.name}}</text>
+                        </view>
+                        <view class="user-phone">
+                            <text>{{item.tel}}</text>
+                        </view>
+                    </view>
+                    <view class="addr">
+                        <text>{{item.province}}{{item.city}}{{item.county}}{{item.address}}</text>
+                    </view>
+                </view>
+                <view class="edit" wx:if="{{addrList[index].isDefault==1}}">
+                    <text>默认</text>
+                </view>
+            </view>
+        </button>
+    </form>
+</view>

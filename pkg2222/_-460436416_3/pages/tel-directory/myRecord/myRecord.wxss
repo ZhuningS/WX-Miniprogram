@@ -1,0 +1,37 @@
+@import "../../../__wuBaseWxss__/13.wxss";
+
+@import "../../../__wuBaseWxss__/2.wxss";
+
+.topBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+}
+
+.tab {
+    padding: 30rpx 0;
+}
+
+.mainBox {
+    margin-top: 110rpx;
+}
+
+.head {
+    padding: 30rpx 30rpx 10rpx 30rpx;
+    color: #666;
+}
+
+.time {
+    color: #999;
+    padding: 20rpx 30rpx;
+}
+
+.head .icon-shanchu {
+    font-size: 34rpx;
+}
+
+.time .icon-shanchu {
+    font-size: 40rpx;
+}

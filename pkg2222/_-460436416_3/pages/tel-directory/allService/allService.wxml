@@ -1,0 +1,6 @@
+<view class="white_bg mb10" wx:for="{{categoryArr}}">
+    <view bindtap="go_cate_list_bind" class="tc head mainColor" data-id="{{item.id}}" data-level="1" data-name="{{item.title}}">{{item.title}}</view>
+    <view class="serList">
+        <view bindtap="go_cate_list_bind" class="serItem" data-id="{{titem.id}}" data-level="2" data-name="{{titem.title}}" wx:for="{{item.child}}" wx:for-item="titem">{{titem.title}}</view>
+    </view>
+</view>

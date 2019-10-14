@@ -1,0 +1,4 @@
+.mMemberCard {
+    font-size: 0;
+    margin: 20rpx 30rpx;
+}

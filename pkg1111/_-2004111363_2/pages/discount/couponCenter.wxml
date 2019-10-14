@@ -1,0 +1,44 @@
+<view class="counp">
+    <view class="c-coupLst">
+        <view class="c-coupLst-main-item f fj {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'c-coupLst-bgShow':'c-coupLst-bgNone'}}" wx:for="{{vm.list}}" wx:for-index="$comCoup$index" wx:for-item="$comCoup$item" wx:key="$comCoup$key">
+            <view class="f fv fj">
+                <text class="c-coupLst-main-item-title {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'cfff':'c666'}}">{{$comCoup$item.CouponName}}享受{{$comCoup$item.Money_fmt}}{{$comCoup$item.CouponWay==0?'元':'折'}}优惠</text>
+                <view>
+                    <text class="c-coupLst-main-item-Lit {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'c-coupLst-canuse':'c-coupLst-nouse'}}">{{$comCoup$item.LimitMoney=='0'?'无门槛使用':'满'+$comCoup$item.LimitMoneyStr+'元使用'}}</text>
+                </view>
+                <text class="f22 {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'cffe':'c999'}}" wx:if="{{$comCoup$item.discountType==1}}">该优惠券与会员折扣只能享受一种</text>
+                <text class="f22 {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'cffe':'c999'}}" wx:if="{{vm.listname=='pickmycoupon'||vm.listname=='mycoupon'}}">{{$comCoup$item.StartUseTimeStr}} - {{$comCoup$item.EndUseTimeStr}}</text>
+                <view wx:else>
+                    <text class="f22 {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'cffe':'c999'}}" wx:if="{{$comCoup$item.ValType==1||$comCoup$item.ValType==2}}">领券{{$comCoup$item.ValType==1?'次日':'当日'}}开始{{$comCoup$item.ValDay}}天内有效</text>
+                    <text class="f22 {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'cffe':'c999'}}" wx:if="{{$comCoup$item.ValType==0}}">{{$comCoup$item.StartUseTimeStr}} - {{$comCoup$item.EndUseTimeStr}}</text>
+                </view>
+            </view>
+            <view class="f fv fc fj">
+                <view class="f22 {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'cffe':'c999'}} f fv">
+                    <text>满足条件</text>
+                    <text>即可使用</text>
+                </view>
+                <block wx:if="{{vm.listname=='storecoupon'}}">
+                    <view bindtap="$comCoup$getCoupon" class="c-coupLst-main-item-btn f fc fc-h {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'c-btnshow':'c-btnone'}}" data-com-index="{{undefined}}" data-wpygetcoupon-a="{{$comCoup$item.Id}}" data-wpygetcoupon-b="{{$comCoup$index}}" wx:if="{{$comCoup$item.CanGet}}">立即领取</view>
+                    <view class="c-coupLst-main-item-btn f fc fc-h {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'c-btnshow':'c-btnone'}}" wx:else>已领取</view>
+                </block>
+                <block wx:if="{{vm.listname=='mycoupon'}}">
+                    <view bindtap="$comCoup$useCoupon" class="c-coupLst-main-item-btn f fc fc-h {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'c-btnshow':'c-btnone'}}" data-com-index="{{undefined}}" wx:if="{{$comCoup$item.CanUse}}">去使用</view>
+                    <view class="c-coupLst-main-item-btn f fc fc-h {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'c-btnshow':'c-btnone'}}" wx:else>{{$comCoup$item.State==1?'已使用':'不可用'}}</view>
+                </block>
+                <block wx:if="{{vm.listname=='pickmycoupon'}}">
+                    <view bindtap="$comCoup$useMyCoupon" class="c-coupLst-main-item-btn f fc fc-h {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'c-btnshow':'c-btnone'}}" data-com-index="{{undefined}}" data-wpyusemycoupon-a="{{$comCoup$index}}" wx:if="{{$comCoup$item.State==0||$comCoup$item.State==99}}">使用</view>
+                    <view class="c-coupLst-main-item-btn f fc fc-h {{vm.listname=='pickmycoupon'||$comCoup$item.CanGet||$comCoup$item.CanUse?'c-btnshow':'c-btnone'}}" wx:else>不可用</view>
+                </block>
+            </view>
+        </view>
+        <view class="loding w-100 f fc-h" style="padding:20rpx 0" wx:if="{{vm.ispost}}">
+            <text class="loading-icon"></text>
+            <text class="c999 f26 ml20">正在加载中...</text>
+        </view>
+        <view class="w-100 tc c123 f24 ph20" wx:if="{{vm.loadall&&vm.list.length>=0}}">已加载全部优惠券~</view>
+        <view class="w-100 f fc fc-h c123 f24" style="height:80vh" wx:if="{{vm.loadall&&vm.list.length==0&&vm.listname=='pickmycoupon'}}">
+            <navigator class="link" hoverClass="none" openType="navigate" url="/pages/discount/couponCenter">没有券，去领取~</navigator>
+        </view>
+    </view>
+</view>

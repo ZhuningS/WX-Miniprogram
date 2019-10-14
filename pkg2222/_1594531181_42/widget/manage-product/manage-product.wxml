@@ -1,0 +1,14 @@
+<view class="product-banner__wrap">
+    <view class="product-banner__product-ctr">
+        <view bindtap="onClickProduct" class="product-banner__product-item" data-index="{{index}}" wx:if="{{index<Util.formatShowCount(data.manage_products.length)}}" wx:for="{{data.manage_products}}">
+            <image-view class="product-banner__product-img" imgStyle="height: 200rpx;" mode="aspectFill" src="{{item.pic_url+'/0'}}"></image-view>
+            <view class="product-banner__product-name">{{item.name}}</view>
+            <view class="product-banner__product-date">{{item.wording||''}}</view>
+        </view>
+    </view>
+</view>
+<wxs module="Util">
+module.exports.formatShowCount = (function(num) {
+    return (num >= 4 ? 4 : (num >= 2 ? 2 : num))
+});
+</wxs>

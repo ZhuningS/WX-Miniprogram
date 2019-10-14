@@ -1,0 +1,31 @@
+.recoudItem {
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+
+.itemTop,.itemMid,.itemBot {
+    padding: 20rpx;
+}
+
+.scrollBox {
+    white-space: nowrap;
+}
+
+.scrollImg {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 6rpx;
+    margin-left: 20rpx;
+}
+
+.scrollImg:last-child {
+    margin-right: 40rpx;
+}
+
+.itemMid {
+}
+
+.itemBot {
+}
+
+@import "../../../../__wuBaseWxss__/9.wxss";

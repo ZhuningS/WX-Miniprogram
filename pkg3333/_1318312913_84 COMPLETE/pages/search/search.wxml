@@ -1,0 +1,27 @@
+<import src="../components/timeline.wxml"></import>
+<import src="../components/card.wxml"></import>
+<import src="../components/widgets.wxml"></import>
+<view class="{{showShareCard?'blur':''}}">
+    <view class="bar">
+        <view class="input-wrapper">
+            <input bindconfirm="search" bindinput="onInput" class="input" confirmType="search" focus="{{!query}}" placeholder="{{config.enableMagazine?'轻芒什么都有':'搜索想要的文章…'}}" value="{{query}}"></input>
+        </view>
+        <view bindtap="search" class="button white">搜索</view>
+    </view>
+    <template is="single-card-magazine" data="{{...magazine}}" wx:if="{{magazine.section}}"></template>
+    <view class="tags-ctn" style="margin-left:60rpx; min-height:20px;">
+        <navigator navigate class="magazine-name tag" hoverClass="none" url="/pages/magazine/magazine?id={{item.magazine.id}}&content=subscribed" wx:for="{{referMagazines}}" wx:key="{{ index }}">
+      {{item.magazine.name}}
+    </navigator>
+    </view>
+    <template is="single-card-seperator" data wx:if="{{referMagazines.length>0}}"></template>
+    <template is="timeline" data="{{route:route,config:config,subscribed:subscribed,marked:marked,events:events,style:'no-title'}}"></template>
+    <template is="error" data wx:if="{{error}}"></template>
+    <view class="description" style="margin-top:40px;width:100%;text-align:center" wx:elif="{{!loading&&events.length===0}}">
+    没有搜索结果。
+  </view>
+    <view class="loading-ctn">
+        <template is="loading" data="{{loading:loading}}"></template>
+    </view>
+</view>
+<include src="../components/global.wxml"></include>

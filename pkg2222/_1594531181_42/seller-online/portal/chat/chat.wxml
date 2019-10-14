@@ -1,0 +1,60 @@
+<view class="page-bg"></view>
+<navigation-bar backgroundColor="#F8F8F8D1" id="navigation-bar" placeholderColor="transparent" title="{{userInfo[chat_user_id].name}}"></navigation-bar>
+<view class="custom-navigation-bar {{phoneModel}} {{platform}}" wx:if="{{showHomeBtn}}">
+    <image bindtap="onHomeBtnClick" class="home-btn" src="../../assets/home.png"></image>
+</view>
+<view class="wrap-list">
+    <scroll-view scrollY bindscroll="onListScroll" bindscrolltolower="onListReachBottom" bindscrolltoupper="onListReachTop" bindtap="onListClick" bindtouchcancel="onListTouchEnd" bindtouchend="onListTouchEnd" bindtouchstart="onListTouchStart" catchonclickgoods="onMsgGoodsClick" catchonclickimg="onMsgImageClick" catchonclickmsgstatus="onMsgStatusClick" class="list {{beforeAddLast?'back':''}}" scrollIntoView="{{targetMsgId}}" scrollTop="{{targetMsgTop}}" scrollWithAnimation="{{false}}" style="height: {{bottomBarTop-navigationBarHeight}}px;">
+        <view class="load_more">
+            <view class="load_more_inner">
+                <image class="load_more__icon" src="../../assets/loading.gif" wx:if="{{hasMore}}"></image>
+                <view class="load_more__tip">{{hasMore?'正在加载':''}}</view>
+            </view>
+        </view>
+        <view id="{{'msg'+(item.id||'')+(item.client_msg_id||'')}}" wx:if="{{item&&item.id}}" wx:for="{{messages}}" wx:key="{{item.id+item.client_msg_id}}">
+            <chat-text-cell message="{{item}}" wx:if="{{item.type==='TEXT'||item.type===1}}"></chat-text-cell>
+            <chat-img-cell message="{{item}}" wx:if="{{item.type==='IMAGE'||item.type===3}}"></chat-img-cell>
+            <chat-sys-cell message="{{item}}" wx:if="{{item.type==='SYSTEM'||item.type===4}}"></chat-sys-cell>
+            <chat-goods-cell message="{{item}}" wx:if="{{item.type==='GOODS'||item.type===5}}"></chat-goods-cell>
+        </view>
+        <view class="list-bottom" id="listBottom"></view>
+    </scroll-view>
+    <scroll-view scrollY class="list {{beforeAddLast?'':'back'}}" scrollTop="{{0}}" scrollWithAnimation="{{false}}" style="height: {{bottomBarTop-navigationBarHeight}}px;">
+        <view class="load_more">
+            <view class="load_more_inner">
+                <image class="load_more__icon" src="../../assets/loading.gif" wx:if="{{hasMore}}"></image>
+                <view class="load_more__tip">{{hasMore?'正在加载':''}}</view>
+            </view>
+        </view>
+        <view id="{{'fakemsg'+(item.id||'')+(item.client_msg_id||'')}}" wx:for="{{backListMessages}}" wx:key="{{item.id+item.client_msg_id}}">
+            <chat-text-cell message="{{item}}" wx:if="{{item.type==='TEXT'||item.type===1}}"></chat-text-cell>
+            <chat-img-cell message="{{item}}" wx:if="{{item.type==='IMAGE'||item.type===3}}"></chat-img-cell>
+            <chat-sys-cell message="{{item}}" wx:if="{{item.type==='SYSTEM'||item.type===4}}"></chat-sys-cell>
+            <chat-goods-cell message="{{item}}" wx:if="{{item.type==='GOODS'||item.type===5}}"></chat-goods-cell>
+        </view>
+        <view class="list-bottom" id="listBottom"></view>
+    </scroll-view>
+</view>
+<view class="bottom" style="top: {{bottomBarTop}}px;">
+    <view class="bottom-input {{phoneModel}}">
+        <input confirmHold adjustPosition="{{false}}" bindblur="onInputBlur" bindconfirm="onInputConfirm" bindfocus="onInputFocus" class="input" confirmType="发送" focus="{{isInputFocus}}" maxlength="-1" value="{{inputValue}}" wx:if="{{!isTodo}}"></input>
+        <view catchtap="onToolsBtnClick" class="input-tools-btn" hoverClass="input-tools-btn_hover" wx:if="{{!isTodo}}"></view>
+        <view bindtap="onAcceptServiceClick" class="accept-service-btn" wx:if="{{isTodo}}">
+            <view class="accept-service-btn__text">接单</view>
+        </view>
+    </view>
+    <view catchonselectattachment="onAttachmentSelect" class="bottom-tools {{phoneModel}}" id="bottom-tools" style="opacity: {{isToolsFocus?1:0}};">
+        <view class="bottom-tools-line">
+            <tools-attachment type="{{item}}" wx:for="{{attachments0}}" wx:key="{{item + 0 + index}}"></tools-attachment>
+        </view>
+    </view>
+</view>
+
+
++<view catchtap="onShortcutClick" class="send-image-shortcut {{phoneModel}}" wx:if="{{isShortcutShown}}">
+    <view class="shortcut_inner">
+        <view class="shortcut_inner__text">发送你刚刚浏览的商品</view>
+        <image class="shortcut_inner__image" mode="aspectFill" src="{{fromGoods.image_url+'/162'}}"></image>
+    </view>
+    <view class="shortcut_arrow"></view>
+</view>

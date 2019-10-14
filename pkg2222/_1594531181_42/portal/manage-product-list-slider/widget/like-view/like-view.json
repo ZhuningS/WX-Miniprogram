@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "navigator": "../../../../libs/mmuxwxappdevkit/widget/navigator/navigator"
+    }
+}

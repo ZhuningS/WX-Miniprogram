@@ -1,0 +1,23 @@
+<import src="../components/widgets.wxml"></import>
+<import src="../components/timeline.wxml"></import>
+<import src="../components/nav.wxml"></import>
+<template is="fixed-nav" data="{{tabs:tabs,selectedTab:type}}"></template>
+<view class="list-ctn {{type}}">
+    <form reportSubmit bindsubmit="hackForm" wx:if="{{type==='magazine'}}">
+        <view class="magazine-item" wx:if="{{events.length>=1}}" wx:for="{{events}}" wx:key="{{ index }}">
+            <navigator navigate class="magazine-name" hoverClass="none" url="/pages/magazine/magazine?id={{item.magazineConfig.magazine.id}}&content=subscribed">
+          # {{item.magazineConfig.magazine.name}}
+        </navigator>
+            <view wx:if="{{subscribed[item.magazineConfig.magazine.id]}}">
+                <button bindtap="onTapUnsubscribe" class="button text" data-mid="{{item.magazineConfig.magazine.id}}" formType="submit" hoverClass="none">退订</button>
+            </view>
+            <view wx:else>
+                <button bindtap="onTapSubscribe" class="button" data-mid="{{item.magazineConfig.magazine.id}}" formType="submit" hoverClass="none">订阅</button>
+            </view>
+        </view>
+    </form>
+    <template is="timeline" data="{{route:route,config:config,events:events,followed:followed,marked:marked,itemsStatus:itemsStatus,isWhiteBg:true}}" wx:else></template>
+    <view class="loading-ctn">
+        <template is="loading" data="{{loading:loading}}"></template>
+    </view>
+</view>

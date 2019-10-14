@@ -1,0 +1,135 @@
+.detail-sku__mask {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+}
+
+.detail-sku__box {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFFFFF;
+    transform: translateY(100%);
+    transition: all 0.3s;
+}
+
+.detail-sku__header {
+    padding: 0rpx 0 60rpx;
+    text-align: center;
+    transition: height 0.3s;
+}
+
+.detail-sku__header.shrink {
+    height: 242rpx;
+}
+
+.detail-sku__thumb {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500rpx;
+    height: 500rpx;
+    font-size: 0;
+    display: block;
+    background-color: #fbfbfb;
+    margin-top: 32rpx;
+}
+
+.detail-sku__price-area {
+    transition: all 0.2s;
+}
+
+.detail-sku__price-area.shrink {
+    text-align: left;
+}
+
+.detail-sku__price {
+    margin-top: 50rpx;
+    font-size: 20px;
+    color: #000000;
+    line-height: 24px;
+    font-family: WeChat Sans SS;
+    transition: all 0.3s;
+}
+
+.detail-sku__code {
+    padding-top: 12px;
+    font-size: 13px;
+    color: #B2B2B2;
+    line-height: 18px;
+    transition: all 0.3s;
+    height: 18px;
+}
+
+.detail-sku__seperator {
+    width: calc(100% - 120rpx);
+    height: 1px;
+    margin: 0 60rpx;
+}
+
+.detail-sku__body {
+    font-size: 14px;
+    transition: all 0.3s;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.detail-sku__group {
+    padding: 48rpx 60rpx 24rpx 60rpx;
+}
+
+.detail-sku__item {
+    margin-bottom: 24rpx;
+}
+
+.detail-sku__item.last {
+    margin-bottom: 170rpx!important;
+}
+
+.detail-sku__item-title {
+    margin-bottom: 18rpx;
+}
+
+.detail-sku__item-attr {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 18rpx 34rpx;
+    min-width: 130rpx;
+    text-align: center;
+    margin-right: 32rpx;
+    font-size: 13px;
+    line-height: 36rpx;
+    background-color: #FFFFFF;
+    border-radius: 200rpx;
+    border: 0.5px solid #B2B2B2;
+    margin-bottom: 36rpx;
+    height: 72rpx;
+    vertical-align: middle;
+}
+
+.detail-sku__item-attr-fix {
+    margin-right: 0!important;
+}
+
+.selected {
+    background-color: #353535;
+    color: white;
+    border-color: #353535;
+}
+
+.detail-sku__footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 112rpx;
+}
+
+.detail-sku__footer.iPhoneX {
+    background: white;
+    height: 182rpx;
+}

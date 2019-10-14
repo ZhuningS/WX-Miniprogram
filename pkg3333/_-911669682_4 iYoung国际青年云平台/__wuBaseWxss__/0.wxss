@@ -1,0 +1,93 @@
+page {
+    --mColor: #6430ba;
+    --mColorRgb: 100,48,186;
+    --mColorLight: #783ac8;
+}
+
+.nothing {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nothing .line {
+    height: 1rpx;
+    background: #e2e2e2;
+    margin-top: 20rpx;
+}
+
+.purple {
+    color: #903ee2;
+}
+
+.pink {
+    color: #ff5d76;
+}
+
+.yellow {
+    color: #f8d105;
+}
+
+.red {
+    color: #e64340;
+}
+
+.blue {
+    color: #4aa3ff;
+}
+
+.yin {
+    color: #98a1ac;
+}
+
+.white {
+    color: #fff;
+}
+
+.jilu .left:before {
+    background: #09BB07;
+}
+
+.jilu .left.weiwan:before {
+    background: #ff594f;
+}
+
+.jilu .left.dengdai:before {
+    background: #ccc;
+}
+
+.bgwhite,.search input {
+    background: #fff;
+}
+
+.read-msg .read-list:active,.my-list:active,.top .user:active,.article-list:active {
+    background: #f2f2f2;
+}
+
+.bgcolor,.search .search-icon:active,.topbtn .title.active,.right-btn .little-btn,.porfit-top,.wx-swiper-dot.wx-swiper-dot-active,button[type="primary"] {
+    background: #6430ba;
+}
+
+.green,.mcolor,.submenu .subnav.active,.vip-con .pay.active,.read-pay .title .list.active,.read-pay .time-price.active .iconfont {
+    color: #6430ba;
+}
+
+.topbtn .title.active,.vip-con .pay.active,.read-pay .pay.active,.read-pay .time-price.active {
+    border-color: #6430ba;
+}
+
+.read-pay .pay.active:after {
+    border-right-color: #6430ba;
+}
+
+.search .search-icon:active,.right-btn .little-btn:active,.button-hover[type="primary"],button[disabled][type="primary"],button[loading][type="primary"] {
+    background: #783ac8;
+}
+
+.voice-icon {
+    color: #fff;
+}
+
+.time-price.active .price {
+    color: #e64340;
+}

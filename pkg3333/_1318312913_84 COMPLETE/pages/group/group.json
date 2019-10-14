@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "qm-loading": "../components/uis/loading/loading.component",
+        "qm-tween": "../components/uis/tween/tween.component",
+        "universe-card": "../components/cards/universe-card/universe-card.component"
+    }
+}

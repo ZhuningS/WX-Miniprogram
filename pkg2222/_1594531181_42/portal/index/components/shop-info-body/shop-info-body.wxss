@@ -1,0 +1,5 @@
+.wrap {
+    width: 710rpx;
+    padding: 0 20rpx 20rpx 20rpx;
+    background: #FFF;
+}

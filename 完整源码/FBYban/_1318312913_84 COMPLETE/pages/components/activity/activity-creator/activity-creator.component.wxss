@@ -1,0 +1,10 @@
+.activity-creator {
+    padding: 144rpx 40rpx 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.activity-creator .main-body {
+    background-color: #FFFFFF;
+    padding: 32rpx 40rpx;
+}

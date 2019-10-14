@@ -1,0 +1,90 @@
+<view class="topBox mainColor_bg flex flexCCen">
+    <view class="topLf white_bg f14 sub ">
+        <input bindinput="chang_this_keyword" class="seaInp" placeholder="输入关键词"></input>
+    </view>
+    <view bindtap="search_index_data" class="iconfont icon-sousuo "></view>
+</view>
+<view wx:if="{{config.imgs.length>0}}">
+    <swiper autoplay="true" class="swiper" indicatorDots="true" interval="5000">
+        <swiper-item wx:for="{{config.imgs}}">
+            <image catchtap="onAdTap" class="slide-image" data-index="{{index}}" height="150" src="{{item}}" width="355"></image>
+        </swiper-item>
+    </swiper>
+</view>
+<view class="tabBox white_bg tc flex ">
+    <view bindtap="go_record_bind" class="sub" data-type="1">
+        <image class="tabPic mb5" mode="aspectFill" src="http://www.ixiaochengxu.cc/resource/images/tel/collection.png"></image>
+        <view class="tabFont">我的收藏</view>
+    </view>
+    <view bindtap="go_record_bind" class="sub" data-type="2">
+        <image class="tabPic mb5" mode="aspectFill" src="http://www.ixiaochengxu.cc/resource/images/tel/browse-record.png"></image>
+        <view class="tabFont">浏览记录</view>
+    </view>
+    <view bindtap="go_record_bind" class="sub" data-type="3">
+        <image class="tabPic mb5" mode="aspectFill" src="http://www.ixiaochengxu.cc/resource/images/tel/dial-record.png"></image>
+        <view class="tabFont">拨号记录</view>
+    </view>
+    <view bindtap="go_service_bind" class="sub">
+        <image class="tabPic mb5" mode="aspectFill" src="http://www.ixiaochengxu.cc/resource/images/tel/sever.png"></image>
+        <view class="tabFont">所有服务</view>
+    </view>
+</view>
+<view class="cishuBox gridXt white_bg grey f12 mb10 flex flexMBtw">
+    <view>
+        <text class="iconfont icon-shouluxinxi mr5"></text>
+        <text>总收录{{config.shoulu_new_count}}条</text>
+    </view>
+    <view>
+        <text class="iconfont icon-liulan mr5"></text>
+        <text>总浏览{{config.click_new_count}}</text>
+    </view>
+</view>
+<view class="enterBox white_bg f14 flex">
+    <view class="enterBoxLf sub subColor flex ">
+        <view class="">
+            <text class="mr5 grey">恭喜</text>
+            <text class="mr5">#</text>
+        </view>
+        <view class="lineText ">
+            <text>{{notice}}</text>
+        </view>
+        <view class="">
+            <text class="ml5">#</text>
+            <text class="grey ml5">入驻</text>
+        </view>
+    </view>
+    <view catchtap="onNavigateTap" class="enterBtn mainColor_bg" data-url="../enter/enter">我要入驻</view>
+</view>
+<view>
+    <view class="gridXb white_bg tc flex flexMArd">
+        <view catchtap="onSwtchTabTap" class="listTab {{param.type==0?'mainColor topTab_on':''}}" data-index="0">最新收录</view>
+        <view catchtap="onSwtchTabTap" class="listTab {{param.type==2?'mainColor topTab_on':''}}" data-index="2">热门推荐</view>
+        <view catchtap="onSwtchTabTap" class="listTab {{param.type==1?'mainColor topTab_on':''}}" data-index="1">附近发现</view>
+    </view>
+    <view class="list ">
+        <view bindtap="go_detail_bind" class="item white_bg mb10" id="{{item.id}}" wx:for="{{data}}" wx:key="{{item.id}}">
+            <view class="mr10 flex flexCCen flexMBtw">
+                <view class="sub flex flexCCen">
+                    <image class="itemPic mr10" mode="aspectFill" src="{{item.t_logo}}"></image>
+                    <view class="titBox sub ">
+                        <view class="lineText">{{item.t_name}}</view>
+                        <view class="grey f14">
+                            <text class="iconfont icon-dianhua mr5"></text>
+                            <text>{{item.yincang_t_contact_phone}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view catchtap="onCallTap" class="telBox mainColor_bg flex MCCen" data-id="{{item.id}}" data-mobile="{{item.t_contact_phone}}">
+                    <text class="iconfont icon-dianhua"></text>
+                </view>
+            </view>
+            <view class="itemBot grey f14 flex flexMBtw">
+                <view catchtap="openLocation" class="sub mr15 lineText" data-index="{{index}}">
+                    <text class="iconfont icon-daohang mr5"></text>
+                    <text>{{item.t_address}}</text>
+                </view>
+                <view wx:if="{{is_dingwei}}">距离 {{item.juli}} Km</view>
+            </view>
+        </view>
+    </view>
+</view>

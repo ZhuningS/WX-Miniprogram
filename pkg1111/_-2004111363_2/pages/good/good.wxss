@@ -1,0 +1,120 @@
+@import "../../__wuBaseWxss__/12.wxss";
+
+@import "../../__wuBaseWxss__/5.wxss";
+
+@import "../../__wuBaseWxss__/6.wxss";
+
+@import "../../__wuBaseWxss__/10.wxss";
+
+@import "../../__wuBaseWxss__/0.wxss";
+
+@import "../../__wuBaseWxss__/2.wxss";
+
+.c-good {
+    width: 100%;
+}
+
+.c-good .c-good-top {
+    width: 100%;
+    background-color: #fff;
+    padding: 30rpx;
+}
+
+.c-good .c-good-top .c-good-top-main {
+    width: 100%;
+}
+
+.c-good .c-good-top .c-good-top-label {
+    width: 100%;
+    font-size: 22rpx;
+    color: #555;
+}
+
+.c-good .c-good-top .c-good-top-label>text {
+    padding: 5rpx 15rpx;
+    background-color: #f2f2f2;
+    border-radius: 5rpx;
+    margin-right: 20rpx;
+    margin-top: 20rpx;
+}
+
+.c-good .c-good-btn {
+    width: 100%;
+    height: 100rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+}
+
+.c-good .c-good-btn .c-good-btn-icon {
+    color: #777;
+    width: 125rpx;
+    height: 100rpx;
+    font-size: 24rpx;
+}
+
+.c-good .c-good-btn .c-good-main-btn {
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+}
+
+.c-good .c-good-btn .c-good-btn-shop {
+    background-color: #444;
+    color: #fff;
+}
+
+.c-good .c-good-mess {
+    position: fixed;
+    top: 1%;
+    left: 50%;
+    margin-left: -345rpx;
+}
+
+.c-good .c-good-mess .c-good-mess-main {
+    width: 690rpx;
+    height: 178rpx;
+    background: #fff;
+    border-radius: 8rpx;
+}
+
+.c-good .c-good-mess .c-good-mess-main .c-good-mess-main-top {
+    width: 100%;
+    height: 88rpx;
+    background: #F2F2F2;
+    padding: 0 20rpx;
+}
+
+.c-good .c-good-mess .c-good-mess-main .c-good-mess-main-top image {
+    height: 44rpx;
+    width: 44rpx;
+    border-radius: 5rpx;
+}
+
+.c-good .c-good-mess .c-good-mess-main .c-good-mess-main-btn {
+    color: #FF7800;
+    font-family: PingFang SC;
+    font-size: 30rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+    font-weight: bolder;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+}
+
+.c-good .c-good-home {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 90rpx;
+    position: fixed;
+    bottom: 20%;
+    right: 30rpx;
+    font-size: 40rpx;
+    background-color: #fff;
+    color: #444;
+    border: 1px solid #d0d0d0;
+}

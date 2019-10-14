@@ -1,0 +1,24 @@
+<template name="mImage">
+    <view class="mimages" style="margin-top:{{style.marginTop}};margin-bottom:{{style.marginBottom}}; ">
+        <block wx:if="{{dataset.url}}">
+            <view bindtap="_jump" data-url="/pages/goodsDetail/detail/index?id={{dataset.linkData.id}}" wx:if="{{dataset.linkType=='goods'}}">
+                <image mode="widthFix" src="{{dataset.url}}" wx:if="{{layout.isAutoHeight==1}}"></image>
+            </view>
+            <view bindtap="_jump" data-url="/pages/goodsDetail/detailMs/index?id={{dataset.linkData.id}}" wx:if="{{dataset.linkType=='msgoods'}}">
+                <image mode="widthFix" src="{{dataset.url}}" wx:if="{{layout.isAutoHeight==1}}"></image>
+            </view>
+            <view bindtap="_jump" data-url="/pages/goodsDetail/detailGroup/index?id={{dataset.linkData.id}}" wx:if="{{dataset.linkType=='tggoods'}}">
+                <image mode="widthFix" src="{{dataset.url}}" wx:if="{{layout.isAutoHeight==1}}"></image>
+            </view>
+            <view bindtap="_jump" data-url="{{dataset.linkData.path}}" wx:if="{{dataset.linkType=='page'}}">
+                <image mode="widthFix" src="{{dataset.url}}" wx:if="{{layout.isAutoHeight==1}}"></image>
+            </view>
+            <view bindtap="_jump" data-url="/pages/shop/home/index?id={{dataset.linkData.sid}}" wx:if="{{dataset.linkType=='shop'}}">
+                <image mode="widthFix" src="{{dataset.url}}" wx:if="{{layout.isAutoHeight==1}}"></image>
+            </view>
+            <view wx:if="{{!dataset.linkType||dataset.linkType==''}}">
+                <image bindtap="previewOneImg" data-url="{{dataset.url}}" mode="widthFix" src="{{dataset.url}}" wx:if="{{layout.isAutoHeight==1}}"></image>
+            </view>
+        </block>
+    </view>
+</template>

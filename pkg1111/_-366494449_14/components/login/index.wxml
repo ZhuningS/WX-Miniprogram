@@ -1,0 +1,15 @@
+<template name="login">
+    <view class="mod-login">
+        <view class="mask"></view>
+        <view class="body">
+            <view style="padding: 20rpx 0;">
+                <view style="font-weight:900; font-size: 38rpx;color: #000; margin-bottom: 30rpx">登录并授权</view>
+                <view>申请获取以下权限</view>
+                <view>获得你的公开信息(昵称，头像)</view>
+            </view>
+            <button bindgetuserinfo="getUserInfo" class="button-login" openType="getUserInfo">
+                允许
+             </button>
+        </view>
+    </view>
+</template>

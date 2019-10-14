@@ -1,0 +1,25 @@
+.mUeditor {
+    background-color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+    overflow: hidden;
+    text-align: left;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.mUeditor img {
+    width: 100%!important;
+    vertical-align: top;
+}
+
+.mUeditor br {
+    height: 14px;
+}
+
+.mUeditor div {
+    overflow: hidden;
+}

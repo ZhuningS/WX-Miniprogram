@@ -1,0 +1,185 @@
+<navigation-bar title="商品详情"></navigation-bar>
+<view class="detail-wrap" hidden="{{!detail||!detail.item}}" style="{{skuHidden==false?'overflow:hidden;height:'+screenHeight+'px':''}}">
+    <swiper autoplay="{{skuHidden}}" bindchange="onBannerChange" class="detail-swiper" current="{{bannerCurrent}}" duration="250" indicatorActiveColor="#CCCCCC" indicatorColor="rgba(216,216,216,0.4)" indicatorDots="{{bannerImg.length>1}}" style="{{bannerHeight>0?'height:'+bannerHeight+'px':''}}">
+        <swiper-item wx:for="{{bannerImg}}" wx:for-item="img" wx:key="*this">
+            <image-view bindload="onBannerImageLoad" bindtap="onClickBannerImage" class="detail-banner__img" mode="widthFix" src="{{img.pic_url+'/750'}}"></image-view>
+        </swiper-item>
+    </swiper>
+    <view class="detail-imgSku">
+        <block wx:for="{{detail.item.skus}}" wx:for-index="groupIndex" wx:for-item="group" wx:key="*this">
+            <view bindtap="onClickSkuItem" class="detail-imgSku__box {{sku.selected&&skuHidden?'detail-imgSku__border':''}}" data-group="{{groupIndex}}" data-imgsku="1" data-index="{{index}}" wx:if="{{sku.pics.length>0}}" wx:for="{{group.items}}" wx:for-item="sku" wx:key="*this">
+                <image-view class="detail-imgSku__img" mode="aspectFit" src="{{sku.pics[0].pic_url+'/162'}}"></image-view>
+            </view>
+        </block>
+    </view>
+    <view class="detail-summary">
+        <view class="detail-summary__title">
+            <text>{{detail.item.base.item_name}}</text>
+        </view>
+        <view class="detail-summary__bd">
+            <text class="detail-summary__price">{{Util.getPriceString(minPrice,maxPrice,skuConfirmable,skuPrice)}}</text>
+            <text class="detail-summary__market-price" wx:if="{{Util.getPriceString(minMarketPrice,maxMarketPrice,skuConfirmable,skuMarketPrice).length>0}}">{{Util.getPriceString(minMarketPrice,maxMarketPrice,skuConfirmable,skuMarketPrice)}}</text>
+        </view>
+    </view>
+    <view class="detail-summary__seperator-solid"></view>
+    <block wx:for="{{areas}}" wx:for-index="areaIndex" wx:for-item="area" wx:key="areaIndex">
+        <view class="detail-param area-box {{areaIndex==0?'area-box-fix':''}}" id="area-box-{{areaIndex}}" wx:if="{{area.type==1&&area.attrs.length>0}}">
+            <view bindtap="onClickExpandArea" class="detail-box__title" data-index="{{areaIndex}}">
+                <text>{{area.title}}</text>
+                <image class="detail-box__expand" src="{{area.hidden?'../../assets/expand.png':'../../assets/put_away.png'}}"></image>
+            </view>
+            <view hidden="{{area.hidden}}" wx:for="{{area.attrs}}" wx:for-item="attr" wx:key="index">
+                <view class="detail-param__attr {{index==0?'detail-param__attr_fix':''}}" style="{{index==area.attrs.length-1?'padding-bottom: 0;':''}}">
+                    <text class="detail-param__attrname">{{attr.attr_name.name}}</text>
+                    <text class="detail-param__attrvalue">{{attr.attr_value.name}}</text>
+                </view>
+                <view class="detail-param__attr_border" hidden="{{index==area.attrs.length-1}}"></view>
+            </view>
+        </view>
+        <view class="area-box  {{areaIndex==0?'area-box-fix':''}}" id="area-box-{{areaIndex}}" wx:if="{{area.type==2&&area.desc.length>0}}">
+            <view bindtap="onClickExpandArea" class="detail-box__title" data-index="{{areaIndex}}">
+                <text>{{area.title}}</text>
+                <image class="detail-box__expand" src="{{area.hidden?'../../assets/expand.png':'../../assets/put_away.png'}}"></image>
+            </view>
+            <block wx:for="{{area.desc}}">
+                <text class="detail-box__desc detail-box__desc-text" hidden="{{area.hidden}}" selectable="true" style="{{index==0?'':'margin-top: 40rpx;'}}" wx:if="{{item.type==1&&item.info.length>0}}">
+                    {{item.info}}
+                </text>
+                <image-view class="detail-box__desc detail-box__desc-img" hidden="{{area.hidden}}" mode="widthFix" src="{{item.pic.pic_url+'/750'}}" style="{{index==0||area.hidden?'':'margin-top: 40rpx;'}}" wx:if="{{item.type==0&&item.pic&&item.pic.pic_url}}"></image-view>
+            </block>
+        </view>
+        <view class="area-box__seperator"></view>
+    </block>
+    <view style="padding-bottom: 268rpx; background: white"></view>
+    <view class="detail-tips {{phoneModel}}" wx:if="{{detailTips.length>0}}">
+        {{detailTips}}
+    </view>
+    <view class="detail-footer {{phoneModel}}">
+        <button bindtap="onClickKf" class="detail-footer-item detail-footer__btn" sendMessageImg="{{bannerImg[0].pic_url+'/750'}}" sendMessagePath="/portal/detail/detail?code={{detail.item.base.item_code}}" sendMessageTitle="{{detail.item.base.item_name}}" sessionFrom="商品编码：{{detail.item.base.merchant_code}}" showMessageCard="true">
+            <image class="detail-footer__img" src="../../assets/contact.png"></image>
+            <view class="detail-footer__btn_title">客服</view>
+        </button>
+        <button bindtap="onClickHome" class="detail-footer-item detail-footer__btn">
+            <image class="detail-footer__img" src="../../assets/home.png"></image>
+            <view class="detail-footer__btn_title">精品店</view>
+        </button>
+        <button bindtap="onClickShoppingCar" class="detail-footer-item detail-footer__btn">
+            <image class="detail-footer__img grayscale" id="detail-footer__shoppingcar" src="{{hasAddGoodsSucc?'../../assets/buybag_check.png':'../../assets/shoppingcar.png'}}"></image>
+            <view class="detail-footer__btn_title">待购商品</view>
+        </button>
+        <button bindtap="showSkuArea" class="detail-footer-item detail-footer__add {{!bInPreview&&(presellStatus=='enReserveCanNotCancel'||detail.item.base.status!=1||Util.getFooterWording(detail.item,from,bInPreview,isPresell,presellStatus)=='已售完')?'disable':''}}" data-unreserve="{{isPresell&&presellStatus=='enReserveCanCancel'}}" disabled="{{!bInPreview&&(presellStatus=='enReserveCanNotCancel'||detail.item.base.status!=1||Util.getFooterWording(detail.item,from,bInPreview,isPresell,presellStatus)=='已售完')}}" hoverClass="detail-footer__add-hover" style="display: flex;">
+            <text style="flex:1;">{{Util.getFooterWording(detail.item,from,bInPreview,isPresell,presellStatus)}}</text>
+        </button>
+    </view>
+    <view class="detail-footer__fix-iPhoneX" wx:if="{{phoneModel=='iPhoneX'}}"></view>
+    <view class="detail-sku">
+        <view animation="{{skuMaskAnimation}}" bindtap="hideSkuArea" capture-catch:touchmove="onSkuTouchMove" class="detail-sku__mask" hidden="{{skuHidden}}"></view>
+        <view animation="{{skuBoxAnimation}}" class="detail-sku__box" id="detail-sku__box" style="height: {{skuBoxHeight}}px;">
+            <view class="detail-sku__header">
+                <view bindtap="hideSkuArea" class="detail-sku__close" hoverClass="detail-sku__close-hover"></view>
+                <view capture-bind:touchmove="onSkuHeaderScroll" capture-bind:touchstart="onSkuHeaderScrollBegin">
+                    <image-view animation="{{thumbShrinkAnimation}}" bindtap="onClickBannerImage" class="detail-sku__thumb" data-bSkuThumb="1" mode="aspectFit" src="{{skuImg.length>0?skuImg[0].pic_url+'/750':''}}"></image-view>
+                    <view animation="{{priceShrinkAnimation}}" class="detail-sku__price-area {{bShrinkAnimation?'shrink':''}}">
+                        <view class="detail-sku__price">
+                            <text>{{Util.getPriceString(minPrice,maxPrice,skuConfirmable,skuPrice)}}</text>
+                            <text class="detail-sku__market-price">
+                                {{Util.getPriceString(minMarketPrice,maxMarketPrice,skuConfirmable,skuMarketPrice)}}
+                            </text>
+                        </view>
+                        <view class="detail-sku__code">{{skuConfirmable?'商品编号: '+skuCode:'选择规格查看商品编号'}} </view>
+                        <view class="detail-sku__num" wx:if="{{skuNum<10}}">仅剩{{skuNum}}件</view>
+                    </view>
+                </view>
+            </view>
+            <view animation="{{skuBodyShrinkAnimation}}" class="detail-param__attr_border" style="margin: 0 60rpx;"></view>
+            <view capture-catch:touchmove="{{!bSkuScroll?'onSkuTouchMove':''}}" style="{{bSkuScroll?'height:'+skuHeight+'px;':''}}">
+                <scroll-view animation="{{skuBodyShrinkAnimation}}" bindscroll="onSkuScroll" capture-bind:touchmove="{{bShrinkAnimation?'':'onSkuHeaderScroll'}}" capture-bind:touchstart="{{bShrinkAnimation?'':'onSkuHeaderScrollBegin'}}" class="detail-sku__body {{bShrinkAnimation?'shrink':''}}" scrollIntoView="detail-sku__group" scrollTop="{{skuScrollTop}}" scrollY="{{bSkuScroll&&bShrinkAnimation}}" style="{{bSkuScroll&&skuScrollHeight>0?'height:'+skuBoxHeight*0.7+'px;':''}}">
+                    <view class="detail-sku__group" id="detail-sku__group" style="{{bSkuScroll&&skuScrollHeight>0?'height:'+(skuBoxHeight*0.7>skuScrollHeight?skuBoxHeight*0.7:skuScrollHeight)+1+'px;':''}}">
+                        <view class="detail-sku__item {{group==detail.item.skus.length-1?'last':''}}" wx:for="{{detail.item.skus}}" wx:for-index="group" wx:for-item="sku" wx:key="{{sku.id}}">
+                            <view class="detail-sku__item-title">{{sku.name}}</view>
+                            <view class="detail-sku__item-attr-group">
+                                <button bindtap="onClickSkuItem" class="detail-sku__item-attr detail-footer-item {{attr.selected?'selected':''}}" data-group="{{group}}" data-index="{{index}}" data-isfromskuarea="1" disabled="{{attr.disable}}" style="{{attr.fixMargin?'margin-right: 0':''}}" wx:for="{{sku.items}}" wx:for-item="attr" wx:key="{{attr.id}}">
+                                    {{attr.name}}
+                                </button>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+            <view capture-catch:touchmove="onSkuTouchMove" class="detail-sku__footer {{phoneModel}}">
+                <button catchtap="onClickConfirm" class="detail-sku__confirm detail-footer-item {{from=='shopping-cart-list'||isPresell?'detail-footer__add':'detail-footer__buy'}}" data-reserve="{{isPresell}}" data-wishlist="{{0}}">
+                    {{from=='shopping-cart-list'||isPresell?'确定':'立即购买'}}
+                </button>
+                <button catchtap="onClickConfirm" class="detail-sku__confirm detail-footer-item  detail-footer__add" data-wishlist="{{1}}" hoverClass="detail-footer__add-hover" wx:if="{{from!='shopping-cart-list'&&!isPresell}}">
+                    稍后购买
+                </button>
+            </view>
+            <view class="detail-footer__fix-iPhoneX" wx:if="{{phoneModel=='iPhoneX'}}"></view>
+        </view>
+    </view>
+    <view animation="{{toastAnimation}}" class="detail-toast" hidden="{{toastHidden}}">
+        <image class="detail-toast__img" src="../../assets/toast_check.png"></image>
+        <view class="detail-toast__text">{{toast}}</view>
+    </view>
+</view>
+<wxs module="Util">
+var formatPrice = (function(price) {
+    var priceStr = "" + (price / 100);
+    var priceArr = priceStr.split('.');
+    if (priceArr.length == 1) {
+        return (priceStr + ".00")
+    } else if (priceArr[(1)].length == 1) {
+        return (priceStr + "0")
+    } else {
+        return (priceStr)
+    }
+});
+var getPriceString = (function(min, max, skuConfirmable, price) {
+    if (skuConfirmable) {
+        if (price == 0) return ("");;
+        return ("¥" + formatPrice(price))
+    };
+    if (min == max) {
+        if (min == 0) return ("");;
+        return ("¥" + formatPrice(min))
+    } else {
+        return ("¥" + formatPrice(min) + " ~ " + formatPrice(max))
+    }
+});
+var getFooterWording = (function(item, from, bInPreview, isPresell, presellStatus) {
+    if (isPresell && presellStatus == "enUnReserve") {
+        return ("订阅开售通知")
+    } else if (isPresell && presellStatus == "enReserveCanCancel") {
+        return ("取消订阅")
+    } else if (isPresell && presellStatus == "enReserveCanNotCancel") {
+        return ("即将开售")
+    };
+    if (!item || !item.base) {
+        return ("购买")
+    };
+    if (item.base.status == -1) {
+        return ("商品已下架")
+    } else if (item.base.status == 0) {
+        return ("商品未上架")
+    } else if (item.base.status == 2) {
+        return ("商品已下架")
+    } else {
+        var allCount = 0;
+        item.stocks.forEach((function(stock) {
+            allCount += stock.stock_number
+        }));
+        if (allCount > 0) {
+            if (from == "shopping-cart-list") {
+                return ("立即购买")
+            } else {
+                return ("购买")
+            }
+        } else {
+            return ("已售完")
+        }
+    }
+});
+module.exports.formatPrice = formatPrice;
+module.exports.getFooterWording = getFooterWording;
+module.exports.getPriceString = getPriceString;
+</wxs>

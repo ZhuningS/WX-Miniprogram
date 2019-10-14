@@ -1,0 +1,67 @@
+<view class="page">
+    <image mode="aspectFill" src="./imgs/banner.png" style="width: 100%; height: 90px;"></image>
+    <view class="page__bd">
+        <view class="panel__title">
+            <image src="./imgs/hot.png" style="width:14px; height:17px; margin-bottom:-1pt;"></image>
+            热门需求
+        </view>
+        <view class="panel__body">
+            <view class="hots-box" wx:for="{{hots}}" wx:for-item="hotsArray" wx:key="k0">
+                <view class="hots-item" wx:for="{{hotsArray}}" wx:key="k1">
+                    <view bindtap="cateMore" class="hots-item-cate" wx:if="{{item.key==='more'}}">
+                        <image class="hots-img hots-more" src="./imgs/more.png"></image>
+                        更多需求
+                    </view>
+                    <view bindtap="cateSelect" class="hots-item-cate {{item.category1Id===selectedCategoryId?'active':''}}" data-id="{{item.category1Id}}" data-name="{{item.category1Name}}" wx:else>
+                        <image class="hots-img" data-id="{{item.category1Id}}" data-name="{{item.category1Name}}" src="{{item.url}}"></image>
+                        {{item.category1Name}}
+                        <image class="hots-checked" src="./imgs/checked.png" wx:if="{{item.category1Id===selectedCategoryId}}"></image>
+                    </view>
+                </view>
+            </view>
+            <form class="request-form">
+                <view bindtap="cateMore" class="input-label">
+                    <label>我想做</label>
+                    <view class="input-label-content {{selectErrorNeedCate?'error':''}} {{selectedCategoryId?'':'lack'}}">
+                        {{selectedCategoryName||'选择您的需求类型'}}
+                    </view>
+                    <view class="arrow" wx:if="{{!selectedCategoryId}}"></view>
+                    <view class="arrow curr" wx:else></view>
+                </view>
+                <view bindtap="mobileCheck" class="input-label">
+                    <label>手机号</label>
+                    <view class="input-label-content {{selectErrorNeedMobile?'error':''}} {{userInfo&&userInfo.mobile?'':'lack'}}">
+                        {{userInfo&&userInfo.mobile||'点击此处绑定手机'}}
+                    </view>
+                    <view class="{{userInfo&&userInfo.mobile?'':'arrow'}}"></view>
+                </view>
+                <view bindtap="requestStart" class="button-submit">免费发布需求</view>
+            </form>
+        </view>
+    </view>
+    <view bindtap="cateMoreClose" class="weui-mask" wx:if="{{cateSelectorActive}}"></view>
+    <view class="weui-actionsheet {{cateSelectorActive?'weui-actionsheet_toggle':''}}">
+        <view class="category-actionsheet">
+            <view class="category-actionsheet-title">需求类型
+                <view bindtap="cateMoreClose" class="cancel">取消</view>
+            </view>
+            <view class="category-actionsheet-tab">
+                <label bindtap="categoriesSelectLevel1Cancel" class="{{categoriesSelected1Id?'':'active'}}">{{categoriesSelected1Id?categoriesSelected1Name:'请选择'}}</label>
+                <label class="active" wx:if="{{categoriesSelected1Id}}">请选择</label>
+            </view>
+            <scroll-view scrollY style="height: 364px ;">
+                <view bindtap="categoriesSelectLevel1" class="category-item" data-index="{{index}}" wx:if="{{!categoriesSelected1Id}}" wx:for="{{categories}}" wx:key="key">
+                    <label class="category-item-name">
+                        {{item.category1Name}}
+                    </label>
+                    <label class="category-item-subtitle">
+                        {{item.subTitle}}
+                    </label>
+                </view>
+                <view bindtap="categoriesSelectLevel2" class="category-item" data-index="{{index}}" wx:if="{{categoriesSelected1Id&&categoriesLevel2}}" wx:for="{{categoriesLevel2}}" wx:key="key">
+                    {{item.category2Name}}
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+</view>

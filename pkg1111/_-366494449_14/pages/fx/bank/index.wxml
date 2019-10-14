@@ -1,0 +1,45 @@
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view hidden="{{addBankCard?true:false}}">
+        <view class="bankCard">
+            <block wx:if="{{bankList&&bankList.length>0}}">
+                <view class="item" wx:for="{{bankList}}">
+                    <view class="optionbar">
+                        <view bindtap="_del_card" data-id="{{item.id}}">删除</view>
+                        <view bindtap="_edit_card" data-cardname="{{item.card_name}}" data-cardno="{{item.card_no}}" data-cardphone="{{item.card_phone}}" data-id="{{item.id}}">编辑</view>
+                    </view>
+                    <view class="name">姓名：{{item.card_name}}</view>
+                    <view class="mobile">电话：{{item.card_phone}}</view>
+                    <view class="bankno">{{item.banknoShow}}</view>
+                </view>
+            </block>
+            <view style="margin: 100rpx auto; color: #333; font-size: 28rpx;text-align:center" wx:else>您还没有添加银行卡哦～</view>
+        </view>
+        <view bindtap="_add" class="btn-bindard">添加银行卡</view>
+    </view>
+    <view class="addBankCard" hidden="{{addBankCard?false:true}}">
+        <form bindreset="" bindsubmit="_formSubmit" reportSubmit="true">
+            <view class="item">
+                <view class="label">姓名</view>
+                <view class="controller">
+                    <input name="realname" placeholder="请填写真实姓名" type="text" value="{{realname}}"></input>
+                </view>
+            </view>
+            <view class="item">
+                <view class="label">电话</view>
+                <view class="controller">
+                    <input name="tel" placeholder="请填写本人联系电话" type="number" value="{{tel}}"></input>
+                </view>
+            </view>
+            <view class="item">
+                <view class="label">银行卡</view>
+                <view class="controller">
+                    <input name="bankCard" placeholder="请填写本人的银行卡" type="number" value="{{bankCard}}"></input>
+                </view>
+            </view>
+            <view style="margin: 30rpx;color:#ff4751; font-size: 24rpx">请保证姓名与银行卡信息一致，否则将无法提取佣金</view>
+            <button class="btn-save" formType="submit">保存</button>
+            <view bindtap="_cancel" class="btn-cancel">取消</view>
+        </form>
+    </view>
+</view>

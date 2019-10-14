@@ -1,0 +1,70 @@
+<view class="app-reading" wx:for="{{c_data}}" wx:key="*this">
+    <view wx:if="{{item.typeid==1}}">
+        <view catchtap="onNavigateTap" class="article-list flex gridXb bgwhite" data-url="../../bigcms/article/article?id={{item.id}}&typeid={{item.typeid}}" wx:if="{{item.cover_type==1}}">
+            <image class="left-img mr10" mode="aspectFill" src="{{item.imgurl}}"></image>
+            <view class="article-right sub">
+                <view class="title lineText2">{{item.title}}</view>
+                <view class="flex mt15 bottom-right">
+                    <view class="grey f14">
+                        <text>{{item.add_time}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view catchtap="onNavigateTap" class="article-list bigPic gridXb" data-url="../../bigcms/article/article?id={{item.id}}&typeid={{item.typeid}}" wx:if="{{item.cover_type==2}}">
+            <view>{{item.title}}</view>
+            <view class="bigImgBox">
+                <image class="" mode="aspectFill" src="{{item.imgurl}}"></image>
+            </view>
+            <view class="linght f14">
+                <text class="list-items">{{item.add_time}}</text>
+            </view>
+        </view>
+        <view catchtap="onNavigateTap" class="article-list multiplePic gridXb" data-url="../../bigcms/article/article?id={{item.id}}&typeid={{item.typeid}}" wx:if="{{item.cover_type==3}}">
+            <view>{{item.title}}</view>
+            <view class="mulImgBox">
+                <image class="" mode="aspectFill" src="{{moreitem}}" wx:for="{{item.imgurl}}" wx:for-item="moreitem" wx:key="{{index}}"></image>
+            </view>
+            <view class="linght f14">
+                <text class="list-items">{{item.add_time}}</text>
+            </view>
+        </view>
+    </view>
+    <view wx:elif="{{item.typeid==2}}">
+        <view catchtap="onNavigateTap" class="article-list flex gridXb bgwhite" data-url="../../bigcms/article/article?id={{item.id}}&typeid={{item.typeid}}">
+            <view class="img-box mr10">
+                <text class="iconfont icon-tongzhi mid voice-icon"></text>
+                <image class="left-img mr10" mode="aspectFill" src="{{item.imgurl}}"></image>
+            </view>
+            <view class="article-right sub">
+                <view class="title lineText2">{{item.title}}</view>
+                <view class="flex mt15 bottom-right">
+                    <view class="grey f14">
+                        <text>{{item.add_time}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:else>
+        <view catchtap="onNavigateTap" class="article-list video-list gridXb" data-url="../../bigcms/article/article?id={{item.id}}&typeid={{item.typeid}}">
+            <view class="title lineText2">{{item.title}}</view>
+            <view class="img-box-video">
+                <text class="iconfont icon-videofill mid video-icon"></text>
+                <image class="img-box-item" mode="aspectFill" src="{{item.imgurl}}"></image>
+            </view>
+            <view class="article-right" style="width:100%;">
+                <view class="flex mt15 bottom-right">
+                    <view class="grey f14">
+                        <text>{{item.add_time}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="nothing grey mt10 mb10 tc f14 flex" wx:if="{{is_load_more==false}}">
+    <text class="line sub mr10"></text>
+    <text>没有更多了</text>
+    <text class="line sub ml10"></text>
+</view>

@@ -1,0 +1,6 @@
+<navigator appId="{{appId}}" bindtap="onClick" class="inner-class" extraData="{{_extraData}}" hidden="{{hidden}}" hoverClass="hover-class" hoverStartTime="{{hoverStartTime}}" hoverStayTime="{{hoverStayTime}}" hoverStopPropagation="{{hoverStopPropagation}}" openType="{{openType}}" path="{{_path}}" style="{{innerStyle}}" target="{{target}}" url="{{url}}" version="{{version}}" wx:if="{{display&&!isCircleWeAppJump}}">
+    <slot></slot>
+</navigator>
+<view bindtap="onClick" class="inner-class" hidden="{{hidden}}" style="{{innerStyle}}" wx:else>
+    <slot></slot>
+</view>

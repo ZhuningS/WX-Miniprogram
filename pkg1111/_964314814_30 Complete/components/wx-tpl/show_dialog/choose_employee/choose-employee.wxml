@@ -1,0 +1,23 @@
+<view bindtap="_closeDialog" class="dialog-content move {{animation?'md-show':''}}" wx:if="{{isShowChooseDialog}}">
+    <view catchtap="close" class="dialog-outer">
+        <view class="diialog-head">
+            <view bindtap="_closeDialog" class="cancle-txt">取消</view>
+            <view class="flex"></view>
+            <view class="title-txt">请选择{{industryName}}</view>
+            <view class="flex"></view>
+            <view bindtap="_ConfirmDialog" class="confirm-txt {{!diaologChoose.name?'right-tip':''}}">确定</view>
+        </view>
+        <scroll-view scrollY class="data-list-view">
+            <view bindtap="{{item.status==1?'_checkThisCol':''}}" class="data-col" data-index="{{index}}" wx:for="{{dataList}}" wx:key="{{item.id}}">
+                <image class="image" mode="aspectFill" src="{{item.headIcon}}"></image>
+                <text class="normal-txt" wx:if="{{item.status==1}}">{{item.name}}</text>
+                <text class="disable" wx:if="{{item.status==2}}">{{item.name}}<text style="padding-left: 20rpx;">(休息中)</text>
+                </text>
+                <text class="disable" wx:if="{{item.status==3}}">{{item.name}}<text style="padding-left: 20rpx;">(当前时间已约满)</text>
+                </text>
+                <view class="flex"></view>
+                <image class="gouxuan" src="https://xcximg.197.com/xcx/gouxuan.png" wx:if="{{item.isChoose}}"></image>
+            </view>
+        </scroll-view>
+    </view>
+</view>

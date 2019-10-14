@@ -1,0 +1,57 @@
+{
+    "pages": [
+        "pages/request/request",
+        "pages/request/request-mobile",
+        "pages/index/index",
+        "pages/app/app",
+        "pages/shops/index",
+        "pages/detail/detail",
+        "pages/select/select",
+        "pages/author/author",
+        "pages/logs/logs",
+        "pages/consult/consult",
+        "pages/order/order",
+        "pages/orderDetail/orderDetail",
+        "pages/orderDetail/success",
+        "pages/login/login"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "猪八戒",
+        "navigationBarTextStyle": "black",
+        "enablePullDownRefresh": true
+    },
+    "tabBar": {
+        "selectedColor": "#ff6900",
+        "borderStyle": "#ddd",
+        "backgroundColor": "#fff",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "找服务",
+                "iconPath": "pages/img/search-no.png",
+                "selectedIconPath": "pages/img/search.png"
+            },
+            {
+                "pagePath": "pages/request/request",
+                "text": "发布需求",
+                "iconPath": "pages/request/imgs/request.png",
+                "selectedIconPath": "pages/request/imgs/request-active.png"
+            },
+            {
+                "pagePath": "pages/order/order",
+                "text": "我的订单",
+                "iconPath": "pages/img/order-no.png",
+                "selectedIconPath": "pages/img/order.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "debug": true
+}

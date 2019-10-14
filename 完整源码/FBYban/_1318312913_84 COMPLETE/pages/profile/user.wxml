@@ -1,0 +1,17 @@
+<import src="../components/widgets.wxml"></import>
+<import src="../components/card.wxml"></import>
+<import src="../components/timeline.wxml"></import>
+<import src="header"></import>
+<view class="{{showShareCard?'blur':''}}">
+    <block wx:if="{{!error}}">
+        <template is="header" data="{{uid:uid,user:user,followed:followed,current:current,tabs:tabs,enablePay:enablePay,config:config,uiSwitchProfile:uiSwitchProfile}}"></template>
+        <block wx:if="{{user}}">
+            <duet-waterfall class="card-container" events="{{events}}" wx:if="{{current==='timeline'||current==='read'}}"></duet-waterfall>
+            <template is="timeline" data="{{route:route,itemsStatus:itemsStatus,currentPlaying:currentPlaying,config:config,enablePay:enablePay,marked:marked,events:events,images:images}}" wx:else></template>
+        </block>
+        <qm-loading class="page-footer-loading-wrap" comClass="page-footer-loading" isLoading="{{hasMore||loading}}"></qm-loading>
+        <qm-placeholder tips="暂无内容" wx:if="{{user.profile&&events.length===0&&!loading&&!hasMore}}"></qm-placeholder>
+    </block>
+    <template is="error" data wx:else></template>
+</view>
+<include src="../components/global.wxml"></include>

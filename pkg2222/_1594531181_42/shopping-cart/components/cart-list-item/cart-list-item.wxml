@@ -1,0 +1,103 @@
+<view bindtouchend="touchEnd" bindtouchmove="touchMove" class="container">
+    <view bindlongpress="deleteItem" bindtouchstart="touchStart" class="wrapper {{longPressing?'hover':''}}">
+        <view class="wrapper-item-info {{isLastOne?'with-line':''}}" data-appid="{{appid}}" data-item-code="{{item.item_code}}" data-skuid="{{item.sku_id}}" wx:for="{{goods_list}}" wx:for-item="item_1" wx:key="{{item.create_tiem}}">
+            <view class="wrapper-image-body">
+                <view bindtap="selectItem" class="wrapper-select-area" data-item="{{item}}" data-item-code="{{item.item_code}}" data-skuid="{{item.sku_id}}" wx:if="{{true||StocksUtil.getAvailable(item.stock_number,item.status)}}">
+                    <image src="../../res/img/icon-checkbox-selected.png" wx:if="{{StocksUtil.getAvailable(item.stock_number,item.status)&&item.isCheck}}"></image>
+                    <image src="../../res/img/icon-checkbox-disable.png" wx:elif="{{item.is_pre_sale||!StocksUtil.getAvailable(item.stock_number,item.status)}}"></image>
+                    <image src="../../res/img/icon-checkbox-normal.png" wx:else></image>
+                </view>
+                <view class="item-image-container" hoverClass="item-image-container-hover">
+                    <image bindtap="gotoItemDetail" class="item-image" data-appid="{{appid}}" data-item-code="{{item.item_code}}" data-sku-id="{{item.sku_id}}" mode="aspectFit" src="{{item.goods_img_url+'/750'}}" style="{{!StocksUtil.getAvailable(item.stock_number,item.status)?'opacity:0.4;':''}}"></image>
+                </view>
+            </view>
+            <view class="wrapper-item-info-detail">
+                <view class="wrapper-info" data-item-code="{{item.item_code}}">
+                    <view class="title" style="{{!StocksUtil.getAvailable(item.stock_number,item.status)?'opacity:0.3;':''}}">{{TextUtils.fixText(item.name)}}</view>
+                    <view class="detail" style="{{!StocksUtil.getAvailable(item.stock_number,item.status)?'opacity:0.5;':''}}">
+                        <block wx:if="{{item.stock_number>0&&item.status===1}}">
+                            <view class="detail__desc">
+                                <view class="content price {{item.desc?'':'no-padding'}}">{{PriceUtil.fixPrice(item.unit_price)}}</view>
+                                <block wx:if="{{item_1.desc}}">
+                                    <view class="price-sep-detail"></view>
+                                    <view class="content desc" wx:if="{{item_1.desc}}">{{item_1.desc}}</view>
+                                </block>
+                            </view>
+                            <view class="detail__left_count" wx:if="{{item.stock_number<10}}">
+                                <text>仅剩{{item.stock_number}}件</text>
+                            </view>
+                            <view class="detail__action" wx:if="{{item.is_pre_sale}}">
+                                <text class="detail__action-text">新品预售</text>
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="content desc no-padding" wx:if="{{item.stock_number<=0}}">已售完</view>
+                            <view class="content desc no-padding" wx:elif="{{item.status===2||item.status===-1}}">已下架</view>
+                        </block>
+                    </view>
+                </view>
+                <view bindtap="gotoConfirmOrder" class="wrapper-link" data-desc="{{item.desc}}" data-goods-img-url="{{item.goods_img_url}}" data-item-code="{{item.item_code}}" data-name="{{item.name}}" data-skuid="{{item.sku_id}}" data-status="{{item.status}}" data-stock-number="{{item.stock_number}}" data-unit-price="{{item.unit_price}}" hoverClass="hover" wx:if="{{0&&item.stock_number>0&&item.status===1}}">
+                    <text class="btn-buy">购买</text>
+                    <image mode="aspectFit" src="../../res/img/icon-arrow-right-light.png"></image>
+                </view>
+                <view class="wrapper-link" wx:if="{{0&&(item.stock_number<=0||item.status!==1)}}">
+                    <text class="btn-buy light" wx:if="{{item.stock_number<=0}}">已售完</text>
+                    <text class="btn-buy light" wx:if="{{item.status===2||item.status===-1}}">已下架</text>
+                </view>
+            </view>
+            <view class="line" wx:if="{{isLastOne}}"></view>
+        </view>
+    </view>
+</view>
+<wxs module="PriceUtil">
+module.exports.fixPrice = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num.toString() === 'NaN') {
+        return ('错误的价格')
+    };
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+</wxs>
+<wxs module="StocksUtil">
+module.exports.getAvailable = (function(num, status) {
+    return (num > 0 && status === 1)
+});
+</wxs>
+<wxs module="TextUtils">
+module.exports.fixText = (function(str) {
+    if (str && str.length > 18) {
+        str = str.slice(0, 15) + "..."
+    };
+    return (str)
+});
+module.exports.fixMchName = (function(str) {
+    if (!str) return ("未知商户");;
+    return (str)
+});
+module.exports.showDateTime = (function(timestamp) {
+    if (!timestamp) {
+        return ('')
+    };
+    timestamp = parseInt(timestamp, 10);
+    var t = getDate(timestamp * 1000);
+    var now = getDate();
+    var nowY = now.getFullYear();
+    var nowM = now.getMonth();
+    var nowD = now.getDate();
+    var lastTimeOfToday = getDate(nowY, nowM, nowD, 23, 59, 59);
+    if (+now - (timestamp * 1000) < 3600 * 1000) {
+        var delta = parseInt(((+now - (timestamp * 1000)) / 1000) / 60, 10);
+        if (delta <= 0) delta = 1;;
+        return (delta + '分钟前')
+    } else if (timestamp * 1000 - +lastTimeOfToday > 0) {
+        var delta = parseInt(((+now - (timestamp * 1000)) / 1000) / 3600, 10);
+        if (delta <= 0) delta = 1;;
+        return (delta + '小时前')
+    } else {
+        var y = t.getFullYear();
+        var m = t.getMonth() + 1;
+        var d = t.getDate();
+        return (y + '-' + m + '-' + d)
+    }
+});
+</wxs>

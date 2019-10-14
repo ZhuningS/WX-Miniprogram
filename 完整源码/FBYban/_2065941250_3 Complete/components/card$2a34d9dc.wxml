@@ -1,0 +1,20 @@
+<template name="card$2a34d9dc">
+    <view class="_div data-v-9759cc12 book-card">
+        <view class="_div data-v-9759cc12 thumb">
+            <image class="_image data-v-9759cc12 img" mode="aspectFit" src="https://img.yzcdn.cn/upload_files/2016/11/25/FpqPXlrMRjKwJs8VdTu3ZDJCj4j5.jpeg?imagediv2/2/w/200/h/200/q/90/format/jpeg"></image>
+        </view>
+        <view class="_div data-v-9759cc12 detail">
+            <view class="_div data-v-9759cc12 row">
+                <view class="_div data-v-9759cc12 right">¥ 999.99</view>
+                <view class="_div data-v-9759cc12 left ellipsis--l2"> 红烧牛肉【虚拟商品】【有库存】【有sku】 </view>
+            </view>
+            <view class="_div data-v-9759cc12 row c-gray-darker">
+                <view class="_div data-v-9759cc12 right">x2</view>
+                <view class="_div data-v-9759cc12 left"> 3000克 50% </view>
+            </view>
+            <view class="_div data-v-9759cc12 row c-gray-darker">
+                <view class="_div data-v-9759cc12 left c-red">已发货</view>
+            </view>
+        </view>
+    </view>
+</template>

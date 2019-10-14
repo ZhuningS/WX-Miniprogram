@@ -1,0 +1,5 @@
+<template name="mod_scan">
+    <view bindtap="_scanCode" class="mod_scan">
+        <image mode="aspectFit" src="../../../images/new/icon_ss.png"></image>
+    </view>
+</template>

@@ -1,0 +1,2 @@
+<slot wx:if="{{maybe}}"></slot>
+<view class="{{rootClassNames}}" style="width: {{2*width}}rpx; height: {{2*height}}rpx; margin-bottom: {{marginBottom*2}}rpx" wx:else></view>

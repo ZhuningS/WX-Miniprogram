@@ -1,0 +1,256 @@
+<template name="TIMImageElem">
+    <image bindtap="previewOneImg" class="avatar" data-url="{{item.msg.data}}" mode="aspectFit" src="{{item.msg.data}}" style="width:90px;height: 120px;margin: 2px auto;"></image>
+</template>
+<template name="emoji">
+    <image class="avatar" src="{{'/images/im/faces/'+item.data}}" style="width: 25px;height: 25px;margin: 0 0 2px 0;float: left;"></image>
+</template>
+<template name="TIMTextElem">
+    <text style="float: left;margin-top: 2px;">{{item.data}}</text>
+</template>
+<template name="coupon">
+    <view class="coupon-wrap">
+        <view class="coupon-title">送你一张优惠券：</view>
+        <view bindtap="_jump" class="coupon" data-opentype="redirectTo" data-url="/pages/shop/index" wx:if="{{coupon_type==1}}">
+            <view class="before" style="{{item.from!=card_id&&item.style=='self'?'':'background-color:#fff'}}"></view>
+            <view class="after" style="{{item.from!=card_id||item.style=='self'?'':'background-color:#fff'}}"></view>
+            <view class="top">{{discount}}折</view>
+            <view class="bottom">无使用门槛</view>
+            <view class="line"></view>
+            <view class="bottom" style="margin-top:40rpx">{{text}}</view>
+        </view>
+        <view bindtap="_jump" class="coupon" data-opentype="redirectTo" data-url="/pages/goodsList/list/index?type={{coupon_type}}&value={{coupon_value}}" wx:if="{{coupon_type==2}}">
+            <view class="before" style="{{item.from!=card_id&&item.style=='self'?'':'background-color:#fff'}}"></view>
+            <view class="after" style="{{item.from!=card_id||item.style=='self'?'':'background-color:#fff'}}"></view>
+            <view class="top">{{discount}}折</view>
+            <view class="bottom">无使用门槛</view>
+            <view class="line"></view>
+            <view class="bottom" style="margin-top:40rpx">{{text}}</view>
+        </view>
+        <view bindtap="_jump" class="coupon" data-opentype="redirectTo" data-url="/pages/goodsDetail/detail/index?id={{coupon_goods_id}}" wx:if="{{coupon_type==3&&coupon_number==1}}">
+            <view class="before" style="{{item.from!=card_id&&item.style=='self'?'':'background-color:#fff'}}"></view>
+            <view class="after" style="{{item.from!=card_id||item.style=='self'?'':'background-color:#fff'}}"></view>
+            <view class="top">{{discount}}折</view>
+            <view class="bottom">无使用门槛</view>
+            <view class="line"></view>
+            <view class="bottom" style="margin-top:40rpx">{{text}}</view>
+        </view>
+        <view bindtap="_jump" class="coupon" data-opentype="redirectTo" data-url="/pages/goodsList/list/index?type={{coupon_type}}&value={{coupon_value}}" wx:if="{{coupon_type==3&&coupon_number>1}}">
+            <view class="before" style="{{item.from!=card_id&&item.style=='self'?'':'background-color:#fff'}}"></view>
+            <view class="after" style="{{item.from!=card_id||item.style=='self'?'':'background-color:#fff'}}"></view>
+            <view class="top">{{discount}}折</view>
+            <view class="bottom">无使用门槛</view>
+            <view class="line"></view>
+            <view class="bottom" style="margin-top:40rpx">{{text}}</view>
+        </view>
+        <view bindtap="_jump" class="coupon-bot" data-opentype="redirectTo" data-url="/pages/my/myCouponList/index">
+        点击去“
+        <text>个人中心-我的优惠券</text> ”查看
+      </view>
+    </view>
+</template>
+<template name="welcome">
+    <view class="welcome">
+        <text>{{text}}</text>
+        <text style="display:block;margin-top:30rpx;font-size: 24rpx; color: #888">通过我的名片您还可以：</text>
+        <view bindtap="_jump" data-opentype="redirectTo" data-url="/pages/card/index?id={{card_id}}">
+            <image class="image" src="/images/card/mingpian@2x.png"></image>
+            <text class="text">进入我的名片</text>
+            <image src="/images/icon/arrow.png" style="width: 24rpx;height: 24rpx;"></image>
+        </view>
+        <view bindtap="_jump" data-opentype="redirectTo" data-url="/pages/site/index?id={{card_id}}">
+            <image class="image" src="/images/card/guanwang@2x.png"></image>
+            <text class="text">查看我们公司官网</text>
+            <image src="/images/icon/arrow.png" style="width: 24rpx;height: 24rpx;"></image>
+        </view>
+        <view bindtap="_jump" data-opentype="redirectTo" data-url="/pages/shop/index?id={{card_id}}">
+            <image class="image" src="/images/card/shangpin@2x.png"></image>
+            <text class="text">查看我们公司商品</text>
+            <image src="/images/icon/arrow.png" style="width: 24rpx;height: 24rpx;"></image>
+        </view>
+        <view bindtap="_jump" data-opentype="redirectTo" data-url="/pages/feed/index/index?id={{card_id}}">
+            <image class="image" src="/images/card/dongtai@2x.png"></image>
+            <text class="text">查看我的动态</text>
+            <image src="/images/icon/arrow.png" style="width: 24rpx;height: 24rpx;"></image>
+        </view>
+        <view catchtap="_callPhone" wx:if="{{cardInfo.mobile!=''}}">
+            <image class="image" src="/images/card/call@2x.png"></image>
+            <text class="text">拨打我的电话</text>
+            <image src="/images/icon/arrow.png" style="width: 24rpx;height: 24rpx;"></image>
+        </view>
+        <view catchtap="_openWxPop" wx:if="{{cardInfo.weixin!=''}}">
+            <image class="image" src="/images/card/weixin@2x.png"></image>
+            <text class="text">添加我的微信</text>
+            <image src="/images/icon/arrow.png" style="width: 24rpx;height: 24rpx;"></image>
+        </view>
+    </view>
+</template>
+<template name="goods">
+    <view class="goods" style="max-width: 600rpx; margin:10rpx 0;">
+        <view style="display:flex;">
+            <image mode="aspectFill" src="{{thumb}}" style="width: 100rpx;height: 100rpx; border-radius: 6rpx;"></image>
+            <view style="margin-left:20rpx">
+                <view class="chart_goodsName">{{name}}</view>
+                <view>¥ {{price}}</view>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="mobile">
+    <view>{{data}}
+        <button plain bindgetphonenumber="_getmobile" class="nobutton tellmobile" hoverClass="none" openType="getPhoneNumber" wx:if="{{hasMobile==0}}">
+    授权手机号码</button>
+        <view style="color:#888" wx:if="{{hasMobile==1}}">已告诉TA</view>
+    </view>
+</template>
+<view class="main">
+    <view bindtap="_jumpToCard" class="shareCard2" data-cardid="{{card_id}}" style="position:relative" wx:if="{{template=='template'}}">
+        <view class="avatar">
+            <image src="{{card_avatar}}"></image>
+        </view>
+        <view class="center">
+            <text class="name">{{card_name}}</text>
+        </view>
+        <view class="right">TA的名片 ></view>
+    </view>
+    <view class="modal modal-record" wx:if="{{recordStatus!=RecordStatus.HIDE}}">
+        <view catchtap="toggleWithoutAction" class="modal-body">
+            <view class="dot">
+                <image class="icon-mic" src="/images/im/luyin@3x.png"></image>
+            </view>
+            <text class="desc">手指上滑，取消发送</text>
+        </view>
+    </view>
+    <scroll-view bindscrolltoupper="loadnext" bindtap="cancelEmoji" class="scroll_view {{view}}" scrollIntoView="{{toView}}" scrollY="true" style="{{template=='template'?'top:170rpx':''}}" upperThreshold="20">
+        <view class="loadingWrap" wx:if="{{loadingShow}}">
+            <image src="/images/loading.png"></image>
+        </view>
+        <view style="width:100%">
+            <view class="message" id="{{item.uuid}}" wx:for="{{lastmsgs}}">
+                <view class="time">
+                    <text>{{item.MsgTime}}</text>
+                </view>
+                <view class="main {{item.from==fromUser||item.style=='self'?'self':''}}">
+                    <image class="avatar" src="{{user_avatar}}" wx:if="{{item.from==fromUser||item.style=='self'?'self':''}}"></image>
+                    <image class="avatar" src="{{card_avatar}}" wx:else></image>
+                    <view class="msg">
+                        <block wx:for="{{item.MsgBody}}" wx:for-item="itemName">
+                            <block wx:if="{{itemName.MsgType=='TIMTextElem'}}">{{itemName.MsgContent}}</block>
+                            <image src="/images/faces/{{itemName.MsgContent}}" style="width: 48rpx; height: 48rpx; vertical-align: middle" wx:if="{{itemName.MsgType=='TIMFaceElem'}}"></image>
+                            <image bindtap="previewOneImg" data-url="{{itemName.MsgContent}}?imageView2/2/w/200/format/jpg/q/90" mode="widthFix" src="{{itemName.MsgContent}}?imageView2/2/w/200/format/jpg/q/90" style="width:200rpx" wx:if="{{itemName.MsgType=='TIMImageElem'}}"></image>
+                            <view class="template" wx:if="{{itemName.MsgType=='TIMCustomElem'&&itemName.MsgContent.type==0}}">
+                                <template is="welcome" data="{{...itemName.MsgContent}}"></template>
+                            </view>
+                            <view class="template" wx:if="{{itemName.MsgType=='TIMCustomElem'&&itemName.MsgContent.type==1}}">
+                                <template is="goods" data="{{...itemName.MsgContent}}"></template>
+                            </view>
+                            <view class="template" wx:if="{{itemName.MsgType=='TIMCustomElem'&&itemName.MsgContent.type==2}}">
+                                <template is="coupon" data="{{...itemName.MsgContent}}"></template>
+                            </view>
+                            <template is="mobile" data="{{...itemName.MsgContent,hasMobile:hasMobile}}" wx:if="{{itemName.MsgType=='TIMCustomElem'&&itemName.MsgContent.type==101}}"></template>
+                            <block wx:if="{{itemName.MsgType=='TIMCustomElem'&&itemName.MsgContent.type==100}}">
+                                <view class="audioSec">{{itemName.MsgContent.sec}}''</view>
+                                <view bindtap="_playAudio" class="{{itemName.MsgContent.data==audioUrl?'play':''}}" data-url="{{itemName.MsgContent.data}}" style="width:120rpx">
+                                    <view class="laba ani"></view>
+                                </view>
+                            </block>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="width:100%;">
+            <view class="message" id="{{item.uuid}}" wx:for="{{msgs}}">
+                <view class="time">
+                    <text>{{item.MsgTime}}</text>
+                </view>
+                <view class="main {{item.from==fromUser||item.style=='self'?'self':''}}">
+                    <image class="avatar" src="{{user_avatar}}" wx:if="{{item.from==fromUser||item.style=='self'?'self':''}}"></image>
+                    <image class="avatar" src="{{card_avatar}}" wx:else></image>
+                    <view class="msg">
+                        <block wx:for="{{item.MsgBody}}" wx:for-item="itemName">
+                            <block wx:if="{{itemName.MsgType=='TIMTextElem'}}">{{itemName.MsgContent}}</block>
+                            <image src="/images/faces/{{itemName.MsgContent}}" style="width: 48rpx; height: 48rpx; vertical-align: middle" wx:if="{{itemName.MsgType=='TIMFaceElem'}}"></image>
+                            <image bindtap="previewOneImg" data-url="{{itemName.MsgContent}}" mode="widthFix" src="{{itemName.MsgContent}}?imageView2/2/w/200/format/jpg/q/90" style="width:200rpx" wx:if="{{itemName.MsgType=='TIMImageElem'}}"></image>
+                            <view class="template" wx:if="{{itemName.MsgType=='TIMCustomElem'&&itemName.MsgContent.type==0}}">
+                                <template is="welcome" data="{{...itemName.MsgContent}}"></template>
+                            </view>
+                            <view class="template" wx:if="{{itemName.MsgType=='TIMCustomElem'&&itemName.MsgContent.type==1}}">
+                                <template is="goods" data="{{...itemName.MsgContent}}"></template>
+                            </view>
+                            <view class="template" wx:if="{{itemName.MsgType=='TIMCustomElem'&&itemName.MsgContent.type==2}}">
+                                <template is="coupon" data="{{...itemName.MsgContent}}"></template>
+                            </view>
+                            <block wx:if="{{itemName.MsgType=='TIMCustomElem'&&itemName.MsgContent.type==100}}">
+                                <view class="audioSec">{{itemName.MsgContent.sec}}''</view>
+                                <view bindtap="_playAudio" class="{{itemName.MsgContent.data==audioUrl?'play':''}}" data-url="{{itemName.MsgContent.data}}" style="width:120rpx">
+                                    <view class="laba ani"></view>
+                                </view>
+                            </block>
+                            <template is="mobile" data="{{...itemName.MsgContent,hasMobile:hasMobile}}" wx:if="{{itemName.MsgType=='TIMCustomElem'&&itemName.MsgContent.type==101}}"></template>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="room_bar">
+        <view class="button_bar" wx:if="{{card_mobile!=''||card_weixin!=''}}">
+            <text>我想</text>
+            <view bindtap="_callPhone" data-phone="{{card_mobile}}" wx:if="{{card_mobile!=''}}">拨打电话</view>
+            <view bindtap="_openWxPop" wx:if="{{card_weixin!=''}}">加微信</view>
+        </view>
+        <form bindreset="cleanInput">
+            <view class="f-row">
+                <view bindtap="showRecordHandler" class="v-record">
+                    <image class="icon-record" src="{{showRecordHandler?'/images/im/jianpan.png':'/images/im/voice@2x.png'}}"></image>
+                </view>
+                <input adjustPosition="false" bindconfirm="sendMessage" bindfocus="focus" bindinput="bindMessage" bindtap="focus" class="f news" confirmHold="true" confirmType="send" cursorSpacing="20" type="text" value="{{msgContent}}" wx:if="{{!showRecordHandler}}"></input>
+                <button catchtouchcancel="handleRecordingCancel" catchtouchend="handleRecordingCancel" catchtouchmove="handleRecordingMove" catchtouchstart="handleRecording" class="f btn-recording" style="{{recordStatus==1?'':'background: #e1e1e1'}}" wx:if="{{!!showRecordHandler&&isCancel!=1}}">
+                    <block wx:if="{{recordStatus==1}}">按住说话</block>
+                    <block wx:else>松开结束</block>
+                </button>
+                <button bindopensetting="_getRecordAuth" class="f btn-recording" openType="openSetting" wx:if="{{!!showRecordHandler&&isCancel==1}}">
+          按住说话
+        </button>
+                <view bindtap="openEmoji" class="open_emoji">
+                    <image src="/images/im/smile@2x.png" width="widthFix" wx:if="{{show=='emoji_list'}}"></image>
+                    <image src="/images/im/jianpan.png" width="widthFix" wx:else></image>
+                </view>
+                <block wx:if="{{brand!='iPhone'}}">
+                    <view bindtap="_showPanel" class="send_image" wx:if="{{msgContent==''}}">
+                        <image src="/images/im/add@2x.png" width="widthFix"></image>
+                    </view>
+                    <button bindtap="sendMessage" class="send_btn" formType="reset" wx:else>发送</button>
+                </block>
+                <view bindtap="_showPanel" class="send_image" wx:else>
+                    <image src="/images/im/add@2x.png" width="widthFix"></image>
+                </view>
+            </view>
+        </form>
+        <view class="emoji_list {{show}}">
+            <view class="emoji_item">
+                <image bindtap="sendEmoji" data-emoji="{{index}}" src="/images/faces/{{item}}" wx:for="{{emojiObj}}"></image>
+            </view>
+        </view>
+        <view class="emoji_list {{showPanel}}">
+            <view bindtap="_uploadPic" data-type="1">
+                <image src="/images/im/picture@3x.png"></image>
+                <text>照片</text>
+            </view>
+            <view bindtap="_uploadPic" data-type="2">
+                <image src="/images/im/camera@3x.png"></image>
+                <text>拍摄</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="weixin_pop" hidden="{{!openCopyPop}}">
+    <view class="text">
+        <image src="/images/card/weixin2.png" style="width: 48rpx; height: 48rpx;margin-right: 20rpx"></image>
+    {{card_weixin}}
+  </view>
+    <view bindtap="_copyText" class="btn_copy" data-copy-success="微信号已复制" data-copy-val="{{card_weixin}}" wx:if="{{copyStatus==0}}">
+      复制
+    </view>
+    <view class="btn_copy dis" wx:else>已复制</view>
+</view>

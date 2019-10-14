@@ -1,0 +1,16 @@
+<form bindsubmit="onPushSubmit">
+    <view class="contenter">
+        <view class="content">
+            <view class="text">
+                <textarea name="content" placeholder="请输入打卡内容,80字以内"></textarea>
+            </view>
+            <view class="addimg tc mt20">
+                <text class="iconfont icon-add linght"></text>
+                <image bindtap="onChooseImgTap" mode="aspectFill" src="{{image}}"></image>
+            </view>
+        </view>
+        <view class="m20">
+            <button class="send transition-duration-150" formType="submit" type="primary">提交</button>
+        </view>
+    </view>
+</form>

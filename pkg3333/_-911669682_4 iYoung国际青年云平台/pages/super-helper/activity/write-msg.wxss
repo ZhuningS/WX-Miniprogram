@@ -1,0 +1,33 @@
+.input-group {
+    background-color: white;
+    position: relative;
+}
+
+.input-group:first-child {
+    margin-top: 15px;
+}
+
+.input-group .input-item {
+    position: relative;
+}
+
+.input-group .input-item:not(:last-child):after {
+    position: absolute;
+    left: 15px;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #ddd;
+    content: '';
+    transform: scaleY(0.5);
+}
+
+.input-group .input-item input {
+    padding: 8px 15px;
+    line-height: 20px;
+    height: 42px;
+}
+
+button::after {
+    border: 0;
+}

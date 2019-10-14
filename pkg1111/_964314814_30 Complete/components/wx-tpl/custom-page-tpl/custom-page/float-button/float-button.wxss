@@ -1,0 +1,43 @@
+.float-backgroud {
+    position: fixed;
+    bottom: 110rpx;
+    background-color: rgba(255,255,255,0.95);
+    box-shadow: 0rpx -1rpx 18rpx 0rpx rgba(0,0,0,0.13);
+    opacity: 0.95;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100rpx;
+    height: 100rpx;
+    z-index: 999;
+}
+
+.float-left {
+    left: 30rpx;
+}
+
+.float-right {
+    right: 30rpx;
+}
+
+.float-image {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.inner-view {
+    width: 100rpx;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.inner-view button {
+    position: absolute;
+    opacity: 0;
+    height: 100rpx;
+    width: 100rpx;
+    left: 0;
+    top: 0;
+}

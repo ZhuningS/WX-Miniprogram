@@ -1,0 +1,41 @@
+page {
+    background: #eee;
+}
+
+.hosting-success {
+    text-align: center;
+}
+
+.success-img {
+    width: 120rpx;
+    height: 120rpx;
+    margin-top: 170rpx;
+}
+
+.success-title {
+    font-weight: 600;
+    color: #333333;
+    font-size: 34rpx;
+    margin-top: 30rpx;
+}
+
+.success-content {
+    color: #8f8f8f;
+    font-size: 26rpx;
+    margin-top: 14rpx;
+}
+
+.success-btn {
+    color: #ffffff;
+    font-size: 30rpx;
+    background: #ff6900;
+    width: 260rpx;
+    height: 70rpx;
+    border-radius: 8rpx;
+    margin: 18rpx auto;
+    line-height: 70rpx;
+}
+
+.success-btn::after {
+    border: 0;
+}

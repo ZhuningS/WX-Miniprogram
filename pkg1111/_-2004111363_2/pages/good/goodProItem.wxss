@@ -1,0 +1,15 @@
+.goodslst {
+    width: 100%;
+    padding: 0 20rpx;
+}
+
+.goodslst .main {
+    background: #fff;
+    width: 345rpx;
+    margin-bottom: 20rpx;
+}
+
+.goodslst .main>image {
+    width: 345rpx;
+    height: 345rpx;
+}

@@ -1,0 +1,12 @@
+<template name="tabbar">
+    <view class="tabbar">
+        <form bindsubmit="_jumpToTab" data-url="{{item.url}}" reportSubmit="true" wx:for="{{tabbar}}">
+            <button class="nobutton" formType="submit">
+                <view class="item {{data==item.title?'select':''}}">
+                    <image mode="aspectFit" src="{{data==item.title?item.img_active:item.img}}"></image>
+                    <view class="text" style="color:{{data==item.title?item.txt_color_active:item.txt_color}}">{{item.name}}</view>
+                </view>
+            </button>
+        </form>
+    </view>
+</template>

@@ -1,0 +1,12 @@
+{
+    "usingComponents": {
+        "navigation-bar": "../../../mmuxwxappdevkit/widget/navigation-bar/navigation-bar",
+        "modal": "../../../mmuxwxappdevkit/widget/modal/modal",
+        "section": "../../widget/section/section",
+        "section-item": "../../widget/section-item/section-item",
+        "counter": "../../widget/counter/counter",
+        "goods-item": "./widget/order-goods-item/order-goods-item"
+    },
+    "navigationBarTitleText": "填写订单",
+    "enablePullDownRefresh": false
+}

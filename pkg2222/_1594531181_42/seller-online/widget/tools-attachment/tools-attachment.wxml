@@ -1,0 +1,31 @@
+<view class="wrap">
+    <view catchtap="onClick" class="wrap-icon" wx:if="{{TypeUtil.getInfo(type).src}}">
+        <image class="icon" mode="aspectFit" src="{{TypeUtil.getInfo(type).src}}"></image>
+    </view>
+    <view class="title">{{TypeUtil.getInfo(type).title}}</view>
+</view>
+<wxs module="TypeUtil">
+var getInfo = (function(type) {
+    switch (type) {
+        case "finish_service":
+            return (({
+                title: "结束",
+                src: "../../assets/sharemore_finishservice.png",
+            }));
+        case "pic":
+            return (({
+                title: "照片",
+                src: "../../assets/sharemore_pic.png",
+            }));
+        case "video":
+            return (({
+                title: "拍摄",
+                src: "../../assets/sharemore_video.png",
+            }));
+        default:
+            break;
+    };
+    return (({}))
+});
+module.exports.getInfo = getInfo;
+</wxs>

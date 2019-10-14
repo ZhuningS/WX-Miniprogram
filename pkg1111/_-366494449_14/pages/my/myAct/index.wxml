@@ -1,0 +1,46 @@
+<template name="orderList">
+    <scroll-view bindscrolltolower="_loadMore" class="order-list" scrollY="true">
+        <block wx:if="{{list&&list.length>0}}">
+            <view bindtap="_jump" class="act-item" data-url="/pages/act/group/index?id={{item.spread_info.id}}&teamid={{item.id}}" wx:for="{{list}}" wx:key="id">
+                <view class="head_map">
+                    <image mode="widthFix" src="{{item.spread_info.head_map}}"></image>
+                </view>
+                <view class="info">
+                    <view class="title">{{item.spread_info.title}}</view>
+                    <view class="status">{{item.spread_info.statusTips}}</view>
+                    <view class="time">{{item.spread_info.begin_time}}</view>
+                </view>
+            </view>
+        </block>
+        <view class="nodata" wx:else>
+            <image class="icon" mode="aspectFit" src="/images/card/noorder.png"></image>
+            <view>
+                <text>您还没有参与过活动哦～</text>
+            </view>
+        </view>
+    </scroll-view>
+</template>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view class="tabs">
+        <view class="navs">
+            <form bindsubmit="_tabSwitch" class="nav__item {{currentTab=='2'?'selected':''}}" data-current="2" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">全部</button>
+            </form>
+            <form bindsubmit="_tabSwitch" class="nav__item {{currentTab=='0'?'selected':''}}" data-current="0" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">报名中</button>
+            </form>
+            <form bindsubmit="_tabSwitch" class="nav__item {{currentTab=='1'?'selected':''}}" data-current="1" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">已报名</button>
+            </form>
+        </view>
+        <view class="tab-content-list">
+            <view class="tab-content">
+                <template is="orderList" data="{{list:actList}}"></template>
+            </view>
+        </view>
+    </view>
+</view>

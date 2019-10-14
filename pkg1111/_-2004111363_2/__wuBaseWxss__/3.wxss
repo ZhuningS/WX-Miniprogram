@@ -1,0 +1,9 @@
+.g-img {
+    width: 170rpx;
+    height: 170rpx;
+    margin-right: 30rpx;
+}
+
+.g-content {
+    height: 170rpx;
+}

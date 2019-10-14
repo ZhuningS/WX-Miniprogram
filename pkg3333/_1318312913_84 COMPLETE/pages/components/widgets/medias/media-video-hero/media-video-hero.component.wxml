@@ -1,0 +1,7 @@
+<view catchtap="stopPropagation" class="video-wrapper" style="padding-top: {{wrapPaddingTop}};">
+    <video autoplay control bindended="handleVideoEndPlaying" bindpause="handleVideoPausePlaying" bindplay="handleVideoStartPlaying" class="media-video" src="{{currentPlaying.url}}" wx:if="{{isPlaying}}"></video>
+    <view catchtap="handleVideoCoverTap" class="video-cover-wrapper" wx:else>
+        <image class="video-cover" mode="aspectFit" src="{{mediaData.coverUrl}}"></image>
+        <play-button comClass="video-play-button" duration="{{mediaData.video.duration}}" size="large"></play-button>
+    </view>
+</view>

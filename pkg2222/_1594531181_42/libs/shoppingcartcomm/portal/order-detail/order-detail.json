@@ -1,0 +1,10 @@
+{
+    "navigationBarTitleText": "订单详情",
+    "usingComponents": {
+        "navigation-bar": "../../../mmuxwxappdevkit/widget/navigation-bar/navigation-bar",
+        "navigator": "../../../mmuxwxappdevkit/widget/navigator/navigator",
+        "action-sheet": "../../../mmuxwxappdevkit/widget/action-sheet/action-sheet"
+    },
+    "navigationBarBackgroundColor": "#ffffff",
+    "enablePullDownRefresh": false
+}

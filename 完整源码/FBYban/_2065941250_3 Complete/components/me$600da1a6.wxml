@@ -1,0 +1,11 @@
+<template name="me$600da1a6">
+    <view class="_div data-v-11c01edc container">
+        <view bindtap="handleProxy" class="_div data-v-11c01edc userinfo" data-comkey="{{$k}}" data-eventid="{{'0'}}">
+            <image alt class="_img data-v-11c01edc userinfo-avatar" src="{{userinfo.avatarUrl}}"></image>
+            <view class="_p data-v-11c01edc userinfo-nickname">{{userinfo.nickName}}</view>
+        </view>
+        <template is="YearProgress$c392b2a8" data="{{...$root[$kk+'0'],$root:$root}}"></template>
+        <button bindtap="handleProxy" class="_button data-v-11c01edc btn btn-addbook" data-comkey="{{$k}}" data-eventid="{{'1'}}" wx:if="{{userinfo.openId}}"> 添加图书 </button>
+    </view>
+</template>
+<import src="YearProgress$c392b2a8"></import>

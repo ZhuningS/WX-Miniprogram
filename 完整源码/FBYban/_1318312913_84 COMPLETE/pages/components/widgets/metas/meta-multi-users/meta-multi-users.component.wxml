@@ -1,0 +1,8 @@
+<view class="{{rootClassNames}}">
+    <view class="section-avatars" wx:if="{{users.length}}">
+        <qm-avatar isFloat catchtap="handleUserInfoTap" data-uid="{{user.uid}}" size="small" url="{{user.avatar}}" wx:if="{{index<3}}" wx:for="{{users}}" wx:for-item="user" wx:key="name"></qm-avatar>
+    </view>
+    <view class="section-info">
+        <view class="info-meta-snippet">{{metaSnippet}}</view>
+    </view>
+</view>

@@ -1,0 +1,131 @@
+<include src="/components/index.wxml"></include>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="page" hidden="{{!dataLoaded}}">
+    <view class="cardList-mod">
+        <block wx:for="{{cartList}}">
+            <block wx:if="{{item.statustui==0||item.status_delete==1}}">
+                <view style="margin:32rpx 0;color: #b6b6b7;font-size: 28rpx; text-align: center;font-weight: 300">{{item.tips}}</view>
+                <view class="card gray">
+                    <image class="sidebar" src="/images/icon/pink@3x.png" wx:if="{{item.gender=='女'}}"></image>
+                    <image class="sidebar" src="/images/icon/blue@3x.png" wx:else></image>
+                    <block wx:if="{{item.statustui==0}}">
+                        <view class="statusText">此名片已失效</view>
+                        <view class="options">
+                            <text></text>
+                            <text></text>
+                            <text></text>
+                        </view>
+                    </block>
+                    <block wx:elif="{{item.status_delete==1}}">
+                        <view class="statusText">此名片已屏蔽</view>
+                        <view catchtap="_showOptions" class="options" data-index="{{index}}">
+                            <text></text>
+                            <text></text>
+                            <text></text>
+                        </view>
+                        <view class="optionsView {{currentIndex!==''&&currentIndex===index?'show':''}}">
+                            <view catchtap="_operateCard" data-id="{{item.id}}" data-type="star_enable" wx:if="{{item.star_enable==0}}">
+                                <image src="/images/card/star01.png"></image>标星名片</view>
+                            <view catchtap="_operateCard" data-id="{{item.id}}" data-type="star_disable" wx:if="{{item.star_enable==1}}">
+                                <image src="/images/card/star02.png"></image>取消标星</view>
+                            <view catchtap="_operateCard" data-id="{{item.id}}" data-type="delete" wx:if="{{item.status_delete==0}}">
+                                <image src="/images/card/pinbi.png"></image>屏蔽名片</view>
+                            <view catchtap="_operateCard" data-id="{{item.id}}" data-type="restore" wx:if="{{item.status_delete==1}}">
+                                <image src="/images/card/gou.png"></image>取消屏蔽</view>
+                        </view>
+                    </block>
+                    <view class="code opacity">
+                        <image mode="widthFix" src="/images/card/code.jpg"></image>
+                    </view>
+                    <view class="avatar opacity">
+                        <image src="{{item.avatar}}"></image>
+                    </view>
+                    <view class="name opacity">{{item.name}}
+            <image src="/images/card/star01.png" style="width: 32rpx; height: 32rpx;" wx:if="{{item.star_enable==1}}"></image>
+                    </view>
+                    <view class="position opacity">{{item.position}}</view>
+                    <view class="infowrap">
+                        <view class="mobile opacity" wx:if="{{item.mobile_open!=''}}">
+                            <image src="/images/icon/shouji@3x.png"></image>
+                            <text class="ellipsis">{{item.mobile_open}}</text>
+                        </view>
+                        <view class="email opacity" wx:if="{{item.email!=''}}">
+                            <image src="/images/icon/youxiang@3x.png"></image>
+                            <text class="ellipsis">{{item.email}}</text>
+                        </view>
+                        <view class="email opacity" wx:if="{{item.company!=''}}">
+                            <image src="/images/icon/gongsi@3x.png"></image>
+                            <text class="ellipsis">{{item.company}}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <block wx:else>
+                <view style="margin:32rpx 0;color: #b6b6b7;font-size: 28rpx; text-align: center;font-weight: 300">{{item.tips}}</view>
+                <view bindtap="_jumpToCard" class="card" data-cardid="{{item.id}}">
+                    <image class="sidebar" src="/images/icon/pink@3x.png" wx:if="{{item.gender=='女'}}"></image>
+                    <image class="sidebar" src="/images/icon/blue@3x.png" wx:else></image>
+                    <view catchtap="_showOptions" class="options" data-index="{{index}}">
+                        <text></text>
+                        <text></text>
+                        <text></text>
+                    </view>
+                    <view class="optionsView {{currentIndex!==''&&currentIndex===index?'show':''}}">
+                        <view catchtap="_operateCard" data-id="{{item.id}}" data-type="star_enable" wx:if="{{item.star_enable==0}}">
+                            <image src="/images/card/star01.png"></image>标星名片</view>
+                        <view catchtap="_operateCard" data-id="{{item.id}}" data-type="star_disable" wx:if="{{item.star_enable==1}}">
+                            <image src="/images/card/star02.png"></image>取消标星</view>
+                        <view catchtap="_operateCard" data-id="{{item.id}}" data-type="delete" wx:if="{{item.status_delete==0}}">
+                            <image src="/images/card/pinbi.png"></image>屏蔽名片</view>
+                        <view catchtap="_operateCard" data-id="{{item.id}}" data-type="restore" wx:if="{{item.status_delete==1}}">
+                            <image src="/images/card/gou.png"></image>取消屏蔽</view>
+                    </view>
+                    <view catchtap="_viewCode" class="code" data-cardid="{{item.id}}">
+                        <image mode="widthFix" src="/images/card/code.jpg"></image>
+                    </view>
+                    <view class="avatar">
+                        <image mode="aspectFill" src="{{item.avatar}}"></image>
+                        <view class="redpoint" wx:if="{{item.offline>0}}">{{item.offline}}</view>
+                    </view>
+                    <view class="name">{{item.name}}
+            <image src="/images/card/star01.png" style="width: 32rpx; height: 32rpx;" wx:if="{{item.star_enable==1}}"></image>
+                    </view>
+                    <view class="position">{{item.position}}</view>
+                    <view class="infowrap">
+                        <view class="mobile" wx:if="{{item.mobile_open!=''}}">
+                            <image src="/images/icon/shouji@3x.png"></image>
+                            <text class="ellipsis">{{item.mobile_open}}</text>
+                        </view>
+                        <view class="email" wx:if="{{item.email!=''}}">
+                            <image src="/images/icon/youxiang@3x.png"></image>
+                            <text class="ellipsis">{{item.email}}</text>
+                        </view>
+                        <view class="email" wx:if="{{item.company!=''}}">
+                            <image src="/images/icon/gongsi@3x.png"></image>
+                            <text class="ellipsis">{{item.company}}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </block>
+    </view>
+    <template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>
+    <view bindtap="_jump" class="search" data-url="/pages/cardList/search/search" wx:if="{{cartList.length>8}}">
+        <image src="/images/icon/seach-36@3x.png"></image>
+    </view>
+</view>
+<view hidden="{{!codepop}}">
+    <view class="mask"></view>
+    <view class="codepop">
+        <view class="tttile">扫码查看名片</view>
+        <view class="qrcode">
+            <image mode="widthFix" src="{{qrcode}}" style="width: 80%"></image>
+        </view>
+        <view bindtap="_close_pop" class="btn-close">
+            <image src="/images/new/X.png"></image>
+        </view>
+    </view>
+</view>

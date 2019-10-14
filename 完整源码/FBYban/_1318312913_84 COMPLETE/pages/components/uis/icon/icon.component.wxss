@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+.icon {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.icon.size-small {
+    height: 16px;
+    width: 16px;
+}
+
+.icon.size-medium {
+    height: 20px;
+    width: 20px;
+}
+
+.icon.size-large {
+    height: 36px;
+    width: 36px;
+}
+
+.icon.size-huge {
+    height: 40px;
+    width: 40px;
+}
+
+.icon.theme-light {
+    filter: invert(1);
+}
+
+.icon.theme-light-gray {
+    filter: invert(0.95);
+}

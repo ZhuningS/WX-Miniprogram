@@ -1,0 +1,36 @@
+<view class="contenter">
+    <view bindtap="onNavigateTap" class="notice-list flex  transition-duration-150 active-bg" data-id="{{item.id}}" data-url="detail?id={{item.id}}" wx:for="{{data}}" wx:key="{{index}}">
+        <view class="vote-img">
+            <image mode="aspectFill" src="{{item.cover?item.cover:cover}}"></image>
+        </view>
+        <view class="vote-content sub">
+            <view class="notice-list-content lineText2">活动时间：</view>
+            <view class="notice-list-bottom grey flex mt5 f12">
+                <view class="sub tr">{{item.start_time}} - {{item.end_time}}</view>
+            </view>
+            <view class="notice-list-content lineText2">{{item.remark}}</view>
+            <view class="notice-list-bottom grey flex mt5 f12">
+                <view class="people-msg">
+                    <text class="iconfont icon-peoplefill mr5"></text>
+                    <text>{{item.vote_count}}人参与投票</text>
+                </view>
+                <view class="sub tr">{{item.create_time}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="nothing tc linght flex mb10" hidden="{{hasMore}}">
+    <text class="sub line mr10"></text>
+    <text>没有更多了，我是有底线的</text>
+    <text class="sub line ml10"></text>
+</view>
+<view class="aside-float" wx:if="{{is_add_vote}}">
+    <button bindtap="onNavigateTap" data-url="write" type="primary">
+        <text class="iconfont icon-add"></text>
+    </button>
+</view>
+<view class="tab-tit flex tc tabbar">
+    <view catchtap="tabBarEvent" class="tab-sub gridXb {{tabBar=='public'?'tab-sub-active':''}} sub" data-tab-bar="public">投票广场</view>
+    <view catchtap="tabBarEvent" class="tab-sub gridXb {{tabBar=='released'?'tab-sub-active':''}} sub" data-tab-bar="released">我发布的</view>
+    <view catchtap="tabBarEvent" class="tab-sub gridXb {{tabBar=='received'?'tab-sub-active':''}} sub" data-tab-bar="received">我参与的</view>
+</view>

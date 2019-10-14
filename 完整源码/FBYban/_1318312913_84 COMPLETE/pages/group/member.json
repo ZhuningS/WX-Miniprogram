@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+        "qm-tween": "../components/uis/tween/tween.component"
+    }
+}

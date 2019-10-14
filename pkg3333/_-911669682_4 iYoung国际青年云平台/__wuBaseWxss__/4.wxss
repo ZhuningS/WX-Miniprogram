@@ -1,0 +1,9 @@
+page {
+    --mColor: #6430ba;
+    --mColorRgb: 100,48,186;
+    --mColorLight: #783ac8;
+    --mColorDark: #281391;
+    --price: #f66;
+    --star: #FBC02D;
+    --starGrey: #b6b6b6;
+}

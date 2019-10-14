@@ -1,0 +1,10 @@
+<import src="../../../wxParse/wxParse.wxml"></import>
+<view class="integral-info">
+    <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+    </view>
+</view>
+<view class="no-content tc" wx:if="{{integral_rule==0}}">
+    <image class="no-content-img" mode="widthFix" src="http://www.ixiaochengxu.cc/resource/images/common/no-message.png"></image>
+    <view class="f12 grey">暂无记录</view>
+</view>

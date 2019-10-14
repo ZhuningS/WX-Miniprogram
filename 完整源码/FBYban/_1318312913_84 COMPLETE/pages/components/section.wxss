@@ -1,0 +1,133 @@
+.section {
+    position: relative;
+    margin-top: 40px;
+}
+
+.section .card {
+    display: inline-flex;
+    margin-right: 30rpx;
+    margin-left: 0;
+}
+
+.section .card:first-child {
+    margin-left: 60rpx;
+}
+
+.section .card:last-child {
+    margin-right: 60rpx;
+}
+
+.section-image .image-ctn .image-section .card:last-child {
+    margin-right: 60rpx;
+}
+
+.section-mark .section-name {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.section-video .card {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.section-video .card:first-child {
+    margin-left: 0;
+}
+
+.section-video .card:last-child {
+    margin-right: 0;
+}
+
+.section-user {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px 60rpx 0;
+}
+
+.section-article .magazine-cover {
+    margin-bottom: 30rpx;
+    width: 500rpx;
+}
+
+.section-article .card:first-child {
+    margin-right: 60rpx;
+}
+
+.section-recommend {
+    background-color: rgba(0,0,0,0.8);
+    padding: 40rpx 0;
+    margin: 40rpx 40rpx 0;
+}
+
+.section-recommend .page-name {
+    margin: 0 40rpx 0;
+}
+
+.section-recommend .page-name .name {
+    color: #FFFFFF;
+    text-align: left;
+}
+
+.section-recommend .page-name .meta {
+    color: rgba(255,255,255,0.2);
+}
+
+.section-recommend .card-recommend {
+    width: auto;
+    display: flex;
+    margin: 40rpx 40rpx 0;
+}
+
+.section-recommend .more {
+    display: inline-block;
+    margin-top: 40px;
+    background-color: #000000;
+    color: #FFFFFF;
+    margin-left: 255rpx;
+    width: 240rpx;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.section-category {
+    position: relative;
+    padding: 10px 20rpx 14px 40rpx;
+    margin: 0;
+    background: #FFFFFF;
+}
+
+.section-magazineExplore {
+    display: flex;
+    padding: 20px 60rpx;
+}
+
+.section-magazineExplore .navigator-btn {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.section-magazineExplore .navigator-btn .description {
+    flex-grow: 1;
+    padding-left: 30rpx;
+    margin-right: 30rpx;
+    height: 40px;
+    line-height: 40px;
+    background-color: rgba(0,0,0,0.05);
+}
+
+.section-profileExplore {
+    padding: 40px 60rpx;
+    width: 630rpx;
+    background: rgba(0,0,0,0.05);
+}
+
+.section-profileExplore .items-ctn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,12 @@
+{
+    "usingComponents": {
+        "qm-icon": "../components/uis/icon/icon.component",
+        "qm-loading": "../components/uis/loading/loading.component",
+        "qm-tween": "../components/uis/tween/tween.component",
+        "universe-card": "../components/cards/universe-card/universe-card.component",
+        "page-card": "../components/cards/page-card/page-card.component",
+        "universe-timeline": "../components/containers/universe-timeline/universe-timeline.component",
+        "triplet-media-list": "../components/containers/triplet-media-list/triplet-media-list.component",
+        "magazine-name-list": "../components/containers/magazine-name-list/magazine-name-list.component"
+    }
+}

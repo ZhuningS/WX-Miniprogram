@@ -1,0 +1,25 @@
+<import src="../components/article-conversation.wxml"></import>
+<import src="../components/timeline.wxml"></import>
+<import src="../components/widgets.wxml"></import>
+<import src="../components/cover.wxml"></import>
+<view class="{{showShareCard?'blur':''}}">
+    <navigator navigate hoverClass="none" url="/pages/magazine/magazine?id={{magazine.id}}" wx:if="{{magazine}}">
+        <view class="magazineInfo">
+            <view class="magazine-name">浏览 #{{magazine.name}} 中的所有{{copywriting.itemName}}</view>
+            <image class="icon_16px" src="/images/new_assets/icon_corner_right.svg"></image>
+        </view>
+    </navigator>
+    <template is="timeline" data="{{route:route,config:config,events:events,magazine:magazine,magazineRelation:magazine.relation}}" wx:if="{{events.length}}"></template>
+    <view class="empty" wx:if="{{!error&&!loading&&events.length===0}}">
+        <view class="tip" wx:if="{{current==='group'}}">暂无内容</view>
+    </view>
+    <template is="error" data wx:if="{{error===true}}"></template>
+    <view class="empty" wx:if="{{error==='forbidden'}}">
+        <view class="tip">暂无权限</view>
+    </view>
+    <view class="loading-ctn" wx:if="{{loading}}">
+        <template is="loading" data="{{loading:true}}"></template>
+    </view>
+</view>
+<template is="group-actions" data="{{relation:magazine.relation,needLogin:needLogin,id:magazine.id,ticket:ticket}}"></template>
+<include src="../components/global.wxml"></include>

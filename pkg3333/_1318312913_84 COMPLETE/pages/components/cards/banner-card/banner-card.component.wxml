@@ -1,0 +1,3 @@
+<view catchtap="handleCardRootTap" class="{{rootClassNames}}">
+    <image class="banner-cover" mode="widthFix" src="{{cardData.cover}}"></image>
+</view>

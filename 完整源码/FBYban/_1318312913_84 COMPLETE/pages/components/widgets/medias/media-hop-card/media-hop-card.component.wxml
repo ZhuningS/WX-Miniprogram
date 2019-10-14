@@ -1,0 +1,6 @@
+<navigator appId="{{hopCard.appId}}" catchtap="NOOP" class="{{rootClassNames}}" hoverClass="none" openType="navigate" path="{{hopCard.path}}" target="miniProgram">
+    <image class="media-image-hero" mode="widthFix" src="{{hopCard.cover}}"></image>
+    <view class="title">
+    {{hopCard.title}}
+  </view>
+</navigator>

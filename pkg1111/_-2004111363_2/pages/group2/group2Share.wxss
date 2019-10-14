@@ -1,0 +1,184 @@
+.se-hear {
+    width: 100%;
+    background: #fff;
+    padding: 40rpx;
+}
+
+.se-hear image {
+    width: 280rpx;
+    height: 280rpx;
+    margin-right: 50rpx;
+}
+
+.se-user {
+    padding: 35rpx 20rpx 45rpx 20rpx;
+}
+
+.se-user image {
+    height: 100rpx;
+    width: 100rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.se-user .tuanzhang {
+    width: 64rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    text-align: center;
+    background-color: #FF9A37;
+    color: #fff;
+    font-size: 20rpx;
+    position: absolute;
+    bottom: -10rpx;
+    left: 42%;
+    transform: translateX(-50%);
+    border-radius: 10rpx;
+}
+
+.se-user .btn-invit {
+    height: 88rpx;
+    line-height: 88rpx;
+    border-radius: 8rpx;
+}
+
+.gpIng {
+    padding-bottom: 30rpx;
+}
+
+.gpIng .gp-more {
+    justify-content: flex-end;
+    padding: 20rpx 25rpx;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.gpIng .gp-show {
+    padding: 20rpx 30rpx;
+}
+
+.gpIng .gp-show .gp-item {
+    background-color: #fafafa;
+    margin-top: 20rpx;
+    height: 110rpx;
+    padding-left: 20rpx;
+}
+
+.gpIng .gp-show .gp-item .gp-img {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 50%;
+}
+
+.gpIng .gp-show .gp-item .gp-joinbtn {
+    width: 164rpx;
+    height: 110rpx;
+    text-align: center;
+    line-height: 110rpx;
+}
+
+.se-olt {
+    padding: 0 20rpx;
+    background: #fff;
+    margin: 20rpx 0;
+}
+
+.se-olt .se-item {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.mask {
+    width: 100%;
+}
+
+.mask .mask-main {
+    position: fixed;
+    top: 10vh;
+    left: 10%;
+    width: 600rpx;
+    background: #fff;
+    z-index: 4;
+    border-radius: 8rpx;
+    color: #191919;
+}
+
+.mask .mask-main .m-title {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 32rpx;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mask .mask-main .m-scroll {
+    width: 100%;
+    max-height: 400rpx;
+}
+
+.mask .mask-main .m-scroll .m-item {
+    width: 100%;
+    height: 120rpx;
+    padding: 0 20rpx;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.mask .mask-main .m-scroll .m-item .m-logo {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 50%;
+}
+
+.mask .mask-main .m-scroll .m-item .m-btn {
+    width: 130rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    border-radius: 4rpx;
+    background-color: #f20033;
+    color: white;
+}
+
+.mask .mask-main .m-tip {
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+}
+
+.mask-cancle {
+    position: absolute;
+    bottom: -150rpx;
+    left: 42%;
+    z-index: 4;
+    color: #fff;
+}
+
+.showmore {
+    background-color: white;
+    position: fixed;
+    top: 10vh;
+    width: 600rpx;
+    left: 10%;
+    border-radius: 8rpx;
+    padding: 0 21rpx 30rpx 21rpx;
+    line-height: 44rpx;
+    z-index: 4;
+}
+
+.showmore .show-title {
+    text-align: center;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.mask-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+}

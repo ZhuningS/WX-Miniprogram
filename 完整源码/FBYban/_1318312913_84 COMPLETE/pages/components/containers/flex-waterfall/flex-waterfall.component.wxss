@@ -1,0 +1,17 @@
+.flex-waterfall {
+    column-count: 2;
+    column-gap: 30rpx;
+    padding: 40rpx;
+    background-color: #EBEBEB;
+}
+
+.flex-waterfall universe-card {
+    max-width: 100%;
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+    box-sizing: border-box;
+}
+
+.flex-waterfall .universe-card {
+    margin-bottom: 30rpx;
+}

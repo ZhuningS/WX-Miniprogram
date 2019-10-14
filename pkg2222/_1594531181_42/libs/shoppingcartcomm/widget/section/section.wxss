@@ -1,0 +1,43 @@
+.container {
+    background: #FFFFFF;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 60rpx;
+    padding-top: 16rpx;
+    margin-bottom: 16rpx;
+}
+
+.container .title {
+    padding-top: 16rpx;
+    padding-bottom: 16rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    border-bottom: 0.5rpx solid #E5E5E5;
+}
+
+.container .wrapper_icon_title {
+    padding-top: 16rpx;
+    padding-bottom: 16rpx;
+    border-bottom: 0.5rpx solid #E5E5E5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.container .wrapper_icon_title image {
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: 24rpx;
+    overflow: hidden;
+}
+
+.container .wrapper_icon_title text {
+    margin-left: 16rpx;
+    font-size: 26rpx;
+    font-weight: normal;
+    color: #353535;
+}
+
+.container.last {
+    margin-bottom: 0;
+}

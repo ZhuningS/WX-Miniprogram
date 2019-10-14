@@ -1,0 +1,147 @@
+.post-create-ctn {
+    margin: 20px 60rpx;
+}
+
+.input {
+    background: rgba(0,0,0,0.05);
+    width: 570rpx;
+    height: 90px;
+    padding: 20rpx 30rpx;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.input-placeholder {
+    font-size: 14px;
+}
+
+.article-wrapper {
+    position: relative;
+    background: rgba(0,0,0,0.05);
+    padding: 0 30rpx 20rpx;
+}
+
+.video-wrapper {
+    position: relative;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0 30rpx 20rpx;
+    text-align: right;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+}
+
+.video-wrapper .badge {
+    display: block;
+    position: static;
+    width: 20px;
+    height: 20px;
+}
+
+.video-wrapper .video {
+    width: 570rpx;
+    height: 320rpx;
+    position: relative;
+}
+
+.vote-wrapper {
+    padding: 0 30rpx 20rpx;
+}
+
+.vote-wrapper .badge {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 5px;
+    top: -10px;
+}
+
+.badge {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 5px;
+    top: -10px;
+}
+
+.article-ctn {
+    display: flex;
+    background: white;
+    padding: 20rpx;
+}
+
+.article-ctn .thumbnail {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.article-ctn .subheading {
+    max-height: 40px;
+}
+
+.images-ctn {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.images-ctn .preview {
+    height: 80px;
+    width: 80px;
+    margin-right: 10px;
+    margin-top: 10px;
+    background-color: #F2F2F2;
+    position: relative;
+    overflow: visible;
+}
+
+.images-ctn .preview .badge {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    top: -10rpx;
+}
+
+.attach-actions {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.attach-actions .button {
+    margin-right: 10px;
+}
+
+.actions-ctn {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.actions-ctn+.actions-ctn {
+    margin-top: 20px;
+}
+
+.actions-ctn .description {
+    font-weight: bold;
+}
+
+.tips-ctn {
+    margin-top: 40rpx;
+}
+
+.tips-ctn .input-ctn {
+    margin: 40rpx 0 0;
+    position: relative;
+}
+
+.tips-ctn .input-ctn .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+}
+
+.tips-ctn .button {
+    margin-top: 40rpx;
+}

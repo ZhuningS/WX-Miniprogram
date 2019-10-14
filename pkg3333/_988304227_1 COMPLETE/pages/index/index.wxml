@@ -1,0 +1,37 @@
+<view class="container">
+    <image class="bird" mode="widthFix" src="../../assets/images/img_bird@3x.png" style="top: {{top+90}}rpx;"></image>
+    <view style="height: 10rpx;"></view>
+    <image class="title" hidden="{{item.hidden}}" mode="aspectFit" src="{{item.url}}" style="margin-top: {{top+78}}rpx" wx:for="{{swiperImg}}" wx:key="{{index}}"></image>
+    <view class="teeContainer">
+        <image class="tee" mode="widthFix" src="{{img}}"></image>
+    </view>
+    <view class="showTime" hidden="{{!isTee}}">{{time}}</view>
+    <view class="countDown" hidden="{{isTee}}">{{time}}</view>
+    <slider activeColor="linear-gradient(0deg,rgba(93,144,89,1),rgba(68,122,69,1))" backgroundColor="#EBEFF8" bindchanging="slider" blockColor="#5D9059" blockSize="10" hidden="{{!isTee}}" max="100" min="0" step="12" value="12"></slider>
+    <form bindsubmit="sendId" reportSubmit="true">
+        <button class="start" formType="submit" hidden="{{!isTee}}" hoverClass="none" plain="true">开始专注</button>
+    </form>
+    <button bindtap="cancel" class="start" hidden="{{isTee}}" hoverClass="none" plain="true">放弃</button>
+</view>
+<view class="bottomBar">
+    <view bindtap="goPage" data-href="../forest/forest">
+        <image src="../../assets/images/ic_forest@3x.png"></image>
+        <view>我的森林</view>
+    </view>
+    <view bindtap="goPage" data-href="../course/course">
+        <image src="../../assets/images/ic_course@3x.png"></image>
+        <view>时间历程</view>
+    </view>
+    <view bindtap="goPage" data-href="../ranking/ranking">
+        <image src="../../assets/images/ic_list@3x.png"></image>
+        <view>森林排行榜</view>
+    </view>
+</view>
+<view class="mask" style="display:{{isShow}};opacity:{{opacity}}">
+    <view class="model">
+        <view class="title">你确定要放弃吗？</view>
+        <view>你充满活力的小树将会枯萎</view>
+        <button bindtap="hiddenMask" class="giveUp" hoverClass="none" plain="true">取消</button>
+        <button bindtap="cancelTee" hoverClass="none" plain="true">确定</button>
+    </view>
+</view>

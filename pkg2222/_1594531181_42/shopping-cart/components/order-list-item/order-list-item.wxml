@@ -1,0 +1,42 @@
+<view class="container">
+    <view bindlongpress="deleteOrder" class="order" data-info="{{Util.encode(order)}}">
+        <view bindtap="goToOrderDetail" class="list" hoverClass="hover" hoverStartTime="50" hoverStayTime="200">
+            <block wx:for="{{order.ext_info.product_info.item_list}}" wx:key="{{item.sku_id}}">
+                <view class="item">
+                    <image class="item-img" mode="aspectFit" src="{{item.thumb_url+'/162'}}"></image>
+                    <view class="info">
+                        <text class="title">{{item.title}}</text>
+                        <text class="desc" wx:if="{{item.desc}}">{{item.desc}}</text>
+                        <view class="wrap-price-quantity">
+                            <text class="price">{{Util.fixPrice(item.unit_price)}}</text>
+                            <text class="quantity">X{{item.amount}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="dash" wx:if="{{index<order.ext_info.product_info.item_list.length-1}}"></view>
+            </block>
+        </view>
+    </view>
+</view>
+<wxs module="Util">
+module.exports.fixPrice = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num.toString() === 'NaN') {
+        return ('-')
+    };
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+module.exports.fixExpressFee = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num.toString() === 'NaN') {
+        return ('-')
+    };
+    if (num === 0) {
+        return ('包邮')
+    };
+    return ("含运费￥" + ((num / 100).toFixed(2)))
+});
+module.exports.encode = (function(obj) {
+    return (encodeURIComponent(JSON.stringify(obj)))
+});
+</wxs>

@@ -1,0 +1,7 @@
+.register-wrap {
+    margin-top: 50px;
+}
+
+.error-message {
+    color: #E64340;
+}

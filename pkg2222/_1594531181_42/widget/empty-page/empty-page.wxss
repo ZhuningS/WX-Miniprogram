@@ -1,0 +1,20 @@
+.wrapper {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    margin-top: 160rpx;
+    height: 144rpx;
+}
+
+.title {
+    margin-top: 46rpx;
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #888888;
+    text-align: center;
+}

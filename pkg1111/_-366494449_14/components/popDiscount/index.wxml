@@ -1,0 +1,30 @@
+<template name="popDiscount">
+    <view class="popDis">
+        <view bindtap="_closeDis" class="popDis_mask"></view>
+        <view class="popDis_content" wx:if="{{disCountStatus==0}}">
+            <view style="position: relative;text-align:center;margin-top:96rpx; margin-left: 10rpx;">
+                <view class="avatar">
+                    <image src="{{avatar||logo}}"></image>
+                </view>
+                <view class="name">{{nickname}}</view>
+                <view class="text">送您一张专属折扣券</view>
+                <view bindtap="_getDiscount" class="popbtn">领取优惠</view>
+                <view bindtap="_closeDis" class="popDis_close">
+                    <image src="/images/card/X@3x.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="popDis_content2" wx:if="{{disCountStatus==1}}">
+            <view style="position: relative;text-align:center;margin-top:55rpx;margin-left: -14rpx;">
+                <view style="font-size:28rpx;color: #333">恭喜您获得了</view>
+                <view style="color:#e4331c;font-size:32rpx;margin-top:12rpx">
+                    <text style="margin-right:6rpx;font-size: 80rpx;">{{discount_num}}</text>折</view>
+                <view style="margin-top:100rpx;color:#fff;font-size:40rpx;">商城全场专属折扣券</view>
+                <view bindtap="_jump" data-opentype="redirectTo" data-url="/pages/shop/index" style="color: #333; font-size: 32rpx;letter-spacing:2rpx;margin-top:60rpx;">立即使用</view>
+            </view>
+            <view bindtap="_closeDis" class="popDis_close" style="bottom:-110rpx;">
+                <image src="/images/card/X@3x.png"></image>
+            </view>
+        </view>
+    </view>
+</template>

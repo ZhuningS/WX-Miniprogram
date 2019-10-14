@@ -1,0 +1,24 @@
+<view class="container">
+    <view class="rel" wx:if="{{store.length!=0}}" wx:for="{{store}}">
+        <view class="store ab udlr">
+            <view class="store_img">
+                <image mode="aspectFill" src="{{item.logo}}"></image>
+            </view>
+            <view bindtap="yellow_info" class="store_info" data-id="{{item.id}}" data-user_id="{{item.user_id}}">
+                <view>{{item.company_name}}</view>
+                <view style="display:flex;align-items:center;">
+                    <view>电话:{{item.tel2}}</view>
+                </view>
+                <view class="gobyndsingle">
+                    <image mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/xiangqingdizhi@3x.png"></image>{{item.company_address}}</view>
+            </view>
+            <view bindtap="phone" class="ab ud phone" data-tel="{{item.tel}}">
+                <image mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/telephone.png"></image>
+                <text>{{item.distance}}KM</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="none udlr" wx:if="{{store.length==0}}">
+    <image mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/none_welfare.png"></image>
+</view>

@@ -1,0 +1,48 @@
+.shopHead {
+    position: relative;
+    background: #fff;
+    height: 200rpx;
+    overflow: hidden;
+}
+
+.shopname {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 50rpx;
+    left: 30rpx;
+    z-index: 12;
+}
+
+.shopname image {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 8rpx;
+}
+
+.shopname .text {
+    font-size: 28rpx;
+    color: #fff;
+    margin-left: 20rpx;
+}
+
+.renzheng {
+    display: flex;
+    align-items: center;
+    font-size: 20rpx;
+    padding: 4rpx 10rpx;
+    border-radius: 4rpx;
+    font-weight: 300;
+    background: rgba(0,0,0,0.5);
+    line-height: 30rpx;
+    width: 128rpx;
+    text-align: center;
+    justify-items: center;
+    white-space: nowrap;
+}
+
+.renzheng image {
+    width: 22rpx;
+    height: 22rpx;
+    margin-right: 6rpx;
+}

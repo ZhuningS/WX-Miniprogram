@@ -1,0 +1,41 @@
+<template name="mBargain">
+    <block wx:if="{{dataset.selectGoodsList.length>0}}">
+        <view class="mod-title" wx:if="{{dataset.showTitle}}">
+            <text class="title">{{dataset.text}}</text>
+            <view bindtap="_jump" class="more" data-url="/pages/goodsList/listBargain/index">
+                <text>更多</text>
+                <image class="arrowIcon" src="/images/icon/arrow.png"></image>
+            </view>
+        </view>
+        <view class="{{layout=='single'?'newGoodStyle':'newGoodStyle2'}}" style="margin-bottom:{{style.marginBottom}};margin-top:{{style.marginTop}}">
+            <view bindtap="_jump" class="newgoodsItem" data-url="/pages/goodsDetail/detailKan/detailKan?id={{item.id}}" wx:for="{{dataset.selectGoodsList}}" wx:key="id">
+                <view class="newgoodsItemWrap">
+                    <view class="newgoodsImgWrap">
+                        <image class="newgoodsImg" lazyLoad="true" mode="aspectFill" src="{{item.thumb}}"></image>
+                    </view>
+                    <view class="newgoodsInfoWrap">
+                        <view class="newgoodsName">{{item.name}}</view>
+                        <view style="display:flex;align-items:center">
+                            <view style="color: #aaa;font-size:22rpx;display:flex;align-items:center">
+                                <block wx:if="{{item.bargain_status==1}}">距结束</block>
+                                <block wx:elif="{{item.bargain_status==0}}">距开始</block>
+                                <view wx:if="{{kantimeArr[index].timeStr.d}}">
+                                    <text style="color:#666;font-size:22rpx;margin:0 4rpx">{{kantimeArr[index].timeStr.d}}</text>天</view>
+                            </view>
+                            <view class="timeDown">
+                                <view>{{kantimeArr[index].timeStr.h}}</view>:<view>{{kantimeArr[index].timeStr.m}}</view>:<view>{{kantimeArr[index].timeStr.s}}</view>
+                            </view>
+                        </view>
+                        <view class="newgoodsPrice">
+                            <view>
+                                <text class="goods__price__unit">底价￥</text>{{item.bargain_onsale}}
+                </view>
+                        </view>
+                        <view class="btn-buy" wx:if="{{isPay==1&&item.is_forbid_pay==0}}">发起砍价</view>
+                        <view class="btn-buy" wx:if="{{isPay==0||item.is_forbid_pay==1}}">立即咨询</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</template>

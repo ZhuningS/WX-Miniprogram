@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px;
+    font-weight: bold;
+    font-size: 14px;
+    background: transparent;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.button.size-medium,.button.size-medium view {
+    height: 20px;
+}
+
+.button.size-large {
+    height: 40px;
+    width: 630rpx;
+}
+
+.button.theme-text {
+    height: 32px;
+    line-height: 26px;
+    padding: 2px 6px;
+    background: transparent;
+    color: #000000;
+}
+
+.button.theme-light {
+    background: #FFFFFF;
+    color: #000000;
+}
+
+.button.theme-ghost {
+    border: 1px solid #000000;
+    color: 1px solid #000000;
+    background: #FFFFFF;
+}
+
+.button.theme-dark {
+    background: #000000;
+    color: #FFFFFF;
+}
+
+.button.is-fixed {
+    position: fixed;
+    z-index: 9999;
+    width: auto;
+    height: 48px;
+    bottom: 16rpx;
+    left: 16rpx;
+    right: 16rpx;
+}
+
+.button.is-fixed.size-large {
+    font-size: 16px;
+}
+
+.button.is-float {
+    padding: 0 15px;
+    border-radius: 25px;
+    background-color: #000000;
+    color: #FFFFFF;
+    height: 50px;
+    width: auto;
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1),0 20px 20px rgba(0,0,0,0.05);
+}
+
+.button.is-float.theme-light {
+    background: #FFFFFF;
+    color: #000000;
+}

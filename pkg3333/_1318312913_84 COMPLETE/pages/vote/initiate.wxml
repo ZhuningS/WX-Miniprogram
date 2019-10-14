@@ -1,0 +1,93 @@
+<view class="vote-create-ctn">
+    <view class="display2">
+    发起{{config.actions.vote}}
+  </view>
+    <form bindsubmit="onSubmitNextStep" wx:if="{{step==='type'}}">
+        <view class="vote-content-type-ctn {{option_content_type==='detail'?'selected':''}}">
+            <view catchtap="onTapTypeOption" class="vote-type-option {{option_content_type==='text'?'selected':''}}" data-content-type="text">
+                <image class="icon" src="./../../images/new_assets/icon_category.svg"></image>
+                <view>
+          文字选项
+        </view>
+            </view>
+            <view catchtap="onTapTypeOption" class="vote-type-option {{option_content_type==='image'?'selected':''}}" data-content-type="image">
+                <image class="icon" src="./../../images/new_assets/icon_img_black.svg"></image>
+                <view>
+          图片选项
+        </view>
+            </view>
+        </view>
+    </form>
+    <form bindsubmit="onSubmitVote" wx:if="{{step==='detail'}}">
+        <view class="option-ctn">
+            <view class="description">{{config.actions.vote}}标题</view>
+            <view class="input-ctn">
+                <view class="input-wrapper">
+                    <input bindinput="onInputTitle" class="input" confirmType="done" name="title" placeholder="{{config.actions.vote}}标题" value="{{title}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="option-ctn">
+            <view class="description">补充内容（选填）</view>
+            <view class="input-ctn">
+                <view class="input-wrapper">
+                    <input bindinput="onInputDescription" class="input" confirmType="done" maxlength="-1" name="title" placeholder="描述" value="{{description}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="option-ctn" wx:if="{{option_content_type==='text'}}">
+            <view class="description">选项</view>
+            <view class="input-ctn" wx:for="{{options}}" wx:for-item="option" wx:key="id">
+                <view class="input-wrapper">
+                    <input bindinput="onInputOption" class="input" confirmType="done" data-id="{{option.id}}" placeholder="{{'选项'+index+1}}" value="{{option.text}}"></input>
+                    <image catchtap="onTapDeleteOption" class="badge" data-index="{{index}}" src="/images/new_assets/icon_delete.svg"></image>
+                </view>
+            </view>
+            <button catchtap="onTapAddOption" class="button large">
+                <image class="icon_16px" src="/images/new_assets/icon_add_white.svg"></image>
+            </button>
+        </view>
+        <view class="option-ctn" wx:if="{{option_content_type==='image'}}">
+            <view class="label1">选项</view>
+            <view class="image-ctn">
+                <view catchtap="onTapResetImageOption" class="image-option {{index>1?'notline1':''}}" data-id="{{option.id}}" data-index="{{index}}" wx:for="{{options}}" wx:for-item="option" wx:key="id">
+                    <image catchtap="onTapDeleteOption" class="badge" data-index="{{index}}" src="/images/new_assets/icon_delete.svg" wx:if="{{option.cover}}"></image>
+                    <image class="image" mode="aspectFill" src="{{option.cover}}" wx:if="{{option.cover}}"></image>
+                    <view class="image" wx:else>
+                        <image class="icon_20px" src="/images/new_assets/icon_add_white.svg"></image>
+                    </view>
+                    <view class="description" style="color:#999">{{'选项 '+index+1}}</view>
+                </view>
+                <view class="image-option {{options.length>1?'notline1':''}}" wx:if="{{options[0].cover&&options[1].cover}}">
+                    <view catchtap="onTapAddImageOption" class="image">
+                        <image class="icon_20px" src="/images/new_assets/icon_add_white.svg"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <picker bindchange="onChangePicker" bindcolumnchange="onChangeColumn" mode="multiSelector" range="{{calendar}}" value="{{deadline_value}}">
+            <view class="option-ctn timer">
+                <view class="body">截止时间</view>
+                <view class="body">{{deadline_display}}
+          <image class="icon icon_16px" src="./../../images/new_assets/icon_corner_small_right.svg"></image>
+                </view>
+            </view>
+        </picker>
+        <view catchtap="onTapMoreOptions" class="title">
+            <view class="label1">更多设置</view>
+            <image class="icon_20px more {{moreOptions?'open':''}}" src="/images/new_assets/icon_corner_small_down.svg"></image>
+        </view>
+        <view class="moreOptions-ctn {{moreOptions?'open':''}}">
+            <view class="option-ctn">
+                <view class="body">是否多选</view>
+                <checkbox catchtap="onTapMultiOptions" checked="{{option_type==='multi'}}" class="checkbox" color="#000"></checkbox>
+            </view>
+            <view class="option-ctn">
+                <view class="body">是否匿名</view>
+                <checkbox catchtap="onTapAnonymous" checked="{{is_anonymous}}" class="checkbox" color="#000"></checkbox>
+            </view>
+        </view>
+        <button class="button large" formType="submit">发起{{config.actions.vote}}</button>
+    </form>
+</view>
+<include src="../components/global.wxml"></include>

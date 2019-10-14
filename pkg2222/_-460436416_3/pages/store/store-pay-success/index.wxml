@@ -1,0 +1,13 @@
+<view class="page msg_success ">
+    <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+            <icon size="88" type="success"></icon>
+        </view>
+        <view class="weui-msg__text-area">
+            <text class="weui-msg__title">支付成功</text>
+        </view>
+        <view class="weui-msg__opr-area">
+            <button bindtap="gohome" class="weui-btn weui-btn_primary" type="primary">返回</button>
+        </view>
+    </view>
+</view>

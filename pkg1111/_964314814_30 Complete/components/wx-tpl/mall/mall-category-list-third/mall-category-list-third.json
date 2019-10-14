@@ -1,0 +1,10 @@
+{
+    "component": true,
+    "usingComponents": {
+        "show_dialog": "/components/wx-tpl/show_dialog/show_dialog",
+        "copyright": "/components/wx-tpl/copyright/copyright/copyright",
+        "NoData": "/components/wx-tpl/nodata/index",
+        "FollowGZH": "/components/wx-tpl/follow_gzh/follow_gzh",
+        "custom-follow": "/components/wx-tpl/custom-page-tpl/custom-page/custom-follow/custom-follow"
+    }
+}

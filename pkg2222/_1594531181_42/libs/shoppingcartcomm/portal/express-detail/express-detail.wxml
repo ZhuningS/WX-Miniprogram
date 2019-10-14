@@ -1,0 +1,58 @@
+<navigation-bar title="物流信息"></navigation-bar>
+<view class="wrapper {{phone=='iPhoneX'&&expressInfoIndex==expressInfoList.length-1?'iPhoneX':''}}" wx:for="{{expressInfoList}}" wx:for-index="expressInfoIndex" wx:for-item="expressInfo" wx:key="express_code">
+    <view class="section">
+        <view class="express-info-container">
+            <image class="express-company-logo" mode="aspectFit" src="{{expressInfo.express_company_logo}}"></image>
+            <view class="express-company-info">
+                <view class="row express-company">物流公司：{{expressInfo.express_company_name}}</view>
+                <text class="row" selectable="true">物流单号：{{expressInfo.express_code}}</text>
+            </view>
+        </view>
+        <view class="detail">
+            <view class="item" wx:for="{{expressInfo.express_info_list}}" wx:key="{{item.accept_time}}">
+                <view class="status-graph">
+                    <view class="line"></view>
+                    <view class="dot"></view>
+                </view>
+                <view class="info">
+                    <text class="desc" selectable="true">{{item.accept_address}}</text>
+                    <view class="date-time">{{item.accept_time}}</view>
+                </view>
+            </view>
+            <view class="item" wx:if="{{expressInfo.express_info_list.length==0}}">
+                <view class="info empty">
+                    <view class="no-express">暂无物流信息</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="section">
+        <view class="header">商品信息</view>
+        <view class="separator"></view>
+        <view class="goods-detail">
+            <view class="goods" wx:for="{{expressInfo.goods_list}}" wx:key="{{item.item_code+item.sku_id}}">
+                <image-view class="goods-img" mode="aspectFill" src="{{item.goods_img_url}}"></image-view>
+                <view class="goods-info">
+                    <view class="goods-info__name">{{item.name}}</view>
+                    <view class="goods-info__desc" wx:if="{{item.desc}}">{{item.desc}}</view>
+                    <view class="goods-info__price-info">
+                        <view class="goods-info__price">{{Util.fixPrice(item.unit_price)}}</view>
+                        <view class="goods-info__quantity">x{{item.quantity}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="bottom">
+        <view bindtap="onClickOrderDetail" class="order-detail-btn">查看全部订单详情</view>
+    </view>
+</view>
+<wxs module="Util">
+module.exports.fixPrice = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num.toString() === 'NaN') {
+        return ('-')
+    };
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+</wxs>

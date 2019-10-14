@@ -1,0 +1,13 @@
+<view id="header">
+    <view style="height:{{headerHeight}}rpx;"></view>
+    <view class="capsule">
+        <view bindtap="reportTee" class="seat"></view>
+        <image mode="widthFix" src="../../assets/images/arr_left_black.png"></image>
+    </view>
+</view>
+<view class="container">
+    <image class="title" mode="widthFix" src="../../assets/images/font_two@3x.png" style="margin-top: {{top+164}}rpx"></image>
+    <image class="bird" mode="widthFix" src="../../assets/images/img_bird@3x.png" style="top: {{top+90}}rpx;"></image>
+    <image class="tee" mode="widthFix" src="{{img}}"></image>
+    <button hoverClass="none" openType="share" plain="true">炫耀一下</button>
+</view>

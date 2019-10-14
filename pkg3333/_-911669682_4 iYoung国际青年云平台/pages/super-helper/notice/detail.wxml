@@ -1,0 +1,51 @@
+<view class="contenter">
+    <view class="notice-detail">
+        <view class="detail-content">
+            <view class="text-title gridXb f18 mb10 ">
+                <text>{{title}}</text>
+            </view>
+            <view class="text-content f16">
+                <text>{{remark}}</text>
+            </view>
+            <view class="vote-image mt10" hidden="{{!coverPath}}">
+                <image mode="widthFix" src="{{coverPath}}"></image>
+            </view>
+            <view class="notice-detail-user grey mt10 flex">
+                <view class="notice-user-msg sub f12">
+                    <image class="user-img mr10" src="{{headimgurl}}"></image>
+                    <text class="user-name lineText mr5">{{nickname}}</text>
+                    <text class="notice-time">{{create_time}}</text>
+                </view>
+                <view class="del f14">
+                    <text bindtap="onDeleteTap" class="iconfont icon-delete tc"></text>
+                </view>
+            </view>
+        </view>
+        <view class="people-look grey">
+            <text class="iconfont icon-peoplefill linght"></text>
+            <text class="green ml10">{{click}}</text>
+            <text>人已确认收到</text>
+        </view>
+        <view class="praise tc">
+            <view class="praise-people tl flex" wx:for="{{user_lists}}" wx:key="{{index}}">
+                <view class="mr10">
+                    <image class="praise-people-img" mode="aspectFill" src="{{item.headimgurl}}"></image>
+                </view>
+                <view class="sub lineText mr10">{{item.nickname}}</view>
+                <text class="grey">{{item.create_time}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="flating-bottom">
+        <button bindtap="onShowShareTap" class="green transition-duration-150 active-bg">分享</button>
+    </view>
+    <view class="share-bg write" style="display:{{showShare?'block':'none'}}">
+        <view class="share-content f16 tc">
+            <view>点击右上角：
+        <text class="iconfont icon-fenxiangjiantou"></text>
+            </view>
+            <text>分享给你的小伙伴哦！</text>
+        </view>
+    </view>
+</view>
+<duoguan_ad ad_type="duoguan_notice_info_bottom"></duoguan_ad>

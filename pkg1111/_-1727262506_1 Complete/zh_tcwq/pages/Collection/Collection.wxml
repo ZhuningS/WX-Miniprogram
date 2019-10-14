@@ -1,0 +1,83 @@
+<view>
+    <view class="weui-navbar2">
+        <view bindtap="navClick" class="weuiitem2 {{activeIndexe==index?'item_on':''}}" id="{{index}}" wx:for="{{tabs}}">
+            <view>{{item}}</view>
+        </view>
+        <view class="weslider2" style="left: {{sliderLefte}}px; transform: translateX({{sliderOffsete}}px); -webkit-transform: translateX({{sliderOffsete}}px);"></view>
+    </view>
+    <view class="" hidden="{{activeIndexe!=0}}">
+        <view wx:if="{{classification_info.length>0}}">
+            <view class="weui-tab__content content" wx:for="{{classification_info}}" wx:for-item="tiezi">
+                <view bindlongtap="qxsc" data-tzid="{{tiezi.information_id}}">
+                    <view class="content_top">
+                        <view class="content_left">
+                            <image class="content_img" src="{{tiezi.is_houtai==1?url3:''}}{{tiezi.is_houtai==1?tiezi.user_img2:tiezi.user_img}}"></image>
+                            <view class="content_zhong">
+                                <view class="content_name">{{tiezi.is_houtai==1?'平台发布':tiezi.user_name}}</view>
+                                <view class="content_text">
+                                    <view class="content_zheng">{{tiezi.type_name}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view bindtap="phone" class="content_right" data-id="{{tiezi.user_tel}}">
+                            <view class="rel">
+                                <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/phone1.gif"></image>
+                            </view>
+                            <view>拨打电话</view>
+                        </view>
+                    </view>
+                    <view class="content_wen">{{tiezi.details}}
+        </view>
+                    <view class="content_picture" wx:if="{{tiezi.img1!=''}}">
+                        <image src="{{tiezi.is_houtai==1?url3:''}}{{item}}" wx:for="{{tiezi.img1}}"></image>
+                    </view>
+                </view>
+                <view class="content_chakan">
+                    <view class="content_info">{{tiezi.time}}发布</view>
+                    <view bindtap="see" class="content_info2" data-id="{{tiezi.id}}">查看详情>></view>
+                </view>
+            </view>
+        </view>
+        <view class="none" wx:if="{{classification_info.length==0}}">
+            <view class="ab udlr">
+                <view class="rel">
+                    <image class="ab udlr" mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/tie1.png"></image>
+                </view>
+                <view>暂无已经收藏的帖子</view>
+            </view>
+        </view>
+    </view>
+    <view class="" hidden="{{activeIndexe!=1}}" style="background:#fff">
+        <view class="store rel" wx:for="{{sellers}}">
+            <view bindlongtap="qxsjsc" class="store_img fl rel" data-sjid="{{item.store_id}}">
+                <image class="ab udlr" mode="aspectFill" src="{{item.is_houtai==1?url3:''}}{{item.logo}}"></image>
+            </view>
+            <view class="store_info fl">
+                <view bindlongtap="qxsjsc" data-sjid="{{item.store_id}}">{{item.store_name}}</view>
+                <view bindlongtap="qxsjsc" class="rel gobyndsingle" data-sjid="{{item.store_id}}">
+                    <image class="store_icon ab ud" mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/address.png"></image>
+          {{item.address}}
+        </view>
+                <view class="store_star fl">
+                    <view bindlongtap="qxsjsc" class="rel" data-sjid="{{item.store_id}}" wx:for="{{item.star}}">
+                        <image bindlongtap="qxsjsc" class="ab udlr" data-sjid="{{item.store_id}}" mode="widthFix" src="{{item.img}}"></image>
+                    </view>
+                </view>
+                <view bindtap="store" class="content_info2" data-id="{{item.store_id}}" style="font-size:28rpx;text-align:left;margin-left:10rpx">查看详情>></view>
+            </view>
+            <view class="store_tel ab ud">
+                <image bindtap="phone1" data-tel="{{item.tel}}" mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/telephone.png"></image>
+                <view>{{item.distance}}KM</view>
+            </view>
+        </view>
+        <view class="none" wx:if="{{sellers.length==0||sellers==null}}">
+            <view class="ab udlr">
+                <view class="rel">
+                    <image class="ab udlr" mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/tie1.png"></image>
+                </view>
+                <view>暂无已经收藏的帖子</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="loading rel"></view>

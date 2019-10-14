@@ -1,0 +1,69 @@
+<view class="{{currentSkin}}">
+    <view class="sell-hear skin_bg f fc-h fc">
+        <view bindtap="goPeople" class="f fv fc">
+            <text class="f60 t-b">{{vm.people.RecordCount}}</text>
+            <text class="mt5">累计客户></text>
+        </view>
+        <view bindtap="goOrder" class="f fv fc">
+            <text class="f60 t-b">{{vm.order.RecordCount}}</text>
+            <text class="mt5">推广订单></text>
+        </view>
+    </view>
+    <view class="sell f fv" wx:if="{{vm.people.SalesManRecordUserList!=null}}">
+        <view class="hear f fc">
+            <text class="f1 f32 mr20">累计客户</text>
+            <view bindtap="goPeople" class="f fc">查看全部<text class="dzicon icon-xiala-copy-right"></text>
+            </view>
+        </view>
+        <view class="p-main f fc" wx:if="{{index<2}}" wx:for="{{vm.people.SalesManRecordUserList}}" wx:key="key">
+            <image src="{{item.ImgLogo}}"></image>
+            <view class="p-right f1 f fv">
+                <view class="f fc f1">
+                    <view class="f36 f1">{{item.NickName}}</view>
+                    <view>
+                        <text class="c999">保护期:</text>{{item.cur_protected_time}}天</view>
+                </view>
+                <view class="f fc f1 fj mt20">
+                    <view>
+                        <text class="c999">订单:</text>{{item.orderCount}}</view>
+                    <view>
+                        <text class="c999">成交额:</text>￥{{item.orderMoneyStr}}</view>
+                    <view>
+                        <text class="c999">佣金:</text>￥{{item.cpsMoneyStr}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="sell f fv" wx:if="{{vm.order.List!=null}}">
+        <view class="hear f fc">
+            <text class="f1 f32 mr20">推广订单</text>
+            <view bindtap="goOrder" class="f fc">查看全部<text class="dzicon icon-xiala-copy-right"></text>
+            </view>
+        </view>
+        <view class="o-main" wx:if="{{index<2}}" wx:for="{{vm.order.List}}" wx:for-item="good" wx:key="key">
+            <view class="o-num f fj">
+                <text class="f32 c666">{{good.orderNumber}}</text>
+                <text class="skin_txt">已结算</text>
+            </view>
+            <block wx:for="{{good.listOrderGoodsDetail}}" wx:key="key">
+                <viwe class="o-pro f fc">
+                    <image src="{{item.goodImgUrl}}"></image>
+                    <view class="o-right f1 f fv fj">
+                        <view class="f32 line line1">{{item.goodname}}</view>
+                        <view class="f fj fc">
+                            <text class="f32 f1">￥{{item.price}}</text>
+                            <text class="f32" style="color:#F20033">收益占比：<text class="f38">{{item.cps_rate}}%</text>
+                            </text>
+                        </view>
+                    </view>
+                </viwe>
+                <view class="w-100 f fj fc" style="padding-bottom:38rpx;">
+                    <text class="f32 c666">{{good.addTimeStr}}</text>
+                    <text>赚取佣金：<text class="f38">￥{{item.cpsMoneyStr}}</text>
+                    </text>
+                </view>
+            </block>
+        </view>
+    </view>
+    <wxc-abnor type="DATA" wx:if="{{vm.people.SalesManRecordUserList==null&&vm.order.List==null}}"></wxc-abnor>
+</view>

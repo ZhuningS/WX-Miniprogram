@@ -1,0 +1,245 @@
+<import src="../../../utils/wxParse/wxParse.wxml"></import>
+<import src="../../../components/im/index.wxml"></import>
+<import src="../../../components/login/index.wxml"></import>
+<import src="../../../components/msgTip/index.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}" style="min-height: {{winHei}}px">
+    <view bindtap="_jumpToCard" class="shareCard" data-cardid="{{cardInfo.id}}" hidden="{{!showCardInfo}}" style="box-shadow:none">
+        <view class="avatar">
+            <image src="{{cardInfo.avatar}}"></image>
+        </view>
+        <view class="center">
+            <text class="name">{{cardInfo.name}}</text>
+            <text class="position">{{cardInfo.position}}</text>
+        </view>
+        <view class="right">查看名片 ></view>
+    </view>
+    <view class="topbar">
+        <view bindtap="_jump" data-url="/pages/my/home/index">
+            <image src="/images/card/wode-01@3x.png"></image>
+        </view>
+        <view bindtap="_jump" data-url="/pages/cart/index" style="position:relative" wx:if="{{isNeedAddr==1}}">
+            <image src="/images/card/gouwu-01@3x.png"></image>
+            <view class="cartBadge" wx:if="{{cartAmount>0}}">{{cartAmount}}</view>
+        </view>
+        <view>
+            <button class="share-btn" openType="share">
+                <image src="/images/card/fenxiang-01@3x.png"></image>
+            </button>
+        </view>
+    </view>
+    <view class="goods-item">
+        <form>
+            <button class="nobutton" formType="submit" style="position: relative">
+                <view class="fxbg" wx:if="{{distribute_is_open==1&&distribute_goods_show==1&&goodsInfo.is_forbid_pay!=1}}">
+                    <view class="price">
+                        <text style="font-size:22rpx; margin-right: 4rpx">¥</text>{{distribute_money_out}}</view>
+                    <view>分销佣金</view>
+                </view>
+                <swiper autoplay="{{true}}" bindchange="_swiperChange" duration="{{500}}" indicatorDots="{{true}}" interval="{{5000}}" style="height:750rpx">
+                    <swiper-item wx:for="{{goodsInfo.picture}}" wx:key="index">
+                        <image bindtap="_previewImg" class="slide-image" data-url="{{item}}" data-urls="{{goodsInfo.picture}}" mode="aspectFill" src="{{item}}"></image>
+                    </swiper-item>
+                </swiper>
+            </button>
+        </form>
+        <view class="goods-item-others">
+            <view class="goods-info">
+                <view class="goodsSaleWrap">
+                    <view class="price" wx:if="{{goodsInfo.price!=0}}">
+                        <text style="font-size: 36rpx;">￥</text>{{goodsInfo.groups.price}}
+                        </view>
+                    <view class="oldprice">¥ {{goodsInfo.price}}</view>
+                    <view style="font-size: 28rpx;color: #fff;">
+                        <text style="color: #fcf149; font-size: 28rpx;">{{goodsInfo.groups.total}}</text>人团ㆍ已拼{{goodsInfo.numsell}}件</view>
+                </view>
+            </view>
+            <view class="goods-name-wrap">
+                <text class="goods-name">{{goodsInfo.name}}</text>
+                <view style="font-size:24rpx;color:#999;margin-top:10rpx;" wx:if="{{goodsInfo.shorttitle}}">{{goodsInfo.shorttitle}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="geren" wx:if="{{hasVoice}}">
+        <view class="recordWarp">
+            <view class="avatar">
+                <image src="{{cardAvatar}}?imageView2/2/w/200/format/jpg/q/90"></image>
+            </view>
+            <view>
+                <view bindtap="_playRecord" class="record" data-record="{{record.record_url}}" wx:if="{{hasVoice}}">
+                    <view class="laba {{playStatus==1?'play':''}}"></view>
+                    <view class="text">
+                        <text>{{record.record_second}}''</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style="background: #fff;margin: 20rpx  0;" wx:if="{{groupsAll.length>0}}">
+        <view style="padding: 20rpx 30rpx;border-bottom: 1px solid #eee;font-size: 28rpx; color: #666">有{{groupsAll.length}}个团正在拼,可直接参与</view>
+        <view>
+            <swiper autoplay="true" circular="true" displayMultipleItems="2" duration="500" interval="3000" vertical="true" wx:if="{{groupsAll.length>2}}">
+                <swiper-item wx:for="{{groupsAll}}" wx:key="teamid">
+                    <view class="kaituan-list">
+                        <view style="align-items:center;display:flex;">
+                            <view class="avtar">
+                                <image src="{{item.user.logo}}"></image>
+                                <image src="/images/card/jiaren@3x.png" style="width: 80rpx;height: 80rpx; position: relative;left:-16rpx; z-index: 9"></image>
+                            </view>
+                            <view class="nickname">{{item.user.nickname}}</view>
+                        </view>
+                        <view style="display:flex;align-items:center;">
+                            <view class="haicha">差<text style="color: #ff4751">{{item.lastnum}}</text>人成团</view>
+                            <button bindtap="_tobuy" class="button-cantuan" data-buyType="2" data-teamid="{{item.teamid}}">参加拼团</button>
+                        </view>
+                    </view>
+                </swiper-item>
+            </swiper>
+            <block wx:else>
+                <view class="kaituan-list" wx:for="{{groupsAll}}" wx:key="teamid">
+                    <view style="align-items:center;display:flex;">
+                        <view class="avtar">
+                            <image src="{{item.user.logo}}"></image>
+                            <image src="/images/card/jiaren@3x.png" style="width: 80rpx;height: 80rpx; position: relative;left:-16rpx; z-index: 9"></image>
+                        </view>
+                        <view class="nickname">{{item.user.nickname}}</view>
+                    </view>
+                    <view style="display:flex;align-items:center;">
+                        <view class="haicha">差<text style="color: #ff4751">{{item.lastnum}}</text>人成团</view>
+                        <button bindtap="_tobuy" class="button-cantuan" data-buyType="2" data-teamid="{{item.teamid}}">参加拼团</button>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="goods-detail" wx:if="{{!!article}}">
+        <view class="goods-detail-title">
+            <text>商品详情</text>
+        </view>
+        <view class="goods-detail-content wxParseContainer">
+            <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+        </view>
+    </view>
+    <view class="foot">
+        <view class="cart-wrap">
+            <view bindtap="_jump" class="cartItem" data-opentype="redirectTo" data-url="/pages/shop/index">
+                <image class="icon-cart" mode="aspectFit" src="/images/card/shangcheng@3x.png"></image>
+                <text class="itemText">商城</text>
+            </view>
+        </view>
+        <view class="cart-wrap">
+            <view bindtap="_jumpToChat" class="cartItem">
+                <image class="icon-cart" mode="aspectFit" src="/images/card/zixun@3x.png"></image>
+                <text class="itemText">咨询</text>
+                <view class="msgNum" wx:if="{{msgNum>0}}">{{msgNum}}</view>
+            </view>
+        </view>
+        <view class="btn-wrap">
+            <block wx:if="{{isPay==1&&goodsInfo.is_forbid_pay==0}}">
+                <button bindtap="_buy" class="btn-pingtuan" data-buyType="0" formType="submit" style="width:80%;line-height:54rpx">
+                    <view style="font-size: 28rpx;height: 40rpx;font-weight: 300;">单独购买</view>
+                    <view style="font-size: 28rpx;line-height: 40rpx;font-weight: 300;">¥ {{goodsInfo.price}}</view>
+                </button>
+                <button class="btn-secondary" data-mode="2" formType="submit" openType="share" style="line-height:54rpx" wx:if="{{isMember==1||isHead==1}}">
+                    <view style="font-size: 22rpx;height: 40rpx;font-weight: 300;" wx:if="{{isMember==1&&isHead==0}}">
+                                您已参团
+                            </view>
+                    <view style="font-size: 22rpx;height: 40rpx;font-weight: 300;" wx:if="{{isHead==1}}">
+                                您已开团
+                            </view>
+                    <view style="font-size: 28rpx;line-height: 40rpx;font-weight: 300;">邀请好友参团</view>
+                </button>
+                <block wx:else>
+                    <button bindgetuserinfo="_buy" class="btn-secondary" data-buyType="1" openType="getUserInfo" style="line-height:54rpx" wx:if="{{goodsInfo.groups.status==0}}">
+                        <view style="font-size: 28rpx;height: 40rpx;font-weight: 300;">发起拼团</view>
+                        <view style="font-size: 26rpx;line-height: 40rpx;font-weight: 300;">¥ {{goodsInfo.groups.price}}</view>
+                    </button>
+                    <view class="btn-secondary" wx:elif="{{goodsInfo.groups.status==1}}">活动已结束</view>
+                    <view class="btn-secondary" wx:elif="{{goodsInfo.groups.status==2}}">活动未开始</view>
+                </block>
+            </block>
+            <block wx:else>
+                <button bindgetphonenumber="_getmobile" class="btn-secondary" formType="submit" openType="getPhoneNumber" wx:if="{{hasMobile==0}}">立即咨询</button>
+                <button bindtap="_jumpToChat" class="btn-secondary" hoverClass="none" wx:if="{{hasMobile==1}}">立即咨询</button>
+            </block>
+        </view>
+    </view>
+</view>
+<view class="panel-cm" style="display:{{panel.isShow?'block':'none'}}">
+    <view animation="{{panel.opacityAnimation}}" bindtap="_closePanel" class="panel-mask"></view>
+    <view animation="{{panel.animation}}" class="panel-content">
+        <scroll-view scrollY="{{true}}">
+            <view class="panel-g-item dib-wrap">
+                <image class="goodsImg" mode="aspectFill" src="{{goodsInfo.picture[0]}}"></image>
+                <view class="g-mid dib">
+                    <view class="g-title">
+                        <text>{{goodsInfo.name}}</text>
+                    </view>
+                    <view class="price">
+                        <text id="J-sku-price" wx:if="{{curSkuItem.price&&curSkuItem.price!=''}}">￥{{curSkuItem.price}}</text>
+                        <text wx:else>
+                            <block wx:if="{{panel.type==1}}">￥{{goodsInfo.groups.price}}</block>
+                            <block wx:else>￥{{goodsInfo.price}}</block>
+                        </text>
+                    </view>
+                </view>
+                <form bindsubmit="_closePanel" reportSubmit="true">
+                    <button class="nobutton" formType="submit" style="padding: 0 40rpx 40rpx;position: relative;">
+                        <view class="panel-close dib"></view>
+                    </button>
+                </form>
+            </view>
+            <view class="cm-content">
+                <view wx:for="{{skuList}}" wx:for-index="groupIndex" wx:key="id">
+                    <view class="sku-label">
+                        <text>{{item.name}}</text>
+                    </view>
+                    <view bindtap="_selectSku" class="sku-btn {{sku.selected?'sku-btn-selected':''}}" data-group-index="{{groupIndex}}" data-sku-index="{{skuIndex}}" wx:for="{{item.data}}" wx:for-index="skuIndex" wx:for-item="sku" wx:key="id">
+                        <text>{{sku.name}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="cm-amount clearfix">
+                <view class="stock-num">
+                    <text>库存量：{{num}}</text>
+                    <text class="limitNum" wx:if="{{actInfo&&actInfo.limit_num}}">限购{{actInfo.limit_num}}件</text>
+                </view>
+                <view class="my-bnt">
+                    <form bindsubmit="_minus" class="dib" data-min="{{1}}" reportSubmit="true">
+                        <button class="nobutton" formType="submit">
+                            <view class="bnt {{counter.minusDisabled?'disabled':''}}">
+                                <text>－</text>
+                            </view>
+                        </button>
+                    </form>
+                    <input bindinput="_changeNum" class="ipt" data-max="{{num}}" type="number" value="{{counter.number}}"></input>
+                    <form bindsubmit="_add" class="dib" data-max="{{num}}" reportSubmit="true">
+                        <button class="nobutton" formType="submit">
+                            <view class="bnt {{counter.addDisabled?'disabled':''}}">＋</view>
+                        </button>
+                    </form>
+                </view>
+            </view>
+        </scroll-view>
+        <view class="cm-foot">
+            <form bindsubmit="_confirmBuy" reportSubmit="true" wx:if="{{panel.type==1||panel.type==2}}">
+                <button class="btn-primary groupBuyBtn_lg" formType="submit" wx:if="{{panel.type==1}}">发起拼团</button>
+                <button class="btn-primary groupBuyBtn_lg" formType="submit" wx:if="{{panel.type==2}}">我要参团</button>
+            </form>
+            <form bindsubmit="_confirmBuy" reportSubmit="true" wx:if="{{panel.type==0}}">
+                <button class="btn-primary groupBuyBtn_lg" formType="submit">立即购买</button>
+            </form>
+        </view>
+    </view>
+</view>
+<template is="msgTip" data="{{...msgInfo,msgStatus:msgStatus,cardAvatar:cardAvatar,hasMobile:hasMobile}}"></template>
+<template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>
+<view bindtap="_jump" class="btn_baoming" data-url="/pages/form/write/index?id={{goodsInfo.form_id}}&source='商品:{{goodsInfo.name}}'" wx:if="{{goodsInfo.form_id!=''&&goodsInfo.form_id>0}}">
+    <view class="btn_baoming_wrap">
+        <image src="/images/card/biaodan@3x.png"></image>
+    </view>
+    <view class="text">{{goodsInfo.botton_name}}</view>
+</view>

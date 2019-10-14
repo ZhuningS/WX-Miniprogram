@@ -1,0 +1,20 @@
+<button bindgetphonenumber="bindUserMobile" class="topBox arrowR" openType="getPhoneNumber" wx:if="{{!isAli&&action=='bind'}}">
+    <text class="iconfont icon-wx-pay"></text>
+    <text>使用微信手机号快速绑定</text>
+</button>
+<view class="main gridFour">
+    <view class="inpBox gridXb mt15">
+        <input bindinput="input" class="inp" data-field="input_mobile" disabled="{{input_mobile_disabled}}" name="input_mobile" placeholder="请输入手机号" value="{{input_mobile}}"></input>
+    </view>
+    <view class="inpBox validBox">
+        <input bindinput="input" class="inp" data-field="message_auth_code" name="message_auth_code" placeholder="请输入验证码" value="{{message_auth_code}}"></input>
+        <button catchtap="getVerifyCode" class="getBtn gridFour">{{reload_verify_time}}</button>
+    </view>
+</view>
+<button catchtap="submit" class="confirmBtn" hoverClass="none">确定</button>
+<view hidden class="tanBoc hidden">
+    <view class="modal">
+        <icon color="#333" size="38" type="success_no_circle"></icon>
+        <view>绑定成功</view>
+    </view>
+</view>

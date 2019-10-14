@@ -1,0 +1,36 @@
+@import "../../../__wuBaseWxss__/8.wxss";
+
+.hexiao-input {
+    height: 68rpx;
+    line-height: 68rpx;
+    padding: 0 20rpx;
+}
+
+.hexiao-input.gridFour::before {
+    border-color: var(--DStore-mcolor);
+}
+
+button.top-btn {
+    line-height: 68rpx;
+}
+
+.hexiao-box {
+    width: 690rpx;
+    background: #fff;
+    height: 800rpx;
+    position: relative;
+}
+
+.hexiao-btn {
+    width: 260rpx;
+    height: 260rpx;
+    line-height: 260rpx;
+    font-size: 40rpx;
+    border-radius: 50%;
+    box-shadow: 0 10rpx 40rpx 5rpx rgba(var(--DStore-mcolor-rgb),0.4);
+}
+
+.goods-img {
+    width: 160rpx;
+    height: 160rpx;
+}

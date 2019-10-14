@@ -1,0 +1,16 @@
+<view class="card-desc">{{desc}}</view>
+<view class="card-scopes" wx:if="{{item.content.length>0}}" wx:for="{{scopes}}" wx:key="title">
+    <view class="card-scopes__dashline" wx:if="{{seperator&&index!=0}}"></view>
+    <image class="card-scopes__icon" src="{{item.icon}}"></image>
+    <text class="card-scopes__title">{{item.title}}</text>
+    <view class="card-scopes__seperator"></view>
+    <text bindtap="onClickContent" data-item="{{item}}" selectable="true" style="font-size: 14px;color: #888;line-height: 24px;vertical-align: middle;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;display: inline-block;width: 380rpx;" wx:if="{{item.type=='link'}}">{{Util.genContent(item)}}</text>
+    <view bindtap="onClickContent" class="card-scopes__content {{item.type}} {{item.multiLines?'multi-lines':''}}" data-item="{{item}}" selectable="{{item.type=='link'}}" wx:else>{{Util.genContent(item)}}</view>
+</view>
+<wxs module="Util">
+var genContent = (function(item) {
+    if (item.type == 'link') return (item.content.replace("https://", "").replace("http://", ""));
+    else return (item.content)
+});
+module.exports.genContent = genContent;
+</wxs>

@@ -1,0 +1,88 @@
+.loading-view {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 20vh;
+    text-align: center;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.loader {
+    border-radius: 50%;
+}
+
+.loader {
+    color: #000000;
+    margin: 40px auto;
+    width: 20px;
+    height: 20px;
+    box-shadow: inset 0 0 0 2px;
+    transform: translateZ(0);
+}
+
+.loader:before,.loader:after {
+    position: absolute;
+    content: '';
+}
+
+.loader:before,.loader:after {
+    width: 12px;
+    height: 24px;
+    background: rgba(0,0,0,0.2);
+    background-color: #FFFFFF;
+    top: -2px;
+    left: -2px;
+    transform-origin: 12px 12px;
+}
+
+.loader:before {
+    animation: load1 1.2s cubic-bezier(0,0,1,1) infinite;
+}
+
+.loader:after {
+    animation: load2 1.2s cubic-bezier(0.5,0,0.5,1) infinite;
+}
+
+@-webkit-keyframes load1 {
+    from {
+        transform: rotate(270deg);
+    }
+
+    to {
+        transform: rotate(630deg);
+    }
+}
+
+@keyframes load1 {
+    from {
+        transform: rotate(270deg);
+    }
+
+    to {
+        transform: rotate(630deg);
+    }
+}
+
+@-webkit-keyframes load2 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes load2 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

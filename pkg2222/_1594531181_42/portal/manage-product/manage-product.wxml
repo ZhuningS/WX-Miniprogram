@@ -1,0 +1,43 @@
+<navigation-bar backgroundColor="#FFFFFF" title="产品介绍"></navigation-bar>
+<view class="wrapper" wx:if="{{headImgUrl}}">
+    <view class="wrapper-header" style="height: {{headerHeight}}px">
+        <image-view class="header-img" mode="widthFix" src="{{headImgUrl}}" style="height: {{headerHeight}}px"></image-view>
+    </view>
+    <view class="header-banner__expand" wx:if="{{name.length>0}}">
+        <view class="header-banner__expand-title">{{name}}</view>
+        <view class="header-banner__expand-subTitle">
+            <view class="header-banner__expand-subTitle-border"></view>
+            <view class="header-banner__expand-subTitle-text">{{scope.items[scope.items.length-1].name}}</view>
+            <view class="header-banner__expand-subTitle-border"></view>
+        </view>
+    </view>
+    <view class="manage-product__desc">{{desc}}</view>
+    <view class="wrapper-body">
+        <view class="manage-product__area-title">属性</view>
+        <view class="detail-param" wx:for="{{params}}" wx:for-item="attr" wx:key="index">
+            <view class="detail-param__attr {{index==0?'detail-param__attr_fix':''}}" style="{{index==area.attrs.length-1?'padding-bottom: 0;':''}}">
+                <text class="detail-param__attrname">{{attr.name}}</text>
+                <text class="detail-param__attrvalue">{{attr.value}}</text>
+            </view>
+            <view class="detail-param__attr_border" hidden="{{index==area.attrs.length-1}}"></view>
+        </view>
+        <view class="manage-product__area-title">详情</view>
+        <block wx:for="{{details}}" wx:key="desc">
+            <image-view class="manage-product__img" mode="widthFix" src="{{item.pic_url}}"></image-view>
+            <view class="manage-product__text" wx:if="{{item.desc.length>0}}">{{item.desc}}</view>
+        </block>
+        <block wx:if="{{custom&&custom.title}}">
+            <view class="manage-product__area-title">{{custom.title}}</view>
+            <block wx:for="{{custom.details}}" wx:key="desc">
+                <image-view class="manage-product__img" mode="widthFix" src="{{item.pic_url}}"></image-view>
+                <view class="manage-product__text" wx:if="{{item.desc.length>0}}">{{item.desc}}</view>
+            </block>
+        </block>
+    </view>
+    <view class="footer" wx:if="{{jumpType=='TYPE_WXA'||jumpType=='TYPE_MALL'}}">
+        <navigator appId="{{itemWxa.appid}}" bindtap="onGotoDetail" openType="navigate" path="{{itemWxa.path}}" target="{{jumpType=='TYPE_WXA'?'miniProgram':''}}" url="{{'/portal/detail/detail?code='+itemCode}}" version="release">
+            <view class="footer-btn">{{jumpType=='TYPE_WXA'?'去购买':'去精品店购买'}}</view>
+        </navigator>
+    </view>
+</view>
+<error-page errorSubTitle="请稍后重试" errorTitle="数据加载失败" style="margin-top: {{phoneModel=='iPhoneX'?88:64}}px; display:block;" wx:if="{{hasError}}"></error-page>

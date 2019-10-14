@@ -1,0 +1,43 @@
+<import src="../components/timeline.wxml"></import>
+<import src="../components/widgets.wxml"></import>
+<import src="../components/cover.wxml"></import>
+<view class="{{showShareCard?'blur':''}}">
+    <block wx:if="{{cover}}">
+        <magazine-header bind:onShareButtonTap="handleHeaderShareButtonTap" bind:onUnsubscribeTap="handleHeaderUnsubscribeTap" cover="{{cover}}" dsManageSource="{{uiSwitchMagazine[$manageSource]}}" dsSubscribeAction="{{uiSwitchMagazine[$subscribeAction]}}" isShowStatisticsMeta="{{magazineConfig.showStatistics}}" isSubscribed="{{subscribed[cover.id]}}"></magazine-header>
+        <tabs-nav bind:onNavItemTap="handleTabNavItemTap" currentTabId="{{current}}" tabs="{{tabs}}" wx:if="{{tabs.length>1}}"></tabs-nav>
+        <view style="margin:20px 60rpx;" wx:if="{{current==='intro'}}">
+            <text class="description" style="max-height:initial;" wx:if="{{intro.type==='text'}}">{{intro.content}}
+      </text>
+            <image mode="widthFix" src="{{intro.content}}" style="width:100%;" wx:elif="{{intro.type==='image'}}"></image>
+        </view>
+        <view style="display: flex; justify-content: center;margin-top: 40rpx;" wx:if="{{current!=='intro'}}">
+            <official-account style="width: 670rpx;"></official-account>
+        </view>
+        <template is="timeline" data="{{user:user,itemsStatus:itemsStatus,cover:cover,marked:marked,current:current,currentPlaying:currentPlaying,config:config,events:events,mid:mid,magazine:magazine,route:route,magazineConfig:magazineConfig}}" wx:if="{{current==='group'}}"></template>
+        <template is="timeline" data="{{user:user,itemsStatus:itemsStatus,cover:cover,marked:marked,current:current,currentPlaying:currentPlaying,config:config,events:events,mid:mid,magazine:magazine,route:route,magazineConfig:magazineConfig}}" wx:if="{{current!=='intro'&&current!=='group'}}"></template>
+        <qm-button isFixed catchtap="onTapSubscribe" data-mid="{{cover.id}}" size="large" wx:if="{{config.enableSubscribe&&!subscribed[cover.id]}}">
+      订阅
+    </qm-button>
+    </block>
+    <view class="magazine-status-preview" wx:if="{{magazine.isPreview&&magazine.type==='private'}}">
+    预览版本
+  </view>
+    <qm-placeholder tips="{{current==='group'||!uiSwitchMagazine[$manageSource]?'暂无内容':'这是你个人的一小步，却是人类的一大步，你来到了从来没有人到达的生活荒野。现在，为它添加一些内容吧。'}}" wx:if="{{!error&&!loading&&events.length===0&&current!=='intro'}}">
+        <navigator class="button" hoverClass="none" openType="navigate" url="/pages/modify/modify?mid={{cover.magazineInfo.magazine.id}}&type=source" wx:if="{{uiSwitchMagazine[$manageSource]}}">添加来源
+    </navigator>
+    </qm-placeholder>
+    <template is="error" data wx:if="{{error===true}}"></template>
+    <qm-placeholder tips="暂无权限" wx:if="{{error==='forbidden'}}"></qm-placeholder>
+    <qm-loading class="page-footer-loading-wrap" comClass="page-footer-loading" isLoading="{{hasMore&&current==='latest'||loading}}"></qm-loading>
+    <template is="group-actions" data="{{relation:magazine.relation,needLogin:needLogin,current:current,id:magazine.id,ticket:articleTicket,action:enterAction}}" wx:if="{{uiSwitchMagazine[$groupActions]||magazine&&magazine.relation.role.type==='admin'}}"></template>
+</view>
+<view class="dialog-ctn animated fadeIn" wx:if="{{intro&&intro.show}}">
+    <view class="dialog-content center large" style="min-height:60vh;" wx:if="{{intro.text}}">
+        <text>{{intro.text}}</text>
+    </view>
+    <image class="dialog-content center large" mode="widthFix" src="{{intro.image}}" style="padding:0;" wx:elif="{{intro.image}}"></image>
+    <view catchtap="handleCloseIntroDialog" class="dialog-close">
+        <image class="icon" src="/images/new_assets/icon_cancel.svg"></image>
+    </view>
+</view>
+<include src="../components/global.wxml"></include>

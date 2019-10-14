@@ -1,0 +1,10 @@
+<view class="container {{isLastOne?'last':''}}">
+    <view class="wrapper_icon_title" wx:if="{{title&&icon}}">
+        <image src="{{icon}}"></image>
+        <text>{{title}}</text>
+    </view>
+    <view class="title" wx:else>{{title}}</view>
+    <view class="body">
+        <slot></slot>
+    </view>
+</view>

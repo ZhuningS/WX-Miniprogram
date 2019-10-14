@@ -1,0 +1,28 @@
+.bird {
+    width: 265rpx;
+    position: absolute;
+    right: 0;
+    top: 208rpx;
+}
+
+.title {
+    width: 374rpx;
+    margin-top: 196rpx;
+}
+
+.tee {
+    width: 300rpx;
+    display: block;
+    margin: 187rpx auto 0 auto;
+}
+
+.container button {
+    width: 630rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 32rpx;
+    color: #22442A;
+    border: 0;
+    background: #fff;
+    margin-top: 200rpx;
+}

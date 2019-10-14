@@ -1,0 +1,6 @@
+<view class="{{rootClassNames}}">
+    <view class="placeholder-tips">
+    {{tips}}
+  </view>
+    <slot></slot>
+</view>

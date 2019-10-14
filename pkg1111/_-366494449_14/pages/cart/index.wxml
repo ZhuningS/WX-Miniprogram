@@ -1,0 +1,83 @@
+<import src="/components/tabbar/index.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}" style="min-height: {{winHei}}px">
+    <view class="empty" wx:if="{{cartList.length<=0}}">
+        <view class="img-wrap">
+            <image src="/images/card/gouwuche@3x.png"></image>
+        </view>
+        <view class="text-wrap">
+            <text>购物车空空如也，赶快挑选商品吧~</text>
+        </view>
+    </view>
+    <view class="have-wrap" wx:else>
+        <view wx:for="{{cartList}}" wx:for-item="shop" wx:key="id">
+            <view class="cart-shopname" data-sid="{{shop.id}}" wx:if="{{shop.goods.length>0}}">
+                <form bindsubmit="_selectAll" class="cart-checked" data-index="{{index}}" data-sid="{{shop.id}}" reportSubmit="true">
+                    <button class="btn nobutton" formType="submit">
+                        <image src="/images/select_int.png" wx:if="{{!shop.selected}}"></image>
+                        <image src="/images/selected.png" wx:else></image>
+                    </button>
+                </form>
+                <view>全选</view>
+            </view>
+            <view class="contant" wx:for="{{shop.goods}}" wx:for-item="good" wx:key="id">
+                <form bindsubmit="_bindCheckbox" class="cart-checked" data-cartid="{{good.id}}" data-sid="{{good.sid}}" reportSubmit="true">
+                    <button class="btn nobutton" formType="submit">
+                        <image src="/images/select_int.png" wx:if="{{!good.selected}}"></image>
+                        <image src="/images/selected.png" wx:else></image>
+                    </button>
+                </form>
+                <view class="cart-list">
+                    <view class="order-img">
+                        <image mode="aspectFill" src="{{good.thumb}}" style="border-radius:8rpx;"></image>
+                    </view>
+                    <view class="cart-info">
+                        <view class="order-name">
+                            <text>{{good.name}}</text>
+                        </view>
+                        <view class="order-sku" wx:if="{{good.ganame!=''&&good.ganame!=null}}">
+                            <text>{{good.ganame}}</text>
+                        </view>
+                        <view class="my-bnt">
+                            <view bindtap="_minusCount" class="bnt {{good.num==1?'disabled':''}}" data-cartid="{{good.id}}" data-num="{{good.num}}">
+                                <text>－</text>
+                            </view>
+                            <input bindchange="bindManual" class="int" disabled="{{true}}" type="number" value="{{good.num}}"></input>
+                            <view bindtap="_addCount" class="bnt {{counter.addDisabled?'disabled':''}}" data-cartid="{{good.id}}" data-max="{{curSkuItem.num}}" data-num="{{good.num}}">
+                                <text>＋</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="cart-del">
+                        <form bindsubmit="_deleteList" data-cartid="{{good.id}}" reportSubmit="true">
+                            <button class="del-img nobutton" formType="submit">
+                                <image src="/images/new/icon_trash.png"></image>
+                            </button>
+                        </form>
+                        <view class="order-price">
+                            <text wx:if="{{good.discount>0}}">￥{{good.allTotalPrice}} </text>
+                            <text wx:else>￥{{good.allTotalPrice}} </text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="footer" style="bottom:{{isShowTab?'100rpx':''}}">
+            <view class="other">
+                <view class="total-price">
+                    <text>合计</text>
+                    <text style="color:#ff7c42;font-size: 38rpx;margin-left: 20rpx">￥{{allTotalPrice}}</text>
+                </view>
+                <form bindsubmit="_settleAccounts" reportSubmit="true">
+                    <button class="button nobutton" formType="submit">
+                        <text>结 算</text>
+                    </button>
+                </form>
+            </view>
+        </view>
+    </view>
+    <template is="tabbar" data="{{tabbar:tabbar,data:'cart'}}" wx:if="{{isShowTab}}"></template>
+</view>

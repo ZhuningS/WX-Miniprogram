@@ -1,0 +1,20 @@
+<import src="../components/widgets.wxml"></import>
+<view class="bar">
+    <view class="input-wrapper">
+        <input bindconfirm="search" bindinput="onInput" class="input" confirmType="search" placeholder="输入想添加的公众号"></input>
+    </view>
+    <view bindtap="search" class="button white">搜索</view>
+</view>
+<view class="section-name" wx:if="{{events}}">搜索到 {{events.length}} 个结果</view>
+<view class="results" wx:for="{{events}}" wx:key="{{ index }}">
+    <image class="icon" src="{{item.provider.icon}}"></image>
+    <view class="title">{{item.provider.appName}}</view>
+    <view bindtap="onTapAdd" class="button" data-provider-id="{{item.provider.id}}" data-url="{{item.provider.url}}" wx:if="{{!sources[item.provider.id||item.provider.url]}}">添加</view>
+    <view bindtap="onTapRemove" class="button " data-provider-id="{{item.provider.id}}" data-url="{{item.provider.url}}" wx:else>已添加</view>
+</view>
+<view class="loading-ctn" wx:if="{{loading}}">
+    <template is="loading" data="{{loading:loading}}"></template>
+</view>
+<button bindtap="submit" class="button fixed">
+  完成
+</button>

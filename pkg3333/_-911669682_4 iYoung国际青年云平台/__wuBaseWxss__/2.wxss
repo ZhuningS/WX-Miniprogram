@@ -1,0 +1,23 @@
+.bgwhite {
+    background: #fff;
+}
+
+.green {
+    color: #6430ba;
+}
+
+.wx-swiper-dot.wx-swiper-dot-active,.contact,button[type="primary"] {
+    background: #6430ba;
+}
+
+button[disabled][type="primary"] {
+    background: #5026ac;
+}
+
+.contact {
+    box-shadow: 0 0 15px rgba(100,48,106,0.8);
+}
+
+button[disabled][type="primary"] {
+    background: rgba(100,48,106,0.3);
+}

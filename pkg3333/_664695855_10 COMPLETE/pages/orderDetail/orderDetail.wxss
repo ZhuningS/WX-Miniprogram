@@ -1,0 +1,219 @@
+page {
+    background: #eeeeee;
+}
+
+.detail-info {
+    background: #ffefd4;
+}
+
+.detail-info-fail {
+    background: #a3a3a3;
+}
+
+.detail-title {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #edd4aa;
+}
+
+.detail-title-fail {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #8e8e8e;
+}
+
+.detail-title-content {
+    color: #7f4e26;
+    padding: 20px 0 0 14px;
+    font-weight: 600;
+    font-size: 16px;
+    width: 84%;
+    float: left;
+    overflow: hidden;
+    height: 38px;
+    line-height: 19px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.detail-title-content-fail {
+    color: #ffffff;
+    padding: 14px 0 0 14px;
+    font-weight: 600;
+    font-size: 16px;
+    width: 84%;
+    float: left;
+    overflow: hidden;
+    height: 38px;
+    line-height: 19px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.icon-right {
+    float: right;
+    padding: 22px 15px 0 0;
+    width: 10px;
+    height: 11px;
+}
+
+.detail-content {
+    padding: 0 15px 10px 15px;
+    font-size: 14px;
+}
+
+.content-body {
+    padding-top: 14px;
+}
+
+.content-state {
+    color: #c9a972;
+    margin-right: 20px;
+}
+
+.content-state-fail {
+    color: #d3d3d3;
+    margin-right: 20px;
+}
+
+.state-info {
+    color: #8c5c2e;
+}
+
+.state-info-fail {
+    color: #ffffff;
+}
+
+.state-color {
+    color: #ff6900;
+}
+
+.detail-shop {
+    background: white;
+    font-size: 13px;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 14px;
+}
+
+.shop {
+    color: #969696;
+    margin-right: 20px;
+    float: left;
+}
+
+.shop-name {
+    color: #333333;
+    width: 500rpx;
+    float: left;
+    height: 88rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.shop-phone {
+    width: 48rpx;
+    height: 48rpx;
+    float: right;
+    padding-left: 29rpx;
+    border-left: 1px solid #eeeeee;
+    margin-top: 20rpx;
+}
+
+.detail-btn {
+    margin: 0 15px;
+    height: 44px;
+    line-height: 44px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.detail-btn::after {
+    border: 0;
+}
+
+.btn-money {
+    margin-top: 36px;
+    color: #ffffff;
+    background: #ff6900;
+}
+
+.btn-cancel {
+    margin-top: 12px;
+    color: #898989;
+}
+
+.process {
+    margin: 60px 15px 0 15px;
+}
+
+.process-img {
+    width: 100%;
+    height: 130px;
+}
+
+.hosting {
+    width: 160rpx;
+    height: 36rpx;
+    background: url(http://bgl.zbjimg.com/bgl%2Fbjclound%2Fhosting.png%2Forigine%2F267ea210-1c00-4bda-b22e-980194af56ac?imageMogr2/auto-orient/strip/quality/90) no-repeat top;
+    background-size: 100% 100%;
+    text-align: center;
+    color: #ffffff;
+    font-size: 22rpx;
+    margin-left: 20rpx;
+    padding: 4rpx 4rpx 4rpx 38rpx;
+}
+
+.guide-down {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+.guide-box {
+    width: 280px;
+    height: 150px;
+    border: 1px solid #ddd;
+    background: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-140px,-75px);
+    text-align: center;
+    border-radius: 4px;
+}
+
+.guide-title {
+    color: #333;
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+}
+
+.guide-des {
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 5px 0 25px 0;
+    color: #aaa;
+}
+
+.guide-btn {
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    border-top: 1px solid #eee;
+    color: #49ab36;
+}

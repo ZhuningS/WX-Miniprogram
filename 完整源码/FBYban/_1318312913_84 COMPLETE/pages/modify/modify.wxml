@@ -1,0 +1,49 @@
+<import src="../components/widgets.wxml"></import>
+<import src="../components/card.wxml"></import>
+<import src="../components/nav.wxml"></import>
+<template is="fixed-nav" data="{{tabs:tabs,selectedTab:current,style:'left'}}"></template>
+<block wx:if="{{current==='curator'&&magazineInfo}}">
+    <view style="padding-top:40px;" wx:if="{{isPrivate}}">
+        <template is="single-card-user" data="{{user:item.user,config:config}}" wx:for="{{magazineInfo.curators}}"></template>
+    </view>
+    <block wx:elif="{{magazineInfo.curators.length>0}}">
+        <template is="single-card-label" data="{{ label:{title:'杂志贡献排名',description:'为本杂志贡献最多的读者'} }}"></template>
+        <template is="rank" data="{{curators:me,magazine:magazineInfo.magazine}}"></template>
+        <template is="single-card-description" data="{{ descriptions:['所有轻芒的读者都可以直接推荐文章。你推荐的文章被其它读者马克得越多，获得的经验值越高。每本杂志下经验值越高的读者，即会获得「主编」荣誉称号。'] }}"></template>
+        <template is="rank" data="{{...magazineInfo}}"></template>
+    </block>
+    <block wx:else>
+        <template is="single-card-label" data="{{ label:{title:'想当主编吗？',description:'你来到了没有人来过的兴趣荒原'} }}"></template>
+        <template is="rank" data="{{curators:me}}"></template>
+        <template is="single-card-description" data="{{ descriptions:['#'+magazineInfo.magazine.name+' 还没有人类真正为它贡献过内容。如果你愿意的话，可以稍做贡献，这样就能成为主编了。'] }}"></template>
+    </block>
+</block>
+<block wx:elif="{{current==='source'&&magazineInfo}}">
+    <template is="single-card-description" data="{{ descriptions:['在这里添加和管理你信任的内容来源，这些来源发布的内容将被自动同步。','即使这些来源中的内容并不是 100% 和这个话题相关也没关系，小花会根据内容关键词筛选。'] }}" wx:if="{{isPrivate}}"></template>
+    <template is="single-card-description" data="{{ descriptions:['在这里添加和管理你信任的内容来源，小花将优先建议来自这些来源的内容。','即使这些来源中的内容并不是 100% 和 #杂志名字 相关也没有关系，小花会根据其内容关键词进行筛选。','例如，假如这是一本「家居」杂志，你可以添加来自 KINFOLK 的内容，即使 KINFOLK 并不是只谈论家居。','拜托你了。'] }}" wx:else></template>
+    <block wx:if="{{magazineInfo.providers.length>0}}">
+        <view class="providers" wx:for="{{magazineInfo.providers}}" wx:key="packageName">
+            <image class="icon" src="{{item.icon}}"></image>
+            <view class="title">{{item.title}}</view>
+            <view bindtap="onTapRemove" class="button" data-provider-id="{{item.id}}" wx:if="{{added[item.id]}}">移除</view>
+            <view bindtap="onTapAdd" class="button" data-provider-id="{{item.id}}" wx:else>添加</view>
+        </view>
+    </block>
+    <view class="button-ctn">
+        <navigator navigate class="button" hoverClass="none" url="/pages/modify/add?mid={{mid}}">添加来源</navigator>
+    </view>
+</block>
+<block wx:elif="{{current==='keywords'&&magazineInfo}}">
+    <template is="single-card-description" data="{{ descriptions:['在这里添加和管理与 # 杂志名字 有关的关键词，帮助我们的人工智能小花理解什么样的内容和主题相关。','例如，假如这是一本「咖啡」杂志，相关的关键词可能包括「手冲咖啡」「星巴克」等。'] }}"></template>
+    <view class="providers" wx:for="{{keywords}}" wx:key="*this">
+        <view class="title">{{item}}</view>
+        <view bindtap="onTapRemoveKeyword" class="button" data-keyword="{{item}}">移除</view>
+    </view>
+    <view class="button-ctn">
+        <view catchtap="addKeyword" class="button">添加关键词</view>
+    </view>
+</block>
+<button catchtap="redirectToMagazine" class="button fixed" wx:if="{{redirect}}">
+  完成
+</button>
+<include src="../components/global.wxml"></include>

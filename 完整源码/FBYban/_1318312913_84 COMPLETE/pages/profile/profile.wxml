@@ -1,0 +1,32 @@
+<import src="../components/widgets.wxml"></import>
+<import src="../components/timeline.wxml"></import>
+<import src="../components/card.wxml"></import>
+<import src="header"></import>
+<view class="{{showShareCard?'blur':''}}">
+    <view class="anonymous" wx:if="{{anonymous}}">
+        <view class="description">尚未登录。</view>
+        <view class="description">登录后，这里将出现你马克过的内容，并记录你的经验成长。</view>
+        <button bindgetuserinfo="loginWechat" catchtap="loginBackup" class="button" openType="getUserInfo">
+      使用微信登录
+    </button>
+    </view>
+    <block wx:else>
+        <block wx:if="{{!error}}">
+            <template is="header" data="{{uid:uid,user:user,current:current,tabs:tabs,enablePay:enablePay,config:config,uiSwitchProfile:uiSwitchProfile}}"></template>
+            <view class="products timeline" wx:if="{{current==='buy'&&events.length}}">
+                <template is="single-card-paid" data="{{...product}}" wx:for="{{events}}" wx:for-item="product" wx:key="id"></template>
+            </view>
+            <block wx:elif="{{user}}">
+                <duet-waterfall class="card-container" events="{{events}}" wx:if="{{current==='timeline'||current==='read'}}"></duet-waterfall>
+                <template is="timeline" data="{{route:route,itemsStatus:itemsStatus,current:current,currentPlaying:currentPlaying,config:config,enablePay:enablePay,marked:marked,events:events,images:images}}" wx:else></template>
+            </block>
+            <qm-loading class="page-footer-loading-wrap" comClass="page-footer-loading" isLoading="{{hasMore||loading}}"></qm-loading>
+            <qm-placeholder tips="暂无内容" wx:if="{{user.profile&&events.length===0&&!loading&&!hasMore}}"></qm-placeholder>
+            <view class="qm-brand-logo">
+                <image src="/images/new_assets/icon_qm_brand.svg"></image>
+            </view>
+        </block>
+        <template is="error" data wx:else></template>
+    </block>
+</view>
+<include src="../components/global.wxml"></include>

@@ -1,0 +1,131 @@
+<template name="couponList">
+    <view class="couponList" wx:if="{{couponList&&couponList.length>0}}">
+        <view bindtap="{{item.state==1&&item.open?'_jump':''}}" class="coupon" data-opentype="redirectTo" data-url="{{item.topage}}" wx:for="{{couponList}}" wx:key="id">
+            <view class="coupon-tem" wx:if="{{item.state==1}}">
+                <image src="/images/coupon/zhekou@3x.png"></image>
+                <view class="left">
+                    <view class="discount">
+              {{item.coupon_info.discount}}
+              <text>{{item.coupon_info.dotcount?'.'+item.coupon_info.dotcount:''}}折</text>
+                    </view>
+                    <view class="tip">折扣券</view>
+                </view>
+                <view class="mid">
+                    <view class="cou-title mulellipsis">{{item.coupon_info.title}}</view>
+                    <view class="cou-time">
+                        <text wx:if="{{!item.open}}">使用时间:{{item.begin_time_fmt}}至{{item.end_time_fmt}}</text>
+                        <block wx:elif="{{item.has==1}}">
+                            <block wx:if="{{item.expire_note<=7}}">
+                                <text wx:if="{{item.expire_note==0}}">今日到期</text>
+                                <text wx:elif="{{item.expire_note==1}}">明日到期</text>
+                                <text wx:else>仅剩{{item.expire_note}}天有效期</text>
+                            </block>
+                            <text style="color:#999" wx:else>有效期至:{{item.end_time_fmt}}</text>
+                        </block>
+                        <block wx:else>
+                            <text style="color:#999" wx:if="{{item.time_type==1}}">领取后{{item.coupon_info.time_days}}日内有效</text>
+                            <block wx:else>
+                                <block wx:if="{{item.expire_note<=7}}">
+                                    <text wx:if="{{item.expire_note==0}}">今日到期</text>
+                                    <text wx:elif="{{item.expire_note==1}}">明日到期</text>
+                                    <text wx:else>仅剩{{item.expire_note}}天有效期</text>
+                                </block>
+                                <text style="color:#999" wx:else>有效期至:{{item.end_time_fmt}}</text>
+                            </block>
+                        </block>
+                    </view>
+                    <view class="cou-info ellipsis">{{item.coupon_info.type==1?item.coupon_info.typeTips:'参与'+item.coupon_info.typeTips}},无使用门槛</view>
+                </view>
+                <view class="right" wx:if="{{item.open}}">
+                    <view class="remain">
+                        <block wx:if="{{item.has==2}}">
+                {{item.coupon_info.remain!=0?'已领'+item.coupon_info.remain+'%':'已领1%'}}
+              </block>
+                    </view>
+                    <view class="prog">
+                        <progress activeColor="#fb8052" percent="{{item.coupon_info.remain==0?1:item.coupon_info.remain}}" wx:if="{{item.has==2}}"></progress>
+                    </view>
+                    <view class="btn">        
+                去使用
+            </view>
+                </view>
+                <view class="corner">
+                    <image src="/images/coupon/lingqu@3x.png"></image>
+                </view>
+            </view>
+            <view class="coupon-tem" wx:else>
+                <image src="/images/coupon/huise@3x.png"></image>
+                <view class="left">
+                    <view class="discount">
+              {{item.coupon_info.discount}}
+              <text>{{item.coupon_info.dotcount?'.'+item.coupon_info.dotcount:''}}折</text>
+                    </view>
+                    <view class="tip bgover">折扣券</view>
+                </view>
+                <view class="mid">
+                    <view class="cou-title mulellipsis over">{{item.coupon_info.title}}</view>
+                    <view class="cou-time over">
+                        <text style="color:#999" wx:if="{{item.state==2}}">有效期至:{{item.end_time_fmt}}</text>
+                        <text style="color:#999" wx:else>有效期:{{item.expire_note}}</text>
+                    </view>
+                    <view class="cou-info ellipsis over">{{item.coupon_info.type==1?item.coupon_info.typeTips:'参与'+item.coupon_info.typeTips}},无使用门槛</view>
+                </view>
+                <view class="corner">
+                    <image src="/images/coupon/yishiyong@3x.png" wx:if="{{item.state==2}}"></image>
+                    <image src="/images/coupon/guoqi@3x.png" wx:else></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="nodata" wx:else>
+        <view class="nodata" wx:if="{{currentTab==1}}">
+            <image class="icon" mode="aspectFit" src="/images/card/quan@3x.png"></image>
+            <view>
+                <text>您还没有优惠券</text>
+            </view>
+        </view>
+        <view class="nodata" wx:if="{{currentTab==2}}">
+            <image class="icon" mode="aspectFit" src="/images/card/quan@3x.png"></image>
+            <view>
+                <text>暂无已使用优惠券</text>
+            </view>
+        </view>
+        <view class="nodata" wx:if="{{currentTab==4}}">
+            <image class="icon" mode="aspectFit" src="/images/card/quan@3x.png"></image>
+            <view>
+                <text>暂无已过期优惠券</text>
+            </view>
+        </view>
+    </view>
+</template>
+<import src="/components/coupon/coupon.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view class="tabs">
+        <view class="navs">
+            <form bindsubmit="_tabSwitch" class="nav-item {{currentTab==1?'selected':''}}" data-current="{{1}}" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">
+                    <text>未使用</text>
+                </button>
+            </form>
+            <form bindsubmit="_tabSwitch" class="nav-item {{currentTab==2?'selected':''}}" data-current="{{2}}" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">
+                    <text>已使用</text>
+                </button>
+            </form>
+            <form bindsubmit="_tabSwitch" class="nav-item {{currentTab==4?'selected':''}}" data-current="{{4}}" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">
+                    <text>已过期</text>
+                </button>
+            </form>
+        </view>
+        <view class="tab-content-list">
+            <view class="tab-content">
+                <template is="couponList" data="{{couponList:couponList,currentTab:currentTab}}"></template>
+            </view>
+        </view>
+    </view>
+</view>

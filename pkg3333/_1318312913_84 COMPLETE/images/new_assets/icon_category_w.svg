@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="3138 356 20 20">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-1 {
+        opacity: 0;
+      }
+
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="icon_category_w" transform="translate(3108 -90)">
+    <path id="Path_899" data-name="Path 899" class="cls-1" d="M166,353h20v20H166Z" transform="translate(-136 93)"/>
+    <path id="Path_900" data-name="Path 900" class="cls-2" d="M0,0H16V3H0ZM0,11H16v3H0ZM16,5.5H0v3H16Z" transform="translate(32 449)"/>
+  </g>
+</svg>

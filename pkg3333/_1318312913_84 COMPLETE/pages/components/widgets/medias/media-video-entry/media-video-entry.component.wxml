@@ -1,0 +1,17 @@
+<view class="video-wrapper size-{{cardSize}}" wx:if="{{isPlaying}}">
+    <video autoplay control bindended="handleVideoEndPlaying" bindpause="handleVideoPausePlaying" bindplay="handleVideoStartPlaying" catchtap="NOOP" class="media-video" src="{{currentPlaying.url}}"></video>
+</view>
+<view class="{{rootClassNames}}" wx:else>
+    <view class="entry-body">
+        <view class="info-title">
+      {{mediaData.title}}
+    </view>
+        <view class="info-snippet">
+      {{mediaData.snippet}}
+    </view>
+    </view>
+    <view catchtap="handleVideoThumbTap" class="entry-thumb-wrapper">
+        <play-button></play-button>
+        <view class="entry-thumb" style="background-image: url({{mediaData.thumbUrl}});" wx:if="{{mediaData.thumbUrl}}"></view>
+    </view>
+</view>

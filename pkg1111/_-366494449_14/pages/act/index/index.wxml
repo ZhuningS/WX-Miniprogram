@@ -1,0 +1,159 @@
+<include src="/components/index.wxml"></include>
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view class="act" hidden="{{!dataLoaded}}">
+    <view bindtap="_jumpToCard" class="shareCard" data-cardid="{{cardInfo.id}}" hidden="{{!showCardInfo}}" style="position:relative">
+        <view class="avatar">
+            <image mode="aspectFill" src="{{cardInfo.avatar}}"></image>
+        </view>
+        <view class="center">
+            <text class="name">{{cardInfo.name}}</text>
+            <text class="position">{{cardInfo.position}}</text>
+        </view>
+        <view class="right">TA的名片 ></view>
+    </view>
+    <view class="act_thumb">
+        <image bindtap="previewOneImg" data-url="{{actInfo.head_map}}" mode="widthFix" src="{{actInfo.head_map}}"></image>
+    </view>
+    <view class="act_Info">
+        <view class="title">{{actInfo.title}}</view>
+        <view style="font-size:24rpx;color:#999; margin-bottom: 16rpx;word-break: break-all">{{actInfo.describe}}</view>
+        <view class="price-line">
+            <view class="price">¥{{actInfo.fee}}</view>
+            <view class="status end" wx:if="{{actInfo.status==1}}">{{actInfo.statusTips}}</view>
+            <view class="status" wx:if="{{actInfo.status==0}}">{{actInfo.statusTips}}</view>
+            <view class="number" wx:if="{{actInfo.number>0}}">限{{actInfo.number}}人</view>
+        </view>
+        <view class="info_detail">
+            <view>开始时间: {{actInfo.begin_time}}</view>
+            <view>结束时间: {{actInfo.end_time}}</view>
+            <view>活动地址: {{actInfo.address}}</view>
+        </view>
+    </view>
+    <view class="visite_info">
+        <block wx:if="{{actInfo.logs.length>0}}">
+            <view class="avatar_list">
+                <view class="avatar" wx:for="{{actInfo.logs}}">
+                    <image src="{{item.user_logo}}"></image>
+                </view>
+            </view>
+            <view>已报名{{actInfo.customer_num}}人</view>
+        </block>
+        <view wx:else>目前还没有人报名</view>
+    </view>
+    <view style="background: #fff;margin: 20rpx  0;" wx:if="{{actInfo.grouping.length>0}}">
+        <view style="padding: 20rpx 30rpx;border-bottom: 1px solid #eee;font-size: 28rpx; color: #666">有{{actInfo.grouping.length}}个团正在拼,可直接参与</view>
+        <view>
+            <swiper autoplay="true" circular="true" displayMultipleItems="2" duration="500" interval="3000" vertical="true" wx:if="{{actInfo.grouping.length>2}}">
+                <swiper-item wx:for="{{actInfo.grouping}}" wx:key="teamid">
+                    <view class="kaituan-list">
+                        <view style="align-items:center;display:flex;">
+                            <view class="avtar">
+                                <image src="{{item.order_info.user_logo}}"></image>
+                                <image src="/images/card/jiaren@3x.png" style="width: 80rpx;height: 80rpx; position: relative;left:-16rpx; z-index: 9"></image>
+                            </view>
+                            <view class="nickname">{{item.order_info.user_nickname}}</view>
+                        </view>
+                        <view style="display:flex;align-items:center;">
+                            <button bindtap="_groupBuy" class="button-cantuan" data-teamid="{{item.teamid}}">拼团报名</button>
+                        </view>
+                    </view>
+                </swiper-item>
+            </swiper>
+            <block wx:else>
+                <view class="kaituan-list" wx:for="{{actInfo.grouping}}" wx:key="item.teamid">
+                    <view style="align-items:center;display:flex;">
+                        <view class="avtar">
+                            <image src="{{item.order_info.user_logo}}"></image>
+                            <image src="/images/card/jiaren@3x.png" style="width: 80rpx;height: 80rpx; position: relative;left:-16rpx; z-index: 9"></image>
+                        </view>
+                        <view class="nickname">{{item.order_info.user_nickname}}</view>
+                    </view>
+                    <view style="display:flex;align-items:center;">
+                        <button bindtap="_groupBuy" class="button-cantuan" data-teamid="{{item.teamid}}">拼团报名</button>
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="act-teacher" wx:for="{{actInfo.lecturers}}">
+        <view style="display:flex">
+            <view class="avatar">
+                <image mode="aspectFill" src="{{item.picture}}"></image>
+            </view>
+            <view class="info">
+                <view class="name">{{item.name}}<text style="font-size: 24rpx;color: #999; margin-left:20rpx;">讲师</text>
+                </view>
+                <view class="detail">{{item.describe}}</view>
+            </view>
+        </view>
+        <view style="margin-top: 20rpx;">
+            <image bindtap="_previewImg" data-url="{{img}}" data-urls="{{item.pictures}}" mode="widthFix" src="{{img}}" wx:for="{{item.pictures}}" wx:for-item="img"></image>
+        </view>
+    </view>
+    <view style="margin-top: 20rpx;">
+        <view class="navs">
+            <view bindtap="_tabSwitch" class="navs-item {{currentTab=='1'?'current':''}}" data-current="1">
+                <text>活动详情</text>
+            </view>
+            <view bindtap="_tabSwitch" class="navs-item {{currentTab=='2'?'current':''}}" data-current="2">
+                <text>客户见证</text>
+            </view>
+            <view bindtap="_tabSwitch" class="navs-item {{currentTab=='3'?'current':''}}" data-current="3">
+                <text>客户互动</text>
+            </view>
+        </view>
+        <view class="tab-content">
+            <view class="one">
+                <view hidden="{{currentTab!=1}}" wx:for="{{actInfo.pictures}}">
+                    <image bindtap="_previewImg" data-url="{{item}}" data-urls="{{actInfo.pictures}}" mode="widthFix" src="{{item}}"></image>
+                </view>
+            </view>
+            <view class="tow">
+                <view hidden="{{currentTab!=2}}" wx:for="{{actInfo.feedback}}">
+                    <image bindtap="_previewImg" data-url="{{item}}" data-urls="{{actInfo.pictures}}" mode="widthFix" src="{{item}}"></image>
+                </view>
+            </view>
+            <view class="three">
+                <view hidden="{{currentTab!=3}}">
+                    <view class="comment_item" wx:for="{{comment}}">
+                        <view class="avatar">
+                            <image src="{{item.logo}}"></image>
+                        </view>
+                        <view class="info">
+                            <view class="name">{{item.nickname}}</view>
+                            <view class="content">{{item.content}}</view>
+                        </view>
+                    </view>
+                    <view class="keyboard">
+                        <input class="input" cursorSpacing="40" placeholder="优质评论会被优先展示" placeholderStyle="color:#999" type="text" value="{{inputValue}}"></input>
+                        <button bindtap="_send" class="send">发布</button>
+                    </view>
+                </view>
+            </view>
+            <view class="four"></view>
+        </view>
+    </view>
+    <view class="button-bar">
+        <view class="tips" wx:if="{{actInfo.rule_type==1}}">
+            <view style="position:relative">邀请{{actInfo.rule.rule_1_share}}人，可<text style="color: #fea526;font-size: 28rpx; margin: 0 10rpx; font-weight: 500">¥{{actInfo.rule.rule_1_money}}</text>报名</view>
+        </view>
+        <view class="tips" wx:if="{{actInfo.rule_type==2}}">
+            <view style="position:relative"> 每邀请{{actInfo.rule.rule_2_share}}人，报名可立减<text style="color: #fea526;font-size: 28rpx; margin: 0 10rpx; font-weight: 500">¥{{actInfo.rule.rule_2_money}}</text>元</view>
+        </view>
+        <view class="tips" wx:if="{{actInfo.rule_type==3}}">
+            <view style="position:relative">{{actInfo.rule.rule_3_num}}人拼团，可享<text style="color: #fea526;font-size: 28rpx; margin: 0 10rpx; font-weight: 500">¥{{actInfo.rule.rule_3_money}}</text>优惠报名</view>
+        </view>
+        <button class="btn-yaoqing nobutton" openType="share">
+            <view style="text-align: center; margin-top: 10rpx;">
+                <image src="/images/card/yaoqing-bai@3x.png" style="width: 40rpx; height: 40rpx;"></image>
+                <view>邀请</view>
+            </view>
+        </button>
+        <block wx:if="{{isBaoming==0}}">
+            <view bindtap="_baoming" class="btn-baoming" wx:if="{{actInfo.state==0}}">我要报名</view>
+            <view class="btn-baoming" style="background: #666" wx:elif="{{actInfo.state==1}}">报名已结束</view>
+        </block>
+        <view bindtap="_baoming2" class="btn-baoming" wx:else>您已报名，查看详情</view>
+    </view>
+</view>
+<template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>

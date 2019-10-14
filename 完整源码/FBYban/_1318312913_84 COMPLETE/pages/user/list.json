@@ -1,0 +1,6 @@
+{
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+        "universe-card": "../components/cards/universe-card/universe-card.component"
+    }
+}

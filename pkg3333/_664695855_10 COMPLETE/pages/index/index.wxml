@@ -1,0 +1,21 @@
+<view class="zbj-wx">
+    <view class="zbj-head">
+        <image class="zbj-logo" src="image/zbj-logo.png"></image>
+        <text class="zbj-find-title">找专业人 做专业事</text>
+        <view class="zbj-search">
+            <view bindtap="goSearch" class="zbj-search-text">
+                <image class="zbj-search-img" src="image/zbj-search.png"></image>
+                <text class="zbj-place-text">搜索服务</text>
+            </view>
+        </view>
+    </view>
+    <view class="text-part clearfix" wx:for="{{space}}" wx:key="id">
+        <view class="ad-title clearfix">
+            <image class="ad-icon " src="{{item.icon}}"></image>
+            <text class="ad-head">{{item.title}}</text>
+        </view>
+        <view class="ad-body clearfix">
+            <navigator class="ad-text {{ad.highLight?'high-text':''}}" url="/pages/consult/consult?keyWord={{ad.content}}" wx:for="{{item.ads}}" wx:for-index="idx" wx:for-item="ad" wx:key="id">{{ad.content}}</navigator>
+        </view>
+    </view>
+</view>

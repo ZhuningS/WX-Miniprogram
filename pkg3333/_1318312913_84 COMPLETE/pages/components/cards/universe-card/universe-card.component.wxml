@@ -1,0 +1,88 @@
+<view style="background-color: #FFFFFF">
+    <form reportSubmit bindsubmit="collectNotificationFormId">
+        <view class="{{rootClassNames}} {{hideComponentPadding?'hide-component-padding':''}}" data-mid="{{card.magazineId}}" id="{{card.id}}" ontap="handleCardTap" style="background-color: {{card.backgroundColor}}" wx:if="{{card}}">
+            <view class="card-header" wx:if="{{!hideHeader}}">
+                <block wx:if="{{card.type==='ripple'}}">
+                    <meta-single-user hideComponentPadding="{{hideComponentPadding}}" metaSnippet="{{card.formattedMetaSnippet}}" size="{{card.size}}" user="{{card.user}}" wx:if="{{card.user}}"></meta-single-user>
+                    <meta-multi-users hideComponentPadding="{{hideComponentPadding}}" metaSnippet="{{card.formattedMetaSnippet}}" size="{{card.size}}" users="{{card.users}}" wx:if="{{card.users&&card.formattedMetaSnippet&&card.mediaType!=='post'}}"></meta-multi-users>
+                </block>
+                <block wx:if="{{card.type==='activity'}}">
+                    <meta-single-user size="{{card.size}}" user="{{card.user}}"></meta-single-user>
+                    <view class="card-header-meta" wx:if="{{route==='pages/magazine/magazine'&&card.topicData&&card.topicData.isPin}}">
+            置顶
+          </view>
+                </block>
+            </view>
+            <view class="card-body">
+                <block wx:if="{{card.type==='ripple'}}">
+                    <view class="info-repost" wx:if="{{card.repostContent}}">
+            {{card.repostContent}}
+          </view>
+                    <view style="background-color: #FFFFFF">
+                        <view class="media-wrapper" style="background-color: {{card.quoteBackgroundColor}}" wx:if="{{card.type==='ripple'||card.topicData.postType!=='content'}}">
+                            <media-image-hero backgroundColor="{{card.imageBackgroundColor}}" cardSize="{{card.size}}" hasHeader="{{!!card.formattedMetaSnippet}}" hasPaid="{{card.hasPaid}}" isHideTitle="{{card.isHideTitle}}" isPremium="{{card.isPremium}}" mediaData="{{card.mediaData}}" route="{{route}}" wx:if="{{card.mediaType==='image-hero'}}"></media-image-hero>
+                            <media-image-gallery cardSize="{{card.size}}" mediaData="{{card.mediaData}}" route="{{route}}" wx:if="{{card.mediaType==='image-gallery'}}"></media-image-gallery>
+                            <media-video-hero docId="{{card.docId}}" magazineId="{{card.magazineId}}" mediaData="{{card.mediaData}}" route="{{route}}" wx:if="{{card.mediaType==='video-hero'}}"></media-video-hero>
+                            <media-video-entry cardSize="{{card.size}}" docId="{{card.docId}}" magazineId="{{card.magazineId}}" mediaData="{{card.mediaData}}" route="{{route}}" wx:if="{{card.mediaType==='video-entry'}}"></media-video-entry>
+                            <media-entry cardSize="{{card.size}}" cardType="{{card.type}}" hideComponentPadding="{{hideComponentPadding}}" mediaData="{{card.mediaData}}" route="{{route}}" wx:if="{{card.mediaType==='entry'}}"></media-entry>
+                            <media-quote cardSize="{{card.size}}" cardType="{{card.type}}" mediaData="{{card.mediaData}}" route="{{route}}" wx:if="{{card.mediaType==='quote'}}"></media-quote>
+                            <view class="hero-title {{hideComponentPadding?'hide-component-padding':''}}" wx:if="{{!card.isHideTitle&&card.title}}">
+                {{card.title}}
+                <premium-label hasPaid="{{card.hasPaid}}" isPremium="{{card.isPremium}}" route="{{route}}" size="{{card.size}}" wx:if="{{card.isPremium}}"></premium-label>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <block wx:if="{{card.type==='activity'}}">
+                    <view class="original-wrapper" wx:if="{{card.repostContent||card.topicData.imageType!=='none'}}">
+                        <div class="repost-content" wx:if="{{card.repostContent}}">
+                            <text selectable class="repost-content-text">{{card.repostContent}}
+              </text>
+                        </div>
+                        <view class="content-image" wx:if="{{card.topicData.imageType!=='none'}}">
+                            <media-image-gallery cardSize="{{card.size}}" mediaData="{{card.topicData}}" wx:if="{{card.topicData.imageType==='multi'}}"></media-image-gallery>
+                            <media-image-hero backgroundColor="{{card.imageBackgroundColor}}" cardSize="{{card.size}}" hasHeader="{{false}}" hasPaid="{{false}}" isHideTitle="{{true}}" isPremium="{{false}}" mediaData="{{card.topicData}}" wx:if="{{card.topicData.imageType==='single'}}"></media-image-hero>
+                        </view>
+                    </view>
+                    <view style="background-color: #FFFFFF">
+                        <view class="reference-wrapper" style="background-color: {{card.quoteBackgroundColor}}" wx:if="{{showReferenceWrapper}}">
+                            <media-meta-note cardSize="{{card.size}}" cardType="{{card.type}}" noteData="{{card.topicData.noteData}}" route="{{route}}" wx:if="{{card.topicData.postType==='noteWithAT'}}"></media-meta-note>
+                            <block wx:if="{{needArticleContext}}">
+                                <media-meta-article articleData="{{card.topicData.article}}" cardSize="{{card.size}}" cardType="{{card.type}}" wx:if="{{showArticle}}"></media-meta-article>
+                            </block>
+                            <media-image-hero backgroundColor="{{card.imageBackgroundColor}}" cardSize="{{card.size}}" hasHeader="{{!!card.formattedMetaSnippet}}" hasPaid="{{card.hasPaid}}" isHideTitle="{{card.isHideTitle}}" isPremium="{{card.isPremium}}" mediaData="{{card.mediaData}}" wx:if="{{card.mediaType==='image-hero'}}"></media-image-hero>
+                            <media-video-hero docId="{{card.topicData.id}}" magazineId="{{card.magazineId}}" mediaData="{{card.topicData}}" wx:if="{{card.topicData.video}}"></media-video-hero>
+                            <media-vote inPostPage="{{inPostPage}}" postEventId="{{card.id}} " relation="{{card.topicData.relation}}" voteData="{{card.topicData.vote}}" wx:if="{{card.topicData.vote}}"></media-vote>
+                            <media-hop-card mediaData="{{card.topicData}}" wx:if="{{card.topicData.hopCard}}"></media-hop-card>
+                        </view>
+                    </view>
+                </block>
+            </view>
+            <view class="card-footer {{hideComponentPadding?'hide-component-padding':''}}" wx:if="{{!hideFooter}}">
+                <view class="left-section">
+                    <magazine-name catchtap="handleMagazineNameTap" comClass="magazine-name" name="{{card.magazineName}}" size="small" wx:if="{{cardFooterStyle==='magazineName'&&card.magazineName&&!isPin}}"></magazine-name>
+                    <view class="footer-note" wx:if="{{cardFooterStyle==='publishTime'&&!isPin}}">
+            {{card.cardStyle.infos.formattedTime}}
+          </view>
+                    <view class="footer-note" wx:if="{{cardFooterStyle==='sourceName'&&!isPin}}">
+            {{card.cardStyle.infos.providerName}}
+          </view>
+                    <view class="footer-note" wx:if="{{cardFooterStyle==='hidden'&&!isPin}}"></view>
+                    <view class="footer-note" wx:if="{{cardFooterStyle==='formattedFooterNote'}}">
+            {{card.formattedFooterNote}}
+          </view>
+                </view>
+                <button catchtap="stopPropagation" formType="submit" hoverClass="none">
+                    <operations-bar actionSheetData="{{card.actionSheetData}}" inPostPage="{{inPostPage}}" isMarked="{{card.isMarked}}" magazineId="{{card.magazineId}}" markArgsData="{{card.markArgsData}}" shareData="{{card.shareData}}" showCommentIcon="{{isShowCommentIcon}}" size="{{card.size}}" topicCount="{{card.commentCount}}" topicTicketData="{{card.topicTicketData}}" wx:if="{{card.type==='ripple'}}"></operations-bar>
+                    <operations-bar-post actionSheetData="{{card.actionSheetData}}" inPostPage="{{inPostPage}}" isMarked="{{card.isMarked}}" magazineId="{{card.magazineId}}" markArgsData="{{card.markArgsData}}" shareData="{{card.shareData}}" showCommentIcon="{{isShowCommentIcon}}" size="{{card.size}}" topicCount="{{card.commentCount}}" topicTicketData="{{card.topicTicketData}}" wx:else></operations-bar-post>
+                </button>
+            </view>
+            <view class="card-addition" wx:if="{{showAddition}}">
+                <meta-multi-users metaSnippet="{{card.formattedMetaSnippet}}" size="{{card.size}}" users="{{card.users}}"></meta-multi-users>
+            </view>
+            <view class="activity-timeline-wrapper" wx:if="{{card.type==='activity'}}">
+                <activity-timeline backgroundColor="{{card.backgroundColor}}" commentCount="{{card.commentCount}}" comments="{{card.comments}}" eventId="{{event.id}}" inPostPage="{{inPostPage}}" postId="{{event.post.id}}" wx:if="{{card.comments&&card.comments.events.length}}"></activity-timeline>
+            </view>
+        </view>
+    </form>
+</view>

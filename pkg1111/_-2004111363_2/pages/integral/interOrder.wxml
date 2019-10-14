@@ -1,0 +1,80 @@
+<view class="{{currentSkin}}">
+    <view bindtap="addressModel" class="g-address f fv fc-h skin_bg">
+        <view class="w-100 f fc fj f32">
+            <view class="f1 f fc fj">
+                <text>收货人：{{vm_goods.userName}}</text>
+                <text>{{vm_goods.telNumber}}</text>
+            </view>
+            <view class="dzicon icon-xiala-copy-right ml20"></view>
+        </view>
+        <view class="mt20">{{vm_goods.address}}</view>
+    </view>
+    <view class="g-goods">
+        <view class="g-total f fc fj">
+            <text class="f30">兑换商品详情</text>
+            <view>
+                <text class="c666 ml10">小计</text>
+                <text class="p-price f32" wx:if="{{vm_goods.type==0}}">{{vm_goods.integral}}积分</text>
+                <text class="p-price f32" wx:if="{{vm_goods.type==1}}">{{vm_goods.totalPrice}}+{{vm_goods.integral}}积分</text>
+            </view>
+        </view>
+        <view style="padding-left:30rpx;">
+            <view bindtap="$comItem$pathGood" class="f fc fj" data-com-index="{{undefined}}" data-wpypathgood-a="{{$comItem$item.orderDtl.FoodGoodsId}}" style="padding:30rpx 30rpx 30rpx 0;border-bottom:1px solid #eee;" wx:for="{{vm_goods.list}}" wx:for-index="$comItem$index" wx:for-item="$comItem$item" wx:key="$comItem$key">
+                <image catchtap="$comItem$showimg" class="g-img" data-com-index="{{undefined}}" data-wpyshowimg-a="{{$comItem$item.ImgUrl}}" mode="aspectFill" src="{{$comItem$item.ImgUrl}}"></image>
+                <view class="g-content f1 f fv fj">
+                    <view>
+                        <text class="f26 c33 line line1">{{$comItem$item.Introduction}}</text>
+                        <text class="w-100 c666 mt20 f24 c666" style="display:inline-block" wx:if="{{$comItem$item.SpecInfo!='undefined'||$comItem$item.SpecInfo!=''}}">{{$comItem$item.SpecInfo}}</text>
+                    </view>
+                    <view class="f fj">
+                        <view wx:if="{{$comItem$item.type=='good'||$comItem$item.type=='miaosha'}}">
+                            <wxc-price class="c333 t-b f30">{{$comItem$item.discountPrice}}</wxc-price>
+                            <wxc-price class="ml10 f26" delColor="#666" status="del" wx:if="{{$comItem$item.oldPrice!=0&&$comItem$item.discountPrice!=$comItem$item.oldPrice}}">{{$comItem$item.oldPrice}}</wxc-price>
+                        </view>
+                        <view wx:else>
+                            <wxc-price class="c333 t-b f30">{{$comItem$item.discountPrice}}</wxc-price>
+                            <wxc-price class="ml10 f26" delColor="#666" status="del" wx:if="{{$comItem$item.discount!=100&&$comItem$item.discountPrice!=$comItem$item.oldPrice}}">{{$comItem$item.oldPrice}}</wxc-price>
+                        </view>
+                        <text class="c333 f26">x{{$comItem$item.Count}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="g-mode">
+        <view class="g-dis f fc fj">
+            <text class="f32">配送方式</text>
+            <text class="c666 mr20">{{vm_goods.mode}}</text>
+        </view>
+        <view class="g-dis f fc fj" wx:if="{{vm_goods.type==1}}">
+            <text class="f32">支付方式</text>
+            <text class="c666 f32">微信支付</text>
+        </view>
+    </view>
+    <view class="g-mode" wx:if="{{vm_goods.type==1}}">
+        <view class="g-dis f fc fj">
+            <text class="f32">商品总额</text>
+            <wxc-price class="c666 f32 g-add">{{vm_goods.totalPrice}}</wxc-price>
+        </view>
+        <view class="g-dis f fc fj">
+            <text class="f32">快递运费</text>
+            <wxc-price class="c666 f32 g-add">{{vm_goods.fee}}</wxc-price>
+        </view>
+    </view>
+    <view style="height:150rpx;width:100%;"></view>
+    <view class="pay-btn f fc fj">
+        <view class="ml20" wx:if="{{vm_goods.type==0}}">
+            <text class="f30">扣除积分：</text>
+            <text class="p-price f32">{{vm_goods.integral}}积分</text>
+        </view>
+        <view class="ml20" wx:if="{{vm_goods.type==1}}">
+            <text class="f30">应付：</text>
+            <wxc-price class="p-price f32">{{vm_goods.shouldPay}}</wxc-price>
+        </view>
+        <form bindsubmit="payRequest" reportSubmit="true">
+            <button class="pay-button skin_bg" formType="submit" wx:if="{{vm_goods.type==0}}">立即兑换</button>
+            <button class="pay-button skin_bg" formType="submit" wx:if="{{vm_goods.type==1}}">微信支付</button>
+        </form>
+    </view>
+    <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+</view>

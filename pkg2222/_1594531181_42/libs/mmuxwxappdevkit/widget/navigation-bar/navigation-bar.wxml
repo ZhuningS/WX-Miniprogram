@@ -1,0 +1,23 @@
+<block wx:if="{{supportCustomNavigation}}">
+    <view class="navigation-bar {{phoneModel}} {{platform}}" style="background: {{backgroundColor}};" wx:if="{{type=='webview'}}">
+        <navigator appId="{{navigateToAppid}}" catchtap="onClickWeAppBack" display="{{navigateToAppid.length>0}}" hidden="{{hideWeAppBack||!weAppName}}" innerClass="weapp-back {{phoneModel}}" path="{{navigateToPath}}" target="miniProgram">
+            <view class="weapp-back__triangle"></view>
+            <text class="weapp-back__title">{{weAppName}}</text>
+        </navigator>
+        <navigator openType="exit" target="miniProgram" wx:if="{{backAsExit}}">
+            <image bindtap="onClickNavigateBack" class="navigation-bar__back {{phoneModel}} {{platform}}" hidden="{{hideBackButton||!hideWeAppBack}}" src="../../assets/navigation_back.png"></image>
+        </navigator>
+        <image bindtap="onClickNavigateBack" class="navigation-bar__back {{phoneModel}} {{platform}}" hidden="{{hideBackButton||!hideWeAppBack}}" src="../../assets/navigation_back.png" wx:if="{{!backAsExit}}"></image>
+        <text class="navigation-bar__title" wx:if="{{titleImg=='none'}}">{{title}}</text>
+        <image class="navigation-bar__img" src="{{titleImg}}" style="opacity: {{hideTitleImg?0:1}}" wx:if="{{titleImg!='none'}}"></image>
+    </view>
+    <block wx:if="{{type=='native'}}">
+        <cover-view class="navigation-bar native {{phoneModel}} {{platform}}">
+            <cover-image bindtap="onClickNavigateBack" class="navigation-bar__back native {{phoneModel}}" hidden="{{hideBackButton||!hideWeAppBack}}" src="../../assets/navigation_back.png"></cover-image>
+            <cover-view class="navigation-bar__title" wx:if="{{titleImg=='none'}}">{{title}}</cover-view>
+            <cover-view class="navigation-bar__title_placeholder" wx:if="{{titleImg=='none'}}"></cover-view>
+        </cover-view>
+        <view class="navigation-bar-background {{phoneModel}}" style="background: {{backgroundColor}};"></view>
+    </block>
+    <view class="navigation-bar__placeholder {{phoneModel}} {{platform}}" style="background: {{placeholderColor||backgroundColor}};" wx:if="{{!hidePlaceholder}}"></view>
+</block>

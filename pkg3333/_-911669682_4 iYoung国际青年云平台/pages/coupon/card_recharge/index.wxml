@@ -1,0 +1,22 @@
+<view class="paybox">
+    <view class="pay">
+        <form bindsubmit="formSubmit">
+            <view class="user-msg">
+                <input name="code" placeholder="请输入要充值的卡号"></input>
+            </view>
+            <view class="pay-money-box">
+                <view class="f16">充值金额</view>
+                <view class="money-box flex">
+                    <text class="f20">¥</text>
+                    <input class="money flex ml10" name="price" type="number"></input>
+                </view>
+                <view wx:if="{{beizhu_show}}">
+                    <input class="beizhu" name="remark" placeholder="最多输入10个字符" type="text"></input>
+                </view>
+                <view class="mt20">
+                    <button disabled="{{btn_submit_disabled}}" formType="submit" loading="{{submitIsLoading}}" type="primary">支付</button>
+                </view>
+            </view>
+        </form>
+    </view>
+</view>

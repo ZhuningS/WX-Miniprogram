@@ -1,0 +1,28 @@
+<template name="BookInfo$d5ce9a4e">
+    <view class="_div data-v-4cee3f3e bookinfo">
+        <view class="_div data-v-4cee3f3e thumb">
+            <image class="_img data-v-4cee3f3e back" mode="aspectFill" src="{{info.image}}"></image>
+            <image class="_img data-v-4cee3f3e img" mode="aspectFit" src="{{info.image}}"></image>
+            <view class="_div data-v-4cee3f3e info">
+                <view class="_div data-v-4cee3f3e title"> {{info.title}} </view>
+                <view class="_div data-v-4cee3f3e author"> {{info.author}} </view>
+            </view>
+        </view>
+        <view class="_div data-v-4cee3f3e owner">
+            <image class="_img data-v-4cee3f3e avatar" mode="aspectFit" src="{{userinfo.avatarUrl}}"></image> {{userinfo.nickName}}
+      <view class="_div data-v-4cee3f3e right"> {{info.rate*2}}分
+        <template is="Rate$08696102" data="{{...$root[$kk+'0'],$root:$root}}"></template>
+            </view>
+        </view>
+        <view class="_div data-v-4cee3f3e detail"> 出版社:{{info.publisher}}
+      <view class="_div data-v-4cee3f3e right"> {{info.price}} </view>
+        </view>
+        <view class="_div data-v-4cee3f3e tag">
+            <view class="_div data-v-4cee3f3e badge" key="{{tag}}" wx:for="{{info.tags}}" wx:for-item="tag" wx:key="tag">{{tag}}</view>
+        </view>
+        <view class="_div data-v-4cee3f3e summary">
+            <view class="_p data-v-4cee3f3e" key="{{i}}" wx:for="{{info.summary}}" wx:for-index="i" wx:for-item="sum" wx:key="i"> {{sum}} </view>
+        </view>
+    </view>
+</template>
+<import src="Rate$08696102"></import>

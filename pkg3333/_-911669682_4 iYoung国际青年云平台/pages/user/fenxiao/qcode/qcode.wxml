@@ -1,0 +1,12 @@
+<view class="erwema tc">
+    <image class="qrcode" mode="widthFix" src="{{posterUrl}}"></image>
+    <button bindtap="saveimage" class="mt15" type="primary">保存图片</button>
+</view>
+<import src="../../../../wxParse/wxParse.wxml"></import>
+<view class="tips">
+    <view class="ttit grey gridXb">
+        <text class="iconfont icon-fxicon-3"></text> 分销规则</view>
+    <view class="tcon">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+    </view>
+</view>

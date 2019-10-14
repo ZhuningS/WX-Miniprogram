@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>btn_del</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="discover-search-history" transform="translate(-325.000000, -125.000000)" stroke="#000000" stroke-width="2">
+            <g id="Group-2" transform="translate(20.000000, 124.000000)">
+                <g id="历史">
+                    <g id="btn_del" transform="translate(305.000000, 0.000000)">
+                        <g id="Group-3" transform="translate(1.000000, 2.000000)">
+                            <g id="Group" transform="translate(2.000000, 2.000000)">
+                                <rect id="Rectangle-9" x="1" y="1" width="12" height="14"></rect>
+                                <g id="Group-2" transform="translate(7.000000, 8.000000) rotate(-90.000000) translate(-7.000000, -8.000000) translate(4.000000, 5.000000)">
+                                    <path d="M0,5 L6,5" id="Line"></path>
+                                    <path d="M0,1 L6,1" id="Line"></path>
+                                </g>
+                            </g>
+                            <path d="M0,3 L18,3" id="Line"></path>
+                            <path d="M7,1 L11,1" id="Line"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

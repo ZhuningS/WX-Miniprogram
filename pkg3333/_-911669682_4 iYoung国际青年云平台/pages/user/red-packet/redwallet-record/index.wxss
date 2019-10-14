@@ -1,0 +1,16 @@
+@import "../../../../__wuBaseWxss__/9.wxss";
+
+page {
+    font-size: 32rpx;
+}
+
+.record-item {
+    background: #fff;
+    padding: 20rpx 30rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.record-money {
+    font-weight: bold;
+}

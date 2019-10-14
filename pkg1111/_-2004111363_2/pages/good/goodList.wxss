@@ -1,0 +1,87 @@
+.c-goodOrder {
+    width: 100%;
+}
+
+.c-goodOrder .c-goodOrder-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100rpx;
+    background-color: #fff;
+    width: 100%;
+}
+
+.c-goodOrder .c-goodOrder-top .c-goodOrder-title:last-child {
+    padding-right: 30rpx;
+}
+
+.c-goodOrder .c-goodOrder-top .c-goodOrder-title:first-child {
+    padding-left: 30rpx!important;
+}
+
+.c-goodOrder .c-goodOrder-top .c-goodOrder-title {
+    height: 100rpx;
+    text-align: center;
+    flex-shrink: 0;
+    font-size: 30rpx;
+    padding-left: 50rpx;
+}
+
+.c-goodOrder .c-goodOrder-main {
+    width: 100%;
+    margin-top: 25rpx;
+}
+
+.c-goodOrder .c-goodOrder-main .c-goodOrder-item:last-child {
+    margin-bottom: 0;
+}
+
+.c-goodOrder .c-goodOrder-main .c-goodOrder-item {
+    width: 100%;
+    margin-bottom: 25rpx;
+    padding: 0 30rpx 30rpx 30rpx;
+    background-color: #fff;
+}
+
+.c-goodOrder .c-goodOrder-main .c-goodOrder-item .c-goodOrder-item-title {
+    padding: 30rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.c-goodOrder .c-goodOrder-main .c-goodOrder-item .c-goodOrder-item-main {
+    width: 100%;
+    padding: 30rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.c-goodOrder .c-goodOrder-main .c-goodOrder-item .c-goodOrder-item-main>image {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 5rpx;
+    flex-shrink: 0;
+    margin-right: 20rpx;
+}
+
+.c-goodOrder .c-goodOrder-main .c-goodOrder-item .c-goodOrder-item-bottom {
+    width: 100%;
+}
+
+.c-goodOrder .c-goodOrder-main .c-goodOrder-item .c-goodOrder-item-bottom>view:first-child {
+    padding: 30rpx 0;
+}
+
+.c-goodOrder .c-goodOrder-main .c-goodOrder-item .c-goodOrder-item-bottom .c-goodOrder-item-btn {
+    width: 100%;
+}
+
+.c-goodOrder .c-goodOrder-main .c-goodOrder-item .c-goodOrder-item-bottom .c-goodOrder-item-btn>text,.c-goodOrder .c-goodOrder-main .c-goodOrder-item .c-goodOrder-item-bottom .c-goodOrder-item-btn .formBtn {
+    width: 146rpx;
+    height: 50rpx;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 26rpx;
+    margin-left: 20rpx;
+    border: 1px solid #a1a2a3;
+    border-radius: 25rpx;
+}

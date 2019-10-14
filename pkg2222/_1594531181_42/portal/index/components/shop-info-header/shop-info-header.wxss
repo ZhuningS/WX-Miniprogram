@@ -1,0 +1,68 @@
+.wrap {
+    width: 100%;
+    background: #F7F7F7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 48rpx;
+}
+
+.brand-logo {
+    margin-top: 16rpx;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+}
+
+.brand-info-wrap {
+    margin-top: 36rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 28.2rpx;
+}
+
+.brand-name {
+    color: #000;
+    font-size: 17px;
+    position: relative;
+}
+
+.brand-name__arrow-right {
+    width: 14.2rpx;
+    height: 26rpx;
+    margin-left: 14rpx;
+}
+
+.info-wrap {
+    flex-direction: row;
+    margin-top: 38rpx;
+    margin-bottom: 48rpx;
+    width: 70%;
+    display: none;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.info-item-icon {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.info-item-text {
+    font-size: 12px;
+    color: #353535;
+    margin-top: 20rpx;
+}
+
+.info-item-separator {
+    width: 2rpx;
+    padding-bottom: 100rpx;
+    background: #000;
+    opacity: 0.08;
+}

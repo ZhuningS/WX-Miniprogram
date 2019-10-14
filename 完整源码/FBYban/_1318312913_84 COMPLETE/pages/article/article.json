@@ -1,0 +1,12 @@
+{
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+        "qm-icon": "../components/uis/icon/icon.component",
+        "qm-tween": "../components/uis/tween/tween.component",
+        "banner-card": "../components/cards/banner-card/banner-card.component",
+        "universe-card": "../components/cards/universe-card/universe-card.component",
+        "universe-timeline": "../components/containers/universe-timeline/universe-timeline.component",
+        "user-auth-wrapper": "../components/widgets/friendly/user-auth-wrapper/user-auth-wrapper.component",
+        "related-article-entry": "./related-article-entry/related-article-entry.component"
+    }
+}

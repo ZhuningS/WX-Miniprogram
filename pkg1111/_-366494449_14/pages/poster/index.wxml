@@ -1,0 +1,7 @@
+<loading hidden="{{dataLoaded}}">生成海报...</loading>
+<view class="poster-wrap" hidden="{{!dataLoaded}}">
+    <view style="text-align:center">
+        <image mode="widthFix" src="{{poster}}?imageView2/2/format/jpg" style="width: 95%"></image>
+    </view>
+    <view bindtap="savePoster" class="save_poster">保存名片海报到相册</view>
+</view>

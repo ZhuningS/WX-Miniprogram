@@ -1,0 +1,20 @@
+<view class="contenter">
+    <view class="day tc">
+        <text class="now-day green gridXb">第{{my_partake.count||0}}天</text>
+        <text class="f16 grey">共{{cycle||7}}天</text>
+    </view>
+    <swiper autoplay="true" bindchange="onChangeView" current="{{index}}" indicatorDots="{{true}}">
+        <swiper-item wx:for="{{data}}" wx:key="{{index}}">
+            <view>
+                <image class="slide-image" mode="aspectFill" src="https://www.ixiaochengxu.cc/temp_pic/pic_awards.jpg"></image>
+                <view class="jiang-content mid">
+                    <view class="remark-contenter">亲爱的
+            <text class="text-primary green">{{userInfo.nickName}}</text>
+                        <text> ,恭喜你获得：</text>
+                    </view>
+                    <view class="swiper-text tc">{{item}}</view>
+                </view>
+            </view>
+        </swiper-item>
+    </swiper>
+</view>

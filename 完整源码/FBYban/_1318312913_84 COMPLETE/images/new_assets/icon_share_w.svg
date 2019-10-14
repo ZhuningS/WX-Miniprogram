@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="2218 272 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="Path_822" data-name="Path 822" class="cls-1" d="M71,383H91v20H71Z"/>
+    </clipPath>
+  </defs>
+  <g id="icon_share_w" transform="translate(1653 -839)">
+    <g id="icon-share-white" class="cls-2" transform="translate(494 728)">
+      <g id="Union">
+        <path id="Path_821" data-name="Path 821" class="cls-1" d="M13,5.121,2.121,16,0,13.879,10.879,3H6V0H16V10H13Z" transform="translate(73 385)"/>
+      </g>
+    </g>
+  </g>
+</svg>

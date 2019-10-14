@@ -1,0 +1,127 @@
+<view class="m20 tc grey loading" wx:if="{{showLoading==1}}">
+    <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+    <text>正在加载...</text>
+</view>
+<block wx:if="{{showLoading==0}}">
+    <view class="order-msg">
+        <view class="sever-tit flex">
+            <view class="sever-titimg mr10">
+                <image class="circle" mode="aspectFill" src="{{detail.fenlei.cover?detail.fenlei.cover:detail.info[0].cover}}"></image>
+            </view>
+            <view class="sub">{{detail.fenlei.title?detail.fenlei.title:detail.info[0].title}}</view>
+            <view class="f12 red sever-state" wx:if="{{detail.status==5}}">等待接单</view>
+            <view class="f12 red sever-state" wx:if="{{detail.status==1&&detail.is_refund==0}}">等待预约</view>
+            <view class="f12 red sever-state" wx:if="{{detail.is_refund==1}}">退款待审核</view>
+            <view class="f12 red sever-state" wx:if="{{detail.is_refund==3}}">退款被驳回</view>
+            <view class="f12 red sever-state" wx:if="{{detail.is_refund==2}}">已退款</view>
+            <view class="f12 red sever-state" wx:if="{{detail.earnest_is_refund==1}}">退款待审核</view>
+            <view class="f12 red sever-state" wx:if="{{detail.earnest_is_refund==3}}">退款被驳回</view>
+            <view class="f12 red sever-state" wx:if="{{detail.earnest_is_refund==2}}">已退款</view>
+        </view>
+        <view>
+            <view class="order-item flex" wx:for="{{detail.info}}" wx:key="{{index}}">
+                <view class="sever-img mr10">
+                    <image mode="aspectFill" src="{{item.cover}}"></image>
+                </view>
+                <view class="sub sever-info flexC">
+                    <view class="sever-name lineText2">{{item.title}}</view>
+                    <view class="sever-price">
+                        <view class="grey f14">x{{item.doc_num}}</view>
+                        <view wx:if="{{item.doc_price!=0}}">￥{{item.doc_price}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <block wx:if="{{config.single_pay==1}}">
+            <view class="mt10 tr" wx:if="{{detail.totel!=0}}">总价:￥{{detail.totel}}</view>
+            <view class="mt5 tr f14 red" wx:if="{{detail.order_amount!=0&&detail.status==0}}">需支付{{config.single_name}}:￥{{detail.order_amount}}</view>
+        </block>
+        <block wx:else>
+            <view class="mt10 tr" wx:if="{{detail.totel!=0}}">总价:￥{{detail.totel}}</view>
+            <view class="mt5 tr f14 red" wx:if="{{detail.earnest_order_amount!=0&&detail.status==0}}">需支付预付款:￥{{detail.earnest_order_amount}}</view>
+            <view class="mt5 tr f14 red" wx:if="{{detail.order_amount!=0&&detail.status==6}}">需支付尾款:￥{{detail.order_amount}}</view>
+        </block>
+    </view>
+    <view class="order-msg mt10 f14" wx:if="{{detail.settlement_total_fee!=0||detail.earnest_settlement_total_fee!=0}}">
+        <view class="order-msg-item flex" wx:if="{{detail.settlement_total_fee!=0}}">
+            <text class="grey mr10">社交立减金</text>
+            <text class="sub">{{config.single_pay==1?config.single_name:'尾款'}}实际支付￥{{detail.settlement_total_fee}}</text>
+        </view>
+        <view class="order-msg-item flex" wx:if="{{detail.earnest_settlement_total_fee!=0}}">
+            <text class="grey mr10">社交立减金</text>
+            <text class="sub">预付款实际支付￥{{detail.earnest_settlement_total_fee}}</text>
+        </view>
+    </view>
+    <view class="order-msg mt10 f14">
+        <view class="order-msg-item flex">
+            <text class="grey mr10">姓名</text>
+            <text class="sub">{{detail.true_name}}</text>
+        </view>
+        <view class="order-msg-item flex">
+            <text class="grey mr10">电话</text>
+            <text class="sub">{{detail.mobile}}</text>
+        </view>
+        <view class="order-msg-item flex">
+            <text class="grey mr10">地址</text>
+            <text class="sub">{{detail.address}}</text>
+        </view>
+        <view class="order-msg-item flex">
+            <text class="grey mr10">预约时间</text>
+            <text class="sub">{{detail.reseve_time}}</text>
+        </view>
+        <view class="order-msg-item flex">
+            <text class="grey mr10">我的备注</text>
+            <text class="sub">{{detail.remark?detail.remark:'无'}}</text>
+        </view>
+    </view>
+    <view class="order-msg mt10 f14">
+        <view class="order-msg-item flex">
+            <text class="grey mr10">订单编号</text>
+            <text class="sub">{{detail.number}}</text>
+        </view>
+        <view class="order-msg-item flex">
+            <text class="grey mr10">下单时间</text>
+            <text class="sub">{{detail.create_time}}</text>
+        </view>
+        <view wx:for="{{detail.extra_field}}" wx:key="{{index}}">
+            <view class="order-msg-item flex" wx:if="{{item.type!='images'&&item.value}}">
+                <view class="grey mr10">{{item.name}}</view>
+                <view class="sub">{{item.value}}</view>
+            </view>
+            <view class="order-msg-item flex" wx:if="{{item.type=='images'&&item.value}}">
+                <view class="grey mr10">{{item.name}}</view>
+                <view class="sub" wx:for="{{item.value}}" wx:for-item="imgurl" wx:key="{{index}}">
+                    <view class="order-img">
+                        <image mode="aspectFill" src="{{imgurl}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="order-msg-item flex" wx:if="{{detail.status==2||detail.status==3}}">
+            <text class="grey mr10">预约备注</text>
+            <text class="sub">{{detail.seller_remark?detail.seller_remark:'无'}}</text>
+        </view>
+        <view class="order-msg-item flex" wx:if="{{(detail.is_refund==3||detail.earnest_is_refund==3)&&detail.status!=3}}">
+            <text class="grey mr10">退款拒绝说明</text>
+            <text class="sub">{{detail.refund_remark?detail.refund_remark:'无'}}</text>
+        </view>
+    </view>
+    <view class="fixed-btn-box">
+        <view class="fixed-btn">
+            <view wx:if="{{config.single_pay==1}}">
+                <button bindtap="onMakePayTap" data-status="{{detail.status}}" data-trade-no="{{detail.number}}" type="primary" wx:if="{{detail.status==0}}">支付{{config.single_name}}</button>
+            </view>
+            <block wx:else>
+                <view>
+                    <button bindtap="onMakePayTap" data-status="{{detail.status}}" data-trade-no="{{detail.number}}" type="primary" wx:if="{{detail.status==0}}">支付预付款</button>
+                </view>
+                <view>
+                    <button bindtap="onMakePayTap" data-status="{{detail.status}}" data-trade-no="{{detail.number}}" type="primary" wx:if="{{detail.status==6}}">支付尾款</button>
+                </view>
+            </block>
+            <button disabled type="default" wx:if="{{detail.status==1||detail.status==5}}">等待中</button>
+            <button bindtap="onConfirmTap" data-trade-no="{{detail.number}}" type="primary" wx:if="{{detail.status==2&&detail.is_refund!=1}}">确认完成</button>
+            <button disabled type="default" wx:if="{{detail.status==3}}">已完成</button>
+        </view>
+    </view>
+</block>

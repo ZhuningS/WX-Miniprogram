@@ -1,0 +1,3 @@
+<chat-base-cell message="{{message}}">
+    <view class="content">{{message.text.content}}</view>
+</chat-base-cell>

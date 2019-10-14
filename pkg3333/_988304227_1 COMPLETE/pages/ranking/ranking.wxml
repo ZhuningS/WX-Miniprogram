@@ -1,0 +1,62 @@
+<view id="header">
+    <view style="height:{{headerHeight}}rpx;"></view>
+    <view class="capsule">
+        <view bindtap="reportTee" class="seat"></view>
+        <image mode="widthFix" src="../../assets/images/arr_left_black.png"></image>
+        <text>森林排行榜</text>
+    </view>
+</view>
+<view class="container" style="padding-top: {{top+41}}rpx;">
+    <view class="avator">
+        <image src="{{listData.avatarUrl}}"></image>
+    </view>
+    <view class="nickname">{{listData.nickName}}</view>
+    <view class="ranking">我的排名：{{listData.rangingNo>100?'100+':listData.rangingNo}}</view>
+    <view class="list">
+        <view>
+            <text>{{listData.focusLong}}</text>
+            <image src="../../assets/images/ic_time_one@3x.png"></image>
+        </view>
+        <view>
+            <text>{{listData.successCount}}</text>
+            <image src="../../assets/images/ic_tree@3x.png"></image>
+        </view>
+        <view>
+            <text>{{listData.failCount}}</text>
+            <image src="../../assets/images/ic_dead_tree_one@3x.png"></image>
+        </view>
+    </view>
+    <view class="box">
+        <view class="time" hidden="{{list.length<=0}}">{{time}}</view>
+        <scroll-view scrollY bindscrolltolower="loadMore">
+            <view class="item" wx:for="{{list}}" wx:key="{{index}}">
+                <view class="num">{{index+1}}</view>
+                <view class="info">
+                    <image src="{{item.avatarUrl}}"></image>
+                    <view class="desc">
+                        <view class="name">{{item.nickName}}</view>
+                        <view class="other">
+                            <view>
+                                <text>{{item.focusLong}}</text>
+                                <image src="../../assets/images/ic_time_one@3x.png"></image>
+                            </view>
+                            <view>
+                                <text>{{item.successCount}}</text>
+                                <image src="../../assets/images/ic_tree@3x.png"></image>
+                            </view>
+                            <view>
+                                <text>{{item.failCount}}</text>
+                                <image src="../../assets/images/ic_dead_tree_one@3x.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="noneData" hidden="{{list.length>0}}">
+                <image mode="widthFix" src="../../assets/images/img_default@2x.png"></image>
+            </view>
+        </scroll-view>
+    </view>
+    <button class="show" hoverClass="none" openType="share" plain="true">炫耀一下</button>
+    <image class="bird" mode="widthFix" src="../../assets/images/img_bird@3x.png" style="top: {{top+24}}rpx;"></image>
+</view>

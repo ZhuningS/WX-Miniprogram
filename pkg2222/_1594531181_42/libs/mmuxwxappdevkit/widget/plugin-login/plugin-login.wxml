@@ -1,0 +1,11 @@
+<block wx:if="{{!disable}}">
+    <functional-page-navigator args="" bind:fail="wxLoginFail" bind:success="wxLoginSuccess" name="loginAndGetUserInfo" version="release" wx:if="{{needLogin}}">
+        <slot></slot>
+    </functional-page-navigator>
+    <view bindtap="onClickView" wx:else>
+        <slot></slot>
+    </view>
+</block>
+<view wx:else>
+    <slot></slot>
+</view>

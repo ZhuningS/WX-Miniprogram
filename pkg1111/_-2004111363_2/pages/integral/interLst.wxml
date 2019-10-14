@@ -1,0 +1,35 @@
+<view class="integralOrder-list" wx:if="{{vm.list[1].length}}">
+    <block wx:for="{{vm.list}}" wx:for-item="lst" wx:key="key">
+        <view class="integralOrder-item" wx:for="{{lst}}" wx:key="key">
+            <view class="integralOrder-title" style="color:#ff8929">
+                <text style="color:#666;">{{item.AddTimeStr}}</text>
+                <text wx:if="{{item.Way==1}}">待消费</text>
+                <text wx:if="{{item.Way==2}}">待自取</text>
+                <view wx:if="{{item.Way==0}}">
+                    <text bindtap="confirmReceipt" data-wpyconfirmreceipt-a="{{item.Id}}" data-wpyconfirmreceipt-b="{{item.state}}" style="{{item.state==2?'color:#ff8929':'color:#ffc63d'}}">{{state[item.state]}}</text>
+                </view>
+            </view>
+            <view class="integralOrder-content">
+                <view>
+                    <image mode="aspectFill" src="{{item.activityImg}}" style="width:172rpx;height:172rpx;"></image>
+                </view>
+                <view class="order-content-text">
+                    <text class="order-content-title">{{item.activityName}}</text>
+                    <view class="order-content-price">
+                        <text wx:if="{{item.PayWay==0}}">{{item.integral}} </text>
+                        <text wx:if="{{item.PayWay==1}}">
+                            <text style="font-size:26rpx;">￥</text>{{item.BuyPriceStr}}+{{item.integral}}</text>
+                        <text style="font-size:22rpx;"> 积分</text>
+                        <text style="font-size:24rpx;color:#bfbfbf;text-decoration: line-through;padding-left:36rpx;">原价:￥{{item.originalPriceStr}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="integralOrder-bottom">
+                <text>消耗：{{item.integral}} <text>积分</text>
+                </text>
+                <text style="padding-left:60rpx;">实付：￥{{item.BuyPriceStr}}</text>
+            </view>
+        </view>
+    </block>
+</view>
+<wxc-abnor type="ORDER" wx:else></wxc-abnor>

@@ -1,0 +1,49 @@
+.notice {
+    background-color: #fff;
+    position: relative;
+    font-size: 28rpx;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.notice_wrap {
+    display: flex;
+    height: 70rpx;
+    line-height: 70rpx;
+    width: 100%;
+    overflow: hidden;
+}
+
+.icon_notice {
+    position: absolute;
+    width: 32rpx;
+    height: 32rpx;
+    left: 20rpx;
+    top: 15rpx;
+}
+
+.text_style {
+    white-space: nowrap;
+    background-color: #dd2450;
+    color: #fff;
+    padding: 0 4rpx;
+    border-radius: 4rpx;
+    margin-left: 4rpx;
+    font-size: 28rpx;
+}
+
+.notice_swiper {
+    top: 0;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #333;
+}
+
+.text_style2 {
+    font-size: 28rpx;
+    margin-left: 28rpx;
+    width: 88rpx;
+    line-height: 30rpx;
+    color: #dd2450;
+    font-weight: 900;
+}

@@ -1,0 +1,15 @@
+<view class="wrap">
+    <view bindtap="onClickItem" class="head {{align>0?'.head-align__right':''}} {{align<0?'.head-align__left':''}}">
+        <view class="filter-item__text {{selected?'highlight':''}}">{{title}}</view>
+        <view class="filter-item__wrapper-icon" wx:if="{{type=='dropdown'||type=='order'}}">
+            <block wx:if="{{type=='order'}}">
+                <image class="filter-item__icon-up" mode="aspectFit" src="{{'/assets/icon-filter-up_HL.png'}}" wx:if="{{order>0}}"></image>
+                <image class="filter-item__icon-up" mode="aspectFit" src="{{'/assets/icon-filter-up.png'}}" wx:else></image>
+            </block>
+            <block wx:if="{{type=='dropdown'&&datasource&&datasource.length||type=='order'}}">
+                <image class="filter-item__icon-down" mode="aspectFit" src="{{'/assets/icon-filter-down_HL.png'}}" wx:if="{{order<0}}"></image>
+                <image class="filter-item__icon-down" mode="aspectFit" src="{{'/assets/icon-filter-down.png'}}" wx:else></image>
+            </block>
+        </view>
+    </view>
+</view>

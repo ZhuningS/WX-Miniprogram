@@ -1,0 +1,18 @@
+.formDetail {
+    background: #fff;
+}
+
+.formItem {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    padding: 30rpx;
+    color: #555;
+    border-bottom: 1px solid #eee;
+}
+
+.formItem label {
+    width: 120rpx;
+    white-space: nowrap;
+    color: #888;
+}

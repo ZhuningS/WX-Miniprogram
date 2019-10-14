@@ -1,0 +1,5 @@
+<view class="wrapper">
+    <view bindtap="minus" class="btn btn-minus {{quantity<=1?'disabled':''}}"></view>
+    <view class="count">{{quantity}}</view>
+    <view bindtap="increase" class="btn btn-add {{quantity>=maxvalue?'disabled':''}}"></view>
+</view>

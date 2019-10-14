@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="3138 502 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="icon_notification_16px" transform="translate(3108 -124)">
+    <path id="Path_882" data-name="Path 882" class="cls-1" d="M0,0H16V16H0Z" transform="translate(30 626)"/>
+    <path id="ic_notifications_white_24px" d="M9.333,15.5a1.337,1.337,0,0,0,1.333-1.333H8A1.333,1.333,0,0,0,9.333,15.5Zm4-4V8.167a4.062,4.062,0,0,0-3-4.213V3.5a1,1,0,1,0-2,0v.453a4.05,4.05,0,0,0-3,4.213V11.5L4,12.833V13.5H14.667v-.667Z" transform="translate(28.667 625.167)"/>
+  </g>
+</svg>

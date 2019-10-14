@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="420 8814.677 22 20.323">
+  <defs>
+    <style>
+      .cls-1{fill:#fff}.cls-1,.cls-2,.cls-3{stroke:#000;stroke-width:.5px}.cls-2{fill:#f42f42}.cls-3,.cls-5{fill:none}.cls-4{stroke:none}
+    </style>
+  </defs>
+  <g id="Group_1524" data-name="Group 1524" transform="translate(420 8813.92)">
+    <g id="Group_1519" data-name="Group 1519" transform="translate(0 1.08)">
+      <g id="Rectangle_1183" class="cls-1" data-name="Rectangle 1183">
+        <path d="M0 0h17.6v11.915H0z" class="cls-4" transform="translate(2.2 8.085)"/>
+        <path d="M.25.25h17.1v11.415H.25z" class="cls-5" transform="translate(2.2 8.085)"/>
+      </g>
+      <g id="Rectangle_1184" class="cls-1" data-name="Rectangle 1184">
+        <path d="M0 0h22v5.201H0z" class="cls-4" transform="translate(0 3.404)"/>
+        <path d="M.25.25h21.5v4.701H.25z" class="cls-5" transform="translate(0 3.404)"/>
+      </g>
+      <g id="Rectangle_1187" class="cls-2" data-name="Rectangle 1187">
+        <path d="M1 0h3.231a1 1 0 0 1 1 1v1.66H0V1a1 1 0 0 1 1-1z" class="cls-4" transform="translate(8.36 1.974)"/>
+        <path d="M1 .25h3.231a.75.75 0 0 1 .75.75v1.16a.25.25 0 0 1-.25.25H.5a.25.25 0 0 1-.25-.25V1A.75.75 0 0 1 1 .25z" class="cls-5" transform="translate(8.36 1.974)"/>
+      </g>
+      <g id="Rectangle_1186" class="cls-2" data-name="Rectangle 1186">
+        <path d="M0 0h5.28v16.596H0z" class="cls-4" transform="translate(8.36 3.404)"/>
+        <path d="M.25.25h4.78v16.096H.25z" class="cls-5" transform="translate(8.36 3.404)"/>
+      </g>
+      <path id="Path_316" d="M-3980 4818.792v1.838h4.841v-1.838l-3.706-1.78z" class="cls-2" data-name="Path 316" transform="translate(3983.643 -4817.011)"/>
+      <path id="Path_317" d="M-3980 4818.827v1.85h4.841v-1.85l-.987-1.767z" class="cls-2" data-name="Path 317" transform="translate(3993.518 -4817.06)"/>
+      <path id="Line_1" d="M0 0h5.28" class="cls-3" data-name="Line 1" transform="translate(3.422 1.915)"/>
+      <path id="Line_2" d="M0 0h4.84" class="cls-3" data-name="Line 2" transform="translate(13.518 1.915)"/>
+      <path id="Line_3" d="M0 0h5.28" class="cls-3" data-name="Line 3" transform="translate(8.58 8.392)"/>
+    </g>
+  </g>
+</svg>

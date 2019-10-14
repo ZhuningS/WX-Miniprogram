@@ -1,0 +1,35 @@
+<view class="m15" wx:if="{{!is_orderInfo_show==1}}">
+    <form bindreset="formReset" bindsubmit="formSubmit">
+        <view class="top-content flex">
+            <input class="sub hexiao-input gridFour mr10" name="order_number" placeholder="请输入核销码"></input>
+            <button class="top-btn" formType="submit" size="mini" type="primary">确定</button>
+        </view>
+    </form>
+    <view class="hexiao-box mt10">
+        <button bindtap="scanCode" class="hexiao-btn  mid" type="primary">扫码核销</button>
+    </view>
+</view>
+<view class="m15" wx:if="{{is_orderInfo_show==1}}">
+    <view class="top-content flex gridXt" wx:for="{{oinfo.glist}}">
+        <view class="goods-img mr10">
+            <image mode="aspectFill" src="{{item.goods_img}}"></image>
+        </view>
+        <view class="sub mr15 flexC">
+            <view class="sub">{{item.goods_name}}</view>
+            <view class="grey">×{{item.goods_number}}</view>
+        </view>
+        <view class="red f16 fb self-bottom">￥{{item.goods_amount}}</view>
+    </view>
+    <view class="ui-cells">
+        <view class=" ui-cell round-corner-cut grey">
+            <view class="mt10">姓名：{{oinfo.consignee}}</view>
+            <view class="mt10">电话：{{oinfo.mobile}}</view>
+            <view class="mt10">订单号：{{oinfo.order_sn}}</view>
+            <view class="mt10">下单时间：{{oinfo.ctime}}</view>
+        </view>
+        <view class="ui-cell">
+            <button bindtap="sureChargeOff" type="primary">确认核销</button>
+            <button bindtap="cancel" class="mt10">取消</button>
+        </view>
+    </view>
+</view>

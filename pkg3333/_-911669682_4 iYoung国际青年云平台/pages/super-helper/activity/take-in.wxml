@@ -1,0 +1,38 @@
+<view class="contenter">
+    <view class="top bgcolor"></view>
+    <view class="userInfo tc">
+        <view class="user-img">
+            <image mode="aspectFill" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'/images/default.png'}}"></image>
+        </view>
+        <text class="f16">{{my_info.true_name?my_info.true_name:userInfo.nickName}}</text>
+    </view>
+    <form bindsubmit="onActionTap" reportSubmit="true">
+        <view class="active-msg tc">
+            <view class="title flex grey">
+                <text class="sub line mr10"></text>
+                <text>邀请您加入</text>
+                <text class="sub line ml10"></text>
+            </view>
+            <view class="active-content ">
+                <view class="active-title f16">{{title}}</view>
+                <view class="f14 mb10">{{content}}</view>
+                <view class="active-time">
+                    <block wx:if="{{is_fullday==1}}">
+            {{start_time}} 全天
+          </block>
+                    <block wx:else>
+            {{start_time}} - {{end_time}}
+          </block>
+                </view>
+                <view catchtap="onOpenMapTap" class="active-place lineText" data-address="{{address}}" data-latitude="{{latitude}}" data-longitude="{{longitude}}" data-title="{{title}}">
+                    <text class="iconfont icon-locationfill green"></text> {{address}}</view>
+            </view>
+        </view>
+        <view>
+            <button class="btn f16 write transition-duration-150" disabled="{{is_activity===undefined?'disabled':''}}" formType="submit" type="primary">
+                <block wx:if="{{type=='enroll'}}">{{is_activity?'查看详情':'我要报名'}}</block>
+                <block wx:else>{{my_info.status>0?'查看详情':'立即签到'}}</block>
+            </button>
+        </view>
+    </form>
+</view>

@@ -1,0 +1,29 @@
+<view class="p1 bg-white flex items-center">
+    <view class="bold font-14" style="flex:1">商品规格管理</view>
+    <view bindtap="addCate" class="blue font-13 bold underline">添加规格</view>
+</view>
+<view class="font-12 bg-white flex items-center p1 m1" wx:if="{{showAdd}}">
+    <view style="flex:1">
+        <input bindinput="cateInput" class="weui-input" placeholder="输入分类名称" type="text"></input>
+    </view>
+    <image bindtap="save" class="p1" src="https://api.cnmmsc.org/apitc/img/image/zhicheng4.png" style="width:18px;height:18px;"></image>
+    <image bindtap="closeAdd" class="p1" src="https://api.cnmmsc.org/apitc/img/image/zhicheng5.png" style="width:18px;height:18px;"></image>
+</view>
+<view class="font-12 bg-white flex items-center p1 m1 relative" style="z-index:{{cindex==index?'4':'0'}}" wx:for="{{spec}}">
+    <block wx:if="{{cindex!==index}}">
+        <view bindtap="editCate" class="weui-input dark bold" data-index="{{index}}" style="flex:1">{{item.spec_name}}</view>
+        <image bindtap="editCate" class="p1" data-index="{{index}}" src="../image/change.png" style="width:18px;height:18px;"></image>
+        <image bindtap="deleteCate" class="p1" data-index="{{index}}" hidden="true" src="https://api.cnmmsc.org/apitc/img/image/zhicheng.png" style="width:18px;height:18px;"></image>
+    </block>
+    <block wx:else>
+        <view style="flex:1">
+            <input bindinput="editInput" class="weui-input" data-index="{{index}}" id="newCateName" placeholder="新的分类名称" type="text" value="{{item.spec_name}}"></input>
+        </view>
+        <image bindtap="updateCate" class="p1" data-index="{{index}}" src="https://api.cnmmsc.org/apitc/img/image/zhicheng4.png" style="width:18px;height:18px;"></image>
+        <image bindtap="cancelEdit" class="p1" data-index="{{index}}" src="https://api.cnmmsc.org/apitc/img/image/zhicheng8.png" style="width:20px;height:20px;"></image>
+    </block>
+</view>
+<view bindtap="cancelEdit" class="fixed" style="top:0;bottom:0;left:0;right:0;background:rgba(0,0,0,0.5);z-index:1" wx:if="{{cindex>=0}}"></view>
+<view class="loading rel">
+      技术支持@移动营销服务中心
+    </view>

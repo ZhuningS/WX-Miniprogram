@@ -1,0 +1,24 @@
+<template name="mShophead">
+    <view class="mShophead_column" style="margin-top:{{marginTop}};margin-bottom:{{marginBottom}}" wx:if="{{layout.type=='column'}}">
+        <view>
+            <image mode="widthFix" src="{{dataset.shopImg}}"></image>
+        </view>
+        <view class="content">
+            <view class="logo">
+                <image mode="widthFix" src="{{dataset.logo}}"></image>
+            </view>
+            <view class="name">{{dataset.shopname}}</view>
+        </view>
+    </view>
+    <view class="mShophead" style="margin-top:{{marginTop}};margin-bottom:{{marginBottom}}" wx:if="{{layout.type==''}}">
+        <view class="bg">
+            <image mode="aspectFill" src="{{dataset.shopImg}}"></image>
+        </view>
+        <view class="content">
+            <view class="logo">
+                <image mode="widthFix" src="{{dataset.logo}}"></image>
+            </view>
+            <view class="name">{{dataset.shopname}}</view>
+        </view>
+    </view>
+</template>

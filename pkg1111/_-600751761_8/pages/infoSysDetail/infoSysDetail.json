@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "form-module": "../../components/modules/form/form",
+        "side-bar": "../../components/sideBar/sideBar",
+        "tech-support": "../../components/techSupport/techSupport"
+    },
+    "enablePullDownRefresh": false
+}

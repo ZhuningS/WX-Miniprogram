@@ -1,0 +1,115 @@
+<view class="{{currentSkin}}">
+    <view class="c-subform">
+        <image class="w-100" mode="widthFix" src="http://vzan-img.oss-cn-hangzhou.aliyuncs.com/upload/img/20180919/38596ffcebbb4922a33bbaa50af41c1c.png"></image>
+        <form bindsubmit="showMask" reportSubmit="true">
+            <view class="c-subform-main">
+                <view class="c-subform-input f" wx:if="{{vm.state.showname}}">
+                    <text class="c-subform-title">姓名</text>
+                    <input class="f1" name="姓名" placeholder="填写你的姓名" placeholderClass="cd9"></input>
+                </view>
+                <view class="c-subform-input f" wx:if="{{vm.state.showsex}}">
+                    <text class="c-subform-title">性别</text>
+                    <picker bindchange="sexChange" class="f1" range="{{vm.subInfo.sex}}" value="{{vm.subInfo.index}}">
+                        <input disabled class="f1" name="性别" type="text" value="{{vm.subInfo.sex[vm.subInfo.index]}}"></input>
+                    </picker>
+                </view>
+                <view class="c-subform-input f" wx:if="{{vm.state.showage}}">
+                    <text class="c-subform-title">年龄</text>
+                    <input class="f1" name="年龄" placeholder="填写年龄" placeholderClass="cd9"></input>
+                </view>
+                <view class="c-subform-input f" wx:if="{{vm.state.showphone}}">
+                    <text class="c-subform-title">号码</text>
+                    <input class="f1" maxlength="11" name="手机号码" placeholder="填写你的号码" placeholderClass="cd9" type="number"></input>
+                </view>
+                <view class="c-subform-input f" wx:if="{{vm.state.showmap==false&&vm.state.showdress}}">
+                    <text class="c-subform-title">城市</text>
+                    <view class="f f1 fc">
+                        <picker bindchange="addrChange" class="f1" mode="region">
+                            <input disabled class="f1" name="地址" placeholder="请选择地址" placeholderClass="cd9" type="text" value="{{vm.subInfo.region}}"></input>
+                        </picker>
+                        <text class="dzicon icon-xiala-copy-right  ml20"></text>
+                    </view>
+                </view>
+                <view class="c-subform-input f" wx:if="{{vm.state.showmap}}">
+                    <text class="c-subform-title">城市</text>
+                    <view bindtap="chooseLocation" class="f f1 fc">
+                        <input disabled class="f1" name="地址" placeholder="请选择地址" placeholderClass="cd9" type="text" value="{{vm.subInfo.region}}"></input>
+                        <text class="dzicon icon-xiala-copy-right  ml20"></text>
+                    </view>
+                </view>
+                <view class="c-subform-input f" wx:if="{{vm.state.showdress}}">
+                    <input class="f1" maxlength="16" name="详细地址" placeholder="街道信息等" placeholderClass="cd9" type="text"></input>
+                </view>
+                <view bindtap="showData" class="c-subform-input f" data-wpyshowdata-a="1" wx:if="{{vm.state.showtime}}">
+                    <text class="c-subform-title">预约时间</text>
+                    <view class="f f1 fc">
+                        <input disabled class="f1" name="预约时间" placeholder="选择时间" placeholderClass="cd9" type="text" value="{{vm.pickTime[1]}}"></input>
+                        <text class="dzicon icon-xiala-copy-right  ml20"></text>
+                    </view>
+                    <view class="t-pick" wx:if="{{vm.showPicker[1]}}">
+                        <view catchtap="$comPicker$Timeshow" class="t-pick__bg" data-com-index="{{undefined}}" data-wpytimeshow-a="0"></view>
+                        <view class="t-pick__main">
+                            <view class="t-btn f fj">
+                                <view catchtap="$comPicker$Timeshow" data-com-index="{{undefined}}" data-wpytimeshow-a="0" data-wpytimeshow-b="{{1}}">取消</view>
+                                <view catchtap="$comPicker$Timeshow" data-com-index="{{undefined}}" data-wpytimeshow-a="1" data-wpytimeshow-b="{{1}}" data-wpytimeshow-c="{{vm.time}}">确定</view>
+                            </view>
+                            <picker-view bindchange="$comPicker$bindChange" class="pick" data-com-index="{{undefined}}" data-wpybindchange-a="{{vm.time}}" indicatorStyle="height: 50px;" value="{{vm.time.value}}">
+                                <picker-view-column>
+                                    <view wx:for="{{vm.time.years}}" wx:for-index="$comPicker$index" wx:for-item="$comPicker$item" wx:key="$comPicker$key">{{$comPicker$item}}年</view>
+                                </picker-view-column>
+                                <picker-view-column>
+                                    <view wx:for="{{vm.time.months}}" wx:for-index="$comPicker$index" wx:for-item="$comPicker$item" wx:key="$comPicker$key">{{$comPicker$item}}月</view>
+                                </picker-view-column>
+                                <picker-view-column>
+                                    <view wx:for="{{vm.time.days}}" wx:for-index="$comPicker$index" wx:for-item="$comPicker$item" wx:key="$comPicker$key">{{$comPicker$item}}日</view>
+                                </picker-view-column>
+                                <picker-view-column>
+                                    <view wx:for="{{vm.time.hours}}" wx:for-index="$comPicker$index" wx:for-item="$comPicker$item" wx:key="$comPicker$key">{{$comPicker$item}}时</view>
+                                </picker-view-column>
+                                <picker-view-column>
+                                    <view wx:for="{{vm.time.mins}}" wx:for-index="$comPicker$index" wx:for-item="$comPicker$item" wx:key="$comPicker$key">{{$comPicker$item}}分</view>
+                                </picker-view-column>
+                            </picker-view>
+                        </view>
+                    </view>
+                </view>
+                <view class="c-subform-input f" wx:if="{{vm.state.showremark}}">
+                    <text class="c-subform-title">备注</text>
+                    <input class="f1" maxlength="100" placeholder="买家备注(字数不超过100)" placeholderClass="cd9"></input>
+                </view>
+            </view>
+            <view style="height:110rpx"></view>
+            <view class="c-subform-btn f">
+                <text class="c-subform-sub f1" style="margin-left:30rpx" wx:if="{{vm.state.openpay}}">预约费 ￥{{vm.price}}</text>
+                <button class="c-subform-sub skin_bg f fc fc-h f34" formType="submit" style="width:{{vm.state.openpay?'230rpx':'100%'}}">立即预约</button>
+            </view>
+        </form>
+        <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+        <view class="c-pay-mask" wx:if="{{vm.payMask}}">
+            <view bindtap="$comPay$hideMask" class="c-pay-mask-bg" data-com-index="{{undefined}}"></view>
+            <view class="c-pay-mask-main">
+                <view class="c-pay-mask-tip" wx:if="{{vm.payinfo.PayAmount}}">注意：您购买的是虚拟商品，不支持退款</view>
+                <view bindtap="$comPay$selChange" class="c-pay-mask-pay f fc" data-com-index="{{undefined}}" data-wpyselchange-a="2">
+                    <view class="f f1 fc">
+                        <text class="dzicon icon-jinbi f50" style="color:#F6A71D"></text>
+                        <text class="f30 ml20">储值支付(余额￥{{vm.valuemoney}})</text>
+                    </view>
+                    <view class="dzicon icon-zhifuchenggong skin_txt f40" wx:if="{{vm.selIndex==2}}"></view>
+                </view>
+                <view bindtap="$comPay$selChange" class="c-pay-mask-pay f fc" data-com-index="{{undefined}}" data-wpyselchange-a="1">
+                    <view class="f f1 fc">
+                        <text class="dzicon icon-weixin f50" style="color:#25B415"></text>
+                        <text class="f30 ml20">微信支付</text>
+                    </view>
+                    <view class="dzicon icon-zhifuchenggong skin_txt f40" wx:if="{{vm.selIndex==1}}"></view>
+                </view>
+                <view style="height:20rpx;background-color:#F7F5F5"></view>
+                <view class="c-pay-mask-bottom f fc">
+                    <text class="f28 f1">实际支付:<text class="skin_txt t-b f32 ml10">￥{{vm.payinfo.PayAmount||vm.price}}</text>
+                    </text>
+                    <text bindtap="$comPay$payMoney" class="c-pay-mask-btn skin_bg" data-com-index="{{undefined}}">立即支付</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

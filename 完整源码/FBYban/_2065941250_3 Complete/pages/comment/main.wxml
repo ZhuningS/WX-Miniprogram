@@ -1,0 +1,2 @@
+<import src="../../components/comment$1880fcad"></import>
+<template is="comment$1880fcad" data="{{...$root['0'],$root:$root}}"></template>

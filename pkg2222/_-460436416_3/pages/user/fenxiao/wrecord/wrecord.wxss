@@ -1,0 +1,12 @@
+.wr-item {
+    padding: 30rpx;
+    background: #fff;
+}
+
+.avatar {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 50%;
+}
+
+@import "../../../../__wuBaseWxss__/16.wxss";

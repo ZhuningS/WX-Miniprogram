@@ -1,0 +1,8 @@
+<import src="/components/form/index.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <template is="form" data="{{...formDetail,form_info:form_info,form_info2:form_info2,date:date,time:time,region:region}}"></template>
+</view>

@@ -1,0 +1,37 @@
+<navigation-bar backgroundColor="#F7F7F7" title="填写订单"></navigation-bar>
+<view class="wrapper {{phoneModel}}" style="min-height: {{screenHeight+'px;'}}" wx:if="{{goods_item_code!==''}}">
+    <section title="配送信息">
+        <section-item bindtap="getAddress" isLastOne="true">
+            <view class="address-info">
+                <image class="icon" src="../../assets/icon-location.png"></image>
+                <view class="info">
+                    <view class="main">{{expressInfoName}} {{expressInfoMobile}}</view>
+                    <view class="sub">{{expressInfoAddress}}</view>
+                </view>
+            </view>
+        </section-item>
+    </section>
+    <section icon="{{shop.icon}}" title="{{shop.name}}" wx:for="{{shops}}" wx:for-item="shop" wx:key="appid">
+        <section-item withArrow="{{false}}">
+            <goods-item appid="{{shop.appid}}" bindblur="onInputBlur" bindfocus="onInputFocus" bindincrease="onIncreaseQuantity" bindminus="onMinusQuantity" express_fee="{{shop.express}}" goods_desc="{{item.goods_desc}}" goods_img_url="{{item.goods_img_url}}" goods_name="{{item.goods_name}}" goods_price="{{item.goods_unit_price}}" is_last_one="{{index==shop.goods.length-1}}" item_code="{{item.goods_item_code}}" not_ship="{{item.notShip}}" quantity="{{item.goods_quantity}}" sku_id="{{item.goods_sku_id}}" stock_number="{{item.stock}}" wx:for="{{shop.goods}}" wx:key="goods_item_code+goods_sku_id"></goods-item>
+        </section-item>
+        <section-item isLastOne="true" withArrow="{{false}}">
+            <view class="summary">共{{shop.quantity}}件, 合计：<text class="total-price">{{Util.fixPrice(shop.cost)}}</text>
+            </view>
+        </section-item>
+    </section>
+    <view class="space-for-keyboard" style="height: {{kbHeight||0}}px;"></view>
+    <view class="wrapper-btn-pay {{phoneModel}}">
+        <counter catchoncountall="pay" cost="{{goods_total_price}}" disablepay="{{!stockpileEnough||!validOrder||!gotAddress||exceedExpressRange}}" express="{{goods_total_express}}" payorder="{{true}}" quantity="{{goods_total_quantity}}"></counter>
+    </view>
+</view>
+<modal bindcancel="{{modal.cancel}}" bindconfirm="{{modal.confirm}}" content="{{modal.content}}" openType="{{modal.openType}}" showCancel="{{modal.showCancel}}" showModal="{{modal.show}}" title="{{modal.title}}" userinfo="{{modal.userinfo}}"></modal>
+<wxs module="Util">
+module.exports.fixPrice = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num < 0 || num.toString() === 'NaN') {
+        return (' -')
+    };
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+</wxs>

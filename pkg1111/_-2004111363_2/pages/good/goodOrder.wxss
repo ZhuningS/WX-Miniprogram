@@ -1,0 +1,145 @@
+@import "../../__wuBaseWxss__/1.wxss";
+
+@import "../../__wuBaseWxss__/3.wxss";
+
+.order {
+    padding-bottom: 100rpx;
+}
+
+.pop-layer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(0,0,0,0.5);
+    transition: all 300ms ease both;
+    width: 100%;
+    height: 100%;
+}
+
+.pop-mask {
+    position: absolute;
+    z-index: 990;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+.pop-wrap {
+    position: absolute;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    min-height: 300rpx;
+    z-index: 998;
+}
+
+.btn-danger {
+    width: 100%;
+    background-color: #ff5b5b;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    color: #fff;
+}
+
+.btn-ok {
+    width: 100%;
+    background-color: #fe943d;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    color: #fff;
+}
+
+.pop-hide {
+    height: 0;
+}
+
+.maxheight600 {
+    max-height: 600rpx;
+    overflow-y: scroll;
+}
+
+.order {
+    width: 100%;
+    color: #333;
+}
+
+.order .header {
+    width: 100%;
+    height: 155rpx;
+    background: #fff;
+}
+
+.order .wrap-good {
+    margin-top: 20rpx;
+    background: #fff;
+}
+
+.order .wrap-good .wrap-message {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding: 0 30rpx;
+}
+
+.order .wrap-coup {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    background: #fff;
+    margin: 24rpx 0;
+    padding-left: 30rpx;
+}
+
+.order .wrap-order {
+    width: 100%;
+    background: #fff;
+    margin: 24rpx 0;
+    padding: 0 30rpx;
+    font-size: 26rpx;
+}
+
+.order .wrap-mode {
+    width: 100%;
+    min-height: 200rpx;
+    background: #fff;
+    padding-left: 30rpx;
+}
+
+.order .wrap-mode .mode-weixin {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding-right: 30rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.order .wrap-mode .mode-weixin:last-child {
+    border-bottom: none;
+}
+
+.order .wrap-btn {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.order .wrap-btn>form {
+    width: 209rpx;
+    height: 100rpx;
+}
+
+.order .wrap-btn>form button {
+    width: 100%;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 28rpx;
+}

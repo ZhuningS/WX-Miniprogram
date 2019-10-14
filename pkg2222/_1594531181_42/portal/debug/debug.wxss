@@ -1,0 +1,34 @@
+.wrap {
+    margin-top: 10px;
+}
+
+.debugItem {
+    border-bottom: 0.5px solid #D8D8D8;
+    padding: 24px 30rpx 24px;
+    position: relative;
+}
+
+.logItem {
+    border-bottom: 1rpx solid #D8D8D8;
+    padding: 24rpx 20rpx 24rpx;
+    position: relative;
+    color: white;
+    display: block;
+    word-break: break-all;
+}
+
+.console {
+    border-top: 1rpx solid #D8D8D8;
+    margin-top: 100rpx;
+    background: black;
+}
+
+.console__title {
+    color: green;
+    padding: 24rpx 20rpx 24rpx;
+    font-weight: bold;
+}
+
+.progress {
+    margin-top: 50rpx;
+}

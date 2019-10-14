@@ -1,0 +1,1 @@
+<view class="avatar size-{{size}} {{isFloat&&'is-float'}}" style="background-image: url({{url}})"></view>

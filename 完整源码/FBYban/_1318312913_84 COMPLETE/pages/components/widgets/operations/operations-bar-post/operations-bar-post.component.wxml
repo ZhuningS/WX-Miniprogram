@@ -1,0 +1,15 @@
+<view class="{{rootClassNames}}">
+    <block wx:if="{{!inPostPage}}">
+        <qm-button class="actionsheet-launcher" ontap="handleActionSheetLauncherTap" theme="text" wx:if="{{showActionSheetLauncher}}">
+            <qm-icon name="menu" size="small"></qm-icon>
+        </qm-button>
+        <qm-button class="share-card" ontap="handleShowCardTap" theme="text">
+            <qm-icon name="share"></qm-icon>
+        </qm-button>
+        <qm-button class="topic-navigator" ontap="handleTopicNavigatorTap" theme="text" wx:if="{{showCommentIcon}}">
+            <qm-badge comClass="topic-count" count="{{topicCount}}" wx:if="{{topicCount&&false}}"></qm-badge>
+            <qm-icon name="{{topicIcon}}"></qm-icon>
+        </qm-button>
+    </block>
+    <mark-switcher comClass="last-button" isMarked="{{isMarked}}" markArgsData="{{markArgsData}}"></mark-switcher>
+</view>

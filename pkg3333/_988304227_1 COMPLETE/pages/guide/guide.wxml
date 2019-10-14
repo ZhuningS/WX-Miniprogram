@@ -1,0 +1,23 @@
+<swiper indicatorActiveColor="rgba(34,68,42,1)" indicatorColor="rgba(156,159,130,0.5)" indicatorDots="true">
+    <swiper-item wx:for="{{list}}" wx:key="{{index}}">
+        <image class="bird" mode="widthFix" src="../../assets/images/img_bird@3x.png" style="top: {{top+90}}rpx;"></image>
+        <image class="master" src="{{item.master}}" style="top: {{top+71}}rpx;"></image>
+        <view class="text" style="top: {{top+751}}rpx;">
+            <view class="title">{{item.title}}</view>
+            <text class="desc">{{item.descTop}} 
+ {{item.descBottom}}</text>
+        </view>
+        <image class="bg" src="{{item.bg}}"></image>
+    </swiper-item>
+    <swiper-item>
+        <image class="bird" mode="widthFix" src="../../assets/images/img_bird@3x.png" style="top: {{top+90}}rpx;"></image>
+        <image class="master" src="../../assets/images/lead_four@3x.png" style="top: {{top+71}}rpx;"></image>
+        <view class="text" style="top: {{top+751}}rpx;">
+            <view class="title">拒当低头族</view>
+            <text class="desc">建立你的个人无手机习惯 
+ 在你的生活中使用专注森林，拒当低头族。</text>
+        </view>
+        <button bindgetuserinfo="goIndex" class="go" hoverClass="none" openType="getUserInfo" plain="true" style="top: {{top+1000}}rpx;">GO</button>
+        <image class="bg" src="../../assets/images/lead_bg_four@3x.jpg"></image>
+    </swiper-item>
+</swiper>

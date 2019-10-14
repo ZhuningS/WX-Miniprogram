@@ -1,0 +1,21 @@
+.universe-timeline {
+    background-color: #EBEBEB;
+    overflow: hidden;
+}
+
+.universe-timeline universe-card {
+    margin-top: 40rpx;
+    padding: 0 40rpx;
+}
+
+.universe-timeline universe-card.section-article {
+    margin-top: 0;
+}
+
+.universe-timeline universe-card.section-article .card-component-root {
+    border-top: 1px solid #F2F2F2;
+}
+
+.universe-timeline universe-card:last-child {
+    margin-bottom: 40rpx;
+}

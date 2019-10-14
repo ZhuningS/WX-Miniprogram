@@ -1,0 +1,21 @@
+.container {
+    box-sizing: border-box;
+}
+
+.canvas {
+    width: 630rpx;
+    height: 915rpx;
+    margin: 0 auto;
+}
+
+.container .save {
+    width: 630rpx;
+    height: 100rpx;
+    background: #fff;
+    border: 0;
+    border-radius: 0;
+    margin-top: 60rpx;
+    line-height: 100rpx;
+    font-size: 32rpx;
+    color: #22442A;
+}

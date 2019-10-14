@@ -1,0 +1,39 @@
+<import src="../components/widgets.wxml"></import>
+<import src="../components/card.wxml"></import>
+<template is="single-card-label" data="{{ label:{title:'托管成员',description:'可由管理员代为发帖'} }}"></template>
+<view class="list-ctn">
+    <view class="single-card-user" wx:for="{{agents}}">
+        <form reportSubmit bindsubmit="hackForm">
+            <navigator class="user" hoverClass="none" openType="navigate" url="/pages/profile/user?uid={{item.uid}}">
+                <view style="display:flex;flex:auto;align-items: center;">
+                    <view class="avatar-ctn">
+                        <image class="avatar" src="{{item.avatar}}"></image>
+                    </view>
+                    <view class="info">
+                        <view class="name">{{item.name}}</view>
+                        <view class="desc">{{item.desc}}</view>
+                    </view>
+                </view>
+                <view>
+                    <navigator navigate class="button text" hoverClass="none" url="/pages/profile/edit?token={{item.token}}&gid={{gid}}">
+            编辑
+          </navigator>
+                    <button catchtap="removeAgent" class="button text" data-uid="{{item.uid}}" hoverClass="none">
+            删除
+          </button>
+                </view>
+            </navigator>
+        </form>
+    </view>
+    <view class="single-card-user" wx:for="{{agents}}">
+        <view class="user">
+            <view></view>
+            <navigator navigate class="button text" hoverClass="none" url="/pages/profile/edit?gid={{gid}}">
+        +新建成员
+      </navigator>
+        </view>
+    </view>
+</view>
+<view class="loading-ctn">
+    <template is="loading" data="{{loading:loading}}"></template>
+</view>

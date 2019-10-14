@@ -1,0 +1,17 @@
+<view class="wrap {{phoneModel}}">
+    <view catchonclickfilteritem="onClickFilterItem" class="header">
+        <slot></slot>
+    </view>
+    <view class="body" wx:if="{{bShowBody}}">
+        <view animation="{{maskFadeAnim}}" catchtouchstart="onMaskTouch" class="mask"></view>
+        <scroll-view animation="{{dropdownAnim}}" class="scroll-wrap" scrollY="false" wx:if="{{dropDownDs&&dropDownDs.length}}">
+            <block wx:for="{{dropDownDs}}" wx:key="id">
+                <view bindtap="onClickDropDownItem" class="scroll-item" data-userinfo="{{item.userinfo}}" hoverClass="weui-cell_active">
+                    <text class="scroll-item__title">{{item.title}}</text>
+                    <text class="scroll-item__subtitle">{{item.subtitle}}</text>
+                </view>
+                <view class="line" wx:if="{{index<dropDownDs.length-1}}"></view>
+            </block>
+        </scroll-view>
+    </view>
+</view>

@@ -1,0 +1,5 @@
+<view class="{{rootClassNames}}">
+    <view catchtap="handleMediaItemTap" class="media-wrapper" data-id="{{item.id}}" data-type="{{item.type}}" wx:for="{{mediaDataList}}" wx:key="id">
+        <media-object-publication mediaData="{{item}}" wx:if="{{item.type==='magazine'}}"></media-object-publication>
+    </view>
+</view>

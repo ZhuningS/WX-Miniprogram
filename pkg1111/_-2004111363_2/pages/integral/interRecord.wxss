@@ -1,0 +1,23 @@
+page {
+    background: #fff;
+}
+
+.in-main {
+    width: 100%;
+    padding: 0 20rpx;
+}
+
+.in-main .in-item {
+    width: 100%;
+    border-bottom: 1px solid #f2f2f2;
+    padding: 30rpx 0;
+}
+
+.in-main .in-item image {
+    width: 98rpx;
+    height: 98rpx;
+}
+
+.in-main .in-item .cee {
+    color: #eebb40;
+}

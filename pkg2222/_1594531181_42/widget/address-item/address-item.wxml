@@ -1,0 +1,14 @@
+<view class="address-item {{!seperator?'no_border':''}}">
+    <view class="address-item-inner">
+        <view class="address-item-content">
+            <text class="address-item-content-title">{{address.store_name}}</text>
+            <text class="address-item-content-subtitle">{{address.Address}}</text>
+            <text class="address-item-content-subtitle" wx:if="{{address.hour}}">营业时间：{{address.hour.begin_hour}}:{{address.hour.begin_minute<=9?'0'+address.hour.begin_minute:address.hour.begin_minute}}-{{address.hour.end_hour}}:{{address.hour.end_minute<=9?'0'+address.hour.end_minute:address.hour.end_minute}}</text>
+        </view>
+        <view class="address-item-right-part">
+            <image bindtap="onPhoneCallClick" class="address-item-right-part-icon address-item-right-part-icon__call"></image>
+            <view class="address-item-right-part-separator"></view>
+            <image bindtap="onLocationClick" class="address-item-right-part-icon address-item-right-part-icon__locate"></image>
+        </view>
+    </view>
+</view>

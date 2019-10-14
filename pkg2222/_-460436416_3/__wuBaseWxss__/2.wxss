@@ -1,0 +1,15 @@
+.mainColor {
+    color: #009aff;
+}
+
+.mainColor_bg {
+    background-color: #009aff;
+}
+
+.subColor {
+    color: #ff5050;
+}
+
+.telBox {
+    box-shadow: 0px 1px 8px rgba(0,154,255,0.5);
+}

@@ -1,0 +1,18 @@
+<view style="overflow:hidden;padding-top:{{(limitedType==1||limitedType==3)&&enablePublicNumber==2&&status==0&&officalSceneState==true&&!isRecommend?'320rpx':isRecommend?'0rpx':'150rpx'}}">
+    <view class="nav {{limitedType==1&&enablePublicNumber==2&&status==0&&officalSceneState==true?'top168':''}}" wx:if="{{!isRecommend}}">
+        <view catchtap="goSearch" class="search">
+            <input disabled="true" placeholder="搜索所有商品" placeholderStyle="color:#aaa"></input>
+        </view>
+        <scroll-view class="recommend_scroll_x_box" scrollLeft="{{scrollLeft}}" scrollWithAnimation="true" scrollX="true" wx:if="{{tabList.list.length>0}}">
+            <view bindtap="btnActive" class="recommend_hot_box" data-id="{{item.id}}" data-index="{{i}}" wx:for="{{tabList.list}}" wx:for-index="i" wx:key="item">
+                <view class="recommend_hot_text {{item.active?'recommend_hot_text_active':''}}">{{item.name}}</view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="goods {{isRecommend?'goods_search':''}}" style="" wx:if="{{haveData}}">
+        <view class="shopListSingle" wx:for="{{shopList}}" wx:key="item">
+            <common-goods-view bindaddcar="selfAddBuyCar" hasBuyCar="{{true}}" isApplyNewLogic="{{isApplyNewLogic}}" item="{{item}}" page="discover"></common-goods-view>
+        </view>
+    </view>
+    <show_dialog content="{{dialogContent}}" show="{{isShowDialog}}"></show_dialog>
+</view>

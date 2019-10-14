@@ -1,0 +1,166 @@
+<view style="position:relative">
+    <view style="width:100%;overflow-x:hidden">
+        <view class="container">
+            <view class="searchbox">
+                <input bindinput="bindinput" class="input" placeholder="请输入您要查询的关键词"></input>
+                <button bindtap="search" class="search">搜索</button>
+            </view>
+            <view class="storelist" wx:if="{{showSearch}}">
+                <view bindtap="gotoStore" data-store_id="{{item.id}}" wx:for="{{storelist}}">{{item.store_name}}</view>
+            </view>
+        </view>
+        <view class="body" wx:if="{{slide.length!=0}}">
+            <view class="banner">
+                <view class="swiper-container">
+                    <swiper bindchange="swiperChange" class="swiper" indicatorActiveColor="#fff" indicatorColor="#e5e5e5" indicatorDots="true" interval="5000" utoplay="auto">
+                        <swiper-item wx:for="{{slide}}">
+                            <image bindtap="jumps" class="img" data-appid="{{item.appid}}" data-name="{{item.xcx_name}}" data-src="{{item.src}}" data-type="{{item.state}}" data-wb_src="{{item.wb_src}}" mode="aspectFill" src="{{url3}}{{item.logo}}"></image>
+                        </swiper-item>
+                    </swiper>
+                </view>
+            </view>
+        </view>
+        <view class="ad" wx:if="{{store_name!=null}}">
+            <image class="ad-icon" mode="scaleToFill" src="https://api.cnmmsc.org/apitc/img/image/guangbo.png"></image>
+            <swiper autoplay="true" circular="true" class="newest_content gobyndsingle" interval="2000" vertical="true">
+                <swiper-item wx:for="{{msgList}}">
+                    <view bindtap="notice" class="adinfo gobyndsingle" data-id="{{item.id}}" style="color:#ED414A">
+                        <rich-text nodes="{{item.title}}"></rich-text>
+                    </view>
+                </swiper-item>
+            </swiper>
+        </view>
+        <swiper circular="true" class="classify" duration="1000" indicatorDots="{{nav.length>1?true:false}}" interval="3000" style="height:{{height}}rpx;min-height:330rpx">
+            <swiper-item wx:for="{{nav}}">
+                <view bindtap="store_type_id" data-id="{{item.id}}" wx:for="{{item}}">
+                    <view class="classify_logo rel">
+                        <image class="ab udlr" mode="aspectFill" src="{{url3}}{{item.img}}"></image>
+                    </view>
+                    <view class="classify_name gobyndsingle center">{{item.type_name}}</view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view class="join flex-center">
+            <view bindtap="sellted" class="jiony flex1">我要入驻</view>
+            <swiper autoplay="true" circular="true" class="jionbo gobyndsingle" interval="2000" vertical="true">
+                <swiper-item wx:for="{{store}}">
+            • 恭喜【
+            <text class="join-name">{{item.store_name}}</text>】成功入驻
+          </swiper-item>
+            </swiper>
+        </view>
+        <view class="marry">
+            <view>
+                <view bindtap="tabClick" class="weui-navbar__item {{activeIndex==index?'weui-bar__item_on':''}}" id="{{index}}" style="display:inline-block" wx:for="{{luntext}}">
+                    <view class="luntext_Item_text weui-navbar__title">{{item}}</view>
+                    <view class="zheline {{activeIndex==index?'block':''}}" id="{{index}}"></view>
+                </view>
+            </view>
+        </view>
+        <view hidden="{{activeIndex!=0}}">
+            <view bindtap="sellerinfo" class="sellers" wx:for="{{store}}">
+                <image bindtap="store" class="sellers-img" data-id="{{item.id}}" mode="aspectFill" src="{{item.is_houtai==1?url3:''}}{{item.logo}}"></image>
+                <text bindtap="store" class="sellersname" data-id="{{item.id}}">
+                    <text class="content_zhi color2" wx:if="{{item.is_top=='1'}}">置顶</text>{{item.store_name}}</text>
+                <view bindtap="store" class="compone flex-center" data-id="{{item.id}}">
+                    <image class="componeimg" src="https://api.cnmmsc.org/apitc/img/image/address3.png"></image>
+                    <view class="gobyndsingle" style="width:370rpx;height:40rpx;margin-left:10rpx; vertical-align: top;">{{item.address}}</view>
+                </view>
+                <view class="starbox" wx:if="{{item.score==0||item.score==5}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==1}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star1}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==2}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star2}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==3}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star3}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==4}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star4}}"></image>
+                </view>
+                <text class="hot">人气：{{item.views}}</text>
+                <image bindtap="phone" class="telephone" data-tel="{{item.tel}}" src="https://api.cnmmsc.org/apitc/img/image/telephone-blue.png"></image>
+                <text class="distance">{{item.distance}}km</text>
+            </view>
+            <view class="sellers rel hot_store" style="width:100%;height:350rpx;padding:0" wx:if="{{store==''||store==null}}">
+                <image class="ab lr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/tie2.png" style="width:400rpx;height:300rpx;"></image>
+                <view class="ab zanwu">暂无新入的商家</view>
+            </view>
+        </view>
+        <view class="loading rel" wx:if="{{refresh_top==false&&store.length>80&&activeIndex==0}}">
+            <image class="ab udlr" mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/loading.gif"></image>
+        </view>
+        <view hidden="{{activeIndex!=1}}">
+            <view bindtap="sellerinfo" class="sellers rel" wx:for="{{store1}}">
+                <image bindtap="store" class="sellers-img" data-id="{{item.id}}" mode="aspectFill" src="{{item.is_houtai==1?url3:''}}{{item.logo}}"></image>
+                <text bindtap="store" class="sellersname rel" data-id="{{item.id}}">
+                    <text class="content_zhi color2" wx:if="{{item.is_top=='1'}}">置顶</text>{{item.store_name}}</text>
+                <view bindtap="store" class="compone flex-center" data-id="{{item.id}}">
+                    <image class="componeimg" src="https://api.cnmmsc.org/apitc/img/image/address3.png"></image>
+                    <view class="gobyndsingle" style="width:370rpx;height:40rpx;margin-left:10rpx;">{{item.address}}</view>
+                </view>
+                <view class="starbox" wx:if="{{item.score==0||item.score==5}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==1}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star1}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==2}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star2}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==3}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star3}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==4}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star4}}"></image>
+                </view>
+                <text class="hot">人气：{{item.views}}</text>
+                <image bindtap="phone" class="telephone" data-tel="{{item.tel}}" src="https://api.cnmmsc.org/apitc/img/image/telephone-blue.png"></image>
+                <text class="distance">{{item.distance}}km</text>
+            </view>
+            <view class="sellers rel hot_store" style="width:100%;height:350rpx;padding:0" wx:if="{{store1==''||store1==null}}">
+                <image class="ab lr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/tie2.png" style="width:400rpx;height:300rpx;"></image>
+                <view class="ab zanwu">暂无附近的商家</view>
+            </view>
+        </view>
+        <view hidden="{{activeIndex!=2}}">
+            <view bindtap="sellerinfo" class="sellers" wx:if="{{store2.legth!=0}}" wx:for="{{store2}}">
+                <image bindtap="store" class="sellers-img" data-id="{{item.id}}" mode="aspectFill" src="{{item.is_houtai==1?url3:''}}{{item.logo}}"></image>
+                <text bindtap="store" class="sellersname" data-id="{{item.id}}">
+                    <text class="content_zhi color2" wx:if="{{item.is_top=='1'}}">置顶</text>{{item.store_name}}</text>
+                <view bindtap="store" class="compone flex-center" data-id="{{item.id}}">
+                    <image class="componeimg" src="https://api.cnmmsc.org/apitc/img/image/address3.png"></image>
+                    <view class="gobyndsingle" style="width:370rpx;height:40rpx;margin-left:10rpx;">{{item.address}}</view>
+                </view>
+                <view class="starbox" wx:if="{{item.score==0||item.score==5}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==1}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star1}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==2}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star2}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==3}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star3}}"></image>
+                </view>
+                <view class="starbox" wx:if="{{item.score==4}}">
+                    <image class="star" src="{{item.img}}" wx:for="{{star4}}"></image>
+                </view>
+                <text class="hot">人气：{{item.views}}</text>
+                <image bindtap="phone" class="telephone" data-tel="{{item.tel}}" src="https://api.cnmmsc.org/apitc/img/image/telephone-blue.png"></image>
+                <text class="distance">{{item.distance}}km</text>
+            </view>
+            <view class="sellers rel hot_store" style="width:100%;height:350rpx;padding:0" wx:if="{{store2==''||store2==null}}">
+                <image class="ab lr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/tie2.png" style="width:400rpx;height:300rpx;"></image>
+                <view class="ab zanwu">暂无热门的商家</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="loading rel">
+  {{pt_support}}
+</view>

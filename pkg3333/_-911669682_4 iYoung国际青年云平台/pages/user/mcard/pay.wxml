@@ -1,0 +1,29 @@
+<form reportSubmit bindsubmit="onPaySubmit">
+    <view class="user-info">
+        <view class="linght">付款金额</view>
+        <view class="f36 mt15">￥{{pay_amount}}</view>
+    </view>
+    <view class="list">
+        <view catchtap="onSelectCouponTap" class="list-item" data-id="{{use_coupon.id}}">
+            <view class="icon iconfont icon-ticket"></view>
+            <view class="title">优惠券</view>
+            <text class="discount linght">-￥{{coupon_discount}}</text>
+            <input hidden="true" name="coupon_id" type="number" value="{{use_coupon.id}}"></input>
+        </view>
+        <view class="list-item">
+            <view class="icon iconfont icon-zuanshi"></view>
+            <view class="title">{{level_info.level}} <text class="f12 linght">(折扣：{{level_info.discount}}%)</text>
+            </view>
+            <text class="discount linght">-￥{{level_discount}}</text>
+        </view>
+    </view>
+    <view class="btn-row" wx:if="{{recharge}}">
+        <button disabled="{{!payInfo}}" formType="submit" type="primary" wx:if="{{is_show_pay}}">立即支付</button>
+        <block wx:else>
+            <button catchtap="onNavigateTap" data-url="recharge" type="primary">余额不足，去充值</button>
+            <navigator class="tc blue" hoverClass="none" openType="navigateBack">不了，返回</navigator>
+        </block>
+    </view>
+</form>
+<import src="/utils/coupon.wxml"></import>
+<template is="use_coupon" data="{{...coupon}}"></template>

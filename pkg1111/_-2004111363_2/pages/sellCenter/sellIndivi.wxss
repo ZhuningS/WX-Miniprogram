@@ -1,0 +1,157 @@
+page {
+    box-sizing: border-box;
+}
+
+.person {
+    width: 100%;
+    height: 270rpx;
+    font-size: 36rpx;
+    background-size: cover;
+}
+
+.person image {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+}
+
+.main {
+    width: 690rpx;
+    position: absolute;
+    top: 235rpx;
+    color: #333;
+    left: 50%;
+    margin-left: -345rpx;
+}
+
+.main .m-price {
+    width: 100%;
+    height: 250rpx;
+    background: #fff;
+    text-align: center;
+}
+
+.main .m-pricebtn {
+    height: 100rpx;
+    line-height: 100rpx;
+    background: #fff;
+    border-top: 1px solid #f7f7f7;
+    padding: 0 20rpx;
+}
+
+.main .icon-icon_yongjin {
+    background: -webkit-linear-gradient(top,#FFC823,#FFAE22);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 45rpx;
+    margin-right: 20rpx;
+}
+
+.main .m-sell {
+    width: 100%;
+    height: 190rpx;
+    margin: 15rpx 0;
+    background: #fff;
+}
+
+.main .m-sellitem {
+    width: 50%;
+}
+
+.main .icon1 {
+    background: -webkit-linear-gradient(top,#FFC823,#FFAE22);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 60rpx;
+}
+
+.main .m-method {
+    width: 100%;
+    height: 130rpx;
+    background: #fff;
+    padding: 0 20rpx;
+}
+
+.main .m-method .icon2 {
+    background: -webkit-linear-gradient(top,#4AC2FF,#22B4FF);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-right: 20rpx;
+}
+
+.main .m-method .icon3 {
+    background: -webkit-linear-gradient(top,#FFC823,#FFAE22);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-right: 20rpx;
+}
+
+.main .m-method .icon4 {
+    background: -webkit-linear-gradient(top,#F76161,#FF978F);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-right: 20rpx;
+}
+
+.main .m-method .icon5 {
+    background: -webkit-linear-gradient(top,#94D972,#6AD9B4);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-right: 20rpx;
+}
+
+.qrcode-mask {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 560rpx;
+    z-index: 1;
+}
+
+.qrcode-mask .qrcode-main {
+    width: 560rpx;
+    position: fixed;
+    top: 100rpx;
+    left: 50%;
+    margin-left: -280rpx;
+    z-index: 2;
+}
+
+.qrcode-mask .qrcode-main canvas {
+    width: 560rpx;
+    height: 556rpx;
+}
+
+.qrcode-mask .qrcode-main .qrcodeBtn {
+    width: 100%;
+    height: 120rpx;
+    background: #fff;
+}
+
+.qrcode-mask .qrcode-main .qrcodeBtn .qrcode-btn {
+    width: 450rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    font-size: 36rpx;
+    border-radius: 8rpx;
+    margin: 0 auto;
+}
+
+.qrcode-mask .qrcode-main .vas-cancle {
+    margin-top: 30rpx;
+    font-size: 80rpx;
+    color: #fff;
+}
+
+.qrcode-mask .bg {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    left: 0;
+}

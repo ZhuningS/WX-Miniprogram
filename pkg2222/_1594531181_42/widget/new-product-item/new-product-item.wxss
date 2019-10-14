@@ -1,0 +1,77 @@
+@import "../../__wuBaseWxss__/2.wxss";
+
+.wrapper {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 88rpx 0 82rpx 0;
+    position: relative;
+}
+
+.wrapper-image {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 500rpx;
+    height: 320rpx;
+}
+
+.item-image {
+    width: 500rpx;
+    height: 320rpx;
+}
+
+.wrapper-info {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    font-size: 32rpx;
+    padding-top: 40rpx;
+    padding-bottom: 24rpx;
+    text-align: center;
+}
+
+.info__title {
+    opacity: 0.9;
+    font-weight: bold;
+    font-size: 30rpx;
+    color: #000;
+}
+
+.info__price {
+    margin-top: 42rpx;
+    font-size: 28rpx;
+    color: #888;
+    font-family: "WeChat Sans Std";
+}
+
+.info__buy {
+    margin-top: 48rpx;
+    color: #353535;
+    font-size: 26rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.info__buy-text {
+    position: relative;
+}
+
+.info__buy-icon {
+    width: 11rpx;
+    height: 19.2rpx;
+    margin-left: 12rpx;
+}
+
+.cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.65;
+}

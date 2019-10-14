@@ -1,0 +1,37 @@
+@import "../comment/main.wxss";
+
+.userinfo {
+    margin-top: 100rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+}
+
+.userinfo-nickname {
+    color: #aaa;
+}
+
+.usermotto {
+    margin-top: 400rpx;
+}
+
+.btn-addbook {
+    margin-top: 200rpx;
+}
+
+.progressbar {
+    text-align: center;
+    margin-top: 20rpx;
+    padding: 0 25rpx;
+}
+
+.progressbar ._progress {
+    margin-bottom: 20rpx;
+}

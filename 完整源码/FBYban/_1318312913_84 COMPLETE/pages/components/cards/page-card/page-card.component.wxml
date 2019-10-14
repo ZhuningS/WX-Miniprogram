@@ -1,0 +1,80 @@
+<view class="card size-grande" style="background-color: #FFFFFF">
+    <view bindtap="{{text.navigateTo?'navigateTo':''}}" data-navigate-object="{{text.navigateTo}}" wx:if="{{type==='text'}}">
+        <text class="text-card {{text.textStyle}} {{text.alignment}}">{{text.content}}</text>
+        <text class="text-card {{text.textStyle}} {{text.alignment}}">{{text.navigateTo?'→':''}}</text>
+    </view>
+    <view bindtap="{{richText.navigateTo?'navigateTo':''}}" class="rich-text-card" data-navigate-object="{{richText.navigateTo}}" wx:if="{{type==='richText'}}">
+        <image class="image" mode="aspectFill" src="{{richText.image.url}}"></image>
+        <view class="text-container">
+            <text class="text {{richText.textStyle}}">{{richText.content}}</text>
+        </view>
+    </view>
+    <view bindtap="{{image.navigateTo?'navigateTo':''}}" class="image-card" data-navigate-object="{{image.navigateTo}}" wx:if="{{type==='image'}}">
+        <image class="image" mode="widthFix" src="{{image.cover.url}}"></image>
+    </view>
+    <view class="swiper-card" wx:if="{{type==='swiper'}}">
+        <swiper indicatorDots indicatorActiveColor="rgba(255, 255, 255, 1)" indicatorColor="rgba(255, 255, 255, 0.3)" style="width:{{swiper.width*2}}rpx;height:{{swiper.height*2}}rpx;">
+            <swiper-item bindtap="{{item.navigateTo?'navigateTo':''}}" data-navigate-object="{{item.navigateTo}}" wx:for="{{swiper.images}}">
+                <image class="swiper-item" mode="aspectFill" src="{{item.image.url}}" style="width:{{swiper.width*2}}rpx;height:{{swiper.height*2}}rpx;"></image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <block wx:if="{{type==='section'}}">
+        <view class="article-section" wx:if="{{event.section.type==='magazine'}}">
+            <view class="card-header">
+                <magazine-name catchtap="handleMagazineNameTap" comClass="magazine-name" data-mid="{{magazine.id}}" name="{{magazine.name}}" size="small"></magazine-name>
+                <block wx:if="{{false}}">
+                    <button bindtap="onTapUnsubscribe" class="button border width-60" data-mid="{{magazine.id}}" formType="submit" hoverClass="none" wx:if="{{subscribed[magazine.id]}}">已订阅
+          </button>
+                    <button catchtap="onTapSubscribe" class="button black" data-mid="{{magazine.id}}" formType="submit" hoverClass="none" wx:else>订阅
+          </button>
+                </block>
+            </view>
+            <view class="card-body">
+                <block wx:for="{{events}}" wx:key="id">
+                    <view catchtap="handleArticleTap" class="article-section-card" data-item="{{item}}" wx:if="{{item.style==='tile'}}">
+                        <view class="left">
+                            <view class="info-title">
+                {{item.mediaData.title}}
+              </view>
+                            <view class="info-snippet">
+                {{item.mediaData.snippet}}
+              </view>
+                        </view>
+                        <view class="right">
+                            <image lazyLoad class="entry-thumb" mode="aspectFill" src="{{item.mediaData.image.url}}" wx:if="{{item.mediaData.image&&item.mediaData.image.url}}"></image>
+                        </view>
+                    </view>
+                    <view catchtap="handleArticleTap" class="article-title" data-item="{{item}}" wx:if="{{item.style==='list'}}">
+            {{item.mediaData.title}}
+          </view>
+                </block>
+            </view>
+        </view>
+        <view class="magazine-section" wx:if="{{event.section.type==='magazines'}}">
+            <view class="section-header" wx:if="{{event.section.name}}">
+        {{event.section.name}}
+      </view>
+            <view class="section-body card-container {{isFold?'fold':''}}" wx:if="{{events[0].style==='list'}}">
+                <view catchtap="handleMagazineNameTap" class="magazine-card" data-mid="{{item.magazine.id}}" wx:if="{{events[0].style==='list'}}" wx:for="{{events}}" wx:key="id">
+                    <view class="magazine-card-border">
+                        <view class="magazine-card-header">
+                            <text class="magazine-card-header-text">{{item.magazine.name}}</text>
+                        </view>
+                        <image class="magazine-card-body" mode="aspectFill" src="{{item.magazine.cover}}" wx:if="{{item.magazine.cover}}"></image>
+                        <view class="magazine-card-body" style="background-color: {{'#'+item.magazine.color}}" wx:else></view>
+                    </view>
+                </view>
+            </view>
+            <view class="section-body" wx:if="{{events[0].style==='tile'}}">
+                <view catchtap="handleMagazineNameTap" class="magazine-label" data-mid="{{item.magazine.id}}" wx:for="{{events}}" wx:key="id">
+            {{item.magazine.name}}
+          </view>
+            </view>
+            <view catchtap="handleClickUnfoldMagazines" class="unfold-button" wx:if="{{isFold&&events[0].style==='list'&&events.length>3}}">
+        展开
+        <image class="unfold-arrow" mode="aspectFit" src="/images/icon_arrow_down_gray.svg"></image>
+            </view>
+        </view>
+    </block>
+</view>

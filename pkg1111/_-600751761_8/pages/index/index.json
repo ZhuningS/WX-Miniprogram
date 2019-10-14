@@ -1,0 +1,12 @@
+{
+    "usingComponents": {
+        "info-sys": "../../components/modules/infoSys/infoSys",
+        "card-list": "../../components/modules/cardList/cardList",
+        "video-module": "../../components/modules/video/video",
+        "side-bar": "../../components/sideBar/sideBar",
+        "tab-bar": "../../components/tabBar/tabBar",
+        "tech-support": "../../components/techSupport/techSupport",
+        "card-entrance": "./cardEntrance/cardEntrance",
+        "toast": "../../components/toast/toast"
+    }
+}

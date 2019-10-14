@@ -1,0 +1,85 @@
+.wrap {
+    padding: 12rpx 26rpx;
+}
+
+.wrap-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24rpx;
+}
+
+.time {
+    font-size: 24rpx;
+    color: #F7F7F7;
+    background: #CFCFCF;
+    border-radius: 8rpx;
+    padding: 4rpx 12rpx;
+}
+
+.msg {
+    display: flex;
+    flex-direction: row;
+}
+
+.msg_align-left {
+    justify-content: flex-start;
+}
+
+.msg_align-right {
+    justify-content: flex-end;
+}
+
+.avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 6rpx;
+    overflow: hidden;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border: 10rpx solid;
+    border-color: transparent;
+    margin-top: 26rpx;
+}
+
+.arrow_left {
+}
+
+.arrow_right {
+}
+
+.bubble {
+    padding: 18rpx 20rpx;
+    max-width: 500rpx;
+    min-width: 20rpx;
+    min-height: 80rpx;
+    box-sizing: border-box;
+    border-radius: 6rpx;
+    word-break: break-all;
+}
+
+.msg_received {
+}
+
+.msg_sent {
+}
+
+.icon-status {
+    width: 40rpx;
+    height: 40rpx;
+    margin: auto 10rpx;
+}
+
+.no-bubble {
+}
+
+.msg_align-left .no-bubble {
+    margin-left: 10rpx;
+}
+
+.msg_align-right .no-bubble {
+    margin-right: 10rpx;
+}

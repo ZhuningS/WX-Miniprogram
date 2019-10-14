@@ -1,0 +1,32 @@
+<template name="video-card">
+    <view class="card card-video" data-doc-id="{{article.docIdString}}" id="video-{{article.docIdString}}-segments">
+        <view class="top-ctn" id="anchor-{{article.docIdString}}">
+            <template is="mark-info" data="{{config:config,notes:notes,markCount:markCount,...article,type:type,history:history}}"></template>
+        </view>
+        <view catchtap="onTapPlay" class="cover" data-doc-id="{{article.docIdString}}" data-url="{{article.videos[0].url}}">
+            <image lazyLoad class="media" mode="aspectFill" src="{{article.videos[0].cover.url}}" wx:if="{{currentPlaying.id!==article.docIdString}}"></image>
+            <video autoplay control bindended="playVideoFinished" bindplay="playVideoStarted" class="media video-player" data-doc-id="{{article.docIdString}}" data-mid="{{article.mid}}" src="{{currentPlaying.url}}" wx:else>
+                <cover-image class="loading" src="/images/spinner_gray.svg" wx:if="{{loading}}"></cover-image>
+            </video>
+            <image class="button-play" src="/images/new_assets/button_play.svg"></image>
+        </view>
+        <view class="content-ctn">
+            <view class="headline1" wx:if="{{article.title}}">{{article.title}}</view>
+            <view class="description" wx:if="{{article.snippet}}">{{article.snippet}}</view>
+        </view>
+        <view class="actions-ctn">
+            <template is="magazine-info" data="{{...article,title:article.host?'来自 '+article.host:''}}"></template>
+            <template is="article-actions" data="{{type:'shortVideo',marked:marked,article:article,white:true}}"></template>
+        </view>
+        <view class="mask" wx:if="{{currentPlaying.id&&currentPlaying.id!==article.docIdString&&!waiting}}"></view>
+    </view>
+</template>
+<import src="../components/widgets.wxml"></import>
+<import src="../components/nav.wxml"></import>
+<view class="list-ctn">
+    <template is="video-card" data="{{marked:marked,...item,currentPlaying:currentPlaying,waiting:waiting}}" wx:if="{{item.type==='article'&&item.article.videos}}" wx:for="{{events}}" wx:key="{{ index }}"></template>
+    <view class="loading-ctn">
+        <template is="loading" data="{{loading:loading}}"></template>
+    </view>
+</view>
+<include src="../components/global.wxml"></include>

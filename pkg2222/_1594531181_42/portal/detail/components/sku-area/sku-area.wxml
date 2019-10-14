@@ -1,0 +1,29 @@
+<view class="detail-sku">
+    <view animation="{{skuMaskAnimation}}" bindtap="hideSkuArea" capture-catch:touchmove="onSkuTouchMove" class="detail-sku__mask" hidden="{{skuHidden}}"></view>
+    <view animation="{{skuBoxAnimation}}" class="detail-sku__box" id="detail-sku__box" style="height: {{skuBoxHeight}}px;"></view>
+</view>
+<wxs module="Util">
+var formatPrice = (function(price) {
+    var priceStr = "" + (price / 100);
+    var priceArr = priceStr.split('.');
+    if (priceArr.length == 1) {
+        return (priceStr + ".00")
+    } else if (priceArr[(1)].length == 1) {
+        return (priceStr + "0")
+    } else {
+        return (priceStr)
+    }
+});
+var getPriceString = (function(min, max, skuConfirmable, price) {
+    if (skuConfirmable) {
+        return ("¥" + formatPrice(price))
+    };
+    if (min == max) {
+        return ("¥" + formatPrice(min))
+    } else {
+        return ("¥" + formatPrice(min) + " ~ " + formatPrice(max))
+    }
+});
+module.exports.formatPrice = formatPrice;
+module.exports.getPriceString = getPriceString;
+</wxs>

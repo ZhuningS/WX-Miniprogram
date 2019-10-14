@@ -1,0 +1,203 @@
+@import "../../__wuBaseWxss__/3.wxss";
+
+.container {
+    overflow: hidden;
+    font-family: SFUIDisplay-Regular;
+}
+
+.container.with-filter {
+    padding-top: 100rpx;
+}
+
+.header-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 74rpx;
+    padding-bottom: 52rpx;
+}
+
+.line {
+    width: 750rpx;
+    height: 1rpx;
+    position: relative;
+    margin-top: 26rpx;
+}
+
+.line::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 750rpx;
+    height: 1rpx;
+    transform: scaleY(0.5);
+    background: #E5E5E5;
+    content: "";
+}
+
+.header-inner-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-category-name {
+    font-family: PingFangSC-Medium;
+    font-size: 16px;
+    color: #353535;
+}
+
+.header-category-sep {
+    width: 60rpx;
+    height: 1rpx;
+    margin-top: 28rpx;
+    margin-bottom: 18rpx;
+    background: #D8D8D8;
+}
+
+.header-category-img {
+    width: 188rpx;
+    height: 148rpx;
+}
+
+.logo-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 44rpx;
+    height: 44rpx;
+    border-radius: 22rpx;
+    background: #000;
+}
+
+.category-bar {
+    width: 100%;
+    height: 50rpx;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20rpx 0 40rpx 0;
+}
+
+.category-bar__text {
+    font-size: 16px;
+    color: #000;
+}
+
+.category-bar__text::before {
+    content: "";
+}
+
+.category-bar__text::after {
+    position: relative;
+    right: -6rpx;
+    bottom: -18rpx;
+    content: "ˇ";
+    font-size: 20px;
+    color: #000;
+}
+
+.item-list {
+    width: 100%;
+    padding-bottom: 44rpx;
+}
+
+.line-item-wrap {
+    padding: 50rpx 0;
+    position: relative;
+}
+
+.line-item-wrap::after {
+    position: absolute;
+    background: #E5E5E5;
+    left: 280rpx;
+    bottom: 0;
+    height: 1rpx;
+    transform: scaleY(0.5);
+    width: 470rpx;
+    content: "";
+}
+
+.line-item-wrap__no-border::after {
+    height: 0;
+}
+
+.line-item-inner-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 50rpx;
+    padding-right: 46rpx;
+}
+
+.line-item-active-mask {
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.line-item-active-mask:active {
+    background-color: #000;
+    opacity: 0.1;
+}
+
+.line-item-img {
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.line-item-text__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-left: 42rpx;
+}
+
+.line-item-text__title {
+    font-size: 15px;
+    color: #000;
+}
+
+.line-item-text__price {
+    font-family: WeChat Sans Std;
+    margin-top: 28rpx;
+    font-size: 14px;
+    color: #888;
+}
+
+.line-item-text__market-price {
+    font-family: WeChat Sans Std;
+    margin-top: 28rpx;
+    font-size: 14px;
+    color: #B2B2B2;
+    text-decoration: line-through;
+}
+
+.line-item-text__saleDate {
+    margin-top: 28rpx;
+    font-size: 14px;
+    color: #AAAAAA;
+}
+
+.error-area {
+    position: absolute;
+    width: 100%;
+}
+
+.no-more-footer {
+    text-align: center;
+    font-size: 14px;
+    color: #8C8C8C;
+    padding-bottom: 20rpx;
+}

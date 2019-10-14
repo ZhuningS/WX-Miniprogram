@@ -1,0 +1,73 @@
+<view class="{{currentSkin}}">
+    <form bindsubmit="groupPay" data-wpygrouppay-a="1" reportSubmit="true">
+        <view bindtap="pickAddress" class="gOlt-h f skin_bg">
+            <view class="f fv fc-h f1 pr20">
+                <view class="f fc">
+                    <view class="f1">收货人：{{vm_goods.address.userName}}</view>
+                    <view>{{vm_goods.address.telNumber}}</view>
+                </view>
+                <view>{{vm_goods.address.provinceName}}{{vm_goods.address.cityName}}{{vm_goods.address.countyName}}{{vm_goods.address.detailInfo}}</view>
+            </view>
+            <view class="dzicon icon-xiala-copy-right"></view>
+        </view>
+        <view class="pl20 bg-w">
+            <view class="gOlt-t">购物清单</view>
+            <view class="f gOlt-info">
+                <image bindtap="preview" class="gOlt-img" data-wpypreview-a="{{vm_goods.pro.img}}" mode="aspectFill" src="{{vm_goods.pro.img}}"></image>
+                <view class="f1 f fv">
+                    <view class="f1 line line2 f28">{{vm_goods.pro.name}}</view>
+                    <view class="f">
+                        <wxc-price class="f1 f32 cred" icon="sub">{{vm_goods.isGroup?vm_goods.pro.DiscountPrice/100:vm_goods.pro.UnitPrice/100}}</wxc-price>
+                        <view class="f fc">
+                            <view bindtap="reduOne" class="jian f fc">－</view>
+                            <view bindtap="reduOne" class="order-num  f fc f28">{{vm_goods.pro.num||1}}</view>
+                            <view bindtap="plusOne" class="jia f fc">＋</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="pl20 bg-w mt20">
+            <view class="gOlt-m f fc">
+                <view class="f32 f1">配送方式</view>
+                <view class="f28 c666">快递配送</view>
+            </view>
+            <view class="gOlt-m f fc">
+                <view class="f32 f1">支付方式</view>
+                <view class="f28 c666">
+                    <picker bindchange="pickPayType" mode="selector" range="{{payTypeRange}}" rangeKey="name" value="{{payType}}">
+                        <view class="picker">
+                                当前选择：{{payTypeRange[payType].name}}
+                            </view>
+                    </picker>
+                </view>
+                <view class="dzicon icon-xiala-copy-right"></view>
+            </view>
+            <view class="gOlt-m f fc">
+                <view class="f32">留言说明</view>
+                <view class="f28 f1">
+                    <input bindblur="inputNote" class="ml20 tr" maxlength="100" type="text"></input>
+                </view>
+            </view>
+        </view>
+        <view class="pl20 bg-w mt20">
+            <view class="gOlt-m f fc">
+                <view class="f32 f1">商品总额</view>
+                <view class="f28 cred">+ ￥{{vm_goods.pro.payprice*vm_goods.pro.num/100||''}}</view>
+            </view>
+            <view class="gOlt-m f fc" wx:if="{{vm_goods.HeadDeduct>0&&vm_goods.isGHead==1}}">
+                <view class="f32 f1">团长减价</view>
+                <view class="f28 cred">- ￥{{vm_goods.HeadDeduct/100}}</view>
+            </view>
+        </view>
+        <view class="blank-120"></view>
+        <view class="bottomBar f fc bg-w">
+            <view class="f1">
+                <text class="f32">应付：</text>
+                <wxc-price class="f42 cred" icon="sub">{{shouldPay}}</wxc-price>
+            </view>
+            <button class="btn-pay f34 skin_bg" formType="submit">去支付</button>
+        </view>
+    </form>
+    <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+</view>

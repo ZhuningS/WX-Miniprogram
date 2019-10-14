@@ -1,0 +1,590 @@
+@import "../../__wuBaseWxss__/0.wxss";
+
+.detail-wrap {
+    background-color: #F2F2F2;
+}
+
+.detail-banner__img {
+    width: 100%;
+    height: 100%;
+}
+
+.detail-summary {
+    padding: 34rpx 60rpx 70rpx 60rpx;
+    background-color: #FFFFFF;
+    position: relative;
+}
+
+.detail-summary__seperator-solid {
+    position: relative;
+}
+
+.detail-summary__seperator-solid:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 1px solid #ECECEC;
+    width: 200%;
+    height: 1px;
+    transform-origin: 0 0;
+    transform: scale(0.5,0.5);
+    box-sizing: border-box;
+}
+
+.detail-summary__title {
+    font-size: 15px;
+    color: #000000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.2;
+    opacity: 0.9;
+}
+
+.detail-summary__bd {
+    margin-top: 16rpx;
+    line-height: 27px;
+    font-size: 0;
+    margin-bottom: 8rpx;
+}
+
+.detail-summary__price {
+    font-size: 22px;
+    color: #000000;
+    line-height: 22px;
+    display: inline-block;
+    vertical-align: bottom;
+    font-family: WeChat Sans SS;
+}
+
+.detail-summary__market-price {
+    font-size: 14px;
+    color: #B2B2B2;
+    line-height: 14px;
+    display: block;
+    vertical-align: bottom;
+    font-family: WeChat Sans Std;
+    text-decoration: line-through;
+    margin-top: 16rpx;
+}
+
+.detail-summary__seperator {
+    width: 100%;
+    height: 1px;
+}
+
+.detail-summary__footer {
+    font-size: 13px;
+    color: #888888;
+    margin-top: 46rpx;
+}
+
+.detail-summary__footer_code {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 201px;
+    display: inline;
+    float: left;
+}
+
+.detail-summary__footer_wish {
+    padding-top: 36rpx;
+    line-height: 22px;
+    height: 22px;
+}
+
+.detail-summary__footer_img {
+    width: 32rpx;
+    height: 30rpx;
+    vertical-align: middle;
+    margin-right: 12rpx;
+    margin-top: -7rpx;
+}
+
+.detail-param {
+    overflow: hidden;
+}
+
+.area-box {
+    background-color: #FFFFFF;
+    padding: 60rpx;
+}
+
+.area-box-fix {
+    padding-top: 69rpx!important;
+}
+
+.area-box__seperator {
+    position: relative;
+}
+
+.area-box__seperator:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 1px solid #ECECEC;
+    width: 1380rpx;
+    height: 1px;
+    transform-origin: 120rpx 0;
+    transform: scale(0.5,0.5);
+    box-sizing: border-box;
+}
+
+.detail-box__empty {
+    text-align: center;
+    color: #888;
+    padding: 40rpx 0 0rpx;
+    font-size: 14px;
+}
+
+.detail-box__title {
+    position: relative;
+    font-size: 16px;
+    line-height: 22px;
+    font-family: PingFangSC-Medium;
+}
+
+.detail-box__expand {
+    width: 24rpx;
+    height: 24rpx;
+    float: right;
+}
+
+.detail-box__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.detail-swiper {
+    height: 318px;
+}
+
+.detail-box__desc {
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.detail-box__desc-img {
+    width: 100%;
+    display: block;
+}
+
+.detail-footer {
+    position: fixed;
+    display: flex;
+    height: 112rpx;
+    background-color: #FFFFFF;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.detail-footer.iPhoneX {
+    bottom: 70rpx;
+}
+
+.detail-footer__fix-iPhoneX {
+    position: fixed;
+    height: 70rpx;
+    background: #FEFEFE;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 0.5px solid #ECECEC;
+}
+
+.detail-footer-item {
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.detail-footer-item::after {
+    border: 0;
+}
+
+.detail-footer__btn {
+    width: 126rpx;
+    font-size: 0;
+    border-top: 0.5px solid #EFEFEF;
+    vertical-align: middle;
+}
+
+.detail-footer__img {
+    width: 46rpx;
+    height: 46rpx;
+    margin-top: 19rpx;
+}
+
+.detail-footer__buy {
+    flex: 1;
+    font-size: 16px;
+    line-height: 112rpx;
+    background: #FFF;
+}
+
+.detail-footer__add {
+    background: #353535;
+    color: #FFFFFF;
+    flex: 1;
+    font-size: 34rpx;
+    line-height: 112rpx;
+}
+
+.detail-footer__add-img {
+    height: 64rpx;
+    width: 64rpx;
+    margin-right: 8rpx;
+    margin-top: 24rpx;
+    margin-left: 70rpx;
+}
+
+.detail-footer__add.disable {
+    background: rgba(53,53,53,0.2)!important;
+    color: #FFFFFF!important;
+}
+
+.detail-footer__add-hover {
+    background: #242424;
+    color: rgba(255,255,255,0.7);
+}
+
+.detail-footer__btn_count {
+    position: relative;
+    border-radius: 50%;
+    background-color: #000000;
+    color: #FFFFFF;
+    font-size: 7px;
+    width: 16px;
+    height: 16px;
+    margin-top: -30.5px;
+    margin-left: 27px;
+}
+
+.detail-footer__btn_title {
+    font-size: 20rpx;
+    line-height: 28rpx;
+    height: 28rpx;
+    color: #606060;
+}
+
+.detail-param__attr {
+    font-size: 14px;
+    display: table;
+    padding: 28rpx 0;
+}
+
+.detail-param__attr_fix {
+    margin-top: 12rpx;
+}
+
+.detail-param__attr_border {
+    padding: 1rpx;
+    border-top: 1rpx dashed transparent;
+    background: linear-gradient(white,white) padding-box,repeating-linear-gradient(-45deg,#ECECEC 0,#ECECEC 3px,white 0,white 8px);
+}
+
+.detail-param__attrname {
+    color: #A5A5A5;
+    width: 90px;
+    display: table-cell;
+    padding-right: 32px;
+}
+
+.detail-param__attrvalue {
+    display: table-cell;
+    word-break: break-all;
+}
+
+.detail-sku__mask {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    z-index: 1000;
+}
+
+.detail-sku__close {
+    width: 24rpx;
+    height: 24rpx;
+    text-align: left;
+    display: block;
+    padding: 40rpx 40rpx 0 40rpx;
+    background-size: 24rpx 24rpx;
+    background-repeat: no-repeat;
+    background-position: 40rpx 40rpx;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAWFJREFUWAnV2AGSgyAMBdDaC3ok9UjesA0SB5HA/1Hs1JldUCH/Lbba7usVt3VdZ/nR/afaPHeQ4AiZImIZx3GO/a5NKXfIDiqgO8rKfasga6c4ITt8z66BCcVLlyxNvX2lKpiQFUAiaA1Mld4+krGDeqMQjBgOoF4oFFME3Y1iMCboLhSLqYKuojyYJsiL8mIgEIu6goFBKOoqhgK1UHL+u+kDetvbflN3+9N9KK1U6ldWoTScwkgBGiSTQBSNcYMAlAsjda2PH3LuJ9v/XzLw9aOrS186aoUqmCUKnnvb1zD6pQAZo0tntdAKMUHM2BKqCfIEeOYorgq6Utg71wR5C+pfKq2nRhHkKZRC0j5b6wRiC6ThVp+peQAxE61w6zhaewehE6xA5DiSEUDIQCQQGdPKsv77IbXp5xACkjE1lPXxoxtGQPFRs0g/30qXrCsmBWQrdcyVk3FAOqd7P8/9APykMPPINjb8AAAAAElFTkSuQmCC');
+}
+
+.detail-sku__close-hover {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAW9JREFUWAnF2IFthDAMBdALbMMUnYGFel2IGdop2Aaqj+pTLrFJ7DgpEhcIh/1kohDxePxt67o+sdP5qDbNOyMxOo/j+DzP82NZlrDv+/cIEJd3pk4CjEJJeSeCxC2qhRviPs/jFBPHnvF48JhQmfhCr0pJmGmavrZte15jaBSqhEFBLhAOeqNqMG+gnqhaTAbqgdJgWJAnSosRQR4oC+YW1IKyYoogC6oFUwXSoFoxyBXwU7vdJUQMvHLSWDQDp/3SuQqEIBKKS6DFIMZrpuYCcn3SjJ7+14JBDDUIN5VQVgxis8sPXPivzVSh0jhqWbqoQSUMVdaKUoEkDMZMCOHHY5FXDbrDYKUnDXRtpapAJQw9Jg9UEVSL8ULdgrQYD5QIsmJaUSyoFdOCykBeGCvqDeSNsaBeoF4YLeoC9cZoUNnXD7q5ZQlBMbi2NHmyy49eGALiVYMcdB632deP3hhKnlYqy4txhJ1uGNWmeX8Bq9J4Lt1WWjsAAAAASUVORK5CYII=')!important;
+}
+
+.detail-sku__box {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFFFFF;
+    transform: translateY(100%);
+    transition: all 0.3s;
+    z-index: 1001;
+}
+
+.detail-sku__header {
+    padding: 0rpx 0 60rpx;
+    text-align: center;
+    transition: height 0.3s;
+}
+
+.detail-sku__header.shrink {
+    height: 242rpx;
+}
+
+.detail-sku__thumb {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500rpx;
+    height: 500rpx;
+    font-size: 0;
+    display: block;
+    background-color: white;
+    margin-top: 32rpx;
+}
+
+.detail-sku__price-area {
+    transition: all 0.2s;
+}
+
+.detail-sku__price-area.shrink {
+    text-align: left;
+}
+
+.detail-sku__price {
+    margin-top: 50rpx;
+    font-size: 20px;
+    color: #000000;
+    line-height: 24px;
+    font-family: WeChat Sans SS;
+    transition: all 0.3s;
+}
+
+.detail-sku__market-price {
+    color: #B2B2B2;
+    font-size: 14px;
+    text-decoration: line-through;
+    margin-left: 10px;
+    font-family: WeChat Sans Std;
+}
+
+.detail-sku__market-price.transparent {
+    margin-left: 0!important;
+    opacity: 0;
+    margin-right: 10px;
+}
+
+.detail-sku__code {
+    padding-top: 12px;
+    font-size: 13px;
+    color: #B2B2B2;
+    line-height: 18px;
+    transition: all 0.3s;
+    height: 18px;
+}
+
+.detail-sku__num {
+    padding-top: 12px;
+    font-size: 13px;
+    color: #000;
+    line-height: 18px;
+}
+
+.detail-sku__seperator {
+    width: calc(100% - 120rpx);
+    height: 1px;
+    margin: 0 60rpx;
+}
+
+.detail-sku__body {
+    font-size: 14px;
+    transition: all 0.3s;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.detail-sku__body.shrink {
+}
+
+.detail-sku__group {
+    padding: 48rpx 60rpx 24rpx 60rpx;
+}
+
+.detail-sku__item {
+    margin-bottom: 24rpx;
+}
+
+.detail-sku__item.last {
+    margin-bottom: 170rpx!important;
+}
+
+.detail-sku__item-title {
+    margin-bottom: 18rpx;
+}
+
+.detail-sku__item-attr {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 18rpx 34rpx;
+    min-width: 130rpx;
+    text-align: center;
+    margin-right: 32rpx;
+    font-size: 13px;
+    line-height: 36rpx;
+    background-color: #FFFFFF;
+    border-radius: 200rpx;
+    border: 0.5px solid #B2B2B2;
+    margin-bottom: 36rpx;
+    height: 72rpx;
+    vertical-align: middle;
+}
+
+.detail-sku__item-attr-fix {
+    margin-right: 0!important;
+}
+
+.selected {
+    background-color: #353535;
+    color: white;
+    border-color: #353535;
+}
+
+.detail-sku__footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 112rpx;
+    display: flex;
+    border-top: 0.5px solid #ECECEC;
+}
+
+.detail-sku__footer.iPhoneX {
+    background: white;
+    bottom: 70rpx;
+}
+
+.detail-imgSku {
+    display: flex;
+    flex-wrap: wrap;
+    background: #FFFFFF;
+    padding: 32rpx 60rpx 0 60rpx;
+}
+
+.detail-imgSku__box {
+    margin-right: 16rpx;
+    width: 108rpx;
+    height: 108rpx;
+    padding: 3px;
+}
+
+.detail-imgSku__img {
+    width: 108rpx;
+    height: 108rpx;
+}
+
+.detail-imgSku__border {
+    border: 0.5px solid #D3D3D3;
+}
+
+.detail-toast {
+    width: 240rpx;
+    height: 240rpx;
+    margin-left: calc(50% - 120rpx);
+    text-align: center;
+    background: rgba(17,17,17,0.7);
+    position: fixed;
+    bottom: calc(50% - 120rpx);
+    border-radius: 5px;
+}
+
+.detail-toast__img {
+    width: 98.6rpx;
+    height: 70.6rpx;
+    margin-top: 60rpx;
+}
+
+.detail-toast__text {
+    color: white;
+    margin-top: 20rpx;
+    font-size: 13px;
+}
+
+.detail-tips {
+    position: fixed;
+    height: 88rpx;
+    background-color: #EDF5F9;
+    bottom: 112rpx;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    color: #509FC9;
+    letter-spacing: 0.22px;
+    text-align: center;
+    line-height: 88rpx;
+}
+
+.detail-tips.iPhoneX {
+    bottom: 182rpx;
+}
+
+.share-friend-btn {
+    position: absolute;
+    top: 48rpx;
+    right: 8rpx;
+    width: auto;
+    height: auto;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 24rpx;
+}
+
+.share-friend-btn::after {
+    display: none;
+}
+
+.share-friend-btn .line {
+    position: absolute;
+    background: #D8D8D8;
+    width: 1rpx;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.share-friend-icon {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.share-friend-text {
+    opacity: 0.9;
+    color: #000000;
+    font-size: 24rpx;
+    color: #353535;
+    text-align: center;
+    margin-top: 20rpx;
+    line-height: 24rpx;
+    min-width: 122rpx;
+}

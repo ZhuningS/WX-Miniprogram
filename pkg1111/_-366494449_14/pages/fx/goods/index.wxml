@@ -1,0 +1,54 @@
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view class="sortbar">
+        <view bindtap="_getFxGoodsList" class="{{currentTab=='sell'?'selected':''}}" data-by="sell" data-type="desc">
+            <text>销量</text>
+        </view>
+        <view bindtap="_getFxGoodsList" class="{{currentTab=='distribute'?'selected':''}}" data-by="distribute" data-type="desc">
+            <text>佣金</text>
+        </view>
+        <view bindtap="_getFxGoodsList" class="{{currentTab=='price'?'selected':''}}" data-by="price" data-type="desc">
+            <text>售价</text>
+        </view>
+    </view>
+    <view class="goodsWarp" style="margin-top: 80rpx">
+        <block wx:if="{{list&&list.length>0}}">
+            <view class="order-item" wx:for="{{list}}">
+                <view class="order-info">
+                    <view class="bg-img">
+                        <image mode="aspectFill" src="{{item.thumb}}"></image>
+                    </view>
+                    <view class="order-r">
+                        <view class="label-text" style="margin-bottom: 20rpx">
+                            <text class="name">{{item.name}}</text>
+                        </view>
+                        <view class="label-text">
+                            <view class="price">销量 <text style="color:#999">{{item.numsell}}</text>
+                            </view>
+                        </view>
+                        <view class="label-text">
+                            <view class="price">售价 <text>￥{{item.price}}</text>
+                            </view>
+                        </view>
+                        <view class="label-text">
+                            <view class="price">佣金 <text>￥{{item.price_distribute}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view style="color:#999;margin:left: 20rpx;text-align:right">
+                        <button class="nobutton" data-cardid="{{item.card_user_id}}" data-id="{{item.id}}" data-imageUrl="{{item.thumb}}" data-title="{{item.name}}" openType="share" style="margin-top: 40rpx; color: #666">
+                            <image src="/images/card/share3.png" style="width:32rpx;height: 32rpx; display: block; margin: 0  auto 10rpx"></image>
+                            分享
+                            </button>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view class="nodata" wx:else>
+            <image class="icon" mode="aspectFit" src="/images/card/noorder.png"></image>
+            <view>
+                <text>还没有分销商品哦～</text>
+            </view>
+        </view>
+    </view>
+</view>

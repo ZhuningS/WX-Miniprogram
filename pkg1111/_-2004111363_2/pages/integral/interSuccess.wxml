@@ -1,0 +1,10 @@
+<view class="{{currentSkin}}">
+    <view class="success-tips f fv fc fc-h">
+        <icon size="100" type="success"></icon>
+        <text style="font-size:34rpx;margin-top:40rpx;">恭喜,兑换成功!</text>
+    </view>
+    <view class="success-content-btn f fc fc-h">
+        <text bindtap="navOlst" class="success-btn order-btn">查看订单</text>
+        <text bindtap="goBackHome" class="success-btn skin_bg">回到首页</text>
+    </view>
+</view>

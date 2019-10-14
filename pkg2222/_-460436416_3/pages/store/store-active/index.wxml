@@ -1,0 +1,34 @@
+<view class="contenter write">
+    <image class="bg-img" mode="aspectFill" src="{{this_store_info.store_logo}}"></image>
+    <scroll-view scrollY="true">
+        <view class="business tc">
+            <view class="f24">{{this_store_info.store_name}}</view>
+            <view class="star mt5 mb10">
+                <text class="iconfont icon-xingjifull" wx:for="{{this_store_info.store_shi_xing}}"></text>
+                <text class="iconfont icon-xingjiline" wx:for="{{this_store_info.store_kong_xing}}"></text>
+            </view>
+            <view class="f12 huibai">配送时间：{{this_store_info.store_yingye_btime}}:00-{{this_store_info.store_yingye_etime}}:00</view>
+        </view>
+        <view class="coupon" wx:if="{{hditem.hd_info}}">
+            <view class="title f18 flex">
+                <text class="line sub mr10"></text>
+                <text></text>优惠信息<text class="line sub ml10"></text>
+            </view>
+            <view class="mt20">
+                <view class="juan-list" wx:for="{{this_store_info.huodong_list}}" wx:for-item="hditem">
+                    <text class="{{hditem.hd_style}} mr5">{{hditem.hd_title}}</text>
+                    <text>{{hditem.hd_info}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="coupon">
+            <view class="title f18 flex">
+                <text class="line sub mr10"></text>
+                <text></text>门店公告<text class="line sub ml10"></text>
+            </view>
+            <view class="mt20">
+                <view>{{this_store_info.store_gonggao}}</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

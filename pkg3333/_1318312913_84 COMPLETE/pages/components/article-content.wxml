@@ -1,0 +1,83 @@
+<template name="render-image">
+    <image lazyLoad data-paragraph-id="{{paragraph.id}}" mode="aspectFill" src="{{image.thumb_source}}" style="width: {{maxWidth}}rpx; height: {{maxWidth*image.height/image.width}}rpx;" wx:if="{{image.width>=maxWidth}}"></image>
+    <image lazyLoad data-paragraph-id="{{paragraph.id}}" mode="aspectFill" src="{{image.thumb_source}}" style="position:relative; width: {{image.width}}rpx; height: {{image.height}}rpx; left: {{(maxWidth-image.width)/2}}rpx" wx:elif="{{image.width>0}}"></image>
+    <image lazyLoad data-paragraph-id="{{paragraph.id}}" mode="widthFix" src="{{image.thumb_source}}" style="width: {{maxWidth}}rpx" wx:else></image>
+    <image catchtap="onTapImageMark" data-paragraph-id="{{paragraph.id}}" id="{{'qm'+paragraph.id}}" src="{{highlighted?'/images/new_assets/icon_marked_w.svg':'/images/new_assets/icon_mark_w.svg'}}" style="width: 20px; height: 20px; margin: -10px -5px -5px -10px; padding: 10px; position: absolute; right: 10px; bottom: 10px;" wx:if="{{image.width>300&&image.height>300}}"></image>
+</template>
+<template name="render-sentence2">
+    <text bindtap="{{word.class==='sentence__link'?'copyLink':''}}" class="{{sentence.class}} {{word.class}}" data-paragraph-id="{{sentence.paragraphId}}" data-sentence="{{sentence}}" data-word="{{word}}" style="background-color:{{word.highlight.myself||selected&&sentence.sentenceIndex>=selected.start&&sentence.sentenceIndex<selected.end?mainColor:word.highlight.others?otherColor:'#'}};">{{word.text}}</text>
+</template>
+<template name="render-sentence">
+    <text class="{{sentence.class}}">{{sentence.text}}</text>
+</template>
+<template name="highlight-user">
+    <view class="highlight-ctn" wx:if="{{highlight.users&&highlight.users.length>0}}">
+        <navigator catchtap="hack" class="avatar-ctn" openType="navigate" style="z-index:{{10-index}}" url="/pages/profile/user?uid={{user.uid}}" wx:if="{{user.avatar}}" wx:for="{{highlight.users}}" wx:for-item="user" wx:key="uid">
+            <image lazyLoad class="avatar small" src="{{user.avatar}}"></image>
+        </navigator>
+        <view class="caption">
+            <block wx:if="{{highlight.users&&highlight.users.length>0}}">
+          {{highlight.users[0].name}}等 {{highlight.number}} 人
+        </block>
+        {{config.actions.mark}}{{article_content.formatHighlightText(type)}}。
+      </view>
+        <view class="tip-ctn animated fadeIn" style="top: 36px;z-index: 1;" wx:if="{{highlight.annotationList&&highlight.annotationList.length>0&&itemsStatus['highlight-'+id]!=-1&&(magazine.type==='public'||magazine&&magazine.relation&&magazine.relation.enableRead)}}">
+            <view class="tip-triangle__top" style="left: 10px;border-color: #{{color}};z-index: 1;"></view>
+            <view class="tip-content" style="top: 10px;background-color: #{{color}};">
+                <view catchtap="{{relation&&relation.enableComment?'navigateTo':''}}" class="tip-content__line" data-post-note="{{note.nid}}" hoverClass="none" wx:for="{{highlight.annotationList}}" wx:for-item="note" wx:key="nid">
+                    <text style="font-weight:bold;">{{note.user.name?note.user.name:'我'}}：</text>
+            {{note.annotation}}
+          </view>
+            </view>
+            <view catchtap="hideItem" class="tip-close" data-target="{{'highlight-'+id}}">×</view>
+        </view>
+    </view>
+</template>
+<template name="raml-content">
+    <block wx:for="{{content}}" wx:for-index="paragraph_idx" wx:for-item="paragraph" wx:key="id">
+        <view wx:if="{{paragraph_idx===2&&primaryMark}}">
+            <template is="single-card-mark" data="{{config:config,blockRedirect:true,marked:marked,markCount:primaryMark.count,mark:primaryMark,color:color}}"></template>
+        </view>
+        <view bindtap="onTapParagraph" bindtouchend="onSelectingCancel" bindtouchstart="onSelecting" catchtouchmove="{{selected?'onSelectedParagraph':''}}" class="{{paragraph.text.class}}" id="{{'qm'+paragraph.id}}" wx:if="{{paragraph.type==0}}">
+            <block wx:for="{{paragraph.text.sentences}}" wx:for-item="sentence" wx:key="{{paragraph.id + sentence.sentenceIndex}}">
+                <template is="render-sentence2" data="{{ word:word,sentence:sentence,mainColor:mainColor,otherColor:otherColor,selected:selected[paragraph.id] }}" wx:for="{{sentence.sentences}}" wx:for-item="word" wx:key="{{paragraph.id + sentence.sentenceIndex + word.sentenceIndex}}"></template>
+            </block>
+        </view>
+        <block wx:elif="{{paragraph.type==1}}">
+            <view bindtap="gotoGallery" catchlongtap="onLongTapImage" class="paragraph image" data-paragraph-id="{{paragraph.id}}" data-url="{{paragraph.image.source}}" id="{{'qm'+paragraph.id}}">
+                <template is="render-image" data="{{image:paragraph.image,paragraph:paragraph,highlighted:paragraph.highlight&&paragraph.highlight.myself,maxWidth:750}}"></template>
+            </view>
+            <view class="image__title" wx:if="{{paragraph.image.title}}">{{paragraph.image.title}}</view>
+        </block>
+        <view catchtap="onTapPlay" data-doc-id="{{paragraph.media.source}}" data-no-mask="{{true}}" data-url="{{paragraph.media.source}}" style="position: relative" wx:elif="{{paragraph.type==2&&skipVideo!==true}}">
+            <image lazyLoad class="paragraph video" mode="aspectFill" src="{{paragraph.media.cover}}" wx:if="{{currentPlaying.id!==paragraph.media.source}}">
+                <image class="button-play" src="/images/new_assets/button_play.svg"></image>
+                <image catchtap="onTapVideoMark" data-paragraph-id="{{paragraph.id}}" id="{{'qm'+paragraph.id}}" src="{{highlighted?'/images/new_assets/icon_marked_w.svg':'/images/new_assets/icon_mark_w.svg'}}" style="width: 20px; height: 20px; margin: -10px -5px -5px -10px; padding: 10px; position: absolute; right: 10px; bottom: 10px;"></image>
+            </image>
+            <video autoplay control bindended="endPlaying" bindplay="startPlaying" catchtap="hack" class="paragraph video" data-doc-id="{{paragraph.media.source}}" src="{{currentPlaying.url}}" wx:else></video>
+        </view>
+        <view class="paragraph audio" wx:elif="{{paragraph.type==3}}">
+            <audio controls loop action="{method: 'play'}" name="{{paragraph.media.title}}" poster="{{paragraph.media.cover}}" src="{{paragraph.media.source}}" style="width:100%;"></audio>
+        </view>
+        <template is="highlight-user" data="{{config:config,magazine:magazine,itemsStatus:itemsStatus,id:paragraph.id,highlight:paragraph.highlight,mainColor:mainColor,otherColor:otherColor,color:color,type:paragraph.type}}" wx:if="{{paragraph.highlight}}"></template>
+    </block>
+</template>
+<import src="card.wxml"></import>
+<wxs module="article_content">
+var formatHighlightText = (function(type) {
+    if (type === 0) {
+        return ('这段话')
+    } else if (type === 1) {
+        return ('这张图片')
+    } else if (type === 2) {
+        return ('这个视频')
+    } else if (type === 3) {
+        return ('这段音频')
+    } else {
+        return ('了')
+    }
+});
+module.exports = ({
+    formatHighlightText: formatHighlightText,
+});
+</wxs>

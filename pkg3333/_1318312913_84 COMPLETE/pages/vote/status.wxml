@@ -1,0 +1,35 @@
+<view class="vote-status-ctn">
+    <view class="display2">
+    让观点掷地有声
+  </view>
+    <view class="label-ctn">
+        <view>
+            <view class="label2">
+        拉票排行榜
+      </view>
+            <view class="meta">
+        为本次{{config.actions.vote}}拉票最多的用户
+      </view>
+        </view>
+        <image class="share" mode="aspectFit" src="./../../images/new_assets/icon_share.svg" style="height:40rpx;width:40rpx" wx:if="{{false}}"></image>
+    </view>
+    <view class="user-list" wx:if="{{userList.length}}">
+        <view class="user-ctn" wx:for="{{userList}}" wx:key="user.uid">
+            <navigator catchtap="hack" class="avatar-ctn" hoverClass="none" openType="navigate" url="/pages/profile/user?uid={{item.user.uid}}">
+                <image lazyLoad class="avatar" src="{{item.user.avatar?item.user.avatar:'/images/profile-default.svg'}}"></image>
+                <view class="index" wx:if="{{!item.myself}}">{{index+1}}</view>
+            </navigator>
+            <view class="detail">
+                <view class="name">{{item.user.name}}</view>
+                <view class="status">
+                    <view class="percentage" style="width:{{3.5*item.percentage}}rpx" wx:if="{{item.percentage}}"></view>
+                    <view class="meta">{{item.canvassedUserCount}} 票</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="meta" wx:else>
+    暂无数据
+  </view>
+</view>
+<include src="../components/global.wxml"></include>

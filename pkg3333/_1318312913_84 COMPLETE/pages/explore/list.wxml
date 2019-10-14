@@ -1,0 +1,39 @@
+<template name="video-player">
+    <view catchtouchstart="showVideoMeta" class="card video-player-ctn">
+        <view class="top-ctn animated {{status}}">
+            <template is="mark-info" data="{{config:config,notes:notes,markCount:markCount,...article,type:type,history:history}}"></template>
+        </view>
+        <video autoplay control bindended="playVideoFinished" bindplay="playVideoStarted" class="video-playing" poster="{{article.videos[0].cover.url?article.videos[0].cover.url:''}}" src="{{videoUrl}}">
+            <cover-image class="loading" src="/images/spinner_gray.svg" wx:if="{{loading}}"></cover-image>
+        </video>
+        <view class="content-ctn animated {{status}}">
+            <view class="headline1" wx:if="{{article.title}}">{{article.title}}</view>
+            <view class="description" wx:if="{{article.snippet}}">{{article.snippet}}</view>
+        </view>
+        <view class="actions-ctn animated {{status}}">
+            <template is="magazine-info" data="{{...article,title:'来自 '+videoDomain}}"></template>
+            <template is="article-actions" data="{{type:'video',marked:marked,article:article,white:true}}"></template>
+        </view>
+    </view>
+</template>
+<import src="../components/widgets.wxml"></import>
+<import src="../components/section.wxml"></import>
+<import src="../components/card.wxml"></import>
+<import src="../components/nav.wxml"></import>
+<template is="fixed-nav" data="{{tabs:tabs,selectedTab:section}}"></template>
+<view class="list-ctn {{section}}">
+    <template is="section-user" data="{{followed:followed,config:config,events:events}}" wx:if="{{section==='users'}}"></template>
+    <block wx:else>
+        <block wx:for="{{events}}" wx:key="{{ index }}">
+            <template is="section-{{item.section.type}}" data="{{subscribed:subscribed,marked:marked,currentPlaying:currentPlaying,config:config,index:index,...item.section}}" wx:if="{{item.type==='section'}}"></template>
+            <template is="card-video" data="{{score:score,marked:marked,followed:followed,config:config,index:index,images:images,...item}}" wx:elif="{{section==='clips'&&item.type==='article'}}"></template>
+            <template is="single-card-{{item.type}}" data="{{cover:cover,tips:tips,user:user,itemsStatus:itemsStatus,currentCate:currentCate,score:score,marked:marked,followed:followed,currentPlaying:currentPlaying,config:config,index:index,...item}}" wx:else></template>
+        </block>
+    </block>
+    <view class="loading-ctn">
+        <template is="loading" data="{{loading:loading}}"></template>
+    </view>
+</view>
+<view catchtap="hack" catchtouchmove="hack" catchtouchstart="playNextVideo" class="playing-ctn video-player" wx:if="{{section==='clips'&&currentPlaying.index!==undefined}}">
+    <template is="video-player" data="{{...currentPlaying.current,videoUrl:currentPlaying.url,videoDomain:currentPlaying.host,loading:currentPlaying.loading,status:currentPlaying.style}}"></template>
+</view>

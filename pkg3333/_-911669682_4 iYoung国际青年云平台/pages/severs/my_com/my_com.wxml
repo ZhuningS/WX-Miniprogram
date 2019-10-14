@@ -1,0 +1,79 @@
+<view class="flex tc top_title bgwhite grey">
+    <view catchtap="onTabTap" class="sub top-title-tab {{tabIndex==0?'green':''}} gridYr" data-index="0">我的评论</view>
+    <view catchtap="onTabTap" class="sub top-title-tab {{tabIndex==1?'green':''}}" data-index="1">回复我的</view>
+</view>
+<view class="bgwhite mt10">
+    <view catchtap="onShowCommentTap" class="comment f14" wx:for="{{data}}" wx:key="{{item.id}}">
+        <view class="co-item flex gridXb">
+            <view class="co-userimg">
+                <image src="{{item.headimgurl}}"></image>
+            </view>
+            <view class="sub ml15">
+                <view class="flex name" style="align-items:center;">
+                    <view class="sub">
+                        <view class="lineText">{{item.nickname}}</view>
+                        <view class="grey f12">{{item.create_time}}</view>
+                    </view>
+                </view>
+                <view class="f16 mt5">{{item.content}}</view>
+                <view catchtap="onNavigateTap" class="co-answerb mt10 lineText" data-url="../detail/detail?id={{item.doc_id}}">{{item.doc_content}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="floatBox" wx:if="{{show_comment}}">
+    <view class="pinglun-input">
+        <view class="flex f16">
+            <text class="sub">评论</text>
+            <text catchtap="onHideCommentTap" class="close tc grey">×</text>
+        </view>
+        <form bindsubmit="onCommentSubmit" reportSubmit="true">
+            <textarea class="mt10" focus="true" name="content" placeholder="{{comment_placeholder}}"></textarea>
+            <view class="flex mt10">
+                <view class="sub linght f12">
+                    <text class="mr5 iconfont icon-wran"></text>请遵循用户协议</view>
+                <button class="send-btn f16" formType="submit" type="primary">发送</button>
+            </view>
+        </form>
+    </view>
+    <view catchtap="onHideCommentTap" class="floatBox floatBoxBg" style="display:block;"></view>
+</view>
+<view class="floatBox" style="display:none;">
+    <view class="bgwhite pup-content mid tc">
+        <view class="pop-item gridXb">回复</view>
+        <view class="pop-item gridXb">举报</view>
+    </view>
+    <view class="floatBox floatBoxBg" style="display:block;"></view>
+</view>
+<view class="floatBox" style="display:none;">
+    <view class="bgwhite pup-content mid">
+        <view class="red" style="padding:0 30rpx;">请选择举报类型</view>
+        <radio-group style="padding:0 30rpx;">
+            <label class="pop-item gridXb flex">
+                <view class="sub">广告或垃圾营销</view>
+                <radio></radio>
+            </label>
+            <label class="pop-item gridXb flex">
+                <view class="sub">有害信息</view>
+                <radio></radio>
+            </label>
+            <label class="pop-item gridXb flex">
+                <view class="sub">违法信息</view>
+                <radio></radio>
+            </label>
+            <label class="pop-item gridXb flex">
+                <view class="sub">淫秽色情信息</view>
+                <radio></radio>
+            </label>
+            <label class="pop-item gridXb flex">
+                <view class="sub">人身攻击</view>
+                <radio></radio>
+            </label>
+        </radio-group>
+        <view class="flex tc gridXt pup-btn">
+            <view class="sub gridYr">取消</view>
+            <view class="sub">确定</view>
+        </view>
+    </view>
+    <view class="floatBox floatBoxBg" style="display:block;"></view>
+</view>

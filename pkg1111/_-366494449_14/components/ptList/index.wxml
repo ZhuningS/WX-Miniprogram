@@ -1,0 +1,21 @@
+<template name="ptList">
+    <view class="goodsList">
+        <form bindsubmit="_jump" class="goods" data-url="/pages/goods/detail2/detail?id={{item.id}}" reportSubmit="true" wx:for="{{list}}" wx:key="id">
+            <button class="goods_wrap" formType="submit">
+                <view class="goods__imgWrap">
+                    <image class="goods__img" mode="aspectFill" src="{{item.thumb}}"></image>
+                </view>
+                <view class="goods__name">{{item.name}}</view>
+                <view class="goodsInfoWrap">
+                    <view class="goods__price">
+                        <view style="font-size: 22rpx;color: #444;font-weight: 300">{{item.gtotal}}人拼ㆍ已拼{{item.numsell}}件</view>
+                        <text class="goods__price__unit">￥</text>{{item.gmoney}}
+                </view>
+                    <view class="gModList__salesVolume">
+                        <button class="button-pin">拼</button>
+                    </view>
+                </view>
+            </button>
+        </form>
+    </view>
+</template>

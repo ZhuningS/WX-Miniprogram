@@ -1,0 +1,210 @@
+page {
+    background: #fff;
+}
+
+.container {
+    overflow: hidden;
+}
+
+.counter {
+    padding-bottom: 112rpx;
+}
+
+.counter.iPhoneX {
+    padding-bottom: 182rpx;
+}
+
+.wrapper-header {
+    background: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wrapper-header .tab {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    color: #888;
+}
+
+.wrapper-header .tab .tab-item-container {
+    width: 50%;
+    margin-top: 40rpx;
+    padding-top: 46rpx;
+    padding-bottom: 46rpx;
+}
+
+.wrapper-header .tab .tab-item-container.hover {
+    background: #f4f4f4;
+}
+
+.wrapper-header .tab .tab-item {
+    border-right: 1px solid rgba(0,0,0,0.1);
+    color: #888;
+    font-size: 32rpx;
+    box-sizing: border-box;
+}
+
+.wrapper-header .tab .tab-item.first {
+    text-align: right;
+    padding-right: 98rpx;
+}
+
+.wrapper-header .tab .tab-item.last {
+    text-align: left;
+    padding-left: 98rpx;
+    border-right: none;
+}
+
+.wrapper-header .tab .tab-item.activated {
+    color: #000;
+}
+
+.wrapper-list .wrap-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64rpx;
+    text-align: center;
+    margin-bottom: 128rpx;
+}
+
+.wrapper-list .wrap-empty .empty {
+    display: block;
+    width: 256rpx;
+    height: 256rpx;
+    margin: 0 auto;
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.order-list .section {
+    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 16rpx;
+    padding-left: 64rpx;
+}
+
+.order-list .section .header {
+    font-size: 32rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 128rpx;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-list .section .header .text {
+    flex: 1;
+}
+
+.order-list .section .header .icon-arrow {
+    width: 48rpx;
+    height: 48rpx;
+    display: inline-block;
+    margin-right: 32rpx;
+    opacity: 0.3;
+}
+
+.order-list .section .body {
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.order-list .section .body .mch {
+    font-size: 32rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.order-list .section .body .item {
+    height: 256rpx;
+    border-top: 1rpx solid #eee;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-list .section .body image {
+    width: 128rpx;
+    height: 128rpx;
+    display: block;
+    flex-shrink: 0;
+    margin-right: 16rpx;
+}
+
+.order-list .section .body .main {
+    flex: 1;
+    padding-top: 112rpx;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden!important;
+    white-space: nowrap!important;
+}
+
+.order-list .section .body .main .title {
+    font-size: 32rpx;
+    display: inline-block;
+    overflow: hidden!important;
+    text-overflow: ellipsis!important;
+    white-space: nowrap!important;
+}
+
+.order-list .section .body .main .desc {
+    font-size: 32rpx;
+    line-height: 64rpx;
+    overflow: hidden!important;
+    text-overflow: ellipsis!important;
+    white-space: nowrap!important;
+    color: #888;
+}
+
+.order-list .section .body .status {
+    width: 160rpx;
+    text-align: center;
+    color: #ec8047;
+    flex-shrink: 0;
+}
+
+.wrapper-counter {
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    height: auto;
+    background: #fff;
+}
+
+.shopping-list-tips {
+    color: #888;
+    text-align: center;
+    font-size: 13px;
+    padding: 20rpx 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: 20rpx 0;
+}
+
+.shopping-list-tips__img {
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+}

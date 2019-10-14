@@ -1,0 +1,5 @@
+<template name="mMemberCard">
+    <view bindtap="_jump" class="mMemberCard" data-url="/pages/member/member">
+        <image mode="widthFix" src="{{dataset.url}}"></image>
+    </view>
+</template>

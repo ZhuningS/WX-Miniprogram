@@ -1,0 +1,5 @@
+<view class="{{rootClassNames}}">
+    <view class="card-header"></view>
+    <view class="card-body"></view>
+    <view class="card-footer"></view>
+</view>

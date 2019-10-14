@@ -1,0 +1,119 @@
+.tsyl {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    padding: 20rpx 15rpx;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.tsyl .tsyl_li {
+    text-align: center;
+    margin: 10rpx 0;
+}
+
+.tsyl .tsyl_li .tsyl_li_img {
+}
+
+.tsyl .tsyl_li .tsyl_li_img image {
+    width: 86rpx;
+    height: 86rpx;
+}
+
+.tsyl .tsyl_li .tsyl_li_text {
+    font-size: 24rpx;
+    color: #222;
+}
+
+.tsyl .one .tsyl_li_text {
+    font-size: 30rpx;
+}
+
+.tsyl .two .tsyl_li_text {
+    font-size: 30rpx;
+}
+
+.tsyl .width .tsyl_li_img image {
+    height: 86rpx;
+}
+
+.tsyl .height .tsyl_li_img image {
+    width: 86rpx;
+}
+
+.tsyl .tsyl_li .one image {
+    width: 690rpx;
+    height: 690rpx;
+}
+
+.tsyl .tsyl_li .two image {
+    width: 330rpx;
+    height: 330rpx;
+}
+
+.tsyl .tsyl_li .three image {
+    width: 210rpx;
+    height: 210rpx;
+}
+
+.tsyl .tsyl_li .four image {
+    width: 140rpx;
+    height: 140rpx;
+}
+
+.tsyl .width .four image {
+    height: 105rpx;
+}
+
+.tsyl .width .three image {
+    height: 157.5rpx;
+}
+
+.tsyl .width .two image {
+    height: 247.5rpx;
+}
+
+.tsyl .width .one image {
+    height: 517.5rpx;
+}
+
+.tsyl .height .four image {
+    width: 105rpx;
+}
+
+.tsyl .height .three image {
+    width: 157.5rpx;
+}
+
+.tsyl .height .two image {
+    width: 247.5rpx;
+}
+
+.tsyl .height .one image {
+    width: 517.5rpx;
+}
+
+.special .height .three image {
+    width: 210rpx;
+    height: 280rpx;
+}
+
+.special .height .four image {
+    width: 140rpx;
+    height: 186.5rpx;
+}
+
+.special .height .two image {
+    width: 330rpx;
+    height: 440rpx;
+}
+
+.special .height .five image {
+    width: 86rpx;
+    height: 144.5rpx;
+}
+
+.special .height .one image {
+    width: 690rpx;
+    height: 920rpx;
+}

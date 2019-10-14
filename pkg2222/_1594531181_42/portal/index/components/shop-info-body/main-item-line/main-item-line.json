@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "exposure-block": "../../../../../libs/mmuxwxappdevkit/widget/exposure-block/exposure-block",
+        "image-view": "../../../../../libs/mmuxwxappdevkit/widget/image-view/image-view"
+    }
+}

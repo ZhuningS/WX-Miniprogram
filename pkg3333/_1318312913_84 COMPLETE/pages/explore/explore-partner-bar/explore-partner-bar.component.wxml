@@ -1,0 +1,6 @@
+<navigator appId="{{hopCard.appId}}" catchtap="handleRootTap" class="{{rootClassNames}}" hoverClass="none" openType="navigate" path="{{hopCard.path}}" target="miniProgram" wx:if="{{hopCard&&hopCard.cover}}">
+    <image class="hopCard-image" src="{{hopCard.cover}}"></image>
+    <view class="hopCard-title" wx:if="{{hopCard.title}}">
+    {{hopCard.title}}
+  </view>
+</navigator>

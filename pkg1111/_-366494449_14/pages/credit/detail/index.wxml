@@ -1,0 +1,35 @@
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}" style="margin-top: 24rpx;">
+    <view bindtap="_openruleMask" class="rule_btn">查看积获取规则</view>
+    <block wx:if="{{score&&score.length>0}}">
+        <view class="score" wx:for="{{score}}" wx:key="id">
+            <view class="left">
+                <view class="time">{{item.dateline}}</view>
+                <view class="name">{{item.name}}</view>
+            </view>
+            <view class="points">+{{item.score}}</view>
+        </view>
+    </block>
+    <view class="nodata" wx:else>
+        <view>
+            <text>暂无积分记录～</text>
+        </view>
+    </view>
+    <view catchtouchmove="true" class="overwrap" wx:if="{{rulemask}}">
+        <image catchtap="_closeMask" class="close" src="/images/kan/X@3x.png"></image>
+        <scroll-view scrollY class="rules">
+            <view class="rules-tit">活动规则</view>
+            <view class="rules-item" wx:if="{{item.enable==1}}" wx:for="{{rule.score_rule}}">
+            {{item.name}}可获得{{item.score}}个积分,
+            <block wx:if="{{item.period==1}}">每日</block>
+                <block wx:elif="{{item.period==2}}">每周</block>
+                <block wx:elif="{{item.period==3}}">每月</block>
+                <block wx:if="{{item.period!=0}}">最多可获得{{item.num}}次</block>
+                <block wx:else>不限获得次数</block>
+            </view>
+        </scroll-view>
+    </view>
+</view>

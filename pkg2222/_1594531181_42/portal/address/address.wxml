@@ -1,0 +1,25 @@
+<navigation-bar backgroundColor="#F7F7F7" title="{{navigationTitle}}"></navigation-bar>
+<view class="address-wrap">
+    <block wx:if="{{showHead}}">
+        <view class="brand-header" wx:if="{{ctrlShowHead}}">
+            <image bindtap="onClickBrandLogo" class="brand-logo" src="{{iconUrl}}"></image>
+            <view class="brand-info-wrap">
+                <view class="brand-contact">
+                    <text class="brand-contact__text">联系客服</text>
+                    <image class="brand-contact__arrow-right" src="../../assets/icon-arrow-right-light.png"></image>
+                    <button bindlongpress="onLongPressContact" bindtap="onClickContact" class="brand-contact__btn"></button>
+                </view>
+                <text class="brand-desc">{{brandDesc}}</text>
+            </view>
+        </view>
+        <block wx:if="{{!showGotoSetting}}">
+            <address-item rawAddress="{{item}}" wx:for="{{addresses}}" wx:key="store_id"></address-item>
+        </block>
+        <view class="goto-setting" wx:if="{{showGotoSetting}}">
+            <text class="goto-setting-tips">无法获取地理位置信息</text>
+            <button bindopensetting="onOpenSettingResp" bindtap="onGotoSettingClick" class="goto-setting-btn" openType="openSetting">前往设置</button>
+        </view>
+        <action-sheet bShow="{{showActionSheet}}" bindhide="hideActionSheet" bindoncustomclick="onClickActionSheet" items="{{actionSheetItems}}" style="display: block;"></action-sheet>
+    </block>
+    <error-page class="address-info-error" errorSubTitle="{{errorSubTitle}}" errorTitle="{{errorTitle}}" warningText="{{warningText}}" wx:if="{{hasError}}"></error-page>
+</view>

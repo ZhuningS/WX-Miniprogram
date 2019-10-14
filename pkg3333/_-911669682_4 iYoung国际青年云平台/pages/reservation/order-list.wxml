@@ -1,0 +1,83 @@
+<view class="no-content tc" wx:if="{{data==''}}">
+    <image class="no-content-img" mode="widthFix" src="http://www.ixiaochengxu.cc/resource/images/common/no-order.png"></image>
+    <view class="mt10">暂无订单信息~~</view>
+</view>
+<view class="order mt10" wx:if="{{data}}">
+    <view bindtap="orderDetail" class="order-list" data-id="{{item.id}}" wx:for="{{data}}" wx:key="*this">
+        <view class="case-title gridXb flex">
+            <view class="case-name sub f16 lineText">{{item.title}}</view>
+            <text class=" ml5 f12 grey" wx:if="{{item.status==5}}">等待接单</text>
+            <text class=" ml5 f12 grey" wx:if="{{item.status==1}}">等待预约</text>
+            <text class=" ml5 f12 grey" wx:if="{{item.status==0}}">等待支付</text>
+            <text class=" ml5 f12 grey" wx:if="{{item.status==2}}">等待服务</text>
+            <text catchtap="onDeleteTap" class="iconfont icon-delete red ml5 f14" data-trade-no="{{item.number}}"></text>
+        </view>
+        <view class="grey flex mt15 mb10">
+            <view class="time sub">
+                <view>
+                    <text class="iconfont icon-time mr5"></text>
+                    <text>预约时间：{{item.reseve_time}}</text>
+                </view>
+                <view>
+                    <text class="iconfont icon-time mr5"></text>
+                    <text>下单时间：{{item.create_time}}</text>
+                </view>
+            </view>
+            <view wx:if="{{config.single_pay==1}}">
+                <block wx:if="{{item.status==0}}">
+                    <text class="red" wx:if="{{item.order_amount}}">{{config.single_name}}：￥{{item.order_amount}}</text>
+                    <text class="green" wx:else>免费</text>
+                </block>
+            </view>
+            <view wx:else>
+                <block wx:if="{{item.status==0}}">
+                    <text class="red" wx:if="{{item.earnest_order_amount}}">预付款：￥{{item.earnest_order_amount}}</text>
+                    <text class="green" wx:else>免费</text>
+                </block>
+                <block wx:if="{{item.status==6}}">
+                    <text class="red" wx:if="{{item.order_amount}}">尾款：￥{{item.order_amount}}</text>
+                    <text class="green" wx:else>免费</text>
+                </block>
+            </view>
+        </view>
+        <view class="f12" style="color:gray;" wx:if="{{item.address}}">预约地址：{{item.address}}</view>
+        <view class="f14" style="color:#44b549" wx:if="{{item.status!=3&&(item.is_refund==0||item.earnest_is_refund==0)}}">我的备注：{{item.remark?item.remark:'无'}}</view>
+        <view class="f14" style="color:red" wx:if="{{item.status==2&&(item.is_refund==0||item.earnest_is_refund==0)}}">预约说明：{{item.seller_remark?item.seller_remark:'无'}}</view>
+        <view class="f14" style="color:#6699FF" wx:if="{{(item.is_refund==3||item.earnest_is_refund==3)&&item.status!=3}}">对方已拒绝退款，你可以再次申请！</view>
+        <view class="f14" style="color:red" wx:if="{{(item.is_refund==3||item.earnest_is_refund==3)&&item.status!=3}}">拒绝原因：{{item.refund_remark?item.refund_remark:'无'}}</view>
+        <view class="flex">
+            <view class="sub"></view>
+            <block wx:if="{{config.single_pay==1}}">
+                <view class="refund grey ml10" wx:if="{{item.status==1&&item.order_amount!=0}}">
+                    <button catchtap="onNavigateTap" data-status="1" data-url="refund?tradeNo={{item.pay_trade_no}}&refund_type=1" disabled="{{item.is_refund==1||item.is_refund==2?'disabled':''}}" type="default">{{item.is_refund==0||item.is_refund==3?'申请退款':''}}{{item.is_refund==1?'退款中':''}}{{item.is_refund==2?'已退款':''}}</button>
+                </view>
+                <view class="refund grey ml10" wx:if="{{item.status==2&&item.order_amount!=0}}">
+                    <button catchtap="onNavigateTap" data-status="1" data-url="refund?tradeNo={{item.pay_trade_no}}&refund_type=1" disabled="{{item.is_refund==1||item.is_refund==2?'disabled':''}}" type="default">{{item.is_refund==0||item.is_refund==3?'申请退款':''}}{{item.is_refund==1?'退款中':''}}{{item.is_refund==2?'已退款':''}}</button>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="refund grey ml10" wx:if="{{item.status==1&&item.order_amount!=0}}">
+                    <button catchtap="onNavigateTap" data-status="1" data-url="refund?tradeNo={{item.pay_trade_no}}&refund_type=1" disabled="{{item.is_refund==1||item.is_refund==2?'disabled':''}}" type="default">{{item.is_refund==0||item.is_refund==3?'退款(尾款)':''}}{{item.is_refund==1?'退款中':''}}{{item.is_refund==2?'已退款':''}}</button>
+                </view>
+                <view class="refund grey ml10" wx:if="{{item.status==5&&item.earnest_order_amount!=0}}">
+                    <button catchtap="onNavigateTap" data-status="{{item.status}}" data-url="refund?tradeNo={{item.earnest_pay_trade_no}}&refund_type=5" disabled="{{item.earnest_is_refund==1||item.earnest_is_refund==2?'disabled':''}}" type="default">{{item.earnest_is_refund==0||item.earnest_is_refund==3?'退款(预付款)':''}}{{item.earnest_is_refund==1?'退款中':''}}{{item.earnest_is_refund==2?'已退款':''}}</button>
+                </view>
+                <view class="refund grey ml10" wx:if="{{item.status==2&&item.order_amount!=0}}">
+                    <button catchtap="onNavigateTap" data-status="1" data-url="refund?tradeNo={{item.pay_trade_no}}&refund_type=1" disabled="{{item.is_refund==1||item.is_refund==2?'disabled':''}}" type="default">{{item.is_refund==0||item.is_refund==3?'退款(尾款)':''}}{{item.is_refund==1?'退款中':''}}{{item.is_refund==2?'已退款':''}}</button>
+                </view>
+            </block>
+            <view class="pay ml10">
+                <block wx:if="{{config.single_pay==1}}">
+                    <button catchtap="onMakePayTap" data-status="{{item.status}}" data-trade-no="{{item.number}}" hoverClass="none" type="primary" wx:if="{{item.status==0}}">支付({{config.single_name}})</button>
+                </block>
+                <block wx:else>
+                    <button catchtap="onMakePayTap" data-status="{{item.status}}" data-trade-no="{{item.number}}" hoverClass="none" type="primary" wx:if="{{item.status==0}}">支付(预付款)</button>
+                    <button catchtap="onMakePayTap" data-status="{{item.status}}" data-trade-no="{{item.number}}" hoverClass="none" type="primary" wx:if="{{item.status==6}}">支付(尾款)</button>
+                </block>
+                <button disabled type="default" wx:if="{{item.status==1||item.status==5}}">等待中</button>
+                <button catchtap="onConfirmTap" data-trade-no="{{item.number}}" type="primary" wx:if="{{item.status==2&&item.is_refund!=1}}">确认完成</button>
+                <button disabled type="default" wx:if="{{item.status==3}}">已完成</button>
+            </view>
+        </view>
+    </view>
+</view>

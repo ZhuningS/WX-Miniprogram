@@ -1,0 +1,13 @@
+<template name="bonus-page">
+    <view style="width: 100%; background-color: white; text-align:center">
+        <view style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; margin: 0 80rpx;">
+            <view catchtap="onTapFee" data-fee="{{fee}}" style="border-radius: 4rpx; padding: 20rpx 20rpx; margin: 20rpx 0; width: 120rpx; text-align: center; color:black; background-color:#fd0; font-size: 32rpx;" wx:for="{{bonus.suggestFees}}" wx:for-item="fee">{{fee}} 元</view>
+        </view>
+        <view catchtap="onTapCustomFee" class="meta" style="margin-top: 20rpx; text-decoration:underline">其它金额</view>
+    </view>
+</template>
+<template name="article-bonus">
+    <view class="tags" style="padding-bottom:20rpx;">
+        <view catchtap="onTapBonus" style="display: inline-flex;align-items: center;font-size: 14px;height: 36px;padding: 0 18px;background-color: #fd0;color: #000;border-radius: 999px;">赞赏</view>
+    </view>
+</template>

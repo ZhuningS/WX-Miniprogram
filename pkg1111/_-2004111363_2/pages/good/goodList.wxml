@@ -1,0 +1,57 @@
+<view class="c-goodOrder {{currentSkin}}">
+    <scroll-view class="c-goodOrder-top" scrollIntoView="msg{{vm.state}}" scrollWithAnimation="{{true}}" scrollX="{{true}}" style="border-bottom:1px solid {{vm.scroll!=0?'#eee':'none'}}">
+        <view class="f">
+            <view bindtap="changeState" class="c-goodOrder-title f fc" data-wpychangestate-a="{{item.state}}" id="msg{{item.state}}" wx:for="{{vm.topHead}}" wx:key="key">
+                <text class="{{vm.state==item.state?'skin_bottom':''}}" style="padding-bottom:10rpx"> {{item.title}}</text>
+            </view>
+        </view>
+    </scroll-view>
+    <view style="height:100rpx"></view>
+    <view class="c-goodOrder-main">
+        <view class="c-goodOrder-item" wx:for="{{vm.list}}" wx:for-item="goodItem" wx:key="key">
+            <view class="c-goodOrder-item-title f fj">
+                <text bindtap="copyOrder" data-wpycopyorder-a="{{goodItem.orderNum}}">{{goodItem.orderNum}}</text>
+                <text>{{goodItem.StateRemark}}</text>
+            </view>
+            <view bindtap="pathGood" class="c-goodOrder-item-main f" data-wpypathgood-a="{{item.FoodGoodsId}}" wx:for="{{goodItem.goodList}}" wx:key="key">
+                <image src="{{item.SpecImg||item.goodsMsg.img}}"></image>
+                <view class="c-goodOrder-item-right f fj f1">
+                    <view class="f24 f fv">
+                        <text class="line line2" style="max-width:300rpx">{{item.goodsMsg.name}}</text>
+                        <text class="c999 mt10 line line1" wx:if="{{item.SpecInfo}}">{{item.SpecInfo}}</text>
+                    </view>
+                    <view class="f24 f fv">
+                        <text>￥{{item.priceStr}}</text>
+                        <text class="c999 mt10 f-end f">x{{item.Count}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="c-goodOrder-item-bottom">
+                <view class="w-100 f f-end">
+                    <text>共{{goodItem.goodList.length}}件</text>
+                    <text class="ml10">应付总额：</text>
+                    <text class="skin_txt">￥{{goodItem.buyPrice}}</text>
+                </view>
+                <view class="c-goodOrder-item-btn f f-end">
+                    <text bindtap="pathLog" data-wpypathlog-a="{{goodItem.goodList}}" data-wpypathlog-b="{{goodItem.orderId}}" wx:if="{{(goodItem.state==2||goodItem.state==3)&&goodItem.hasDelivery}}">物流信息</text>
+                    <text bindtap="pathAfterSale" data-wpypathaftersale-a="{{goodItem.orderId}}" wx:if="{{goodItem.state==3&&goodItem.hasDelivery&&goodItem.isCustomerServices}}">申请售后</text>
+                    <form bindsubmit="pathReturn" data-wpypathreturn-a="{{goodItem.orderId}}" reportSubmit="true" wx:if="{{goodItem.state>=13&&goodItem.state<19}}">
+                        <button class="formBtn" formType="submit">退货详情</button>
+                    </form>
+                    <text bindtap="cancleOrder" data-wpycancleorder-a="{{goodItem.orderId}}" data-wpycancleorder-b="{{index}}" wx:if="{{goodItem.state==1||goodItem.state==8}}">取消订单</text>
+                    <text bindtap="pathOrder" data-wpypathorder-a="{{goodItem.orderId}}">查看详情</text>
+                    <text bindtap="confirm" class="skin_bg" data-wpyconfirm-a="{{goodItem.orderId}}" style="border:none" wx:if="{{goodItem.state==2}}">确认收货</text>
+                    <text bindtap="goPay" class="skin_bg" data-wpygopay-a="{{goodItem.citymorderId}}" data-wpygopay-b="{{goodItem.orderId}}" style="border:none" wx:if="{{goodItem.state==0}}">去付款</text>
+                    <text catchtap="pathValue" class="skin_bg" data-wpypathvalue-a="{{goodItem.orderId}}" data-wpypathvalue-b="{{goodItem.goodList}}" style="border:none" wx:if="{{goodItem.state==3&&goodItem.IsCommentting==false}}">评价</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="loding w-100 f fc-h" style="padding:20rpx 0" wx:if="{{vm.list.length&&vm.loadall==false}}">
+        <text class="loading-icon"></text>
+        <text class="c999 f26 ml20">正在加载中...</text>
+    </view>
+    <view class="w-100 tc c123 f24 ph20" wx:if="{{vm.loadall&&vm.list.length}}">到底啦~</view>
+    <view class="w-100 f fc fc-h c123 f24" style="height:80vh" wx:if="{{vm.list.length==0}}">暂无数据~</view>
+    <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+</view>

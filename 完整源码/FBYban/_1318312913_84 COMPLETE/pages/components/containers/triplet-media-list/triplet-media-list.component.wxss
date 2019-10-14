@@ -1,0 +1,21 @@
+.triplet-media-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.triplet-media-list .media-wrapper {
+    display: flex;
+    width: 33.3333%;
+}
+
+.triplet-media-list .media-wrapper:nth-child(2n) {
+    justify-content: center;
+}
+
+.triplet-media-list .media-wrapper:nth-child(3n) {
+    justify-content: flex-end;
+}
+
+.triplet-media-list .media-wrapper:nth-child(3n+1) {
+    justify-content: flex-start;
+}

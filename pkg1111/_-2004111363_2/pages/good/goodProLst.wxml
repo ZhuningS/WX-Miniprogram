@@ -1,0 +1,80 @@
+<view class="{{currentSkin}}">
+    <scroll-view scrollX class="c-nav" wx:if="{{vm.pageInfo.showBig}}">
+        <view class="f fc bg-w f30">
+            <view bindtap="navFunc" class="item {{selIndex==0?'skin_bottom':''}}" data-wpynavfunc-a="0">全部</view>
+            <view bindtap="navFunc" class="item {{selIndex==item.id?'skin_bottom':''}}" data-wpynavfunc-a="{{item.id}}" wx:for="{{vm.second}}" wx:key="key">{{item.name}}</view>
+        </view>
+    </scroll-view>
+    <view style="height:100rpx" wx:if="{{vm.pageInfo.showBig}}"></view>
+    <view class="c-goodlst">
+        <view class="c-goodlst__detail f fv" wx:if="{{vm.pageInfo.goodShowType=='normal'}}">
+            <block wx:for="{{vm.list}}" wx:for-item="lst" wx:key="key">
+                <view bindtap="goodnav" class="main f" data-wpygoodnav-a="{{good_item.id}}" data-wpygoodnav-b="{{vm.pageInfo}}" wx:for="{{lst}}" wx:for-item="good_item" wx:key="key">
+                    <image src="{{good_item.img_fmt}}"></image>
+                    <view class="f fv ml20 f1 fj" style="padding:10rpx 0">
+                        <view class="f fv">
+                            <view class="m-title line line1">{{good_item.name}}</view>
+                            <view class="m-label f" hidden="{{good_item.plabelstr_array.length==0}}">
+                                <wxc-label class="mr10" textColor="#a6a6a6" type="fill" typeColor="#eff3f6" wx:for="{{good_item.plabelstr_array}}" wx:for-item="label_item" wx:key="key">{{label_item}}</wxc-label>
+                            </view>
+                        </view>
+                        <view class="m-price f fc">
+                            <view class="f fc f1" wx:if="{{vm.pageInfo.isShowPrice}}">
+                                <wxc-price class="f30 skin_txt t-b" icon="sub">{{good_item.priceStr}}<text class="f22" wx:if="{{good_item.unit.length!=''}}">/{{good_item.unit}}</text>
+                                </wxc-price>
+                                <wxc-price class="f20 ml10" delColor="#CECECE" status="del" style="margin-top:4rpx;" wx:if="{{good_item.originalPrice!=0&&good_item.priceStr!=good_item.originalPrice}}">{{good_item.originalPrice}}<text class="f20" wx:if="{{good_item.unit.length!=''}}">/{{good_item.unit}}</text>
+                                </wxc-price>
+                            </view>
+                            <view class="f20" style="color:#cecece" wx:if="{{vm.pageInfo.btnType}}">{{vm.pageInfo.btnType=='buy'?'已售:':'已约:'}}{{good_item.virtualSalesCount+good_item.salesCount}}</view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <scroll-view scrollY class="c-goodlst__big" wx:if="{{vm.pageInfo.goodShowType=='big'}}">
+            <view class="c f fv fc">
+                <block wx:for="{{vm.list}}" wx:for-item="big" wx:key="key">
+                    <view bindtap="goodnav" class="main" data-wpygoodnav-a="{{good_item.id}}" data-wpygoodnav-b="{{vm.pageInfo}}" wx:for="{{big}}" wx:for-item="good_item" wx:key="key">
+                        <image mode="widthFix" src="{{good_item.img_fmt}}"></image>
+                        <view class="m-title line line1">{{good_item.name}}</view>
+                        <view class="m-label f" wx:if="{{good_item.plabelstr_array.length}}">
+                            <wxc-label class="mr10" textColor="#a6a6a6" type="fill" typeColor="#eff3f6" wx:for="{{good_item.plabelstr_array}}" wx:for-item="label_item" wx:key="key">{{label_item}}</wxc-label>
+                        </view>
+                        <view class="m-price f fc">
+                            <view class="f fv f1" wx:if="{{vm.pageInfo.isShowPrice}}">
+                                <wxc-price class="f30 skin_txt t-b" icon="sub">{{good_item.priceStr}}<text class="f22" wx:if="{{good_item.unit.length!=''}}">/{{good_item.unit}}</text>
+                                </wxc-price>
+                                <wxc-price class="f20" delColor="#CECECE" status="del" style="margin-top:4rpx;" wx:if="{{good_item.originalPrice!=0&&good_item.priceStr!=good_item.originalPrice}}">{{good_item.originalPrice}}<text class="f20" wx:if="{{good_item.unit.length!=''}}">/{{good_item.unit}}</text>
+                                </wxc-price>
+                            </view>
+                            <view class="f fc" wx:if="{{vm.pageInfo.btnType!=''}}">
+                                <view class="f20" style="margin-right:20rpx;color:#cecece" wx:if="{{vm.pageInfo.btnType}}">{{vm.pageInfo.btnType=='buy'?'已售:':'已约:'}}{{good_item.virtualSalesCount+good_item.salesCount}}</view>
+                                <view catchtap="goSub" class="m-sub skin_bg" data-wpygosub-a="{{good_item}}" wx:if="{{vm.pageInfo.btnType=='yuyue'}}">预约</view>
+                                <view class="m-sub skin_bg" wx:if="{{vm.pageInfo.btnType=='buy'}}">购买</view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+        <view class="c-goodlst__small f fw fj" wx:if="{{vm.pageInfo.goodShowType=='small'}}">
+            <block wx:for="{{vm.list}}" wx:for-item="small" wx:key="key">
+                <view bindtap="goodnav" class="main" data-wpygoodnav-a="{{good_item.id}}" data-wpygoodnav-b="{{vm.pageInfo}}" wx:for="{{small}}" wx:for-item="good_item" wx:key="key">
+                    <image src="{{good_item.img_fmt}}"></image>
+                    <view class="m-title line line1">{{good_item.name}}</view>
+                    <view class="m-price f fc">
+                        <wxc-price class="f30 skin_txt t-b f1" icon="sub" wx:if="{{vm.pageInfo.isShowPrice}}">{{good_item.priceStr}}<text class="f22" wx:if="{{good_item.unit.length!=''}}">/{{good_item.unit}}</text>
+                        </wxc-price>
+                        <view class="f20 mr10" style="color:#cecece" wx:if="{{vm.pageInfo.btnType}}">{{vm.pageInfo.btnType=='buy'?'已售:':'已约:'}}{{good_item.virtualSalesCount+good_item.salesCount}}</view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <wxc-abnor type="DATA" wx:if="{{vm.list.length&&vm.list[1].length==null||vm.list[1].length==0}}"></wxc-abnor>
+    </view>
+    <wxc-loadmore icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png" isEnd="{{true}}" text="到底啦" wx:if="{{vm.loadall&&vm.list[1].length>5}}"></wxc-loadmore>
+    <view class="loding w-100 f fc-h" style="margin:20rpx 0" wx:if="{{vm.loadall==false}}">
+        <text class="loading-icon"></text>
+        <text class="c999 f26 ml20">正在加载中...</text>
+    </view>
+</view>

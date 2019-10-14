@@ -1,0 +1,90 @@
+.masking {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.masking .signin-wrap {
+    width: 560rpx;
+    border-radius: 8rpx;
+    padding-bottom: 40rpx;
+}
+
+.masking .signin-wrap .close {
+    top: -100rpx;
+    right: 0;
+}
+
+.masking .signin-wrap>image {
+    position: absolute;
+    top: -52rpx;
+    width: 560rpx;
+    height: 328rpx;
+}
+
+.masking .signin-wrap .signin-day {
+    top: 174rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 240rpx;
+    height: 44rpx;
+    line-height: 44rpx;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 4rpx;
+    white-space: nowrap;
+    padding: 0 20rpx;
+    border-radius: 22rpx;
+}
+
+.masking .signin-wrap .date-list {
+    width: 518rpx;
+    margin-top: 316rpx;
+}
+
+.masking .signin-wrap .date-list::before {
+    position: absolute;
+    top: 28rpx;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #EBAF79;
+}
+
+.masking .signin-wrap .date-list .date-item .integral {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 18rpx;
+    color: #D89300;
+}
+
+.masking .signin-wrap .date-list .date-item .date {
+    padding-top: 10rpx;
+}
+
+.masking .signin-wrap .signin-btn {
+    width: 230rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 30rpx;
+    color: #000;
+    text-align: center;
+    background-color: #ffd530;
+    margin-top: 30rpx;
+}
+
+.masking .signin-wrap .signed-btn {
+    width: 230rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 30rpx;
+    color: #666;
+    text-align: center;
+    background-color: rgba(255,213,48,0.5);
+    margin-top: 30rpx;
+}

@@ -1,0 +1,86 @@
+page {
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+.show-card .title::before {
+    content: "";
+    width: 16rpx;
+    height: 56rpx;
+    border-radius: 10rpx;
+    display: block;
+    position: absolute;
+    top: -3px;
+    left: 0px;
+}
+
+.card-list {
+    margin: 0 auto 15px;
+    border-radius: 6rpx;
+    background: #fff;
+    padding: 30rpx;
+    box-shadow: 0 6rpx #eee;
+}
+
+.card-list .text {
+    min-height: 100rpx;
+    word-break: break-all;
+}
+
+.time {
+    line-height: 75rpx;
+}
+
+.punch-badge {
+    background-color: rgba(0,0,0,0.05);
+    padding: 0 15px;
+    border-radius: 50px;
+    line-height: 34px;
+    height: 34px;
+}
+
+.flating-group {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+}
+
+.flating-group button {
+    float: right;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #1aad19;
+    color: white;
+}
+
+.flating-group button::after {
+    border: 0;
+}
+
+.nothing {
+    width: 70%;
+    margin: 20rpx auto;
+}
+
+.nothing .line {
+    height: 1px;
+    background: #ddd;
+    margin-top: 22rpx;
+}
+
+.green {
+    color: #09bb07;
+}
+
+.show-card .title::before,button[type="primary"] {
+    background: #09bb07;
+}
+
+.flating-group button {
+    box-shadow: 0 0 10px rgba(9,181,7,0.8);
+}

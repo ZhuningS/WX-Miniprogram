@@ -1,0 +1,17 @@
+<navigation-bar backgroundColor="#F7F7F7" hideTitleImg="{{hideTitleImg}}" title="" titleImg="{{titleImg}}"></navigation-bar>
+<view catch:onclickevent="onComponentClickCallback" catch:onexposeevent="onComponentExposeCallback" class="container {{phoneModel}}" style="min-height: {{screenHeight}}px;">
+    <shop-info-header headerObj="{{pageData.header}}" homepage="{{hasHomepage}}" id="shop-info-header" wx:if="{{pageData&&pageData.header}}"></shop-info-header>
+    <shop-info-body pageData="{{pageData}}" wx:if="{{supportInfo.kf_count>0&&pageData&&(pageData.promote||pageData.components)}}"></shop-info-body>
+    <view bindtap="onShowAllClick" class="bottom-area__show-all {{phoneModel}}" wx:if="{{supportInfo.kf_count>0&&pageData&&pageData.components&&pageData.components.length}}">
+        <view class="bottom-area__inner">
+            <text class="bottom-area__show-all-text">{{goodsTotal>0?'查看全部'+goodsTotal+'件商品':'查看全部商品'}}</text>
+            <image class="bottom-area__show-all-img" src="../../assets/icon-arrow-right-light.png"></image>
+        </view>
+    </view>
+    <view class="no-added-goods-footer" wx:if="{{supportInfo&&supportInfo.kf_count<=0||pageData&&pageData.components&&pageData.components.length==0}}">
+        <text>精品店暂未发布</text>
+    </view>
+    <view bindtap="onClickShoppingCar" class="index-shoppingcar {{phoneModel}}">
+        <image class="index-shoppingcar__img" src="../../assets/shoppingcar.png"></image>
+    </view>
+</view>

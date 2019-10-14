@@ -1,0 +1,108 @@
+page {
+    background: #d65840;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.re-bg {
+    background: url('http://i.vzan.cc/image/png/2018/1/16/170401fb3f483d5a444b33bfb110cbed9421de.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 710rpx;
+    height: 1100rpx;
+}
+
+.re-bg .re-btn {
+    border-radius: 44rpx;
+    width: 300rpx;
+    height: 88rpx;
+    border: 2rpx solid #f2be50;
+    line-height: 88rpx;
+    background-color: white;
+    color: #f2be50;
+    position: absolute;
+    left: 50%;
+    bottom: 20vh;
+    margin-left: -150rpx;
+}
+
+.re-bg .re-txt {
+    position: absolute;
+    top: 40vh;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.re-bg .time {
+    position: absolute;
+    bottom: 13vh;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.re-bg .re-bottom {
+    color: #999;
+    font-size: 24rpx;
+    position: absolute;
+    bottom: 8vh;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.re-bg .re-home {
+    position: absolute;
+    bottom: 8vh;
+    color: #f4b23e;
+    font-size: 28rpx;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.re-bg .re-userList {
+    position: absolute;
+    top: 30vh;
+    left: 0;
+    width: 100%;
+}
+
+.re-bg .re-success {
+    position: absolute;
+    top: 30vh;
+    width: 100%;
+}
+
+.re-bg .re-success .re-sc1 {
+    font-size: 46rpx;
+    color: #ff6161;
+}
+
+.re-bg .re-success .re-sc2 {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.re-bg .re-user {
+    width: 98rpx;
+    height: 98rpx;
+    border-radius: 50%;
+}
+
+.re-bg .re-noUser {
+    color: #ccc;
+    border: 1px solid #ccc;
+    width: 98rpx;
+    height: 98rpx;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 98rpx;
+}
+
+.re-bg .re-price {
+    position: absolute;
+    top: 50vh;
+}

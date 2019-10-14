@@ -1,0 +1,94 @@
+<template name="ad">
+    <form bindsubmit="onAdTap" reportSubmit="true">
+        <button class="adsense tc mt10" formType="submit" wx:if="{{ad_img}}">
+            <image class="ad-img" mode="aspectFill" src="{{ad_img}}"></image>
+            <text class="ad-text f12 write">广告</text>
+        </button>
+    </form>
+</template>
+<template name="category">
+    <form bindsubmit="onNavigateTap" reportSubmit="true">
+        <swiper class="fenlei gridXb mt10" indicatorDots="true" style="height:{{categorys[0].length<6?'216':'372'}}rpx;">
+            <swiper-item wx:for="{{categorys}}" wx:for-item="categoryGroup" wx:key="{{index}}">
+                <view class="classify-box clearfix">
+                    <button class="classify-list tc" data-url="../lists/lists?cid={{item.id}}&title={{item.title}}" formType="submit" wx:for="{{categoryGroup}}" wx:key="{{item.id}}">
+                        <image class="list-img" mode="aspectFill" src="{{item.cover}}"></image>
+                        <view class="list-text lineText">{{item.title}}</view>
+                    </button>
+                </view>
+            </swiper-item>
+        </swiper>
+    </form>
+</template>
+<form bindsubmit="onSearchSubmit" reportSubmit="true">
+    <view class="search-bar flex mt10">
+        <view class="input-inner sub">
+            <view class="flex search-box">
+                <text class="mr5 iconfont icon-search"></text>
+                <input bindblur="onHideSearchBlur" class="sub" confirmType="搜索" focus="{{searchShow}}" name="keyword" placeholder="请输入关键词" type="text" value="{{param.keyword}}"></input>
+                <text catchtap="onClearKeywordTap" class="ml5 iconfont icon-close f12"></text>
+            </view>
+            <label catchtap="onShowSearchTap" class="search-show tc grey" wx:if="{{!searchShow}}">
+                <text class="mr5 iconfont icon-search"></text>
+                <text>搜索</text>
+            </label>
+        </view>
+        <button class="green searchbtn f14" formType="submit" hoverClass="active" wx:if="{{searchShow}}">搜索</button>
+    </view>
+</form>
+<block wx:if="{{config.ad_sort==1}}">
+    <template is="ad" data="{{ad_img:ad_img}}"></template>
+    <template is="category" data="{{categorys:categorys,imgHeight:imgHeight}}"></template>
+</block>
+<block wx:else>
+    <template is="category" data="{{categorys:categorys,imgHeight:imgHeight}}"></template>
+    <template is="ad" data="{{ad_img:ad_img}}"></template>
+</block>
+<view class="tr bgwhite pageviews grey f12" wx:if="{{config.show_statistics}}">
+    <text class="mr10">浏览：{{config.view_count}}</text>
+    <text class="mr10">发布：{{config.info_count}}</text>
+    <text class="mr10">分享：{{config.share_count}}</text>
+</view>
+<view class="notice mt10 arrowR flex" wx:if="{{config.notices&&config.notices.length}}">
+    <view class="red mr10 iconfont icon-notificationfill"></view>
+    <swiper autoplay circular vertical class="sub">
+        <swiper-item catchtap="onNoticeTap" class="lineText" data-doc-id="{{item.doc_id}}" wx:for="{{config.notices}}" wx:key="{{index}}">
+            {{item.title}}
+        </swiper-item>
+    </swiper>
+</view>
+<form bindsubmit="onSwtchTabTap" reportSubmit="true">
+    <view class="tc paixu f16 grey mt10 mb10" id="tab">
+        <view class="flex {{isTabFixed?'fixed-top':''}}">
+            <button class="sub title-item {{param.type==0?'active':''}}" data-index="0" formType="submit">最新发布</button>
+            <button class="sub title-item {{param.type==2?'active':''}}" data-index="2" formType="submit">最新回复</button>
+            <button class="sub title-item {{param.type==3?'active':''}}" data-index="3" formType="submit" wx:if="{{config&&config.show_wallet_bonus!==0}}">红包福利</button>
+            <button class="sub title-item {{param.type==1?'active':''}}" data-index="1" formType="submit">距离最近</button>
+        </view>
+    </view>
+</form>
+<view catchtap="onScrollTopTap" class="return-top arrowT" hidden="{{!isTabFixed}}" wx:if="{{canIUse.pageScrollTo}}"></view>
+<import src="../tpl.wxml"></import>
+<template is="doc-list" data="{{data:data,styles:styles,comment:comment,config:config,hasMore:hasMore,isLoading:isLoading}}"></template>
+<view class="aside-float" hidden="{{!config}}">
+    <block wx:if="{{config.show_push||config.show_push===undefined}}">
+        <button catchtap="onNavigateTap" class="iconfont icon-add" data-type="switch" data-url="../release/release" type="primary" wx:if="{{!config.custom_push_btn}}"></button>
+        <button catchtap="onNavigateTap" data-type="switch" data-url="../release/release" style="font-size:24rpx" type="primary" wx:else>{{config.custom_push_btn_text}}</button>
+    </block>
+    <block wx:if="{{config.show_service||config.show_service===undefined}}">
+        <button class="iconfont icon-kefu" openType="contact" type="primary" wx:if="{{!config.custom_service_btn}}"></button>
+        <button openType="contact" style="font-size:24rpx" type="primary" wx:else>{{config.custom_service_btn_text}}</button>
+    </block>
+</view>
+<view class="news-tips" hidden="{{!notNewMsg}}">您有新的评论消息！</view>
+<view class="floatBox news-pop" hidden="{{!notNewMsg}}">
+    <view class="news-pop-cont mid tc">
+        <view class="f16">您有3条未读消息</view>
+        <view class="mt15">
+            <button class="news-read-btn" plain="true" size="mini">前去查看</button>
+        </view>
+    </view>
+    <view class="floatBox floatBoxBg"></view>
+</view>
+<import src="../../plug-in/template/tpl.wxml"></import>
+<template is="popup-big" data="{{data:ad_popup}}"></template>

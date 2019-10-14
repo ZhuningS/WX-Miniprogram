@@ -1,0 +1,158 @@
+page {
+    background-color: #EBEBEB;
+}
+
+.user-header {
+    background-color: #FFFFFF;
+    padding-bottom: 40rpx;
+}
+
+.user-header+duet-waterfall>view {
+    margin-top: 24rpx;
+}
+
+.user-ctn {
+    box-sizing: border-box;
+    padding: 0 40rpx;
+}
+
+.user-ctn .menu-icon {
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.actions-bar {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding-top: 24rpx;
+    margin-left: -8rpx;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 32rpx;
+}
+
+.user-info.basic-profile {
+    min-height: 100px;
+}
+
+.user-info .info-name {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: 300;
+}
+
+.user-info .user-intro-ctn .user-name-ctn {
+    display: flex;
+}
+
+.user-info .user-intro-ctn .description {
+    margin-top: 10px;
+    line-height: 17px;
+    font-size: 12px;
+}
+
+.user-info .user-intro-ctn .description.info-intro {
+    max-height: 51px;
+}
+
+.user-info .component--avatar {
+    margin-left: 64rpx;
+}
+
+.stat-ctn {
+    display: flex;
+    padding-top: 24rpx;
+    font-size: 12px;
+    color: #666666;
+}
+
+.stat-ctn .field-gap {
+    margin: 0 16rpx;
+}
+
+.stat-ctn .count-number {
+    margin: 0 8rpx;
+    font-weight: 500;
+    color: #000000;
+}
+
+.stat-ctn .count-ctn {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.single-card-exps {
+    height: initial;
+    margin-top: 40px;
+    height: auto;
+}
+
+.single-card-exps .single-card-description {
+    display: none;
+}
+
+.left {
+    position: relative;
+    margin-top: 40px;
+}
+
+tabs-nav {
+    padding-top: 48rpx;
+    padding-bottom: 8rpx;
+}
+
+.single-card:first-of-type .section-name {
+    display: block;
+}
+
+.timeline .single-card:first-child {
+    margin-top: 40rpx;
+}
+
+.timeline .card-post .top-ctn {
+    padding: 0;
+}
+
+.timeline .card-post .content-ctn {
+    padding: 0;
+}
+
+.anonymous {
+    padding: 80px 60rpx 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.anonymous .description {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.anonymous .button {
+    margin-top: 10px;
+}
+
+.paidList {
+    background-color: #FFFFFF;
+}
+
+.products.timeline {
+    flex: 1;
+    padding-bottom: 40px;
+}
+
+.timeline {
+    min-height: 60vh;
+}
+
+.empty-tip {
+    min-height: 55vh;
+}

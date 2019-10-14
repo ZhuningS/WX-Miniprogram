@@ -1,0 +1,194 @@
+.bird {
+    width: 265rpx;
+    position: absolute;
+    right: 0;
+    top: 208rpx;
+}
+
+.forset image {
+    width: 610rpx;
+}
+
+.forset {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.forset .tee:first-child {
+    position: absolute;
+    left: 35rpx;
+    top: 55rpx;
+    width: 80rpx;
+}
+
+.forset .tee:nth-child(2) {
+    position: absolute;
+    left: 113rpx;
+    top: 19rpx;
+    width: 80rpx;
+}
+
+.forset .tee:nth-child(3) {
+    position: absolute;
+    left: 191rpx;
+    top: -19rpx;
+    width: 80rpx;
+}
+
+.forset .tee:nth-child(4) {
+    position: absolute;
+    left: 262rpx;
+    top: -56rpx;
+    width: 80rpx;
+}
+
+.forset .tee:nth-child(5) {
+    position: absolute;
+    left: 109rpx;
+    top: 92rpx;
+    width: 80rpx;
+    z-index: 11;
+}
+
+.forset .tee:nth-child(6) {
+    position: absolute;
+    left: 188rpx;
+    top: 55rpx;
+    width: 80rpx;
+    z-index: 12;
+}
+
+.forset .tee:nth-child(7) {
+    position: absolute;
+    left: 264rpx;
+    top: 19rpx;
+    width: 80rpx;
+    z-index: 13;
+}
+
+.forset .tee:nth-child(8) {
+    position: absolute;
+    left: 347rpx;
+    top: -19rpx;
+    width: 80rpx;
+    z-index: 14;
+}
+
+.forset .tee:nth-child(9) {
+    position: absolute;
+    left: 188rpx;
+    top: 132rpx;
+    width: 80rpx;
+    z-index: 15;
+}
+
+.forset .tee:nth-child(10) {
+    position: absolute;
+    left: 264rpx;
+    top: 92rpx;
+    width: 80rpx;
+    z-index: 16;
+}
+
+.forset .tee:nth-child(11) {
+    position: absolute;
+    left: 347rpx;
+    top: 54rpx;
+    width: 80rpx;
+    z-index: 17;
+}
+
+.forset .tee:nth-child(12) {
+    position: absolute;
+    left: 421rpx;
+    top: 19rpx;
+    width: 80rpx;
+    z-index: 18;
+}
+
+.forset .tee:nth-child(13) {
+    position: absolute;
+    left: 264rpx;
+    top: 169rpx;
+    width: 80rpx;
+    z-index: 19;
+}
+
+.forset .tee:nth-child(14) {
+    position: absolute;
+    left: 344rpx;
+    top: 133rpx;
+    width: 80rpx;
+    z-index: 20;
+}
+
+.forset .tee:nth-child(15) {
+    position: absolute;
+    left: 419rpx;
+    top: 95rpx;
+    width: 80rpx;
+    z-index: 21;
+}
+
+.forset .tee:nth-child(16) {
+    position: absolute;
+    left: 500rpx;
+    top: 54rpx;
+    width: 80rpx;
+    z-index: 22;
+}
+
+.statusBar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50rpx;
+    box-sizing: border-box;
+}
+
+.statusBar .time {
+    display: flex;
+    align-items: center;
+}
+
+.statusBar .time image {
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 10rpx;
+}
+
+.statusBar .time text {
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.icon image {
+    width: 60rpx;
+    height: 60rpx;
+    margin-left: 10rpx;
+}
+
+.btn {
+    background: #fff;
+    width: 630rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 32rpx;
+    color: #22442A;
+    position: fixed;
+    bottom: 60rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}

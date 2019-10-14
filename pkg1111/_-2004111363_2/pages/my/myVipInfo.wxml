@@ -1,0 +1,52 @@
+<view class="vip {{currentSkin}}">
+    <view class="logo f fc fc-h">
+        <text class="dzicon icon-dengji f36"></text>
+        <text class="ml20">当前等级</text>
+    </view>
+    <view class="super skin_bg">{{vm.info.levelInfo.name}}</view>
+    <view class="w-100 f fc-h">
+        <view wx:if="{{vm.info.levelInfo.discount==100}}">暂无折扣</view>
+        <view wx:if="{{vm.info.levelInfo.discount!=100&&vm.info.levelInfo.type==1}}">全场商品享受{{vm.info.levelInfo.discount/10}}折</view>
+        <view wx:if="{{vm.info.levelInfo.discount!=100&&vm.info.levelInfo.type==2}}">可享受当前部分商品{{vm.info.levelInfo.discount/10}}折 <text bindtap="goShowPro" data-wpygoshowpro-a="{{vm.info.levelInfo.gids}}" style="color:#5F97C3">点击前往></text>
+        </view>
+        <view wx:if="{{vm.info.levelInfo.discount!=100&&vm.info.levelInfo.type==0}}">无</view>
+    </view>
+    <block wx:if="{{vm.list.length!=vm.index}}">
+        <view class="w-100 f fc-h mt30">
+            <image class="show-line" src="http://vzan-img.oss-cn-hangzhou.aliyuncs.com/upload//20180725/e433eee30b9d47b8a8bfc184ae429f131532502997058.png"></image>
+        </view>
+        <view class="logo f fc fc-h">
+            <text class="dzicon icon-dengji f36"></text>
+            <text class="ml20">下一等级</text>
+        </view>
+        <view class="super-next skin_bg">{{vm.list[vm.index].name}}</view>
+        <view class="w-100 f fc-h">
+            <view wx:if="{{vm.list[vm.index].discount==100}}">暂无折扣</view>
+            <view wx:if="{{vm.list[vm.index].discount!=100&&vm.list[vm.index].type==1}}">全场商品享受{{vm.list[vm.index].discount/10}}折</view>
+            <view wx:if="{{vm.list[vm.index].discount!=100&&vm.list[vm.index].type==2}}">可享受当前部分商品{{vm.list[vm.index].discount/10}}折</view>
+            <view wx:if="{{vm.list[vm.index].discount!=100&&vm.list[vm.index].type==0}}">无</view>
+        </view>
+        <view class="line"></view>
+        <view class="form f fv fc">
+            <view class="form-title f fc">
+                <text class="dzicon icon-shuomingx f36"></text>
+                <text class="ml20">等级特权说明</text>
+            </view>
+            <view class="main">
+                <view class="main-title">
+                    <text>等级</text>
+                    <text>对应等级特权</text>
+                </view>
+                <view class="main-lst f fv">
+                    <view class="main-item f fc" wx:for="{{vm.list}}" wx:key="key">
+                        <text>{{item.name}}</text>
+                        <text wx:if="{{item.discount==100}}">暂无折扣</text>
+                        <text wx:if="{{item.discount!=100&&item.type==1}}">全场商品享受{{item.discount/10}}折</text>
+                        <text wx:if="{{item.discount!=100&&item.type==2}}">部分商品{{item.discount/10}}折</text>
+                        <text wx:if="{{item.discount!=100&&item.type==0}}">无</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

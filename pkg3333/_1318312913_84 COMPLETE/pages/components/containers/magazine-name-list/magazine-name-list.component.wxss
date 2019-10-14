@@ -1,0 +1,19 @@
+.magazine-name-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -32rpx;
+}
+
+.magazine-name-list .create-button {
+    height: 35.4px!important;
+    width: 48px!important;
+}
+
+.magazine-name-list .create-button:after {
+    display: none;
+}
+
+.magazine-name-list qm-button,.magazine-name-list magazine-name {
+    margin-right: 32rpx;
+    margin-bottom: 32rpx;
+}

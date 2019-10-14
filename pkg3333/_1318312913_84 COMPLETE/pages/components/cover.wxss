@@ -1,0 +1,144 @@
+.category-cover {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.category-cover .cover {
+    position: relative;
+    width: 750rpx;
+    height: 714rpx;
+}
+
+.category-cover .cover.large {
+    height: 600rpx;
+}
+
+.category-cover .menus-ctn {
+    position: absolute;
+    display: flex;
+    flex: auto;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 40px;
+    left: 60rpx;
+    width: 630rpx;
+}
+
+.category-cover .menus-ctn .icon {
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.category-cover .menus-ctn .left,.category-cover .menus-ctn .right {
+    display: flex;
+}
+
+.category-cover .menus-ctn .left .item {
+    margin-right: 10px;
+}
+
+.category-cover .menus-ctn .right .item {
+    margin-left: 10px;
+}
+
+.category-cover .meta-ctn {
+    display: block;
+    margin-top: 40px;
+    margin-left: 60rpx;
+}
+
+.category-cover .full-items-ctn {
+    display: flex;
+    margin-top: 40px;
+    margin-left: 60rpx;
+}
+
+.category-cover .full-items-ctn .items-ctn {
+    display: flex;
+    width: 315rpx;
+    margin-top: 10rpx;
+}
+
+.category-cover .full-items-ctn .items-ctn .item {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 10rpx;
+    font-size: 12px;
+    color: #BDBDBD;
+}
+
+.category-cover .full-items-ctn .items-ctn .icon {
+    border-radius: 10rpx;
+}
+
+.category-cover .title-meta {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.category-cover {
+    padding-bottom: 40px;
+    margin: 0;
+}
+
+.category-cover .cover {
+    height: 400rpx;
+    width: 750rpx;
+}
+
+.category-cover .title-ctn {
+    position: absolute;
+    top: 40px;
+    left: 60rpx;
+}
+
+.category-cover.white {
+    color: #FFFFFF;
+}
+
+.category-cover.white .subscribe {
+    background-color: #FFFFFF;
+    color: #000000;
+}
+
+.category-cover.white .title-meta {
+    color: white;
+}
+
+.article-cover {
+    background-color: rgba(0,0,0,0.05);
+    padding: 40rpx;
+    margin: 0;
+    display: flex;
+}
+
+.article-cover .article-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 670rpx;
+    background-color: #FFFFFF;
+}
+
+.article-cover .article-ctn .user-ctn {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    align-items: center;
+}
+
+.article-cover .article-content {
+    display: block;
+}
+
+.article-cover .article-content image.media {
+    margin: 0 20rpx;
+}

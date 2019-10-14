@@ -1,0 +1,194 @@
+<form bindsubmit="formSubmit">
+    <view class="box m15">
+        <view class="gonggao" wx:if="{{data.enter_remark||data.platform_tel||data.platform_qq}}">
+            <text class="black" wx:if="{{data.enter_remark}}">{{data.enter_remark}}</text>
+            <view class="phone mt5 linght">
+                <view class="phone-li" wx:if="{{data.platform_tel}}">
+          电话：
+          <text>{{data.platform_tel}}</text>
+                </view>
+                <view class="phone-li" wx:if="{{data.platform_qq}}">
+          QQ：
+          <text>{{data.platform_qq}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="list">
+            <view class="list-li flex gridXb f16">
+                <view class="name">
+                    <label>商家名称
+            <text class="red">*</text>
+                    </label>
+                </view>
+                <view class="list-in sub ml10 grey">
+                    <input class="text" name="store_name" placeholder="请输商家名称" type="text"></input>
+                </view>
+            </view>
+            <view class="list-li flex gridXb f16">
+                <view class="name">
+                    <label>商家电话
+            <text class="red">*</text>
+                    </label>
+                </view>
+                <view class="list-in sub ml10 grey">
+                    <input class="text" name="store_con_mobile" placeholder="商家手机号" type="text"></input>
+                </view>
+            </view>
+            <view class="list-li flex gridXb f16">
+                <view class="name">
+                    <label>商家QQ</label>
+                </view>
+                <view class="list-in sub ml10 grey">
+                    <input class="text" name="store_con_qq" placeholder="商家QQ" type="text"></input>
+                </view>
+            </view>
+            <view class="list-li flex gridXb f16">
+                <view class="name">
+                    <label>商家微信</label>
+                </view>
+                <view class="list-in sub ml10 grey">
+                    <input class="text" name="store_con_wx" placeholder="商家微信" type="text"></input>
+                </view>
+            </view>
+            <view class="list-li flex gridXb shangjia f16" wx:if="{{store_cates.length>0}}">
+                <view class="name">
+                    <label>商家分类
+            <text class="red"></text>
+                    </label>
+                </view>
+                <view class="list-in sub ml10 grey">
+                    <picker bindchange="bindPickerChange" bindcolumnchange="bindMultiPickerColumnChange" class="sub picker" mode="multiSelector" range="{{multiArray}}" rangeKey="title" value="{{multiIndex[0]==-1?'请选择':multiIndex}}">
+                        <view wx:if="{{multiIndex[0]!=-1}}">{{multiArray[0][ multiIndex[0] ]['title']}} {{multiArray[1][ multiIndex[1] ]['title']}}</view>
+                        <view wx:if="{{multiIndex[0]==-1}}">请选择分类</view>
+                    </picker>
+                    <input class="text" hidden="true" name="store_cate_id" type="text" value="{{store_cate_id}}"></input>
+                </view>
+            </view>
+            <view class="list-li gridXb f16">
+                <view class="name size">
+                    <label>商家logo
+            <text class="red">*</text>
+                        <text class="grey f14 ml5">(建议尺寸750x562px)</text>
+                    </label>
+                </view>
+                <view class="upload-img">
+                    <view class="item" wx:if="{{store_logo.length>0}}">
+                        <image bindtap="chooseimg_bind" id="1" mode="aspectFill" src="{{item}}" wx:for="{{store_logo}}"></image>
+                    </view>
+                    <view bindtap="chooseimg_bind" class="item add" id="1" wx:if="{{store_logo.length==0}}"></view>
+                </view>
+            </view>
+            <view class="list-li flex gridXb shangjia f16">
+                <view class="name">
+                    <label>商家地址
+            <text class="red">*</text>
+                    </label>
+                </view>
+                <view class="list-in sub ml10 grey">
+                    <picker bindchange="bindRegionChange" bindcolumnchange="bindRegionPickerColumnChange" class="sub picker" mode="multiSelector" range="{{regionArray}}" rangeKey="REGION_NAME" value="{{regionIndex[0]==-1?'请选择':regionIndex}}">
+                        <view wx:if="{{regionIndex[0]!=-1}}">{{regionArray[0][ regionIndex[0] ]['REGION_NAME']}} {{regionArray[1][ regionIndex[1] ]['REGION_NAME']}}{{regionArray[2][ regionIndex[2] ]['REGION_NAME']}}</view>
+                        <view wx:if="{{regionIndex[0]==-1}}">请选择地区</view>
+                    </picker>
+                    <input class="text" hidden="true" name="province_id" type="text" value="{{province_id}}"></input>
+                    <input class="text" hidden="true" name="city_id" type="text" value="{{city_id}}"></input>
+                    <input class="text" hidden="true" name="district_id" type="text" value="{{district_id}}"></input>
+                </view>
+            </view>
+            <view bindtap="onOpenMapTap" class="list-li shangjia flex gridXb f16">
+                <view class="name">
+                    <label>商家坐标
+            <text class="red">*</text>
+                    </label>
+                </view>
+                <view class="list-in sub ml10 grey mt15 mb15">
+                    <text class="address">{{store_gps_lng}} {{store_gps_lat}}</text>
+                    <input class="text" hidden="true" name="store_gps_lng" type="text" value="{{store_gps_lng}}"></input>
+                    <input class="text" hidden="true" name="store_gps_lat" type="text" value="{{store_gps_lat}}"></input>
+                </view>
+            </view>
+            <view class="list-li flex gridXb f16">
+                <view class="name">
+                    <label>详细地址
+            <text class="red">*</text>
+                    </label>
+                </view>
+                <view class="list-in list-int sub ml10 mt15 mb15">
+                    <textarea autoHeight bindblur="bindTextAreaBlur" class="grey" name="store_address" placeholder="请输入详细地址"></textarea>
+                </view>
+            </view>
+            <view class="list-li flex gridXb f16">
+                <view class="name">
+                    <label>营业时间
+            <text class="red">*</text>
+                    </label>
+                </view>
+                <view class="list-in sub flex ml10 grey">
+                    <picker bindchange="bindTimeChange" end="24:00" id="1" mode="time" start="00:00" value="{{open_btime}}">
+                        <view class="picker">
+              {{open_btime}}
+            </view>
+                    </picker>
+                    <input class="text" hidden="true" name="store_open_btime[]" type="text" value="{{open_btime}}"></input>
+                    <text class="ml10 mr30 black">至</text>
+                    <picker bindchange="bindTimeChange" end="24:00" id="2" mode="time" start="00:00" value="{{open_etime}}">
+                        <view class="picker">
+              {{open_etime}}
+            </view>
+                    </picker>
+                    <input class="text" hidden="true" name="store_open_etime[]" type="text" value="{{open_etime}}"></input>
+                </view>
+            </view>
+            <view class="list-li gridXb f16">
+                <view class="name size">
+                    <label>商家实景
+            <text class="red"></text>
+                        <text class="f14 grey ml5">(建议尺寸750*375px)</text>
+                    </label>
+                </view>
+                <view class="upload-img">
+                    <view class="item" wx:for="{{store_imgs}}">
+                        <image mode="aspectFill" src="{{item}}"></image>
+                        <view bindtap="del_pic_bind" class="list-icon" data-index="2" id="{{index}}">
+                            <text class="icon"></text>
+                        </view>
+                    </view>
+                    <view bindtap="chooseimg_bind" class="item add" id="2"></view>
+                </view>
+            </view>
+            <view class="list-li gridXb f16">
+                <view class="name size">
+                    <label>资质证书
+            <text class="red"></text>
+                    </label>
+                </view>
+                <view class="upload-img">
+                    <view class="item" wx:for="{{zizhi_imgs}}">
+                        <image mode="aspectFill" src="{{item}}"></image>
+                        <view bindtap="del_pic_bind" class="list-icon" data-index="3" id="{{index}}">
+                            <text class="icon"></text>
+                        </view>
+                    </view>
+                    <view bindtap="chooseimg_bind" class="item add" id="3"></view>
+                </view>
+            </view>
+            <view class="list-li flex gridXb f16">
+                <view class="name ">
+                    <label>提供服务</label>
+                </view>
+                <view class="list-in sub ml10 grey">
+                    <input class="text" name="store_fuwu" placeholder="空格分割，如：wifi 停车" type="text"></input>
+                </view>
+            </view>
+            <view class="ruzhu-rule-box">
+                <checkbox bindtap="changeChecked" checked="{{is_checked}}"></checkbox>我已阅读<text bindtap="readPrototol" class="ruzhu-rule">《入驻协议》</text>
+            </view>
+            <view class="btn mt15 mb15">
+                <button class="write" disabled="{{btn_submit_disabled}}" formType="submit" hoverClass="none" loading="{{submitIsLoading}}" type="primary" wx:if="{{data.enter_price==0||data.enter_price==null}}">提交</button>
+                <block wx:else>
+                    <text class="linght mb10">入驻需缴纳金额:￥{{data.enter_price}}</text>
+                    <button class="write" disabled="{{btn_submit_disabled}}" formType="submit" hoverClass="none" loading="{{submitIsLoading}}" type="primary">支付({{data.enter_price}})</button>
+                </block>
+            </view>
+        </view>
+    </view>
+</form>

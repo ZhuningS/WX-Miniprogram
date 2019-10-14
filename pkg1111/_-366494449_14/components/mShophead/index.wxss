@@ -1,0 +1,61 @@
+.mShophead {
+    display: flex;
+    align-content: center;
+    min-height: 200rpx;
+    position: relative;
+}
+
+.mShophead>.content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 20rpx;
+}
+
+.mShophead>.content>.logo image {
+    border-radius: 100%;
+    height: 128rpx;
+    width: 128rpx;
+}
+
+.mShophead>.content>.name {
+    font-size: 32rpx;
+    color: #333;
+    font-weight: 400;
+    margin-left: 20rpx;
+}
+
+.mShophead>.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.mShophead>.bg image {
+    width: 100%;
+    height: 100%;
+}
+
+.mShophead_column {
+    align-content: center;
+    position: relative;
+}
+
+.mShophead_column>.content {
+    position: relative;
+    text-align: center;
+    top: -80rpx;
+    margin-bottom: -80rpx;
+}
+
+.mShophead_column>.content>.logo>image {
+    border-radius: 100%;
+    height: 148rpx;
+    width: 148rpx;
+}
+
+.mShophead_column>.content>.name {
+    font-size: 36rpx;
+    margin-top: 20rpx;
+    font-weight: 400;
+}

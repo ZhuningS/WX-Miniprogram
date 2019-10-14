@@ -1,0 +1,39 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+}
+
+.cart-empty {
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-empty image {
+    margin-top: 172rpx;
+    width: 120rpx;
+    height: 144rpx;
+}
+
+.cart-empty .title {
+    margin-top: 46rpx;
+    font-size: 32rpx;
+    color: #888888;
+}
+
+.cart-empty .desc {
+    margin-top: 24rpx;
+    font-size: 28rpx;
+    color: #B2B2B2;
+}
+
+.empty {
+    display: block;
+    width: 256rpx;
+    height: 256rpx;
+    margin: 0 auto;
+}

@@ -1,0 +1,66 @@
+<import src="../components/nav.wxml"></import>
+<import src="../components/cover.wxml"></import>
+<import src="../components/timeline.wxml"></import>
+<import src="../components/more.wxml"></import>
+<import src="../components/widgets.wxml"></import>
+<import src="../components/onboard.wxml"></import>
+<qm-loading isInitial isLoading="{{!isInited}}"></qm-loading>
+<template is="onboard" data="{{needLogin:needLogin,...onboard}}" wx:if="{{status==='onboard'}}"></template>
+<view class="main-content {{showShareCard?'blur':''}}" wx:else>
+    <template is="nav" data="{{cates:cates,currentCateSibling:currentCateSibling,currentCate:currentCate,config:config}}"></template>
+    <block wx:if="{{!error&&cover&&cover!=='noCover'}}">
+        <explore-cover cover="{{cover}}" wx:if="{{cover&&cover.type!=='article'}}"></explore-cover>
+        <template is="article-cover" data="{{...cover,needLogin:needLogin,followed:followed,config:config}}" wx:else></template>
+    </block>
+    <view class="onboard-ctn" wx:if="{{onboard&&itemsStatus['inline-onboard']==2&&currentCate===''}}">
+        <template is="fake-onboard" data="{{...onboard}}"></template>
+    </view>
+    <view>
+        <universe-timeline events="{{events}}" wx:if="{{uiSwitchExplore[$universeTimeline]}}"></universe-timeline>
+        <template is="timeline" data="{{route:route,user:user,itemsStatus:itemsStatus,currentCate:currentCate,config:config,uiSwitch:uiSwitch,subscribed:subscribed,score:score,marked:marked,currentPlaying:currentPlaying,currentMorePos:currentMorePos,events:events,tipsOn:tipsOn}}" wx:else></template>
+        <template is="more" data="{{marked:marked,currentCate:currentCate,subscribed:subscribed,config:config,more:more}}" wx:if="{{events.length!==0}}"></template>
+        <block wx:if="{{group.id}}">
+            <navigator class="float-button bounce" hoverClass="none" openType="navigate" url="{{'/pages/post/create?id='+group.id}}" wx:if="{{group.relation.enablePost}}">
+                <image class="icon" src="../../images/new_assets/icon_create_w.svg"></image>
+            </navigator>
+            <button bindgetuserinfo="{{needLogin?'joinGroup':''}}" catchtap="{{needLogin?'':'joinGroup'}}" class="float-bar" data-group-id="{{group.id}}" data-group-type="{{group.enterAction.type}}" data-product-id="{{group.enterAction.products?group.enterAction.products[0].id:undefined}}" hoverClass="none" openType="getUserInfo" wx:elif="{{group.relation.role.type==='stranger'}}">
+          立即加入
+        </button>
+        </block>
+        <template is="error" data wx:if="{{error}}"></template>
+        <qm-loading class="page-footer-loading-wrap" comClass="page-footer-loading" isLoading="{{hasMore||loading}}"></qm-loading>
+        <view class="qm-brand-logo">
+            <image src="/images/new_assets/icon_qm_brand.svg"></image>
+        </view>
+    </view>
+    <explore-hop-card showContact="{{showContact}}"></explore-hop-card>
+    <explore-partner-bar isShow="{{isShowPartnerBar}}"></explore-partner-bar>
+</view>
+<view catchtap="clearAddToDesktop" class="tip-ctn animated fadeInThenFadeOut" style="position:fixed; z-index: 99999; top: 0px; right: 5px;" wx:if="{{tipsOn.addToDesktop}}">
+    <view class="tip-triangle__top" style="right: 70px;"></view>
+    <view class="tip-content" style="top:10px">{{tipsOn.addToDesktop}}</view>
+</view>
+<view catchtouchmove="hack" class="push-guide-ctn" wx:if="{{pushGuide&&pushGuide.show}}">
+    <form reportSubmit bindsubmit="hackForm">
+        <view class="push-content-ctn">
+            <view class="title-ctn">
+        你喜欢的杂志都在这，打开推送每天第一时间看到好内容。
+      </view>
+            <checkbox-group bindchange="pushGuideSelectAll">
+                <checkbox class="check-item" style="margin-left:30rpx; font-size:14px; color:#999;">全选</checkbox>
+            </checkbox-group>
+            <checkbox-group bindchange="pushGuideSelectChanged" class="content-ctn">
+                <checkbox checked="{{pushGuide.selected[item.id]}}" class="check-item" value="{{item.id}}" wx:for="{{pushGuide.magazines}}">
+                    <text style="font-weight:bold;color: #{{item.color}}"># {{item.name}}</text>
+                </checkbox>
+            </checkbox-group>
+            <button catchtap="pushGuideCommit" class="confirm-btn" disabled="{{pushGuide.selected.length===0}}" formType="submit" style="{{pushGuide.selected.length===0?'background-color:#999;':''}}">
+        打开推送
+      </button>
+        </view>
+    </form>
+    <view catchtap="pushGuideCancel" class="close-ctn">
+        <image class="close" src="/images/new_assets/icon_cancel.svg"></image>
+    </view>
+</view>
+<include src="../components/global.wxml"></include>

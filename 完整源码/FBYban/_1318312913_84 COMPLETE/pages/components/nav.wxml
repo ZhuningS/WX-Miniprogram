@@ -1,0 +1,38 @@
+<template name="fixed-nav">
+    <block wx:if="{{tabs.length>0}}">
+        <view class="tab-nav {{style=='left'?'left':'fixed'}}">
+            <view bindtap="onTapTab" class="item {{selectedTab===item.id?'selected':''}}" id="{{item.id}}" wx:for="{{tabs}}" wx:key="id">
+        {{item.name}}
+      </view>
+        </view>
+        <view class="tab-margin" wx:if="tabs"></view>
+    </block>
+</template>
+<template name="page-nav">
+    <block wx:if="{{config.enableSubscribe||pages.length>1}}">
+        <scroll-view scrollWithAnimation scrollX class="scroll-view tab-nav" scrollIntoView="nav-{{currentPageSibling}}">
+            <block wx:for="{{pages}}" wx:key="{{ item.id }}">
+                <view class="item selected" data-page-id="{{item.id}}" id="nav-{{item.id}}" wx:if="{{currentPage===item.id}}">{{item.name}}
+          </view>
+                <view bindtap="onTapPage" class="item" data-page-id="{{item.id}}" id="nav-{{item.id}}" wx:else>{{item.name}}
+          </view>
+            </block>
+        </scroll-view>
+        <view class="tab-margin" wx:if="{{config.enableSubscribe||pages.length>1}}"></view>
+    </block>
+</template>
+<template name="nav">
+    <block wx:if="{{config.enableSubscribe||cates.length>1}}">
+        <scroll-view scrollWithAnimation scrollX class="scroll-view tab-nav" scrollIntoView="nav-{{currentCateSibling}}">
+            <block wx:if="{{item.category.status!=='forbidden'||currentCate===item.category.cid}}" wx:for="{{cates}}" wx:key="{{ index }}">
+                <view bindtap="onTapCate" class="item {{currentCate==='today'&&'selected'}}" data-cid="{{item.category.cid}}" id="nav-today" wx:if="{{item.type==='explore'}}">{{item.category.name}}
+          </view>
+                <view class="item selected" data-cid="{{item.category.cid}}" data-type="{{item.type}}" id="nav-{{item.category.cid}}" wx:elif="{{currentCate===item.category.cid}}">{{item.category.name}}
+          </view>
+                <view bindtap="onTapCate" class="item" data-cid="{{item.category.cid}}" data-type="{{item.type}}" id="nav-{{item.category.cid}}" wx:else>{{item.category.name}}
+          </view>
+            </block>
+        </scroll-view>
+        <view class="tab-margin" wx:if="{{config.enableSubscribe||cates.length>1}}"></view>
+    </block>
+</template>

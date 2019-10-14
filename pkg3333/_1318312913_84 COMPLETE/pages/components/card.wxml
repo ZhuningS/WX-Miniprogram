@@ -1,0 +1,498 @@
+<template name="fragment-post-vote">
+    <view class="vote-wrapper item">
+        <image catchtap="deleteVote" class="badge" src="/images/new_assets/icon_delete.svg" wx:if="{{preview}}"></image>
+        <view class="vote-ctn" wx:if="{{vote}}">
+            <view class="title">
+        [{{config.actions.vote}}] {{vote.title}}
+      </view>
+            <view class="options-ctn" wx:if="{{vote.options[0].cover}}">
+                <view class="image-option {{index>1?'noline1':''}}" wx:for="{{vote.options}}" wx:for-item="option" wx:key="id">
+                    <view class="border">
+                        <image class="image" mode="aspectFill" src="{{option.cover}}"></image>
+                        <view class="left-shadow"></view>
+                        <view class="bottom-shadow"></view>
+                    </view>
+                    <view class="percentage" style="{{'width:'+option.percentage+'%;'}}" wx:if="{{vote.relation.voted||vote.isExpired}}"></view>
+                    <view class="result">
+                        <view class="users-ctn" wx:if="{{vote.relation.voted||vote.isExpired}}">
+                            <view class="user" style="z-index:{{10-index}}" wx:if="{{option.users.length&&index<=1&&item.avatar&&!vote.isAnonymous}}" wx:for="{{option.users}}" wx:key="uid">
+                                <navigator catchtap="hack" class="avatar-ctn" hoverClass="none" openType="navigate" url="/pages/profile/user?uid={{item.uid}}">
+                                    <image lazyLoad class="avatar small" src="{{item.avatar}}"></image>
+                                </navigator>
+                            </view>
+                            <view class="user number avatar small">
+                +{{option.voteNumber}}
+              </view>
+                            <view class="percent" wx:if="{{vote.relation.voted||vote.isExpired}}">
+                {{option.percentage+'%'}}
+              </view>
+                        </view>
+                        <view style="color: #999999" wx:else>选项{{index+1}}</view>
+                        <image class="selected icon_20px" src="./../../images/new_assets/icon_img_selected.svg" wx:if="{{option.isVoted}}"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="options-ctn pair" wx:elif="{{vote.options.length===2}}">
+                <view class="status-ctn">
+                    <view class="border">
+                        <view class="vote-area" wx:if="{{!vote.relation.voted&&!vote.isExpired}}">
+                            <view></view>
+                            <view></view>
+                        </view>
+                        <view class="option" style="{{vote.options[0].percentage==='unvoted'?'width:1%;':'width:'+vote.options[0].percentage+'%'}}"></view>
+                        <view class="option" style="{{vote.options[0].percentage==='unvoted'?'width:1%':'flex:1'}}"></view>
+                    </view>
+                    <view class="left-shadow"></view>
+                    <view class="bottom-shadow"></view>
+                </view>
+                <view class="text-option" wx:for="{{vote.options}}" wx:for-item="option" wx:key="id">
+                    <view class="result" wx:if="{{vote.relation.voted||vote.isExpired}}">
+                        <view class="users-ctn">
+                            <view class="user" style="z-index:{{2-index}}" wx:if="{{option.users.length&&index<=1&&item.avatar&&!vote.isAnonymous}}" wx:for="{{option.users}}" wx:key="uid">
+                                <navigator catchtap="hack" class="avatar-ctn" hoverClass="none" openType="navigate" url="/pages/profile/user?uid={{item.uid}}">
+                                    <image lazyLoad class="avatar small" src="{{item.avatar}}"></image>
+                                </navigator>
+                            </view>
+                            <view class="user number avatar small">
+                +{{option.voteNumber}}
+              </view>
+                        </view>
+                        <view class="percent">
+              {{option.percentage==='unvoted'?'0%':option.percentage+'%'}}
+            </view>
+                    </view>
+                    <view class="text-ctn">
+                        <text>{{option.text}}</text>
+                        <image class="selected" src="./../../images/new_assets/icon_img_selected.svg" wx:if="{{option.isVoted}}"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="options-ctn" wx:else>
+                <view class="text-option" wx:for="{{vote.options}}" wx:for-item="option" wx:key="id">
+                    <view class="border">
+                        <view class="percentage {{option.isVoted?'voted':''}}" style="{{'width:'+option.percentage+'%;'}}"></view>
+                        <view class="text-ctn">
+                            <text>{{option.text}}</text>
+                            <image class="selected" src="/images/new_assets/icon_img_selected.svg" wx:if="{{option.isVoted}}"></image>
+                        </view>
+                        <view class="users-ctn" wx:if="{{option.voteNumber}}">
+                            <view class="user" style="z-index:{{10-index}}" wx:if="{{option.users.length&&index<=1&&item.avatar&&!vote.isAnonymous}}" wx:for="{{option.users}}" wx:key="uid">
+                                <navigator catchtap="hack" class="avatar-ctn" hoverClass="none" openType="navigate" url="/pages/profile/user?uid={{item.uid}}">
+                                    <image lazyLoad class="avatar small" src="{{item.avatar}}"></image>
+                                </navigator>
+                            </view>
+                            <view class="user number avatar small">
+              +{{option.voteNumber}}
+            </view>
+                            <view class="percent" wx:if="{{vote.relation.voted}}">
+              {{option.percentage+'%'}}
+            </view>
+                        </view>
+                    </view>
+                    <view class="left-shadow"></view>
+                    <view class="bottom-shadow"></view>
+                </view>
+            </view>
+            <view class="users-ctn" wx:if="{{vote.resultStatistics.totalNumber>0}}">
+                <view class="user" style="z-index:{{10-index}}" wx:if="{{vote.resultStatistics.myCanvassedUsersOption.length&&!vote.isAnonymous}}" wx:for="{{vote.resultStatistics.myCanvassedUsersOption}}" wx:key="user.uid">
+                    <navigator catchtap="hack" class="avatar-ctn" hoverClass="none" openType="navigate" url="/pages/profile/user?uid={{item.user.uid}}" wx:if="{{index<=3&&item.user.avatar}}">
+                        <image lazyLoad class="avatar small" src="{{item.user.avatar}}"></image>
+                    </navigator>
+                </view>
+                <view class="user number avatar small">
+          +{{vote.resultStatistics.totalNumber}}
+        </view>
+                <view class="meta" style="margin-left: 10rpx;">
+                    <text wx:if="{{vote.resultStatistics.myCanvassedUsersOption.length&&!vote.isAnonymous}}">{{vote.resultStatistics.myCanvassedUsersOption[0].user.name}} 等</text>
+                    <text>正在参加</text>
+                </view>
+            </view>
+            <view class="deadline meta" wx:if="{{!vote.isExpired}}">
+        截止日期：{{vote.displayDeadline}}
+      </view>
+            <view class="deadline meta" wx:else>
+        {{config.actions.vote}}已结束
+      </view>
+        </view>
+    </view>
+</template>
+<template name="single-card-product"></template>
+<template name="single-card-campaignPoster">
+    <view class="card" style="margin-top:40px;" wx:if="{{itemsStatus['poster']!==-1}}">
+        <image class="image" mode="widthFix" src="{{cover.shareData.previewImage.url}}" style="width:100%;"></image>
+    </view>
+</template>
+<template name="single-card-cover"></template>
+<template name="card-user">
+    <form reportSubmit bindsubmit="hackForm">
+        <view catchtap="navigateTo" class="card-user" data-url="/pages/profile/user?uid={{user.uid}}&content=explore">
+            <view class="avatar-ctn">
+                <image lazyLoad class="avatar" src="{{user.avatar}}"></image>
+            </view>
+            <view class="name">{{user.name}}</view>
+            <view class="intro">{{user.desc}}</view>
+            <button catchtap="unfollow" class="button border" data-uid="{{user.uid}}" wx:if="{{followed[user.uid]}}">
+        已关注
+      </button>
+            <button catchtap="follow" class="button" data-uid="{{user.uid}}" wx:else>
+        关注
+      </button>
+        </view>
+    </form>
+</template>
+<template name="single-card-user">
+    <view class="card single-card-user">
+        <form reportSubmit bindsubmit="hackForm">
+            <navigator class="user" hoverClass="none" openType="navigate" url="/pages/profile/user?uid={{user.uid}}">
+                <view style="display:flex;flex:auto;align-items: center;">
+                    <image class="avatar" src="{{user.avatar}}"></image>
+                    <view class="info">
+                        <view class="name">{{user.name}}</view>
+                        <view class="desc">{{user.desc}}</view>
+                    </view>
+                </view>
+                <block wx:if="{{config.enableFollow&&uid!==user.uid}}">
+                    <button catchtap="follow" class="button" data-uid="{{user.uid}}" formType="submit" hoverClass="none" wx:if="{{!followed[user.uid]}}">关注
+          </button>
+                    <button catchtap="unfollow" class="button border" data-uid="{{user.uid}}" formType="submit" hoverClass="none" wx:else>已关注
+          </button>
+                </block>
+            </navigator>
+        </form>
+    </view>
+</template>
+<template name="single-card-category">
+    <view class="cate-ctn">
+        <view bindtap="switchTab" class="cate" data-cid="{{section.events[0].category.cid}}" style="background: #{{section.events[0].category.color}};">
+            <image lazyLoad mode="aspectFill" src="{{section.events[0].category.cover}}" style="width:100%;height:100%;filter:brightness(0.9);"></image>
+            <view style="width:100%;position:absolute;top:0;">{{section.events[0].category.name}}</view>
+        </view>
+        <navigator class="magazine-name" url="/pages/magazine/magazine?id={{item.magazineConfig.magazine.id}}&content=nav" wx:if="{{index>=1}}" wx:for="{{section.events}}" wx:key="{{ index }}">
+      # {{item.magazineConfig.magazine.name}}
+    </navigator>
+    </view>
+</template>
+<template name="single-card-exps">
+    <view class="single-card-exps" style="background:{{color?card.hexToRgba(color,0.25):'#'}};display: flex;flex-direction: column;justify-content: space-between;" wx:if="{{exps.length>0}}">
+        <view>
+            <view class="page-name" style="display: flex;flex-direction: column;">
+                <view class="title">
+                    <view class="name">{{label.title}}</view>
+                    <navigator navigate class="button text" hoverClass="none" style="display:flex;padding-right:0;font-weight:bold;" url="/pages/user/list?type=magazine&uid={{uid?uid:''}}" wx:if="{{showAllMagazines||1}}">
+                        <text>全部</text>
+                        <image class="icon compact" src="/images/new_assets/icon_corner_small_right.svg"></image>
+                    </navigator>
+                </view>
+                <view class="meta">{{label.description}}</view>
+            </view>
+            <view class="exp-item" wx:if="{{exps.length>0&&index<5||score[item.magazine.id]}}" wx:for="{{exps}}" wx:key="{{ index }}">
+                <view class="progress-ctn">
+                    <navigator class="progress" openType="navigate" style="width: {{item.value/exps[0].value*100}}%; {{item.magazine.color?'background-color: #'+item.magazine.color+';':''}}" url="/pages/magazine/magazine?id={{item.magazine.id}}">
+                        <view># {{item.magazine.name}}</view>
+                        <view wx:if="{{score[item.magazine.id]}}">
+                            <block wx:if="{{score[item.magazine.id]>0}}">+</block>
+                            <block wx:if="{{score[item.magazine.id]<0}}">-</block>
+              {{score[item.magazine.id]}}
+            </view>
+                    </navigator>
+                </view>
+                <view class="value">{{item.value}}</view>
+            </view>
+            <view class="caption" wx:if="{{exps.length===0}}">
+                <block wx:if="{{!currentCate}}">
+          你看起来还没有在轻芒杂志积累很多阅读经验… 试试马克一些东西吧
+        </block>
+                <block wx:else>
+          你看起来还没有在轻芒杂志的这个领域里积累阅读经验… 试试马克一些东西吧
+        </block>
+            </view>
+        </view>
+        <template is="single-card-description" data="{{ descriptions:['通过经验值，你可以直观地知道你在兴趣领域的经验积累程度——你在一个杂志内马克的内容越多、以及你马克的内容被其它读者马克得越多，你在那本杂志下的经验值就会越高。'] }}"></template>
+    </view>
+</template>
+<template name="single-card-rank">
+    <view class="single-card-rank" style="background-color: {{cover.magazineInfo.magazine.color?card.hexToRgba(cover.magazineInfo.magazine.color,0.25):'#'}}">
+        <template is="single-card-label" data="{{ label:{title:'杂志贡献排名',description:'为本杂志贡献最多的读者'} }}"></template>
+        <template is="rank" data="{{...cover.magazineInfo}}"></template>
+        <template is="single-card-description" data="{{ descriptions:['所有轻芒的读者都可以直接推荐文章。你推荐的文章被其它读者马克得越多，获得的经验值越高。每本杂志下经验值越高的读者，即会获得「主编」荣誉称号。'] }}"></template>
+    </view>
+</template>
+<template name="single-card-seperator">
+    <view class="card single-card-seperator"></view>
+</template>
+<template name="single-card-description">
+    <view class="card single-card-description">
+        <view class="caption" wx:for="{{descriptions}}">{{item}}</view>
+    </view>
+</template>
+<template name="single-card-tip">
+    <view class="card single-card single-card-tip">
+        <view class="description" style="width:100%; text-align:center;">{{tip}}</view>
+    </view>
+</template>
+<template name="single-card-label">
+    <view class="page-name label">
+        <view class="title">
+            <view class="name">{{label.title}}</view>
+        </view>
+        <view class="meta" wx:if="{{label.description}}">{{label.description}}</view>
+    </view>
+</template>
+<template name="single-card-paid">
+    <view class="card single-card card-paid" hoverClass="none">
+        <view class="top-ctn">
+            <view class="paidUsers">{{paidUsers.length}}人已订阅</view>
+        </view>
+        <view class="content-ctn">
+            <view class="headline2">
+        {{name}}
+      </view>
+            <view class="description" wx:if="{{description}}">
+        {{description}}
+      </view>
+        </view>
+        <view class="actions-ctn">
+            <view class="price">
+        {{priceDesc}}
+      </view>
+        </view>
+    </view>
+</template>
+<template name="single-card-mark">
+    <navigator class="card single-card card-mark" data-mid="{{mark.mid}}" id="{{card.generateId('mark',mark.id,fromXiaohua,'card')}}" style="background-color: {{card.hexToRgba(color?color:'fff',0.25)}}" url="{{blockRedirect?'':'/pages/article/article?id='+mark.docIdString+'&mid='+mark.mid+'&mark'+mark.id+'&content=mark'}}">
+        <view class="top-ctn">
+            <template is="mark-info" data="{{markCount:markCount,...mark,notes:notes,type:type,history:history,config:config}}"></template>
+        </view>
+        <view class="mark-quote">
+            <image class="mark-quote-image" mode="widthFix" src="http://statics03.qingmang.mobi/image2/share/wx05790b1180642960/mark/{{mark.mockId?mark.mockId:'m'+mark.id}}/i"></image>
+        </view>
+        <view class="actions-ctn">
+            <template is="magazine-info" data="{{...mark,color:color,config:config}}"></template>
+            <template is="menu-info" data="{{...mark}}" wx:if="{{!fromXiaohua}}"></template>
+            <template is="mark-actions" data="{{marked:marked,mark:mark,content:'recommend'}}"></template>
+        </view>
+    </navigator>
+</template>
+<template name="single-card-magazine">
+    <navigator class="card single-card-magazine" data-mid="{{section.events[0].magazine.id}}" hoverClass="none" id="magazine-{{section.events[0].magazine.id}}-card" url="/pages/magazine/magazine?id={{section.events[0].magazine.id}}&content=card">
+        <view class="border top"></view>
+        <view class="content-ctn">
+            <view style="display:flex; align-items:center; margin-bottom:15px;">
+                <view class="headline2"># {{section.events[0].magazine.name}}</view>
+                <image class="icon" src="/images/new_assets/icon_corner_right.svg"></image>
+            </view>
+            <view class="article" wx:if="{{index>0}}" wx:for="{{section.events}}" wx:key="{{ index }}">
+        {{item.article.title}}
+      </view>
+        </view>
+        <button class="button">订阅</button>
+        <view class="border bottom"></view>
+    </navigator>
+</template>
+<template name="single-card-image">
+    <button catchtap="navigateTo" class="card single-card" data-mid="{{imageItem.mid}}" data-url="/pages/article/article?id={{imageItem.docIdString}}&mid={{imageItem.mid}}&content=image" formType="submit" hoverClass="none" id="{{card.generateId('image',imageItem.id,fromXiaohua,'card')}}">
+        <view class="top-ctn">
+            <template is="mark-info" data="{{notes:notes,markCount:markCount,...imageItem,type:type,history:history,config:config}}"></template>
+        </view>
+        <image lazyLoad mode="aspectFill" src="{{imageItem.image.url}}" style="width:630rpx;height:{{imageItem.image.height*630/imageItem.image.width}}rpx;"></image>
+        <view class="actions-ctn">
+            <template is="magazine-info" data="{{...imageItem,color:color,config:config}}"></template>
+            <template is="menu-info" data="{{...imageItem}}" wx:if="{{!fromXiaohua}}"></template>
+            <template is="image-actions" data="{{marked:marked,type:type,imageItem:imageItem,content:'recommend'}}"></template>
+        </view>
+    </button>
+</template>
+<template name="single-card-article">
+    <button catchtap="navigateTo" class="card single-card card-article" data-mid="{{article.mid}}" data-url="/pages/article/article?id={{article.docIdString}}&mid={{article.mid}}&content=article" formType="submit" hoverClass="none" id="{{card.generateId('article',article.docIdString,fromXiaohua,'card')}}">
+        <view class="top-ctn">
+            <template is="mark-info" data="{{notes:notes,markCount:markCount,type:type,...article,history:history,config:config}}"></template>
+        </view>
+        <block wx:if="{{article.contentType==='imageSet'}}">
+            <view class="fragment-ctn">
+                <image lazyLoad mode="aspectFill" src="{{article.images[0].url}}" style="width:630rpx;height:355rpx;" wx:if="{{article.images.length===1}}"></image>
+                <block wx:elif="{{article.images.length===2}}">
+                    <image lazyLoad mode="aspectFill" src="{{article.images[0].url}}" style="position:absolute;left:0;top:0;width:314rpx;height:355rpx;"></image>
+                    <image lazyLoad mode="aspectFill" src="{{article.images[1].url}}" style="position:absolute;left:316rpx;top:0;width:314rpx;height:355rpx;"></image>
+                </block>
+                <block wx:else>
+                    <image lazyLoad mode="aspectFill" src="{{article.images[0].url}}" style="position:absolute;left:0;top:0;width:451rpx;height:355rpx;"></image>
+                    <image lazyLoad mode="aspectFill" src="{{article.images[1].url}}" style="position:absolute;left:454rpx;top:0;width:176rpx;height:176rpx;"></image>
+                    <image lazyLoad mode="aspectFill" src="{{article.images[2].url}}" style="position:absolute;left:454rpx;top:179rpx;width:176rpx;height:176rpx;"></image>
+                </block>
+            </view>
+            <view class="content-ctn">
+                <view class="headline1">{{article.title}}</view>
+            </view>
+        </block>
+        <block wx:elif="{{article.contentType==='shortVideo'||article.contentType==='video'}}">
+            <view catchtap="onTapPlay" class="fragment-ctn" data-doc-id="{{article.docIdString}}" data-url="{{article.videos[0].url}}" wx:if="{{currentPlaying.id!==article.docIdString}}">
+                <image lazyLoad class="media" mode="aspectFill" src="{{article.videos[0].cover.url}}"></image>
+                <image class="button-play" src="/images/new_assets/button_play.svg"></image>
+            </view>
+            <video autoplay control bindended="endPlaying" bindpause="stopPlaying" bindplay="startPlaying" class="fragment-ctn video-player" data-doc-id="{{article.docIdString}}" data-mid="{{article.mid}}" src="{{currentPlaying.url}}" wx:else></video>
+            <view class="content-ctn">
+                <view class="headline1">{{article.title}}</view>
+            </view>
+        </block>
+        <block wx:elif="{{config.cardStyle==='venti'||style==='grande'}}">
+            <image lazyLoad class="cover" mode="aspectFill" src="{{article.covers[0].url}}" style="width:630rpx;height:{{article.covers[0].height*630/article.covers[0].width}}rpx;" wx:if="{{article.covers.length>0}}"></image>
+            <view class="content-ctn">
+                <view class="headline1">{{article.title}}</view>
+            </view>
+        </block>
+        <view class="content-ctn" wx:else>
+            <view class="headline2">{{article.title}}</view>
+            <view class="more-content" wx:if="{{article.snippet&&article.snippet.length>0}}">
+                <view class="description">{{article.snippet}}</view>
+                <block wx:if="{{article.covers.length>0}}">
+                    <image lazyLoad class="cover" mode="aspectFill" src="{{article.covers[0].url}}" style="height:75px;" wx:if="{{article.covers[0].width&&article.covers[0].width*75>=article.covers[0].height*100}}"></image>
+                    <image lazyLoad class="cover" mode="aspectFill" src="{{article.covers[0].url}}" wx:else></image>
+                </block>
+            </view>
+        </view>
+        <view class="actions-ctn">
+            <template is="magazine-info" data="{{...article,title:'',color:color,config:config}}"></template>
+            <template is="provider-info" data="{{...article,config:config}}"></template>
+            <template is="menu-info" data="{{...article}}" wx:if="{{!fromXiaohua}}"></template>
+            <template is="article-actions" data="{{marked:marked,type:type,article:article}}"></template>
+        </view>
+    </button>
+</template>
+<template name="card-magazine">
+    <navigator class="card card-magazine" data-mid="{{events[0].magazine.id}}" hoverClass="none" id="magazine-{{events[0].magazine.id}}-card" url="/pages/magazine/magazine?id={{events[0].magazine.id}}&content=card">
+        <view class="fragment-ctn">
+            <view class="content-ctn">
+                <view class="header-wrap">
+                    <view class="magazine-name-tag">
+            {{events[0].magazine.name}}
+          </view>
+                </view>
+                <navigator catchtap="hack" class="article" hoverClass="none" openType="redirect" url="/pages/article/article?id={{item.article.docIdString}}&mid={{item.article.mid}}" wx:if="{{index>0&&index<4}}" wx:for="{{events}}" wx:key="{{ index }}">
+          {{item.article.title}}
+        </navigator>
+                <block wx:if="{{uiSwitch[$magazine][$subscribeAction]}}">
+                    <button catchtap="onTapUnsubscribe" class="button item subscribe width-60" data-mid="{{events[0].magazine.id}}" wx:if="{{subscribed[events[0].magazine.id]}}">已订阅</button>
+                    <button catchtap="onTapSubscribe" class="button item subscribe width-60" data-mid="{{events[0].magazine.id}}" wx:else>订阅</button>
+                </block>
+            </view>
+        </view>
+    </navigator>
+</template>
+<template name="card-recommend">
+    <navigator class="card card-recommend }}" data-mid="{{article.mid}}" hoverClass="none" id="{{card.generateId('article',article.docIdString,fromXiaohua,'card')}}" url="/pages/article/article?id={{article.docIdString}}&mid={{article.mid}}&content=article" wx:if="{{itemsStatus['article-'+article.docIdString]!==-1}}">
+        <view class="content">
+            <view class="caption line">来自{{article.appName}}的备选文章</view>
+            <view class="headline1 line">{{article.title}}</view>
+            <view class="description line">{{article.snippet}}</view>
+        </view>
+        <view class="recomend-actions">
+            <view catchtap="onTapAccept" class="button round white" data-doc-id="{{article.docIdString}}" data-id="{{article.docIdString}}" data-magazine-name="{{article.magazineName}}" data-mid="{{article.mid}}" data-target="article-{{article.docIdString}}" data-type="{{type}}">
+                <image class="icon" src="/images/new_assets/icon_mark.svg"></image>
+            </view>
+            <view catchtap="onTapDislike" class="button round white" data-id="{{article.docIdString}}" data-magazine-name="{{article.magazineName}}" data-mid="{{article.mid}}" data-target="article-{{article.docIdString}}">
+                <image class="icon" src="/images/new_assets/icon_cancel.svg"></image>
+            </view>
+        </view>
+    </navigator>
+</template>
+<template name="card-explore-category">
+    <navigator navigate class="magazine-name tag {{style?style:''}}" hoverClass="none" style="background-color: {{color?card.hexToRgba(color,0.1):''}}" url="/pages/magazine/magazine?id={{magazine.id}}&content=subscribed" wx:if="{{magazine}}">
+        <text class="headline2">{{magazine.name}}</text>
+    </navigator>
+    <navigator navigate class="magazine-name tag {{style?style:''}}" hoverClass="none" style="background-color: {{color?card.hexToRgba(color,0.1):''}}" url="/pages/group/group?id={{category.cid}}&content=subscribed" wx:elif="{{category}}">
+        <text class="headline2"># {{category.name}}</text>
+    </navigator>
+</template>
+<import src="widgets.wxml"></import>
+<wxs module="card">
+var magazineStyle = (function(color) {
+    return ('')
+});
+var generateId = (function(type, id, xiaohua, strategy) {
+    var result = type + '-' + id + '-';
+    if (xiaohua) {
+        result += 'xiaohua'
+    } else if (strategy) {
+        result += strategy
+    } else {
+        result += "unknown"
+    };
+    return (result)
+});
+var formatPostStatus = (function(status) {
+    var texts = [];
+    if ((status & 16) > 0) {
+        texts.push('置顶')
+    };
+    if ((status & 32) > 0) {
+        texts.push('试读')
+    };
+    return (texts.join(' · '))
+});
+var hexToRgba = (function(color, alpha) {
+    var rgba = 'rgba(';
+    rgba += parseInt(color.substring(0, 2), 16) + ',';
+    rgba += parseInt(color.substring(2, 4), 16) + ',';
+    rgba += parseInt(color.substring(4, 6), 16) + ',';
+    rgba += alpha + ')';
+    return (rgba)
+});
+var countMarkFontSize = (function(text, size) {
+    var textCount = text.length;
+    var radio = 2;
+    if (size === 'small') {
+        if (textCount < 12) {
+            return (35 * radio)
+        } else if (textCount < 24) {
+            return (25 * radio)
+        } else if (textCount < 30) {
+            return (21 * radio)
+        } else if (textCount < 48) {
+            return (17 * radio)
+        } else if (textCount < 70) {
+            return (15 * radio)
+        } else if (textCount < 80) {
+            return (13 * radio)
+        } else if (textCount < 108) {
+            return (12 * radio)
+        } else {
+            return (11 * radio)
+        }
+    } else {
+        if (textCount < 15) {
+            return (46 * radio)
+        } else if (textCount < 24) {
+            return (38 * radio)
+        } else if (textCount < 28) {
+            return (32 * radio)
+        } else if (textCount < 40) {
+            return (30 * radio)
+        } else if (textCount < 45) {
+            return (28 * radio)
+        } else if (textCount < 54) {
+            return (26 * radio)
+        } else if (textCount < 60) {
+            return (24 * radio)
+        } else if (textCount < 77) {
+            return (22 * radio)
+        } else if (textCount < 84) {
+            return (20 * radio)
+        } else if (textCount < 104) {
+            return (19 * radio)
+        } else if (textCount < 135) {
+            return (17 * radio)
+        } else if (textCount < 170) {
+            return (15 * radio)
+        } else {
+            return (13 * radio)
+        }
+    }
+});
+module.exports = ({
+    generateId: generateId,
+    magazineStyle: magazineStyle,
+    formatPostStatus: formatPostStatus,
+    hexToRgba: hexToRgba,
+    countMarkFontSize: countMarkFontSize,
+});
+</wxs>

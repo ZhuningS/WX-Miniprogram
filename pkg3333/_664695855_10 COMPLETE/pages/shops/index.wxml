@@ -1,0 +1,92 @@
+<import src="../../wxParse/wxParse.wxml"></import>
+<swiper autoplay="true" class="swiper-banner" indicatorDots="true" interval="5000">
+    <swiper-item wx:for="{{detailData.imgs}}">
+        <image class="slide-image" mode="aspectFit" src="{{item}}"></image>
+    </swiper-item>
+</swiper>
+<view class="banner-desc">
+    <text class="shop-desc">{{detailData.subject==null?'':detailData.subject}}</text>
+    <view class="shop-content clearfix" hidden="{{detailData.amountApp==null?true:false}}">
+        <view class="icon-money">¥
+            <text class="shop-money">{{detailData.amountApp==''?detailData.amount:detailData.amountApp}}/页</text>
+        </view>
+        <view class="label" hidden="{{detailData.amountApp==null||detailData.amount==null||detailData.amountApp==''||lessMoney==0?true:false}}">
+            <text class="phone"></text>省{{lessMoney}}
+        </view>
+        <text class="shop-content-sales" hidden="{{detailData.sales==null?true:false}}">销量{{detailData.sales}}</text>
+    </view>
+</view>
+<veiw class="promise-label clearfix">
+    <view class="promise-label-icon" wx:if="{{shopShow.security.isPromiseFinishTitle!=null}}">{{shopShow.security.isPromiseFinishTitle}}</view>
+    <view class="promise-label-icon" wx:if="{{shopShow.security.isPromiseCreateTitle!=null}}">{{shopShow.security.isPromiseCreateTitle}}</view>
+    <view class="promise-label-icon" wx:if="{{shopShow.security.isPromiseMaintainTitle!=null}}">{{shopShow.security.isPromiseMaintainTitle}}</view>
+    <view class="promise-label-icon" wx:if="{{shopShow.security.isPromiseSourceCodeTitle!=null}}">{{shopShow.security.isPromiseSourceCodeTitle}}</view>
+</veiw>
+<view class="comment" wx:if="{{detailData.evaluateNum!=0}}">
+    <view class="comment-title clearfix">
+        <text class="users">
+            <text>用户评价</text>
+            <text class="total">(共{{detailData.evaluateNum}}条)</text>
+        </text>
+        <text class="star" wx:if="{{detailData.comprehensiveScore!=null}}">{{detailData.comprehensiveScore}}星</text>
+    </view>
+    <view class="comment-list" wx:for="{{commentListData}}">
+        <view class="comment-list-start">
+            <view class="start-down"></view>
+            <view class="start-up" style="background-position:{{item.starsNum}} 0;"></view>
+            <view class="comment-name">{{item.nickName}}</view>
+        </view>
+        <view class="comment-desc">{{item.comment}}</view>
+    </view>
+</view>
+<view bindtap="goShops" class="service-person" data-id="{{detailData.shopId}}">
+    <view class="clearfix">
+        <image class="service-img" src="{{shopsData.logoUrl}}"></image>
+        <view class="service-content">
+            <view class="service-content-mess">
+                <text class="service-content-title">{{shopsData.brandname}}</text>
+                <text class="service-label" wx:if="{{shopsData.authType==2}}">认证企业</text>
+            </view>
+            <view wx:if="{{shopsData.cityName!=null}}">
+                <image class="map" src="../img/map.png"></image>
+                <text class="service-location">{{shopsData.cityName}}</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="detail-title">
+    <text>服务详情</text>
+</view>
+<view class="detail-content">
+    <view class="wxParse detail-content-item">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+    </view>
+</view>
+<view class="nav-bottom clearfix">
+    <view class="nav-bottom-content">
+        <view bindtap="goShops" class="nav-bottom-in" data-id="{{detailData.shopId}}">
+            <view class="nav-bottom-in-desc">
+                <image class="nav-bottom-tel-image" src="../img/house.png"></image>
+                <text>进入店铺</text>
+            </view>
+        </view>
+    </view>
+    <view bindtap="buyService" class="nav-bottom-buy">
+        <text class="nav-bottom-buy-desc">购买服务</text>
+    </view>
+</view>
+<view bindtap="removeMode" class="bg-shadow" wx:if="{{show}}"></view>
+<view class="step" wx:if="{{show}}">
+    <view class="step-box clearfix">
+        <image class="step-img" src="{{servicePic}}"></image>
+        <text class="step-desc">{{detailData.subject}}</text>
+        <view class="step-price">订单金额：
+            <text class="step-money">¥ {{detailData.amountApp==''?detailData.amount:detailData.amountApp}}</text>
+        </view>
+    </view>
+    <view class="step-order">
+        <text class="step-title">交易流程</text>
+        <image class="step-bg" mode="widthFix" src="../img/step.png"></image>
+    </view>
+    <view bindtap="makeIt" class="step-sure">{{isDone}}</view>
+</view>

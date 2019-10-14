@@ -1,0 +1,303 @@
+page {
+    padding-bottom: 40rpx;
+}
+
+.search {
+    width: 80rpx;
+    height: 80rpx;
+    position: absolute;
+    right: 60rpx;
+    top: 34rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.search image {
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.cardList-mod {
+    margin: 30rpx;
+}
+
+.sidebar {
+    width: 10rpx;
+    height: 310rpx;
+    position: absolute;
+    left: -10rpx;
+    top: 35rpx;
+}
+
+.cardList-mod .card {
+    position: relative;
+    padding: 40rpx 40rpx 40rpx 60rpx;
+    border-radius: 20rpx;
+    width: 100%;
+    height: 390rpx;
+    background: #fff;
+    box-shadow: 1px 3px 10px #e1e1e1;
+    margin-bottom: 60rpx;
+}
+
+.cardList-mod .card .options {
+    padding: 20rpx 0;
+    position: absolute;
+    right: 0;
+    top: 5rpx;
+    font-size: 28rpx;
+    display: flex;
+    width: 100rpx;
+    height: 100rpx;
+    z-index: 2;
+    justify-content: center;
+}
+
+.cardList-mod .card .options text {
+    border-radius: 100%;
+    width: 8rpx;
+    height: 8rpx;
+    background: #777;
+    display: block;
+    margin: 0 4rpx;
+}
+
+.cardList-mod .card .avatar {
+    position: absolute;
+    right: 60rpx;
+    width: 136rpx;
+    height: 136rpx;
+    top: 50rpx;
+}
+
+.cardList-mod .card .avatar .redpoint {
+    width: 42rpx;
+    height: 42rpx;
+    position: absolute;
+    border-radius: 100%;
+    background: red;
+    top: -6rpx;
+    right: -10rpx;
+    line-height: 42rpx;
+    font-size: 24rpx;
+    color: #fff;
+    text-align: center;
+}
+
+.cardList-mod .card .avatar image {
+    width: 136rpx;
+    height: 136rpx;
+    border-radius: 100%;
+}
+
+.cardList-mod .card .code {
+    position: absolute;
+    right: 25rpx;
+    bottom: 10rpx;
+}
+
+.cardList-mod .card .code image {
+    width: 64rpx;
+    height: 64rpx;
+}
+
+.cardList-mod .card .name {
+    font-size: 48rpx;
+    color: #333;
+    white-space: nowrap;
+    width: 400rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cardList-mod .card .company {
+    font-size: 28rpx;
+    color: #919191;
+    margin-top: 4rpx;
+    margin-bottom: 20rpx;
+    width: 380rpx;
+}
+
+.cardList-mod .card .position {
+    font-size: 24rpx;
+    color: #999;
+    white-space: nowrap;
+    width: 400rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cardList-mod .card .name text {
+    font-size: 32rpx;
+    margin-left: 20rpx;
+    color: #919191;
+}
+
+.cardList-mod .card .org {
+    color: #777;
+    font-size: 32rpx;
+    margin-bottom: 30rpx;
+}
+
+.cardList-mod .card .title {
+    color: #666;
+    font-size: 28rpx;
+    margin-bottom: 30rpx;
+}
+
+.cardList-mod .card .email,.cardList-mod .card .mobile {
+    color: #767676;
+    display: flex;
+    align-items: center;
+    margin-top: 6rpx;
+}
+
+.infowrap {
+    margin-top: 75rpx;
+}
+
+.cardList-mod .card .no {
+    position: absolute;
+    color: #1aad19;
+    font-size: 28rpx;
+    bottom: 20rpx;
+}
+
+.cardList-mod .card .email image,.cardList-mod .card .mobile image {
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 20rpx;
+}
+
+.cardList-mod .card .email text,.cardList-mod .card .mobile text {
+    font-size: 24rpx;
+    font-weight: 300;
+    color: #666;
+    width: 450rpx;
+    display: inline-block;
+}
+
+.mask {
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    opacity: .8;
+}
+
+.codepop {
+    position: fixed;
+    top: 20%;
+    z-index: 999;
+    left: 50%;
+    margin-left: -280rpx;
+    width: 580rpx;
+    background: #fff;
+    height: 600rpx;
+    border-radius: 20rpx;
+}
+
+@-webkit-keyframes first1 {
+    from {
+        top: -100%;
+    }
+
+    to {
+        top: 10%;
+    }
+}
+
+@keyframes first1 {
+    from {
+        top: -100%;
+    }
+
+    to {
+        top: 10%;
+    }
+}
+
+.qrcode {
+    height: 500rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.qrcode>canvas {
+    width: 500rpx;
+    height: 500rpx;
+}
+
+.tttile {
+    padding: 8px;
+    text-align: center;
+    font-size: 32rpx;
+    background: #f4f4f4;
+    border-radius: 20rpx 20rpx 0 0;
+}
+
+.btn-close {
+    position: absolute;
+    bottom: -100rpx;
+}
+
+.optionsView {
+    display: none;
+    position: absolute;
+    top: 80rpx;
+    right: 18rpx;
+    width: 200rpx;
+    background: #fff;
+    text-align: center;
+    z-index: 999;
+    padding: 20rpx 20rpx;
+    border-radius: 10rpx;
+    box-shadow: 1px 1px 1px #e1e1e1;
+    border: 1px solid #f9f9f9;
+}
+
+.opacity {
+    opacity: .5;
+}
+
+.card .statusText {
+    color: #fff;
+    left: 50%;
+    position: absolute;
+    width: 250rpx;
+    margin-left: -90rpx;
+    top: 50%;
+    line-height: 42px;
+    margin-top: -50rpx;
+    z-index: 99;
+    font-size: 32rpx;
+    font-weight: 500;
+}
+
+.optionsView view {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #777;
+    white-space: nowrap;
+    margin: 10rpx 0;
+}
+
+.optionsView view image {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 10rpx;
+}
+
+.optionsView.show {
+    display: block;
+}
+
+.gray {
+    background: #ddd!important;
+}

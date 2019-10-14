@@ -1,0 +1,161 @@
+<template name="section-xiaohua">
+    <view class="section-recommend">
+        <template is="single-card-label" data="{{ label:{title:'这条图文值得被推荐吗？',description:'圈圈是值得，叉叉是不值得'} }}"></template>
+        <block wx:for="{{section.selectFirstVisibled(events,itemsStatus)}}">
+            <template is="card-recommend" data="{{ marked:marked,itemsStatus:itemsStatus,...events[item] }}" wx:if="{{item>=0}}"></template>
+            <view style="color:#fff;text-align:center;width:100%;margin: 40px 0 0;" wx:else>点击我要当主编，看更多新文章...</view>
+        </block>
+        <navigator class="button center" hoverClass="none" style="margin-top: 40px;" url="/pages/magazine/recommend?id={{events[0].article.mid}}">
+      我要当主编
+    </navigator>
+    </view>
+</template>
+<template name="section-magazineCarousel">
+    <triplet-media-list events="{{events}}"></triplet-media-list>
+</template>
+<template name="section-profileExplore">
+    <view class="section-profileExplore" wx:if="{{itemsStatus['inline-onboard']!=2}}">
+        <view class="items-ctn">
+            <view style="display:inline-block;position:relative;flex-grow:2;">
+                <block wx:if="{{events.length>0}}">
+                    <navigator navigate class="avatar-ctn" hoverClass="none" style="margin-right: -5px;z-index:{{10-index}}" url="/pages/profile/user?uid={{item.user.uid}}" wx:for="{{events}}" wx:key="user.uid">
+                        <image lazyLoad class="avatar small" src="{{item.user.avatar}}"></image>
+                    </navigator>
+                </block>
+                <view class="avatar-ctn" wx:else>
+                    <image lazyLoad class="avatar small"></image>
+                </view>
+            </view>
+            <navigator class="button text" openType="navigate" style="display:flex;padding-right:0;" url="/pages/explore/list?section=users">发现更多的人<image class="icon compact" src="/images/new_assets/icon_corner_small_right.svg"></image>
+            </navigator>
+        </view>
+        <view class="caption">
+            <text>{{'今天的轻芒杂志共 10 页，浏览需要 3 分钟'+(events.length>0?'，由你关注的'+events[0].user.name+'等读者和小花一起为你精选。':'。')}}</text>
+        </view>
+    </view>
+</template>
+<template name="section-magazineExplore">
+    <view class="page tags section-category" wx:if="{{itemsStatus['inline-onboard']!=2}}">
+        <magazine-name-list enableCreate events="{{events}}">
+            <navigator class="magazine-name tag" hoverClass="none" openType="switchTab" url="/pages/overview/overview?content=explore">
+                <qm-icon name="menu"></qm-icon>
+            </navigator>
+        </magazine-name-list>
+    </view>
+</template>
+<template name="section-user">
+    <view class="section-user">
+        <template is="card-user" data="{{config:config,followed:followed,...item}}" wx:for="{{events}}"></template>
+    </view>
+</template>
+<template name="section-magazine">
+    <template is="magazine-cover" data="{{config:config,subscribed:subscribed,events:events}}"></template>
+</template>
+<template name="section-magazineBanner">
+    <view class="section" style="margin-bottom:40px;">
+        <scroll-view scrollWithAnimation scrollX class="scroll-view">
+            <template is="card-magazine" data="{{config:config,subscribed:subscribed,...item.section}}" wx:for="{{events}}" wx:key="{{ index }}"></template>
+        </scroll-view>
+    </view>
+</template>
+<template name="section-video">
+    <view class="section section-video">
+        <template is="card-video" data="{{ type:type,currentPlaying:currentPlaying,config:config,marked:marked,...events[0] }}"></template>
+    </view>
+</template>
+<template name="section-imageSet">
+    <view class="section section-image-set">
+        <template is="card-image-set" data="{{marked:marked,events:events,config:config,...events[0],type:type}}"></template>
+    </view>
+    <template is="single-card-seperator" data wx:if="{{style==='isolated'}}"></template>
+</template>
+<template name="section-article">
+    <view class="section section-article">
+        <scroll-view scrollWithAnimation scrollX bindscroll="onPageScroll" bindscrolltolower="onScrollToLower" class="scroll-view" data-next-url="{{nextUrl}}" data-section-index="{{index}}" lowerThreshold="500" scrollIntoView="{{currentMorePos}}">
+            <block wx:for="{{events}}" wx:key="{{ index }}">
+                <template is="card-article-headline" data="{{totalArticles:events.length,marked:marked,type:type,config:config,...item}}" wx:if="{{index===0}}"></template>
+                <block wx:elif="{{item.type==='article'}}">
+                    <block wx:if="{{events[0].article.covers.length>0}}">
+                        <template is="card-article-covered" data="{{marked:marked,type:type,config:config,...item}}" wx:if="{{item.article.covers.length>0}}"></template>
+                        <template is="card-article-cover-disabled" data="{{marked:marked,type:type,config:config,...item}}" wx:else></template>
+                    </block>
+                    <block wx:elif="{{config.enableMagazine&&item.section.events.length>0}}"></block>
+                    <template is="card-article-cover-disabled" data="{{marked:marked,type:type,config:config,...item}}" wx:else></template>
+                </block>
+            </block>
+            <view id="more-{{events[0].article.docIdString}}" style="position:absolute;left:750rpx;"></view>
+        </scroll-view>
+        <button catchtap="scrollToMore" class="button white more" data-target="more-{{events[0].article.docIdString}}" hoverClass="none" wx:if="{{events.length>1}}">
+      延伸阅读
+      <image class="icon compact" src="/images/new_assets/icon_corner_small_right.svg"></image>
+        </button>
+    </view>
+    <template is="single-card-seperator" data wx:if="{{style==='isolated'}}"></template>
+</template>
+<template name="section-image">
+    <view class="section section-image">
+        <scroll-view scrollWithAnimation scrollX bindscroll="onPageScroll" bindscrolltolower="onScrollToLower" class="scroll-view" data-next-url="{{nextUrl}}" data-section-index="{{index}}" lowerThreshold="500">
+            <view class="image-ctn">
+                <view class="image-section">
+                    <template is="card-image" data="{{marked:marked,config:config,...item}}" wx:for="{{events}}" wx:key="{{ index }}"></template>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <template is="single-card-seperator" data wx:if="{{style==='isolated'}}"></template>
+</template>
+<template name="section-mark">
+    <view class="section section-mark">
+        <scroll-view scrollWithAnimation scrollX bindscroll="onPageScroll" bindscrolltolower="onScrollToLower" class="scroll-view" data-next-url="{{nextUrl}}" data-section-index="{{index}}" lowerThreshold="500">
+            <template is="card-{{item.type}}" data="{{marked:marked,config:config,...item}}" wx:for="{{events}}" wx:for-index="idx" wx:key="{{ index }}"></template>
+            <view catchtap="clearMarkTip" class="tip-ctn" style="bottom: 63px; left: 120rpx;" wx:if="{{config.enableMagazine&&tipsOn['mark']}}">
+                <view class="tip-content">点按这个圆圈，「{{config.actions.mark}}」你喜爱的内容。 </view>
+                <view class="tip-triangle__bottom" style="left:390rpx;"></view>
+            </view>
+        </scroll-view>
+    </view>
+    <template is="single-card-seperator" data wx:if="{{style==='isolated'}}"></template>
+</template>
+<template name="section-shortVideo">
+    <view class="section section-short-video">
+        <scroll-view scrollWithAnimation scrollX bindscroll="onPageScroll" bindscrolltolower="onScrollToLower" class="scroll-view" data-next-url="{{nextUrl}}" data-section-index="{{index}}" lowerThreshold="500" scrollIntoView="shortVideo-{{currentPlaying.id}}">
+            <view class="video-ctn">
+                <template is="card-short-video" data="{{marked:marked,index:index,currentPlaying:currentPlaying,config:config,...item}}" wx:for="{{events}}" wx:key="{{ index }}"></template>
+            </view>
+        </scroll-view>
+        <navigator class="button white more" hoverClass="none" url="/pages/explore/list?section=clips">
+      看更多
+      <image class="icon compact" src="/images/new_assets/icon_corner_small_right.svg"></image>
+        </navigator>
+    </view>
+    <template is="single-card-seperator" data wx:if="{{style==='isolated'}}"></template>
+</template>
+<template name="section-articleSet">
+    <universe-card class="{{index>0&&'section-article'}}" comClass="card-component-root" event="{{item}}" route="{{route}}" wx:for="{{events}}" wx:key="id"></universe-card>
+</template>
+<template name="section-category">
+    <view class="page tags {{events.length<=3?'large':''}} section-category" wx:if="{{events.length>(enableCreate?0:1)}}">
+        <view class="tags-ctn items{{events.length}}">
+            <magazine-name-list enableCreate="{{enableCreate}}" events="{{events}}"></magazine-name-list>
+        </view>
+    </view>
+</template>
+<import src="card.wxml"></import>
+<import src="widgets.wxml"></import>
+<wxs module="section">
+var selectFirstVisibled = (function(events, itemsStatus) {
+    if (!events) {
+        return ([-1])
+    };
+    for (var i = 0; i < events.length; ++i) {
+        if (itemsStatus[((nt_0 = ('article-' + events[((nt_1 = (i), null == nt_1 ? undefined : 'number' === typeof nt_1 ? nt_1 : "" + nt_1))].article.docIdString), null == nt_0 ? undefined : 'number' === typeof nt_0 ? nt_0 : "" + nt_0))] === -1) {
+            continue
+        };
+        return ([i])
+    };
+    return ([-1])
+});
+module.exports = ({
+    selectFirstVisibled: selectFirstVisibled,
+});
+</wxs>

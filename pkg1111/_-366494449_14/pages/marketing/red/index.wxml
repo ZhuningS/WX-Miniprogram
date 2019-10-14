@@ -1,0 +1,65 @@
+<include src="/components/index.wxml"></include>
+<view>
+    <view style="position:relative">
+        <view class="coupon_mod">
+            <view class="couponList" wx:if="{{couponList&&couponList.length>0}}">
+                <button plain bindgetphonenumber="_getmobile" data-id="{{item.id}}" hoverClass="none" openType="getPhoneNumber" wx:if="{{hasMobile==0&&item.isget==0}}" wx:for="{{couponList}}" wx:key="id">
+                    <view class="coupon">
+                        <view class="btn-lq">立即领取</view>
+                        <view style="position:absolute">
+                            <image mode="aspectFit" src="../../images/new/q2.png" style="width:685rpx;height:215rpx"></image>
+                        </view>
+                        <view class="coupon__info">
+                            <view class="coupon_wrap">
+                                <view class="coupon_amount">
+                                    <text style="font-size:48rpx; margin-right:10rpx;font-weight:300">¥</text>{{item.money}}</view>
+                                <view class="coupon__name">全场满{{item.enough}}使用</view>
+                            </view>
+                            <view class="coupon__times">
+                                <view class="coupon__time">
+                                    <text class="coupon__time__title">有效期</text>{{item.timestart}} 至 {{item.timeend}}
+                              </view>
+                            </view>
+                        </view>
+                    </view>
+                </button>
+                <view bindtap="_getCoupon" class="coupon" data-id="{{item.id}}" wx:if="{{hasMobile==1&&item.isget==0}}" wx:for="{{couponList}}" wx:key="id">
+                    <view class="btn-lq">立即领取</view>
+                    <view style="position:absolute">
+                        <image mode="aspectFit" src="../../images/new/q2.png" style="width:685rpx;height:215rpx"></image>
+                    </view>
+                    <view class="coupon__info">
+                        <view class="coupon_wrap">
+                            <view class="coupon_amount">
+                                <text style="font-size:48rpx; margin-right:10rpx;font-weight:300">¥</text>{{item.money}}</view>
+                            <view class="coupon__name">全场满{{item.enough}}使用</view>
+                        </view>
+                        <view class="coupon__times">
+                            <view class="coupon__time">
+                                <text class="coupon__time__title">有效期至</text>
+                                  {{item.timeend}}
+                              </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="coupon disabled" wx:if="{{item.isget==1}}" wx:for="{{couponList}}" wx:key="id">
+                    <view style="position:absolute">
+                        <image mode="aspectFit" src="../../images/new/q3.png" style="width:685rpx;height:215rpx"></image>
+                    </view>
+                    <view class="coupon__info">
+                        <view class="coupon_wrap">
+                            <view class="coupon_amount">
+                                <text style="font-size:48rpx; margin-right:10rpx;font-weight:300">¥</text>{{item.money}}</view>
+                            <view class="coupon__name">满{{item.enough}}可使用</view>
+                        </view>
+                        <view class="coupon__times">
+                            <view class="coupon__time">
+                                <text class="coupon__time__title">有效期至</text>{{item.timeend}}
+                      </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

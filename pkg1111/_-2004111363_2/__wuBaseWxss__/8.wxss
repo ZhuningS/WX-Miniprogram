@@ -1,0 +1,52 @@
+.c-pay-mask {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.c-pay-mask .c-pay-mask-bg {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+}
+
+.c-pay-mask .c-pay-mask-main {
+    width: 100%;
+    background: #fff;
+}
+
+.c-pay-mask .c-pay-mask-main .c-pay-mask-tip {
+    padding: 0 20rpx;
+    width: 100%;
+    height: 66rpx;
+    line-height: 66rpx;
+    font-size: 24rpx;
+    color: #D2D2D2;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.c-pay-mask .c-pay-mask-main .c-pay-mask-pay {
+    padding: 0 20rpx;
+    width: 100%;
+    height: 110rpx;
+    line-height: 110rpx;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.c-pay-mask .c-pay-mask-main .c-pay-mask-bottom {
+    padding-left: 20rpx;
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    background: #fff;
+}
+
+.c-pay-mask .c-pay-mask-main .c-pay-mask-bottom .c-pay-mask-btn {
+    width: 260rpx;
+    height: 105rpx;
+    text-align: center;
+    font-size: 36rpx;
+    font-weight: bold;
+}

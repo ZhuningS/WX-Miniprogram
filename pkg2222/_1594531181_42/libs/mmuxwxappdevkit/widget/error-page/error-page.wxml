@@ -1,0 +1,8 @@
+<view class="wrap" wx:if="{{warningText||errorTitle}}">
+    <text class="warning-text">{{warningText}}</text>
+    <view class="error-wrap" wx:if="{{!warningText&&errorTitle}}">
+        <image class="error-icon-area"></image>
+        <text class="error-title">{{errorTitle||''}}</text>
+        <text class="error-subtitle">{{errorSubTitle||''}}</text>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+{
+    "navigationBarTitleText": "美团",
+    "enablePullDownRefresh": true,
+    "navigationBarBackgroundColor": "#FEFEFE",
+    "navigationBarTextStyle": "black",
+    "usingComponents": {
+        "formcover": "../../../index/components/formcover/formcover",
+        "dynamic": "../../../dynamic/dynamic",
+        "add-my-program": "../../../index/components/mt-guide/guide"
+    }
+}

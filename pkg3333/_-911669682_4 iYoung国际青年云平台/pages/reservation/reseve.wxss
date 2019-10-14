@@ -1,0 +1,28 @@
+@import "../../utils/form.wxss";
+
+.select-address {
+    padding: 10px 15px;
+    color: gray;
+    line-height: 60rpx;
+}
+
+.price {
+    padding: 20rpx 30rpx;
+}
+
+.btn-box {
+    height: 92rpx;
+}
+
+.order-btn {
+    width: 750rpx;
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
+}
+
+.order-btn button {
+    border-radius: 0;
+}
+
+@import "../../__wuBaseWxss__/2.wxss";

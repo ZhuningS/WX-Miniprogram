@@ -1,0 +1,13 @@
+<form bindsubmit="onActionTap" reportSubmit="{{true}}">
+    <view class="input-group">
+        <block wx:if="{{enroll_info!=''}}">
+            <view class="input-item {{item.hidden?'':'hidden'}}" wx:for="{{checkboxItems}}" wx:key="name">
+                <input name="{{item.name}}" placeholder="{{item.placeholder}}" type="{{item.typeName}}"></input>
+            </view>
+        </block>
+        <view class="tc ml10 mr10" wx:else>点击提交按钮，即可报名</view>
+    </view>
+    <view class="m20">
+        <button class="transition-duration-150" formType="submit" type="primary">提交</button>
+    </view>
+</form>

@@ -1,0 +1,1 @@
+module.exports = require("../../libs/mmuxwxappdevkit/foundation/oss/reporter.js");

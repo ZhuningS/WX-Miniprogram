@@ -1,0 +1,19 @@
+<chat-base-cell backgroundColor="#FFFFFF" message="{{message}}">
+    <view bindtap="onContentClick" class="content">
+        <image-view class="goods-image" mode="aspectFill" src="{{message.goods.goods_image_url+'/750'}}" wx:if="{{message.goods.goods_image_url}}"></image-view>
+        <view class="title" wx:if="{{message.goods.title}}">{{message.goods.title}}</view>
+        <view class="info">
+            <view class="info__stock-price" wx:if="{{message.goods.stock_price}}">{{PriceUtil.fixPrice(message.goods.stock_price)}}</view>
+            <view class="info__market-price" wx:if="{{message.goods.market_price}}">{{PriceUtil.fixPrice(message.goods.market_price)}}</view>
+        </view>
+    </view>
+</chat-base-cell>
+<wxs module="PriceUtil">
+module.exports.fixPrice = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num.toString() === 'NaN') {
+        return ('错误的价格')
+    };
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+</wxs>

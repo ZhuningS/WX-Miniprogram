@@ -1,0 +1,18 @@
+<template name="shareLayer">
+    <view class="shareLayer">
+        <view bindtap="_closeShareLayer" class="mask"></view>
+        <view class="content">
+            <view style="display:flex;margin-top: 60rpx;">
+                <button class="nobutton" openType="share" style="margin:0;padding: 0;flex: 1; text-align: center;line-height: 40rpx">
+                    <image src="/images/card/icon_weixin.png" style="width: 146rpx;height: 146rpx;"></image>
+                    <text style="display:block">微信好友</text>
+                </button>
+                <view bindtap="_jump" data-url="/pages/poster/index" style="flex:1; text-align: center; line-height: 40rpx">
+                    <image src="/images/card/icon_share.png" style="width: 146rpx;height: 146rpx;"></image>
+                    <text style="display:block">名片海报</text>
+                </view>
+            </view>
+            <view bindtap="_closeShareLayer" class="button-cancel">取消</view>
+        </view>
+    </view>
+</template>

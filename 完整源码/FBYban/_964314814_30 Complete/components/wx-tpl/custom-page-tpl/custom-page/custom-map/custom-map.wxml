@@ -1,0 +1,6 @@
+<view bindtap="openMap" class="map-view">
+    <image class="icon" mode="aspectFit" src="{{customMap.iconType==1?'http://yamxcx.oss-cn-shenzhen.aliyuncs.com/xcx/location.png':customMap.iconUrl}}"></image>
+    <view class="location">{{address}}</view>
+    <view class="distance">{{distance}}</view>
+    <image class="arrow-img" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/one-shop-one-mini-app/next.png"></image>
+</view>

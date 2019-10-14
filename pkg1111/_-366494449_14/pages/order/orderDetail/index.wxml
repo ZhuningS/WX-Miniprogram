@@ -1,0 +1,108 @@
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view class="page-content">
+        <view wx:if="{{order.address!=''}}">
+            <view class="address">
+                <view class="img-wrap">
+                    <image class="icon-addr" src="/images/icon-addr.png"></image>
+                </view>
+                <view class="name-phone">
+                    <view class="addr-user">
+                        <text class="user-name">{{order.address.name}}</text>
+                        <text class="tel">{{order.address.tel}}</text>
+                    </view>
+                    <view class="addr-addr">
+                        <text>{{order.address.province}}{{order.address.city}}{{order.address.county}}{{order.address.address}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="background: #fff; margin: 16rpx 0;font-size: 28rpx;color: #666;padding:16rpx 30rpx" wx:if="{{order.deliveryname}}">
+            <view>{{order.deliveryname}}: {{order.deliveryno}}</view>
+            <view></view>
+        </view>
+        <view class="goods-content">
+            <view class="goods-types">
+                <view class="consume-type" wx:if="{{order.address!=''}}">
+                    <text>快递配送</text>
+                </view>
+                <text class="consume-type" wx:else>无需配送</text>
+                <text class="goods-status" wx:if="{{teamid==''}}">{{order.status2}}</text>
+                <block wx:else>
+                    <text class="goods-status" wx:if="{{order.issuccess==1&&order.status!=4&&order.status!=5}}">拼团成功，等待卖家发货</text>
+                    <text class="goods-status" wx:if="{{order.issuccess==1&&order.status==4}}">退款中</text>
+                    <text class="goods-status" wx:if="{{order.issuccess==1&&order.status==5}}">退款完成</text>
+                    <text class="goods-status" wx:elif="{{order.issuccess==0}}">拼团中</text>
+                </block>
+            </view>
+            <view class="goods-item" wx:for="{{order.goods}}">
+                <view style="display:flex">
+                    <image class="goods-img" mode="aspectFill" src="{{item.thumb}}"></image>
+                    <view class="goods-info">
+                        <view class="goods-name">
+                            <text>{{item.name}}</text>
+                        </view>
+                        <view class="goods-sku" wx:if="{{item.aname}}">
+                            <text>{{item.aname}}</text>
+                        </view>
+                    </view>
+                    <view class="goods-val">
+                        <view class="goods-price">
+                            <text style="color:#ff4751" wx:if="{{isseckill==1}}">￥{{item.seckill_money}}</text>
+                            <text style="color:#ff4751" wx:else>￥{{item.price}}</text>
+                        </view>
+                        <view class="goods-amount">
+                            <text>x{{item.num}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="_jump" class="btn-groupInfo" data-openType="redirectTo" data-url="/pages/goodsDetail/groupDetail/index?id={{teamid}}" wx:if="{{teamid!=''}}">拼团详情</view>
+            </view>
+            <view class="goods-trans-wrap">
+                <view class="goods-trans">
+                    <text>运费</text>
+                    <text class="price price-total" wx:if="{{order.moneytrans>0}}">+ ¥{{order.moneytrans}}</text>
+                    <text class="price price-total" wx:else>包邮</text>
+                </view>
+                <view class="goods-trans" wx:if="{{order.card_coupon_dis_money&&order.card_coupon_dis_money>0}}">
+                    <text>优惠券</text>
+                    <text class="price price-total">-¥{{order.card_coupon_dis_money}}</text>
+                </view>
+                <view class="goods-trans" wx:if="{{order.card_discount>0}}">
+                    <text>特权折扣优惠</text>
+                    <text class="price price-total">-¥{{order.discount_price}}</text>
+                </view>
+                <view class="goods-trans goods-trans_last">
+                    <text>合计</text>
+                    <text class="price price-total" style="color:#ff4751" wx:if="{{isseckill==1}}">¥ {{order.seckamount}}</text>
+                    <text class="price price-total" style="color:#ff4751" wx:else>¥ {{order.moneypay}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="order-info">
+            <view class="info-item">
+                <text>订单编号：{{order.orderno}}</text>
+            </view>
+            <view class="info-item">
+                <text>下单时间：{{order.dateline2}}</text>
+            </view>
+            <view class="info-item" wx:if="{{order.status==1||order.status==2}}">
+                <text>付款时间：{{order.paytime2}}</text>
+            </view>
+            <view class="info-item" wx:if="{{order.status==2&&order.statustake!=1}}">
+                <text>提货时间：{{order.extracttime2}}</text>
+            </view>
+        </view>
+        <view style="margin-top: 50rpx">
+            <view bindtap="_jump" class="gotohome" data-opentype="reLaunch" data-url="/pages/shop/index">返回商城</view>
+        </view>
+    </view>
+    <view class="btn-panel">
+        <form bindsubmit="_payOrder" class="btnWrap" reportSubmit="true" wx:if="{{order.status=='0'&&order.status==0}}">
+            <button class="btn-pay" formType="submit">立即支付</button>
+        </form>
+    </view>
+</view>

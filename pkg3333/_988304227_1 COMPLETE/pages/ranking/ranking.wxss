@@ -1,0 +1,184 @@
+.bird {
+    width: 265rpx;
+    position: absolute;
+    right: 0;
+    top: 208rpx;
+}
+
+.container {
+    box-sizing: border-box;
+}
+
+.avator,.nickname {
+    text-align: center;
+}
+
+.avator image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    vertical-align: bottom;
+}
+
+.nickname {
+    color: #333333;
+    font-size: 30rpx;
+    margin: 15rpx 0 2rpx 0;
+}
+
+.ranking {
+    font-size: 24rpx;
+    color: #22442A;
+}
+
+.list {
+    display: flex;
+    margin: 20rpx 0 20rpx 0;
+    justify-content: space-around;
+}
+
+.list view {
+    display: flex;
+    align-items: center;
+    font-size: 34rpx;
+}
+
+.list image {
+    width: 60rpx;
+    height: 60rpx;
+    margin-left: 10rpx;
+}
+
+.box {
+    width: 650rpx;
+    height: 666rpx;
+    background: rgba(255,255,255,0.4);
+    border-radius: 10rpx;
+    margin: 0 auto;
+    padding-top: 40rpx;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.time {
+    color: #333;
+    font-size: 32rpx;
+    margin-bottom: 40rpx;
+}
+
+scroll-view {
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    height: 532rpx;
+}
+
+.item {
+    height: 118rpx;
+    background: rgba(34,68,42,0.4);
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    align-items: center;
+    padding-left: 50rpx;
+    box-sizing: border-box;
+}
+
+.num {
+    margin-right: 50rpx;
+    color: #fff;
+    font-size: 42rpx;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.info>image {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    vertical-align: bottom;
+    margin-right: 20rpx;
+}
+
+.other {
+    width: 400rpx;
+    display: flex;
+}
+
+.other view {
+    display: flex;
+    align-items: center;
+}
+
+.other view text {
+    width: 50rpx;
+    text-align: right;
+}
+
+.other view:first-child text {
+    width: 70rpx;
+}
+
+.name {
+    text-align: left;
+    margin-bottom: 10rpx;
+}
+
+.other image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 10rpx;
+}
+
+.box .item:last-child {
+    margin-bottom: 0;
+}
+
+.box .item:nth-child(1) .num {
+    color: #F27A00;
+}
+
+.box .item:nth-child(2) .num {
+    color: #5786A3;
+}
+
+.box .item:nth-child(3) .num {
+    color: #C65313;
+}
+
+.container .show {
+    width: 630rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    font-size: 32rpx;
+    color: #22442A;
+    background: #fff;
+    margin-top: 50rpx;
+    border: 0;
+    position: fixed;
+    bottom: 60rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.noneData {
+    position: absolute;
+    top: 200rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.noneData image {
+    width: 150rpx;
+}
+
+.noneData view {
+    font-size: 32rpx;
+    color: #fff;
+    margin-top: 20rpx;
+}

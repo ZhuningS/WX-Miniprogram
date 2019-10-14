@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "qm-button": "../components/uis/button/button.component",
+        "qm-loading": "../components/uis/loading/loading.component",
+        "qm-tween": "../components/uis/tween/tween.component"
+    }
+}

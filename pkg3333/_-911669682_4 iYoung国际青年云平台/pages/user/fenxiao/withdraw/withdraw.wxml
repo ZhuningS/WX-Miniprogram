@@ -1,0 +1,51 @@
+<view class="wheader tc">
+    <view class="canbe">{{data_list.usergold}}</view>
+    <view>可提现金额（元）</view>
+</view>
+<view class="process tc flex">
+    <view class="sub arrowR">
+        <text class="iconfont icon-fxicon-2" style="background: #f35150;"></text>
+        <view>提交申请</view>
+    </view>
+    <view class="sub arrowR">
+        <text class="iconfont icon-fxicon-4" style="background: #fea512;"></text>
+        <view>等待审核</view>
+    </view>
+    <view class="sub arrowR">
+        <text class="iconfont icon-fxicon-1" style="background: #09bb07;"></text>
+        <view>提现成功</view>
+    </view>
+</view>
+<view class="wbox">
+    <view class="winput" style="" wx:if="{{data_list.isapply=='no'}}">
+        <form bindsubmit="formSubmit">
+            <radio-group bindchange="radioChange" class="radio-group mb10 flex" name="cash_type">
+                <label class="radio sub">
+                    <radio checked="true" value="0"></radio>提现到余额</label>
+                <label class="radio sub">
+                    <radio value="1"></radio>提现到银行卡</label>
+            </radio-group>
+            <input class="wwrite gridFourRadio" name="money" placeholder=" 最多可以提现￥{{data_list.usergold}}" type="digit"></input>
+            <input class="wwrite gridFourRadio mt10" maxlength="11" name="telephone" placeholder=" 电话号码" type="number"></input>
+            <block wx:if="{{crash_type==1}}">
+                <picker bindchange="bindPickerChange" class="mt20" range="{{data_list.bank_code}}" rangeKey="name" value="{{index}}">
+                    <view class="flex">
+                        <view class="sub">选择银行</view>
+                        <view class="grey">{{data_list.bank_code[index]['name']}}</view>
+                    </view>
+                </picker>
+                <input class="wwrite gridFourRadio mt10" maxlength="19" name="bank_no" placeholder=" 银行卡号" type="number"></input>
+                <input class="wwrite gridFourRadio mt10" name="true_name" placeholder=" 开户行姓名"></input>
+            </block>
+            <button class="mt20" formType="submit" type="primary">申请提现</button>
+        </form>
+    </view>
+    <view class="wwait" wx:if="{{data_list.isapply=='yes'}}">
+        <view class="timeAn">
+            <text></text>
+        </view>
+        <view class="tc mt15">提现申请正在等待后台处理，请耐心等候</view>
+    </view>
+</view>
+<view class="wtips red">
+    <i class="iconfont icon-fxicon-3"></i> 提现金额需要3-5个工作日到账</view>

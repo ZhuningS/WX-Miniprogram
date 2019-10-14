@@ -1,0 +1,15 @@
+.more-loading {
+    width: 100%;
+    text-align: center;
+}
+
+.more-loading text {
+    color: #666;
+}
+
+.more-loading .btn-default {
+    color: #666;
+    font-size: 32rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+}

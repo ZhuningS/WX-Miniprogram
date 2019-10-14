@@ -1,0 +1,45 @@
+<view class="login">
+    <block wx:if="{{step==='switch'}}">
+        <view>
+            <image class="avatar" mode="aspectFit" src="{{user.avatar}}"></image>
+        </view>
+        <view class="title">{{user.name}}</view>
+        <view class="description">{{phone}}</view>
+        <button bindgetuserinfo="loginWechat" catchtap="loginBackup" class="button" openType="getUserInfo">
+      切换账号
+    </button>
+    </block>
+    <block wx:if="{{step==='wechat'}}">
+        <view class="meta" style="padding-top:90rpx;">
+      登录后，你将可以与其他用户一起讨论
+    </view>
+        <button bindgetuserinfo="loginWechat" catchtap="loginBackup" class="button" openType="getUserInfo">
+      使用微信登录
+    </button>
+    </block>
+    <form bindsubmit="sendVerification" wx:if="{{step==='phone'}}">
+        <view>
+            <image class="avatar" mode="aspectFit" src="{{user.avatar}}"></image>
+        </view>
+        <view class="title">{{user.name}}</view>
+        <view class="meta">绑定手机号，同步 App 订阅数据</view>
+        <view class="tip">{{tip}}</view>
+        <view class="input-wrapper">
+            <input focus class="input" confirmType="下一步" name="phone" placeholder="手机号" type="number"></input>
+        </view>
+        <button class="button large" formType="submit">下一步</button>
+    </form>
+    <form bindsubmit="bindPhone" wx:elif="{{step==='verify'}}">
+        <view class="title">已发送验证码至</view>
+        <view class="description">{{phone}}</view>
+        <view class="tip">{{tip}}</view>
+        <view class="input-wrapper">
+            <input focus class="input" confirmType="下一步" name="code" placeholder="验证码" type="number"></input>
+        </view>
+        <button class="button large" formType="submit">下一步</button>
+        <view catchtap="resendVerification" class="meta">
+      {{resentSeconds>0?'没有收到验证码？'+resentSeconds+'s 可以重新发送':'重新发送'}}
+    </view>
+    </form>
+    <button catchtap="done" class="button text" wx:if="{{first}}">跳过</button>
+</view>

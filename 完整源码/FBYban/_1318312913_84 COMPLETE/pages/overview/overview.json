@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "qm-icon": "../components/uis/icon/icon.component",
+        "qm-tween": "../components/uis/tween/tween.component",
+        "magazine-name-list": "../components/containers/magazine-name-list/magazine-name-list.component"
+    }
+}

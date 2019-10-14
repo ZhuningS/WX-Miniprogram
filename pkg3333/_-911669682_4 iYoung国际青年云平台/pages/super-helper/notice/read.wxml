@@ -1,0 +1,28 @@
+<view class="contenter">
+    <view class="detail-content">
+        <view class="text-title f18 mb10">
+            <text>{{title}}</text>
+        </view>
+        <view class="text-content f16 mt15">
+            <text>{{remark}}</text>
+        </view>
+        <view class="notice-detail-user gridXt flex grey mt20">
+            <view class="notice-user-msg sub">
+                <image class="user-img mr20" src="{{headimgurl}}"></image>
+                <text class="user-name lineText mr5">{{nickname}}</text>
+            </view>
+            <view class="notice-time">
+                <text>{{create_time}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="read-btn tc">
+        <button bindtap="onClickTap" disabled="{{is_click}}" hoverClass="btn-h" hoverStartTime="200" type="primary">朕已阅</button>
+    </view>
+    <view class="praise tc">
+        <view class="grey">已有{{click}}人阅读</view>
+        <view class="praise-people tl">
+            <image class="praise-people-img" mode="aspectFill" src="{{item.headimgurl}}" wx:for="{{user_lists}}" wx:key="{{index}}"></image>
+        </view>
+    </view>
+</view>

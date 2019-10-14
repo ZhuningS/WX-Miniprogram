@@ -1,0 +1,48 @@
+<template name="mImageList">
+    <view class="mimagelist" style="background:{{style.backgroundColor}}">
+        <view class="arrange{{layout.column}} {{layout.layout==1?'mImageListItem_over':''}}" style="margin-left:{{itemStyle.marginRight}}" wx:for="{{dataset.imgList}}" wx:key="{{uid}}">
+            <view bindtap="_jump" class="innner" data-url="/pages/goodsDetail/detail/index?id={{item.linkData.id}}" wx:if="{{item.linkType=='goods'}}">
+                <view style="margin-bottom: {{itemStyle.marginBottom}};margin-right:{{itemStyle.marginRight}}">
+                    <image mode="widthFix" src="{{item.img}}" style="border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==true}}"></image>
+                    <image src="{{item.img}}" style="height:{{imgStyle.height}};border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==false}}"></image>
+                    <view class="mImageListItem__text" style="font-size: {{textStyle.fontSize}}; line-height: {{textStyle.lineHeight}}; padding-left: {{textStyle.paddingLeft}}; text-align: {{textStyle.textAlign}}; font-style: {{textStyle.fontStyle}}; font-weight: {{textStyle.fontWeight}}; text-decoration:{{textStyle.textDecoration}};color:{{textStyle.color}}" wx:if="{{layout.visible==0||layout.visible==2}}">{{item.title}}</view>
+                </view>
+            </view>
+            <view bindtap="_jump" class="innner" data-url="/pages/goodsDetail/detailMs/index?id={{item.linkData.id}}" wx:if="{{item.linkType=='msgoods'}}">
+                <view style="margin-bottom: {{itemStyle.marginBottom}};margin-right:{{itemStyle.marginRight}}">
+                    <image mode="widthFix" src="{{item.img}}" style="border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==true}}"></image>
+                    <image src="{{item.img}}" style="height:{{imgStyle.height}};border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==false}}"></image>
+                    <view class="mImageListItem__text" style="font-size: {{textStyle.fontSize}}; line-height: {{textStyle.lineHeight}}; padding-left: {{textStyle.paddingLeft}}; text-align: {{textStyle.textAlign}}; font-style: {{textStyle.fontStyle}}; font-weight: {{textStyle.fontWeight}}; text-decoration:{{textStyle.textDecoration}};color:{{textStyle.color}}" wx:if="{{layout.visible==0||layout.visible==2}}">{{item.title}}</view>
+                </view>
+            </view>
+            <view bindtap="_jump" class="innner" data-url="/pages/goodsDetail/detailGroup/index?id={{item.linkData.id}}" wx:if="{{item.linkType=='tggoods'}}">
+                <view style="margin-bottom: {{itemStyle.marginBottom}};margin-right:{{itemStyle.marginRight}}">
+                    <image mode="widthFix" src="{{item.img}}" style="border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==true}}"></image>
+                    <image src="{{item.img}}" style="height:{{imgStyle.height}};border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==false}}"></image>
+                    <view class="mImageListItem__text" style="font-size: {{textStyle.fontSize}}; line-height: {{textStyle.lineHeight}}; padding-left: {{textStyle.paddingLeft}}; text-align: {{textStyle.textAlign}}; font-style: {{textStyle.fontStyle}}; font-weight: {{textStyle.fontWeight}}; text-decoration:{{textStyle.textDecoration}};color:{{textStyle.color}}" wx:if="{{layout.visible==0||layout.visible==2}}">{{item.title}}</view>
+                </view>
+            </view>
+            <view bindtap="_jump" class="innner" data-url="{{item.linkData.path}}" wx:if="{{item.linkType=='page'}}">
+                <view style="margin-bottom: {{itemStyle.marginBottom}};margin-right:{{itemStyle.marginRight}}">
+                    <image mode="widthFix" src="{{item.img}}" style="border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==true}}"></image>
+                    <image src="{{item.img}}" style="height:{{imgStyle.height}};border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==false}}"></image>
+                    <view class="mImageListItem__text" style="font-size: {{textStyle.fontSize}}; line-height: {{textStyle.lineHeight}}; padding-left: {{textStyle.paddingLeft}}; text-align: {{textStyle.textAlign}}; font-style: {{textStyle.fontStyle}}; font-weight: {{textStyle.fontWeight}}; text-decoration:{{textStyle.textDecoration}};color:{{textStyle.color}}" wx:if="{{layout.visible==0||layout.visible==2}}">{{item.title}}</view>
+                </view>
+            </view>
+            <view bindtap="_jump" class="innner" data-url="/pages/shop/home/index?id={{item.linkData.sid}}" wx:if="{{item.linkType=='shop'}}">
+                <view style="margin-bottom: {{itemStyle.marginBottom}};margin-right:{{itemStyle.marginRight}}">
+                    <image mode="widthFix" src="{{item.img}}" style="border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==true}}"></image>
+                    <image src="{{item.img}}" style="height:{{imgStyle.height}};border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==false}}"></image>
+                    <view class="mImageListItem__text" style="font-size: {{textStyle.fontSize}}; line-height: {{textStyle.lineHeight}}; padding-left: {{textStyle.paddingLeft}}; text-align: {{textStyle.textAlign}}; font-style: {{textStyle.fontStyle}}; font-weight: {{textStyle.fontWeight}}; text-decoration:{{textStyle.textDecoration}};color:{{textStyle.color}}" wx:if="{{layout.visible==0||layout.visible==2}}">{{item.title}}</view>
+                </view>
+            </view>
+            <view class="innner" wx:if="{{item.linkType==''}}">
+                <view style="margin-bottom: {{itemStyle.marginBottom}};margin-right:{{itemStyle.marginRight}}">
+                    <image bindtap="previewOneImg" data-url="{{item.img}}" mode="widthFix" src="{{item.img}}" style="border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==true}}"></image>
+                    <image bindtap="previewOneImg" data-url="{{item.img}}" src="{{item.img}}" style="height:{{imgStyle.height}};border-radius:{{imgStyle.borderRadius}}" wx:if="{{layout.isImgAuto==false}}"></image>
+                    <view class="mImageListItem__text" style="font-size: {{textStyle.fontSize}}; line-height: {{textStyle.lineHeight}}; padding-left: {{textStyle.paddingLeft}}; text-align: {{textStyle.textAlign}}; font-style: {{textStyle.fontStyle}}; font-weight: {{textStyle.fontWeight}}; text-decoration:{{textStyle.textDecoration}};color:{{textStyle.color}}" wx:if="{{layout.visible==0||layout.visible==2}}">{{item.title}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

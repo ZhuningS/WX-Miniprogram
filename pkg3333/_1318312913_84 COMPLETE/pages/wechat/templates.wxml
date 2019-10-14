@@ -1,0 +1,15 @@
+<template name="customer-hop-card">
+    <button catchtap="handleCustomerHopTap" class="card customer-hop-card" data-id="{{customerHop.id}}" hoverClass="none" openType="{{!customerHop.isPageRedirect&&'contact'}}" sessionFrom="{{customerHop.sessionFrom}}">
+        <view class="entry-thumb">
+            <image class="thumb-cover" mode="aspectFit" src="{{customerHop.cover}}"></image>
+        </view>
+        <view class="entry-body">
+            <view class="info-title">
+        {{customerHop.title}}
+      </view>
+            <view class="info-description">
+        {{customerHop.description}}
+      </view>
+        </view>
+    </button>
+</template>

@@ -1,0 +1,38 @@
+<import src="/pages/store/store-common/storetpl.wxml"></import>
+<template is="load_bg" data="{{is_show_load_bg:is_show_load_bg}}"></template>
+<view class="marker-cover">
+    <image class="marker-cover-img" mode="aspectFill" src="{{market_info.config_info.banner_img}}"></image>
+    <view class="marker-search tc">
+        <input bindconfirm="keyboardComplete" class="marker-search-inp" placeholder="搜索" placeholderStyle="font-size:14px;" value="{{keywords}}"></input>
+    </view>
+</view>
+<view class="marker-info-show mb10">
+    <view class="marker-info-item">店铺：
+    <text class="marker-info-num">{{market_info.market_store_num}}</text>
+    </view>
+    <view class="marker-info-item">商品：
+    <text class="marker-info-num">{{market_info.all_goods_num}}</text>
+    </view>
+    <view class="marker-info-item">人气值：
+    <text class="marker-info-num">{{market_info.market_page_views}}</text>
+    </view>
+</view>
+<view class="screen-menu">
+    <view class="screen-nav-box mb10">
+        <view bindtap="show_or_hide_cate_v" class="screen-nav screen-more {{is_show_cates_v==true?'active':''}}">
+            <text class="lineText screen-nav-txt">{{select_category_title}}</text>
+        </view>
+        <view bindtap="change_sort_type" class="screen-nav">热销商品</view>
+    </view>
+    <view class="screen-pop" wx:if="{{is_show_cates_v==true}}">
+        <view class="screen-item-box">
+            <view bindtap="selectCategory" class="screen-item {{select_category_id==''?'active':''}}" data-id="" data-title="全部">全部</view>
+            <view bindtap="selectCategory" class="screen-item {{select_category_id==citem.id?'active':''}}" data-id="{{citem.id}}" data-title="{{citem.title}}" wx:for="{{categorys}}" wx:for-item="citem">{{citem.title}}</view>
+        </view>
+        <view class="screen-popbg"></view>
+    </view>
+</view>
+<import src="/pages/store/store-common/storetpl.wxml"></import>
+<view class="marker-goods-box">
+    <template is="marker-goods" data="{{goodsArr:goodsArr}}"></template>
+</view>

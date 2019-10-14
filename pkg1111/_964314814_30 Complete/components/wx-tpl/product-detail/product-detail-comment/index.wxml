@@ -1,0 +1,16 @@
+<view class="product-detail-comment">
+    <view class="comment-box" style="bottom:{{boardHeigt+'px'}}" wx:if="{{tabItemIndex==1}}">
+        <view class="item-1-1">
+            <image mode="aspectFill" src="{{avatarUrl?avatarUrl:''}}"></image>
+        </view>
+        <input adjustPosition="true" bindblur="getBlur" bindconfirm="sendDiscuss" bindfocus="getFocus" bindinput="discussInputState" class="comment-input" confirmType="done" cursorSpacing="{{20}}" placeholder="说点什么，让TA也来买买买吧~" value="{{discussInfo.inputText}}"></input>
+    </view>
+    <view class="comment-content">
+        <ProductCommentItem bindtap="deleteItem" class="comment-item" commentItem="{{item}}" data-belongto="{{item.belongTo}}" data-id="{{item.id}}" nobottom="{{index==commentList.length-1}}" wx:for="{{commentList}}" wx:key="{{index}}"></ProductCommentItem>
+    </view>
+    <view class="no-comment" wx:if="{{!commentList.length}}">
+        <text>暂无评论</text>
+    </view>
+</view>
+<showActionSheet bindcheckSheet="deleteComment" isShowActionSheet="{{isShowActionSheet}}" payList="{{payList}}"></showActionSheet>
+<authorize_dialog onHide="{{onAuthHide}}" onShow="{{onAuthShow}}" params="{{authParams}}"></authorize_dialog>

@@ -1,0 +1,28 @@
+<view class="swiper-box">
+    <swiper autoplay="true" duration="300" indicatorDots="true" interval="5000">
+        <swiper-item wx:for="{{config.imgs}}" wx:key="*this">
+            <image class="slide-image" mode="aspectFill" src="{{item?item:'/images/3.jpg'}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="swiper-bottom f18">{{config.name}}</view>
+</view>
+<view class="severs">
+    <view catchtap="onNavigateTap" class="severs-title green" data-url="detail?cid={{config.notice_id}}" wx:if="{{config.notice_content}}">{{config.notice_content}}</view>
+    <view class="clearfix tc">
+        <view bindtap="onOpenCategoryTap" class="sever-item bgwhite fl active-bg gridXb" data-index="{{index}}" wx:for="{{data}}" wx:key="*this">
+            <view class="sever-item-inner gridYr">
+                <view class="sever-img">
+                    <image mode="aspectFill" src="{{item.cover}}"></image>
+                </view>
+                <view class="lineText mt10">
+                    <text>{{item.title}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="aside-float">
+    <button class="float-btn" hoverClass="none" openType="contact" sessionFrom="reservation_service" type="primary">
+        <text class="btn-icon iconfont icon-kefu"></text>
+    </button>
+</view>

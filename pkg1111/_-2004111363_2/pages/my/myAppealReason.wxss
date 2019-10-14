@@ -1,0 +1,27 @@
+.appeal-reason .h96 {
+    height: 96rpx;
+    line-height: 96rpx;
+}
+
+.appeal-reason .picker {
+    flex-grow: 1;
+    height: 96rpx;
+}
+
+.appeal-reason .picker .icon-xiajiantou_downarrow {
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.appeal-reason .height180 {
+    height: 180rpx;
+}
+
+.appeal-reason .btn-appeal {
+    width: 90%;
+    border-radius: 6px;
+    height: 88rpx;
+    line-height: 88rpx;
+    margin-left: auto;
+    margin-right: auto;
+}

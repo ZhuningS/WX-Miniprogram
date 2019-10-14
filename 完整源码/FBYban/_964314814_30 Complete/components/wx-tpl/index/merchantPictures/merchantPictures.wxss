@@ -1,0 +1,17 @@
+.merchant_pictures {
+    margin: 28rpx 0 0 0;
+    height: 224rpx;
+    display: flex;
+    overflow: hidden;
+}
+
+.merchant_pictures image {
+    width: 220rpx;
+    height: 220rpx;
+    background-color: #eeeeee;
+    margin: 0 15rpx 0 0;
+}
+
+.merchant_pictures image:nth-child(3) {
+    margin-right: 0rpx;
+}

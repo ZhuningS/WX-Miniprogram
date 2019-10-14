@@ -1,0 +1,60 @@
+.tab-margin {
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+.tab-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 750rpx;
+    background-color: #FFFFFF;
+    color: #000000;
+    z-index: 10003;
+}
+
+.tab-nav .item {
+    display: inline-flex;
+    height: 60px;
+    align-items: center;
+    font-weight: bold;
+    color: rgba(0,0,0,0.2);
+    font-size: 20px;
+    line-height: 25px;
+    padding: 0 30rpx;
+}
+
+.tab-nav .item.selected {
+    color: #000000;
+}
+
+.tab-nav .item:first-child {
+    padding-left: 60rpx;
+}
+
+.tab-nav .item:last-child {
+    padding-right: 60rpx;
+}
+
+.tab-nav.fixed {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab-nav.fixed .item {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.tab-nav.left {
+    display: flex;
+}
+
+.list-ctn {
+    margin-top: 40px;
+}
+
+.list-ctn .plain {
+    padding-right: 0;
+}

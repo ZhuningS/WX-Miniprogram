@@ -1,0 +1,732 @@
+.loadingWrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all 2s;
+}
+
+.msgs-wrapper {
+    position: absolute;
+    bottom: 100rpx;
+    left: 10rpx;
+    right: 10rpx;
+}
+
+.msgs {
+    max-width: 80%;
+    display: block;
+    padding: 5rpx;
+    background: rgba(255,255,255,.7);
+    margin: 5rpx 0;
+    word-wrap: break-word;
+}
+
+.msg-item {
+    padding: 8rpx 5rpx;
+    border-radius: 4rpx;
+    font-size: 14px;
+}
+
+.nickname {
+    color: #ff7906;
+}
+
+.input-section {
+    position: absolute;
+    bottom: 10rpx;
+    left: 10rpx;
+    right: 10rpx;
+}
+
+.input-section input {
+    background: #fff;
+    margin-right: 100rpx;
+    padding: 10rpx;
+}
+
+.input-section .love {
+    background: url(http://avc.qcloud.com/demo/webim/biggroup/mobile/img/like_hover.png);
+    background-size: 100%;
+    width: 70rpx;
+    height: 70rpx;
+    display: block;
+    position: absolute;
+    right: 10rpx;
+    bottom: 0;
+    border: 0;
+    outline: 0;
+}
+
+.input-section .love:after {
+    border: 0;
+}
+
+page {
+    background: #ebebeb;
+}
+
+.main {
+    width: 100%;
+}
+
+.scroll_view,.scroll_view_change {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 200rpx;
+}
+
+.scroll_view_change {
+    bottom: 520rpx;
+}
+
+.scroll_view_change2 {
+    bottom: 410rpx;
+}
+
+.message {
+    width: 100%;
+    height: auto;
+    padding: 10px 15px;
+}
+
+.time {
+    margin: 7px 0;
+    text-align: center;
+}
+
+.time text {
+    display: inline-block;
+    padding: 8rpx 20rpx;
+    font-size: 24rpx;
+    color: #fff;
+    line-height: 24rpx;
+    border-radius: 4rpx;
+    background-color: #cecece;
+}
+
+.user text {
+    margin: auto auto 4px 0;
+    font-size: 12px;
+    color: #dcdcdc;
+    display: block;
+}
+
+.avatar {
+    width: 66rpx;
+    height: 66rpx;
+    margin: 0 10px 0 0;
+    border-radius: 6rpx;
+    float: left;
+}
+
+.msg {
+    display: inline-block;
+    position: relative;
+    padding: 12rpx 20rpx;
+    max-width: 550rpx;
+    font-size: 28rpx;
+    text-align: left;
+    word-break: break-all;
+    background-color: #fff;
+    border-radius: 8rpx;
+}
+
+.msgpic {
+    display: inline-block;
+    position: relative;
+    max-width: 550rpx;
+    overflow: hidden;
+    text-align: left;
+}
+
+.msg text {
+    line-height: 1.5;
+}
+
+.self {
+    text-align: right;
+}
+
+.self .avatar {
+    float: right;
+    margin: 0 0 0 10px;
+}
+
+.self .user {
+    margin: auto 2px 4px auto;
+    font-size: 12px;
+    color: #dcdcdc;
+}
+
+.self .msg {
+    background-color: #b2e281;
+}
+
+.self .msg :before {
+    right: inherit;
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: #b2e281;
+}
+
+.room_bar {
+    width: 100%;
+    border-top: 1px solid #e1e1e1;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    background-color: #f5f5f6;
+    padding: 20rpx 20rpx 20rpx;
+}
+
+.send_btn {
+    width: 90rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 28rpx;
+    color: #fff;
+    padding: 0;
+    background-color: #23a721;
+    margin-left: 26rpx;
+    border-radius: 8rpx;
+}
+
+.audio {
+    width: 4.5%;
+    height: 40%;
+    border: 1px solid rgb(135,152,164);
+    border-radius: 50px;
+    padding: 3px 4px;
+    margin-left: 10px;
+}
+
+.room_bar form {
+    width: 100%;
+    padding: 0;
+    display: block;
+}
+
+.news {
+    height: 68rpx;
+    border: 1px solid #e1e1e1;
+    border-radius: 8rpx;
+    font-size: 32rpx;
+    padding-left: 8rpx;
+    flex: 1;
+    background: #fff;
+}
+
+.emoj {
+    width: 6.8%;
+    height: 60%;
+    margin-right: 10px;
+}
+
+.other_func {
+    width: 100%;
+    height: 60rpx;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.other_func image {
+    width: 21px;
+    height: 20px;
+}
+
+.emoji_list {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+}
+
+.showEmoji {
+    margin-top: 20rpx;
+    padding-top: 20rpx;
+    border-top: 1px solid #eee;
+    width: 100%;
+    height: 300rpx;
+    transition: height .2s;
+}
+
+.showPanel {
+    margin-top: 20rpx;
+    padding-top: 30rpx;
+    border-top: 1px solid #eee;
+    width: 100%;
+    height: 200rpx;
+    transition: height .2s;
+}
+
+.emoji_list image {
+    width: 54rpx;
+    height: 54rpx;
+}
+
+.showEmoji image {
+    width: 54rpx;
+    height: 54rpx;
+    margin: 2rpx 4rpx;
+}
+
+.emoji {
+    width: 54rpx;
+    height: 54rpx;
+    margin: 0 0;
+}
+
+.template {
+    display: inline;
+}
+
+.template text {
+    font-size: 32rpx;
+}
+
+.open_emoji,.send_image,.open_camera {
+    width: 58rpx;
+    height: 58rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 0 22rpx;
+}
+
+.v-record {
+    width: 58rpx;
+    height: 58rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 22rpx 0 0;
+    background: transparent;
+    padding: 0;
+}
+
+.open_emoji image,.send_image image,.open_camera image {
+    width: 58rpx;
+    height: 58rpx;
+}
+
+.v-record .icon-record {
+    width: 58rpx;
+    height: 58rpx;
+}
+
+.icon-play {
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
+}
+
+.icon-mic {
+    width: 123rpx;
+    height: 180rpx;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-record .modal-body {
+    width: 340rpx;
+    height: 340rpx;
+    background-color: rgba(00,00,00,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8rpx;
+}
+
+.modal-record .desc {
+    margin-top: 40rpx;
+    color: #fff;
+    font-size: 28rpx;
+}
+
+.modal-record .dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-row {
+    display: flex;
+    align-items: center;
+    height: 68rpx;
+}
+
+.button_bar {
+    display: flex;
+    color: #777;
+    align-items: center;
+    margin-bottom: 14rpx;
+}
+
+.button_bar view {
+    border-radius: 40rpx;
+    border: 1px solid #eee;
+    font-size: 24rpx;
+    padding: 0 20rpx;
+    line-height: 56rpx;
+    height: 56rpx;
+    margin-left: 30rpx;
+    background: #fff;
+}
+
+.weixin_pop {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 540rpx;
+    background: #fff;
+    box-shadow: 1px 6px 10px #e1e1e1;
+    margin-left: -270rpx;
+    border-radius: 10rpx;
+    padding: 50rpx 20rpx;
+    text-align: center;
+}
+
+.weixin_pop .btn_copy {
+    width: 280rpx;
+    margin: 60rpx auto 0;
+    border: 1px solid #62b900;
+    border-radius: 6rpx;
+    font-size: 32rpx;
+    padding: 8rpx 0;
+    color: #62b900;
+}
+
+.weixin_pop .btn_copy.dis {
+    background: #f1f1f1;
+    border: 1px solid #ddd;
+    color: #999;
+}
+
+.weixin_pop .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32rpx;
+    color: #333;
+    font-weight: 500;
+}
+
+.welcome {
+    float: left;
+    margin-top: 2px;
+}
+
+.welcome view {
+    display: flex;
+    align-items: center;
+    padding: 20rpx 20rpx 20rpx 20rpx;
+    margin: 20rpx 0;
+    border-radius: 8rpx;
+    border: 1px solid #eee;
+    width: 460rpx;
+}
+
+.welcome view .image {
+    width: 46rpx;
+    height: 46rpx;
+}
+
+.welcome view .text {
+    font-size: 28rpx;
+    margin-left: 20rpx;
+    flex: 1;
+    color: #333;
+}
+
+.chart_goodsName {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-width: 300rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.btn-addCard {
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 16rpx;
+    height: 72rpx;
+    line-height: 70rpx;
+    width: 200rpx;
+    border-radius: 40rpx 0 0 40rpx;
+    background: #2e3041;
+    font-size: 30rpx;
+    right: 0rpx;
+    text-align: center;
+    z-index: 100;
+}
+
+.showPanel view {
+    display: inline-block;
+    width: 106rpx;
+    margin: 0 40rpx 40rpx 0;
+}
+
+.showPanel view text {
+    display: block;
+    text-align: center;
+    font-size: 24rpx;
+    color: #666;
+}
+
+.showPanel view image {
+    width: 106rpx;
+    height: 106rpx;
+}
+
+.coupon-wrap {
+    width: 410rpx;
+    height: 345rpx;
+}
+
+.coupon-title {
+    font-size: 32rpx;
+}
+
+.coupon-wrap .top {
+    font-size: 48rpx;
+    color: #fefefe;
+    height: 82rpx;
+    line-height: 100rpx;
+    padding-left: 38rpx;
+}
+
+.bottom {
+    font-size: 24rpx;
+    color: #eee;
+    line-height: 40rpx;
+    padding-left: 38rpx;
+}
+
+.coupon {
+    width: 400rpx;
+    height: 220rpx;
+    background-color: #eb5053;
+    border-radius: 4px;
+    padding: 3rpx 3rpx 0;
+    margin: 20rpx 0;
+    position: relative;
+}
+
+.line {
+    border-top: 2rpx dashed #ddd;
+    height: 0;
+    width: 360rpx;
+    position: absolute;
+    top: 140rpx;
+    margin: 0 0 0 20rpx;
+}
+
+.coupon .before,.coupon .after {
+    content: '';
+    position: absolute;
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 50%;
+    top: 120rpx;
+    background-color: #b2e281;
+}
+
+.coupon .before {
+    left: -20rpx;
+}
+
+.coupon .after {
+    right: -20rpx;
+}
+
+.coupon-bot,.coupon-bot text {
+    font-size: 22rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+}
+
+.coupon-bot text {
+    color: #fe6262;
+}
+
+.shareCard2 {
+    display: flex;
+    padding: 20rpx 30rpx 20rpx 20rpx;
+    font-size: 0;
+    align-items: center;
+    box-shadow: 1px 1px 2px #e1e1e1;
+    margin: 20rpx;
+    border-radius: 12rpx;
+    position: fixed;
+    top: 0;
+    z-index: 9998;
+    right: 0;
+    left: 0;
+    background: #fff url("https://img.weixin.sundayer.cn/card_bg@3x.png") no-repeat;
+    background-size: 100%;
+}
+
+.shareCard2 .avatar image {
+    width: 66rpx;
+    height: 66rpx;
+    border-radius: 8rpx;
+}
+
+.shareCard2 .center {
+    flex: 1;
+}
+
+.shareCard2 .center text {
+    display: block;
+    color: #333;
+    font-size: 28rpx;
+}
+
+.shareCard2 .center .name {
+    font-size: 32rpx;
+}
+
+.shareCard2 .center .position {
+    color: #d4b68c;
+    font-weight: 300;
+}
+
+.shareCard2 .right {
+    font-size: 28rpx;
+    color: green;
+}
+
+.btn-recording {
+    line-height: 68rpx;
+    border: 1px solid #e1e1e1;
+    border-radius: 8rpx;
+    font-size: 32rpx;
+    padding-left: 8rpx;
+    flex: 1;
+    background: #f5f5f6;
+    text-align: center;
+    color: #777;
+}
+
+@-webkit-keyframes bofang {
+    25% {
+        background-position: -46rpx 0;
+    }
+
+    50% {
+        background-position: -96rpx 0;
+    }
+
+    75% {
+        background-position: -142rpx 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+@keyframes bofang {
+    25% {
+        background-position: -46rpx 0;
+    }
+
+    50% {
+        background-position: -96rpx 0;
+    }
+
+    75% {
+        background-position: -142rpx 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.self .laba {
+    background-image: url("https://img.weixin.sundayer.cn/card/lvse-gif.png");
+}
+
+.laba {
+    width: 48rpx;
+    height: 48rpx;
+    background-image: url("https://img.weixin.sundayer.cn/card/wihtegif.jpg");
+    background-size: 192rpx 48rpx;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+.play .ani {
+    animation: bofang 1s steps(1) infinite;
+}
+
+.audioSec {
+    position: absolute;
+    color: #999;
+    right: -60rpx;
+    width: 40rpx;
+    white-space: nowrap;
+}
+
+.self .audioSec {
+    left: -50rpx;
+}
+
+button.tellmobile {
+    font-size: 28rpx;
+    color: #05b00f;
+}
+
+.self>.msg::after {
+    content: "";
+    position: absolute;
+    right: -16rpx;
+    left: auto!important;
+    top: 20rpx;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: #ebebeb #ebebeb #ebebeb #b2e281!important;
+    border-width: 10rpx;
+    transform: rotate(0deg);
+    z-index: 5;
+}
+
+.main .msg::after {
+    content: "";
+    position: absolute;
+    left: -16rpx;
+    top: 20rpx;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: #ebebeb #fff #ebebeb #ebebeb;
+    border-width: 10rpx;
+    transform: rotate(0deg);
+    z-index: 5;
+}

@@ -1,0 +1,22 @@
+<view class="contenter">
+    <view class="peo-content" wx:if="{{data.length>0}}">
+        <view catchtap="onItemTap" class="people-list flex gridXb transition-duration-150 active-bg" data-index="{{index}}" wx:for="{{data}}" wx:key="{{index}}">
+            <view class="peo-img mr10">
+                <image mode="aspectFill" src="{{item.headimgurl?item.headimgurl:'/images/default.png'}}"></image>
+            </view>
+            <view class="peo-name sub">
+                <view>{{item.nickname}}</view>
+                <view class="linght f12">签到号：
+                    <text class="blue">{{item.status==1?item.serial_number:'等待签到'}}</text>
+                </view>
+            </view>
+            <view class="peo-msg fr">{{item.status==1?'已签到':'未签到'}}</view>
+        </view>
+    </view>
+    <view class="peo-content" wx:else>
+        <view class="tc">尚未有人报名（创建者除外）</view>
+    </view>
+    <view bindtap="onExitActivityTap" class="btn">
+        <button class="transition-duration-150" disabled="{{!is_exist}}" type="warn">退出活动</button>
+    </view>
+</view>

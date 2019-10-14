@@ -1,0 +1,6 @@
+<view style="margin: 20rpx; line-height:44rpx; color: #333;font-size: 28rpx;" wx:if="{{vip.vip.remark!=''}}">
+    {{vip.vip.remark}}
+</view>
+<view style="margin-top: 200rpx; text-align:center; font-size: 24rpx;color: #999" wx:else>
+      暂无会员权益
+</view>

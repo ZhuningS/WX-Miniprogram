@@ -1,0 +1,46 @@
+@import "../myOrderList/orderList.wxss";
+
+.order-item .order-info {
+    padding: 20rpx 20rpx 0;
+}
+
+.order-item .state {
+    color: #3aaf49;
+}
+
+.navs .nav__item.selected .btn {
+    border-bottom: 2px solid #3aaf49;
+    color: #3aaf49;
+}
+
+.order-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 108rpx;
+}
+
+.order-btn>view {
+    width: 144rpx;
+    height: 60rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    line-height: 60rpx;
+    font-size: 26rpx;
+}
+
+.detail {
+    color: #333;
+    border: 2rpx solid #ccc;
+}
+
+.topay {
+    color: #fff;
+    margin-left: 20rpx;
+    background-color: #3aaf49;
+}
+
+.label-text .name {
+    font-size: 28rpx;
+    color: #313131;
+}

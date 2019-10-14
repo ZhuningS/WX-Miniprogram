@@ -1,0 +1,3 @@
+<view class="custom-follow" wx:if="{{status==0}}">
+    <official-account binderror="binderror" bindload="bindload"></official-account>
+</view>

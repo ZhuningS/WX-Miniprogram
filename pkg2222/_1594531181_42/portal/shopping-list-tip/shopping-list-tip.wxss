@@ -1,0 +1,59 @@
+.wrap {
+    text-align: center;
+}
+
+.icon {
+    margin-left: auto;
+    margin-right: auto;
+    width: 120rpx;
+    height: 120rpx;
+    margin-top: 120rpx;
+}
+
+.title {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.desc {
+    margin-left: 100rpx;
+    margin-right: 100rpx;
+    margin-top: 100rpx;
+    font-size: 15px;
+    text-align: left;
+}
+
+.desc-scope {
+    font-size: 15px;
+    margin-left: 100rpx;
+    margin-right: 100rpx;
+    text-align: left;
+}
+
+.tips {
+    margin-left: 100rpx;
+    margin-right: 100rpx;
+    margin-top: 40rpx;
+    text-align: left;
+    font-size: 15px;
+}
+
+.tips-img {
+    width: 550rpx;
+    height: 328rpx;
+    background-color: #F7F7F7;
+    margin-top: 40rpx;
+}
+
+.confirm-btn {
+    margin-top: 40rpx;
+    margin-left: 100rpx;
+    margin-right: 100rpx;
+}
+
+.cancel-btn {
+    margin-top: 20rpx;
+    margin-left: 100rpx;
+    margin-right: 100rpx;
+}

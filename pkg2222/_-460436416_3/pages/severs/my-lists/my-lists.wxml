@@ -1,0 +1,2 @@
+<import src="../tpl.wxml"></import>
+<template is="my-doc-list" data="{{data:data,config:config,cate_invalid:true,hasMore:hasMore,isLoading:isLoading}}"></template>

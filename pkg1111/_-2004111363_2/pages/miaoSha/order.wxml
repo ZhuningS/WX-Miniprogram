@@ -1,0 +1,83 @@
+<view class="order {{currentSkin}}">
+    <view bindtap="chooseAddress" class="header" data-wpychooseaddress-a="{{vm.cartid}}">
+        <view class="f fc" style="height:150rpx; padding: 0 30rpx;">
+            <text class="f34 c333 t-b f1" wx:if="{{vm.address.modeId==-999}}">请选择配送方式</text>
+            <view class="user-model f fv f1" wx:if="{{vm.address.modeId!=-999}}">
+                <view class="f fc">
+                    <text class="f26" style="color:#FF6F30">[{{vm.address.mode}}]</text>
+                    <text class="f34 t-b c333" style="margin:0 10rpx">{{vm.address.contact}}</text>
+                    <text class="f34 t-b c333">{{vm.address.phone}}</text>
+                </view>
+                <view class="f26 c666 mt20 line line1">地址：{{vm.address.address}}</view>
+            </view>
+            <text class="dzicon icon-xiala-copy-right"></text>
+        </view>
+        <image class="w-100" mode="widthFix" src="http://j.vzan.cc/dz/content/images/Enterprisepro/order-logo.png" style="display:inherit;"></image>
+    </view>
+    <view class="wrap-good">
+        <view style="padding-left:30rpx;">
+            <view bindtap="$comItem$pathGood" class="f fc fj" data-com-index="{{undefined}}" data-wpypathgood-a="{{$comItem$item.orderDtl.FoodGoodsId}}" style="padding:30rpx 30rpx 30rpx 0;border-bottom:1px solid #eee;" wx:for="{{vm.list}}" wx:for-index="$comItem$index" wx:for-item="$comItem$item" wx:key="$comItem$key">
+                <image catchtap="$comItem$showimg" class="g-img" data-com-index="{{undefined}}" data-wpyshowimg-a="{{$comItem$item.ImgUrl}}" mode="aspectFill" src="{{$comItem$item.ImgUrl}}"></image>
+                <view class="g-content f1 f fv fj">
+                    <view>
+                        <text class="f26 c33 line line1">{{$comItem$item.Introduction}}</text>
+                        <text class="w-100 c666 mt20 f24 c666" style="display:inline-block" wx:if="{{$comItem$item.SpecInfo!='undefined'||$comItem$item.SpecInfo!=''}}">{{$comItem$item.SpecInfo}}</text>
+                    </view>
+                    <view class="f fj">
+                        <view wx:if="{{$comItem$item.type=='good'||$comItem$item.type=='miaosha'}}">
+                            <wxc-price class="c333 t-b f30">{{$comItem$item.discountPrice}}</wxc-price>
+                            <wxc-price class="ml10 f26" delColor="#666" status="del" wx:if="{{$comItem$item.oldPrice!=0&&$comItem$item.discountPrice!=$comItem$item.oldPrice}}">{{$comItem$item.oldPrice}}</wxc-price>
+                        </view>
+                        <view wx:else>
+                            <wxc-price class="c333 t-b f30">{{$comItem$item.discountPrice}}</wxc-price>
+                            <wxc-price class="ml10 f26" delColor="#666" status="del" wx:if="{{$comItem$item.discount!=100&&$comItem$item.discountPrice!=$comItem$item.oldPrice}}">{{$comItem$item.oldPrice}}</wxc-price>
+                        </view>
+                        <text class="c333 f26">x{{$comItem$item.Count}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="wrap-message f fc">
+            <text class="f26">买家留言:</text>
+            <input bindblur="setMess" class="ml20 f1 tr f26" maxlength="100" placeholder="选填，给商家留言" placeholderStyle="color:#d9d9d9" value="{{vm.message}}"></input>
+        </view>
+    </view>
+    <view class="wrap-order f fv">
+        <view class="f fj fc" style="padding-top:30rpx">
+            <text>商品金额</text>
+            <text class="t-b">￥{{vm.totalPrice}}</text>
+        </view>
+        <view class="f fj fc" style="padding:30rpx 0;">
+            <text>运费</text>
+            <text class="t-b" style="color:#FF3232">+￥{{vm.fee}}</text>
+        </view>
+    </view>
+    <view class="wrap-mode">
+        <view bindtap="payMode" class="mode-weixin f fc fj" data-wpypaymode-a="1">
+            <view class="f fc">
+                <text class="dzicon icon-weixin f50" style="color:#22AC38"></text>
+                <text style="margin-left:23rpx;">微信支付</text>
+            </view>
+            <view class="dzicon icon-Choice_xuanze f47" style="color:#FF3232" wx:if="{{payIndex==1}}"></view>
+        </view>
+        <view bindtap="payMode" class="mode-weixin f fc fj" data-wpypaymode-a="2">
+            <view class="f fc">
+                <text class="dzicon icon-jinbi f50" style="color:#F9B629"></text>
+                <text style="margin-left:23rpx;">储值支付<text class="c666 ml10">(￥{{vm.valueMoney}})</text>
+                </text>
+            </view>
+            <view class="dzicon icon-Choice_xuanze f47" style="color:#FF3232" wx:if="{{payIndex==2}}"></view>
+        </view>
+    </view>
+    <view style="height:120rpx"></view>
+    <view class="wrap-btn f fc fj">
+        <view class="f fc f1" style="border-top:1px solid #eee;padding-left:30rpx;">
+            <text class="f26">实付款:</text>
+            <text class="t-b f34 ml10" style="color:#FF3232">￥{{vm.realPrice}}</text>
+        </view>
+        <form bindsubmit="payRequest" reportSubmit="true">
+            <button class="skin_bg" formType="submit">立即支付</button>
+        </form>
+    </view>
+    <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+</view>

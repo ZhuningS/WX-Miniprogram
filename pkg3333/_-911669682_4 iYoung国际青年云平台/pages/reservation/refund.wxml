@@ -1,0 +1,8 @@
+<form bindsubmit="onPushSubmit" reportSubmit="true">
+    <view class="content bgwhite m10">
+        <textarea name="remark" placeholder="退款说明"></textarea>
+    </view>
+    <view class="m20">
+        <button formType="submit" hoverClass="none" type="primary">提交</button>
+    </view>
+</form>

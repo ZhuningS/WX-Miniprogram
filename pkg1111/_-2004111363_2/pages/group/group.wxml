@@ -1,0 +1,138 @@
+<view class="group {{currentSkin}}">
+    <swiper indicatorDots autoplay="true" class="com-slider w-100" duration="300" indicatorActiveColor="#a1a2a3" indicatorColor="#fff" interval="5000" wx:if="{{vm_group.ImgList.length}}">
+        <swiper-item wx:for="{{vm_group.slideimgs_fmt}}" wx:for-index="$comSlider$index" wx:for-item="$comSlider$item" wx:key="$comSlider$key">
+            <image bindtap="$comSlider$imgFunc" class="w-100" data-com-index="{{undefined}}" data-wpyimgfunc-a="{{vm_group}}" id="{{$comSlider$index}}" mode="widthFix" src="{{$comSlider$item||'http://j.vzan.cc/miniapp/img/enterprise/blank_150x150.png'}}"></image>
+        </swiper-item>
+    </swiper>
+    <image class="w-100" mode="widthFix" src="{{vm_group.ImgUrl}}" wx:else></image>
+    <view class="g-pro">
+        <view class="f36 line line3">{{vm_group.GroupName||''}}</view>
+        <view class="f fc">
+            <view class="f1">
+                <wxc-price class="f42 cred" icon="sub">{{(vm_group.DiscountPrice||0)/100}}</wxc-price>
+                <wxc-price class="c999 ml20" status="del">{{(vm_group.UnitPrice||0)/100}}</wxc-price>
+            </view>
+            <view class="g-clock f fv skin_txt" wx:if="{{group_time.groupstate==1}}">
+                <text class="f24">{{group_time.fromTheEnd_txt}}</text>
+                <text>{{group_time.timeInter}}</text>
+            </view>
+        </view>
+        <view class="mt20 f fc">
+            <view class="f1 f fc">
+                <text class="f26">已售{{vm_group.virtualSalesCount+vm_group.salesCount}}</text>
+                <image class="g-userImg" mode="aspectFill" src="{{item}}" wx:for="{{vm_group.GroupUserList}}" wx:key="key"></image>
+            </view>
+            <text class="f26 c999">仅剩{{vm_group.RemainNum}}份<block wx:if="{{vm_group.LimitNum>0}}"> | 限购{{vm_group.LimitNum}}份</block>
+            </text>
+        </view>
+    </view>
+    <view class="c-gv" wx:if="{{vm_group.value}}">
+        <view class="c-gv-title f fj">
+            <text class="f30 t-b">评价({{$comValue$current.count}})</text>
+            <text bindtap="$comValue$pathNav" class="f24 c999" data-com-index="{{index}}" data-wpypathnav-a="{{vm_group.value.GoodsId}}">更多<text class="dzicon icon-xiala-copy-right"></text>
+            </text>
+        </view>
+        <view class="c-gv-main f fv">
+            <view class="f fc f26 mt30">
+                <image class="c-gv-main-user" src="{{vm_group.value.HeadImgUrl||'http://j.vzan.cc/content/city/images/voucher/10.jpg'}}"></image>
+                <text class="f26">{{vm_group.value.Anonymous?'匿名':vm_group.value.NickName}}</text>
+            </view>
+            <view class="f26 mt30">{{vm_group.value.Comment?vm_group.value.Comment:'该用户暂无评论'}}</view>
+            <view class="f24 c999 f mt30">
+                <text>{{vm_group.value.AddTimeStr}}</text>
+                <text style="margin-left:20rpx">{{vm_group.value.GoodsSpecification}}</text>
+            </view>
+            <view class="c-gv-main-imgs f {{vm_group.value.CommentImgs.length>=3?'fj':''}} rel">
+                <image src="{{$comValue$item.thumbnail}}" style="margin-right:{{vm_group.value.CommentImgs.length<3?'10':'0'}}rpx" wx:if="{{$comValue$index<3}}" wx:for="{{vm_group.value.CommentImgs}}" wx:for-index="$comValue$index" wx:for-item="$comValue$item" wx:key="$comValue$key"></image>
+                <text class="c-gv-main-tip" wx:if="{{vm_group.value.CommentImgs.length>3}}">共{{vm_group.value.CommentImgs.length}}张</text>
+            </view>
+        </view>
+    </view>
+    <view class="g-more" wx:if="{{vm_group.GroupSponsorList!=null&&vm_group.GroupSponsorList.length>0}}">
+        <view class="g-title">以下小伙伴正在发起拼团，您可以直接参与：</view>
+        <view class="g-moreLst">
+            <view class="f fc g-moreitem" wx:for="{{order_time}}" wx:key="key">
+                <image mode="aspectFill" src="{{item.UserLogo}}"></image>
+                <text class="f32 pl20 f1 line line1">{{item.UserName||''}}</text>
+                <view class="f24 f fc fv mr10">
+                    <view>差 <text class="cred">{{item.NeedNum}}</text> 人成团</view>
+                    <view class="c999">剩余{{item.countdown}}</view>
+                </view>
+                <form bindsubmit="joinGroup" data-wpyjoingroup-a="{{item.Id}}" reportSubmit="true">
+                    <button class="g-morebtn f28" formType="submit">去参团</button>
+                </form>
+            </view>
+        </view>
+    </view>
+    <view class="g-detail">
+        <view class="w-100 f fc">
+            <view bindtap="clickTab" class="f1 g-deltitle {{tabId==index?'skin_bottom':''}}" data-wpyclicktab-a="{{index}}" wx:for="{{tab}}" wx:key="key">{{item}}</view>
+        </view>
+        <block wx:if="{{tabId==0}}">
+            <block wx:if="{{vm_group.Description!=''}}">
+                <import src="../../lib/wxParse/wxParse.wxml"></import>
+                <view class="f32 pw20" style="word-break: break-all">
+                    <template is="wxParse0" data="{{item:item}}" wx:for="{{vm_group.content_fmt.nodes||vm_group.nodes}}" wx:key="{{index}}"></template>
+                </view>
+            </block>
+            <wxc-abnor type="DATA" wx:else></wxc-abnor>
+        </block>
+        <view class="p20" wx:if="{{tabId==1}}">
+            <view class="t-b">1.拼团有效期</view>
+            <text>拼团有效期是自开团起的24小时内，如果距离活动结束时间小于24小时，则已活动时间为准。</text>
+            <view class="t-b mt20">2.拼团成功</view>
+            <text>拼团有效期内，支付人数达到规定人数视为拼团成功，商家即进入发货流程。拼团成功后不可退款，如有异议请自行与商家协商。</text>
+            <view class="t-b mt20">3.拼团失败</view>
+            <text>拼团有效期内支付人数未能达到规定人数视为拼团失败，拼团失败的订单，系统会在1-7个工作日内发起退款，发起退款后1-10个工作日内订单金额将原路退回。</text>
+        </view>
+    </view>
+    <view style="height:100rpx;"></view>
+    <view class="g-bottom f fc">
+        <navigator class="g-home f fv fc fc-h" openType="reLaunch" url="/pages/index/index">
+            <text class="dzicon icon-shouye2 f42"></text>
+            <text class="f24 c666">首页</text>
+        </navigator>
+        <view wx:if="{{vm_group.imswitch}}">
+            <button bindgetuserinfo="$comIm$getUser" class="c-good-btn-icon f fc-h fc fv" data-com-index="{{index}}" openType="getUserInfo" wx:if="{{userInfo.newUser}}">
+                <text class="dzicon icon-kefu f36"></text>
+                <text class="f28 mt10">客服</text>
+            </button>
+            <view wx:if="{{userInfo.newUser==false}}">
+                <button class="c-good-btn-icon f fc-h fc fv" openType="contact" wx:if="{{vm_group.wxServer}}">
+                    <text class="dzicon icon-kefu f36"></text>
+                    <text class="f28 mt10">客服</text>
+                </button>
+                <view bindtap="$comIm$gochat" class="c-good-btn-icon f fc-h fc fv" data-com-index="{{index}}" wx:else>
+                    <text class="dzicon icon-kefu f36"></text>
+                    <text class="mt10">客服</text>
+                </view>
+            </view>
+        </view>
+        <view class="f1 g-btn bgcc cfff" style="line-height:100rpx;" wx:if="{{vm_group.RemainNum<=0}}">库存不足</view>
+        <view class="f f1 fc" wx:if="{{vm_group.RemainNum>0&&group_time.groupstate==1&&userInfo.newUser==false}}">
+            <form bindsubmit="goBuy" class="w-100" data-wpygobuy-a="{{vm_group.Id}}" reportSubmit="true">
+                <button class="g-btn cfff btnBuySingle f fv fc fc-h" formType="submit">
+                    <text>单独购买</text>
+                    <text>￥{{vm_group.UnitPrice/100}}</text>
+                </button>
+            </form>
+            <form bindsubmit="groupBuy" class="w-100" data-wpygroupbuy-a="{{vm_group.Id}}" reportSubmit="true">
+                <button class="g-btn cfff btnBuyGroup f fv fc fc-h" formType="submit">
+                    <text>一键拼团</text>
+                    <text>￥{{vm_group.DiscountPrice/100}}</text>
+                </button>
+            </form>
+        </view>
+        <view class="f f1 fc" wx:if="{{vm_group.RemainNum>0&&group_time.groupstate==1&&userInfo.newUser}}">
+            <button bindgetuserinfo="getUser" class="f1 g-btn cfff btnBuySingle f fv fc fc-h" openType="getUserInfo">
+                <text>单独购买</text>
+                <text>￥{{vm_group.UnitPrice/100}}</text>
+            </button>
+            <button bindgetuserinfo="getUser" class="f1 g-btn cfff btnBuyGroup f fv fc fc-h" openType="getUserInfo">
+                <text>一键拼团</text>
+                <text>￥{{vm_group.DiscountPrice/100}}</text>
+            </button>
+        </view>
+        <view class="f1 g-btn btnBuyGroup cfff" style="line-height:100rpx;" wx:elif="{{group_time.groupstate==-1}}">距离开始还有：{{group_time.timeInter}}</view>
+    </view>
+</view>

@@ -1,0 +1,25 @@
+<template name="banner">
+    <view class="mSwiper" wx:if="{{list&&list.length>0}}">
+        <swiper autoplay="{{true}}" circular="{{true}}" class="mSwiper__swiper" duration="{{500}}" indicatorDots="{{true}}" interval="{{5000}}">
+            <swiper-item class="mSwiper__swiperItem" wx:for="{{list}}" wx:key="id">
+                <form bindsubmit="_jump" data-url="/pages/goods/detail2/detail?id={{item.linkid}}" reportSubmit="true" wx:if="{{item.linkid&&item.linktid=='groups'}}">
+                    <button class="nobutton mSwiperItem" formType="submit">
+                        <view>
+                            <image class="mSwiperItem__img" mode="aspectFill" src="{{item.thumb}}"></image>
+                        </view>
+                    </button>
+                </form>
+                <form bindsubmit="_jump" data-url="/pages/goods/detail/detail?id={{item.linkid}}" reportSubmit="true" wx:elif="{{item.linkid&&item.linktid=='goods'}}">
+                    <button class="nobutton mSwiperItem" formType="submit">
+                        <view>
+                            <image class="mSwiperItem__img" mode="aspectFill" src="{{item.thumb}}"></image>
+                        </view>
+                    </button>
+                </form>
+                <view class="mSwiperItem" wx:else>
+                    <image class="mSwiperItem__img" mode="aspectFill" src="{{item.thumb}}"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</template>

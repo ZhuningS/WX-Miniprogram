@@ -1,0 +1,10 @@
+{
+    "backgroundColor": "#F7F7F7",
+    "navigationBarBackgroundColor": "#F7F7F7",
+    "usingComponents": {
+        "error-page": "../../libs/mmuxwxappdevkit/widget/error-page/error-page",
+        "navigation-bar": "../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar",
+        "action-sheet": "../../libs/mmuxwxappdevkit/widget/action-sheet/action-sheet",
+        "address-item": "../../widget/address-item/address-item"
+    }
+}

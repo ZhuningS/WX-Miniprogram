@@ -1,0 +1,10 @@
+<template name="other$5d1db34f">
+    <view class="_div data-v-fd75d618">
+        <view class="_div data-v-fd75d618 title">图片</view>
+        <button bindtap="handleProxy" class="_button data-v-fd75d618 btn" data-comkey="{{$k}}" data-eventid="{{'0'}}">选择相册图片上传并读取信息</button>
+        <image bindtap="handleProxy" class="_img data-v-fd75d618 image" data-comkey="{{$k}}" data-eventid="{{'1-'+index}}" key="{{img}}" mode="aspectFit" src="{{img}}" wx:for="{{imgs}}" wx:for-item="img" wx:key="img"></image>
+        <button bindtap="handleProxy" class="_button data-v-fd75d618 btn" data-comkey="{{$k}}" data-eventid="{{'2'}}" wx:if="{{imgs.length}}">预览图片</button>
+        <view class="_div data-v-fd75d618 title">录音</view>
+        <button bindtap="handleProxy" class="_button data-v-fd75d618 btn" data-comkey="{{$k}}" data-eventid="{{'3'}}"> 开始录音</button>
+    </view>
+</template>

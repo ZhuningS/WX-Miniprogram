@@ -1,0 +1,120 @@
+<import src="/pages/store/store-common/storetpl.wxml"></import>
+<template is="load_bg" data="{{is_show_load_bg:is_show_load_bg}}"></template>
+<view class="store-tpl">
+    <view class="store-swiper-box">
+        <swiper autoplay="true" bindchange="storeSwiperChange" circular="true" class="store-swiper">
+            <swiper-item wx:for="{{store_data.store_shijing_arr}}" wx:for-item="simgitem">
+                <image mode="aspectFill" src="{{simgitem}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="store-swiper-bottom">
+            <view bindtap="toWebView" class="panorama-btn" wx:if="{{store_data.store_is_webview_open==1}}">
+                <text class="mr5 iconfont icon-quanjing"></text>{{store_data.store_webview_text}}</view>
+            <view class="store-swiper-dots">{{storeSwiperNum+1}} / {{store_data.store_shijing_arr.length}}</view>
+        </view>
+    </view>
+    <view class="store-info">
+        <view class="flex">
+            <view class="store_logo">
+                <image class="img circle" mode="aspectFill" src="{{store_data.store_logo}}"></image>
+            </view>
+            <view class="sub ml10 fb f18">{{store_data.store_name}}</view>
+        </view>
+        <view class="shop-tag mt10">
+            <text wx:if="{{fuwuItem}}" wx:for="{{store_data.store_fuwu}}" wx:for-item="fuwuItem">{{fuwuItem}}</text>
+        </view>
+        <view class="mt10">
+            <text class="mr5 iconfont icon-timefill lightgrey"></text>
+            <text>{{store_data.store_open_time_text}}：{{store_data.office_time}}</text>
+        </view>
+        <view bindtap="huodong_info_bind" class="mt5" wx:if="{{store_data.store_gonggao}}">
+            <text class="mr5 iconfont icon-notificationfill lightgrey"></text>
+            <text>公告：{{store_data.store_gonggao}}</text>
+        </view>
+        <view class="mt5 flex">
+            <text class="mr5 iconfont icon-locationfill lightgrey"></text>
+            <text bindtap="get_location_bind" class="sub lineText2 mr10">{{store_data.store_address}}</text>
+            <button bindtap="call_phone_bind" class="call-btn iconfont icon-dianhua" type="primary"></button>
+        </view>
+        <view class="mt10 flex shop-btn" wx:if="{{store_data.is_rapid_pay==1&&!store_data.xcx_appid}}">
+            <button bindtap="rapid_pay_bind" class="sub" type="primary" wx:if="{{store_data.is_rapid_pay==1}}">
+                <text class="iconfont icon-Paywechat"></text> 优惠买单</button>
+        </view>
+        <view class="mt10 flex shop-btn" wx:if="{{store_data.xcx_appid}}">
+            <button bindtap="jump_xcx" class="sub" id="{{store_data.xcx_appid}}" type="primary" wx:if="{{store_data.is_rapid_pay==1}}">
+                <text class="iconfont "></text> {{store_data.xcx_entry_title}}</button>
+        </view>
+    </view>
+    <view bindtap="coupon_list_bind" class="ui-cells ui-cells-access" wx:if="{{store_data.is_show_coupon==1&&!store_data.xcx_appid}}">
+        <view class="ui-cell arrowR">
+            <text class="ui-cell-icon yellow mr10 iconfont icon-couponfill"></text>
+            <text>代金券、折扣券</text>
+        </view>
+    </view>
+    <view class="store-product mt10" wx:if="{{store_data.recommend_goods.length>0&&!store_data.xcx_appid}}">
+        <view bindtap="goods_list_bind" class="ui-cell ui-cell-access flex flex-center shop-tit gridXb" data-consume_type="0">
+            <view class="sub head-title">{{store_data.goods_area_title}}</view>
+            <view class="right-more arrowR f14 lightgrey">查看更多</view>
+        </view>
+        <scroll-view class="store-product-goods" scrollX="true" wx:if="{{store_data.store_template_type==3||store_data.store_template_type==4||store_data.store_template_type==6}}">
+            <view bindtap="goods_info_bind" class="store-product-item" id="{{gitem.id}}" wx:for="{{store_data.recommend_goods}}" wx:for-item="gitem">
+                <view class="product-img">
+                    <image class="scale-rule" mode="aspectFill" src="{{gitem.g_img}}"></image>
+                </view>
+            </view>
+        </scroll-view>
+        <view bindtap="goods_info_bind" class="ui-cell gridXb flex" id="{{gitem.id}}" wx:if="{{store_data.store_template_type==1||store_data.store_template_type==2||store_data.store_template_type==5}}" wx:for="{{store_data.recommend_goods}}" wx:for-item="gitem">
+            <view class="goods-img mr10">
+                <image mode="aspectFill" src="{{gitem.g_img}}"></image>
+            </view>
+            <view class="sub flexC">
+                <view class="sub">{{gitem.g_name}}</view>
+                <view class="fb f16 red">￥{{gitem.shop_price}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="ui-cells mt10" wx:if="{{store_data.is_show_store_intro==1&&store_data.store_intro}}">
+        <view class="ui-cell gridXb">
+            <view class="head-title">{{store_data.store_profile_text}}</view>
+        </view>
+        <block wx:if="{{store_data.store_intro}}">
+            <import src="../../../wxParse/wxParse.wxml"></import>
+            <view class="store-detail-box {{is_show_all_intro==false?'hid-desc':''}}">
+                <view class="intro">
+                    <view class="mb10 content">
+                        <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view bindtap="change_store_intro_show" class="sea-more-info">{{is_show_all_intro==false?'查看全部介绍':'收起全部介绍'}}</view>
+    </view>
+    <view bindtap="change_consult_view_show" class="leaving-msg-btn">
+        <button>留言咨询</button>
+    </view>
+    <block wx:if="{{store_data.is_show_comment==1&&!store_data.xcx_appid}}">
+        <import src="/pages/store/store-common/storetpl.wxml"></import>
+        <view>
+            <template is="comment" data="{{comment_data:comment_data,comment_title:comment_title}}"></template>
+        </view>
+    </block>
+    <view class="leaving-msg-pop floatBox" wx:if="{{is_show_consult_view}}">
+        <form bindsubmit="formSubmit">
+            <view class="leaving-msg-box">
+                <view class="leaving-tit tc">留言咨询</view>
+                <input class="leaving-inp" name="user_name" placeholder="姓名：" placeholderStyle="font-size:14px;"></input>
+                <input class="leaving-inp" name="user_mobile" placeholder="手机号：" placeholderStyle="font-size:14px;" type="number"></input>
+                <view class="leaving-txtare">
+                    <textarea fixed="true" name="msg" placeholder="请输入您的留言,我们看到后会立即与您联系"></textarea>
+                </view>
+                <button formType="submit" type="primary">提交</button>
+            </view>
+        </form>
+        <view bindtap="change_consult_view_show" class="floatBox floatBoxBg"></view>
+    </view>
+</view>
+<view class="aside-float-box">
+    <view class="aside-float">
+        <button bindtap="backHome" class="iconfont icon-home" type="primary" wx:if="{{store_type==2}}"></button>
+    </view>
+</view>

@@ -1,0 +1,6 @@
+.card {
+    flex-shrink: 0;
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+}

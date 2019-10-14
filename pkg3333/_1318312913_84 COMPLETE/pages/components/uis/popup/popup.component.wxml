@@ -1,0 +1,6 @@
+<view class="{{rootClassNames}}" wx:if="{{isVisible}}">
+    <view catchtap="handleMaskTap" class="popup-mask" wx:if="{{hasMask}}"></view>
+    <view class="popup-content">
+        <slot></slot>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "chat-text-cell": "../../widget/chat-text-cell/chat-text-cell",
+        "chat-img-cell": "../../widget/chat-img-cell/chat-img-cell",
+        "chat-sys-cell": "../../widget/chat-sys-cell/chat-sys-cell",
+        "chat-goods-cell": "../../widget/chat-goods-cell/chat-goods-cell",
+        "tools-attachment": "../../widget/tools-attachment/tools-attachment",
+        "navigation-bar": "../../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar"
+    },
+    "backgroundColor": "#EBEBEB"
+}

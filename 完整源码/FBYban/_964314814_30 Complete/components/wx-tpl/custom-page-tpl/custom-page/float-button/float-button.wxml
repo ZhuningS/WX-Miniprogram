@@ -1,0 +1,6 @@
+<view class="float-backgroud {{floatButton.buttonPosition=='leftbottom'?'float-left':'float-right'}}" style=" border-radius:{{floatButton.buttonCircle}}%">
+    <view bindtap="{{floatButton.jumpType==7?'clickButton':''}}" class="inner-view">
+        <image class="float-image" mode="scaleToFill" src="{{floatButton.buttonUrl=='../../images/micro-business/userDefineTel.png'?'https://xcximg.197.com/xcx/userDefineTel.png':floatButton.buttonUrl}}" style=" border-radius:{{floatButton.buttonCircle}}%"></image>
+        <button openType="contact" wx:if="{{floatButton.jumpType==6}}"></button>
+    </view>
+</view>

@@ -1,0 +1,42 @@
+<view class="contenter">
+    <view bindtap="onNavigateTap" class="group-list transition-duration-150 active-bg mb10" data-url="vote/index">
+        <view class="icontitle iconfont icon-tubiao icon-blue mr10"></view>
+        <view class="list-content">
+            <text class="list-title f18">群投票</text>
+            <text class="list-text">发起话题投票，快速收集群友意见</text>
+        </view>
+        <view class="comein f12 linght">
+            <text class="iconfont icon-youjiantou"></text>
+        </view>
+    </view>
+    <view bindtap="onNavigateTap" class="group-list transition-duration-150 active-bg mb10" data-url="activity/index">
+        <view class="icontitle iconfont icon-huodong icon-yellow mr10"></view>
+        <view class="list-content">
+            <text class="list-title f18">群活动</text>
+            <text class="list-text">自定义群活动，增加群友之间友情</text>
+        </view>
+        <view class="comein f12 linght">
+            <text class="iconfont icon-youjiantou"></text>
+        </view>
+    </view>
+    <view bindtap="onNavigateTap" class="group-list transition-duration-150 active-bg mb10" data-url="clocking/index">
+        <view class="icontitle iconfont icon-kaoqindaqia icon-purple mr10"></view>
+        <view class="list-content">
+            <text class="list-title f18">群打卡</text>
+            <text class="list-text">组织群打卡，与群友组队对抗懒惰</text>
+        </view>
+        <view class="comein f12 linght">
+            <text class="iconfont icon-youjiantou"></text>
+        </view>
+    </view>
+    <view bindtap="onNavigateTap" class="group-list transition-duration-150 active-bg mb10" data-url="notice/index">
+        <view class="icontitle iconfont icon-tongzhi icon-red mr10"></view>
+        <view class="list-content">
+            <text class="list-title f18">群通知</text>
+            <text class="list-text">发送重要通知，确认群友是否接收</text>
+        </view>
+        <view class="comein f12 linght">
+            <text class="iconfont icon-youjiantou"></text>
+        </view>
+    </view>
+</view>

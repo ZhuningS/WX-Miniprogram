@@ -1,0 +1,50 @@
+<view class="container">
+    <view class="header">
+        <view bindtap="click1" class="{{item.click_class}} {{types==1?'click2':'click1'}}">全部</view>
+        <view>
+            <scroll-view scrollX="true">
+                <view bindtap="click" class="{{active_index==index?'click3':'click4'}}" data-index="{{index}}" wx:for="{{zx}}">{{item.type_name}}</view>
+            </scroll-view>
+        </view>
+    </view>
+    <view class="figure" wx:if="{{slide.length!=0}}">
+        <swiper autoplay="auto" circular="true" duration="500" indicatorActiveColor="#ccc" indicatorColor="white" indicatorDots="true" interval="5000">
+            <block wx:for="{{slide}}">
+                <swiper-item>
+                    <image bindtap="jumps" data-appid="{{item.appid}}" data-name="{{item.xcx_name}}" data-src="{{item.src}}" mode="aspectFill" src="{{url3}}{{item.logo}}"></image>
+                </swiper-item>
+        ++++
+      </block>
+        </swiper>
+    </view>
+    <view class="message_list">
+        <view bindtap="message" data-id="{{item.id}}" wx:if="{{info.length!=0}}" wx:for="{{info}}">
+            <view class="title">{{item.title}}</view>
+            <view class="message_image" wx:if="{{item.imgs!=''}}">
+                <image mode="aspectFill" src="{{item.is_houtai==1?url3:''}}{{item.imgs[0]}}"></image>
+            </view>
+            <view class="message_info">
+                <text wx:if="{{item.type==1}}">{{system.pt_name}}</text>
+                <text wx:else>{{item.name}}</text>
+                <text>{{item.yd_num}}阅读</text>
+                <text wx:if="{{item.m<24}}">
+                    <text wx:if="{{item.m==0}}">{{item.h}}分钟前发布</text>
+                    <text wx:if="{{item.m>0}}">{{item.m}}小时{{item.h}}分钟前发布</text>
+                </text>
+                <text wx:if="{{item.m>=24}}">{{item.time}}  发布</text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="loading rel" wx:if="{{refresh_top==true&&info.length!=0}}">
+  {{pt_support}}
+</view>
+<view class="loading rel" wx:if="{{refresh_top==false&&info.length>8}}">
+    <image class="ab udlr" mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/loading.gif"></image>
+</view>
+<view bindtap="release" class="release" wx:if="{{system.is_openzx==1}}">
+    <image mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/release.png"></image>
+</view>
+<view class="welfare" style="top:{{top}}rpx" wx:if="{{info.length==0}}">
+    <image mode="scaleToFill" src="https://api.cnmmsc.org/apitc/img/image/none_welfare.png"></image>
+</view>

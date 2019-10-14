@@ -1,0 +1,18 @@
+<view bindtap="reply" class="floatBox mod-layer">
+    <form bindsubmit="formSubmit">
+        <view class="score gridXb">
+            <view class="score-area fr">
+                <text bindtap="set_score_bind" class="iconfont score-star icon-favor{{gitem.ischeck==true?'fill':''}}" id="{{gitem.val}}" wx:for="{{score_arr}}" wx:for-item="gitem"></text>
+            </view>
+            <view>
+                <text>评分</text>
+            </view>
+        </view>
+        <view class="input-text-box">
+            <textarea autoFocus class="textarea" name="content" placeholder="写点什么吧..."></textarea>
+        </view>
+        <view style="padding:16px;">
+            <button disabled="{{buttonIsDisabled}}" formType="submit" loading="{{submitIsLoading}}" type="primary">提交保存</button>
+        </view>
+    </form>
+</view>

@@ -1,0 +1,66 @@
+@import "../../__wuBaseWxss__/3.wxss";
+
+.g-address {
+    width: 100%;
+    height: 250rpx;
+    color: #fff;
+    padding: 0 20rpx;
+}
+
+.g-goods {
+    width: 100%;
+    background: #fff;
+}
+
+.g-goods .g-total {
+    height: 105rpx;
+    border-bottom: 1px solid #f5f5f5;
+    margin: 0 20rpx;
+}
+
+.p-price {
+    color: #ff4422;
+}
+
+.g-mode {
+    width: 100%;
+    background: #fff;
+    margin-top: 20rpx;
+}
+
+.g-mode .g-dis {
+    height: 100rpxx;
+    line-height: 100rpx;
+    border-bottom: 1px solid #f5f5f5;
+    padding: 0 20rpx;
+}
+
+.g-add::before {
+    font-size: 28rpx;
+    content: "+";
+}
+
+.g-less::before {
+    font-size: 28rpx;
+    content: "-";
+}
+
+.pay-btn {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    z-index: 3;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.pay-button {
+    width: 300rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 36rpx;
+}

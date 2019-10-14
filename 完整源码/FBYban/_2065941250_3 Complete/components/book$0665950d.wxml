@@ -1,0 +1,9 @@
+<template name="book$0665950d">
+    <view class="_div data-v-6059c81c container">
+        <template is="TopSwiper$21a7aafb" data="{{...$root[$kk+'0'],$root:$root}}"></template>
+        <template is="Card$2280119c" data="{{...$root[$kk+'1-'+index],$root:$root}}" wx:for="{{books}}" wx:for-item="book" wx:key="book.id"></template>
+        <view class="_p data-v-6059c81c text-footer" wx:if="{{!more}}"> 无更多数据 </view>
+    </view>
+</template>
+<import src="TopSwiper$21a7aafb"></import>
+<import src="Card$2280119c"></import>

@@ -1,0 +1,61 @@
+.explore-cover {
+    width: 100%;
+    padding: 0 40rpx;
+    margin-bottom: 40rpx;
+    box-sizing: border-box;
+}
+
+.explore-cover .cover-infos {
+    margin-top: 76rpx;
+    margin-bottom: 60rpx;
+}
+
+.explore-cover .cover-infos qm-place-element {
+    display: flex;
+    justify-content: center;
+}
+
+.explore-cover .cover-title {
+    line-height: 36px;
+    font-size: 32px;
+    font-weight: 300;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.explore-cover .info-gapline {
+    width: 120rpx;
+    height: 1px;
+    background-color: #CCCCCC;
+}
+
+.explore-cover .info-gapline-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 30rpx 0 26rpx;
+}
+
+.explore-cover .cover-snippet {
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.explore-cover .cover-image {
+    vertical-align: middle;
+}
+
+.explore-cover .cover-image,.explore-cover .cover-image-wrap {
+    width: 670rpx;
+    height: 714rpx;
+}
+
+.explore-cover .cover-image-wrap {
+    display: flex;
+    justify-content: center;
+    align-item: center;
+    background-color: #F6F6F6;
+}

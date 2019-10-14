@@ -1,0 +1,9 @@
+<view class="wrapper">
+    <cart-list-item appid="{{item.appid}}" goods_list="{{item.goods_list}}" isFirstOne="{{index==0}}" isLastOne="{{index==section.list.length-1&&!isLastOne}}" item="{{item}}" mch_logo_url="{{item.mch_logo_url+'/0'}}" name="{{item.mch_name}}" wx:for="{{section.list}}" wx:key="{{item.appid}}"></cart-list-item>
+</view>
+<wxs module="TextUtils">
+module.exports.fixMchName = (function(str) {
+    if (!str) return ("未知商户");;
+    return (str)
+});
+</wxs>

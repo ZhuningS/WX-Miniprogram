@@ -1,0 +1,11 @@
+@import "../../../__wuBaseWxss__/8.wxss";
+
+@import "../store-coupon/index.wxss";
+
+.list-tips {
+    padding-top: 20rpx;
+}
+
+.right-more {
+    padding-right: 10rpx;
+}

@@ -1,0 +1,79 @@
+<import src="../components/card.wxml"></import>
+<view class="post-create-ctn">
+    <form bindsubmit="post">
+        <textarea class="textarea" maxlength="10240" name="text" placeholder="我想说…" placeholderClass="textarea-placeholder"></textarea>
+        <view class="article-wrapper" wx:if="{{selectedArticle}}">
+            <image catchtap="deleteArticle" class="badge" src="/images/new_assets/icon_delete.svg" wx:if="{{!(previousPage&&previousPage.from==='article')}}"></image>
+            <view class="article-ctn">
+                <image class="thumbnail" mode="aspectFill" src="{{selectedArticle.cover}}" wx:if="{{selectedArticle.cover}}"></image>
+                <view class="subheading">{{selectedArticle.title}}</view>
+            </view>
+        </view>
+        <template is="fragment-post-vote" data="{{vote:vote,preview:true,config:config}}" wx:if="{{vote}}"></template>
+        <view class="video-wrapper" wx:if="{{selectedVideo}}">
+            <image catchtap="deleteVideo" class="badge" src="/images/new_assets/icon_delete.svg"></image>
+            <video class="video" mode="aspectFill" src="{{selectedVideo.previewVideo}}" wx:if="{{selectedVideo}}"></video>
+        </view>
+        <view class="images-ctn">
+            <image class="preview" mode="aspectFill" src="{{item}}" wx:for="{{selectedImages}}" wx:key="*this">
+                <image catchtap="unselectImage" class="badge" data-index="{{index}}" src="/images/new_assets/icon_delete.svg"></image>
+            </image>
+        </view>
+        <view class="attach-actions">
+            <button catchtap="selectArticle" class="action-button" wx:if="{{postConfig.article&&postConfig.article!=='forbidden'&&!(previousPage&&previousPage.from==='article')&&!vote&&!selectedVideo}}">
+                <image class="icon" src="/images/new_assets/icon_link.svg"></image>
+            </button>
+            <button class="action-button" wx:if="{{postConfig.article&&postConfig.article!=='forbidden'&&!(previousPage&&previousPage.from==='article')&&(vote||selectedVideo)}}">
+                <image class="icon" src="/images/new_assets/icon_link_gray.svg"></image>
+            </button>
+            <button catchtap="selectImage" class="action-button" wx:if="{{postConfig.image&&postConfig.image!=='forbidden'&&!vote&&!selectedVideo}}">
+                <image class="icon" src="/images/new_assets/icon_photo_black.svg"></image>
+            </button>
+            <button class="action-button" wx:if="{{postConfig.image&&postConfig.image!=='forbidden'&&(vote||selectedVideo)}}">
+                <image class="icon" src="/images/new_assets/icon_photo_gray.svg"></image>
+            </button>
+            <block wx:if="{{false}}">
+                <button catchtap="selectVideo" class="action-button" wx:if="{{postConfig.video&&postConfig.video!=='forbidden'&&!vote&&!selectedArticle&&!selectedImages.length}}">
+                    <image class="icon" src="/images/new_assets/icon_play_black.svg"></image>
+                </button>
+                <button class="action-button" wx:if="{{postConfig.video&&postConfig.video!=='forbidden'&&(selectedArticle||selectedImages.length||vote)}}">
+                    <image class="icon" src="/images/new_assets/icon_play_gray.svg"></image>
+                </button>
+            </block>
+            <button catchtap="createVote" class="action-button" wx:if="{{postConfig.vote&&postConfig.vote!=='forbidden'&&!selectedArticle&&!selectedImages.length&&!selectedVideo}}">
+                <image class="icon" src="/images/new_assets/icon_vote_black.svg"></image>
+            </button>
+            <button class="action-button" wx:if="{{postConfig.vote&&postConfig.vote!=='forbidden'&&(selectedArticle||selectedImages.length||selectedVideo)}}">
+                <image class="icon" src="/images/new_assets/icon_vote_gray.svg"></image>
+            </button>
+        </view>
+        <button class="button large" formType="submit">发布</button>
+        <block wx:if="{{relation.role.type==='admin'}}">
+            <view class="actions-ctn" wx:if="{{false}}">
+                <view class="description" style="display: flex;">
+                    <view>身份：</view>
+                    <picker bindchange="changeRole" mode="selector" range="{{agents}}" rangeKey="name" value="{{selectedAgent}}">
+                        <view>
+              {{agents[selectedAgent].name}}
+            </view>
+                    </picker>
+                </view>
+                <view style="display:flex;">
+                    <navigator navigate class="description" url="/pages/profile/edit?token={{agents[selectedAgent].token}}&gid={{gid}}">
+            编辑
+          </navigator>
+                    <navigator navigate class="description" style="margin-left:10px;" url="/pages/profile/edit?gid={{gid}}">
+            添加
+          </navigator>
+                </view>
+            </view>
+            <view catchtap="createTips" class="actions-ctn">
+                <view class="description" style="display:flex;">
+                    <view>快捷回复 ({{tips.length}})</view>
+                </view>
+                <image class="icon compact" src="/images/new_assets/icon_corner_small_right.svg"></image>
+            </view>
+        </block>
+    </form>
+</view>
+<include src="../components/global.wxml"></include>

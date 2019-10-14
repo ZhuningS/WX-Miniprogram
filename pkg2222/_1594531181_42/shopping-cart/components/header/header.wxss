@@ -1,0 +1,30 @@
+.debug {
+    background: rgba(255,0,0,0.1);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 64rpx;
+    padding-bottom: 32rpx;
+}
+
+.wrapper .headimg {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 16rpx;
+}
+
+.wrapper .nickname {
+    margin-top: 40rpx;
+    font-size: 34rpx;
+    color: #353535;
+}
+
+.wrapper .tab {
+    margin-top: 32rpx;
+    font-size: 32rpx;
+    color: #424242;
+}

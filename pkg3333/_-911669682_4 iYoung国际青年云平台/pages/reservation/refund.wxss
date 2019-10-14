@@ -1,0 +1,9 @@
+.content {
+    padding: 30rpx;
+}
+
+.content textarea {
+    width: 100%;
+}
+
+@import "../../__wuBaseWxss__/2.wxss";

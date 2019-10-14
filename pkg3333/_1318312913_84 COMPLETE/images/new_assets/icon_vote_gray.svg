@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="13033 791 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #ccc;
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 2px;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="Path_1104" data-name="Path 1104" class="cls-1" d="M6,383H26v20H6Z"/>
+    </clipPath>
+  </defs>
+  <g id="icon_vote_gray" class="cls-2" transform="translate(13027 408)">
+    <g id="Vector">
+      <path id="Path_1102" data-name="Path 1102" class="cls-3" d="M14,14v1h1V14ZM0,14H-1v1H0ZM0,0V-1H-1V0ZM15,0,14-1ZM14,13H0v2H14ZM1,14V0H-1V14ZM0,1H8.808V-1H0ZM13,6v8h2V6Z" transform="translate(9 386)"/>
+      <path id="Path_1103" data-name="Path 1103" class="cls-4" d="M11.595,391.943l3.429,3,8.261-9.338"/>
+    </g>
+  </g>
+</svg>

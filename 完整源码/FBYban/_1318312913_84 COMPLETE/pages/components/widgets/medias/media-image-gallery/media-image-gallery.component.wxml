@@ -1,0 +1,10 @@
+<view class="{{rootClassNames}}">
+    <view class="gallery-item-wrapper" wx:if="{{index<9}}" wx:for="{{mediaData.images}}" wx:for-item="image" wx:key="storageKey">
+        <view class="gallery-item">
+            <image catchtap="previewImage" class="gallery-image" data-url="{{image.url}}" mode="aspectFill" src="{{image.url}}"></image>
+        </view>
+    </view>
+    <view class="image-length-label" wx:if="{{imageLength>9}}">
+    {{imageLength}}
+  </view>
+</view>

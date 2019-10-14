@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "side-bar": "../../components/sideBar/sideBar",
+        "tab-bar": "../../components/tabBar/tabBar",
+        "tech-support": "../../components/techSupport/techSupport"
+    }
+}

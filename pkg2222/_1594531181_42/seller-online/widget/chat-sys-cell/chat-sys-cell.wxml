@@ -1,0 +1,5 @@
+<view class="wrap">
+    <view class="dash-line left"></view>
+    <view class="msg">{{message.system_msg.content}}</view>
+    <view class="dash-line right"></view>
+</view>

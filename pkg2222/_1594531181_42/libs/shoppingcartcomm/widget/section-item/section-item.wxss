@@ -1,0 +1,29 @@
+.container {
+    padding-right: 46rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.container .content {
+    flex: 1;
+    overflow: hidden;
+}
+
+.container .icon {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 14.2rpx;
+}
+
+.container .icon image {
+    width: 14.2rpx;
+    height: 26rpx;
+}
+
+.container.separtor {
+    border-bottom: 1rpx solid #E5E5E5;
+}

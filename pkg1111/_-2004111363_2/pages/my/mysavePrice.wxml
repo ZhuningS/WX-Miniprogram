@@ -1,0 +1,38 @@
+<view class="{{currentSkin}}">
+    <view wx:if="{{showMask=='save'}}">
+        <view class="sp-lt f fw fj">
+            <view bindtap="selPrice" class="sp-item f fv fj rel" data-wpyselprice-a="{{index}}" wx:for="{{vm_save.price}}" wx:key="key">
+                <text class="dzicon icon-Choice_xuanze skin_txt" wx:if="{{item.sel}}"></text>
+                <text class="f50">{{item.JoinMoneyStr}}<text class="f30">元</text>
+                </text>
+                <text class="f22 c666 mt20">{{item.SetName}}</text>
+            </view>
+            <view bindtap="recharge" class="sp-btn skin_bg">立即支付</view>
+        </view>
+    </view>
+    <view wx:else>
+        <block wx:if="{{vm_record.list[1].length!=0&&vm_record.list[1]!=null}}" wx:for="{{vm_record.list}}" wx:for-item="history" wx:key="key">
+            <view class="sp-mask f fv fc fc-h" wx:for="{{history}}" wx:key="key">
+                <view class="f fj fc w-100">
+                    <view class="f fc" wx:if="{{item.Type==-1||item.Type==-2}}">
+                        <text class="f38">消费</text>
+                        <text class="f26 c999">({{item.Type==-1?'储值支付':'微信支付'}})</text>
+                    </view>
+                    <text class="f38" wx:if="{{item.Type==0}}">充值</text>
+                    <text class="f30 c999">{{item.CreateDateStr}}</text>
+                </view>
+                <view class="f fc w-100">
+                    <text class="f30 c666 f1">余额：{{item.AfterMoneyStr}}</text>
+                    <text class="f42" wx:if="{{item.Type==-1||item.Type==-2}}">-{{item.ChangeMoneyStr}}</text>
+                    <text class="f42 cf3" wx:if="{{item.Type==0}}">+{{item.ChangeMoneyStr}}</text>
+                    <text class="f42 cf3" wx:if="{{item.Type==1}}">+{{item.ChangeMoneyStr}}</text>
+                </view>
+                <image class="sp-icon" src="http://j.vzan.cc/miniapp/img/enterprise/a49.png" wx:if="{{item.Type==-1||item.Type==-2}}"></image>
+                <image class="sp-icon" src="http://j.vzan.cc/miniapp/img/enterprise/a48.png" wx:if="{{item.Type==0}}"></image>
+                <image class="sp-icon" src="http://j.vzan.cc/miniapp/img/enterprise/a51.png" wx:if="{{item.Type==1}}"></image>
+            </view>
+        </block>
+        <wxc-abnor type="DATA" wx:if="{{vm_record.list[1].length==0||vm_record.list[1]==null}}"></wxc-abnor>
+        <wxc-loadmore icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png" isEnd="{{true}}" text="到底啦" wx:if="{{vm_record.list[1]!=null&&vm_record.list[1].length!=0&&vm_record.loadall}}"></wxc-loadmore>
+    </view>
+</view>

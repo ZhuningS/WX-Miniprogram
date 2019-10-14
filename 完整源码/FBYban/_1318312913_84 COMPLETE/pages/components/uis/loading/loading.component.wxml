@@ -1,0 +1,9 @@
+<qm-tween isVisible="{{isLoading}}" needAppearTween="{{!isInitial}}">
+    <view class="{{rootClassNames}}">
+        <div class="initial-spinner" wx:if="{{isInitial}}">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <image class="loadMore-spinner" src="./assets/spinner-gray.svg" wx:else></image>
+    </view>
+</qm-tween>

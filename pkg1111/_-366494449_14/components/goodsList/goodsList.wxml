@@ -1,0 +1,34 @@
+<template name="goodsList">
+    <view class="gModList__list {{layout=='single'?'gModList_single':''}}" style="{{style}}">
+        <form bindsubmit="_jump" class="gModList__item" data-url="/pages/goods/goods?goodsId={{val.goodsId}}" reportSubmit="true" wx:for="{{goodsList||dataset.goodsList}}" wx:for-item="val" wx:key="goodsId">
+            <button class="nobutton" formType="submit">
+                <view class="gModList__item__imgWrap">
+                    <image class="gModList__item__img" mode="{{layout=='single'?'widthFix':'aspectFill'}}" src="{{val.imageUrl}}"></image>
+                </view>
+                <view class="gModList__item__info">
+                    <view class="gModList__item__name">{{val.name}}</view>
+                    <view class="goodsInfoWrap">
+                        <view class="gModList__item__price">
+                            <text class="gModList__item__price__unit">¥</text>{{val.salePrice}}
+                            </view>
+                        <view class="gModList__salesVolume">
+                            <view class="gModList__salesVolume__item">{{val.sold_amount}}</view>人已购买
+                            </view>
+                    </view>
+                </view>
+            </button>
+        </form>
+        <block wx:if="{{isPage&&isPage=='1'}}">
+            <view class="weui-loadmore" wx:if="{{moreLoading}}">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+            <view class="weui-loadmore weui-loadmore_line" wx:elif="{{noMore}}">
+                <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多了</view>
+            </view>
+            <view class="more-loading" wx:else>
+                <button bindtap="{{'med_'+scopeKey}}" class="btn-default" data-med-name="_loadMore">加载更多</button>
+            </view>
+        </block>
+    </view>
+</template>

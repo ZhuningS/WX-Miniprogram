@@ -1,0 +1,53 @@
+<view class="wrapper {{phoneModel}}">
+    <view class="wrapper-pay-info">
+        <view bindtap="onCheckClicked" class="wrapper-select-area" wx:if="{{!payorder}}">
+            <image class="select-icon" src="../../assets/icon-checkbox-selected.png" wx:if="{{selectall}}"></image>
+            <image class="select-icon" src="../../assets/icon-checkbox-normal.png" wx:else></image>
+            <text class="check-tip">全选</text>
+        </view>
+        <view class="pay-info">
+            <view class="pay-info-total">
+                <text>{{TextUtils.fixCountallTips(quantity,payorder)}}</text>
+                <text class="pay-info-total-money">{{TextUtils.fixPrice(cost)}}</text>
+            </view>
+            <block wx:if="{{express<0}}">
+                <text class="pay-info-extra" wx:if="{{payorder}}">{{' -'}}</text>
+                <text class="pay-info-extra" wx:else>不含运费</text>
+            </block>
+            <text class="pay-info-extra" wx:elif="{{express==0}}">免运费</text>
+            <view class="wrapper-express" wx:else>
+                <text class="pay-info-extra">含运费{{TextUtils.fixPrice(express)}}</text>
+            </view>
+        </view>
+    </view>
+    <view bindtap="onCountClicked" class="wrapper-pay-btn {{quantity>0&&!disablepay?'':'disable'}}">
+        {{TextUtils.fixPaymentTips(quantity,payorder)}}
+    </view>
+</view>
+<wxs module="TextUtils">
+module.exports.fixCountallTips = (function(quantity, payorder) {
+    if (payorder) {
+        return ("共" + quantity + "件，合计：")
+    };
+    return ("合计：")
+});
+module.exports.fixPaymentTips = (function(quantity, payorder) {
+    if (payorder) {
+        return ("付款")
+    };
+    if (quantity <= 0) {
+        return ("提交订单")
+    };
+    return ("提交订单" + "(" + quantity + ")")
+});
+module.exports.fixPrice = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num.toString() === 'NaN') {
+        return ('错误的价格')
+    };
+    if (num < 0) {
+        return (' -')
+    };
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+</wxs>

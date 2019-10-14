@@ -1,0 +1,85 @@
+<view class="c-ms-more {{currentSkin}} {{showMask?'c-ms-more-hide':''}}">
+    <view class="c-ms-banner">
+        <image mode="widthFix" src="{{vm.Banner}}"></image>
+        <view class="c-ms-countDonw f fc fc-h">
+            <text class="ms-line" style="margin-right:30rpx">————</text>
+            <text class="f26 c666">{{vm.State==2?'距结束':'距开始'}}</text>
+            <text class="ms-time">{{vm.countDownArray[0]>99?99:vm.countDownArray[0]||'00'}}</text>
+            <text>天</text>
+            <text class="ms-time">{{vm.countDownArray[1]||'00'}}</text>
+            <text class="ms-radius">:</text>
+            <text class="ms-time">{{vm.countDownArray[2]||'00'}}</text>
+            <text class="ms-radius">:</text>
+            <text class="ms-time">{{vm.countDownArray[3]||'00'}}</text>
+            <text bindtap="showClick" class="dzicon icon-guize"></text>
+            <text class="ms-line" style="margin-left:25rpx">————</text>
+        </view>
+    </view>
+    <view class="c-ms">
+        <view class="component-title f fc fc-h" wx:if="{{$comiaoSha$currentCom.title&&vm.more}}">
+            <text class="component-title-left dzicon icon-_xiegan skin_txt"></text>{{$comiaoSha$currentCom.title}}<text class="component-title-right dzicon icon-_xiegan skin_txt"></text>
+        </view>
+        <view class="c-ms-countDonw f fc fc-h" wx:if="{{vm.more}}">
+            <text class="ms-line" style="margin-right:30rpx">————</text>
+            <text class="f26 c666">{{vm.State==2?'距结束':'距开始'}}</text>
+            <text class="ms-time">{{vm.countDownArray[0]>99?99:vm.countDownArray[0]||'00'}}</text>
+            <text>天</text>
+            <text class="ms-time">{{vm.countDownArray[1]||'00'}}</text>
+            <text class="ms-radius">:</text>
+            <text class="ms-time">{{vm.countDownArray[2]||'00'}}</text>
+            <text class="ms-radius">:</text>
+            <text class="ms-time">{{vm.countDownArray[3]||'00'}}</text>
+            <text class="ms-line" style="margin-left:25rpx">————</text>
+        </view>
+        <view class="c-ms-main">
+            <view class="c-ms-main-item f" wx:for="{{vm.Item}}" wx:for-index="$comiaoSha$index" wx:for-item="$comiaoSha$item" wx:key="$comiaoSha$key">
+                <image src="{{$comiaoSha$item.Img||'http://j.vzan.cc/miniapp/img/enterprise/blank_150x150.png'}}"></image>
+                <view class="c-ms-main-content f fv fj f1">
+                    <view class="line line2">{{$comiaoSha$item.Title}}</view>
+                    <view class="f f-end rel">
+                        <view class="c-ms-main-price f fv">
+                            <text class="f34 skin_txt">￥{{$comiaoSha$item.DealPrice}}<text class="f24" wx:if="{{$comiaoSha$item.Unit}}">/{{$comiaoSha$item.Unit}}</text>
+                            </text>
+                            <text class="c123 f24" style="text-decoration: line-through" wx:if="{{$comiaoSha$item.DealPrice!=$comiaoSha$item.OrigPrice}}">￥{{$comiaoSha$item.OrigPrice}}<text wx:if="{{$comiaoSha$item.Unit}}">/{{$comiaoSha$item.Unit}}</text>
+                            </text>
+                        </view>
+                        <view class="f fv">
+                            <view bindtap="$comiaoSha$goTip" class="f f-end" data-com-index="{{undefined}}" data-wpygotip-a="{{$comiaoSha$item.FlashItemId}}" data-wpygotip-b="{{vm.Id}}" data-wpygotip-c="{{$comiaoSha$pageIndex}}" data-wpygotip-d="{{$comiaoSha$comIndex}}" wx:if="{{vm.countDownArray[0]<=7&&vm.State==1&&$comiaoSha$item.IsNotify==false&&vm.countDownArray[4]}}">
+                                <text class="c-ms-main-btn skin_bg">提醒我</text>
+                            </view>
+                            <view bindtap="$comiaoSha$goDeal" class="f f-end" data-com-index="{{undefined}}" data-wpygodeal-a="{{$comiaoSha$item.FlashItemId}}" wx:if="{{($comiaoSha$item.StockLimit&&$comiaoSha$item.saleRate!=0||$comiaoSha$item.StockLimit==false)&&vm.countDownArray[4]==false&&vm.State==2}}">
+                                <text class="c-ms-main-btn skin_bg">立即抢购</text>
+                            </view>
+                            <view class="f f-end" wx:if="{{vm.countDownArray[0]<=7&&vm.State==1&&$comiaoSha$item.IsNotify&&vm.countDownArray[4]}}">
+                                <text class="c-ms-main-btn" style="background-color:#f2f2f2;color:#666">已提醒</text>
+                            </view>
+                            <view class="f f-end" wx:if="{{vm.State==2&&$comiaoSha$item.StockLimit&&$comiaoSha$item.saleRate==0&&vm.countDownArray[4]==false}}">
+                                <text class="c-ms-main-btn" style="background-color:#f2f2f2;color:#666">已售罄</text>
+                            </view>
+                            <view class="f f-end" wx:if="{{vm.countDownArray[0]>7&&vm.countDownArray[4]}}">
+                                <text class="c-ms-main-btn" style="background-color:#f2f2f2;color:#666">未开始</text>
+                            </view>
+                            <view class="f mt10">
+                                <text class="f22 c123">剩余:{{$comiaoSha$item.saleRate}}%</text>
+                                <progress activeColor="#FF6F30" percent="{{$comiaoSha$item.saleRate}}" strokeWidth="10" style="margin-left:10rpx;width:140rpx;border-radius:100px;overflow:hidden"></progress>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="$comiaoSha$goMore" class="c-ms-more" data-com-index="{{undefined}}" data-wpygomore-a="{{vm.Id}}" wx:if="{{vm.Item.length>=4&&vm.more}}">查看全部</view>
+    </view>
+    <view bindtap="showClick" class="c-ms-mask" wx:if="{{showMask}}">
+        <view class="c-ms-mask">
+            <view class="f34">活动规则</view>
+            <scroll-view scrollY class="c-ms-sc">
+                <view class="f fv">
+                    <text class="mt10" wx:for="{{vm.description}}" wx:key="key">{{item}}</text>
+                </view>
+            </scroll-view>
+        </view>
+        <view class="dzicon icon-zhuanyebaniconkuozhan_Close c-ms-icon"></view>
+    </view>
+    <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+</view>

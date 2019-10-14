@@ -1,0 +1,76 @@
+<template name="onboard">
+    <view class="loading-ctn" wx:if="{{!magazines&&!users}}">
+        <template is="loading" data="{{loading:true}}"></template>
+    </view>
+    <view class="onboard" wx:else>
+        <view class="login-ctn">
+            <button bindgetuserinfo="loginOnboard" class="login" hoverClass="none" openType="getUserInfo" wx:if="{{needLogin}}">
+                <view class="name">手机号码登录</view>
+                <image class="icon compact" src="/images/new_assets/icon_corner_small_right.svg"></image>
+            </button>
+            <view bindtap="loginOnboard" class="login" wx:else>
+                <view class="name">手机号码登录</view>
+                <image class="icon compact" src="/images/new_assets/icon_corner_small_right.svg"></image>
+            </view>
+        </view>
+        <view class="header-ctn">
+            <block wx:if="{{step==='magazine'}}">
+                <view class="headline2">选择你的兴趣，</view>
+                <view class="headline2">发现理想生活的线索</view>
+                <view class="caption">根据你的兴趣，为你筛选来自 10000+ 公众号的好内容。</view>
+            </block>
+            <block wx:if="{{step==='user'}}">
+                <view class="headline2">然后，关注你喜欢的人。</view>
+                <view class="caption">关注后，你将可以看到他们日常为你推荐的内容。</view>
+            </block>
+        </view>
+        <view class="tags">
+            <view class="tags-ctn" wx:if="{{step==='magazine'&&magazines.length>0}}">
+                <view bindtap="selectedOnboardSubscribed" class="magazine-name tag" data-mid="{{item.magazine.id}}" style="{{subscribed[item.magazine.id]?'color:#fff; background: #'+item.magazine.color:''}}" wx:for="{{magazines}}" wx:key="{{ index }}">
+          {{item.magazine.name}}
+        </view>
+            </view>
+            <view class="users-ctn" wx:if="{{step==='user'&&users.length>0}}">
+                <view class="user-info" wx:for="{{users}}" wx:key="user.uid">
+                    <view class="avatar-ctn">
+                        <image lazyLoad class="avatar" src="{{item.user.avatar}}"></image>
+                    </view>
+                    <view class="name">{{item.user.name}}</view>
+                    <view class="intro">{{item.user.desc}}</view>
+                    <button bindtap="selectedOnboardFollowed" class="button border" data-uid="{{item.user.uid}}" wx:if="{{followed[item.user.uid]}}">
+            已关注
+          </button>
+                    <button bindtap="selectedOnboardFollowed" class="button" data-uid="{{item.user.uid}}" wx:else>
+            关注
+          </button>
+                </view>
+            </view>
+        </view>
+        <view class="footer-ctn">在轻芒杂志中，你将发现更多你感兴趣的东西。</view>
+        <form reportSubmit bindsubmit="hackForm">
+            <button bindgetuserinfo="nextOnboard" bindtap="{{step!=='magazine'&&needLogin?'':'nextOnboard'}}" class="button fixed" disabled="{{step==='magazine'&&subscribedCount===0}}" formType="submit" hoverClass="none" openType="{{step!=='magazine'&&needLogin?'getUserInfo':''}}">
+                <block wx:if="{{step==='magazine'}}">下一步</block>
+                <block wx:else>开始阅读我的轻芒杂志</block>
+            </button>
+        </form>
+    </view>
+</template>
+<template name="fake-onboard">
+    <view catchtap="startOnboard" class="onboard" wx:if="{{magazines&&magazines.length>0}}">
+        <template is="single-card-label" data="{{ label:{title:'选择你的兴趣，定制你的轻芒杂志',description:'根据你的兴趣，为你筛选来自 20000+ 公众号的好内容。'} }}"></template>
+        <view class="tags">
+            <view class="tags-ctn">
+                <view bindtap="selectedOnboardSubscribed" class="magazine-name tag" data-mid="{{item.magazine.id}}" style="{{subscribed[item.magazine.id]?'color:#fff; background: #'+item.magazine.color||'B8DBD6':''}}" wx:if="{{index<15}}" wx:for="{{magazines}}" wx:key="id">
+          # {{item.magazine.name}}
+        </view>
+            </view>
+        </view>
+        <form reportSubmit bindsubmit="hackForm">
+            <button class="button" formType="submit" hoverClass="none">
+          开始定制我的轻芒杂志
+      </button>
+        </form>
+    </view>
+</template>
+<import src="widgets.wxml"></import>
+<import src="card.wxml"></import>

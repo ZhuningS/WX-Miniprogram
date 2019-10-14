@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "line-goods-view": "/components/wx-tpl/index/lineGoodsView/lineGoodsView",
+        "show_dialog": "/components/wx-tpl/show_dialog/show_dialog",
+        "FollowGZH": "/components/wx-tpl/follow_gzh/follow_gzh",
+        "custom-follow": "/components/wx-tpl/custom-page-tpl/custom-page/custom-follow/custom-follow"
+    }
+}

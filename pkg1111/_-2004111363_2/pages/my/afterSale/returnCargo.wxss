@@ -1,0 +1,142 @@
+.similar {
+    overflow: hidden;
+    position: fixed;
+    top: -100vh;
+    width: 100%;
+    height: 100vh;
+    z-index: 5000;
+    transition: top .5s cubic-bezier(.4,0,0,1);
+}
+
+@keyframes breathe {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(.9);
+    }
+
+    80% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.similar .animation-breathe {
+    animation: breathe 3s linear infinite;
+}
+
+.similar .fadeIn {
+    transform: translateY(-30px);
+    opacity: 0;
+}
+
+.similar .arrow-top {
+    font-size: 48rpx;
+    color: #999;
+    border: 2px solid #999;
+    border-radius: 100%;
+    width: 60rpx;
+    height: 60rpx;
+    transition: all .35s ease-in-out .2s;
+    text-align: center;
+    line-height: 55rpx;
+    font-weight: bold;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.16),0 0 1px 0 rgba(0,0,0,0.12);
+}
+
+.similar .similar-header {
+    background-color: #ddd;
+    height: 90rpx;
+    border-radius: 28rpx;
+    padding: 5rpx 30rpx;
+    transition: all .35s ease-in-out .4s;
+}
+
+.similar .similar-header .input {
+    flex-grow: 1;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0 20rpx;
+}
+
+.similar .width80 {
+    width: 80%;
+}
+
+.similar .list {
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.16),0 0 1px 0 rgba(0,0,0,0.12);
+    border-radius: 4px;
+    transition: all .35s ease-in-out .6s;
+    border-bottom: 1px solid #ccc;
+    padding: 0 20rpx;
+}
+
+.similar .list .item {
+    border-bottom: 1px solid #ccc;
+    padding: 20rpx 20rpx;
+}
+
+.similar .list .item .label {
+    padding: 5rpx 10rpx;
+    border-radius: 4px;
+    background-color: #b7d133;
+    box-shadow: 0 0 1px 0 rgba(0,0,0,0.16),0 0 1px 0 rgba(0,0,0,0.12);
+}
+
+.top0-similar {
+    top: 0vh;
+}
+
+.return-cargo .header {
+    padding: 20rpx 31rpx 20rpx 20rpx;
+}
+
+.return-cargo .header .commodity-avator {
+    height: 150rpx;
+    width: 150rpx;
+    background-color: #eee;
+}
+
+.return-cargo .header .title {
+    font-size: 28rpx;
+}
+
+.return-cargo .hl80 {
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.return-cargo .hl100 {
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.return-cargo .bbgray {
+    border-bottom: 1px solid #eee;
+}
+
+.return-cargo .picker {
+    flex: 1;
+    text-align: right;
+}
+
+.return-cargo .btn-confirm {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    position: fixed;
+    bottom: 0;
+}
+
+.return-cargo .bgD32A7C {
+    background-color: #c9201a;
+}
+
+.return-cargo .width75 {
+    width: 75%;
+}

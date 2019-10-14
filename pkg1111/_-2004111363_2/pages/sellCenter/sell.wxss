@@ -1,0 +1,135 @@
+page {
+    background: #fff;
+}
+
+.sellSecond {
+    width: 100%;
+    height: 100rpx;
+    border-bottom: 1px solid #f7f7f7;
+    line-height: 100rpx;
+    color: #333;
+    padding-left: 20rpx;
+    font-size: 30rpx;
+}
+
+.sellSecond>image {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 50%;
+}
+
+.sell {
+    width: 100%;
+}
+
+.sell .sell-btn {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: 36rpx;
+    text-align: center;
+    color: #fff;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.sell .bgcc {
+    background: #ccc;
+}
+
+.sell-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: .6;
+    display: block;
+    z-index: 4;
+    background-color: #000;
+}
+
+.sell-modal {
+    width: 600rpx;
+    height: 476rpx;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    margin-left: -300rpx;
+    background: #fff;
+    z-index: 5;
+    border-radius: 8rpx;
+}
+
+.sell-modal .sell-title {
+    width: 100%;
+    font-size: 36rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 1px solid #f3f3f3;
+    text-align: center;
+}
+
+.sell-modal .sell-contxt {
+    font-size: 32rpx;
+    color: #666;
+    margin-top: 50rpx;
+}
+
+.sell-modal .sell-input {
+    width: 540rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    background-color: #f3f3f3;
+    margin: 38rpx 0 55rpx 0;
+    border-radius: 7rpx;
+    padding-left: 29rpx;
+}
+
+.sell-modal .sell-pbtn {
+    width: 100%;
+    font-size: 34rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-top: 1px solid #f3f3f3;
+    color: #666;
+}
+
+.sell-modal .sell-pbtn text {
+    width: 50%;
+    text-align: center;
+}
+
+.sell-modal .sell-pbtn text:last-child {
+    border-left: 1px solid #f3f3f3;
+}
+
+.sell-tip {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sell-tip .s-mask {
+    width: 600rpx;
+    height: 550rpx;
+    background: #fff;
+}
+
+.sell-tip .s-mask .icon-icon_lianjieshixiao {
+    font-size: 250rpx;
+    color: #e4e4e4;
+}
+
+.sell-tip .s-mask .s-btn {
+    width: 450rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    font-size: 36rpx;
+    margin-top: 50rpx;
+}

@@ -1,0 +1,18 @@
+<template name="searchBar">
+    <view class="buttonbar">
+        <view bindtap="_jump" class="search_bar" data-url="/pages/shop/search/index">
+            <image src="/images/card/search.png"></image>
+            <text srtle="font-weight: 300">搜索商品</text>
+        </view>
+        <view bindtap="_jump" class="button-item" data-url="/pages/my/home/index" wx:if="{{dataset.my}}">
+            <image mode="widthFix" src="/images/card/minenew@3x.png" style="width:46rpx;height: 46rpx;"></image>
+        </view>
+        <view bindtap="_jump" class="button-item" data-url="/pages/cart/index" wx:if="{{dataset.cart}}">
+            <image mode="widthFix" src="/images/card/shoppingnew@3x.png"></image>
+            <view class="cartBadge" wx:if="{{cartAmount>0}}">{{cartAmount}}</view>
+        </view>
+        <button class="button-item" openType="share" wx:if="{{dataset.share}}">
+            <image mode="widthFix" src="/images/card/sharenew@3x.png"></image>
+        </button>
+    </view>
+</template>

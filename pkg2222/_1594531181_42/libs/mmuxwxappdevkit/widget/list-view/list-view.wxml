@@ -1,0 +1,17 @@
+<scroll-view bindscrolltolower="onScrollToLower" enableBackToTop="true" scrollY="true" style="height: {{height}};">
+    <view class="section" wx:for="{{sections}}" wx:for-item="section" wx:key="key">
+        <block wx:if="{{!section.deleted}}">
+            <view class="row" wx:for="{{section.rows}}" wx:for-index="r" wx:for-item="row" wx:key="id">
+                <block wx:if="{{!row.deleted}}">
+                    <list-view-cell viewModel="{{row.cell}}"></list-view-cell>
+                    <view class="cell-seperator" wx:if="{{r!=section.rows.length-1&&seperatorStyle!=='ListViewSeperatorStyleNone'}}"></view>
+                </block>
+            </view>
+            <view class="section-inset" style="height: {{section.sectionInset}}; background: {{section.sectionInsetColor}}"></view>
+        </block>
+    </view>
+    <button class="load-more" loading="1" style="background-color: {{source.pageColor}};" wx:if="{{sections.length>0&&hasMore}}">{{loadMoreTips}}</button>
+    <view class="nomore-tips" wx:else>
+        {{!reloadingData&&cellCount>0&&!hasMore?noMoreTips:''}}
+    </view>
+</scroll-view>

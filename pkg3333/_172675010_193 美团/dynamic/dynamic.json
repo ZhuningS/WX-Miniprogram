@@ -1,0 +1,14 @@
+{
+    "component": true,
+    "usingComponents": {
+        "core": "./dynamic",
+        "component-share": "../index/components/component-share/index",
+        "formcover": "../index/components/formcover/formcover",
+        "back": "../index/components/mt-back/back",
+        "coupon": "../index/components/mt-coupon/coupon",
+        "guide": "../index/components/mt-guide/guide",
+        "pendant": "../index/components/mt-pendant/pendant",
+        "coupon-bag": "../components/coupon-bag/index",
+        "order-block": "../index/pages/order/components/order-block/order-block"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "selector": "../order-goods-selector/order-goods-selector"
+    }
+}

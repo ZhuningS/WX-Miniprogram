@@ -1,0 +1,3 @@
+.animation-pulse {
+    animation: pulse 318ms linear;
+}

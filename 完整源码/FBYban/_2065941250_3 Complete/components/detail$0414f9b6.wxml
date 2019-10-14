@@ -1,0 +1,7 @@
+<template name="detail$0414f9b6">
+    <view class="_div data-v-221ce4ca container">
+        <template is="Card$2280119c" data="{{...$root[$kk+'0-'+index],$root:$root}}" wx:for="{{books}}" wx:for-item="book" wx:key="book.id"></template>
+        <view class="_p data-v-221ce4ca text-footer" wx:if="{{!more}}"> 无更多数据 </view>
+    </view>
+</template>
+<import src="Card$2280119c"></import>

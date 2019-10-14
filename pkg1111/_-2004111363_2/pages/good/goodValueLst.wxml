@@ -1,0 +1,41 @@
+<view class="c-value {{currentSkin}}">
+    <view class="c-value-top f">
+        <view bindtap="selChange" class="f fc fc-h" data-wpyselchange-a="-1">
+            <text class="{{currentId==-1?'skin_bottom':'c333'}}" style="padding-bottom: 20rpx;">全部</text>
+        </view>
+        <view bindtap="selChange" class="f fc fc-h" data-wpyselchange-a="1">
+            <text class="{{currentId==1?'skin_bottom':'c333'}}" style="padding-bottom: 20rpx;">有图</text>
+        </view>
+    </view>
+    <view style="height:100rpx"></view>
+    <view class="c-value-main">
+        <view class="c-value-item" wx:for="{{vm.list}}" wx:key="key">
+            <view class="f fc">
+                <image class="c-value-item-logo" src="{{item.HeadImgUrl||'http://j.vzan.cc/content/city/images/voucher/10.jpg'}}"></image>
+                <text class="f26">{{item.Anonymous?'匿名':item.NickName}}</text>
+            </view>
+            <view class="f26 mt30">{{item.Comment?item.Comment:'该用户暂无评论'}}</view>
+            <view class="f24 c999 f mt30">
+                <text>{{item.AddTimeStr}}</text>
+                <text style="margin-left:20rpx">{{item.GoodsSpecification}}</text>
+            </view>
+            <view class="c-value-item-imgs f fw" wx:if="{{item.CommentImgs.length}}">
+                <image bindtap="showimg" data-wpyshowimg-a="{{item.CommentImgs}}" data-wpyshowimg-b="{{index}}" src="{{imgs.thumbnail}}" wx:for="{{item.CommentImgs}}" wx:for-item="imgs" wx:key="key"></image>
+            </view>
+            <view class="c-value-item-replay rel" wx:if="{{item.Replay!=null}}">
+                <text class="c-value-item-sanjiao"></text>
+                <view class="f fv">
+                    <text class="c666">商家回复:</text>
+                    <text class="f24 mt20">{{item.Replay}}</text>
+                </view>
+            </view>
+            <view class="w-100 f f-end">
+                <view bindtap="getPoint" class="c-value-item-btn f fc fc-h {{item.UserPoints?'skin_br':'c-value-item-no'}}" data-wpygetpoint-a="{{item.Id}}" data-wpygetpoint-b="{{index}}">
+                    <text class="dzicon icon-dianzan {{item.UserPoints?'skin_txt':'c123'}}"></text>
+                    <text class="f24 ml10">{{item.UserPoints?item.Points:'点赞'}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="c-value-main-none f fc fc-h" wx:if="{{vm.list.length==0}}">暂无评论~</view>
+    </view>
+</view>

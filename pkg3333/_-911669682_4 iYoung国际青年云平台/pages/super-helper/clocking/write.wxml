@@ -1,0 +1,69 @@
+<form bindsubmit="onPushSubmit">
+    <view class="contanter">
+        <view class="card-content">
+            <textarea maxlength="1000" name="remark" placeholder="请输入打卡简介（4-1000字以内）"></textarea>
+        </view>
+        <view class="set mt10">
+            <view class="set-list gridXb flex">
+                <text>设置开始日期</text>
+                <view class="sub tr arrowR grey">
+                    <picker bindchange="bindDataChange" data-bind="begin_time" mode="date" start="{{init_begin_time}}" value="{{init_begin_time}}">
+                        <view class="picker arrowR">{{begin_time}}
+                            <input name="begin_time" style="display:none;" type="number" value="{{begin_time}}"></input>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view class="set-list gridXb flex transition-duration-150 active-bg">
+                <text>设置打卡天数</text>
+                <view class="sub tr grey">
+                    <picker bindchange="bindPickerDataChange" data-bind="cycle" mode="selector" range="{{dayArray}}" value="{{cycle-1}}">
+                        <view class="picker arrowR">{{cycle}}天
+                            <input name="cycle" style="display:none;" type="number" value="{{cycle?cycle:7}}"></input>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view bindtap="onNavigateTap" class="set-list flex" data-url="praise">
+                <text>设置打卡成就</text>
+                <view class="set-list-right sub tr arrowR grey">
+                    <text class="jiang mr5 iconfont icon-license"></text>
+                </view>
+            </view>
+        </view>
+        <view class="card-content mt10">
+            <input name="type" style="display:none;" type="number" value="{{type?type:0}}"></input>
+            <radio-group bindchange="bindDataChange" class="set mt10" data-bind="type">
+                <view class="gridXb">
+                    <label class="grey">
+                        <radio checked="true" value="0">一键打卡</radio>
+            （点击打卡即可打卡成功）
+          </label>
+                </view>
+                <view class="gridXb">
+                    <label class="grey">
+                        <radio value="1">图文打卡</radio>
+            （参与者可选择文字和图片）
+          </label>
+                </view>
+                <view class="flex">
+                    <text>参与者必须上传一张图片</text>
+                    <view class="sub tr">
+                        <switch bindchange="bindDataChange" data-bind="must_img" type="switch"></switch>
+                        <input name="must_img" style="display:none;" type="number" value="{{must_img?must_img:0}}"></input>
+                    </view>
+                </view>
+            </radio-group>
+        </view>
+        <view class="set porwer f16 mt10 flex">
+            <text>仅限参与用户查看</text>
+            <view class="sub tr">
+                <switch bindchange="bindDataChange" data-bind="partake_look" type="  switch"></switch>
+                <input name="partake_look" style="display:none;" type="number" value="{{partake_look?partake_look:0}}"></input>
+            </view>
+        </view>
+        <view class="m15">
+            <button class="transition-duration-150" formType="submit" type="primary">发布</button>
+        </view>
+    </view>
+</form>

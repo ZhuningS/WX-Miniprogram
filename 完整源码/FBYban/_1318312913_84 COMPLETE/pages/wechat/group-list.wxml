@@ -1,0 +1,15 @@
+<import src="./templates.wxml"></import>
+<view class="page-group-list">
+    <qm-loading isLoading="{{isLoading}}"></qm-loading>
+    <view class="error-tips" wx:if="{{!isLoading&&isError}}">
+    功能即将开放，敬请期待...
+  </view>
+    <view class="customer-hop-list">
+        <template is="customer-hop-card" data="{{customerHop:customerHop}}" wx:if="{{customerHops.length}}" wx:for="{{customerHops}}" wx:for-item="customerHop" wx:key="id"></template>
+    </view>
+    <view class="more-group-tips-wrap" wx:if="{{!isLoading&&!isError}}">
+        <view class="button more-group-tips">
+       更多群陆续添加中
+    </view>
+    </view>
+</view>

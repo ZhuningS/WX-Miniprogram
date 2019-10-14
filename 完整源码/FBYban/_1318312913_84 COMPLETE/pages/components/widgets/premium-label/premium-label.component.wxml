@@ -1,0 +1,4 @@
+<view class="{{rootClassNames}}">
+    <qm-icon name="square-cny" size="{{iconSize}}" wx:if="{{isPremium}}"></qm-icon>
+    <qm-icon class="has-paid-label" name="square-tick" size="{{iconSize}}" wx:if="{{hasPaid}}"></qm-icon>
+</view>

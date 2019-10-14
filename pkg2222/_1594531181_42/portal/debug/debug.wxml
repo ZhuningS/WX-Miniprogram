@@ -1,0 +1,13 @@
+<navigation-bar title="调试"></navigation-bar>
+<view class="wrap">
+    <block wx:for="{{debugItemList}}" wx:key="{{item.name}}">
+        <view bindtap="onClickItem" class="debugItem" data-index="{{index}}" wx:if="{{item.name!='上报日志'}}">{{item.name}}</view>
+        <picker bindchange="logFileSelect" bindlongpress="onLongPressItem" class="debugItem" mode="selector" range="{{logFiles}}" rangeKey="key" value="{{logFilesIndex}}" wx:else>
+      {{item.name}}： {{logFiles[logFilesIndex].key}}
+    </picker>
+    </block>
+    <view class="console" wx:if="{{showLogs}}">
+        <text class="console__title">console</text>
+        <text class="logItem" selectable="true" wx:for="{{logs}}" wx:key="{{index}}">{{item}}</text>
+    </view>
+</view>

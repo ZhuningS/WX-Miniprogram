@@ -1,0 +1,15 @@
+.place-element {
+    background-color: #F6F6F6;
+}
+
+.place-element.type-bar {
+    border-radius: 5%;
+}
+
+.place-element.type-circle {
+    border-radius: 50%;
+}
+
+.place-element.type-square {
+    border-radius: 5px;
+}

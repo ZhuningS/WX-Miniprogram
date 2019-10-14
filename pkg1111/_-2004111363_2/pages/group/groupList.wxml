@@ -1,0 +1,50 @@
+<view class="{{currentSkin}}">
+    <view class="hear-fix w-100 fj f fc f32">
+        <text bindtap="changeType" class="hear f1 tc {{item.state==vm.state?'skin_txt':''}}" data-wpychangetype-a="{{item.state}}" wx:for="{{groupState}}" wx:key="key">{{item.name}}</text>
+    </view>
+    <view style="height:100rpx;"></view>
+    <view class="group">
+        <block wx:for="{{vm.list}}" wx:key="key">
+            <view class="group-item f" wx:for="{{item}}" wx:for-item="g" wx:key="key">
+                <view class="rel">
+                    <text class="orderType">{{g.IsGroup?'拼团':'单买'}}</text>
+                    <image bindtap="preView" class="group-img" data-wpypreview-a="{{g.ImgUrl}}" mode="aspectFill" src="{{g.ImgUrl}}"></image>
+                </view>
+                <view class="f fv f1">
+                    <view class="group-con f1 f fv fj">
+                        <view class="f fc fj">
+                            <text class="f34">{{g.GroupName}}</text>
+                            <text class="f26 cf200" wx:if="{{g.MState!=-1}}">{{orderState[g.State].name}}</text>
+                        </view>
+                        <view class="f">
+                            <text class="group-size">{{g.GroupSize}}人团</text>
+                            <text class="f22 c999 ml10"> 已团购{{g.HaveNum}}件</text>
+                        </view>
+                        <view class="f fc">
+                            <wxc-price class="f34 cf200">{{g.BuyPrice/100}}</wxc-price>
+                            <wxc-price class="c999 ml10" status="del">{{g.OriginalPrice/100}}</wxc-price>
+                        </view>
+                        <view class="cffb f24 f fc">
+                            <text>{{groupState_fmt[g.MState].name}}</text>
+                        </view>
+                    </view>
+                    <view class="mh20">
+                        <view class="f" style="float:right">
+                            <view bindtap="navOlt" class="group-btn" data-wpynavolt-a="{{g.Id}}" wx:if="{{g.MState!=-1}}">订单详情</view>
+                            <view bindtap="navShare" class="group-btn ml20" data-wpynavshare-a="{{g.GroupSponsorId}}" wx:if="{{g.IsGroup}}">参团详情</view>
+                            <button class="group-btn btn-primary ml20" data-group="{{g}}" openType="share" wx:if="{{g.MState==1}}">邀请小伙伴</button>
+                            <view bindtap="confirm" class="group-btn btn-primary ml20" data-wpyconfirm-a="{{g.Id}}" wx:if="{{g.State==1}}">确认收货</view>
+                            <view bindtap="pathValue" class="group-btn btn-primary ml20" data-wpypathvalue-a="{{g}}" wx:if="{{g.State==-1&&g.IsCommentting==false}}">评论</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view class="loding w-100 f fc-h" style="padding:30rpx 0" wx:if="{{vm.showloading&&vm.loadall==false}}">
+            <text class="loading-icon"></text>
+            <text class="c999 f26 ml20">正在加载中...</text>
+        </view>
+    </view>
+    <wxc-loadmore icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png" isEnd="{{true}}" text="到底啦" wx:if="{{vm.list[1].length!=0&&vm.loadall}}"></wxc-loadmore>
+    <wxc-abnor type="ORDER" wx:if="{{vm.list[1].length==0}}"></wxc-abnor>
+</view>

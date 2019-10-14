@@ -1,0 +1,23 @@
+<view class="{{currentSkin}}">
+    <view bindtap="goTop" class="dzicon icon-xiala-copy c-icon-other-main" wx:if="{{isShowBtn}}"></view>
+    <view class="c-list ">
+        <view bindtap="goCon" class="c-news-small-main f" data-wpygocon-a="{{item.id}}" wx:for="{{content.list}}" wx:key="key">
+            <view class="f1 f fv fj">
+                <view class="f fv">
+                    <view class="line line1">{{item.title}}</view>
+                    <view class="f26 c666 line line2 mt20" wx:if="{{item.description}}">{{item.description}}</view>
+                </view>
+                <view class="f fj w-100 f24 c999">
+                    <text>{{item.addtime}}</text>
+                    <text>{{item.VirtualPV+item.PV||0}}浏览</text>
+                </view>
+            </view>
+            <image src="{{item.img||'http://j.vzan.cc/miniapp/img/enterprise/blank_150x150.png'}}"></image>
+        </view>
+    </view>
+    <view class="loding w-100 f fc-h" style="padding:20rpx 0" wx:if="{{content.loadall==false}}">
+        <text class="loading-icon"></text>
+        <text class="c999 f26 ml20">正在加载中...</text>
+    </view>
+    <view class="w-100 tc c123 f24 ph20" style="background-color:#f6f6f6" wx:if="{{content.loadall}}">到底啦</view>
+</view>

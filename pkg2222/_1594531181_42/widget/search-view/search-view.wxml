@@ -1,0 +1,19 @@
+<block wx:if="{{supportCustomNavigation}}">
+    <view class="search-wrap {{phoneModel}} {{platform}}">
+        <icon class="weui-icon-search_in-box" size="14" type="search"></icon>
+        <input adjustPosition="false" bindblur="onInputBlur" bindconfirm="onClickSearch" bindfocus="onClickSearchInput" bindinput="onInputChange" class="search-input" confirmType="search" focus="{{bInputShow}}" placeholder="{{placeHolder}}" placeholderStyle="font-size: 14px;color: #B2B2B2;" type="text" value="{{inputValue}}"></input>
+        <cover-image bindtap="onInputClear" class="clear weui-icon-clear" hidden="{{inputValue.length==0||!bInputShow}}" src="../../assets/close.png"></cover-image>
+    </view>
+    <view animation="{{teachAnimation}}" class="search-teach" hidden="{{!bInputShow||inputValue.length!=0}}">
+        <view bindtap="onClickHistoryItem" class="search-teach__history-item weui-cell" data-query="{{item}}" wx:for="{{historys}}">
+            <block wx:if="{{index<5}}">
+                <view class="weui-cell__hd search-teach__icon"></view>
+                <view class="weui-cell__bd weui-cell_primary history_item__content">
+                    <text class="history_item__text">{{item}}</text>
+                </view>
+                <cover-image catchtap="onDeleteHistoryItem" class="weui-cell__ft delete" data-query="{{item}}" src="../../assets/icon_delete.png"></cover-image>
+            </block>
+        </view>
+    </view>
+    <view animation="{{maskAnimation}}" class="search-mask" hidden="{{!bInputShow}}"></view>
+</block>

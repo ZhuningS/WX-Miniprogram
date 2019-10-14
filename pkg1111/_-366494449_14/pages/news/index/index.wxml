@@ -1,0 +1,26 @@
+<import src="../../../components/login/index.wxml"></import>
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view bindtap="_jumpToCard" class="shareCard" data-cardid="{{cardInfo.id}}" hidden="{{!showCardInfo}}" style="position:relative">
+        <view class="avatar">
+            <image src="{{cardInfo.avatar}}"></image>
+        </view>
+        <view class="center">
+            <text class="name">{{cardInfo.name}}</text>
+            <text class="position">{{cardInfo.position}}</text>
+        </view>
+        <view class="right">TA的名片 ></view>
+    </view>
+    <view class="new_wrap2">
+        <view bindtap="_jump" class="new_item2" data-url="/pages/news/detail/index?id={{item.id}}" wx:for="{{actInfo}}" wx:key="id">
+            <view class="new_img2" wx:if="{{item.thumb}}">
+                <image src="{{item.thumb}}"></image>
+            </view>
+            <view class="new_info2">
+                <view class="title">{{item.name}}</view>
+                <view class="time">{{item.createtime}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>

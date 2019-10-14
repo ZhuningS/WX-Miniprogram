@@ -1,0 +1,4 @@
+<view class="wrapper">
+    <image class="icon" mode="aspectFit" src="/assets/icon-empty-cart.png"></image>
+    <view class="title">{{title}}</view>
+</view>

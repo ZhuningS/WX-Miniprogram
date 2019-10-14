@@ -1,0 +1,21 @@
+<view class="select-order {{currentSkin}} rel">
+    <view class="order-list">
+        <view bindtap="selectGood" class="order-item bg-w f fc" data-index="{{index}}" wx:for="{{goodList}}" wx:key="key">
+            <text class="dzicon {{mappingStatus[index]==true?'icon-zhifuchenggong skin_txt':'icon-kongxinyuan c999'}} f40 mw20"></text>
+            <image class="commodity-avator" src="{{item.goodImgUrl}}"></image>
+            <view class="detail f fv ml20">
+                <view class="f28 pr20">
+                    <text class="line line2">{{item.goodname}}</text>
+                </view>
+                <view class="c999 f22 f fj mt6 mr20">
+                    <text>{{item.orderDtl.SpecInfo}}</text>
+                    <text>X{{item.orderDtl.Count}}</text>
+                </view>
+                <view class="skin_txt f28 mt6">
+                    <text class="f22 t-b">￥</text>{{item.orderDtl.priceStr}} <text class="c999 f24 ml20">￥{{item.orderDtl.originalPriceStr}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <button bindtap="toSelectService" class="btn-confirm skin_bg f36 cfff" hoverClass="bgD32A7C">确定</button>
+</view>

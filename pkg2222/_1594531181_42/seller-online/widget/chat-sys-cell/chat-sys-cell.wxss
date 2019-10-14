@@ -1,0 +1,30 @@
+.wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 24rpx;
+    padding-bottom: 12rpx;
+}
+
+.dash-line {
+    flex-grow: 1;
+    height: 1rpx;
+    border-top: 0 dashed transparent;
+    background: linear-gradient(transparent,transparent) padding-box,repeating-linear-gradient(90deg,#DFDFDF 0,#DFDFDF 4px,transparent 0,transparent 5px);
+}
+
+.dash-line.left {
+    margin-left: 120rpx;
+}
+
+.dash-line.right {
+    margin-right: 120rpx;
+}
+
+.msg {
+    font-size: 24rpx;
+    color: #888;
+    letter-spacing: 0;
+    margin: 0 20rpx;
+}

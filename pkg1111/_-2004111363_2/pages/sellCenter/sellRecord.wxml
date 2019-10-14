@@ -1,0 +1,11 @@
+<block wx:for="{{vm.list}}" wx:for-item="record" wx:key="key">
+    <view class="re-item f fj fc" wx:if="{{vm.list[1].length!=0}}" wx:for="{{record}}" wx:key="key">
+        <view class="f fv">
+            <text class="f36">{{item.recordState}}</text>
+            <text class="c999 mt20">{{item.AddTimeStr}}</text>
+        </view>
+        <view class="f50 cred">￥{{item.cashMoneyStr}}</view>
+    </view>
+</block>
+<wxc-loadmore icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png" isEnd="{{true}}" text="到底啦" wx:if="{{vm.list[1].length!=0&&vm.loadall}}"></wxc-loadmore>
+<wxc-abnor type="DATA" wx:if="{{vm.list[1].length==0}}"></wxc-abnor>

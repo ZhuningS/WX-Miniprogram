@@ -1,0 +1,41 @@
+<template name="orderList">
+    <scroll-view bindscrolltolower="onReachBottom" class="order-list" scrollY="true" style=" width: 100vw;height: 100vh">
+        <block wx:if="{{list&&list.length>0}}">
+            <view bindtap="_jump" class="act-item" data-url="/pages/act/index/index?id={{item.id}}" wx:for="{{list}}" wx:key="id">
+                <view class="head_map">
+                    <image mode="widthFix" src="{{item.head_map}}"></image>
+                </view>
+                <view class="info">
+                    <view class="title">{{item.title}}</view>
+                    <view class="status">{{item.statusTips}}</view>
+                    <view class="time">{{item.begin_time}}</view>
+                </view>
+            </view>
+        </block>
+        <view class="nodata" wx:else>
+            <image class="icon" mode="aspectFit" src="/images/card/noorder.png"></image>
+            <view>
+                <text>暂时还没有活动哦～</text>
+            </view>
+        </view>
+        <view class="loadingWrap" wx:if="{{loadingShow}}">
+            <image src="/images/loading.png"></image>
+            <text>正在加载</text>
+        </view>
+    </scroll-view>
+</template>
+<import src="/components/tabbar/index.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view class="tabs">
+        <view class="tab-content-list">
+            <view class="tab-content">
+                <template is="orderList" data="{{list:actList,loadingShow:loadingShow}}"></template>
+            </view>
+        </view>
+    </view>
+</view>
+<template is="tabbar" data="{{tabbar:tabbar,data:'active'}}" wx:if="{{isShowTab}}"></template>

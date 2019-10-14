@@ -1,0 +1,72 @@
+<view class="{{currentSkin}}">
+    <view class="in-hear skin_bg f fc fc-h rel">
+        <image src="http://j.vzan.cc/miniapp/img/enterprise/integralMall-bg.png"></image>
+        <view class="f fv fc">
+            <text class="f70">{{vm.info.integral}}</text>
+            <view class="in-btn-box w-100 f fc fc-h">
+                <text bindtap="goRecord" class="in-btn">积分记录</text>
+                <text bindtap="openSingin" class="in-btn ml20" wx:if="{{signinRules.State==1}}">积分签到</text>
+            </view>
+        </view>
+        <view bindtap="rules" class="in-right">积分规则</view>
+    </view>
+    <view class="in-select skin_br f fc">
+        <text catchtap="selectChange" class="{{item.id==vm.type?'skin_bg':''}}" data-wpyselectchange-a="{{item.id}}" wx:for="{{select}}" wx:key="key">{{item.name}}</text>
+    </view>
+    <scroll-view>
+        <view class="w-100 f fw fc fj pw20" wx:if="{{vm.list[1].length}}">
+            <block wx:for="{{vm.list}}" wx:key="key">
+                <view bindtap="navDlt" class="in-item f fc fv" data-wpynavdlt-a="{{goods.id}}" wx:for="{{item}}" wx:for-item="goods" wx:key="key">
+                    <image mode="aspectFill" src="{{goods.activityimg_fmt}}"></image>
+                    <text class="f32 mt10">{{goods.activityname}}</text>
+                    <text class="skin_txt f32 mt10">{{goods.integral}}积分</text>
+                    <wxc-price class="c999 mt10" status="del">原价:{{goods.originalPriceStr}}</wxc-price>
+                </view>
+            </block>
+            <view class="loding w-100 f fc-h" style="padding:30rpx 0" wx:if="{{vm.showloading&&vm.loadall==false}}">
+                <text class="loading-icon"></text>
+                <text class="c999 f26 ml20">正在加载中...</text>
+            </view>
+        </view>
+        <wxc-abnor type="DATA" wx:if="{{vm.list[1].length==0}}"></wxc-abnor>
+    </scroll-view>
+    <wxc-loadmore icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png" isEnd="{{true}}" text="到底啦" wx:if="{{vm.list[1].length!=0&&vm.loadall}}"></wxc-loadmore>
+    <view class="in-bg f fc fc-h" wx:if="{{showRules}}">
+        <view class="in-content">
+            <view class="in-dlt f fv">
+                <text class="f32">积分规则</text>
+                <view class="in-txt" wx:for="{{vm.rules}}" wx:key="key">
+                    <text>{{index+1}}、{{item}}</text>
+                </view>
+            </view>
+            <view bindtap="rulesCancle" class="in-showBtn">
+                <text>确定</text>
+            </view>
+        </view>
+    </view>
+    <view bindtap="navOlst" class="integral-order">
+        <text class="dzicon icon-dingdan"></text>
+        <text style="font-size: 22rpx;color:">订单</text>
+        <text class="integral-num" wx:if="{{vm.sendCount>0&&vm.sendCount!=undefind}}">{{vm.sendCount}}</text>
+    </view>
+    <view class="masking w-100 h-100 f fv fc fc-h" wx:if="{{showsigninFloat}}">
+        <view class="signin-wrap bg-w rel f fv fc">
+            <view bindtap="$comSigninFloat$closeSigninMask" class="close abs dzicon icon-zhuanyebaniconkuozhan_Close cfff f60"></view>
+            <image mode="aspectFill" src="http://j.vzan.cc/miniapp/img/enterprise/sign-in-bg.png"></image>
+            <view class="signin-day abs f28">已连续签到<text style="color:#FFD530">{{$comSigninFloat$comUserSignIn.ConnectDay}}</text>天</view>
+            <view class="date-list rel f fc fj">
+                <view class="date-item f fv fc" wx:for="{{$comSigninFloat$comUserSignIn.listPlayCardLog}}" wx:for-index="$comSigninFloat$index" wx:for-item="$comSigninFloat$item" wx:key="$comSigninFloat${{$comSigninFloat$index}}">
+                    <view class="rel">
+                        <image mode="aspectFill" src="{{$comSigninFloat$item.Played?'http://j.vzan.cc/miniapp/img/enterprise/sign-in.png':'http://j.vzan.cc/miniapp/img/enterprise/signed-in.png'}}" style="width:50rpx;height:50rpx;"></image>
+                        <text class="abs integral" wx:if="{{!$comSigninFloat$item.Played}}">+{{$comSigninFloat$item.Points}}</text>
+                    </view>
+                    <text class="date c666 f20">{{$comSigninFloat$item.dateStr}}</text>
+                </view>
+            </view>
+            <view class="f fc fc-h">
+                <view bindtap="$comSigninFloat$clickSignin" class="signin-btn f30" wx:if="{{!$comSigninFloat$comUserSignIn.TodayPlayCard}}">签到</view>
+                <view class="signed-btn f30" wx:if="{{$comSigninFloat$comUserSignIn.TodayPlayCard}}">今天已签到</view>
+            </view>
+        </view>
+    </view>
+</view>

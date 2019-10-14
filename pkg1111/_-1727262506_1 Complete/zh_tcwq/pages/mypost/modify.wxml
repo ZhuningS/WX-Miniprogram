@@ -1,0 +1,61 @@
+<form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
+    <view class="header">
+        <view class="header_title">发布{{info}}信息</view>
+        <view bindtap="know" class="header_right">发布须知</view>
+    </view>
+    <view class="content">
+        <view class="content_miao">内容描述</view>
+        <view class="miaoshu_box">
+            <textarea class="miaoshu" maxlength="-1" name="content" placeholder="请输入内容描述" value="{{post.details}}"></textarea>
+        </view>
+    </view>
+    <view class="upload">
+        <view class="content_add rel" wx:for="{{imgArray}}">
+            <view bindtap="delete" class="delete ab" data-index="{{index}}">
+                <image class="ab" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/delete.png"></image>
+            </view>
+            <image bindtap="previewImage" class="add_img" data-index="{{index}}" mode="aspectFill" src="{{post.is_houtai==1?url3:''}}{{item}}"></image>
+        </view>
+        <view bindtap="chooseImage2" class="content_add">
+            <image class="add_img" src="https://api.cnmmsc.org/apitc/img/image/add.png"></image>
+        </view>
+    </view>
+    <view class="banner_list">
+        <view class="type">
+            <picker bindchange="bindPickerChange1" range="{{nav}}" rangeKey="type_name" value="{{tindex}}">
+                <view class="picker">
+      帖子分类：{{nav[tindex].type_name?nav[tindex].type_name:post.type_name}} 
+    </view>
+            </picker>
+        </view>
+        <view class="type">
+            <picker bindchange="bindPickerChange2" range="{{label}}" rangeKey="name" value="{{lindex}}">
+                <view class="picker">
+      帖子子分类：{{label[lindex].name?label[lindex].name:post.type2_name}}
+    </view>
+            </picker>
+        </view>
+    </view>
+    <view class="banner">
+        <view class="banner_list border flex-center">
+            <view class="banner_name">联系人：</view>
+            <input class="banner_text" name="name" placeholderStyle="color:#999;font-size:28rpx;" value="{{post.user_name}}"></input>
+        </view>
+        <view class="banner_list2 border  flex-center">
+            <view class="banner_name">联系方式：</view>
+            <input class="banner_text" name="tel" placeholder="请输入您的联系方式" placeholderStyle="color:#999;font-size:28rpx;" value="{{post.user_tel}}"></input>
+        </view>
+        <view class="banner_list3 flex-center">
+            <view class="banner_name">具体位置</view>
+            <view bindtap="add" class="banner_text">{{post.address}}</view>
+        </view>
+    </view>
+    <view class="modify" wx:if="{{post.dq==true}}">
+        <radio-group bindchange="radioChange" class="radio-group">
+            <label class="radio" wx:for="{{stock}}">
+                <radio checked="{{item.checked}}" color="#ed414a" value="{{item}}"></radio>{{item}}
+      </label>
+        </radio-group>
+    </view>
+    <button formType="submit">确认修改</button>
+</form>

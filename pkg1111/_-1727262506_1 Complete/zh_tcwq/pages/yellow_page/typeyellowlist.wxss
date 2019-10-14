@@ -1,0 +1,97 @@
+page {
+    background: #ebecf1;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.container>view {
+    width: 100%;
+    height: 200rpx;
+    background: #fff;
+    margin-bottom: 20rpx;
+}
+
+.store {
+    width: 95%;
+    height: 86%;
+}
+
+.store_img {
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.store_img image {
+    width: 95%;
+    height: 100%;
+    border-radius: 8rpx;
+}
+
+.store_info {
+    width: 70%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.store_info>view {
+    text-indent: 20rpx;
+}
+
+.store_info>view:nth-child(1) {
+    width: 100%;
+    height: 50rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+
+.store_info>view:nth-child(2) {
+    width: 100%;
+    height: 70rpx;
+    font-size: 24rpx;
+    color: #999;
+}
+
+.store_info>view:nth-child(3) {
+    width: 75%;
+    font-size: 28rpx;
+    height: 70rpx;
+}
+
+.store_info image {
+    width: 20rpx;
+    height: 40rpx;
+    margin-right: 10rpx;
+}
+
+.phone {
+    width: 80rpx;
+    height: 120rpx;
+    right: 5%;
+    font-size: 24rpx;
+    color: red;
+    line-height: 40rpx;
+}
+
+.phone image {
+    width: 100%;
+    margin: 0 auto 0;
+    display: block;
+    height: 100%;
+}
+
+.none {
+    position: fixed;
+    width: 60%;
+    height: 400rpx;
+    overflow: hidden;
+}
+
+.none image {
+    width: 100%;
+}

@@ -1,0 +1,25 @@
+<view class="{{currentSkin}}">
+    <swiper indicatorDots autoplay="true" class="com-slider w-100" duration="300" indicatorActiveColor="#a1a2a3" indicatorColor="#fff" interval="5000">
+        <swiper-item wx:for="{{vm.slideimgs_fmt}}" wx:for-index="$comSliderIn$index" wx:for-item="$comSliderIn$item" wx:key="$comSliderIn$key">
+            <image bindtap="$comSliderIn$imgFunc" class="w-100" data-com-index="{{undefined}}" data-wpyimgfunc-a="{{vm}}" id="{{$comSliderIn$index}}" mode="widthFix" src="{{$comSliderIn$item||'http://j.vzan.cc/miniapp/img/enterprise/blank_150x150.png'}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="f fv p20">
+        <text class="f36 t-b">{{vm.activityname}}</text>
+        <text class="cff9 mt20" wx:if="{{vm.type==0}}">{{vm.integral}}积分</text>
+        <text class="cff9 mt20" wx:if="{{vm.type==1}}">￥{{vm.priceStr}}+{{vm.integral}}积分</text>
+    </view>
+    <view class="dlt fc f fc-h">
+        <view class="dzicon icon-dingdan f32"></view>
+        <text>商品详情</text>
+    </view>
+    <block wx:if="{{vm.description!=''}}">
+        <import src="../../lib/wxParse/wxParse.wxml"></import>
+        <view class="f32 pw20" style="word-break: break-all">
+            <template is="wxParse0" data="{{item:item}}" wx:for="{{vm.content_fmt.nodes||vm.nodes}}" wx:key="{{index}}"></template>
+        </view>
+    </block>
+    <wxc-abnor type="ORDER" wx:if="{{vm.description==''}}"></wxc-abnor>
+    <view style="height:100rpx;"></view>
+    <view bindtap="navOrder" class="dlt-btn skin_bg">{{vm.btn}}</view>
+</view>

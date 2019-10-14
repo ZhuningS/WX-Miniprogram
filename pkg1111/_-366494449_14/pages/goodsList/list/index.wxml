@@ -1,0 +1,53 @@
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="page" hidden="{{!dataLoaded}}" style="min-height: {{winHei}}px">
+    <view class="showItems" wx:if="{{fromCate!=1&&fromCoupon!=1}}">
+        <scroll-view scrollIntoView="{{toId}}" scrollWithAnimation="true" scrollX="true">
+            <view bindtap="_changeItem" class="{{current==0?'active':''}}" data-index="0" id="s0">全部</view>
+            <view bindtap="_changeItem" class="{{current==index+1?'active':''}}" data-cid="{{item.id}}" data-index="{{index+1}}" id="s{{index+1}}" wx:for="{{catelist}}">
+          {{item.name}}
+        </view>
+        </scroll-view>
+    </view>
+    <view style="font-size: 24rpx;color: #999; margin: 30rpx 20rpx 20rpx;text-align: center">
+        <block wx:if="{{goodsList.length<=0&&fromCate==1}}">
+            未搜索到分类为'{{title}}'的商品
+        </block>
+        <block wx:if="{{goodsList.length>0&&fromCoupon==1}}">
+            有{{goodsList.length}}个商品可使用优惠券
+        </block>
+        <block wx:if="{{goodsList.length>0&&fromCate==1}}">
+            搜索到{{goodsList.length}}个相关商品
+        </block>
+    </view>
+    <view class="page__bd" style="top:{{fromCate==1||fromCoupon==1?0:''}}">
+        <view class="{{double?'newGoodStyle2':'newGoodStyle'}}" wx:if="{{goodsList.length>0}}">
+            <view bindtap="_jump" class="newgoodsItem" data-url="/pages/goodsDetail/detail/index?id={{item.id}}" wx:for="{{goodsList}}" wx:key="id">
+                <view class="newgoodsItemWrap">
+                    <view class="newgoodsImgWrap">
+                        <image class="newgoodsImg" lazyLoad="true" mode="aspectFill" src="{{item.thumb}}"></image>
+                    </view>
+                    <view class="newgoodsInfoWrap">
+                        <view class="newgoodsName">{{item.name}}</view>
+                        <view class="shortitle" wx:if="{{layout=='single'}}">{{item.shorttitle}}</view>
+                        <view class="yongquan" wx:if="{{fromCoupon==1}}">可用券</view>
+                        <view class="newgoodsPrice">
+                            <view>
+                                <text class="goods__price__unit">￥</text>{{item.price}}
+                        </view>
+                            <view class="newpriceshow">
+                                <text class="goods__price__unit_2">￥</text>{{item.priceshow}}
+                        </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="noResult" wx:else>
+            <image src="/images/card/wushangpin@3x.png" style="width: 240rpx; height: 240rpx;"></image>
+            <view>暂无商品</view>
+        </view>
+    </view>
+</view>

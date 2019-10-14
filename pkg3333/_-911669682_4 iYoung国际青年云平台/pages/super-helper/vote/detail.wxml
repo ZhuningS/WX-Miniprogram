@@ -1,0 +1,70 @@
+<view class="contenter">
+    <view class="notice-detail">
+        <view class="detail-content">
+            <view class="notice-detail-user grey">
+                <view class="flex uesrinfo mt10">
+                    <view class="notice-user-msg sub">
+                        <image class="user-img mr10" src="{{headimgurl?headimgurl:'/images/default.png'}}"></image>
+                        <text class="user-name lineText f14 mr5">{{nickname}}</text>
+                        <text class="notice-time">{{create_time}}</text>
+                    </view>
+                    <view class="del tc">
+                        <text bindtap="onDeleteTap" class="iconfont icon-delete" hidden="{{!is_del}}"></text>
+                    </view>
+                </view>
+            </view>
+            <view class="text-content f16 mt10">
+                <text>{{remark}}</text>
+            </view>
+            <view class="notice-user-msg sub">
+                <text class="user-name lineText f14 mr5">活动时间 : {{start_time}} - {{end_time}}</text>
+            </view>
+            <view class="vote-image mt10" hidden="{{!cover}}">
+                <image mode="widthFix" src="{{cover}}"></image>
+            </view>
+        </view>
+        <view class="vote-choose mt10" wx:if="{{is_vote}}">
+            <view class="vote-list flex gridXb" wx:for="{{rule}}" wx:key="{{index}}">
+                <image class="pull-left" src="{{item.img}}" wx:if="{{type==1}}"></image>
+                <text class="sub">{{type==1?item.title:item}}</text>
+                <progress percent="{{statistic[index]/vote_count*100}}" strokeWidth="5"></progress>
+            </view>
+        </view>
+        <block wx:else>
+            <view class="vote-choose">
+                <radio-group bindchange="onSelectValueChange">
+                    <block wx:for="{{rule}}" wx:key="{{index}}">
+                        <view wx:if="{{type==0}}">
+                            <label class="vote-list gridXb flex">
+                                <radio checked="{{index==0?'checked':''}}" value="{{index}}"></radio>
+                                <view class="sub tl">{{item}}</view>
+                            </label>
+                        </view>
+                        <label class="pho-list tc mr15 mb15" wx:else>
+                            <view class="choose-img">
+                                <image mode="aspectFill" src="{{item.img}}"></image>
+                            </view>
+                            <view class="lineText radio-text flex">
+                                <radio checked="{{index==0?'checked':''}}" value="{{index}}"></radio>
+                                <text class="sub tl">{{item.title}}</text>
+                            </view>
+                        </label>
+                    </block>
+                </radio-group>
+            </view>
+            <view class="choose-icon tc m15"></view>
+        </block>
+        <view class="people-look tc blue">
+            <text class="iconfont icon-peoplefill"></text>
+            <text bindtap="onNavigateTap" class="people-look-num ml5" data-url="people?id={{id}}">{{vote_count}} 人参与投票，点击查看投票详情</text>
+        </view>
+    </view>
+    <view class="tc flex" wx:if="{{is_check==1&&is_vote==false}}">
+        <button catchtap="onVoteTap" class="f16 vote-btn" hoverClass="none" type="primary">投票</button>
+    </view>
+    <view class="btn tc flex">
+        <button class="create green f16" openType="share" style="margin-left: auto; margin-right: 10rpx;">分享</button>
+        <button catchtap="onQueryOneTap" class="create green f16" style="margin-right: auto; margin-left: 10rpx;">换一个瞧瞧</button>
+    </view>
+</view>
+<duoguan_ad ad_type="duoguan_vote_info_bottom"></duoguan_ad>

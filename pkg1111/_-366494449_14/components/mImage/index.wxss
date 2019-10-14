@@ -1,0 +1,4 @@
+.mimages {
+    overflow: hidden;
+    font-size: 0;
+}

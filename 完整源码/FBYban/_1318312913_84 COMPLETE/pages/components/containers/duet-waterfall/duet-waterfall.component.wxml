@@ -1,0 +1,13 @@
+<universe-timeline events="{{events}}" wx:if="{{!isDisplayPin}}"></universe-timeline>
+<form reportSubmit bindsubmit="collectNotificationFormId" wx:else>
+    <view class="{{rootClassNames}}" wx:if="{{events.length&&mediaEvents.length&&columnLeftEvents.length}}">
+        <view class="waterfall-column column-left">
+            <universe-card isPin comClass="card-component-root" event="{{event}}" wx:for="{{columnLeftEvents}}" wx:for-item="event" wx:key="left-{{ event.id }}"></universe-card>
+        </view>
+        <view class="waterfall-column column-right">
+            <button formType="submit" hoverClass="none" wx:for="{{columnRightEvents}}" wx:for-item="event" wx:key="right-{{ event.id }}">
+                <universe-card isPin comClass="card-component-root" event="{{event}}"></universe-card>
+            </button>
+        </view>
+    </view>
+</form>

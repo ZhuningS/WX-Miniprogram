@@ -1,0 +1,50 @@
+<view class="contenter">
+    <view>
+        <view bindtap="onNavigateTap" class="active-list" data-id="{{item.id}}" data-url="detail?id={{item.id}}" wx:for="{{data}}" wx:key="{{index}}">
+            <view class="active-content transition-duration-150 active-bg">
+                <image class="active-bgimg" mode="aspectFill" src="{{item.cover?item.cover:cover}}"></image>
+                <text class="active-title write f16 lineText">{{item.title}}</text>
+            </view>
+            <view class="other-content">
+                <view class="other-list time gridXb">日期
+          <block wx:if="{{item.is_fullday==1}}">
+            {{item.start_time}} 全天
+          </block>
+                    <block wx:else>
+            {{item.start_time}} - {{item.end_time}}
+          </block>
+                </view>
+                <view catchtap="onOpenMapTap" class="other-list place gridXb flex transition-duration-150 active-bg" data-address="{{item.address}}" data-latitude="{{item.latitude}}" data-longitude="{{item.longitude}}" data-title="{{item.title}}">
+                    <text class="sub lineText">{{item.address}}</text>
+                    <text class="iconfont icon-locationfill fr green"></text>
+                </view>
+                <view catchtap="onNavigateTap" class="other-list people gridXb flex transition-duration-150 active-bg" data-url="people?id={{item.id}}&uid={{item.uid}}">
+                    <text class="people-look">{{item.people}}人参与</text>
+                    <view class="peo-msg fr tr sub">
+                        <image src="{{item?item:'/images/default.png'}}" wx:for="{{item.headimgurls}}" wx:for-index="idx" wx:key="{{idx}}"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="nothing tc linght flex mt10 mb10" hidden="{{hasMore}}">
+    <text class="sub line mr10"></text>
+    <text class="red">{{tabBar=='released'?'用户创建的活动审核中，':''}}</text>
+    <text>没有更多了</text>
+    <text class="sub line ml10"></text>
+</view>
+<view class="loding linght tc mt10" wx:if="{{isload}}">
+    <text class="iconfont icon-jiazai mr10 f18"></text>
+    <text>正在加载</text>
+</view>
+<view class="aside-float" wx:if="{{is_add_activity}}">
+    <button bindtap="onNavigateTap" data-url="write" type="primary">
+        <text class="iconfont icon-add"></text>
+    </button>
+</view>
+<view class="tab-tit flex tc tabbar">
+    <view catchtap="tabBarEvent" class="tab-sub gridXb {{tabBar=='public'?'tab-sub-active':''}} sub" data-tab-bar="public">活动广场</view>
+    <view catchtap="tabBarEvent" class="tab-sub gridXb {{tabBar=='released'?'tab-sub-active':''}} sub" data-tab-bar="released">我发布的</view>
+    <view catchtap="tabBarEvent" class="tab-sub gridXb {{tabBar=='received'?'tab-sub-active':''}} sub" data-tab-bar="received">我参与的</view>
+</view>

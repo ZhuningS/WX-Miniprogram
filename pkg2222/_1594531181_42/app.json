@@ -1,0 +1,33 @@
+{
+    "pages": [
+        "portal/main/main",
+        "portal/index/index",
+        "portal/detail/detail",
+        "portal/address/address",
+        "portal/category/category",
+        "portal/debug/debug",
+        "portal/search/search",
+        "portal/card/card",
+        "libs/mmuxwxappdevkit/widget/webview-page/webview-page",
+        "portal/contact/contact",
+        "shopping-cart/pages/index/index",
+        "shopping-cart/pages/order-list-for-report/order-list-for-report",
+        "shopping-cart/pages/order-report-form/order-report-form",
+        "libs/shoppingcartcomm/portal/order/order",
+        "libs/shoppingcartcomm/portal/order-detail/order-detail",
+        "libs/shoppingcartcomm/portal/express-detail/express-detail",
+        "seller-online/portal/chat/chat",
+        "portal/manage-product/manage-product",
+        "portal/manage-product-list/manage-product-list",
+        "portal/manage-product-list-slider/manage-product-list-slider",
+        "portal/news/news",
+        "portal/shopping-list-tip/shopping-list-tip"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#F7F7F7",
+        "navigationBarTitleText": "携程微主页",
+        "navigationBarTextStyle": "black",
+        "navigationStyle": "custom"
+    }
+}

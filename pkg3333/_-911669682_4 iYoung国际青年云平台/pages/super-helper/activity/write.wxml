@@ -1,0 +1,110 @@
+<form bindsubmit="onPushSubmit" reportSubmit="true">
+    <view class="contenter">
+        <view class="content">
+            <view class="list gridXb flex">
+                <view class="list-title mr10">活动标题</view>
+                <input class="title sub" name="title" placeholder="点此输入主题" type="text"></input>
+            </view>
+            <view class="list gridXb flex">
+                <view class="list-title mr10">活动内容</view>
+                <textarea class="sub" maxlength="1000" name="content" placeholder="点此输入内容"></textarea>
+            </view>
+            <view class="list gridXb flex">
+                <view class="list-title">开始时间</view>
+                <view class="star-time fr tr sub grey">
+                    <input class="hidden" name="start_time" type="text" value="{{start_date}} {{start_time}}"></input>
+                    <view class="picker">
+                        <picker bindchange="bindDateChange" data-bind="start_date" mode="date" start="{{init_start_date}}" value="{{start_date}}">
+                            <text>{{start_date}}</text>
+                        </picker>
+                    </view>
+                    <view class="picker" style="{{isFullDay?'display:none;':''}}">
+                        <picker bindchange="bindDateChange" data-bind="start_time" end="23:59" mode="time" start="00:00" value="{{start_time}}">
+                            <text>{{start_time}}</text>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            <view class="list gridXb flex" style="{{isFullDay?'display:none;':''}}">
+                <view class="list-title">结束时间</view>
+                <view class="star-time fr tr sub grey">
+                    <input class="hidden" name="end_time" type="text" value="{{end_date}} {{end_time}}"></input>
+                    <view class="picker">
+                        <picker bindchange="bindDateChange" data-bind="end_date" mode="date" start="{{init_start_date}}" value="{{end_time}}">
+                            <text>{{end_date}}</text>
+                        </picker>
+                    </view>
+                    <view class="picker">
+                        <picker bindchange="bindDateChange" data-bind="end_time" end="23:59" mode="time" start="00:00">
+                            <text>{{end_time}}</text>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            <view class="list flex">
+                <view class="switch-left sub">全天</view>
+                <view class="star-time tc">
+                    <input class="hidden" name="is_fullday" type="text" value="{{isFullDay?1:0}}"></input>
+                    <switch bindchange="onFullDayChange"></switch>
+                </view>
+            </view>
+        </view>
+        <view class="content mt10">
+            <view catchtap="chooseLocationTap" class="list gridXb flex place transition-duration-150 active-bg">
+                <input hidden="{{true}}" name="address" style="display:none;" value="{{address}}"></input>
+                <input hidden="{{true}}" name="latitude" style="display:none;" value="{{latitude}}"></input>
+                <input hidden="{{true}}" name="longitude" style="display:none;" value="{{longitude}}"></input>
+                <text class="f18 mr10 iconfont icon-locationfill linght"></text>
+                <text class="title sub">{{address?address:'请选择活动地点！'}}</text>
+            </view>
+            <view class="list flex transition-duration-150 active-bg">
+                <view class="left-title">选择模版</view>
+                <view bindtap="bindtapTem" class="tip-time fr sub tr arrowR">
+                    <input hidden="{{true}}" name="cover" style="display:none;" type="text" value="{{cover}}"></input>
+                    <image class="invite-img" mode="aspectFill" src="{{cover}}"></image>
+                </view>
+            </view>
+        </view>
+        <view class="content mt10">
+            <view class="list gridXb flex">
+                <view class="switch-left sub">用户报名信息填写</view>
+                <view class="star-time fr tc">
+                    <switch bindchange="onIsEnrollInfoChange"></switch>
+                </view>
+            </view>
+            <view class="list {{!is_enroll_info?'hidden':''}}">
+                <input class="hidden" name="enroll_info" value="{{enroll_info}}"></input>
+                <checkbox-group bindchange="onEnrollInfoChange">
+                    <label class="checkbox">
+                        <checkbox checked="{{is_enroll_info?'checked':''}}" value="true_name"></checkbox>真实姓名
+          </label>
+                    <label class="checkbox">
+                        <checkbox checked="{{is_enroll_info?'checked':''}}" value="mobile"></checkbox>手机号
+          </label>
+                    <label class="checkbox">
+                        <checkbox checked="{{is_enroll_info?'checked':''}}" value="company"></checkbox>公司名称
+          </label>
+                    <label class="checkbox">
+                        <checkbox value="idcard"></checkbox>身份证
+          </label>
+                    <label class="checkbox">
+                        <checkbox value="room_number"></checkbox>房号
+          </label>
+                </checkbox-group>
+            </view>
+        </view>
+        <view class="content porwer f16 mt10 flex">
+            <text>设为私密活动</text>
+            <view class="sub tr">
+                <switch bindchange="onPrivateChange" checked="{{is_private?'checked':''}}" type="switch"></switch>
+                <input class="hidden" name="is_private" value="{{is_private}}"></input>
+            </view>
+        </view>
+        <view class="tips">
+            <text class="f12 grey">私密投票将不会出现在活动广场</text>
+        </view>
+        <view class="m20">
+            <button class="f16 mb15" formType="submit" hoverClass="none" type="primary">提交</button>
+        </view>
+    </view>
+</form>

@@ -1,0 +1,11 @@
+{
+    "backgroundColor": "#FFFFFF",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "usingComponents": {
+        "like-view": "./widget/like-view/like-view",
+        "image-view": "../../libs/mmuxwxappdevkit/widget/image-view/image-view",
+        "navigator": "../../libs/mmuxwxappdevkit/widget/navigator/navigator",
+        "error-page": "../../libs/mmuxwxappdevkit/widget/error-page/error-page",
+        "navigation-bar": "../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar"
+    }
+}

@@ -1,0 +1,94 @@
+page {
+    padding-top: 60px;
+}
+
+.header {
+    background-color: #FFFFFF;
+    display: flex;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.header .button {
+    background-color: #FFFFFF;
+    color: rgba(0,0,0,0.2);
+    flex: 1;
+    font-size: 16px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.header .button.selected {
+    color: #000000;
+}
+
+.cate-ctn {
+    background: #FFFFFF;
+    border-bottom: 15px #f7f7f7 solid;
+    border-top: 15px #f7f7f7 solid;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 30px 120rpx 0;
+    width: 100%;
+}
+
+.cate-ctn.hide {
+    color: rgba(0,0,0,0.2);
+}
+
+.cate-ctn .cate-title {
+    font-size: 30px;
+    line-height: 42px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cate-ctn .actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.cate-ctn .actions .button:first-child {
+    margin-right: 10px;
+}
+
+.cate-ctn .actions .button.trans {
+    background-color: transparent;
+}
+
+.cate-ctn .cate {
+    display: flex;
+    font-size: 14px;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    line-height: 24px;
+}
+
+.followers-ctn {
+    background: #FFFFFF;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 10px 60rpx 0;
+    width: 100%;
+}
+
+.followers-ctn .user {
+    align-items: center;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.followers-ctn .user .avatar {
+    margin-right: 20px;
+}
+
+.followers-ctn .user .info {
+    flex: 1;
+}
+
+.followers-ctn .user .info .name {
+    font-size: 14px;
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="13188 752 12 12">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #000;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="icon_img_selected" transform="translate(12996 527)">
+    <path id="Path_1118" data-name="Path 1118" class="cls-1" d="M6,383H18v12H6Z" transform="translate(186 -158)"/>
+    <path id="Path_1124" data-name="Path 1124" class="cls-2" d="M11.595,391.943l3.429,3,5.261-6.338" transform="translate(181.905 -161.107)"/>
+  </g>
+</svg>

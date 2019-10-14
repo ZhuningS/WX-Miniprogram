@@ -1,0 +1,33 @@
+<view id="header">
+    <view style="height:{{headerHeight}}rpx;"></view>
+    <view class="capsule">
+        <view bindtap="reportTee" class="seat"></view>
+        <text>"{{title}}"的森林</text>
+    </view>
+</view>
+<view class="container">
+    <view class="statusBar" style="top: {{top+41}}rpx">
+        <view class="icon">
+            <image src="../../assets/images/ic_calendar@3x.png"></image>
+            <text>{{dateTime}}</text>
+        </view>
+        <view class="icon">
+            <text>{{list.successCount}}</text>
+            <image src="../../assets/images/ic_tree@3x.png"></image>
+        </view>
+        <view class="icon">
+            <text>{{list.failCount}}</text>
+            <image src="../../assets/images/ic_dead_tree_one@3x.png"></image>
+        </view>
+        <view class="icon">
+            <text>{{list.successTime}}</text>
+            <image src="../../assets/images/ic_time_one@3x.png"></image>
+        </view>
+    </view>
+    <image class="bird" mode="widthFix" src="../../assets/images/img_bird@3x.png" style="top: {{top+90}}rpx;"></image>
+    <view class="forset" style="top: {{top+460}}rpx;">
+        <image class="tee" mode="widthFix" src="{{item.src}}" wx:for="{{forestList}}" wx:key="{{index}}"></image>
+        <image mode="widthFix" src="../../assets/images/img_land@3x.png"></image>
+    </view>
+</view>
+<view bindtap="reportTee" class="btn">立即种树</view>

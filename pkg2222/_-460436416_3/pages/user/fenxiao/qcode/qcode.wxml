@@ -1,0 +1,20 @@
+<view class="qheader tc gridXb">
+    <image class="avatar" mode="aspectFill" src="{{data_list.headimgurl}}"></image>
+    <view class="qname mt15">
+        <text class="f20">我是{{data_list.nickname}}</text>
+        <view class="slogan grey">我要为{{data_list.public_name}}代言</view>
+    </view>
+</view>
+<view class="erwema tc">
+    <image class="qrcode" mode="aspectFill" src="{{data_list.codeurl}}"></image>
+    <view class="etxt mt15">点击右上角分享给朋友</view>
+    <button bindtap="saveimage" class="mt15" type="primary">保存图片</button>
+</view>
+<import src="../../../../wxParse/wxParse.wxml"></import>
+<view class="tips">
+    <view class="ttit grey gridXb">
+        <text class="iconfont icon-fxicon-3"></text> 分销规则</view>
+    <view class="tcon">
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+    </view>
+</view>

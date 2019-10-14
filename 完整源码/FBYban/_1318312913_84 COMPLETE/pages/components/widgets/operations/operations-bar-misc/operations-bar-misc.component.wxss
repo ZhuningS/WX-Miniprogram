@@ -1,0 +1,30 @@
+.operations-bar {
+    display: inline-flex;
+    transform: translateY(1px);
+}
+
+.operations-bar qm-button {
+    margin-left: 16rpx;
+}
+
+.operations-bar mark-switcher {
+    margin-right: -16rpx;
+    transform: translateY(-0.3px);
+}
+
+.operations-bar .topic-navigator {
+    position: relative;
+    transform: translateY(2.3rpx);
+}
+
+.operations-bar .topic-navigator .topic-count {
+    position: absolute;
+    color: #FFFFFF;
+    top: 0.17rem;
+    left: 50%;
+    transform: translate(-50%,3%);
+}
+
+.operations-bar.size-tall qm-button {
+    margin-left: 8rpx;
+}

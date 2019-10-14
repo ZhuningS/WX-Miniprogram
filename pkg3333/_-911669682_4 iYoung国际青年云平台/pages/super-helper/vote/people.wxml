@@ -1,0 +1,14 @@
+<view class="nopeople linght tc" style="padding:160rpx 0;" wx:if="{{!hasVote}}">暂人无投票哦~~</view>
+<view class="contenter" wx:if="{{hasVote}}">
+    <view class="choose-list" wx:for="{{data}}" wx:key="{{index}}">
+        <view class="item-title">
+            <text class="mr5">{{item.count}}</text>人选择了
+            <text class="ml5" data-tips="有title代表是图片投票，没有代表文字选项投票。">{{item.rule.title||item.rule}}</text>
+        </view>
+        <view class="people-item clearfix">
+            <view class="people-list fl" wx:for="{{item.user_lists}}" wx:for-index="idx" wx:key="{{idx}}">
+                <image mode="aspectFill" src="{{item.headimgurl?item.headimgurl:''}}"></image>
+            </view>
+        </view>
+    </view>
+</view>

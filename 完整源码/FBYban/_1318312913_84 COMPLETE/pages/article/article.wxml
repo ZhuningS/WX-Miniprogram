@@ -1,0 +1,167 @@
+<import src="../components/input-dialog.wxml"></import>
+<import src="../components/bonus-card.wxml"></import>
+<import src="../components/tips.wxml"></import>
+<import src="../components/card.wxml"></import>
+<import src="../components/more.wxml"></import>
+<import src="../components/widgets.wxml"></import>
+<import src="../components/timeline.wxml"></import>
+<import src="../components/article-content.wxml"></import>
+<import src="../components/article-conversation.wxml"></import>
+<import src="./article-loading-view.wxml"></import>
+<view class="article-preview" wx:if="{{article&&preview}}">
+    <icon color="#000" size="60" type="warn"></icon>
+    <view class="label1">切换成杂志模式，阅读体验更好。</view>
+    <view class="meta" style="margin-top:10px;">我们将记住你的选择，以后自动切换成杂志模式。</view>
+    <form reportSubmit bindsubmit="hackForm">
+        <button bindgetuserinfo="switchToLogin" catchtap="switchToMagazine" class="button large" formType="submit" openType="{{needLogin?'getUserInfo':''}}" style="margin-top:80px;">
+      进入杂志模式
+    </button>
+        <button catchtap="gotoOriginLink" class="button text large" formType="submit" hoverClass="none">
+      打开原网页
+    </button>
+    </form>
+</view>
+<view class="{{showShareCard||conversationOptions&&conversationOptions.expand?'blur':''}}" wx:else>
+    <official-account></official-account>
+    <form reportSubmit bindsubmit="hackForm" wx:if="{{config.enableSubscribe&&nuxOnboard&&mid}}">
+        <button bindgetuserinfo="onboardSubscribe" class="header-ctn" data-content="toa" data-mid="{{mid}}" formType="submit" hoverClass="none" openType="getUserInfo" style="position:fixed;z-index:10;background-color:#{{color}}">
+            <view style="display:flex;flex-direction:column;">
+                <view class="magazine-name" style="color:white;"># {{article.magazineName}}</view>
+                <view class="caption" style="color:white;">来自 20000+ 公众号的好内容</view>
+            </view>
+            <view class="button">订阅</view>
+        </button>
+    </form>
+    <qm-tween isVisible="{{!content}}" needAppearTween="{{false}}">
+        <template is="loading-view" data="{{error:error}}"></template>
+    </qm-tween>
+    <view bindtouchend="onTouchEnd" bindtouchstart="onTouchStart" class="article" wx:if="{{content}}">
+        <view class="article-content" id="qm_start">
+            <view catchlongtap="showForDevArticleId" class="headline2 article-title">{{article.title}}</view>
+            <view class="meta" wx:if="{{article.packageName}}">
+                <view class="provider">
+                    <image class="icon" mode="aspectFill" src="{{article.appIcon}}"></image>
+                    <text class="name" wx:if="{{article.author}}">{{article.appName}} · {{article.author}}<text class="date"> · {{article.date}}</text>
+                    </text>
+                    <text class="name" wx:else>{{article.appName}}<text class="date"> · {{article.date}}</text>
+                    </text>
+                </view>
+            </view>
+            <template is="raml-content" data="{{itemsStatus:itemsStatus,magazine:magazine,config:config,marked:marked,docIdString:article.docIdString,currentPlaying:currentPlaying,content:content,primaryMark:primaryMark,mainColor:mainColor,otherColor:otherColor,color:color,selected:onHighlight.selected}}"></template>
+        </view>
+        <view class="article-footer" id="qm_end" wx:if="{{content}}">
+            <view class="single-card-product" wx:if="{{index===0}}" wx:for="{{products}}" wx:for-item="product" wx:key="id">
+                <button bindgetuserinfo="{{needLogin?'buyArticle':''}}" catchtap="{{needLogin?'':'buyArticle'}}" class="intro" data-product-id="{{product.id}}" data-product-refer="{{product.externalId}}" data-product-type="{{product.type}}" hoverClass="none" openType="getUserInfo" url="/pages/product/order?id={{product.id}}">
+                    <image mode="widthFix" src="{{product.cover.cover.url}}" style="width:100%;" wx:if="{{product.cover}}"></image>
+                    <block wx:else>
+                        <view>{{product.name}}</view>
+                        <view class="price">{{product.priceDesc}}</view>
+                    </block>
+                </button>
+            </view>
+            <view class="has-read-tips" wx:if="{{uiSwitchArticle[$hasReadTips]}}">
+                <view class="tips-icon">
+                    <qm-icon comClass="icon-itck" name="check" size="huge" theme="light"></qm-icon>
+                </view>
+                <view class="meta">
+          你已经读完了这篇文章
+        </view>
+            </view>
+            <view class="meta-ctn">
+                <view class="meta">{{markCount}} {{config.actions.mark}} · {{shareCount}} 分享</view>
+            </view>
+            <template is="article-bonus" data wx:if="{{viewOptions.showBonus}}"></template>
+            <view class="about" style="text-align:left;" wx:if="{{!copyright}}">
+        本页面由轻芒采用应用内搜索技术自动抓取，在未重新编辑原始内容的情况下对版式做了优化以提升阅读体验 ·
+        <view catchtap="gotoOriginLink" class="meta-link">阅读原文</view>
+            </view>
+        </view>
+        <banner-card cardData="{{hopCard}}" wx:if="{{hopCard}}"></banner-card>
+        <view class="article-extension no-title-bar">
+            <scroll-view scrollWithAnimation scrollX bindscroll="onPageScroll" class="scroll-view related-magazine-section" wx:if="{{relatedMagazines&&relatedMagazines.length>0}}">
+                <template is="card-magazine" data="{{config:config,uiSwitch:uiSwitch,subscribed:subscribed,...item.section}}" wx:for="{{relatedMagazines}}" wx:key="{{ index }}"></template>
+            </scroll-view>
+            <view class="article-ads" wx:if="{{advertisement}}">
+                <ad style="width: 670rpx;" unitId="{{advertisement&&advertisement.code}}"></ad>
+            </view>
+            <view class="article-topics" id="id-view-topics" wx:if="{{topics&&magazine.relation&&magazine.relation.enableRead}}">
+                <template is="timeline" data="{{route:route,user:user,itemsStatus:itemsStatus,cover:cover,marked:marked,currentPlaying:currentPlaying,config:config,events:topics,hasMoreTopics:hasMoreTopics}}"></template>
+            </view>
+            <view class="card related-article-section" wx:if="{{relatedArticles&&relatedArticles.length>0}}">
+                <template is="single-card-label" data="{{ label:{title:'继续阅读'} }}"></template>
+                <related-article-entry event="{{item}}" wx:for="{{relatedArticles}}" wx:key="id"></related-article-entry>
+            </view>
+            <view class="loading-ctn" wx:if="{{!relatedLoaded}}">
+                <template is="loading" data="{{loading:true}}"></template>
+            </view>
+        </view>
+    </view>
+    <form reportSubmit bindsubmit="hackForm" wx:if="{{config.enableFollow&&nuxOnboard}}">
+        <button bindgetuserinfo="onboardFollow" class="footer-ctn" data-content="eoa" data-uid="{{nuxOnboard.user.uid}}" formType="submit" hoverClass="none" openType="getUserInfo" style="position:fixed;z-index:10;bottom:0;">
+            <view style="display:flex;align-items:center;">
+                <image class="avatar" src="{{nuxOnboard.user.avatar}}"></image>
+                <view style="margin-left:5px;">
+                    <view class="description">
+              {{nuxOnboard.user.name?nuxOnboard.user.name:'你的好友'}} 在轻芒杂志订阅了
+            </view>
+                    <view class="magazines" style="position:relative;">
+                        <view class="magazine-name" style="color: #{{item.magazine.color}}" wx:for="{{nuxOnboard.events}}" wx:key="{{ index }}">
+                # {{item.magazine.name}}
+              </view>
+                        <view class="magazine-name" style="color: #fff;">
+                ...等 {{nuxOnboard.eventsCount}} 本
+              </view>
+                    </view>
+                </view>
+            </view>
+            <view class="button border">关注</view>
+        </button>
+    </form>
+    <view class="note_popup_menu" style="top:{{onHighlight.paragraphTop}}px;" wx:if="{{onHighlight&&(onHighlight.status=='edit'||onHighlight.status=='pending')}}">
+        <form reportSubmit bindsubmit="collectNotificationFormId">
+            <button formType="submit" hoverClass="none">
+                <view class="note_popup_bar_container">
+                    <view class="note_bar_action" ontap="onTapDeleteHighlight">
+                        <image class="note_bar_action_icon" mode="aspectFit" src="/images/new_assets/icon_cancel_w.svg"></image>
+                        <text>删除</text>
+                    </view>
+                    <button bindtap="onTapShareHighlight" class="note_bar_action" data-id="{{'onHighlight.status'}}" data-share-data="{{id:article.docIdString,docId:article.docIdString,mid:mid,type:'mark'}}" hoverClass="none">
+                        <image class="note_bar_action_icon" mode="aspectFit" src="/images/new_assets/icon_share_w.svg"></image>
+                        <text>分享</text>
+                    </button>
+                    <view class="note_bar_action" ontap="onTapAnnotationHighlight" wx:if="{{magazine.type==='public'||magazine&&magazine.relation.enableComment}}">
+                        <image class="note_bar_action_icon" mode="aspectFit" src="/images/new_assets/icon_talk_w.svg"></image>
+                        <text>批注</text>
+                    </view>
+                    <view class="note_bar_action" data-imageid="{{'qm'+onHighlight.paragraphId}}" data-target="{{scanned['qm'+onHighlight.paragraphId]}}" ontap="onTapGotoScan" wx:if="{{onHighlight.isImage&&scanned['qm'+onHighlight.paragraphId]}}">
+                        <image class="note_bar_action_icon" mode="aspectFit" src="/images/new_assets/icon_scan_w.svg"></image>
+                        <text>扫描</text>
+                    </view>
+                    <view class="note_bar_action" ontap="onTapCopyText" wx:else>
+                        <image class="note_bar_action_icon" mode="aspectFit" src="/images/new_assets/icon_copy_w.svg"></image>
+                        <text>复制</text>
+                    </view>
+                </view>
+            </button>
+        </form>
+    </view>
+</view>
+<view class="article-operations-bar" wx:if="{{!showShareCard&&!preview}}">
+    <view class="main-container">
+        <block wx:if="{{!conversationOptions.expand&&!nuxOnboard}}">
+            <template is="article-mark-button" data="{{marked:marked,type:'article',docIdString:docId,mid:mid,eventId:eventId,magazineName:article.magazineName}}"></template>
+            <template is="article-share-button" data="{{docId:docId,mid:mid,color:color,title:article.title,withDiscuss:conversationOptions.enable,...shareMeta}}" wx:if="{{conversationOptions.enable&&viewOptions.showDiscuss}}"></template>
+            <template is="article-share-bar" data="{{docId:docId,mid:mid,color:color,title:article.title,...shareMeta}}" wx:else></template>
+            <template is="article-topic-button" data="{{docId:docId,mid:mid,color:color,title:article.title,withDiscuss:conversationOptions.enable,...shareMeta}}" wx:if="{{uiSwitchArticle[$createTopic]}}"></template>
+            <view class="tip-ctn animated fadeInThenFadeOut" style="position:absolute; bottom:60px; {{conversationOptions.enable&&viewOptions.showDiscuss?'right:20px;':'left:165rpx;'}}" wx:if="{{nuxMark&&!conversationOptions.enable}}">
+                <view class="tip-content" style="background-color:#fff; color: #000; width:420rpx; text-align:center; box-sizing:border-box;">
+          喜欢这篇文章，转发给好友吧
+        </view>
+                <view class="tip-triangle__bottom" style="border-color:#fff; {{conversationOptions.enable&&viewOptions.showDiscuss?'right:75px;':'left:200rpx;'}}"></view>
+            </view>
+        </block>
+        <template is="article-notification-bar" data="{{conversation:conversation,notification:notification,share:share,conversationOptions:conversationOptions}}" wx:if="{{conversationOptions.enable&&viewOptions.showDiscuss&&!nuxOnboard}}"></template>
+    </view>
+    <template is="article-progress-bar" data="{{conversation:conversation,note:note}}" wx:if="{{conversationOptions.enable&&viewOptions.showDiscuss&&!conversationOptions.expand}}"></template>
+</view>
+<include src="../components/global.wxml"></include>

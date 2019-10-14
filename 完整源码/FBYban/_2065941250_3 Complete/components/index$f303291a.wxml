@@ -1,0 +1,20 @@
+<template name="index$f303291a">
+    <view bindtap="handleProxy" class="_div data-v-aab465d0 container" data-comkey="{{$k}}" data-eventid="{{'3'}}">
+        <view bindtap="handleProxy" class="_div data-v-aab465d0 userinfo" data-comkey="{{$k}}" data-eventid="{{'0'}}">
+            <image backgroundSize="cover" class="_img data-v-aab465d0 userinfo-avatar" src="{{userInfo.avatarUrl}}" wx:if="{{userInfo.avatarUrl}}"></image>
+            <view class="_div data-v-aab465d0 userinfo-nickname">
+                <card class="_card data-v-aab465d0" text="{{userInfo.nickName}}"></card>
+            </view>
+        </view>
+        <view class="_div data-v-aab465d0 usermotto">
+            <view class="_div data-v-aab465d0 user-motto">
+                <card class="_card data-v-aab465d0" text="{{motto}}"></card>
+            </view>
+        </view>
+        <form class="_form data-v-aab465d0 form-container">
+            <input bindinput="handleProxy" class="_input data-v-aab465d0 form-control" data-comkey="{{$k}}" data-eventid="{{'1'}}" placeholder="v-model" type="text" value="{{motto}}"></input>
+            <input bindblur="handleProxy" class="_input data-v-aab465d0 form-control" data-comkey="{{$k}}" data-eventid="{{'2'}}" placeholder="v-model.lazy" type="text" value="{{motto}}"></input>
+        </form>
+        <navigator class="_a data-v-aab465d0 counter" url="/pages/counter/main">去往Vuex示例页面</navigator>
+    </view>
+</template>

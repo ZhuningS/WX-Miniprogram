@@ -1,0 +1,38 @@
+<include src="/components/index.wxml"></include>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}" style="">
+    <view bindtap="_jumpToCard" class="shareCard" data-cardid="{{cardInfo.id}}" hidden="{{!showCardInfo}}" style="position:relative">
+        <view class="avatar">
+            <image src="{{cardInfo.avatar}}"></image>
+        </view>
+        <view class="center">
+            <text class="name">{{cardInfo.name}}</text>
+            <text class="position">{{cardInfo.position}}</text>
+        </view>
+        <view class="right">查看名片 ></view>
+    </view>
+    <block wx:for="{{page_content}}" wx:for-item="mod">
+        <template is="mShophead" data="{{...mod.content}}" wx:if="{{mod.name=='ShopInfo'&&mod.content}}"></template>
+        <template is="mBanner" data="{{...mod.content}}" wx:if="{{mod.name=='MSwiper'&&mod.content}}"></template>
+        <template is="mNav" data="{{...mod.content}}" wx:elif="{{mod.name=='HomeCatList'&&mod.content}}"></template>
+        <template is="mTitle" data="{{...mod.content}}" wx:if="{{mod.name=='MTitle'&&mod.content}}"></template>
+        <template is="mText" data="{{...mod.content}}" wx:if="{{mod.name=='MText'&&mod.content}}"></template>
+        <template is="mGoodsList" data="{{...mod.content}}" wx:elif="{{mod.name=='GoodsList'&&mod.content}}"></template>
+        <template is="mGroup" data="{{...mod.content}}" wx:elif="{{mod.name=='GroupBuy'&&mod.content}}"></template>
+        <template is="mSeckill" data="{{...mod.content}}" wx:elif="{{mod.name=='Seckill'&&mod.content}}"></template>
+        <template is="mImage" data="{{...mod.content}}" wx:elif="{{mod.name=='MImage'&&mod.content}}"></template>
+        <template is="mImageList" data="{{...mod.content}}" wx:elif="{{mod.name=='MImageList'&&mod.content}}"></template>
+        <template is="mCase" data="{{...mod.content}}" wx:elif="{{mod.name=='MCase'&&mod.content}}"></template>
+        <template is="mVideo" data="{{...mod.content}}" wx:elif="{{mod.name=='MVideo'&&mod.content}}"></template>
+        <template is="mUeditor" data="{{...mod.content}}" wx:elif="{{mod.name=='MUeditor'&&mod.content}}"></template>
+        <template is="connectKf" data="{{...mod.content}}" wx:elif="{{mod.name=='ConnectKf'&&mod.content}}"></template>
+        <template is="mTel" data="{{...mod.content}}" wx:elif="{{mod.name=='MTelphone'&&mod.content}}"></template>
+        <template is="mNews" data="{{...mod.content}}" wx:elif="{{mod.name=='NewsList'&&mod.content}}"></template>
+        <template is="map" data="{{...mod.content,markers:markers}}" wx:elif="{{mod.name=='Mmap'&&mod.content}}"></template>
+        <template is="mForm" data="{{...mod.content,form_info:form_info,form_info2:form_info2,region:region,date:date,time:time}}" wx:elif="{{mod.name=='MForm'}}"></template>
+    </block>
+</view>
+<template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>

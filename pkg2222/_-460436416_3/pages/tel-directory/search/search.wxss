@@ -1,0 +1,30 @@
+@import "../../../__wuBaseWxss__/13.wxss";
+
+@import "../../../__wuBaseWxss__/2.wxss";
+
+.topBox {
+    padding-bottom: 20rpx;
+}
+
+.topLf {
+    height: 68rpx;
+    line-height: 68rpx;
+    border-radius: 10rpx;
+    margin-left: 30rpx;
+    padding: 0 30rpx;
+}
+
+.topLf .icon-sousuo {
+    color: #666;
+}
+
+.seaInp {
+    height: 100%;
+    line-height: 68rpx;
+}
+
+.search {
+    color: #fff;
+    width: 120rpx;
+    font-size: 34rpx;
+}

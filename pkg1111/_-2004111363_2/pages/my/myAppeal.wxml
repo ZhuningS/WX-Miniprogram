@@ -1,0 +1,17 @@
+<view class="appeal f fv">
+    <text class="appeal-tips c666 f30 pl20">若您遇到以下问题，建议先与商家协商</text>
+    <view class="appeal-list bg-w pl20">
+        <view bindtap="writeAppeal" class="appeal-item f fj pr20" data-wpywriteappeal-a="0">
+            <text>物流长时间不更新</text>
+            <text class="f24 c999">></text>
+        </view>
+        <view bindtap="writeAppeal" class="appeal-item f fj pr20" data-wpywriteappeal-a="1">
+            <text>物流信息有误，被他人签收</text>
+            <text class="f24 c999">></text>
+        </view>
+        <view bindtap="writeAppeal" class="appeal-item f fj pr20" data-wpywriteappeal-a="2">
+            <text>其他</text>
+            <text class="f24 c999">></text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,87 @@
+<view class="{{currentSkin}}">
+    <view class="add-wrap">
+        <view class="header skin_bg" wx:if="{{pageType&&(vm_addr.selflst.storeInfo.funJoinModel.openInvite||vm_addr.selflst.storeInfo.funJoinModel.openToStoreConsume)&&vm_addr.selflst.storeInfo.funJoinModel.openExpress}}">
+            <text bindtap="navChange" class="{{selIndex==0?'sel':'sel-nor'}}" data-wpynavchange-a="0" wx:if="{{vm_addr.selflst.storeInfo.funJoinModel.openExpress}}">快递</text>
+            <text bindtap="navChange" class="{{selIndex==1?'sel':'sel-nor'}}" data-wpynavchange-a="1" wx:if="{{vm_addr.selflst.storeInfo.funJoinModel.openInvite}}">自取</text>
+            <text bindtap="navChange" class="{{selIndex==6?'sel':'sel-nor'}}" data-wpynavchange-a="6" wx:if="{{vm_addr.selflst.storeInfo.funJoinModel.openToStoreConsume}}">到店消费</text>
+        </view>
+        <view style="height:100rpx" wx:if="{{pageType&&(vm_addr.selflst.storeInfo.funJoinModel.openInvite||vm_addr.selflst.storeInfo.funJoinModel.openToStoreConsume)&&vm_addr.selflst.storeInfo.funJoinModel.openExpress}}"></view>
+        <view class="add-express" wx:if="{{pageType==''||selIndex==0&&pageType&&vm_addr.selflst.storeInfo.funJoinModel.openExpress}}">
+            <view class="wrap" wx:for="{{vm_addr.express}}" wx:key="key">
+                <view class="wrap-up f fc fj">
+                    <view class="f fv">
+                        <view class="f f34 t-b">
+                            <text>{{item.contact}}</text>
+                            <text class="ml20">{{item.phone}}</text>
+                        </view>
+                        <view class="wrap-address">{{item.address}} </view>
+                    </view>
+                    <view bindtap="setDefaul" class="wrap-btn" data-wpysetdefaul-a="{{item}}" wx:if="{{pageType}}">使用</view>
+                </view>
+                <view class="wrap-down f f-end">
+                    <view catchtap="delChange" class="f fc f26 c666" data-wpydelchange-a="{{item.id}}">
+                        <text class="dzicon icon-shanchu f60"></text>
+                        <text>删除</text>
+                    </view>
+                    <view catchtap="editChange" class="f fc f26 c666 ml20" data-id="{{item.id}}" data-wpyeditchange-a="{{index}}">
+                        <text class="dzicon icon-icon_bianji-" style="font-size:46rpx;"></text>
+                        <text>编辑</text>
+                    </view>
+                </view>
+            </view>
+            <view style="height:120rpx"></view>
+            <view class="add-down f fc fj">
+                <view bindtap="setAddress" class="add-btn bgf2 ">手动添加 </view>
+                <view bindtap="chooseLocation" class="add-btn bg08c">微信添加</view>
+            </view>
+            <wxc-abnor type="DATA" wx:if="{{vm_addr.express.length==0}}"></wxc-abnor>
+        </view>
+        <view class="add-self" wx:if="{{(vm_addr.selflst.storeInfo.funJoinModel.openInvite&&selIndex==1||vm_addr.selflst.storeInfo.funJoinModel.openToStoreConsume&&selIndex==6)&&pageType}}">
+            <view class="self-write" style="top:{{pageType&&(vm_addr.selflst.storeInfo.funJoinModel.openInvite||vm_addr.selflst.storeInfo.funJoinModel.openToStoreConsume)&&vm_addr.selflst.storeInfo.funJoinModel.openExpress?100:0}}rpx">
+                <text>填写领取人姓名和电话</text>
+                <input bindinput="selfName" placeholder="填写领取人姓名" placeholderClass="plac-style" value="{{self.name}}"></input>
+                <input bindinput="selfPhone" maxlength="11" placeholder="填写领取人手机号码" placeholderClass="plac-style" type="number" value="{{self.phone}}"></input>
+                <view class="self-title" wx:if="{{vm_addr.selflst.storeInfo.funJoinModel.openInvite}}">选择自取地点</view>
+                <view class="self-title" wx:if="{{vm_addr.selflst.storeInfo.funJoinModel.openToStoreConsume}}">选择到店消费地点</view>
+            </view>
+            <view style="height:360rpx"></view>
+            <view class="self-lst">
+                <view class="self-item f fj fc" wx:for="{{vm_more.list}}" wx:key="key">
+                    <view class="f fv" style="width:519rpx">
+                        <text class="f30 c333">{{item.name}}    <text class="f24 c123">{{item.DistanceStr}}</text>
+                        </text>
+                        <text class="f26 c666 mt30">{{item.address}}</text>
+                    </view>
+                    <view bindtap="selfChange" class="wrap-btn" data-wpyselfchange-a="{{item}}">使用</view>
+                </view>
+            </view>
+        </view>
+        <view class="w-100 f26 c123 f fc fc-h" style="height:100vh" wx:if="{{vm_addr.selflst.storeInfo.funJoinModel.openInvite==false&&vm_addr.selflst.storeInfo.funJoinModel.openToStoreConsume==false&&vm_addr.selflst.storeInfo.funJoinModel.openExpress==false}}">商家未开启配送方式</view>
+    </view>
+    <view class="add-mask" wx:if="{{digShow}}">
+        <view class="a-dialog rel">
+            <view catchtap="hide" class="dzicon icon-zhuanyebaniconkuozhan_Close dig-cancle"></view>
+            <view class="dig-title f1">添加新收货地址</view>
+            <view class="dig-input f1 f fc">
+                <text>姓名</text>
+                <input bindinput="setName" class="f1 ml10" placeholder="请填写姓名" placeholderClass="ccc" type="text" value="{{vm.contact}}"></input>
+            </view>
+            <view class="dig-input f1 f fc">
+                <text>手机号码</text>
+                <input bindinput="setPhone" class="f1 ml10" maxlength="11" placeholder="请填写手机号码" placeholderClass="ccc" type="number" value="{{vm.phone}}"></input>
+            </view>
+            <picker bindchange="addrChange" mode="region">
+                <view class="dig-input f1 f fc">
+                    <text>选择地区</text>
+                    <input disabled class="f1 ml10" placeholder="请选择地区" placeholderClass="ccc" type="text" value="{{array.region}}"></input>
+                </view>
+            </picker>
+            <view class="dig-input f1 f fc">
+                <text>详细地址</text>
+                <input bindinput="setDlt" class="f1 ml10" placeholder="请输入详细地址" placeholderClass="ccc" value="{{vm.street}}"></input>
+            </view>
+            <view catchtap="saveChange" class="dig-btn bgf2 f32">保存</view>
+        </view>
+    </view>
+    <wxc-toast isShow="{{toast.show}}" text="{{toast.msg}}"></wxc-toast>
+</view>

@@ -1,0 +1,249 @@
+<form bindreset="formReset" bindsubmit="formSubmit" reportSubmit="true">
+    <view class="container">
+        <view class="header">
+            <view class="border1 fixed">
+                <text>商品名称:</text>
+                <input name="spec_name" placeholder="请输入商品名称" value="{{store_good.goods_name}}"></input>
+            </view>
+            <view class="border3 fixed">
+                <text>商品价格:</text>
+                <input name="spec_price" placeholder="请输入商品价格" type="digit" value="{{store_good.goods_cost}}"></input>
+            </view>
+            <view class="border2 fixed">
+                <text>商品数量:</text>
+                <input name="spec_num" placeholder="请输入商品数量" type="number" value="{{store_good.goods_num}}"></input>
+            </view>
+            <view class="border1 fixed">
+                <text>运费:</text>
+                <input name="spec_freight" placeholder="请输入运费" type="number" value="{{store_good.freight}}"></input>
+            </view>
+            <view class="border3 fixed">
+                <text>关于发货:</text>
+                <input name="spec_delivery" placeholder="请输入发货说明" value="{{store_good.delivery}}"></input>
+            </view>
+            <view class="border4" wx:for="{{add}}" wx:for-index="aindex">
+                <view class="fixed rel">
+                    <text>商品规格:</text>
+                    <input data-index="{{index}}" disabled="true" placeholder="请选择商品规格" style="width:60%;" value="{{item.spec_name}}"></input>
+                    <view bindtap="addSpec_1" class="ab" wx:if="{{add.length>=1}}">
+                        <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/release.png" wx:if="{{index==0}}"></image>
+                    </view>
+                    <view class="ab" wx:if="{{add.length>=1}}">
+                        <image bindtap="delete_spec" class="ab udlr" data-aindex="{{aindex}}" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/zhicheng.png" style="width:40rpx;height:40rpx" wx:if="{{index==0}}"></image>
+                    </view>
+                </view>
+                <view class="spec1" wx:for="{{item.value}}" wx:for-index="bindex">
+                    <view class="one">
+                        <view>名称</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="specNameInput" data-aindex="{{aindex}}" data-bindex="{{bindex}}" disabled="true" name="spec_{{item.id}}_{{index}}_color" size="35" style="width:95%" value="{{item.name}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="one">
+                        <view>价格</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="specPriceInput" data-index="{{index}}" disabled="true" name="spec_{{item.id}}_{{index}}_price" size="35" style="width:95%" type="number" value="{{item.money}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="one">
+                        <view>数量</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="specNumInput" data-index="{{index}}" disabled="true" name="spec_{{item.id}}_{{index}}_num" size="35" style="width:95%" type="number" value="{{item.num}}"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <image bindtap="changeSpec" data-aindex="{{aindex}}" data-bindex="{{bindex}}" mode="aspectFill" src="../image/change.png" style="width:50rpx;height:50rpx;margin-right:10rpx"></image>
+                    <image bindtap="deleteSpec1" data-aindex="{{aindex}}" data-bindex="{{bindex}}" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/zhicheng.png" style="width:35rpx;height:35rpx"></image>
+                    <view bindtap="add" class="rel one" data-id="{{item.id}}" data-index="{{index}}" wx:if="{{add[item.id].length<3}}">
+                        <image class="ab udlr" src="https://api.cnmmsc.org/apitc/img/image/add_spec.png" wx:if="{{index==0}}"></image>
+                    </view>
+                </view>
+            </view>
+            <view>
+                <view class="fixed">
+                    <text>商品标签</text>
+                </view>
+                <view class="label border2">
+                    <checkbox-group bindchange="checkboxChange" index="{{index}}">
+                        <label class="checkbox" wx:for="{{items}}">
+                            <checkbox checked="{{item.checked}}" color="#ED414A" value="{{item.name}}"></checkbox>{{item.value}}
+            </label>
+                    </checkbox-group>
+                </view>
+            </view>
+        </view>
+        <view class="body">
+            <view class="fix border1">上传商品轮播图(最多4张)</view>
+            <view class="upload border2">
+                <view class="rel" wx:for="{{imgArray1}}">
+                    <image class="ab" mode="aspectFill" src="{{item}}"></image>
+                    <image bindtap="delete" class="ab1" data-index="{{index}}" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/delete.png" style="width:50rpx;height:50rpx;top:0;right:0;position:absolute"></image>
+                </view>
+                <view bindtap="imgArray1" class="upload_img rel" wx:if="{{imgArray1==null||imgArray1.length<4}}">
+                    <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/add.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="body bottom">
+            <view class="fix border1">上传商品介绍图(最多8张)</view>
+            <view class="upload border2">
+                <view class="rel" wx:if="{{imgArray2.length>0}}" wx:for="{{imgArray2}}">
+                    <image class="ab" mode="aspectFill" src="{{item}}"></image>
+                    <image bindtap="delete1" class="ab1" data-index="{{index}}" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/delete.png" style="width:50rpx;height:50rpx;top:0;right:0;position:absolute"></image>
+                </view>
+                <view bindtap="imgArray2" class="upload_img rel" wx:if="{{imgArray2==null||imgArray2.length<8}}">
+                    <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/add.png"></image>
+                </view>
+            </view>
+            <view>
+                <view class="goods_details border1 border2" style="margin-top:20rpx">
+                    <view>商品介绍</view>
+                    <textarea autoHeight="true" maxlength="-1" name="goods_details" placeholder="请输入商品介绍" value="{{store_good.goods_details}}"></textarea>
+                </view>
+                <view class="fix1" style="margin:10rpx 0;padding:5rpx 0">
+                    <switch bindchange="switch1Change" checked="{{isChecked}}"></switch>设置商品为热门</view>
+            </view>
+            <view>
+                <view class="fix1" style="margin:10rpx 0;padding:5rpx 0">
+                    <switch bindchange="switch1Change1" checked="{{isChecked1}}"></switch>设置商品为推荐</view>
+            </view>
+        </view>
+        <button formType="submit">确认修改</button>
+    </view>
+    <view class="classification" wx:if="{{classification==true}}">
+        <view>商品规格</view>
+        <view>
+            <view bindtap="select" data-id="{{item.id}}" data-name="{{item.spec_name}}" wx:for="{{label}}">{{item.spec_name}}</view>
+        </view>
+        <view bindtap="classification">取消</view>
+    </view>
+</form>
+<block wx:if="{{showModel}}">
+    <view catchtap="cancelSpec" style="position:fixed; top:0;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);z-index:99999999;"></view>
+    <view class="weui-form-preview" style="position:fixed; width:80%;border:1px solid #eee; z-index:999999999999999;background:#fafafc; margin-left:10%;top:100px;" wx:if="{{showAddSpec1}}">
+        <view class="weui-cells__title">添加商品规格</view>
+        <view style="padding:10 15rpx">
+            <view class="border4" style="margin-bottom:20rpx">
+                <view class="fixed rel">
+                    <text style="font-size:28rpx">商品规格:</text>
+                    <input bindtap="classification" data-index="{{index}}" disabled="true" placeholder="请选择商品规格" style="width:60%;display:inline-block;margin-left:20rpx" value="{{specName}}"></input>
+                    <image src="../image/more.png" style="margin-left:-150rpx;width:35rpx;height:35rpx"></image>
+                </view>
+                <view class="spec" wx:if="{{spec_num>=1}}">
+                    <view class="one spec_one">
+                        <view>名称</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="name1"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="one spec_two">
+                        <view>价格</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="price1" type="digit"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="one spec_four">
+                        <view>数量</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="num1" type="digit"></input>
+                            </view>
+                        </view>
+                        <image bindtap="addspec" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/add.png" style="width:50rpx;height:50rpx;margin-left:10rpx" wx:if="{{spec_num==1}}"></image>
+                    </view>
+                </view>
+                <view class="spec" wx:if="{{spec_num>=2}}">
+                    <view class="one spec_one">
+                        <view>名称</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="name2"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="one spec_two">
+                        <view>价格</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="price2" type="digit"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="one spec_four">
+                        <view>数量</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="num2" type="digit"></input>
+                            </view>
+                        </view>
+                        <image bindtap="addspec" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/add.png" style="width:50rpx;height:50rpx;margin-left:10rpx" wx:if="{{spec_num==2}}"></image>
+                    </view>
+                </view>
+                <view class="spec" wx:if="{{spec_num>=3}}">
+                    <view class="one spec_one">
+                        <view>名称</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="name3"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="one spec_two">
+                        <view>价格</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="price3" type="digit"></input>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="one  spec_two">
+                        <view>数量</view>
+                        <view class="rel">
+                            <view class="entry ab udlr">
+                                <input bindinput="num3" type="digit"></input>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft" style="margin-top:10rpx">
+                <view bindtap="cancelSpec" class="weui-form-preview__btn weui-form-preview__btn_default" hoverClass="weui-form-preview__btn_active">取消</view>
+                <view bindtap="addbigspec" class="weui-form-preview__btn weui-form-preview__btn_primary" hoverClass="weui-form-preview__btn_active">确认</view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-form-preview" style="position:fixed; width:80%;border:1px solid #eee; z-index:999999999999999;background:#fafafc; margin-left:10%;top:100px;" wx:if="{{showChange}}">
+        <view style="text-align:center;margin:20rpx 0 15rpx 0">修改商品规格</view>
+        <view style="padding:10rpx 15rpx;background:white">
+            <view class="border4" style="margin-bottom:20rpx">
+                <view style="width:100%">
+                    <view>
+                        <view class="text2">名称</view>
+                        <input bindinput="nameChange" class="form-control" value="{{selctSpecModel.name}}"></input>
+                    </view>
+                    <view style="margin:20rpx 0">
+                        <view class="text2">价格</view>
+                        <input bindinput="priceChange" class="form-control" type="digit" value="{{selctSpecModel.money}}"></input>
+                    </view>
+                    <view>
+                        <text class="text2">数量</text>
+                        <input bindinput="numChange" class="form-control" type="digit" value="{{selctSpecModel.num}}"></input>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-form-preview__ft" style="margin-top:10rpx">
+                <view bindtap="cancelSpec" class="weui-form-preview__btn weui-form-preview__btn_default" hoverClass="weui-form-preview__btn_active">取消</view>
+                <view bindtap="dochangeSpec" class="weui-form-preview__btn weui-form-preview__btn_primary" hoverClass="weui-form-preview__btn_active">确认</view>
+            </view>
+        </view>
+    </view>
+</block>

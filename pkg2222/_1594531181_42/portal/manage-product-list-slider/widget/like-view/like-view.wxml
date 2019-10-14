@@ -1,0 +1,23 @@
+<view class="mini-feature_likePanel" wx:if="{{showLikeBtn}}">
+    <view class="mini_feature_likeAction">
+        <image bindtap="onClickLikeBtn" class="mini_feature_likeBtn" src="{{hasLike?likedIcon:likeIcon}}" style="width: {{likeIconSize}}; height: {{likeIconSize}}"></image>
+        <view>
+            <text class="mini_feature_likeTip">{{hasLike?hasLikeTip:unLikeTip}}</text>
+            <navigator appId="{{hasLikeActionAppid}}" bindtap="onClickHasLikeAction" class="has_like_action" path="{{hasLikeActionPath}}" showWeappBack="{{false}}" version="{{hasLikeActionVersion}}" wx:if="{{hasLike&&hasLikeAction.length>0}}">
+                {{hasLikeAction}}
+            </navigator>
+        </view>
+    </view>
+    <view class="mini_feature_likeList" wx:if="{{likeUserData&&likeUserData.length>0}}">
+        <view class="mini_feature_haslikeTipWrap">
+            <view class="mini_feature_haslikeTipLeftLine"></view>
+            <text class="mini_feature_haslikeTip">{{friendListTitle}}</text>
+            <view class="mini_feature_haslikeTipRightLine"></view>
+        </view>
+        <view class="mini_feature_haslikePanel">
+            <image class="mini_feature_likeItem background" src="{{userItem.HeadImgUrl?userItem.HeadImgUrl+'/0':'assets/default_headimage@2x.png'}}" wx:for="{{likeUserData}}" wx:for-index="idx" wx:for-item="userItem"></image>
+            <view class="mini_feature_likeItem" wx:for="{{blankViewData}}"></view>
+        </view>
+    </view>
+    <view></view>
+</view>

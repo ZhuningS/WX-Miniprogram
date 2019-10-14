@@ -1,0 +1,8 @@
+<view bindtap="onItemClick" class="wrap" data-item="{{product}}">
+    <image-view class="banner-img" src="{{product.imgurl+'/0'}}"></image-view>
+    <view class="banner-right-part">
+        <text class="banner-right-part-text0">{{product.wording2}}</text>
+        <view class="banner-right-part-text-separator"></view>
+        <text class="banner-right-part-text1">{{product.wording1}}</text>
+    </view>
+</view>

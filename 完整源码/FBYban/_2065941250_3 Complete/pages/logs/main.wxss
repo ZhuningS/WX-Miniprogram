@@ -1,0 +1,61 @@
+.log-list {
+    display: flex;
+    flex-direction: column;
+    padding: 40rpx;
+}
+
+.log-item {
+    margin: 10rpx;
+}
+
+.book-card {
+    padding: 10rpx;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 10rpx;
+    font-size: 28rpx;
+}
+
+.book-card .thumb {
+    width: 180rpx;
+    height: 180rpx;
+    float: left;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background-size: cover;
+}
+
+.book-card .img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.book-card .detail {
+    margin-left: 200rpx;
+    width: auto;
+    position: relative;
+}
+
+.book-card .detail .row {
+    overflow: hidden;
+    line-height: 40rpx;
+    min-height: 40rpx;
+    margin-bottom: 6rpx;
+}
+
+.book-card .right {
+    float: right;
+}
+
+.book-card .left {
+    margin-right: 160rpx;
+}

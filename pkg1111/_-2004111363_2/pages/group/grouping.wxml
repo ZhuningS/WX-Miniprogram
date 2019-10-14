@@ -1,0 +1,39 @@
+<view class="{{currentSkin}}">
+    <view class="hear-fix w-100 fj f fc f32">
+        <text bindtap="changeType" class="hear f1 tc {{item.state==vm.state?'skin_txt':''}}" data-wpychangetype-a="{{item.state}}" wx:for="{{groupState}}">{{item.name}}</text>
+    </view>
+    <view style="height:100rpx;"></view>
+    <view class="group">
+        <block wx:for="{{vm.list}}" wx:key="key">
+            <view class="group-item f" wx:for="{{item}}" wx:for-item="g" wx:key="key">
+                <image class="group-img" mode="aspectFill" src="{{g.ImgUrl}}"></image>
+                <view class="f fv f1">
+                    <view class="group-con f fv fj">
+                        <view class="f34">{{g.GroupName}}</view>
+                        <view class="f">
+                            <text class="group-size">{{g.GroupSize}}人团</text>
+                            <text class="f22 cffb ml10">邀请{{g.GroupSize-1}}位好友即可成团</text>
+                        </view>
+                        <view class="f fc">
+                            <wxc-price class="f34 cf200">{{g.DiscountPrice/100}}</wxc-price>
+                            <text class="f24 ml20 cf200">(单买：￥{{g.UnitPrice/100}})</text>
+                        </view>
+                    </view>
+                    <view class="f fc mt20">
+                        <view class="f1">
+                            <view bindtap="navGroup" class="btn-startGroup mt10" data-wpynavgroup-a="{{g.Id}}" wx:if="{{g.State==1}}">去开团</view>
+                            <view class="btn-disable mt10" wx:elif="{{g.State==2}}">已结束</view>
+                        </view>
+                        <view class="f36 c999">已团购{{g.GroupsNum}}件</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view class="loding w-100 f fc-h" style="padding:30rpx 0" wx:if="{{vm.showloading&&vm.loadall==false}}">
+            <text class="loading-icon"></text>
+            <text class="c999 f26 ml20">正在加载中...</text>
+        </view>
+    </view>
+    <wxc-loadmore icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png" isEnd="{{true}}" text="到底啦" wx:if="{{vm.list[1].length!=0&&vm.loadall}}"></wxc-loadmore>
+    <wxc-abnor type="ORDER" wx:if="{{vm.list[1].length==0}}"></wxc-abnor>
+</view>

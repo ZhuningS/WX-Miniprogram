@@ -1,0 +1,6 @@
+<navigation-bar backgroundColor="transparent"></navigation-bar>
+<view class="wrap">
+    <image class="logo" mode="widthFix" src="{{main.header.logo_url}}"></image>
+    <text class="brand_name">{{main.header.nickname}}</text>
+    <contact-item contactInfo="{{contactInfo}}" messageInfo="{{messageInfo}}" onlineKfCount="{{supportInfo.online_kf_count||0}}" showKf="{{main.header.has_mall&&supportInfo.kf_count>0&&contactInfo.has_kefu}}" wx:if="{{contactInfo}}"></contact-item>
+</view>

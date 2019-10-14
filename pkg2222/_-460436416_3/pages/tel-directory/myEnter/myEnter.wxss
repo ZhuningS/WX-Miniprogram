@@ -1,0 +1,112 @@
+@import "../../../__wuBaseWxss__/13.wxss";
+
+@import "../../../__wuBaseWxss__/2.wxss";
+
+.noPic {
+    width: 400rpx;
+    height: 400rpx;
+    margin-top: 200rpx;
+}
+
+.applyBtn {
+    width: auto;
+    margin: 0 32%;
+    line-height: 70rpx;
+    margin-top: 40rpx;
+    font-size: 32rpx;
+}
+
+.applyBtn::after {
+    border-color: currentColor;
+}
+
+.itemTop {
+    padding: 30rpx;
+}
+
+.logoPic {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+}
+
+.itemTop .shInfo {
+    color: #999;
+}
+
+.shInfo .icon-dianhua {
+    color: #aaa;
+}
+
+.itemBot {
+    text-align: right;
+    padding: 30rpx;
+    margin-top: 0;
+    height: 120rpx;
+}
+
+.itemBot .btn {
+    display: inline-block;
+    margin: 0 15rpx;
+    line-height: 60rpx;
+    font-size: 28rpx;
+}
+
+.itemBot .btn::after {
+    border-color: currentColor;
+}
+
+.concat {
+    color: #666;
+}
+
+.resh {
+    color: #fe8433;
+}
+
+.status {
+    padding: 0 20rpx;
+}
+
+.addDetail {
+    line-height: 36rpx;
+}
+
+.cancel {
+    float: left;
+    color: #ff5050;
+}
+
+.goPay {
+    color: #fff;
+    background-color: #ff5050;
+}
+
+.goPay:active {
+    opacity: 0.85;
+}
+
+.paid {
+    color: #09bb07;
+    background-color: #fff;
+}
+
+.paid::after {
+    border: 0;
+}
+
+.aside-float {
+    position: fixed;
+    right: 20rpx;
+    bottom: 120rpx;
+    width: 92rpx;
+    height: 92rpx;
+    line-height: 92rpx;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.aside-float .iconfont {
+    font-size: 50rpx;
+}

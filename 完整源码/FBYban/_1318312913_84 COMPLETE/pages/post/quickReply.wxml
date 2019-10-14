@@ -1,0 +1,19 @@
+<import src="../components/card.wxml"></import>
+<view class="tip-create-ctn">
+    <view class="tips-ctn">
+        <view class="description">快捷回复</view>
+        <view class="input-ctn" wx:for="{{tips}}" wx:for-item="tip">
+            <view class="input-wrapper">
+                <input bindconfirm="onTapAddTip" bindinput="onTipInput" class="input" confirmType="done" data-index="{{index}}" placeholder="{{'快捷回复 '+index+1}}" value="{{tip}}"></input>
+                <image catchtap="onTapDeleteTip" class="badge" data-index="{{index}}" src="/images/new_assets/icon_delete.svg"></image>
+            </view>
+        </view>
+        <button catchtap="onTapAddTip" class="button large">
+            <image class="icon_16px" src="/images/new_assets/icon_add_white.svg"></image>
+        </button>
+    </view>
+</view>
+<view catchtap="onConfirmTip" class="button large confirm-tip">
+  完成
+</view>
+<include src="../components/global.wxml"></include>

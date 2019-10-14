@@ -1,0 +1,10 @@
+<view class="goodslst f fw fj {{currentSkin}}">
+    <view bindtap="goDlt" class="main" data-wpygodlt-a="{{item.id}}" wx:for="{{vm}}" wx:key="key">
+        <image src="{{item.img}}"></image>
+        <view class="p20 line line1">{{item.name}}</view>
+        <view class="f fc fj" style="padding:0 20rpx 20rpx 20rpx">
+            <text class="t-b" style="color:#F20033;">￥{{item.priceStr}}</text>
+            <text class="f24 c999">已售{{item.virtualSalesCount+item.salesCount}}</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,8 @@
+<view class="commonUl">
+    <view class="commonUlLe" style="background:{{imgData.picUrl}};background-size:{{imgData.picSize}};">
+       {{dataText}}</view>
+    <view bindtap="openAll" class="commonUlRi">
+        <text class="riMore" wx:if="{{imgData.moreText}}">更多</text>
+        <text class="nextIco" wx:if="{{imgData.nextIco}}"></text>
+    </view>
+</view>

@@ -1,0 +1,388 @@
+@import "../../../__wuBaseWxss__/0.wxss";
+
+button[type="default"].refundBtn {
+    color: #888;
+}
+
+.wrap {
+    padding-bottom: 0;
+}
+
+.wrap .copyright {
+    bottom: 100rpx;
+}
+
+.wuliuBtn {
+    flex: 1;
+}
+
+.refundBtn {
+    margin: 0 30rpx;
+}
+
+.refundBtn:after {
+    border-radius: 0;
+    border: 0;
+}
+
+.page-content {
+    padding-bottom: 100rpx;
+}
+
+.order-info {
+    background: #fff;
+    padding: 10rpx 28rpx;
+    margin-bottom: 20rpx;
+}
+
+.order-info text {
+    font-size: 28rpx;
+}
+
+.order-info .info-item {
+    margin-bottom: 2rpx;
+}
+
+.order-info .info-item_qc text {
+    color: #000;
+}
+
+.order-info .info-item_qc text.em {
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.order-info text {
+    color: #888;
+}
+
+.bar-list {
+    margin-bottom: 20rpx;
+    background-color: #fff;
+}
+
+.bar-list .bar-item {
+    height: 88rpx;
+    line-height: 88rpx;
+    padding: 0 28rpx;
+    border-bottom: 1rpx solid #eee;
+}
+
+.bar-list label {
+    font-size: 14px;
+    color: #333;
+    margin-right: 50rpx;
+}
+
+.bar-list text {
+    font-size: 14px;
+    color: #666;
+}
+
+.bar-list text.addr {
+    color: #333;
+}
+
+.goods-content {
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+.goods-types {
+    display: flex;
+    justify-content: space-between;
+    height: 70rpx;
+    line-height: 70rpx;
+    border-bottom: 1rpx solid #eee;
+    padding: 0 30rpx;
+}
+
+.goods-types text {
+    font-size: 28rpx;
+}
+
+.goods-types .consume-type {
+    color: #666;
+}
+
+.goods-types .goods-status {
+    color: #ff4751;
+}
+
+.goods-item {
+    position: relative;
+    border-bottom: 1rpx solid #eee;
+    padding: 26rpx 30rpx 26rpx;
+    overflow: hidden;
+}
+
+.goods-img {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 6rpx;
+    margin-right: 20rpx;
+}
+
+.goods-info {
+    flex: 1;
+    width: 0;
+    line-height: 32rpx;
+}
+
+.goods-info text {
+    font-size: 28rpx;
+}
+
+.goods-val {
+    width: 180rpx;
+    text-align: right;
+}
+
+.goods-val text {
+    font-size: 28rpx;
+}
+
+.goods-name {
+    font-size: 26rpx;
+    line-height: 32rpx;
+}
+
+.goods-name text {
+    color: #666;
+}
+
+.goods-sku {
+    margin: 20rpx 0;
+}
+
+.goods-sku text {
+    color: #999;
+}
+
+.goods-price {
+    margin: 20rpx 0;
+}
+
+.goods-price text {
+    color: #313131;
+}
+
+.goods-amount {
+    color: #666;
+}
+
+.total-price {
+    height: 70rpx;
+    line-height: 70rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.total-price label {
+    color: #313131;
+}
+
+.total-price text {
+    font-size: 14px;
+}
+
+.total-price-num {
+    color: #e53947;
+}
+
+.btnWrap {
+    width: 100%;
+}
+
+.btn-panel {
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-panel>form {
+    flex: 1;
+}
+
+.user-info {
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.addr-user {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    line-height: 50rpx;
+}
+
+.addr-user text {
+    font-size: 28rpx;
+}
+
+.user-name {
+    margin-right: 40rpx;
+}
+
+.shop-panel {
+    background-color: #fff;
+    padding: 28rpx;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.address {
+    display: flex;
+    padding: 20rpx 28rpx;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    color: #444;
+}
+
+.address .icon-addr {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.address .icon-arrow {
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: middle;
+}
+
+.address .name-phone {
+    flex: 1;
+    padding: 0 20rpx 0 30rpx;
+}
+
+.address .img-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addr-addr {
+    line-height: 50rpx;
+}
+
+.addr-addr text {
+    word-break: break-all;
+    font-size: 28rpx;
+}
+
+.price-calculation {
+    padding: 10px 0;
+    text-align: center;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.price-calculation text {
+    display: block;
+    line-height: 38rpx;
+    font-size: 28rpx;
+    letter-spacing: 2rpx;
+}
+
+.price-calculation_pay {
+    color: #e53947;
+}
+
+.coupon-wrap {
+    line-height: 70rpx;
+    padding: 0 30rpx;
+    margin-bottom: 10px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.coupon-wrap text {
+    font-size: 28rpx;
+}
+
+.coupon-wrap .coupon-total {
+    color: #e53947;
+}
+
+.coupon-name {
+    width: 100px;
+    height: 100%;
+}
+
+.coupon-wrap image {
+    width: 24rpx;
+    height: 24rpx;
+    margin-left: 4px;
+}
+
+.goods-trans-wrap {
+    background-color: #fff;
+}
+
+.goods-trans {
+    height: 70rpx;
+    line-height: 70rpx;
+    padding: 0 30rpx;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-left: 0;
+    margin-left: 30rpx;
+}
+
+.goods-trans_last {
+    margin-bottom: 10px;
+    border-bottom: 0;
+}
+
+.goods-trans text {
+    font-size: 28rpx;
+    color: #333;
+}
+
+.goods-trans .price-total {
+    color: #666;
+}
+
+.gotohome {
+    display: block;
+    margin: 0 auto;
+    width: 200rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    border: 2rpx solid #dd2450;
+    border-radius: 60rpx;
+    font-size: 32rpx;
+    text-align: center;
+    color: #dd2450;
+}
+
+.ishead {
+    border-radius: 20rpx;
+    position: absolute;
+    font-size: 18rpx;
+    right: -16rpx;
+    background-image: -webkit-linear-gradient(0deg,#fe4850,#ff6542);
+    color: #fff;
+    padding: 2rpx 10rpx;
+}
+
+.btn-groupInfo {
+    float: right;
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+    border: 1px solid #aaa;
+    padding: 6rpx 10rpx;
+    color: #333;
+    font-size: 24rpx;
+    display: inline-block;
+}

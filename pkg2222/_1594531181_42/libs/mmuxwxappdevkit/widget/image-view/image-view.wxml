@@ -1,0 +1,3 @@
+<image binderror="onImageLoadError" bindload="onImageLoadFinish" class="image-view {{imgClass}}" hidden="{{hidden}}" lazyLoad="{{lazyLoad}}" mode="{{mode}}" src="{{localFile}}" style="{{imgStyle}}">
+    <slot></slot>
+</image>

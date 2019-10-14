@@ -1,0 +1,8 @@
+<view class="wrap" style="{{styleObj}}">
+    <view bindtap="onItemClick" class="category-item" data-item="{{item}}" wx:for="{{component.comm_products}}" wx:key="name">
+        <text class="category-item-text">{{item.name}}</text>
+        <view class="category-item-text-img-separator"></view>
+        <image-view class="category-item-img" mode="widthFix" src="{{item.pic_url+'/0'}}"></image-view>
+        <view class="line-item-active-mask"></view>
+    </view>
+</view>

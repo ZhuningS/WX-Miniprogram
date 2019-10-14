@@ -1,0 +1,57 @@
+.group-list {
+    position: relative;
+    background: #fff;
+    padding: 15px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+.group-list .icontitle {
+    line-height: 53px;
+    text-align: center;
+    font-size: 28px;
+    float: left;
+}
+
+.list-content {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.list-title {
+    display: block;
+    color: #333;
+    font-weight: bold;
+    line-height: 53rpx;
+}
+
+.list-text {
+    color: #666;
+    font-size: 28rpx;
+    line-height: 54rpx;
+}
+
+.comein {
+    position: absolute;
+    right: 15px;
+    display: inline-block;
+    text-align: center;
+    line-height: 64px;
+}
+
+.icontitle.icon-blue {
+    color: #4fa2fe;
+}
+
+.icontitle.icon-yellow {
+    color: #fb8930;
+}
+
+.icontitle.icon-purple {
+    color: #845bfa;
+}
+
+.icontitle.icon-red {
+    color: #ff7170;
+}

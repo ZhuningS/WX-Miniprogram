@@ -1,0 +1,6 @@
+<template name="mUeditor">
+    <view class="mUeditor wxParseContainer" style="margin-top: {{style.marginTop}};margin-bottom: {{style.marginBottom}}">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}"></template>
+    </view>
+</template>
+<import src="../../utils/wxParse/wxParse.wxml"></import>

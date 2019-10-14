@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "cart-list-section": "../cart-list-section/cart-list-section"
+    }
+}

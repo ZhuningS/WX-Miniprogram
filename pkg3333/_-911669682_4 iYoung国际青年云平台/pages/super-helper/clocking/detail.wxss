@@ -1,0 +1,104 @@
+.show-card {
+    background: #fff;
+    padding: 30rpx;
+}
+
+.show-card-text {
+    word-break: break-all;
+}
+
+.userinfo {
+    line-height: 60rpx;
+}
+
+.userinfo image {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}
+
+.punch-btn {
+    width: 560rpx;
+    margin: 0 auto;
+    padding: 30rpx 0;
+}
+
+.time-day {
+    width: 710rpx;
+    margin: 0 auto;
+    font-size: 0;
+}
+
+.day-num {
+    display: inline-block;
+    width: 126rpx;
+    line-height: 70rpx;
+    border-radius: 6rpx;
+}
+
+.day-num:nth-child(5n+5) {
+    margin-right: 0;
+}
+
+.endbg {
+    background: #c0c0c0;
+}
+
+.card-info-img {
+    display: inline-block;
+    width: 130rpx;
+}
+
+.card-info-img image {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin-top: 20rpx;
+}
+
+.card-info-contant {
+    display: inline-block;
+    width: 520rpx;
+    min-height: 150rpx;
+    background: #fff;
+    margin-left: 30rpx;
+    vertical-align: top;
+    border-radius: 8rpx;
+    position: relative;
+    word-break: break-all;
+    padding: 30rpx 30rpx 40rpx;
+}
+
+.card-info-contant::after {
+    content: '';
+    display: block;
+    width: 40rpx;
+    height: 40rpx;
+    background: #fff;
+    border-radius: 4rpx;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 40rpx;
+    left: -20rpx;
+    z-index: -1;
+}
+
+.card-info-contant image {
+    width: 100%;
+    height: 300rpx;
+    margin-bottom: 20rpx;
+}
+
+.time {
+    line-height: 50rpx;
+    position: absolute;
+    bottom: 0rpx;
+}
+
+.green {
+    color: #09bb07;
+}
+
+.bgcolor,button[type="primary"] {
+    background: #09bb07;
+}

@@ -1,0 +1,20 @@
+<view class="in-main">
+    <block wx:if="{{vm.list[1].length!=0}}" wx:for="{{vm.list}}" wx:key="key">
+        <view class="in-item f fc" wx:for="{{item}}" wx:for-item="g" wx:key="key">
+            <image mode="aspectFit" src="{{imgSrc[g.ordertype]}}"></image>
+            <view class="ml20 f1 f fc fj">
+                <view class="f fv">
+                    <text class="c333 t-b">{{orderType[g.ordertype]}}</text>
+                    <text class="f24 c999 mt10" wx:if="{{g.ordertype!=3}}">消费{{g.buyPriceStr}}元</text>
+                </view>
+                <view class="f fv f24">
+                    <text class="ccc">{{g.UpdateDateStr}}</text>
+                    <text class="cee mt10" wx:if="{{g.actiontype==0}}">+{{g.curintegral}}积分</text>
+                    <text class="cee mt10" wx:if="{{g.actiontype==-1}}">-{{g.curintegral}}积分</text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <wxc-abnor type="ORDER" wx:if="{{vm.list[1].length==0}}"></wxc-abnor>
+    <wxc-loadmore icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png" isEnd="{{true}}" text="到底啦" wx:if="{{vm.list[1].length!=0&&vm.loadall}}"></wxc-loadmore>
+</view>

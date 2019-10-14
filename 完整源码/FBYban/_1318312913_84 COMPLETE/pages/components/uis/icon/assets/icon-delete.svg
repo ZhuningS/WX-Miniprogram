@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="2298 152 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+    </style>
+    <clipPath id="clip-path">
+      <path id="Path_855" data-name="Path 855" class="cls-1" d="M-24,353H-4v20H-24Z"/>
+    </clipPath>
+  </defs>
+  <g id="icon_delete" transform="translate(415 676)">
+    <g id="no" class="cls-2" transform="translate(1907 -877)">
+      <g id="Group_3" data-name="Group 3">
+        <g id="ï_" data-name="ï">
+          <path id="Path_853" data-name="Path 853" d="M9,0a8.99,8.99,0,0,1,9,9,9.032,9.032,0,0,1-5.5,8.289A8.96,8.96,0,0,1,8.992,18a8.946,8.946,0,0,1-6.356-2.642A8.765,8.765,0,0,1,.707,12.5a9.039,9.039,0,0,1,0-7.01A8.994,8.994,0,0,1,9,0Z" transform="translate(-23 354)"/>
+        </g>
+        <g id="ï_2" data-name="ï">
+          <path id="Path_854" data-name="Path 854" class="cls-1" d="M4.555,3.576l2.6,2.6-.977.976-2.6-2.6-2.6,2.6L0,6.177l2.6-2.6L0,.976.977,0l2.6,2.6L6.18,0l.977.976Z" transform="translate(-17.578 359.419)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

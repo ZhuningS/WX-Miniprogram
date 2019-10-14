@@ -1,0 +1,13 @@
+<view class="zbj-author">
+    <view class="author-icon">
+        <image class="author-img" src="../img/zbj-icon.png"></image>
+        <text class="author-title">猪八戒网</text>
+    </view>
+    <view class="author-content">该程序申请获得以下权限：</view>
+    <view class="author-info">
+        <icon class="info-icon"></icon>获得您的公开信息（昵称、头像等）</view>
+    <view class="author-btn box">
+        <button bindtap="refuse" class="btn btn-no flex">拒绝</button>
+        <button bindgetuserinfo="allow" class="btn btn-yes flex" openType="getUserInfo">允许</button>
+    </view>
+</view>

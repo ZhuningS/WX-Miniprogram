@@ -1,0 +1,164 @@
+@import "../../__wuBaseWxss__/1.wxss";
+
+.wrap {
+    background-color: #fff;
+    padding: 30rpx;
+}
+
+.t-r {
+    text-align: right;
+}
+
+.pop-layer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background-color: rgba(0,0,0,0.5);
+    transition: all 300ms ease both;
+    width: 100%;
+    height: 100%;
+}
+
+.pop-mask {
+    position: absolute;
+    z-index: 990;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+.pop-wrap {
+    position: absolute;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    min-height: 300rpx;
+    z-index: 998;
+}
+
+.btn-danger {
+    width: 100%;
+    background-color: #ff5b5b;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    color: #fff;
+}
+
+.btn-ok {
+    width: 100%;
+    background-color: #fe943d;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    color: #fff;
+}
+
+.pop-hide {
+    height: 0;
+}
+
+.maxheight600 {
+    max-height: 600rpx;
+    overflow-y: scroll;
+}
+
+.btn-pay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.btn-pay button {
+    height: 88rpx;
+    line-height: 88rpx;
+    border: 0;
+    cursor: pointer;
+}
+
+.icon-zhifuchenggong {
+    font-size: 40rpx;
+    color: #09bb07;
+}
+
+.icon-kongxinyuan {
+    font-size: 40rpx;
+    color: #333;
+}
+
+.icon-weixin {
+    font-size: 50rpx;
+    color: #09bb07;
+    margin-right: 20rpx;
+}
+
+.icon-jinbi {
+    font-size: 50rpx;
+    color: #fea512;
+    margin-right: 20rpx;
+}
+
+.paynew {
+    width: 100%;
+    height: 160rpx;
+    background-color: #fff;
+    border-radius: 5rpx;
+    padding-left: 20rpx;
+}
+
+.paynew input {
+    font-size: 80rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-weight: bold;
+}
+
+.paynew view {
+    width: 200rpx;
+    color: #999;
+}
+
+.pay-discount {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #666;
+    padding-left: 10rpx;
+}
+
+.pay-user {
+    width: 100%;
+    height: 200rpx;
+    background: #fff;
+    border-radius: 5rpx;
+}
+
+.pay-user>view:first-child {
+    border-bottom: 1px solid #eee;
+}
+
+.pay-user .main {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    padding: 0 20rpx;
+}
+
+.pay-user .main .vipModal {
+    width: 123rpx;
+    height: 36rpx;
+    text-align: center;
+    line-height: 36rpx;
+    border-radius: 18rpx;
+    font-size: 22rpx;
+    display: inline-block;
+}
+
+.pay-money {
+    width: 100%;
+    margin-top: 40rpx;
+}

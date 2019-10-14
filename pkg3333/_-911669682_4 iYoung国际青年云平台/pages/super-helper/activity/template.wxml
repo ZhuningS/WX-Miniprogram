@@ -1,0 +1,10 @@
+<view class="contenter">
+    <view class="list party mb10" wx:for="{{tempPicArray}}" wx:key="{{item.temp_name}}">
+        <view class="title f16">{{item.temp_name}}</view>
+        <view>
+            <view class="list-img" wx:for="{{item.temp_pic}}" wx:for-item="imgUrl" wx:key="index">
+                <image bindtap="onChoose" data-url="{{imgUrl}}" mode="aspectFill" src="{{imgUrl}}"></image>
+            </view>
+        </view>
+    </view>
+</view>

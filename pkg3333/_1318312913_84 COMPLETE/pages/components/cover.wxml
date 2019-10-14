@@ -1,0 +1,104 @@
+<template name="article-cover">
+    <button bindgetuserinfo="{{needLogin?'gotoArticle':''}}" catchtap="{{needLogin?'':'gotoArticle'}}" class="article-cover" data-doc-id="{{article.docIdString}}" data-mid="{{article.mid}}" data-uid="{{user?user.uid:undefined}}" formType="submit" hoverClass="none" openType="getUserInfo">
+        <view class="article-ctn">
+            <view class="user-ctn" wx:if="{{user}}">
+                <view class="avatar-ctn">
+                    <image class="avatar medium" src="{{user.avatar}}"></image>
+                </view>
+                <view style="margin: 0 5px;width:100%;">
+                    <view class="description" style="font-weight:bold;">{{user.name}}</view>
+                    <view class="description">叫你来一起读</view>
+                </view>
+                <button bindgetuserinfo="{{needLogin?'followUser':''}}" catchtap="{{needLogin?'hack':'followUser'}}" class="button" data-content="onboard" data-uid="{{user.uid}}" formType="submit" openType="getUserInfo" wx:if="{{!followed[user.uid]&&config.enableFollow}}">
+          关注
+        </button>
+                <button class="button border" wx:else>已关注</button>
+            </view>
+            <view class="article-content">
+                <image class="media" mode="aspectFill" src="{{article.cover}}" wx:if="{{article.cover}}"></image>
+                <view style="padding:20px;">
+                    <view class="headline2" wx:if="{{article.title}}">{{article.title}}</view>
+                    <view style="display:flex;align-items:center;margin:10px 0;">
+                        <image class="icon_20px" mode="aspectFill" src="{{article.appIcon}}" style="margin-right:5px;"></image>
+                        <text class="caption" wx:if="{{article.author}}">
+                            <text style="color:#000;">{{article.appName}} · {{article.author}}</text> · {{article.date}}</text>
+                        <text class="caption" wx:else>
+                            <text style="color:#000;">{{article.appName}}</text> · {{article.date}}</text>
+                    </view>
+                    <view class="caption" wx:if="{{article.snippet}}">{{article.snippet}}</view>
+                </view>
+            </view>
+            <view class="button" style="margin-bottom:20px;">点击阅读</view>
+        </view>
+    </button>
+</template>
+<template name="category-cover">
+    <view class="category-cover {{cover.image?'':'white'}}">
+        <image lazyLoad catchtap="navigateTo" class="cover" data-url="{{cover.image?cover.redirect:undefined}}" mode="aspectFill" src="{{cover.image}}" style="{{cover.background?'background-color:'+cover.background:''}}">
+            <view class="menus-ctn">
+                <view class="left">
+                    <button catchtap="{{cover.share.isPage?'hack':'showShareCard'}}" class="action-button" data-share-data="{{cover.share}}" hoverClass="none" id="{{cover.share.isPage?'sharePage':''}}" openType="{{cover.share.isPage?'share':''}}" wx:if="{{cover.share}}">
+                        <image class="icon" src="{{cover.image?'/images/new_assets/icon_share.svg':'/images/new_assets/icon_share_w.svg'}}"></image>
+                    </button>
+                    <button catchtap="onTapMenu" class="action-button" data-menu-id="{{cover.menu}}" wx:if="{{cover.menu}}">
+                        <image class="icon" src="{{cover.image?'/images/new_assets/icon_menu.svg':'/images/new_assets/icon_menu_w.svg'}}"></image>
+                    </button>
+                    <view class="caption" style="margin-left:10px;" wx:if="{{!cover.moreMeta&&cover.subMeta}}">
+            {{cover.subMeta}}
+          </view>
+                </view>
+                <view class="right">
+                    <block wx:if="{{cover.action.type==='subscribe'}}">
+                        <button bindtap="onTapUnsubscribe" class="button item subscribe width-60" data-mid="{{cover.id}}" wx:if="{{subscribed[cover.id]}}">已订阅</button>
+                        <button bindtap="onTapSubscribe" class="button item subscribe" data-mid="{{cover.id}}" wx:else>订阅</button>
+                    </block>
+                    <button class="button item" hoverClass="none" wx:elif="{{cover.action.type==='label'}}">
+              {{cover.action.label}}
+            </button>
+                </view>
+            </view>
+        </image>
+        <view class="title-ctn" wx:if="{{cover.title}}">
+            <view class="caption title-meta" wx:if="{{cover.mainMeta}}">{{cover.mainMeta}}</view>
+            <view class="{{cover.type==='magazine'?'display2':'headline2'}}" style="max-width:660rpx;">
+        {{cover.image?'':cover.title}}
+      </view>
+        </view>
+        <block wx:if="{{cover.moreMeta}}">
+            <view class="caption meta-ctn" wx:if="{{cover.subMeta}}">
+        {{cover.subMeta}}
+      </view>
+            <view class="full-items-ctn">
+                <navigator navigate hoverClass="none" url="{{cover.users.link}}" wx:if="{{cover.users&&cover.users.total>0}}">
+                    <view class="caption">{{cover.users.label}}</view>
+                    <view class="items-ctn">
+                        <image class="avatar item" src="{{item.avatar}}" wx:if="{{index<3}}" wx:for="{{cover.users.items}}" wx:key="uid"></image>
+                        <view class="avatar item" style="background:#f4f4f4;" wx:if="{{cover.users.total>=4}}">
+              {{cover.users.total>99?'99+':cover.users.total}}
+            </view>
+                    </view>
+                </navigator>
+                <navigator navigate hoverClass="none" url="{{cover.providers.link}}" wx:if="{{cover.providers&&cover.providers.more}}">
+                    <view class="caption">{{cover.providers.label}}</view>
+                    <view class="items-ctn">
+                        <image class="icon item" src="{{item.icon}}" wx:if="{{index<3}}" wx:for="{{cover.providers.items}}" wx:key="packageName"></image>
+                        <view class="icon item" style="background:#f4f4f4;font-size:18px;" wx:if="{{cover.providers.more}}">
+              +
+            </view>
+                    </view>
+                </navigator>
+            </view>
+        </block>
+    </view>
+</template>
+<template name="toc">
+    <view class="toc-ctn" wx:if="{{events.length>0}}">
+        <view catchtap="scrollToArticle" class="toc-item" data-doc-id="{{item.article.docIdString}}" data-mid="{{item.article.mid}}" hoverClass="none" url="/pages/article/article?id={{item.article.docIdString}}&mid={{item.article.mid}}&content=toc" wx:if="{{index<3}}" wx:for="{{events}}" wx:key="{{ index }}">
+            <navigator navigate catchtap="hack" class="magazine-name" hoverClass="none" style="color:{{color?color:'#'}}" url="/pages/magazine/magazine?id={{item.article.mid}}&content=clip" wx:if="{{item.article.magazineName}}">
+        # {{item.article.magazineName}}
+      </navigator>
+            <text class="subheading">{{item.article.title}}</text>
+        </view>
+    </view>
+</template>
+<import src="widgets.wxml"></import>

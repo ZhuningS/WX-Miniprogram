@@ -1,0 +1,70 @@
+.registered-wrap {
+    height: 100vh;
+    padding-top: 200rpx;
+}
+
+.registered-wrap .registered {
+    width: 670rpx;
+    min-height: 500rpx;
+    margin: 0 auto;
+    border-radius: 15rpx;
+    padding: 40rpx;
+}
+
+.registered-wrap .registered .reg-type {
+    width: 100%;
+    margin-bottom: 80rpx;
+}
+
+.registered-wrap .registered .reg-type .item {
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    color: #63b504;
+    border: 1px solid #63b504;
+}
+
+.registered-wrap .registered .reg-type .item:nth-child(1) {
+    border-top-left-radius: 10rpx;
+    border-bottom-left-radius: 10rpx;
+}
+
+.registered-wrap .registered .reg-type .item:nth-child(2) {
+    border-top-right-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+
+.registered-wrap .registered .reg-type .active {
+    color: #fff;
+    background-color: #63b504;
+}
+
+.registered-wrap .form-wrap .form-item {
+    padding-bottom: 60rpx;
+}
+
+.registered-wrap .form-wrap .form-item .form-name {
+    width: 100rpx;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.registered-wrap .form-wrap .form-item .input-box {
+    width: 100%;
+    padding: 0 20rpx;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.registered-wrap .form-wrap .form-item .btn-getcode {
+    right: 0;
+    color: #63b504;
+}
+
+.registered-wrap .submit {
+    margin-top: 40rpx;
+    background-color: #63b504;
+    color: #fff;
+    border: none;
+    height: 88rpx;
+    line-height: 88rpx;
+}

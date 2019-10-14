@@ -1,0 +1,95 @@
+<view class="{{currentSkin}}">
+    <view class="d-status f fv fc fc-h skin_bg">
+        <image class="olt-bg" src="http://j.vzan.cc/miniapp/img/sharebg/bg.png"></image>
+        <view class="f fc">
+            <image class="d-img" mode="aspectFill" src="http://j.vzan.cc/miniapp/img/sharebg/icon-1.png" wx:if="{{vm_order.goodOrder.State==1}}"></image>
+            <image class="d-img" mode="aspectFill" src="http://j.vzan.cc/miniapp/img/sharebg/icon-2.png" wx:if="{{vm_order.goodOrder.State==0}}"></image>
+            <image class="d-img" mode="aspectFill" src="http://j.vzan.cc/miniapp/img/sharebg/icon-3.png" wx:if="{{vm_order.goodOrder.State==2}}"></image>
+            <image class="d-img" mode="aspectFill" src="http://j.vzan.cc/miniapp/img/sharebg/icon-4.png" wx:if="{{vm_order.goodOrder.State==-1}}"></image>
+            <image class="d-img" mode="aspectFill" src="http://j.vzan.cc/miniapp/img/sharebg/icon-5.png" wx:if="{{vm_order.goodOrder.State==3}}"></image>
+            <image class="d-img" mode="aspectFill" src="http://j.vzan.cc/miniapp/img/sharebg/icon-6.png" wx:if="{{vm_order.goodOrder.State==-4}}"></image>
+            <text class="cfff f32" wx:if="{{vm_order.stateRemark!='待自取'&&vm_order.stateRemark!='待消费'}}">{{vm_order.stateRemark}}</text>
+            <view class="f fc fv" wx:else>
+                <view class="hxqrcode" wx:if="{{hexiaoQrcode}}">
+                    <image src="{{hexiaoQrcode}}" style="border-radius:50%;"></image>
+                </view>
+                <text class="f24 mt5" wx:if="{{vm_order.goodOrder.GetWay==0}}">提取码：{{vm_order.goodOrder.TablesNo}}</text>
+                <text class="f24 mt5" wx:if="{{vm_order.goodOrder.GetWay==6}}">消费码：{{vm_order.goodOrder.TablesNo}}</text>
+            </view>
+        </view>
+        <text class="cfff f26 mt30" wx:if="{{vm_order.goodOrder.State==1}}">订单已接收，请耐心等候发货</text>
+        <text class="cfff f26 mt30" wx:if="{{vm_order.goodOrder.State==3}}">交易完成，感谢您的购买</text>
+        <text class="cfff f26 mt30" wx:if="{{vm_order.goodOrder.State==-1}}">订单已取消，欢迎您下次再来购买</text>
+        <text class="cfff f26 mt30" wx:if="{{vm_order.goodOrder.State==-4}}">退款完成，欢迎您下次再来购买</text>
+        <text bindtap="confirmBar" class="cfff f26 mt30 olt-btn" data-wpyconfirmbar-a="{{vm_order.goodOrder.Id}}" data-wpyconfirmbar-b="{{vm_order.goodOrder.Id}}" wx:if="{{vm_order.goodOrder.State==2}}">确认收货</text>
+        <text bindtap="goPay" class="cfff f26 mt30 olt-btn" data-wpygopay-a="{{vm_order.goodOrder.OrderId}}" wx:if="{{vm_order.goodOrder.State==0}}">继续付款</text>
+    </view>
+    <view class="d-info f fv">
+        <view class="d-person f fc fj">
+            <text wx:if="{{vm_order.goodOrder.GetWay==0}}">提货人:{{vm_order.goodOrder.AccepterName}}</text>
+            <text wx:if="{{vm_order.goodOrder.GetWay==1}}">收货人:{{vm_order.goodOrder.AccepterName}}</text>
+            <text wx:if="{{vm_order.goodOrder.GetWay==6}}">消费人:{{vm_order.goodOrder.AccepterName}}</text>
+            <text>{{vm_order.goodOrder.AccepterTelePhone}}</text>
+        </view>
+        <view class="d-address f fc">
+            <text class="dzicon icon-dingwei f36 ccc"></text>
+            <text style="padding-left:5rpx">{{vm_order.goodOrder.Address}}</text>
+        </view>
+        <view style="padding:20rpx 0 0 65rpx;font-size:26rpx;color:#666" wx:if="{{vm_order.zqStoreName}}">店铺:{{vm_order.zqStoreName}}</view>
+    </view>
+    <view class="bg-w">
+        <view style="padding-left:30rpx;">
+            <view bindtap="$comItem$pathGood" class="f fc fj" data-com-index="{{undefined}}" data-wpypathgood-a="{{$comItem$item.orderDtl.FoodGoodsId}}" style="padding:30rpx 30rpx 30rpx 0;border-bottom:1px solid #eee;" wx:for="{{vm_order.goodOrderDtl}}" wx:for-index="$comItem$index" wx:for-item="$comItem$item" wx:key="$comItem$key">
+                <image catchtap="$comItem$showimg" class="g-img" data-com-index="{{undefined}}" data-wpyshowimg-a="{{$comItem$item.ImgUrl}}" mode="aspectFill" src="{{$comItem$item.ImgUrl}}"></image>
+                <view class="g-content f1 f fv fj">
+                    <view>
+                        <text class="f26 c33 line line1">{{$comItem$item.Introduction}}</text>
+                        <text class="w-100 c666 mt20 f24 c666" style="display:inline-block" wx:if="{{$comItem$item.SpecInfo!='undefined'||$comItem$item.SpecInfo!=''}}">{{$comItem$item.SpecInfo}}</text>
+                    </view>
+                    <view class="f fj">
+                        <view wx:if="{{$comItem$item.type=='good'||$comItem$item.type=='miaosha'}}">
+                            <wxc-price class="c333 t-b f30">{{$comItem$item.discountPrice}}</wxc-price>
+                            <wxc-price class="ml10 f26" delColor="#666" status="del" wx:if="{{$comItem$item.oldPrice!=0&&$comItem$item.discountPrice!=$comItem$item.oldPrice}}">{{$comItem$item.oldPrice}}</wxc-price>
+                        </view>
+                        <view wx:else>
+                            <wxc-price class="c333 t-b f30">{{$comItem$item.discountPrice}}</wxc-price>
+                            <wxc-price class="ml10 f26" delColor="#666" status="del" wx:if="{{$comItem$item.discount!=100&&$comItem$item.discountPrice!=$comItem$item.oldPrice}}">{{$comItem$item.oldPrice}}</wxc-price>
+                        </view>
+                        <text class="c333 f26">x{{$comItem$item.Count}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="d-price f fv f32">
+        <view class="f fc f-end">
+            <text>共{{vm_order.goodOrder.QtyCount}}件,</text>
+            <wxc-price class="p-order">{{vm_order.goodOrder.OnlyGoodsMoney}}</wxc-price>
+        </view>
+        <wxc-price class="p-dis mt10" wx:if="{{vm_order.goodOrder.ReducedPriceStr>0}}">{{vm_order.goodOrder.ReducedPriceStr}}</wxc-price>
+        <wxc-price class="p-freight mt10">{{vm_order.freightPrice}}</wxc-price>
+        <wxc-price class="p-pay mt10 p-price">{{vm_order.goodOrder.BuyPriceStr}}</wxc-price>
+    </view>
+    <view class="d-order f fj">
+        <view class="d-left f fv">
+            <text>订单编号：{{vm_order.goodOrder.OrderNum}}</text>
+            <text class="mt10">下单时间：{{vm_order.goodOrder.CreateDateStr}}</text>
+        </view>
+        <view bindtap="copy" class="d-right">复制订单</view>
+    </view>
+    <view class="d-showinfo f fv">
+        <view>支付方式：{{payType}}</view>
+        <view class="f  mt10" wx:if="{{vm_order.goodOrder.BuyMode!=11}}">支付时间：{{vm_order.goodOrder.State==1||vm_order.goodOrder.State==3||vm_order.goodOrder.State==2||vm_order.goodOrder.State==8?vm_order.goodOrder.PayDateStr:''}}</view>
+        <view class="f1 mt10" wx:if="{{vm_order.goodOrder.Message!=null}}">买家留言：{{vm_order.goodOrder.Message}}</view>
+        <view class="f1 mt10" wx:if="{{vm_order.goodOrder.GetWay!=0}}">发货时间：{{vm_order.goodOrder.State==2||vm_order.goodOrder.State==3?vm_order.goodOrder.DistributeDateStr:''}}</view>
+        <view class="f1 mt10">配送方式：{{vm_order.goodOrder.GetWayStr}}</view>
+        <view class="f1 mt10">成交时间：{{vm_order.goodOrder.State==3?vm_order.goodOrder.AcceptDateStr:''}}</view>
+    </view>
+    <view style="height:100rpx"></view>
+    <view bindtap="goHome" class="d-back skin_bg">返回首页</view>
+    <view wx:if="{{showReduct}}">
+        <view class="re-bg"></view>
+        <view bindtap="$comRedu$close" class="dzicon icon-zhuanyebaniconkuozhan_Close f70 re-cancle cfff"></view>
+        <image bindtap="$comRedu$goReduction" class="re-main" mode="widthFix" src="http://vzan-img.oss-cn-hangzhou.aliyuncs.com/upload//20180711/bcc77a547cbe4bb1ab30bcb6593b7e211531276553239.png"></image>
+    </view>
+</view>

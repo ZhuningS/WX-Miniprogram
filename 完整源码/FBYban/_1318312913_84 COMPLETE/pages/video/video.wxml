@@ -1,0 +1,4 @@
+<image mode="aspectFill" src="{{media.cover}}" style="width:100vw; height: 100vh; filter:blur(60px); position:fixed;"></image>
+<view style="display:flex;flex-direction:column;justify-content:center;height:100vh;">
+    <video controls autoplay="{{true}}" objectFit="contain" src="{{media.source}}" style="width:750rpx;height:480rpx;"></video>
+</view>

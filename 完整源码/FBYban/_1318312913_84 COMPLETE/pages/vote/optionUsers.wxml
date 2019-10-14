@@ -1,0 +1,19 @@
+<view class="vote-status-ctn">
+    <view class="display2">
+    让观点掷地有声
+  </view>
+    <view class="user-list" wx:if="{{events.length}}">
+        <view class="user-ctn" wx:if="{{item.type==='user'}}" wx:for="{{events}}" wx:key="user.uid">
+            <navigator catchtap="hack" class="avatar-ctn" hoverClass="none" openType="navigate" url="/pages/profile/user?uid={{item.user.uid}}">
+                <image lazyLoad class="avatar" src="{{item.user.avatar?item.user.avatar:'/images/profile-default.svg'}}"></image>
+            </navigator>
+            <view class="detail">
+                <view class="name">{{item.user.name}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="meta" wx:else>
+    暂无数据
+  </view>
+</view>
+<include src="../components/global.wxml"></include>

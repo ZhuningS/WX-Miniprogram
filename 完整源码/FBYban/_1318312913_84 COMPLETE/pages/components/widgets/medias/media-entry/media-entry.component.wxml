@@ -1,0 +1,11 @@
+<view class="{{rootClassNames}} {{hideComponentPadding?'no-padding':''}}">
+    <view class="entry-body">
+        <view class="info-title">
+      {{mediaData.title}}
+    </view>
+        <view class="info-snippet">
+      {{mediaData.snippet}}
+    </view>
+    </view>
+    <image lazyLoad class="entry-thumb" mode="aspectFill" src="{{mediaData.thumbUrl}}" wx:if="{{mediaData.thumbUrl}}"></image>
+</view>

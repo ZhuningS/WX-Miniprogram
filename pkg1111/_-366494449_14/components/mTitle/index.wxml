@@ -1,0 +1,7 @@
+<template name="mTitle">
+    <view class="mtitle" style="margin-bottom:{{style.marginBottom}};line-height:{{style.lineHeight}};background:{{style.backgroundColor}};justify-content: {{textStyle.textAlign}};font-size:{{textStyle.fontSize}}; font-style:{{textStyle.fontStyle}};font-weight:{{textStyle.fontWeight}};text-decoration: {{textStyle.textDecoration}}">
+        <text class="title" style="color:{{textStyle.color}};font-size:{{textStyle.fontSize}};" wx:if="{{dataset.hasMark==0}}">{{dataset.text}}</text>
+        <view class="title" style="color:{{textStyle.color}};font-size:{{textStyle.fontSize}};display: flex; align-items: center" wx:else>
+            <text style="width: 6rpx; background-color: {{markStyle.backgroundColor}}; height: 30rpx; border-radius:8rpx; margin-right: 16rpx;"></text>{{dataset.text}}</view>
+    </view>
+</template>

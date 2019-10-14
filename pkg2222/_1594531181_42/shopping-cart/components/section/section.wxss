@@ -1,0 +1,20 @@
+.container {
+    background: #FFFFFF;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 60rpx;
+    padding-top: 16rpx;
+    margin-bottom: 16rpx;
+}
+
+.container .title {
+    padding-top: 16rpx;
+    padding-bottom: 16rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    border-bottom: 0.5rpx solid #ECECEC;
+}
+
+.container.last {
+    margin-bottom: 0;
+}

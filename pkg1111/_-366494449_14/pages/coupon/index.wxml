@@ -1,0 +1,25 @@
+<import src="/components/coupon/coupon.wxml"></import>
+<import src="/components/tabbar/index.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}" style="min-height: {{winHei}}px">
+    <view class="couponList" wx:if="{{couponList&&couponList.length>0}}">
+        <view data-id="{{item.id}}" data-index="{{index}}" wx:for="{{couponList}}" wx:key="id">
+            <button plain bindgetphonenumber="{{item.has==2&&item.grant_num-item.num==0?'':'_getmobile'}}" hoverClass="none" openType="getPhoneNumber" style="margin-bottom: 20rpx;" wx:if="{{hasMobile==0&&item.has==2}}">
+                <template is="coupon" data="{{item:item,index:index,hasMobile:hasMobile}}"></template>
+            </button>
+            <view class="coupon" wx:else>
+                <template is="coupon" data="{{item:item,index:index,hasMobile:hasMobile}}"></template>
+            </view>
+        </view>
+    </view>
+    <view class="nodata" wx:else>
+        <image class="icon" mode="aspectFit" src="/images/card/quan@3x.png"></image>
+        <view>
+            <text style="color: #999; font-size:24rpx;">暂无可领取的优惠券～</text>
+        </view>
+    </view>
+</view>
+<template is="tabbar" data="{{tabbar:tabbar,data:'coupon'}}" wx:if="{{isShowTab}}"></template>

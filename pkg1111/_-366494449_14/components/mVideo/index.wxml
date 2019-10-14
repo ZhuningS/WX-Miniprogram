@@ -1,0 +1,8 @@
+<template name="mVideo">
+    <view bindtap="_jumpToVideo" class="mVideo" data-url="{{dataset.url}}" style="background: #000;display:flex;align-items:center;justify-content:center;">
+        <image mode="widthFix" src="{{dataset.img}}" style="border-radius:3px;position:relative;z-index:98;width:100%;height:420rpx;"></image>
+        <view class="icon_play">
+            <image src="/images/card/play.png"></image>
+        </view>
+    </view>
+</template>

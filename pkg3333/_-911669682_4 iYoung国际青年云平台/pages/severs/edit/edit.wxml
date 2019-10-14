@@ -1,0 +1,45 @@
+<form bindsubmit="onPushSubmit" reportSubmit="true">
+    <view class="form-group">
+        <view class="form-item">
+            <textarea class="form-tear" maxlength="6144" name="content" placeholder="请输入要发布的内容" placeholderClass="linght" value="{{content}}"></textarea>
+        </view>
+        <view class="form-item">
+            <view class="image-list">
+                <view catchtap="onPreviewTap" class="image-item" wx:for="{{uploadFiles}}" wx:key="{{index}}">
+                    <image data-index="{{index}}" mode="aspectFill" src="{{item.file}}"></image>
+                    <text catchtap="onDeleteImgTap" class="image-close" data-index="{{index}}"></text>
+                    <view class="image-info">
+                        <block wx:if="{{item.state==0}}">等待上传...</block>
+                        <block wx:elif="{{item.state==1}}">正在上传...</block>
+                        <block wx:elif="{{item.state==2}}">已上传</block>
+                        <block wx:else>上传失败</block>
+                    </view>
+                </view>
+                <view class="image-item">
+                    <text catchtap="onChooseUploadImageTap" class="image-plus" wx:if="{{uploadFiles.length<6}}"></text>
+                </view>
+            </view>
+        </view>
+        <view class="form-item" wx:if="{{category.tags&&category.tags.length}}">
+            <text catchtap="onChooseTag" class="tag {{item.active?'active':''}}" data-index="{{index}}" wx:for="{{category.tags}}" wx:key="{{index}}">{{item.value}}</text>
+        </view>
+        <view catchtap="onGetMapLocationTap" class="form-item form-item-btn flex grey">
+            <input hidden="true" name="address" type="text" value="{{address}}"></input>
+            <input hidden="true" name="latitude" type="text" value="{{latitude}}"></input>
+            <input hidden="true" name="longitude" type="text" value="{{longitude}}"></input>
+            <text class="mr5 iconfont icon-locationfill"></text>
+            <text class="sub arrowR">{{address?address:'地址'}}</text>
+        </view>
+        <view catchtap="editMobile" class="form-item flex grey" wx:if="{{config.is_bind_mobile}}">
+            <text class="mr5 iconfont icon-dianhua"></text>
+            <input disabled class="sub arrowR" name="mobile" placeholder="请输入您的电话号码" type="number" value="{{mobile}}"></input>
+        </view>
+        <view class="form-item flex grey" wx:else>
+            <text class="mr5 iconfont icon-dianhua"></text>
+            <input class="sub" name="mobile" placeholder="请输入您的电话号码" type="number" value="{{mobile}}"></input>
+        </view>
+    </view>
+    <view class="form-button m15">
+        <button formType="submit" type="primary">保存</button>
+    </view>
+</form>

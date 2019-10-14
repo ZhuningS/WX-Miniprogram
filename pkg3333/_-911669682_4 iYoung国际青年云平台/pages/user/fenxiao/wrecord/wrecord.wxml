@@ -1,0 +1,17 @@
+<view class="zanwu tc" wx:if="{{data_list.txlist==null}}">
+    <text class="iconfont icon-kongbaiyemian"></text>
+    <view class="f18">您暂时还没有提现记录</view>
+</view>
+<view class="wrlist" wx:else>
+    <view class="gridXb wr-item flex" wx:for="{{data_list.txlist}}">
+        <image class="avatar" mode="aspectFill" src="{{data_list.headimgurl}}"></image>
+        <view class="sub ml10">
+            <text class="f18 fr red">{{item.money}}</text>
+            <view class="big-font">提现</view>
+            <view class="linght">
+                <text class="fr green">{{item.txstatus}}</text>
+                <text>{{item.txtime}}</text>
+            </view>
+        </view>
+    </view>
+</view>

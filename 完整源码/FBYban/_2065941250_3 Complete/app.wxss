@@ -1,0 +1,57 @@
+.page-title {
+    padding-left: 40rpx;
+    background: #eee;
+    line-height: 80rpx;
+    font-size: 28rpx;
+}
+
+.page-content {
+    padding-left: 40rpx;
+    line-height: 80rpx;
+    background: white;
+    font-size: 28rpx;
+}
+
+.text-primary {
+    color: #EA5A49;
+}
+
+.right {
+    float: right;
+}
+
+.text-footer {
+    text-align: center;
+    font-size: 24rpx;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.fz20 {
+    font-size: 40rpx;
+}
+
+.btn {
+    color: white;
+    background: #EA5A49;
+    margin-bottom: 20rpx;
+    margin-top: 20rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    border-radius: 4rpx;
+    font-size: 32rpx;
+    line-height: 80rpx;
+    height: 80rpx;
+    width: 710rpx;
+    margin-left: 20rpx;
+}
+
+.btn:active {
+    background: #FA5A49;
+}
+
+.inline {
+    display: inline;
+}

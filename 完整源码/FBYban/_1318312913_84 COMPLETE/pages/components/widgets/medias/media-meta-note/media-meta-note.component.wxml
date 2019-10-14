@@ -1,0 +1,13 @@
+<view catchtap="handleNoteMetaTap" class="{{rootClassNames}}">
+    <view class="note-body">
+        <view class="note-image-wrapper" wx:if="{{noteData.imageUrl}}">
+            <image class="note-image" mode="widthFix" src="{{noteData.imageUrl}}" style="height: {{simulateQuoteMinHeight}}px"></image>
+        </view>
+        <view class="note-content" wx:else>
+      {{noteData.content}}
+    </view>
+        <view class="note-title" wx:if="{{route!=='pages/post/list'&&route!=='pages/article/article'}}">
+      {{noteData.title}}
+    </view>
+    </view>
+</view>

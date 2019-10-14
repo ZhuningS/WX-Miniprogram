@@ -1,0 +1,174 @@
+<import src="../../../components/login/index.wxml"></import>
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view hidden="{{!dataLoaded}}">
+    <view class="goodsInfo">
+        <image class="avatar" src="{{bargain.logs[0].logo}}"></image>
+        <view class="username">{{bargain.logs[0].nickname}}</view>
+        <view class="Logan">“发现一件好货，赶快邀请好友组团来砍价吧”</view>
+        <view class="order-info">
+            <view class="bg-img">
+                <image mode="aspectFill" src="{{bargain.goods_cover}}" style="height:100%"></image>
+            </view>
+            <view class="order-r">
+                <view class="label-text">
+                    <text class="price">{{bargain.goods_title}}</text>
+                </view>
+                <view class="label-text" style="display:flex;justify-content:space-between; margin-bottom: 10rpx;">
+                    <text class="price" style="font-size: 32rpx;color: #e36152">￥{{bargain.goods_price}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="countdown">
+        <view style="display:flex;align-items:center">
+            <block wx:if="{{status==0}}">
+        还剩
+        <view wx:if="{{lastTimeStr.d}}">
+                    <text style="color:#fff;font-size:22rpx;margin:0 2px 0 3px">{{lastTimeStr.d}}</text>天
+        </view>
+                <view class="timeDown">
+                    <view>{{lastTimeStr.h}}</view>:<view>{{lastTimeStr.m}}</view>:<view>{{lastTimeStr.s}}</view>
+                </view>
+        活动结束
+        </block>
+            <block wx:else>
+            活动已结束
+        </block>
+        </view>
+    </view>
+    <view class="bargain-process">
+        <view class="success" wx:if="{{process==100}}">
+            <block wx:if="{{isMyself}}">恭喜砍价成功，快点带它回家吧</block>
+            <block wx:else>好友已砍价成功</block>
+        </view>
+        <view class="success" wx:else></view>
+        <view class="process-wrap">
+            <view class="popup" style="left:{{process-6}}%" wx:if="{{process<65}}">
+                <view></view>
+            还剩<text>{{remain}}</text>元可以砍
+        </view>
+            <view class="popup1" style="right:{{104-process}}%" wx:else>
+                <view></view>
+                <block wx:if="{{process==100}}">
+                砍到底啦
+             </block>
+                <block wx:else>
+                 还剩<text>{{remain}}</text>元可以砍
+             </block>
+            </view>
+            <image src="https://img.weixin.sundayer.cn/person/coin-jindu@3x.png" style="right:{{100-process}}%"></image>
+            <view class="process-bar">
+                <view class="process" style="width:{{process}}%"></view>
+            </view>
+        </view>
+        <view class="normal-deep">
+            <view>原价￥{{bargain.goods_price}}</view>
+            <view>砍到底价¥{{bargain.goods_onsale}}</view>
+        </view>
+        <block wx:if="{{isMyself&&bargain.order_pay!=1&&status!=1&&status!=4&&bargain.order_id<=0}}">
+            <view bindtap="_confirmBuy" class="invite-btn" wx:if="{{process==100}}">
+            立即付款
+        </view>
+            <view class="myCut" wx:else>
+                <view bindtap="_confirmBuy" class="pay">直接付款¥{{bargain.final_price}}</view>
+                <button class="invite" openType="share">邀请好友帮忙砍</button>
+            </view>
+        </block>
+        <block wx:elif="{{!isMyself&&bargain.order_pay!=1&&status!=1&&status!=4&&bargain.order_id<=0}}">
+            <view bindtap="_kanjia" class="invite-btn" wx:if="{{process==100}}">
+            我也要参加
+        </view>
+            <view catchtap="_cut" class="invite-btn" wx:else>
+            帮TA砍一刀
+        </view>
+        </block>
+    </view>
+    <view class="herolist">
+        <view class="list-tit">
+            <image src="/images/kan/line-zuo@3x.png"></image>
+            <text>砍价英雄榜</text>
+            <image src="/images/kan/line-you@3x.png"></image>
+        </view>
+        <scroll-view scrollY style="min-height:640rpx">
+            <view class="list-item" wx:for="{{bargain.logs}}">
+                <view class="heroInfo">
+                    <image src="{{item.logo}}"></image>
+                    <view>
+                        <view class="name">{{item.nickname}}</view>
+                        <view class="tip"></view>
+                    </view>
+                </view>
+                <view class="achievement">
+                    <image src="/images/kan/coin@3x.png"></image>
+                    <view>砍掉{{item.bargain_price}}元</view>
+                </view>
+            </view>
+        </scroll-view>
+        <view catchtap="_moreHero" class="moreitem" wx:if="{{bargin.logs.length>6}}">
+        查看更多
+        <image src="/images/kan/more.png"></image>
+        </view>
+    </view>
+    <view class="recommend">
+        <view class="recommend-tit">
+            <image src="/images/kan/line-zuo@3x.png"></image>
+            <text>猜你喜欢</text>
+            <image src="/images/kan/line-you@3x.png"></image>
+        </view>
+        <view class="good-mod">
+            <view>
+                <view class="goodsList">
+                    <view bindtap="_jump" class="goods" data-url="/pages/goodsDetail/detailKan/detailKan?id={{item.goods_id}}" wx:for="{{bargain.guess}}">
+                        <view class="goods_wrap">
+                            <view class="goods__imgWrap">
+                                <image class="goods__img" lazyLoad="true" mode="aspectFill" src="{{item.goods_cover}}"></image>
+                            </view>
+                            <view class="goodsInfoWrap1">
+                                <view class="goods__name">{{item.goods_title}}</view>
+                                <view class="goods__price">
+                                    <view>
+                                        <text class="goods__price__unit">底价￥</text>{{item.goods_onsale}}
+                                </view>
+                                    <view style="margin-left:20rpx;color: #aaa; font-size: 24rpx;"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view catchtap="_openruleMask" class="rule-btn">活动规则</view>
+    <view catchtouchmove="true" class="overwrap" wx:if="{{cutmask}}">
+        <image catchtap="_closeMask" class="close" src="/images/kan/X@3x.png" style="top: 258rpx;"></image>
+        <view class="kan-success">
+            <image src="https://img.weixin.sundayer.cn/person/tanchuang@3x.png"></image>
+            <view class="kan-price" wx:if="{{isMyself}}">
+            成功砍价<text>{{bargain.logs[0].bargain_price}}元</text>，继续加油
+        </view>
+            <view class="kan-price" wx:else>
+            成功帮TA砍价<text>{{kan_price}}元</text>
+            </view>
+            <view class="btn-wrap" wx:if="{{isMyself}}">
+                <button class="join" openType="share" style="width:560rpx">邀请好友帮忙砍</button>
+            </view>
+            <view class="btn-wrap" wx:else>
+                <view catchtap="_closeMask2" class="certain">确定</view>
+                <view bindtap="_kanjia" class="join" style="margin-left: 24rpx;">我也要参加</view>
+            </view>
+        </view>
+    </view>
+    <view catchtouchmove="true" class="overwrap" wx:if="{{rulemask}}">
+        <image catchtap="_closeMask" class="close" src="/images/kan/X@3x.png"></image>
+        <view class="rules">
+            <view class="rules-tit">活动规则</view>
+            <view>1.用户在“商城-砍价活动”内可以选择心仪商品后发起“砍价活动”</view>
+            <view>2.在砍价活动时间范围内，用户需邀请好友前来协助助力砍价，进而降低商品价格</view>
+            <view>3.助力好友在帮助砍价时，同一个活动仅能够砍价一次</view>
+            <view>4.助力好友在帮助用户砍价商品后，也可以自己发起新的砍价活动</view>
+            <view>5.当商品价格达到了用户预期值或者底价后，用户可直接进行商品支付，并以当前的价格购买该商品</view>
+            <view>6.进行中的活动商品，同一用户在同一时间内仅能够发起一次砍价活动</view>
+        </view>
+    </view>
+</view>
+<template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>

@@ -1,0 +1,6 @@
+<view class="text_ecllipsis">
+    <block wx:for="{{key_item}}" wx:for-item="key_obj">
+        <text style="color:{{hlColor}};font-size: {{fontSize}}px;" wx:if="{{key_obj.key==true}}">{{key_obj.str}}</text>
+        <text style="color:{{simpleColor}};font-size: {{fontSize}}px;" wx:else>{{key_obj.str}}</text>
+    </block>
+</view>

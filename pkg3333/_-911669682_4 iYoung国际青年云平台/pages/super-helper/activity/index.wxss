@@ -1,0 +1,159 @@
+page {
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+.active-list {
+    background: #fff;
+    margin: 30rpx auto 0;
+    border-radius: 6rpx;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: -1;
+}
+
+.active-content {
+    text-overflow: ellipsis;
+    position: relative;
+}
+
+.active-bgimg {
+    width: 100%;
+    height: 345rpx;
+}
+
+.active-title {
+    width: 100%;
+    padding: 0 30rpx;
+    line-height: 80rpx;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.other-list {
+    background-color: white;
+    padding: 0 30rpx;
+    line-height: 80rpx;
+}
+
+.peo-msg image {
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 8rpx;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.peo-msg image:last-child {
+    margin-right: 0;
+}
+
+.flating-group {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.flating-group button {
+    float: right;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #1aad19;
+    color: white;
+}
+
+.flating-group button::after {
+    border: 0;
+}
+
+@-webkit-keyframes lodingRotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes lodingRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loding .icon-jiazai {
+    -webkit-animation: lodingRotate 1s linear infinite;
+    display: inline-block;
+}
+
+.nothing .line {
+    height: 1px;
+    background: #ddd;
+    margin-top: 22rpx;
+}
+
+.aside-float {
+    position: fixed;
+    bottom: 120rpx;
+    right: 40rpx;
+    z-index: 1;
+}
+
+.aside-float button {
+    width: 92rpx;
+    height: 92rpx;
+    line-height: 92rpx;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 20rpx #1aad19;
+}
+
+.flating-group button::after {
+    border: 0;
+}
+
+.tabbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+    background: #fff;
+    box-shadow: 0 -2rpx 2rpx #eee;
+}
+
+.tab-sub {
+    line-height: 92rpx;
+    font-size: 36rpx;
+    position: relative;
+}
+
+.tab-sub-active {
+    font-weight: bold;
+    color: #09bb07;
+}
+
+.tab-sub-active::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 20%;
+    width: 60%;
+    height: 2px;
+    bottom: 0;
+}
+
+@import "../../../__wuBaseWxss__/3.wxss";

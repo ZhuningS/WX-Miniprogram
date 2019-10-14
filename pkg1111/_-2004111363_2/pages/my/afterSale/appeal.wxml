@@ -1,0 +1,58 @@
+<view class="appeal {{currentSkin}}">
+    <view class="bg-w pt20">
+        <view class="f fj header" wx:for="{{orderList}}" wx:key="key">
+            <image class="commodity-avator rect150" src="{{item.goodImgUrl}}"></image>
+            <view class="f fv ml20 width75">
+                <view class="title">
+                    <text class="line line2">{{item.goodname}}</text>
+                </view>
+                <view class="specification c999 mt10 f22 f fj">
+                    <text>{{item.orderDtl.SpecInfo}}</text>
+                    <text>x{{item.orderDtl.Count}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="appeal-list mt20 bg-w f fv">
+        <view class="appeal-item pl20 pr20 f fj fc">
+            <text>退货原因:</text>
+            <picker bindchange="bindReturnGoodReasonChange" class="picker" range="{{returnGoodReason.range}}" value="{{returnGoodReason.activeIndex}}">
+                <view class="f24 c999">
+                    <text wx:if="{{!returnGoodReason.isSelect}}">
+                        <text>请选择</text>
+                        <text class="dzicon icon-xiala-copy-right"></text>
+                    </text>
+                    <text wx:else>{{returnGoodReason.range[returnGoodReason.activeIndex]}}</text>
+                </view>
+            </picker>
+        </view>
+        <view class="appeal-item pl20 pr20 f fc" wx:if="{{typeID==0}}">
+            <text>退款金额:</text>
+            <text class="skin_txt ml10">￥{{buyPrice}}</text>
+        </view>
+        <view class="tips f24 c999 pl20"></view>
+        <view class="appeal-item pl20 pr20 f fj fc">
+            <text>退换说明:</text>
+            <input bindinput="bindReplaceInput" class="f1 ml20" placeholder="选填"></input>
+        </view>
+    </view>
+    <view class="mt20 bg-w pl20 pr20 f fv upload">
+        <view>
+        上传凭据
+      </view>
+        <view class="mt20 f fw">
+            <view bindtap="uploadImg" class="btn-upload f fv fc rect150" wx:if="{{uploadFlag}}">
+                <text class="dzicon f38 icon-Photo_zhaopian"></text>
+                <text class="f22 c999">上传凭据</text>
+                <text class="f22 c999">(最多6张)</text>
+            </view>
+            <view class="upload-img ml20 rel {{index==3&&'ml0'}} {{index>=3&&'mt20'}}" style="{{!uploadFlag&&index==3&&'margin-left: 20rpx; margin-top: 0;'}}" wx:for="{{uploadImgs}}" wx:key="key">
+                <image class="rect150" src="{{item}}"></image>
+                <text bindtap="removeImg" class="f24 dzicon close icon-guanbi abs cfff" data-index="{{index}}"></text>
+            </view>
+        </view>
+    </view>
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <button catchtap="submit" class="btn-confirm skin_bg f36 cfff" formType="submit" hoverClass="bgD32A7C">确定</button>
+    </form>
+</view>

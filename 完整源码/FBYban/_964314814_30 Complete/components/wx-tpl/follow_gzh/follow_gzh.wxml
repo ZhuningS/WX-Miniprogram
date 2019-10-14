@@ -1,0 +1,13 @@
+<view class="gzh-follow-view">
+    <view class="gzh-left-title">
+		小程序名称关联的公众号
+	</view>
+    <view class="gzh-content-view">
+        <image class="gzh-image" src="http://img3.imgtn.bdimg.com/it/u=2830386287,319924528&fm=26&gp=0.jpg"></image>
+        <view class="gzh-content">
+            <view class="gzh-name">小程序名称</view>
+            <view class="gzh-desc">小程序介绍介绍介绍介绍</view>
+        </view>
+        <view class="gzh-follow-btn">关注</view>
+    </view>
+</view>

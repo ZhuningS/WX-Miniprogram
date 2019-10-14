@@ -1,0 +1,69 @@
+.fx_bgimg {
+    background-image: url("http://img.weixin.sundayer.cn/card/fxbeijing@3x.png");
+    background-size: 100%;
+    height: 466rpx;
+    text-align: center;
+}
+
+.fx_bgimg .text1 {
+    padding-top: 34rpx;
+    color: #fff5a0;
+    font-size: 24rpx;
+    font-weight: 300;
+}
+
+.fx_bgimg .text2 {
+    color: #fff;
+    font-size: 88rpx;
+    line-height: 132rpx;
+}
+
+.btn-withDraw {
+    display: inline-block;
+    background: #fff5a0;
+    font-size: 28rpx;
+    padding: 10rpx;
+    width: 160rpx;
+    border-radius: 6rpx;
+    color: #333;
+    text-align: center;
+}
+
+.fx_bgimg .moneyStat {
+    display: flex;
+    margin-top: 52rpx;
+    justify-content: center;
+}
+
+.fx_bgimg .moneyStat .item {
+    padding: 0 40rpx;
+}
+
+.fx_bgimg .moneyStat .item-text1 {
+    font-size: 24rpx;
+    color: #333;
+    display: block;
+}
+
+.fx_bgimg .moneyStat .item-text2 {
+    color: #000;
+    font-size: 48rpx;
+    display: block;
+    line-height: 48rpx;
+}
+
+.fx_bgimg .moneyStat .item-text3 {
+    color: #999;
+    font-weight: 300;
+    font-size: 20rpx;
+    display: block;
+}
+
+.fx_item {
+    background: #fff;
+    padding: 30rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;
+}

@@ -1,0 +1,72 @@
+.card-desc {
+    margin-top: 40rpx;
+    font-size: 14px;
+    color: #888;
+    text-align: left;
+    margin-left: 60rpx;
+    margin-right: 60rpx;
+    line-height: 24px;
+    margin-bottom: 36rpx;
+    white-space: pre-wrap;
+}
+
+.card-scopes__dashline {
+    padding: 1rpx;
+    border-top: 1rpx dashed transparent;
+    background: linear-gradient(transparent,transparent) padding-box,repeating-linear-gradient(-45deg,#ECECEC 0,#ECECEC 2px,transparent 0,transparent 6px);
+}
+
+.card-scopes {
+    margin-left: 60rpx;
+    margin-right: 60rpx;
+    line-height: 84rpx;
+}
+
+.card-scopes__icon {
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 27rpx;
+    vertical-align: middle;
+}
+
+.card-scopes__title {
+    font-size: 14px;
+    color: #888;
+    line-height: 24px;
+    vertical-align: middle;
+}
+
+.card-scopes__seperator {
+    height: 13px;
+    line-height: 24px;
+    background: #E5E5E5;
+    display: inline-block;
+    width: 1rpx;
+    margin: 0 32rpx;
+    vertical-align: middle;
+}
+
+.card-scopes__content {
+    font-size: 14px;
+    color: #888;
+    line-height: 24px;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    width: 360rpx;
+}
+
+.card-scopes__content.link {
+}
+
+.card-scopes__content.phone {
+    color: #6478A3;
+}
+
+.card-scopes__content.multi-lines {
+    margin-top: 18rpx;
+    margin-bottom: 18rpx;
+    white-space: normal;
+}

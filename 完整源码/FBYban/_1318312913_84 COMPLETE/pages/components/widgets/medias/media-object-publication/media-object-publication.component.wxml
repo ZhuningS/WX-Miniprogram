@@ -1,0 +1,11 @@
+<view class="{{rootClassNames}}">
+    <view class="publication-book">
+        <view class="publication-title">
+      {{mediaData.title}}
+    </view>
+        <view class="publication-cover" style="background-color: {{mediaData.backgroundColor}}; background-image: url({{mediaData.coverUrl}});"></view>
+    </view>
+    <view class="publication-snippet" wx:if="{{mediaData.snippet}}">
+    {{mediaData.snippet}}
+  </view>
+</view>

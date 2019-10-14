@@ -1,0 +1,98 @@
+page {
+    background: #f7f7f7;
+}
+
+.wrapper {
+    position: relative;
+    padding-bottom: 100rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 100%;
+    overflow: hidden;
+}
+
+.wrapper.iPhoneX {
+    padding-bottom: 172rpx;
+}
+
+.address-info {
+    padding: 40rpx 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.address-info .icon {
+    width: 28rpx;
+    height: 36rpx;
+    flex-shrink: 0;
+}
+
+.address-info .info {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-left: 34rpx;
+    padding-right: 40rpx;
+}
+
+.address-info .info .main {
+    font-size: 32rpx;
+}
+
+.address-info .info .sub {
+    font-size: 28rpx;
+    line-height: 52rpx;
+    color: #888;
+    margin-top: 16rpx;
+}
+
+.summary {
+    padding: 40rpx 0;
+    text-align: right;
+    size: 30rpx;
+}
+
+.summary .total-price {
+    font-family: "WeChat Sans Std";
+}
+
+.invoice-title {
+    font-size: 30rpx;
+    padding: 40rpx 0;
+}
+
+.summary {
+    font-size: 30rpx;
+    line-height: 36rpx;
+}
+
+.summary .total-price {
+    font-size: 36rpx;
+}
+
+.wrapper-btn-pay {
+    position: fixed;
+    z-index: 2000;
+    background: #f7f7f7;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+}
+
+.btn-pay {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 34rpx;
+    background: #353535;
+    color: #fff;
+}
+
+.btn-pay.disabled {
+    background: #ccc;
+}

@@ -1,0 +1,7 @@
+<view class="{{rootClassNames}}">
+    <qm-avatar catchtap="handleUserInfoTap" url="{{user.avatar}}"></qm-avatar>
+    <view class="section-info">
+        <view catchtap="handleUserInfoTap" class="info-username">{{user.name}}</view>
+        <view class="info-meta-snippet">{{metaSnippet}}</view>
+    </view>
+</view>

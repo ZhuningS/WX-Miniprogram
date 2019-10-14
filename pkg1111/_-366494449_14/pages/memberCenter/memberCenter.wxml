@@ -1,0 +1,48 @@
+<view style="position: relative;background:#fff;padding-bottom:80rpx;">
+    <view class="bg"></view>
+    <view class="memberCard" style="background-image: url({{vip.user.cover_image||'https://img.weixin.sundayer.cn/ruyitui/member/wenli@3x.png'}}); background-color: {{vip.user.cover_color}}">
+        <view style="display:flex;align-items:center;padding: 40rpx;">
+            <view style="height:104rpx;">
+                <image class="logo" mode="aspectFill" src="{{vip.vip.logo}}"></image>
+            </view>
+            <view class="cardInfo">
+                <view class="cardName">
+                    <text>{{vip.vip.title}}</text>
+                </view>
+                <view class="memberlabel">
+                    <image src="/images/kan/VV2@3x.png" style="width: 24rpx;height: 24rpx; margin-right:6rpx;"></image>{{vip.user.levelName}}</view>
+            </view>
+        </view>
+        <text style="color: #fff; font-weight: 300;position:absolute;bottom:30rpx;right:30rpx;">会员永久有效</text>
+    </view>
+</view>
+<view style="background:#fff;height:220rpx; display: flex;">
+    <view style="flex:1; text-align: center; margin: 60rpx 0;border-right:1px solid #f5f5f5;">
+        <view style="color: #666; font-size: 26rpx;">余额</view>
+        <view style="color:#3AAF49; font-size: 38rpx;line-height: 52rpx;margin-top: 10rpx;">敬请期待</view>
+    </view>
+    <view style="flex:1; text-align: center; margin: 60rpx 0">
+        <view style="color: #666; font-size: 26rpx;">积分</view>
+        <view bindtap="_jump" data-url="/pages/credit/detail/index" style="color:#3AAF49; font-size: 52rpx;line-height: 46rpx;margin-top: 10rpx">{{vip.user.score}}</view>
+    </view>
+</view>
+<view class="orderSection section">
+    <form bindsubmit="_jump" data-url="/pages/memberRights/index" reportSubmit="true">
+        <button class="barItem nobutton" formType="submit">
+            <image class="barItem__icon" src="/images/kan/huiyuan@3x.png"></image>
+            <view class="barItem__info">
+                <view class="barItem__info__hd">会员权益</view>
+            </view>
+            <image class="barItem__arrowIcon" src="/images/icon/arrow.png"></image>
+        </button>
+    </form>
+    <form bindsubmit="_jump" data-url="/pages/RightDes/index" reportSubmit="true">
+        <button class="barItem nobutton" formType="submit">
+            <image class="barItem__icon" src="/images/kan/shuoming@3x.png"></image>
+            <view class="barItem__info">
+                <view class="barItem__info__hd">权益说明</view>
+            </view>
+            <image class="barItem__arrowIcon" src="/images/icon/arrow.png"></image>
+        </button>
+    </form>
+</view>

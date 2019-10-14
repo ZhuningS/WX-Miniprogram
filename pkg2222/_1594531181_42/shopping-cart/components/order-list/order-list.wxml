@@ -1,0 +1,13 @@
+<view class="container">
+    <view class="order-list-container" wx:if="{{orderList.length>0}}">
+        <order-list-item class="order-list-item" order="{{order}}" wx:for="{{orderList}}" wx:for-item="order" wx:key="{{order.pay_finish_time}}"></order-list-item>
+        <view bindtap="loadMoreOrderList" class="load-more" hoverClass="hover" wx:if="{{orderList.length>0&&hasMoreOrder}}">展开更多</view>
+        <view bindlongpress="onLongPressReport" bindtap="goToReportList" class="report {{orderList.length>=2?'report-not-abs':''}}">
+          向微信反馈
+        </view>
+    </view>
+    <view class="order-empty" wx:if="{{orderList.length==0}}">
+        <image mode="aspectFit" src="../../res/img/icon-empty-order.png"></image>
+        <view class="title">已购商品暂时为空</view>
+    </view>
+</view>

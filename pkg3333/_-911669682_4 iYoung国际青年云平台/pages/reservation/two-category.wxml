@@ -1,0 +1,52 @@
+<view class="table-view bgwhite">
+    <checkbox-group bindchange="onChanged">
+        <view class="flex gridXb table-view-cell active-bg transition-duration-100" wx:for="{{data}}" wx:for-index="idx" wx:key="*this">
+            <view class="choose mr10">
+                <checkbox value="{{item.id}}"></checkbox>
+            </view>
+            <view bindtap="onNavigateTap" class="sub flex" data-url="detail?cid={{item.id}}">
+                <image class="media-object mr10" src="{{item.cover}}"></image>
+                <view class="sub media-body">
+                    <view class="title lineText">{{item.title}}</view>
+                    <view class="remark grey f12 lineText2">{{item.description}}</view>
+                </view>
+            </view>
+            <view class="price ml10 tr">
+                <block wx:if="{{config.single_pay==1}}">
+                    <view class="red" wx:if="{{item.price>0}}">
+                        <view class="f14 red mt5">{{config.single_name}}：￥{{item.price}}</view>
+                    </view>
+                    <view class="green" wx:else>{{config.single_name}}：免费</view>
+                </block>
+                <block wx:else>
+                    <view class="red" wx:if="{{item.earnest_price>0}}">
+                        <text>预付款：￥{{item.earnest_price}}</text>
+                    </view>
+                    <view class="green" wx:else>预付款：免费</view>
+                    <view class="red" wx:if="{{item.price>0}}">
+                        <view class="f12 grey">尾款：￥{{item.price}}</view>
+                    </view>
+                    <view class="green" wx:else>尾款：免费</view>
+                </block>
+                <view class="mt10" wx:if="{{item.price>0&&item.isshow}}">
+                    <text catchtap="reduce" class="num-btn gridFour grey" data-index="{{idx}}">-</text>
+                    <text class="yuyue-num">{{item.num}}</text>
+                    <text catchtap="add" class="num-btn gridFour grey" data-index="{{idx}}">+</text>
+                </view>
+            </view>
+        </view>
+    </checkbox-group>
+</view>
+<view class="h1 empty" hidden="{{!isEmpty}}">空空如也~</view>
+<view class="btn-box">
+    <view class="btn flex bgwhite f14">
+        <view class="sub totle-price" wx:if="{{config.single_pay==1}}">
+            <view class="red f16 mt5">{{config.single_name}}总价：{{total}}</view>
+        </view>
+        <view class="sub totle-price" wx:else>
+            <view class="red">预付款总价：{{earnest_total}}</view>
+            <view class="grey f12">尾款总价：{{total}}</view>
+        </view>
+        <button catchtap="onNavigateTap" data-url="reseve?ids={{cids}}&total={{total}}&earnest_total={{earnest_total}}&nums={{nums}}" disabled="{{cids==''}}" hoverClass="none" type="primary">提交</button>
+    </view>
+</view>

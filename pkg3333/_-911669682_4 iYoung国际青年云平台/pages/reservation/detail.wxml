@@ -1,0 +1,45 @@
+<import src="../../wxParse/wxParse.wxml"></import>
+<view class="content">
+    <view class="content-list bgwhite" wx:for="{{data}}" wx:for-index="idx" wx:key="*this">
+        <view class="subtitle green f16 gridXb">{{item.title}}</view>
+        <view class="body mt15">
+            <template is="wxParse" data="{{wxParseData:item.content.nodes}}"></template>
+        </view>
+        <view class="price f16 gridXt flex">
+            <view class="sub">
+                <text catchtap="reduce" class="num-btn gridFour grey" data-index="{{idx}}">-</text>
+                <text class="yuyue-num">{{item.num}}</text>
+                <text catchtap="add" class="num-btn gridFour grey" data-index="{{idx}}">+</text>
+            </view>
+            <view class="sub" wx:if="{{config.single_pay==1}}">
+                <view class="tr">
+                    <text class="red" wx:if="{{item.price>0}}">{{config.single_name}}:￥{{item.price}}</text>
+                    <text class="green" wx:if="{{item.price<=0}}">{{config.single_name}}：免费</text>
+                </view>
+            </view>
+            <view wx:else>
+                <view class="tr">
+                    <text class="red" wx:if="{{item.price>0}}">尾款:￥{{item.price}}</text>
+                    <text class="green" wx:if="{{item.price<=0}}">尾款：免费</text>
+                </view>
+                <view class="tr f14">
+                    <text class="red" wx:if="{{item.earnest_price>0}}">预付款:￥{{item.earnest_price}}</text>
+                    <text class="green" wx:if="{{item.earnest_price<=0}}">预付款：免费</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="footer-box">
+    <view class="footer flex bgwhite">
+        <view class="sub price" wx:if="{{config.single_pay==1}}">
+            <text class="red f16" wx:if="{{total>0}}">{{config.single_name}}：￥{{total}}</text>
+            <text class="green f16" wx:else>{{config.single_name}}：免费</text>
+        </view>
+        <view class="sub price" wx:else>
+            <text class="red f16" wx:if="{{earnest_total>0}}">预付款：￥{{earnest_total}}</text>
+            <text class="green f16" wx:else>预付款：免费</text>
+        </view>
+        <button bindtap="onNavigateTap" class="sub" data-url="reseve?ids={{ids}}&total={{total}}&earnest_total={{earnest_total}}&nums={{num}}" disabled="{{!ids?'disabled':''}}" hoverClass="none" type="primary">立即预约</button>
+    </view>
+</view>

@@ -1,0 +1,68 @@
+<view class="c-barLst {{currentSkin}}">
+    <view class="c-barLst-top f fc fj" style="border-bottom:1px solid {{vm.scroll!=0?'#eee':'none'}}">
+        <view bindtap="changeState" data-wpychangestate-a="{{item.state}}" wx:for="{{vm.topHead}}" wx:key="key">
+            <text class="{{vm.state==item.state?'skin_bottom':''}}" style="padding-bottom: 10rpx;">{{item.name}}</text>
+        </view>
+    </view>
+    <view style="height:100rpx"></view>
+    <view class="c-barLst-main">
+        <view class="c-barLst-item" wx:for="{{vm.list}}" wx:key="key">
+            <view class="c-barLst-item-top f fj">
+                <text>{{item.CreateDateStr[0]}}</text>
+                <text>{{item.StateStr}}</text>
+            </view>
+            <view class="c-barLst-item-pro f fc fj">
+                <image bindtap="preView" data-wpypreview-a="{{item.ShopLogoUrl}}" src="{{item.ShopLogoUrl}}"></image>
+                <view class="f fv f1 fj f24" style="height:130rpx;">
+                    <text class="line line1">{{item.BName}}</text>
+                    <view class="f fc">
+                        <text class="f28 skin_txt">￥{{item.CurrentPriceStr}}</text>
+                        <text class="f24 ml20 c666 line-thor rel">￥{{item.OriginalPrice}}</text>
+                    </view>
+                    <text class="c666">已有<text class="skin_txt">{{item.HelpNum}}</text>位好友帮您砍价</text>
+                </view>
+            </view>
+            <view class="c-barLst-item-bottom">
+                <view class="f fc f-end">
+                    <text>应付总额：</text>
+                    <text class="skin_txt">{{item.PayAmount}}</text>
+                </view>
+                <view class="c-barLst-item-btn f fc f-end">
+                    <text bindtap="pathCut" class="ml20" data-wpypathcut-a="{{item.Id}}">帮砍记录</text>
+                    <text bindtap="pathOrder" class="ml20" data-wpypathorder-a="{{item.Id}}" wx:if="{{item.State!=0}}">查看详情</text>
+                    <text catchtap="pathBuy" class="ml20" data-wpypathbuy-a="{{index}}" wx:if="{{item.State==0&&item.IsEnd==0}}">现价购买</text>
+                    <text bindtap="goPay" class="skin_bg ml20" data-wpygopay-a="{{item.CityMordersId}}" data-wpygopay-b="{{item.Id}}" style="border:none;" wx:if="{{item.State==5&&item.IsEnd==0}}">去支付</text>
+                    <button bindtap="onShareAppMessage" class="skin_bg ml20 f28" data-wpyonshareappmessage-a="{{item}}" openType="share" style="border:none;" wx:if="{{item.State==0&&item.IsEnd==0}}">立即邀请</button>
+                    <text bindtap="pathComfig" class="skin_bg ml20" data-wpypathcomfig-a="{{item.Id}}" style="border:none;" wx:if="{{item.State==6}}">确认收货</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="loding w-100 f fc-h" style="padding:20rpx 0" wx:if="{{vm.list.length&&vm.loadall==false}}">
+        <text class="loading-icon"></text>
+        <text class="c999 f26 ml20">正在加载中...</text>
+    </view>
+    <view class="w-100 tc c123 f24 ph20" wx:if="{{vm.loadall&&vm.list.length}}">到底啦~</view>
+    <view class="w-100 f fc fc-h c123 f24" style="height:80vh" wx:if="{{vm.list.length==0}}">暂无数据~</view>
+    <view class="c-barLst-mask" wx:if="{{vm.showShare}}">
+        <view bindtap="pathCloes" class="c-barLst-mask-bg"></view>
+        <view class="c-barLst-mask-main">
+            <view class="c-barLst-mask-main-item rel">
+                <image class="c-barLst-mask-main-logo" mode="widthFix" src="http://vzan-img.oss-cn-hangzhou.aliyuncs.com/upload/img/20180927/88bf23a1b3404b83b1a6af1c7abc2f4f.png"></image>
+                <scroll-view>
+                    <view class="c-barLst-mask-scroll f fj" wx:for="{{vm.HelpCut}}" wx:key="key">
+                        <view class="f">
+                            <image class="c-barLst-mask-scroll-userImg" src="{{item.UserLogo||'http://j.vzan.cc/content/city/images/voucher/10.jpg'}}"></image>
+                            <view class="f fv">
+                                <text class="f26">{{item.UserName||'神秘用户'}}</text>
+                                <text class="f20 mt5 c999">{{item.CreateDate}}</text>
+                            </view>
+                        </view>
+                        <view class="f26 t-b" style="color:#FF6F30">-￥{{item.AmountStr}}</view>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+        <view bindtap="pathCloes" class="dzicon icon-zhuanyebaniconkuozhan_Close c-barLst-icon"></view>
+    </view>
+</view>

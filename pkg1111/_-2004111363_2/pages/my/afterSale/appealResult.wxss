@@ -1,0 +1,89 @@
+.appeal-result {
+    padding-bottom: 88rpx;
+}
+
+.appeal-result .rect150 {
+    height: 150rpx;
+    width: 150rpx;
+}
+
+.appeal-result .width75 {
+    width: 75%;
+}
+
+.appeal-result .pl37 {
+    padding-left: 37rpx;
+}
+
+.appeal-result .hl100 {
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.appeal-result .cblue {
+    color: #53a3fe;
+}
+
+.appeal-result .bbgray {
+    border-bottom: 1px solid #eee;
+}
+
+.appeal-result .bggray {
+    background-color: #ccc!important;
+}
+
+.appeal-result .waiting-tips {
+    height: 169rpx;
+    justify-content: center;
+}
+
+.appeal-result .waiting-tips .point {
+    height: 10rpx;
+    width: 10rpx;
+    border-radius: 100%;
+    background: #999;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 4rpx;
+}
+
+.appeal-result .btn-logistics {
+    width: 154rpx;
+    height: 60rpx;
+    border-radius: 4rpx;
+    color: #53a3fe;
+    border: 1px solid #53a3fe;
+    display: inline-block;
+    line-height: 60rpx;
+    text-align: center;
+    margin-top: 20rpx;
+}
+
+.appeal-result .returnInfo .header {
+    padding: 20rpx 31rpx 0 20rpx;
+}
+
+.appeal-result .returnInfo .header .commodity-avator {
+    background-color: #eee;
+}
+
+.appeal-result .returnInfo .header .title {
+    font-size: 28rpx;
+}
+
+.appeal-result .returnInfo .info-detail {
+    padding: 20rpx 30rpx;
+}
+
+.appeal-result .btn-contact {
+    width: 100%;
+    bottom: 0;
+    border-top: 1px solid #eee;
+    background-color: #fff;
+}
+
+.appeal-result .btn-contact .contactSaler {
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 1rpx;
+}

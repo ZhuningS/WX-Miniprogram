@@ -1,0 +1,26 @@
+<form reportSubmit bindsubmit="collectNotificationFormId">
+    <button formType="submit" hoverClass="none">
+        <view class="{{rootClassNames}}" ontap="handleRootTap" wx:if="{{!isCoverImageLoaded||cover.image}}">
+            <image binderror="handleCoverImageload" bindload="handleCoverImageload" src="{{cover.image}}" style="display: none"></image>
+            <view class="cover-infos" wx:if="{{cover.title}}">
+                <view class="cover-title">
+        {{cover.title}}
+      </view>
+                <view class="info-gapline-wrap" wx:if="{{!isCoverImageLoaded||cover.snippet}}">
+                    <view class="info-gapline"></view>
+                </view>
+                <qm-place-element height="20" marginBottom="0" maybe="{{isCoverImageLoaded}}" width="200">
+                    <view class="cover-snippet" wx:if="{{cover.snippet}}">
+          {{cover.snippet}}
+        </view>
+                </qm-place-element>
+            </view>
+            <view class="cover-image-wrap">
+                <qm-loading wx:if="{{!isCoverImageLoaded}}"></qm-loading>
+                <qm-tween duration="368" isVisible="{{isCoverImageLoaded}}">
+                    <image class="cover-image" mode="aspectFill" src="{{cover.image}}"></image>
+                </qm-tween>
+            </view>
+        </view>
+    </button>
+</form>

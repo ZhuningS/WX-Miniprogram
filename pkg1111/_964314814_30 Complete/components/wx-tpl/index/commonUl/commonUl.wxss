@@ -1,0 +1,35 @@
+.commonUl {
+    display: flex;
+    justify-content: space-between;
+}
+
+.commonUl>view {
+    font-size: 26rpx;
+    flex: none;
+}
+
+.commonUl .commonUlLe {
+    padding-left: 42rpx;
+    height: 56rpx;
+    line-height: 56rpx;
+    max-width: 596rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.riMore {
+    width: 58rpx;
+    line-height: 56rpx;
+    font-size: 24rpx;
+    color: #555;
+    padding-right: 26rpx;
+    background: url(https://xcximg.197.com/xcx/next.png) no-repeat right 6rpx;
+    background-size: 12rpx 22rpx;
+}
+
+.commonUlRi .nextIco {
+    padding: 15rpx 11rpx;
+    background: url(https://xcximg.197.com/xcx/next.png) no-repeat right 30rpx;
+    background-size: 12rpx 22rpx;
+}

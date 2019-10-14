@@ -1,0 +1,30 @@
+.new_item {
+    display: flex;
+    padding: 0 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.new_img {
+    width: 180rpx;
+    height: 140rpx;
+    margin-right: 30rpx;
+}
+
+.new_img image {
+    width: 180rpx;
+    height: 140rpx;
+}
+
+.new_info {
+    flex: 1;
+}
+
+.new_info .title {
+    font-size: 28rpx;
+}
+
+.new_info .time {
+    color: #999;
+    margin-top: 20rpx;
+    font-size: 24rpx;
+}

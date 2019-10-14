@@ -1,0 +1,22 @@
+<template name="mCoupon">
+    <view style="padding:20rpx 30rpx;background-color:#fff;margin-bottom:{{style.marginBottom}};margin-top:{{style.marginTop}}" wx:if="{{couponList.length>0}}">
+        <scroll-view scrollX class="newCoupon">
+            <view class="coupon-item active" style="{{couponList.length>2?'width:270rpx':''}}" wx:for="{{couponList}}">
+                <view class="discount">
+                    <text>{{item.discount}}</text>
+                    <text style="font-size:24rpx;margin-left:4rpx">折</text>
+                </view>
+                <view>{{item.type==1?item.typeTips:item.typeTips}},无使用门槛</view>
+                <image src="/images/coupon/yilingqu@3x.png" wx:if="{{item.has==1}}"></image>
+                <block wx:elif="{{item.has==2}}">
+                    <image src="/images/coupon/yilingwan@3x.png" wx:if="{{item.grant_num==item.num}}"></image>
+                    <view bindtap="_acceptCoupon" class="receive" data-id="{{item.id}}" data-index="{{index}}" wx:else>领取</view>
+                </block>
+            </view>
+        </scroll-view>
+        <view bindtap="_jump" class="coupon-list" data-url="/pages/coupon/index" wx:if="{{couponList.length>2}}">
+            <text style="line-height: 20rpx;">查看更多优惠</text>
+            <image class="arrowIcon" src="/images/icon/arrow.png"></image>
+        </view>
+    </view>
+</template>

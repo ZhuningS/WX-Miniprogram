@@ -1,0 +1,5 @@
+<view class="{{rootClassNames}}" wx:if="{{tabs.length}}">
+    <view bindtap="handleNavItemTap" class="nav-item {{currentTabId===item.id&&'is-selected'}}" id="{{item.id}}" wx:for="{{tabs}}" wx:key="id">
+      {{item.name}}
+    </view>
+</view>

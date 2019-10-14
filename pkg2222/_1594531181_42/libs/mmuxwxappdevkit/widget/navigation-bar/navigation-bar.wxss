@@ -1,0 +1,126 @@
+.navigation-bar {
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 20px;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    height: 44px;
+    transition: all 0.15s ease-in;
+}
+
+.navigation-bar.android {
+    padding-top: 28px!important;
+}
+
+.navigation-bar.iPhoneX {
+    padding-top: 44px!important;
+}
+
+.navigation-bar__title {
+    margin: auto;
+    font-size: 17px;
+    letter-spacing: 0;
+    font-weight: medium;
+    height: 44px;
+    line-height: 44px;
+    font-family: PingFangSC-Medium;
+}
+
+.navigation-bar__img {
+    width: 30px;
+    height: 30px;
+    margin-top: 7px;
+    transition: all 0.15s ease-in;
+}
+
+.navigation-bar__back {
+    width: 11px;
+    height: 18px;
+    display: inline-block;
+    padding: 0px 10px 13px;
+    position: fixed;
+    left: 0;
+    top: 31px;
+}
+
+.navigation-bar__back.iPhoneX {
+    top: 54px!important;
+}
+
+.navigation-bar__back.android {
+    top: 39px!important;
+}
+
+.navigation-bar__placeholder {
+    height: 44px;
+    padding-top: 20px;
+}
+
+.navigation-bar__placeholder.iPhoneX {
+    padding-top: 44px!important;
+}
+
+.navigation-bar__placeholder.android {
+    padding-top: 28px!important;
+}
+
+.weapp-back {
+    height: 13px;
+    display: inline-block;
+    position: fixed;
+    padding: 30px 10px 10px;
+    left: 0;
+    top: 0px;
+    font-size: 11px;
+    z-index: 2000;
+}
+
+.weapp-back.iPhoneX {
+    padding-top: 44px!important;
+}
+
+.weapp-back__triangle {
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-right: 8px solid black;
+    border-bottom: 4px solid transparent;
+    display: inline-block;
+}
+
+.weapp-back__title {
+    margin-left: 5px;
+}
+
+.navigation-bar.native {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navigation-bar__back.native {
+    position: inherit;
+    left: 0;
+    top: 0;
+    margin-top: 31rpx;
+}
+
+.navigation-bar__title_placeholder {
+    width: 31px;
+}
+
+.navigation-bar-background {
+    position: fixed;
+    width: 100%;
+    height: 64px;
+    transition: all 0.15s ease-in;
+}
+
+.navigation-bar-background.android {
+    height: 72px!important;
+}
+
+.navigation-bar-background.iPhoneX {
+    height: 88px!important;
+}

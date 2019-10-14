@@ -1,0 +1,17 @@
+.mod_scan {
+    position: fixed;
+    bottom: 50rpx;
+    height: 80rpx;
+    width: 80rpx;
+    right: 20rpx;
+    background: #dd2450;
+    border-radius: 100%;
+    text-align: center;
+    opacity: .9;
+}
+
+.mod_scan image {
+    width: 58rpx;
+    height: 58rpx;
+    margin-top: 12rpx;
+}

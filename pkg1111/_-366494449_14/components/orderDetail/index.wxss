@@ -1,0 +1,127 @@
+.orderCard {
+    padding: 0 30rpx;
+    margin: 40rpx 0 20rpx;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.orderCard__tit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24rpx;
+}
+
+.orderCard__tag {
+    width: 138rpx;
+    height: 112rpx;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABvCAYAAAAzDlhVAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkZGNjg5MjBFRjk5MzExRTdCODRGQTk0RjM0QzBERjcwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkZGNjg5MjBGRjk5MzExRTdCODRGQTk0RjM0QzBERjcwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RkY2ODkyMENGOTkzMTFFN0I4NEZBOTRGMzRDMERGNzAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RkY2ODkyMERGOTkzMTFFN0I4NEZBOTRGMzRDMERGNzAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4pH5vJAAABU0lEQVR42uzWsQnCUBRA0RgHEHQHS0sncIuMkMLCRjtnsNXOPewdRlMqEdEXCRZidIB/DjwIP48U4ULSq4rykcEfuVeAUBAKQkEoCAWhgFAQCkJBKAgFoSAUEApCQSgIBaEgFIQCQkEoCAWhIBSEglBAKAgFoSAUhIJQEAoIBaEgFISCUBAKQgGhIBSEglAQCkJBKCAUhIJQEApCQSgIBYSCUBAKQkEoCAWhgFAQCkJBKAgFoSAUEApCQSgIBaEgFIQCQkEoCAWhIBSEglBAKAgFoSAUhIJQEAoIBaEgFISCUBAKQgGhIBSEglAQCkJBKC91zDxmFDNsr2v7ae73l5PpuuPeImYTc4m5xhxjbjEz++nt96qifHQ8qCnt/HHWlHeyn95+/mU5a8+cO3+fN6Hsv9zY/fi22U9wv/lHOcTFIGbcfqu2MauYe8eD7Ce4/xRgAHdH3nuxaLp2AAAAAElFTkSuQmCC) no-repeat top center;
+    background-size: 138rpx 112rpx;
+    font-size: 60rpx;
+    line-height: 112rpx;
+    color: #fff;
+    text-align: center;
+}
+
+.orderStatus {
+    font-size: 30rpx;
+    color: #ef5b6b;
+}
+
+.orderCard__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 48rpx;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.order__item__tit {
+    width: 140rpx;
+}
+
+.order__item__con {
+    flex: 1;
+    padding-left: 30rpx;
+}
+
+.shopName {
+    flex: 1;
+    padding-left: 36rpx;
+    color: #b5a685;
+}
+
+.orderCard__price {
+    padding-top: 20rpx;
+    font-size: 48rpx;
+    color: #ef5b6b;
+    text-align: right;
+    padding-bottom: 30rpx;
+}
+
+.orderCard__price__lab {
+    display: inline-block;
+    margin-right: 10rpx;
+    font-size: 30rpx;
+    color: #666;
+    vertical-align: middle;
+}
+
+.orderDetail {
+    padding: 0 30rpx;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.salesCode {
+    width: 100%;
+    height: 110rpx;
+    line-height: 110rpx;
+    border-bottom: 1rpx solid #ddd;
+    font-size: 36rpx;
+    color: #666;
+}
+
+.goodsList2 {
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #ddd;
+}
+
+.goodsName {
+    line-height: 50rpx;
+    padding-top: 20rpx;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.goodsList__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 28rpx;
+    color: #666;
+    line-height: 50rpx;
+}
+
+.goodsList__item__tit {
+    width: 140rpx;
+}
+
+.goodsList__item__con {
+    flex: 1;
+    padding-left: 30rpx;
+}
+
+.orderDetail__footer {
+    padding: 20rpx 0;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.orderDetail__footer__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 50rpx;
+}

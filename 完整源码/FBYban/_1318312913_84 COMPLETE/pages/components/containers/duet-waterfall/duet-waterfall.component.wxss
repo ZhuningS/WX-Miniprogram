@@ -1,0 +1,19 @@
+.duet-waterfall {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40rpx;
+    padding-top: 0;
+    background-color: #EBEBEB;
+}
+
+.duet-waterfall .waterfall-column {
+    padding-top: 10rpx;
+    display: flex;
+    flex: 0;
+    flex-direction: column;
+}
+
+.duet-waterfall .card-component-root {
+    margin-top: 30rpx;
+}

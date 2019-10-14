@@ -1,0 +1,24 @@
+page {
+    background: #f1f2f4;
+    overflow: hidden;
+}
+
+.save_poster {
+    position: absolute;
+    bottom: 0;
+    background-color: #05b00f;
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #fff;
+    font-size: 30rpx;
+    font-weight: normal;
+    border-radius: 0;
+    border: none;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.poster-wrap {
+    padding-bottom: 40rpx;
+}

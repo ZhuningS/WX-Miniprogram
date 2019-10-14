@@ -1,0 +1,68 @@
+<template name="header">
+    <view class="user-header">
+        <view class="user-ctn">
+            <view class="user-info basic-profile">
+                <view class="user-intro-ctn">
+                    <qm-place-element maybe="{{user.profile.name}}">
+                        <view catchlongpress="showForUserId" class="user-name-ctn">
+                            <view class="info-name">{{user.profile.name}}</view>
+                        </view>
+                    </qm-place-element>
+                    <qm-place-element height="12" maybe="{{user.profile.name}}" width="150">
+                        <view class="description">
+              {{user.profile.desc}}
+            </view>
+                    </qm-place-element>
+                    <view class="description info-intro" wx:if="{{user.profile.intro}}">
+            {{user.profile.intro}}
+          </view>
+                    <block wx:if="{{user.profile.fields}}">
+                        <view class="description" style="max-height: initial;" wx:for="{{user.profile.fields}}">
+                            <text style="font-weight: bold;">{{item.label}}：</text>{{item.value}}
+              <navigator class="meta" style="margin-left: 10px;" url="/pages/form/form?type=profile" wx:if="{{uid===user.profile.uid&&index===user.profile.fields.length-1}}">修改</navigator>
+                        </view>
+                    </block>
+                </view>
+                <qm-avatar bindlongpress="onEditProfile" size="huge" url="{{user.profile.avatar}}"></qm-avatar>
+            </view>
+        </view>
+        <view class="user-ctn" wx:if="{{config.enableFollow}}">
+            <view class="stat-ctn">
+                <navigator navigate class="count-ctn" url="/pages/user/list?uid={{user.profile.uid}}&type=followed">
+                    <view class="field-info">被<text class="count-number">{{user.followeeCount}}</text>人关注</view>
+                </navigator>
+                <view class="field-gap">·</view>
+                <navigator navigate class="count-ctn" url="/pages/user/list?uid={{user.profile.uid}}&type=follow">
+                    <view class="field-info">关注了<text class="count-number">{{user.followerCount}}</text>人</view>
+                </navigator>
+            </view>
+        </view>
+        <view class="user-ctn actions-bar" wx:if="{{config.enableFollow}}">
+            <qm-button catchtap="showShareCard" data-share-data="{{type:'profile',id:user.profile.uid,name:user.profile.name}}" theme="text">
+                <qm-icon name="share"></qm-icon>
+            </qm-button>
+            <view class="buttons" wx:if="{{uid===user.profile.uid}}">
+                <block wx:if="{{uiSwitchProfile[$ownOperationBar]}}">
+                    <navigator class="button text" openType="navigate" url="/pages/account/login" wx:if="{{config.enableFollow}}">
+            {{user.profile.phone?'已绑定手机':'绑定手机'}}
+          </navigator>
+                    <button bindlongpress="switchProxyUser" class="button text" openType="contact">反馈</button>
+                </block>
+            </view>
+            <block wx:else>
+                <qm-button catchtap="handleMoreMenuTap" theme="text" wx:if="{{followed[user.profile.uid]}}">
+                    <qm-icon name="menu"></qm-icon>
+                </qm-button>
+            </block>
+        </view>
+        <block wx:if="{{uiSwitchProfile[$expsSection]}}">
+            <template is="single-card-exps" data="{{ uid:uid,...user,showAllMagazines:true,label:{title:'我的杂志',description:'订阅和主编的杂志'} }}" wx:if="{{uid===user.profile.uid}}"></template>
+            <template is="single-card-exps" data="{{ uid:uid,...user,showAllMagazines:true,label:{title:user.profile.name+'的杂志',description:user.profile.name+'订阅和主编的杂志'} }}" wx:else></template>
+        </block>
+    </view>
+    <tabs-nav bind:onNavItemTap="handleTabNavItemTap" currentTabId="{{current}}" tabs="{{tabs}}" wx:if="{{tabs.length>1}}"></tabs-nav>
+    <qm-button isFixed catchtap="follow" data-uid="{{user.profile.uid}}" size="large" wx:if="{{user.profile.uid&&uid!==user.profile.uid&&!followed[user.profile.uid]&&uiSwitchProfile[$followButton]}}">
+    关注
+  </qm-button>
+</template>
+<import src="../components/card.wxml"></import>

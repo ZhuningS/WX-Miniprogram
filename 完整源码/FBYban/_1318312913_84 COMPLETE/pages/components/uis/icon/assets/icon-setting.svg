@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="14px" viewBox="0 0 20 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>btn_more</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-icon√" transform="translate(-180.000000, -162.000000)">
+            <g id="page_icon" transform="translate(20.000000, 30.000000)">
+                <g id="btn_more" transform="translate(160.000000, 129.000000)">
+                    <rect id="Rectangle-9" x="0" y="0" width="20" height="20"></rect>
+                    <g id="Group-22" transform="translate(0.000000, 3.000000)">
+                        <g id="Group-18" transform="translate(10.000000, 11.000000) rotate(-180.000000) translate(-10.000000, -11.000000) translate(0.000000, 8.000000)">
+                            <rect id="Rectangle-9-Copy" fill="#000000" x="6" y="2" width="14" height="2"></rect>
+                            <rect id="Rectangle-9" stroke="#000000" stroke-width="2" x="1" y="1" width="4" height="4"></rect>
+                        </g>
+                        <g id="Group-18">
+                            <rect id="Rectangle-9-Copy" fill="#000000" x="6" y="2" width="14" height="2"></rect>
+                            <rect id="Rectangle-9" stroke="#000000" stroke-width="2" x="1" y="1" width="4" height="4"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

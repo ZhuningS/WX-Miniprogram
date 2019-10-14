@@ -1,0 +1,3 @@
+<view class="{{rootClassNames}}" wx:if="{{name}}">
+  {{name}}
+</view>

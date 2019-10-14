@@ -1,0 +1,39 @@
+.withdraw {
+    margin: 30rpx;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 20rpx 30rpx;
+    background: #f9f9f9;
+    font-size: 28rpx;
+    color: #333;
+}
+
+.account .no {
+    flex: 1;
+    font-size: 32rpx;
+    color: #333;
+    margin-left: 40rpx;
+}
+
+.money {
+    background: #fff;
+    padding: 80rpx 30rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-withdraw {
+    background-color: #05b00f;
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: normal;
+    border-radius: 4rpx;
+    border: none;
+    text-align: center;
+    margin: 40rpx 0rpx;
+}

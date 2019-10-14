@@ -1,0 +1,94 @@
+<view class="{{currentSkin}}">
+    <view class="g-pro f">
+        <image bindtap="preview" class="g-img" data-wpypreview-a="{{vm_dlt.ImgUrl}}" mode="aspectFill" src="{{vm_dlt.ImgUrl}}"></image>
+        <view class="f1 f fv">
+            <text>{{vm_dlt.GroupName}}</text>
+            <view class="f fc mt20">
+                <text class="g-num">{{vm_dlt.GroupSize||0}}人团</text>
+                <text class="f24 cffb ml10">已团{{vm_dlt.GroupUserList.length||0}}人</text>
+            </view>
+            <view class="f fc mt40">
+                <wxc-price class="f34 cred">{{(vm_dlt.DiscountPrice||0)/100}}</wxc-price>
+                <wxc-price class="f24 c999 ml10" status="del">{{(vm_dlt.OriginalPrice||0)/100}}</wxc-price>
+            </view>
+        </view>
+    </view>
+    <view class="bg-w mt20 groupUserList">
+        <view class="f fc rel ">
+            <view class="f1" wx:for="{{vm_dlt.GroupUserList}}" wx:key="key">
+                <view class="user-photo">
+                    <image mode="aspectFill" src="{{item.HeadImgUrl||'http://j.vzan.cc/content/city/images/voucher/10.jpg'}}"></image>
+                    <text class="tuanzhang" wx:if="{{item.IsGroupHeader==1}}">团长</text>
+                </view>
+                <view class="user-name f26">{{item.NickName||''}}</view>
+            </view>
+            <view class="f1" wx:for="{{vm_dlt.NeedNum_fmt}}" wx:key="key">
+                <view class="user-photo">
+                    <image></image>
+                </view>
+                <view class="user-name f26">等待拼团</view>
+            </view>
+            <view class="groupStateWatermark" wx:if="{{vm_dlt.MState==-1}}">
+                <view class="innerWrap f fc">
+                    <text>拼团失败</text>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{vm_dlt.MState==1}}">
+            <view class="group-tip">还差 {{vm_dlt.NeedNum}} 人成团，快去邀请小伙伴吧！</view>
+            <view class="fromTheEnd mt20 rel f fc">
+                <view class="bg-vc-line"></view>
+                <view class="f26 c999 tc bg-w" style="position:relative;z-index:2;">距离结束还有{{time.timeInter}}</view>
+            </view>
+        </view>
+        <view class="mt20">
+            <view class="group-state f fc" wx:if="{{vm_dlt.MState==2}}">
+                <text class="dzicon icon-Choice_xuanze color-green"></text>
+                <text class="f26 c999 ml20">组团成功，该团已结束</text>
+            </view>
+            <view class="group-state f fc" wx:if="{{vm_dlt.MState==-1}}">
+                <text class="dzicon icon-shibai"></text>
+                <text class="f26 c999 ml20">组团失败，该团未在开团24小时内达到规定人数</text>
+            </view>
+        </view>
+    </view>
+    <view class="mt20 bg-w groupDes">
+        <view class="f fc title">
+            <view bindtap="clickTab" class="f36 f1 item {{tabId==index?'sel':''}}" data-wpyclicktab-a="{{index}}" wx:for="{{tab}}" wx:key="key">{{item}}</view>
+        </view>
+        <view class="content">
+            <block wx:if="{{tabId==0}}">
+                <block wx:if="{{vm_dlt.Description!=''}}">
+                    <import src="../../lib/wxParse/wxParse.wxml"></import>
+                    <view class="f32 pw20" style="word-break: break-all">
+                        <template is="wxParse0" data="{{item:item}}" wx:for="{{vm_dlt.content_fmt.nodes||vm_dlt.nodes}}" wx:key="{{index}}"></template>
+                    </view>
+                </block>
+                <wxc-abnor type="DATA" wx:else></wxc-abnor>
+            </block>
+            <block wx:if="{{tabId==1}}">
+                <view class="h3">1.拼团有效期</view>
+                <text>拼团有效期是自开团起的24小时内，如果距离活动结束时间小于24小时，则已活动时间为准。</text>
+                <view class="h3 mt20">2.拼团成功</view>
+                <text>拼团有效期内，支付人数达到规定人数视为拼团成功，商家即进入发货流程。拼团成功后不可退款，如有异议请自行与商家协商。</text>
+                <view class="h3 mt20">3.拼团失败</view>
+                <text>拼团有效期内支付人数未能达到规定人数视为拼团失败，拼团失败的订单，系统会在1-7个工作日内发起退款，发起退款后1-10个工作日内订单金额将原路退回。</text>
+            </block>
+        </view>
+    </view>
+    <view style="height:120rpx;"></view>
+    <view class="bg-w f fc groupBottom">
+        <navigator openType="redirect" url="/pages/group/grouping">
+            <view class="home skin_txt">
+                <view class="dzicon icon-dingdan"></view>
+                <view class="f24">我的拼团</view>
+            </view>
+        </navigator>
+        <view class="f f1 fc" wx:if="{{vm_dlt.MState==1}}">
+            <button class="btnBuyGroup btn-submit__normal ml20 f32 f1 f fc" data-group="{{vm_dlt}}" openType="share">邀请小伙伴</button>
+        </view>
+        <view class="f1 groupend" wx:if="{{vm_dlt.MState==-1||vm_dlt.MState==2}}">
+            <text>该团已结束</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,37 @@
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view hidden="{{!dataLoaded}}">
+    <view class="fx_bgimg">
+        <view class="text1">当前可以提现的佣金(元)</view>
+        <view class="text2">{{fxInfo.enable}}</view>
+        <view bindtap="_jump" class="btn-withDraw" data-url="/pages/fx/withdraw/index?money={{fxInfo.enable}}">提现</view>
+        <view class="moneyStat">
+            <view bindtap="_jump" class="item" data-url="/pages/fx/list/index?type=audit" style="border-right: 1px solid #eee">
+                <text class="item-text1">提现中(元)</text>
+                <view class="item-text2">{{fxInfo.audit}}</view>
+                <text class="item-text3">已提交提现申请，等待审核</text>
+            </view>
+            <view bindtap="_jump" class="item" data-url="/pages/fx/list/index?type=accounting">
+                <text class="item-text1">未入账(元)</text>
+                <view class="item-text2">{{fxInfo.accounting}}</view>
+                <text class="item-text3">商家尚未发货，不能发放</text>
+            </view>
+        </view>
+    </view>
+    <view bindtap="_jump" class="fx_item" data-url="/pages/fx/withDrawRecord/index" style="border-bottom: 1px solid #eee">
+        <text style="flex:1;font-size: 28rpx;">提现记录</text>
+        <text style="color: #999;margin-right:10rpx">共提取了{{fxInfo.accounted}}元</text>
+        <image src="/images/icon/arrow.png" style="width:20rpx;height:20rpx;"></image>
+    </view>
+    <view bindtap="_jump" class="fx_item" data-url="/pages/fx/list/index?type=all" style="border-bottom: 1px solid #eee">
+        <text style="font-size: 28rpx;">佣金流水</text>
+        <image src="/images/icon/arrow.png" style="width:20rpx;height:20rpx;"></image>
+    </view>
+    <view bindtap="_jump" class="fx_item" data-url="/pages/fx/goods/index" style="border-bottom: 1px solid #eee">
+        <text style="font-size: 28rpx;">分销商品</text>
+        <image src="/images/icon/arrow.png" style="width:20rpx;height:20rpx;"></image>
+    </view>
+    <view bindtap="_jump" class="fx_item" data-url="/pages/fx/bank/index">
+        <text style="font-size: 28rpx;">银行卡管理</text>
+        <image src="/images/icon/arrow.png" style="width:20rpx;height:20rpx;"></image>
+    </view>
+</view>

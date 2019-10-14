@@ -1,0 +1,68 @@
+.magazine-header {
+    position: relative;
+    padding-bottom: 50px;
+}
+
+.magazine-header .magazine-cover {
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    height: 80px;
+}
+
+.magazine-header .magazine-cover.has-image {
+    height: 200px;
+}
+
+.magazine-header .magazine-info {
+    position: absolute;
+    z-index: 2;
+    width: 670rpx;
+    height: 100px;
+    padding: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    background-color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.magazine-header .magazine-info .info-title {
+    line-height: 36px;
+    font-size: 32px;
+    font-weight: 300;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.magazine-header .magazine-info .section-meta {
+    display: flex;
+    justify-content: space-between;
+}
+
+.magazine-header .magazine-info .stats-items {
+    display: flex;
+    margin-top: 16rpx;
+    line-height: 17px;
+    font-size: 12px;
+    color: #666666;
+}
+
+.magazine-header .magazine-info .info-gap {
+    margin: 0 16rpx;
+}
+
+.magazine-header .magazine-info .count-number {
+    margin-right: 8rpx;
+    font-weight: 500;
+    color: #000000;
+}
+
+.magazine-header .magazine-info .operations-bar {
+    margin-right: -16rpx;
+}
+
+.magazine-header .magazine-info .operations-bar qm-button+qm-button {
+    margin-left: 16rpx;
+}

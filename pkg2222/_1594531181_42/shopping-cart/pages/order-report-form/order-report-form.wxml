@@ -1,0 +1,69 @@
+<navigation-bar backgroundColor="#F7F7F7" title="反馈"></navigation-bar>
+<block wx:if="{{!showSuccessPage}}">
+    <view class="container" wx:if="{{!showImageViewer}}">
+        <view class="simply" wx:if="{{mode===1}}">
+            <view class="header">选择反馈的问题</view>
+            <view class="section-container">
+                <view class="section">
+                    <view bindtap="select" class="item {{item.selected?'checked':''}}" data-index="{{index}}" wx:for="{{questions}}" wx:key="{{item.id}}">{{item.desc}}</view>
+                </view>
+                <view bindtap="switchToComplex" class="section">
+                    <view class="item with-arrow">其它</view>
+                </view>
+            </view>
+            <button bindtap="submitForm" disabled="{{!simplyBtnCanSubmit}}" type="primary">提交反馈</button>
+        </view>
+        <view class="complex" wx:if="{{mode===2}}">
+            <view class="title">反馈订单</view>
+            <view class="item">
+                <view class="row">
+                    <view class="label">订单号:</view>
+                    <view class="info">{{order.trans_id}}</view>
+                </view>
+                <view class="row">
+                    <view class="label">日期:</view>
+                    <view class="info">{{order.orderDate}}</view>
+                </view>
+                <view class="row">
+                    <view class="label">商家:</view>
+                    <view class="info">{{order.ext_info.brand_info.brand_name}}</view>
+                </view>
+                <view class="row">
+                    <view class="label">商品:</view>
+                    <view class="info">{{order.ext_info.product_info.item_list[0].title}}</view>
+                </view>
+            </view>
+            <view class="title">反馈描述</view>
+            <view class="item">
+                <textarea bindinput="calcContentLength" maxlength="{{200}}" placeholder="请输入反馈内容" value="{{reportContent}}"></textarea>
+                <view class="content-length">{{reportContentLength}} / {{reportContentMaxLength}}</view>
+                <view class="imgs">
+                    <view class="status">
+                        <view class="title">相关截图</view>
+                        <view class="counter">{{uploadedImgCount}} / {{maxImgCount}}</view>
+                    </view>
+                    <view class="imgs-previews">
+                        <view bindtap="showImageViewer" class="img" data-index="{{index}}" hoverClass="hover" wx:for="{{uploadedImages}}" wx:key="{{item.createTime}}">
+                            <image mode="aspectFit" src="{{item.tmpPath}}"></image>
+                        </view>
+                        <view bindtap="addImg" class="btn-add-img" hoverClass="hover" wx:if="{{uploadedImgCount<maxImgCount}}">
+                            <image mode="aspectFit" src="../../res/img/icon-add.png"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <button bindtap="submitForm" disabled="{{!complexBtnCanSubmit}}" type="primary">提交反馈</button>
+        </view>
+    </view>
+    <view class="image-viewer" wx:if="{{showImageViewer}}">
+        <image bindtap="hideImageViewer" class="img" mode="aspectFit" src="{{uploadedImages[imageViewerIndex]&&uploadedImages[imageViewerIndex].tmpPath}}"></image>
+        <view bindtap="deleteImg" class="btn-delete" hoverClass="hover">
+            <image mode="aspectFit" src="../../res/img/icon-delete.png"></image>
+        </view>
+    </view>
+</block>
+<view class="report-success-container" wx:if="{{showSuccessPage}}">
+    <icon size="100" type="success"></icon>
+    <text class="tips">已反馈</text>
+    <button bindtap="goToOrderList" type="primary">返回已购商品</button>
+</view>

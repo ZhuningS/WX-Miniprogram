@@ -1,0 +1,98 @@
+<view class="top-box">
+    <view class="top bgwhite">
+        <view class="menu">
+            <scroll-view class="menu-scroll-view" scrollX="true" style="width: 100%;">
+                <view catchtap="onTabChangeTap" class="nav {{is_rmd==1?'active':''}}" data-tab-index="rmd">推荐</view>
+                <view catchtap="onTabChangeTap" class="nav {{tabIndex==item.id?'active':''}}" data-tab-index="{{item.id}}" wx:for="{{cate_data}}" wx:key="*this">{{item.name}}</view>
+            </scroll-view>
+        </view>
+        <view bindtap="changeSearchStatus" class="top-search f20 tc">
+            <text class="iconfont icon-search"></text>
+        </view>
+        <view class="search flex griXb f16 bgwhite" wx:if="{{search_open_status}}">
+            <view bindtap="changeSearchStatus" class="close tc grey f20 br">
+                <text bindtap="closeSearch" class="iconfont icon-close"></text>
+            </view>
+            <view class="search-input sub f16">
+                <input bindblur="searchTitle" name="title"></input>
+            </view>
+            <view class="search-icon tc bgcolor write">
+                <text bindtap="onSearch" class="iconfont icon-search"></text>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="contenter">
+    <swiper autoplay="{{autoPlay}}" duration="{{picdata.lbtconfig.duration}}" indicatorDots="{{indicatorDots}}" interval="{{picdata.lbtconfig.interval}}" wx:if="{{picdata.carousel}}">
+        <swiper-item catchtap="onLunboContent" data-url="{{item.url}}" wx:for="{{picdata.carousel}}" wx:key="*this">
+            <image class="slide-image" mode="aspectFill" src="{{item.picurl}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="article bgwhite" wx:for="{{c_data}}" wx:key="*this">
+        <view wx:if="{{item.typeid==1}}">
+            <view catchtap="onNavigateTap" class="article-list flex gridXb" data-url="../article/article?id={{item.id}}&typeid={{item.typeid}}">
+                <view class="article-right sub">
+                    <view class="title lineText2">{{item.title}}</view>
+                    <view class="mt10 linght f14">
+                        <text class="list-items">{{item.add_time}}</text>
+                        <text class="list-items">
+                            <text class="iconfont icon-attention_light"></text>{{item.readnum}}</text>
+                        <text class="list-items">
+                            <text class="iconfont icon-appreciate_light"></text>{{item.good_count}}</text>
+                    </view>
+                </view>
+                <view class="img-box ml15" wx:if="{{item.is_show_img==1}}">
+                    <image class="img-box-item" mode="aspectFill" src="{{item.imgurl}}"></image>
+                </view>
+            </view>
+        </view>
+        <view wx:elif="{{item.typeid==2}}">
+            <view catchtap="onNavigateTap" class="article-list flex gridXb" data-url="../article/article?id={{item.id}}&typeid={{item.typeid}}">
+                <view class="article-right sub">
+                    <view class="title lineText2">{{item.title}}</view>
+                    <view class="mt10 linght f14">
+                        <text class="list-items">{{item.add_time}}</text>
+                        <text class="list-items">
+                            <text class="iconfont icon-attention_light"></text>{{item.readnum}}</text>
+                        <text class="list-items">
+                            <text class="iconfont icon-appreciate_light"></text>{{item.good_count}}</text>
+                    </view>
+                </view>
+                <view class="img-box ml15" wx:if="{{item.is_show_img==1}}">
+                    <text class="iconfont icon-tongzhi mid voice-icon"></text>
+                    <image class="img-box-item" mode="aspectFill" src="{{item.imgurl}}"></image>
+                </view>
+            </view>
+        </view>
+        <view wx:else>
+            <view catchtap="onNavigateTap" class="article-list video-list gridXb" data-url="../article/article?id={{item.id}}&typeid={{item.typeid}}">
+                <view class="title lineText2">{{item.title}}</view>
+                <view class="img-box-video" wx:if="{{item.is_show_img==1}}">
+                    <text class="iconfont icon-videofill mid video-icon"></text>
+                    <image class="img-box-item" mode="aspectFill" src="{{item.imgurl}}"></image>
+                </view>
+                <view class="article-right">
+                    <view class="mt10 linght f14">
+                        <text class="list-items">{{item.add_time}}</text>
+                        <text class="list-items">
+                            <text class="iconfont icon-attention_light"></text>{{item.readnum}}</text>
+                        <text class="list-items">
+                            <text class="iconfont icon-appreciate_light"></text>{{item.good_count}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="nothing grey mt10 mb10 tc f14 flex" wx:if="{{is_load_more==false}}">
+    <text class="line sub mr10"></text>
+    <text>没有更多了</text>
+    <text class="line sub ml10"></text>
+</view>
+<view class="right-btn left-btn tc write">
+    <view catchtap="getCode" class="little-btn mb5">
+        <text class="iconfont iconfont icon-erweima1 #fff" style="font-size:15px"></text>
+    </view>
+</view>
+<import src="../../plug-in/template/tpl.wxml"></import>
+<template is="popup-big" data="{{data:ad_popup}}"></template>

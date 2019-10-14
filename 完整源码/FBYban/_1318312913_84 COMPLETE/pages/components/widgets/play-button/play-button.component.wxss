@@ -1,0 +1,46 @@
+.play-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 50%;
+}
+
+.play-button.size-small {
+    height: 24px;
+    width: 24px;
+}
+
+.play-button.size-medium {
+    height: 36px;
+    width: 36px;
+}
+
+.play-button.size-large {
+    height: 54px;
+    width: 54px;
+}
+
+.play-button .icon-play {
+    position: relative;
+    left: 0.5px;
+    width: 14px!important;
+    height: 14px!important;
+}
+
+.play-button .info-duration {
+    position: absolute;
+    left: 53%;
+    bottom: 8px;
+    transform: translate(-50%,0);
+    line-height: 16px;
+    font-size: 10px;
+    font-family: Helvetica Neue,arial;
+    word-break: keep-all;
+    white-space: nowrap;
+    color: #FFFFFF;
+}
+
+.play-button.with-duration .icon-play {
+    margin-bottom: 15px;
+}

@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "side-bar": "../../components/sideBar/sideBar",
+        "tab-bar": "../../components/tabBar/tabBar",
+        "tech-support": "../../components/techSupport/techSupport"
+    },
+    "backgroundColor": "#f4f4f4",
+    "onReachBottomDistance": 100
+}

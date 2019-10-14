@@ -1,0 +1,223 @@
+.form {
+    background: #fff;
+}
+
+.form__radio {
+    background: #f7f7fa;
+}
+
+.radio-title {
+    height: 88rpx;
+    font-size: 32rpx;
+    display: flex;
+    color: #333;
+    line-height: 88rpx;
+    padding-left: 20rpx;
+    font-family: PingFangSC-Regular;
+}
+
+.radio-item {
+    background: #fff;
+    font-family: PingFangSC-Regular;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 28rpx;
+    color: #666;
+    height: 88rpx;
+    padding-right: 32rpx;
+    margin-left: 64rpx;
+    border-bottom: 1rpx solid #eee;
+}
+
+.radio-item:last-of-type {
+    border-bottom: none;
+}
+
+.radio-item image {
+    width: 24rpx;
+    height: 18rpx;
+}
+
+.btn-formcom {
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    width: 100%;
+    height: 96rpx;
+    line-height: 96rpx;
+    border-radius: 0;
+    text-align: center;
+    background: #bbb;
+    font-size: 36rpx;
+    color: #fff;
+    background: #23a721;
+}
+
+.active {
+    color: #23a721;
+}
+
+.form .title {
+    text-align: center;
+    font-size: 32rpx;
+    color: #555;
+    padding: 30rpx 0;
+    font-weight: 500;
+}
+
+.form__item {
+    position: relative;
+    padding: 20rpx;
+    display: flex;
+    align-items: center;
+    z-index: 99;
+}
+
+.form__item>input,.form__item>textarea {
+    vertical-align: top;
+}
+
+.form__item_submit {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.form__item_submit button {
+    width: 100%;
+}
+
+.form__item input,.form__item textarea {
+    position: relative;
+    width: 100%;
+    font-size: 28rpx;
+    color: #454545;
+    background-color: #fff;
+    padding: 0;
+    flex: 1;
+}
+
+.form__item textarea {
+    width: 100%;
+}
+
+.form__item .label {
+    font-family: PingFangSC-Regular;
+    font-size: 30rpx;
+    color: #333;
+    line-height: 32rpx;
+    margin-right: 20rpx;
+    width: 180rpx;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.form__item .controller {
+    flex: 1;
+}
+
+.checkbox-group wx-label, {
+    display: inline-block;
+    margin-right: 30rpx;
+    margin-bottom: 10rpx;
+    margin-top: 10rpx;
+    min-width: 120rpx;
+    color: #333;
+}
+
+.radio-group label {
+    display: inline-block;
+    margin-right: 30rpx;
+    margin-bottom: 10rpx;
+    margin-top: 10rpx;
+    min-width: 120rpx;
+    color: #333;
+}
+
+radio .wx-radio-input {
+    border-radius: 50%;
+    width: 40rpx;
+    height: 40rpx;
+}
+
+radio .wx-radio-input.wx-radio-input-checked {
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before {
+}
+
+checkbox .wx-checkbox-input {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+}
+
+.picker {
+    color: #888;
+    font-size: 28rpx;
+}
+
+picker {
+    flex: 1;
+}
+
+.form__item .required,.radio-title .required {
+    position: relative;
+    top: 6rpx;
+    color: red;
+    width: 20rpx;
+    margin-right: 6rpx;
+}
+
+input,textarea,picker {
+    position: relative;
+    z-index: 99;
+    color: #888;
+}
+
+textarea {
+}
+
+input,textarea {
+}
+
+.imgBox>view {
+    float: left;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.addImg {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.thubnail {
+    width: 120rpx;
+    border-radius: 6rpx;
+    position: relative;
+    height: 120rpx;
+}
+
+.thubnail image {
+    width: 100%;
+    height: 100%;
+}
+
+.thubnail .remove-item {
+    width: 24rpx;
+    height: 24rpx;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    line-height: 17rpx;
+    background-color: red;
+    color: #fff;
+    right: -12rpx;
+    top: -12rpx;
+}

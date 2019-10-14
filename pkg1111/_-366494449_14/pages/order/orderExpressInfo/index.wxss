@@ -1,0 +1,82 @@
+.trans {
+    background-color: #fff;
+    padding: 30rpx;
+    display: flex;
+    align-items: center;
+}
+
+.trans__img {
+    width: 96rpx;
+    height: 96rpx;
+    border-radius: 50%;
+    background-color: #eee;
+    margin-right: 20rpx;
+}
+
+.trans__info {
+    flex: 1;
+}
+
+.trans__info__item {
+    color: #666;
+    font-size: 30rpx;
+}
+
+.trans__info__item .phone {
+    color: #000;
+    font-size: 28rpx;
+}
+
+.logistics-title {
+    margin-top: 20rpx;
+    padding: 12px 3.125% 12px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    font-size: 28rpx;
+    line-height: 1.4;
+}
+
+.logistics-info {
+    padding: 20rpx;
+    font-size: 24rpx;
+    background: #fff;
+    border-bottom: 1px dashed #eee;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.img-wrap-new {
+    margin-right: 20rpx;
+    width: 16px;
+    height: 16px;
+}
+
+.img-wrap {
+    margin-right: 20rpx;
+    width: 12px;
+    height: 12px;
+}
+
+.logistics-con-wrap {
+    flex: 1;
+}
+
+.logistics-con text {
+    font-size: 28rpx;
+    line-height: 1.4;
+}
+
+.logistics-date text {
+    font-size: 28rpx;
+    line-height: 1.4;
+    color: #666;
+}
+
+.logistics-info_nodata {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    padding: 30rpx 0;
+}

@@ -1,0 +1,848 @@
+微信小程序反编译后源码阅读笔记
+2018年01月19日 23:46:06 东边的小山 阅读数：5643
+在这里阅读的是，微信安卓653.980版的反编译后的代码。很清晰的可以看到，小程序在代码中被称为appbrand，主要逻辑放在包com.tencent.mm.plugin.appbrand下面（部分抽出的ui控件除外）；另外引用了3个js资源，均在/assets/wxa_library/下。虽然很大部分代码被混淆过的，但是适当的反编译后，我们还是能看出绝大部分东西。
+
+包整理
+
+依次整理com.tencent.mm.plugin.appbrand下的内容，按包区分:
+
+a：似乎是单例和依赖注入的容器
+appcache：微信小程序打包为wxapkg文件，这里处理的是下载解包验证和后续处理逻辑
+appstorage：在数据库中存取AppBrandKVData的逻辑
+b：在数据库中存取AppBrandLauncherLayoutItem的逻辑，是微信小程序列表缓存
+c：通过安卓的canvas实现了一套完整的js的canvasapi，提供给小程序中canvas控件使用
+config：小程序模块环境变量管理，其中数据可以通过互联网下发更新
+contact：把app添加为微信联系人，似乎和聊天置顶有关
+d：InputStream相关工具类
+e：录音功能相关工具类
+f：附近的人的小程序相关工具类
+g：应该是AppBrandNetworkUtil，小程序模块用到的网络部分的工具类
+h：权限管理工具类，包括小程序权限管理和jsapi权限管理，同时也可以通过网络更新
+i：小程序sd卡操作工具类
+ipc：ipc即进程间通信。小程序通过新开进程来保障独立运行的，独立进程的启动与微信本体的通信依赖这个包的代码完成。其中AppBrandMainProcessService是最主要运行服务，而AppBrandProcessProxyUI是小程序进程持有性质activity。
+j：AppBrandConversionExtension，似乎是多个小程序切换过程中的辅助类
+jsapi：微信小程序通过浏览器暴露给js环境的api的入口基本上都在这儿了，包括组件部分和api部分。最后AppBrandJSInterface把这些入口聚合在一起。
+k：似乎是一些零散的工具类
+l：js中WebSocketapi的native实现
+launching：微信小程序加载逻辑的实现。主要是处理了很多加载准备过程中的逻辑和错误监测
+m：微信小程序列表搜索功能相关逻辑
+netscene：好像是对webview发起的特殊请求的处理和中断
+page：页面部分，包括微信小程序列表页等，主要都是各个activity和使用的自定义view。其中l.class值得注意，应该是核心使用的webview了，h.class是这个webview的容器，也做了很多操作。
+report：只是数据上报相关的东西
+task：一些乱七八糟的异步工作放这儿了
+ui：和page差不多，也是各种各样的activity和view。微信小程序实际的容器页面（5个）和各种功能与异常页面
+widget：所有暴露给js的native控件都在这儿了。其实并不多
+
+其他文件中值得关注的一些东西：
+a.class即AppBrandBridge是小程序主路由控制器，持有着当前所有小程序
+f.class看起来是AppBrandService，持有后台运行的jscore
+
+现在可以获得的信息
+
+大概知道每个包都包涵一些什么代码之后，我们就可以对微信小程序进行一些挖掘了。
+
+wxapkg解包
+
+通过抓包我们可以发现，每次进入小程序列表后，就会通过网络抓下来所有小程序的wxapkg包，然后所有需要的东西都在里面了。那这个wxapkg在哪儿解包的呢？经过搜索，我们发现是appcache/f.class即AppBrandWxaPkg完成的这段工作。
+由于混淆得一塌糊涂，因此我分析实际wxapkg之后自己实现了一次解码（python）：
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+15
+
+16
+
+17
+
+18
+
+19
+
+20
+
+21
+
+22
+
+23
+
+24
+
+25
+
+26
+
+27
+
+28
+
+29
+
+30
+
+31
+
+32
+
+33
+
+34
+
+35
+
+36
+
+37
+
+38
+
+39
+
+40
+
+41
+
+42
+
+43
+
+44
+
+45
+
+46
+
+47
+
+48
+
+49
+
+50
+
+51
+
+52
+
+53
+
+54
+
+55
+
+56
+
+57
+
+58
+
+59
+
+60
+
+61
+
+62
+
+63
+
+64
+
+65
+
+66
+
+67
+
+68
+
+69
+
+70
+
+71
+
+72
+
+73
+
+74
+
+75
+
+76
+
+#!/usr/bin/python
+
+ 
+
+# lrdcq
+
+# usage python wxapkg_unpack.py filename, unpack at filename.unpack
+
+ 
+
+import
+sys,os
+
+import
+struct
+
+ 
+
+class
+WxapkgFile:
+
+  nameLen =
+0
+
+  name =
+""
+
+  offset =
+0
+
+  size =
+0
+
+ 
+
+with open(sys.argv[1], "rb") as f:
+
+ 
+
+  root =
+os.path.dirname(os.path.realpath(f.name))
+
+  name =
+os.path.basename(f.name)
+
+ 
+
+  #read header
+
+ 
+
+  firstMark =
+struct.unpack('B', f.read(1))[0]
+
+  print
+'first header mark = '  +  str(firstMark)
+
+ 
+
+  info1 =
+struct.unpack('>L', f.read(4))[0]
+
+  print
+'info1 = '  +  str(info1)
+
+ 
+
+  indexInfoLength =
+struct.unpack('>L', f.read(4))[0]
+
+  print
+'indexInfoLength = '  +  str(indexInfoLength)
+
+ 
+
+  bodyInfoLength =
+struct.unpack('>L', f.read(4))[0]
+
+  print
+'bodyInfoLength = '  +  str(bodyInfoLength)
+
+ 
+
+  lastMark =
+struct.unpack('B', f.read(1))[0]
+
+  print
+'last header mark = '  +  str(lastMark)
+
+ 
+
+  if
+firstMark !=
+190  or  lastMark !=
+237:
+
+    print
+'its not a wxapkg file!!!!!'
+
+    exit()
+
+ 
+
+  fileCount =
+struct.unpack('>L', f.read(4))[0]
+
+  print
+'fileCount = '  +  str(fileCount)
+
+ 
+
+  #read index
+
+ 
+
+  fileList =
+[]
+
+ 
+
+  for
+i in
+range(fileCount):
+
+ 
+
+    data =
+WxapkgFile()
+
+    data.nameLen =
+struct.unpack('>L', f.read(4))[0]
+
+    data.name =
+f.read(data.nameLen)
+
+    data.offset =
+struct.unpack('>L', f.read(4))[0]
+
+    data.size =
+struct.unpack('>L', f.read(4))[0]
+
+ 
+
+    print
+'readFile = '  +  data.name +
+' at Offset = '  +  str(data.offset)
+
+ 
+
+    fileList.append(data)
+
+ 
+
+  #save files
+
+   
+
+  for
+d in
+fileList:
+
+    d.name =
+'/'  +  name +
+'.unpack'  +  d.name
+
+    path =
+root +
+os.path.dirname(d.name)
+
+ 
+
+    if
+not  os.path.exists(path):
+
+      os.makedirs(path)
+
+ 
+
+    w =
+open(root +
+d.name, 'w')
+
+    f.seek(d.offset)
+
+    w.write(f.read(d.size))
+
+    w.close()
+
+ 
+
+    print
+'writeFile = '  +  root +
+d.name
+
+ 
+
+  f.close()
+
+另外实际文件结构如图：
+點擊在新視窗中瀏覽此圖片
+
+看起来很清晰的解包代码，通过这些代码，我们就可以把微信下载下来的wxapkg手动进行解包了，进而可以继续分析其实现原理。
+
+页面加载
+
+一开始的小程序列表界面是ui/AppBrandLauncherUI.class，然后通过AppBrandProcessProxyUI启动了小程序的AppBrandUI。
+
+进入程序后，我们整理出最关键的activity和view：
+
+ui/AppBrandUI.class 小程序主activity
+page/f.class AppBrandPageContainer
+page/e.class SwipeBackLayout的继承，每一个当个侧滑页
+page/h.class AppBrandWebView的逻辑容器，耦合webview和其他控件的逻辑
+page/l.class AppBrandWebView，主逻辑webview
+
+AppBrandUI->f页面->e页面->h页面->l页面，通过这一条界面链条传到webview里最关键的东西，就是当前程序的appId和版本号。然后webview就加载了这样的东西：
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+//h.class
+
+    if
+(paramString.dOS == null) {
+
+      paramString.dOS = (paramString.RA() + "page-frame.html");
+
+    }
+
+    paramString.loadUrl(paramString.dOS);
+
+//l.class
+
+  final
+String RA()
+
+  {
+
+    if
+(this.dOR == null) {
+
+      this.dOR = ("https://servicewechat.com/"
++ this.dzg + "/"
++ com.tencent.mm.plugin.appbrand.a.mr(this.dzg).dDB.dBs + "/");
+
+    }
+
+    return
+this.dOR;
+
+  }
+
+实际在webview中加载了形为https://servicewechat.com/{appid}/{version}/page-frame.html的页面。这个页面其实被定向到wxapkg中的page-frame.html，它通过jsbridge再调用到代码其余部分。
+
+另外一边，还启动了一个f.class即AppBrandService。启动AppBrandService的代码中会开一个jscore，如下：
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+15
+
+16
+
+17
+
+18
+
+19
+
+20
+
+21
+
+22
+
+23
+
+24
+
+25
+
+26
+
+27
+
+28
+
+29
+
+30
+
+31
+
+32
+
+33
+
+34
+
+35
+
+36
+
+37
+
+38
+
+39
+
+40
+
+41
+
+42
+
+43
+
+44
+
+45
+
+46
+
+47
+
+this.dWV = new
+AppBrandJSInterface(this);
+
+    if
+(com.tencent.smtt.sdk.aa.fM(com.tencent.mm.sdk.platformtools.aa.getContext()))
+
+    {
+
+      this.dzh = new
+i(com.tencent.mm.sdk.platformtools.aa.getContext(), this.dWV, "WeixinJSCore");
+
+      g.iuh.a(434L, 2L, 1L, false);
+
+      v.i("MicroMsg.AppBrandService", "Using X5 Javascript Engine");
+
+      g.iuh.a(434L, 0L, 1L, false);
+
+      OJ();
+
+      paramContext = com.tencent.mm.plugin.appbrand.appcache.b.aq(this.dzg, "WAService.js");
+
+      g.iuh.a(370L, 5L, 1L, false);
+
+      if
+(!be.kS(paramContext)) {
+
+        break
+label258;
+
+      }
+
+      v.e("MicroMsg.AppBrandService", "get Null Or Nil service js");
+
+      g.iuh.a(370L, 6L, 1L, false);
+
+    }
+
+    for
+(;;)
+
+    {
+
+      paramContext = com.tencent.mm.plugin.appbrand.appcache.b.aq(this.dzg, "app-service.js");
+
+      g.iuh.a(370L, 9L, 1L, false);
+
+      if
+(!be.kS(paramContext)) {
+
+        break
+label281;
+
+      }
+
+      v.e("MicroMsg.AppBrandService", "get Null Or Nil app-service js");
+
+      g.iuh.a(370L, 10L, 1L, false);
+
+      return;
+
+      this.dzh = new
+h(com.tencent.mm.sdk.platformtools.aa.getContext(), this.dWV, "WeixinJSCore");
+
+      g.iuh.a(434L, 1L, 1L, false);
+
+      v.i("MicroMsg.AppBrandService", "Using WebView Based Javascript Engine");
+
+      break;
+
+      label258:
+
+      com.tencent.mm.plugin.appbrand.k.c.a(this.mContext, this.dzh, paramContext, new
+c.a()
+
+      {
+
+        public
+final  void  OK()
+
+        {
+
+          v.e("MicroMsg.AppBrandService", "service inject library js fail");
+
+          g.iuh.a(370L, 6L, 1L, false);
+
+          com.tencent.mm.plugin.appbrand.report.a.S(f.this.dzg, 24);
+
+        }
+
+         
+
+        public
+final  void  onSuccess()
+
+        {
+
+          f.this.dzh.evaluateJavascript("wx.version", new
+u() {});
+
+          g.iuh.a(370L, 7L, 1L, false);
+
+        }
+
+      });
+
+    }
+
+反编译得稍乱，不过这其实就是两种情况的逻辑。使用X5 Javascript Engine并实例化出一个i.class或者使用WebView Based Javascript Engine并实例化出一个h.class。i.class封装调用的是腾讯的x5js引擎，而i.class是一个不会显示的webview，他们都实现了相同的接口b.class，里面两个方法，第一个显然是onDestroy，第二个就是最关键的evaluateJavascript了。
+
+这样一来，我们就可以画出整个微信小程序的运行构架和链条了：
+點擊在新視窗中瀏覽此圖片
+
+页面路由
+
+比如js路由界面打开是jsapi/an.class，我们追踪一下代码。
+
+它从a.class即AppBrandBridge的map：Map<String, com.tencent.mm.plugin.appbrand.page.f> dyQ中取出了当前应用（dzg）的f页面AppBrandPageContainer。然后在f中新建了一个e并完成了动画，并且可以看到f拥有两个数组来持有不同打开方式的e页面。
+可以得到的信息是：a(AppBrandBridge)持有了当前每一个打开的小程序的主界面f（AppBrandPageContainer），之所以不持有每一个activity也许是为了方便挪动容器位置或者缓存相关的问题吧；每一个小程序有一个f，其打开的每一个页面是一个e(SwipeBackLayout)，当然每一个e配有一个l（AppBrandWebView）来呈现界面。
+
+因此可以理解为，每一个进程（AppBrandProcessProxyUI）启动一个微信小程序，拥有一个AppBrandUI，它的最核心的是AppBrandPageContainer，里面最多包涵5个界面（e）。这样我们就可以画出微信小程序的界面结构了：
+點擊在新視窗中瀏覽此圖片
+
+考虑到同样代码中可以看出，有5个AppBrandProcessProxyUI即微信最多可以启动5个小程序，而每个小程序最多有5个页面即5层SwipeBackLayout即5个webview，整个小程序部分最坏情况会拥有5x5+1共计26个jscore。
+
+回到界面路由，由于当个小程序都在一个AppBrandPageContainer中，因此所有的路由操作只需要定位到这个f界面，做界面动画就可以了——事实上就是这样做的，除了动画，AppBrandPageContainer持有两个数组来管理不同打开方式的SwipeBackLayout，路由操作同时是在对这两个数组进行操作。而实际具体SwipeBackLayout实例化的实现，是根据传入的JSONObject内容确定的了。其他路由方式均同理。
+
+native控件
+
+我们了解到微信小程序每一个界面就是一个webview，那所有界面都是h5的咯？似乎并不是，开着安卓的界面边界显示我们就可以发现部分view是native的控件，事实上打开WAWebview.js我们就可以看到，有专门的behavior：wx-native来标柱一个view是否是纯native的控件，就算没标注，比如wx-input控件，也在部分状态下用native来实现的。
+
+我们用wx-input举例子看看它是怎么交互的。首先看到控件内监听器，注册："input.input": "_inputKey"，当输入的时候，回调到_inputKey，而_inputKey的代码是：
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+9
+
+10
+
+11
+
+12
+
+13
+
+14
+
+15
+
+16
+
+17
+
+18
+
+19
+
+20
+
+21
+
+22
+
+23
+
+24
+
+25
+
+26
+
+27
+
+28
+
+29
+
+30
+
+31
+
+32
+
+        _inputKey: function(e) {
+
+            var
+t = e.target.value;
+
+            if
+(this._value = t, this._checkPlaceholderStyle(t), this.bindinput) {
+
+                var
+n = {
+
+                    id: this.$$.id,
+
+                    dataset: this.dataset,
+
+                    offsetTop: this.$$.offsetTop,
+
+                    offsetLeft: this.$$.offsetLeft
+
+                };
+
+                WeixinJSBridge.publish("SPECIAL_PAGE_EVENT", {
+
+                    eventName: this.bindinput,
+
+                    data: {
+
+                        ext: {
+
+                            setKeyboardValue: !0
+
+                        },
+
+                        data: {
+
+                            type: "input",
+
+                            timestamp: Date.now(),
+
+                            detail: {
+
+                                value: e.target.value,
+
+                                cursor: this.$.input.selectionStart
+
+                            },
+
+                            target: n,
+
+                            currentTarget: n,
+
+                            touches: []
+
+                        },
+
+                        eventName: this.bindinput
+
+                    }
+
+                })
+
+            }
+
+            return
+! 1
+
+        },
+
+这就很有意思了，js代码把当前input的id，所有数据和在页面中的坐标通过JSBridge发送给了native。对于在java中的代码是jsapi/a/a.class即AppBrandJsApiInputBase，接下来的事情大家都知道了，无非是根据传入的json中的样式绘制native控件，然后接着处理。
+
+上面这样的js代码在WAWebview.js中有很多出，我们可以完整的总结出到底有哪些native控件并且在native中的代码对应：
+
+input,textarea : jsapi/a包 widget/input包实现
+datepicker : jsapi/b包 widget/b包实现
+map : jsapi/map包 widget/AppBrandMapView.class实现
+canvas : c包 widget/AppBrandDrawableView.class实现
+video : x5原生实现，不是小程序完成的
+
+其中有意思的是这些native实现的view出现在了文档scroll-view的tips中：“请勿在 scroll-view 中使用 textarea、map、canvas、video 组件”。想想确实可以理解，如果是在web第一层塞入的native控件，可以很方便的让native控件和网页一起滚动；而scroll-view显然只是个html的div实现的，native很难监听到div里面的滚动，当然也没发让这些native的控件一起滚，因此就gg了。

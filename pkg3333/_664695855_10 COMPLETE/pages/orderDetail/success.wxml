@@ -1,0 +1,6 @@
+<view class="hosting-success">
+    <image class="success-img" src="../img/hosting-success.png"></image>
+    <view class="success-title">托管成功</view>
+    <view class="success-content">服务商会尽快跟你联系沟通需求</view>
+    <navigator class="success-btn" openType="switchTab" url="/pages/index/index">返回首页</navigator>
+</view>

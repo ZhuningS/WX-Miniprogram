@@ -1,0 +1,121 @@
+<view class="c-news {{currentSkin}}">
+    <view bindtap="goTop" class="dzicon icon-xiala-copy c-icon-other-main" style="bottom: 20% !important;" wx:if="{{vm.isShowBtn}}"></view>
+    <navigator class="dzicon icon-shouye2 c-icon-other-main" openType="reLaunch" url="/pages/index/index" wx:if="{{vm.ispay==false}}"></navigator>
+    <block wx:if="{{vm.contenttype==0}}">
+        <swiper indicatorDots autoplay="true" class="com-slider w-100" duration="300" indicatorActiveColor="#a1a2a3" indicatorColor="#fff" interval="5000" wx:if="{{vm.slideimgs_fmt!=''}}">
+            <swiper-item wx:for="{{vm.slideimgs_fmt}}" wx:for-index="$comSliderIn$index" wx:for-item="$comSliderIn$item" wx:key="$comSliderIn$key">
+                <image bindtap="$comSliderIn$imgFunc" class="w-100" data-com-index="{{undefined}}" data-wpyimgfunc-a="{{vm}}" id="{{$comSliderIn$index}}" mode="widthFix" src="{{$comSliderIn$item||'http://j.vzan.cc/miniapp/img/enterprise/blank_150x150.png'}}"></image>
+            </swiper-item>
+        </swiper>
+        <image class="w-100" mode="widthFix" src="{{vm.img}}" wx:if="{{vm.slideimgs_fmt==''&&vm.img_fmt!=''}}"></image>
+    </block>
+    <view class="c-news-video" wx:if="{{vm.contenttype==1}}">
+        <view bindtap="playVideo" class="rel" hidden="{{vm.playVideo}}">
+            <image class="c-news-video-cover" src="{{vm.videocover}}" wx:if="{{vm.videocover}}"></image>
+            <view class="c-news-video-cover" wx:else></view>
+            <image class="c-news-video-btn" src="http://j.vzan.cc/miniapp/img/enterprise/videoplay.png"></image>
+        </view>
+        <video controls bindended="endVideo" customCache="{{false}}" hidden="{{vm.playVideo==false}}" id="ctvideo" objectFit="cover" src="{{vm.video}}"></video>
+    </view>
+    <view class="c-news-audio f fv fc rel" wx:if="{{vm.contenttype==2}}">
+        <image src="{{vm.img}}"></image>
+        <image bindtap="playAudio" class="c-news-audio-btn" src="{{vm.playAudio?'http://vzan-img.oss-cn-hangzhou.aliyuncs.com/upload//20180814/69762a1ac43747e0ab0c545a717ea9611534217693033.png':'http://vzan-img.oss-cn-hangzhou.aliyuncs.com/upload//20180814/5dee266cc82a44ee96f13f65e6b2ffc31534217689437.png'}}"></image>
+        <view class="c-news-audio-progress f fc fj">
+            <text>{{vm.currentTime||'00:00'}}</text>
+            <slider activeColor="#ff3838" backgroundColor="#EEEEEE" bindchange="audioChange" blockColor="#ff3838" blockSize="10" max="{{vm.maxTime}}" min="0" value="{{vm.moveTime}}"></slider>
+            <text>{{vm.duration||'00:00'}}</text>
+        </view>
+    </view>
+    <view class="c-news-main">
+        <view class="f fc">
+            <text class="f32 f1 line line3">{{vm.title}}</text>
+            <button class="f fv ml10" openType="share">
+                <text class="dzicon icon-Forward_fenxiang f44 c123"></text>
+                <text class="f24 c999 mt5">分享</text>
+            </button>
+        </view>
+        <view class="f32 skin_txt mt20 t-b" wx:if="{{vm.ispaid==false&&vm.ispay}}">{{vm.payinfo.PayAmount}}</view>
+        <view class="f26 mt20" style="color:#888">{{vm.description}}</view>
+        <view class="c999 f24 mt20 f fc fj">
+            <text>{{vm.addtime}}</text>
+            <text>浏览量 {{vm.PV+vm.VirtualPV||0}}</text>
+        </view>
+    </view>
+    <image bindtap="playContent" class="w-100" mode="widthFix" src="http://j.vzan.cc/miniapp/img/enterprise/ct-bg.png" wx:if="{{vm.playContent}}"></image>
+    <block wx:if="{{vm.playContent==false&&vm.content_fmt}}">
+        <import src="../../lib/wxParse/wxParse.wxml"></import>
+        <view class="c-news-rich">
+            <view class="f32 pw20" style="word-break: break-all">
+                <template is="wxParse0" data="{{item:item}}" wx:for="{{vm.content_fmt.nodes||vm.nodes}}" wx:key="{{index}}"></template>
+            </view>
+        </view>
+    </block>
+    <view class="c-gt" wx:if="{{vm.RecommendedItem}}">
+        <view class="c-gt-title f fc fc-h">
+            <text class="dzicon icon-xiantiao-"></text>
+            <text style="margin:0 30rpx;">相关推荐</text>
+            <text class="dzicon icon-xiantiao- rote"></text>
+        </view>
+        <view class="c-gt-main f fw">
+            <view bindtap="$comHot$goodnav" class="c-gt-main-item" data-com-index="{{undefined}}" data-wpygoodnav-a="{{$comHot$item.id}}" wx:for="{{vm.hostlist}}" wx:for-index="$comHot$index" wx:for-item="$comHot$item" wx:key="$comHot$key">
+                <image src="{{$comHot$item.img_fmt}}"></image>
+                <view class="line line1 mt20">{{$comHot$item.name}}</view>
+                <view class="f30 skin_txt mt20">￥{{$comHot$item.priceStr}}</view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{vm.ispay}}">
+        <view style="height:100rpx;"></view>
+        <view class="c-news-bottom f" style="border-top:1px solid #f2f2f2">
+            <navigator class="c-good-btn-icon f fc fv fc-h" openType="reLaunch" url="/pages/index/index">
+                <text class="dzicon icon-shouye2 f40"></text>
+                <text class="mt10">首页</text>
+            </navigator>
+            <view>
+                <button bindgetuserinfo="$comImBtn$getUser" class="c-good-btn-icon f fc-h fc fv" data-com-index="{{undefined}}" openType="getUserInfo" wx:if="{{vm.userInfo.newUser}}">
+                    <text class="dzicon icon-kefu f36"></text>
+                    <text class="f28 mt10">客服</text>
+                </button>
+                <view wx:if="{{vm.userInfo.newUser==false}}">
+                    <button class="c-good-btn-icon f fc-h fc fv" openType="contact" wx:if="{{vm.wxServer}}">
+                        <text class="dzicon icon-kefu f36"></text>
+                        <text class="f28 mt10">客服</text>
+                    </button>
+                    <view bindtap="$comImBtn$gochat" class="c-good-btn-icon f fc-h fc fv" data-com-index="{{undefined}}" wx:else>
+                        <text class="dzicon icon-kefu f36"></text>
+                        <text class="mt10">客服</text>
+                    </view>
+                </view>
+            </view>
+            <button bindgetuserinfo="getUser" class="c-news-bottom-btn f1 skin_bg" openType="getUserInfo" wx:if="{{vm.ispaid==false&&vm.userInfo.newUser}}">立即购买</button>
+            <view bindtap="buyMask" class="c-news-bottom-btn f1 skin_bg" wx:if="{{vm.ispaid==false&&vm.userInfo.newUser==false}}">立即购买</view>
+            <view class="c-news-bottom-btn f1" style="background-color:#eee;color:#666" wx:if="{{vm.ispaid}}">已购买</view>
+        </view>
+    </view>
+    <view class="c-pay-mask" wx:if="{{vm.payMask}}">
+        <view bindtap="$comPay$hideMask" class="c-pay-mask-bg" data-com-index="{{undefined}}"></view>
+        <view class="c-pay-mask-main">
+            <view class="c-pay-mask-tip" wx:if="{{vm.payinfo.PayAmount}}">注意：您购买的是虚拟商品，不支持退款</view>
+            <view bindtap="$comPay$selChange" class="c-pay-mask-pay f fc" data-com-index="{{undefined}}" data-wpyselchange-a="2">
+                <view class="f f1 fc">
+                    <text class="dzicon icon-jinbi f50" style="color:#F6A71D"></text>
+                    <text class="f30 ml20">储值支付(余额￥{{vm.valuemoney}})</text>
+                </view>
+                <view class="dzicon icon-zhifuchenggong skin_txt f40" wx:if="{{vm.selIndex==2}}"></view>
+            </view>
+            <view bindtap="$comPay$selChange" class="c-pay-mask-pay f fc" data-com-index="{{undefined}}" data-wpyselchange-a="1">
+                <view class="f f1 fc">
+                    <text class="dzicon icon-weixin f50" style="color:#25B415"></text>
+                    <text class="f30 ml20">微信支付</text>
+                </view>
+                <view class="dzicon icon-zhifuchenggong skin_txt f40" wx:if="{{vm.selIndex==1}}"></view>
+            </view>
+            <view style="height:20rpx;background-color:#F7F5F5"></view>
+            <view class="c-pay-mask-bottom f fc">
+                <text class="f28 f1">实际支付:<text class="skin_txt t-b f32 ml10">￥{{vm.payinfo.PayAmount||vm.price}}</text>
+                </text>
+                <text bindtap="$comPay$payMoney" class="c-pay-mask-btn skin_bg" data-com-index="{{undefined}}">立即支付</text>
+            </view>
+        </view>
+    </view>
+</view>

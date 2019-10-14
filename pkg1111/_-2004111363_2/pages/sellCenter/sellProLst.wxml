@@ -1,0 +1,28 @@
+<view>
+    <view class="sell-header {{currentSkin}}">
+        <view class="sell-search f fc">
+            <view class="dzicon icon-sousuo_rearch f40 c123"></view>
+            <input bindconfirm="search" class="sell-input" placeholder="请输入您要查询的商品" placeholderClass="c123"></input>
+        </view>
+        <view class="sell-classify f fc fsa">
+            <view bindtap="select" class="pb30 {{vm.state==item.id?'skin_bottom':'c333'}}" data-wpyselect-a="{{item.id}}" wx:for="{{priceState}}" wx:key="key">{{item.txt}}</view>
+        </view>
+    </view>
+    <view style="height:200rpx"></view>
+    <view class="sell-list f fw fj" wx:if="{{vm.list[1].length!=0}}">
+        <block wx:for="{{vm.list}}" wx:for-item="pro" wx:key="key">
+            <view bindtap="navGood" class="sell-item" data-wpynavgood-a="{{item.goodsId}}" wx:for="{{pro}}" wx:key="key">
+                <image mode="aspectFill" src="{{item.goodsImg}}"></image>
+                <view class="p10 f fv">
+                    <text class="line line1">{{item.goodsName}}</text>
+                    <view class="mt10 f fc fj">
+                        <text class="t-b" style="color:#F20033">￥{{item.goodsPrice}}</text>
+                        <text class="f24 c999">已售{{item.salesCount}}</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <wxc-loadmore icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png" isEnd="{{true}}" text="到底啦" wx:if="{{vm.list[1].length!=0&&vm.loadall}}"></wxc-loadmore>
+    <wxc-abnor type="DATA" wx:if="{{vm.list[1].length==0}}"></wxc-abnor>
+</view>

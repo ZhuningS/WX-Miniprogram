@@ -1,0 +1,55 @@
+<import src="/pages/store/store-common/storetpl.wxml"></import>
+<template is="load_bg" data="{{is_show_load_bg:is_show_load_bg}}"></template>
+<view class="no-content tc" wx:if="{{postlist==null||postlist.length<1}}">
+    <text class="no-content-icon iconfont icon-yemianwuneirong"></text>
+    <view class="no-content-font">暂无订单信息</view>
+</view>
+<view wx:else>
+    <view class="mt10">
+        <view bindtap="user_orderinfo_bind" class="ui-cells mb10" id="{{item.id}}" wx:for="{{postlist}}">
+            <view class="shop-msg flex flex-center">
+                <view class="shop-logo mr10">
+                    <image class="circle" mode="aspectFill" src="{{item.store_info.store_logo}}"></image>
+                </view>
+                <view class="sub">{{item.store_info.store_name}} {{item.store_info.store_quyu==''?'':'('+item.store_info.store_quyu+')'}}</view>
+                <view class="f12 red" wx:if="{{item.order_status==1&&item.order_type==2&&item.is_sure_order==0}}">待配送</view>
+                <view class="f12 red" wx:else>{{item.order_status_txt}}</view>
+            </view>
+            <view>
+                <view class="goods-list flex" wx:for="{{item.orderGoods}}" wx:for-item="vo">
+                    <view class="mr10 goods-img">
+                        <image mode="aspectFill" src="{{vo.g_img}}"></image>
+                    </view>
+                    <view class="sub flexC">
+                        <view class="sub lineText goods-name">{{vo.goods_name}}</view>
+                        <view class="grey mt5 f12 lineText">{{vo.goods_attr}}</view>
+                        <view class="flex flex-between msg-bottom f14">
+                            <view class="grey">×{{vo.goods_number}}</view>
+                            <view>
+                                <text class="f14 fb">￥{{vo.goods_price}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="f12 order-total gridXb tr">
+                <view> 合计:￥{{item.order_amount}}(含运费￥{{item.shipping_fee}}) 实际支付:￥{{item.settlement_total_fee=='0.00'||item.settlement_total_fee==null?item.order_amount:item.settlement_total_fee}}</view>
+            </view>
+            <view class="ui-cell tr order-btn">
+                <block wx:if="{{item.order_status==0}}">
+                    <button plain catchtap="change_order_status_or_show" data-change_type="1" id="{{item.id}}" size="mini" type="default">取消</button>
+                    <button plain catchtap="user_orderinfo_bind" id="{{item.id}}" size="mini" type="primary">支付</button>
+                </block>
+                <block wx:if="{{item.order_status==1}}">
+                    <button plain catchtap="change_order_status_or_show" data-change_type="2" data-order_type="{{item.order_type}}" id="{{item.id}}" size="mini" type="primary" wx:if="{{item.order_type==2&&item.is_sure_order==1}}">确认送达</button>
+                    <block wx:if="{{item.order_type==1}}">
+                        <button plain catchtap="change_order_status_or_show" data-change_type="2" data-order_type="{{item.order_type}}" id="{{item.id}}" size="mini" type="primary">确认领取</button>
+                        <button plain id="{{item.id}}" size="mini" type="primary">去验券</button>
+                    </block>
+                </block>
+                <button plain catchtap="order_go_comment_bind" id="{{item.id}}" size="mini" type="primary" wx:if="{{item.order_status==2}}">评价</button>
+                <button plain catchtap="change_order_status_or_show" data-change_type="3" id="{{item.id}}" size="mini" type="default" wx:if="{{item.order_status==3}}">删除</button>
+            </view>
+        </view>
+    </view>
+</view>

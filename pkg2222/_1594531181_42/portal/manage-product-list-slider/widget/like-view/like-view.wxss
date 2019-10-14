@@ -1,0 +1,81 @@
+.mini-feature_likePanel {
+    margin-top: 54rpx;
+    margin-bottom: 72rpx;
+}
+
+.mini_feature_likeAction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mini_feature_likeBtn {
+    width: 40px;
+    height: 40px;
+}
+
+.mini_feature_likeTip {
+    font-size: 26rpx;
+    color: #808080;
+    margin-top: 18rpx;
+    display: inline-block;
+}
+
+.mini_feature_likeList {
+    display: flex;
+    flex-direction: column;
+    margin: 60rpx 0rpx 0 0rpx;
+}
+
+.mini_feature_haslikeTipWrap {
+    display: flex;
+    margin: 0 25% 0 25%;
+    width: 50%;
+    align-items: center;
+}
+
+.mini_feature_haslikeTipLeftLine {
+    height: 1rpx;
+    width: 50%;
+    background-color: #E5E5E5;
+}
+
+.mini_feature_haslikeTipRightLine {
+    height: 1rpx;
+    width: 50%;
+    background-color: #D8D8D8;
+}
+
+.mini_feature_haslikeTip {
+    font-size: 26rpx;
+    color: #808080;
+    flex-shrink: 0;
+    margin: 0 24rpx 0 24rpx;
+}
+
+.mini_feature_haslikePanel {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 36rpx;
+    width: 476rpx;
+    margin: 36rpx auto 0;
+    justify-content: center;
+}
+
+.mini_feature_likeItem {
+    width: 56rpx;
+    height: 56rpx;
+    margin-left: 6rpx;
+    margin-right: 6rpx;
+    margin-bottom: 12rpx;
+}
+
+.mini_feature_likeItem.background {
+    background: #EFEDEA;
+}
+
+.has_like_action {
+    display: inline-block;
+    font-size: 26rpx;
+    color: #576B95;
+}

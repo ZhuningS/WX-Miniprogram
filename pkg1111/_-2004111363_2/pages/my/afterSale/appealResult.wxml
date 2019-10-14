@@ -1,0 +1,50 @@
+<view class="appeal-result {{currentSkin}}">
+    <view class="skin_bg f32 pl37 hl100">
+      {{status.title}}
+    </view>
+    <view class="bg-w">
+        <view class="hl100 bbgray pl20">
+        {{status.content}}
+      </view>
+        <view class="success-tips" wx:if="{{status.title=='用户退货退款成功'}}">
+            <view class="hl100 f fj pr20 bbgray pl20">
+                <text>退款总金额</text>
+                <text class="skin_txt">￥{{ReturnInfo.ReturnAmount}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="returnInfo mt20 f fv">
+        <view class="bg-w hl100 pl20 pr20">
+            <text>退换信息</text>
+            <text bindtap="checkLogistics" class="btn-logistics f30 fr ml20" wx:if="{{OrderState>14&&OrderState<19}}">查看物流</text>
+            <text bindtap="goShipments" class="btn-logistics f30 fr" wx:if="{{OrderState==14}}">我要发货</text>
+            <text bindtap="getGood" class="btn-logistics f30 fr" wx:if="{{OrderState==16}}">确认收货</text>
+        </view>
+        <view style="padding-bottom: 20rpx;">
+            <view class="f fj header" wx:for="{{GoodList}}" wx:key="key">
+                <image class="commodity-avator rect150" src="{{item.Img}}"></image>
+                <view class="f fv ml20 width75">
+                    <view class="title">
+                        <text class="line line2">{{item.Name}}</text>
+                    </view>
+                    <view class="specification c999 mt10 f22 f fj ">
+                        <text>{{item.Attr}}</text>
+                        <text>x{{item.Count}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="bg-w info-detail f22 c999 f fv">
+            <text>退换原因：{{ReturnInfo.Reason}}</text>
+            <text class="mt10" wx:if="{{serveType==0}}">退款金额：￥{{ReturnInfo.ReturnAmount}}</text>
+            <text class="mt10">申请时间：{{ReturnInfo.ApplyTime}}</text>
+            <text class="mt10" wx:if="{{serveType==0}}">退款编号：{{ReturnInfo.Id}}</text>
+        </view>
+    </view>
+    <form bindsubmit="formSubmit" reportSubmit="true">
+        <button class="btn-contact abs hl100" formType="submit" hoverClass="bggray" openType="contact">
+            <text class="cblue dzicon f34 icon-zhuanyebaniconkuozhan_Consulta"></text>
+            <text class="ml10 f26 contactSaler">联系卖家</text>
+        </button>
+    </form>
+</view>

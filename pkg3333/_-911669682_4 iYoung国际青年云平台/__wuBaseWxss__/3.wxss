@@ -1,0 +1,32 @@
+.green {
+    color: #6430ba;
+}
+
+.bgcolor,button[type="primary"] {
+    background: #6430ba;
+}
+
+button[type="primary"][disabled],button[type="primary"][loading],button[type="primary"].button-hover {
+    background: #783ac8;
+}
+
+.navigator-hover,.nav.active {
+    border-bottom-color: #6430ba;
+}
+
+.addimg .iconfont {
+    border-color: #6430ba;
+}
+
+.wx-radio-input.wx-radio-input-checked {
+    background: #6430ba!important;
+    border-color: #6430ba!important;
+}
+
+.wx-progress-inner-bar {
+    background: #6430ba!important;
+}
+
+.flating-btn {
+    box-shadow: 0 0 10px rgba(100,48,186,0.8);
+}

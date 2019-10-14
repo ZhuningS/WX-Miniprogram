@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "mp-article": "../../widget/mp-article/mp-article",
+        "navigation-bar": "../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar"
+    }
+}

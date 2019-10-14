@@ -1,0 +1,234 @@
+<import src="/pages/store/store-common/storetpl.wxml"></import>
+<template is="load_bg" data="{{is_show_load_bg:is_show_load_bg}}"></template>
+<view class="ress-main flex flexC">
+    <view class="top-bg">
+        <view class="top-msg-box">
+            <view class="top-imgbg">
+                <image class="shop-logo-bg" mode="aspectFill" src="{{store_data.store_logo}}"></image>
+            </view>
+            <view class="shop-msg flex">
+                <image class="shop-logo" mode="aspectFill" src="{{store_data.store_logo}}"></image>
+                <view class="sub ml10">
+                    <view class="shop-name lineText">{{store_data.store_name}}</view>
+                    <view bindtap="huodong_info_bind" class="f14 mt10 lineText" wx:if="{{store_data.store_gonggao}}">{{store_data.store_gonggao}}</view>
+                    <view class="shop-tagbox">
+                        <text class="shop-tag gridFourCirle" wx:for="{{store_data.store_fuwu}}" wx:for-item="fwitem">{{fwitem}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="coupon_list_bind" class="coupon-tips flex" wx:if="{{store_data.is_show_coupon==1}}">
+        <text class="coupon-tips-ico">劵</text>
+        <view class="sub lineText">代金券、折扣券</view>
+    </view>
+    <view class="sub flex flexC" wx:if="{{store_data.store_template_type==2||store_data.store_template_type==4||store_data.store_template_type==6}}">
+        <scroll-view class="goods-menu mt5" scrollLeft="" scrollX="true">
+            <view bindtap="changeCate" class="goods-menu-item {{select_cate_id==item.id?'active':''}}" data-cate_id="{{item.id}}" wx:for="{{goods_cates}}">{{item.name}}</view>
+        </scroll-view>
+        <view class="all-goods-box sub">
+            <view bindtap="goods_info_bind" class="goods-items flex" id="{{gitem.id}}" wx:for="{{goods_data}}" wx:for-item="gitem">
+                <view class="goods-img mr10">
+                    <image class="img" mode="aspectFill" src="{{gitem.g_img}}"></image>
+                </view>
+                <view class="ress-item-con sub">
+                    <view class="ress-item-name f18 lineText">
+                        <text>{{gitem.g_name}}</text>
+                    </view>
+                    <view class="ress-item-info f12 grey">
+                        <text class="mr10">赞 {{gitem.goods_like_num}}</text>
+                    </view>
+                    <view class="flex goods-bottom">
+                        <view class="ress-price f18 red sub">￥{{gitem.shop_price}}</view>
+                        <view>
+                            <view catchtap="guige_select_bind" class="count-spec tc" data-goodsindex="{{index}}" id="{{gitem.id}}" wx:if="{{gitem.goods_specification}}">
+                                <text class="count-spec-c">{{gitem.cart_goods_num||0}}</text>
+                                <text>选择规格</text>
+                            </view>
+                            <view class="count-set tc" wx:else>
+                                <block wx:if="{{gitem.cart_goods_num>0}}">
+                                    <view catchtap="bind_cart_number_jian" class="count-btn gridFourCirle" data-classifyindex="{{classifyindex}}" data-goodsindex="{{index}}" id="{{gitem.id}}">
+                                        <text class="iconfont icon-move"></text>
+                                    </view>
+                                    <input class="buy-couts" disabled="true" type="number" value="{{gitem.cart_goods_num}}"></input>
+                                    <view catchtap="bind_cart_number_jia" class="count-btn gridFourCirle" data-classifyindex="{{classifyindex}}" data-goodsindex="{{index}}" id="{{gitem.id}}">
+                                        <text class="count-btn iconfont icon-add"></text>
+                                    </view>
+                                </block>
+                                <view catchtap="bind_cart_number_jia" class="count-btn to-buy-btn" data-classifyindex="{{classifyindex}}" data-goodsindex="{{index}}" id="{{gitem.id}}" wx:else>购买</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="ress-nav gridXb f18 tc flex" wx:if="{{store_data.store_template_type==1||store_data.store_template_type==3||store_data.store_template_type==5}}">
+        <view class="sub ress-nav-item active" wx:if="{{tabTit==1}}">商品</view>
+        <view bindtap="tabSubBind" class="sub ress-nav-item" id="1" wx:else>商品</view>
+        <view class="sub ress-nav-item active" wx:if="{{tabTit==2}}">评价</view>
+        <view bindtap="tabSubBind" class="sub ress-nav-item" id="2" wx:else>评价</view>
+        <view bindtap="redirectToStoreHome" class="shop-home-btn" wx:if="{{store_data.is_show_home_page==1&&scroll_to_goods_id}}">店铺首页</view>
+    </view>
+    <view class="ress-bd sub flex" wx:if="{{tabTit==1&&(store_data.store_template_type==1||store_data.store_template_type==3||store_data.store_template_type==5)}}">
+        <view class="no-content tc" wx:if="{{goods_cates.length==0}}">
+            <image class="no-content-img" mode="widthFix" src="http://www.ixiaochengxu.cc/resource/images/common/no-message.png"></image>
+            <view class="mt10">等待商家添加~~</view>
+        </view>
+        <block wx:else>
+            <scroll-view class="ress-side tc" scrollY="true">
+                <view bindtap="changeCate" class="ress-side-item {{select_cate_id==item.id?'ress-side-active':''}}" data-cate_id="{{item.id}}" wx:for="{{goods_cates}}">{{item.name}}</view>
+            </scroll-view>
+            <scroll-view class="ress-con" id="1" scrollY="true">
+                <view class="no-content tc" wx:if="{{goods_data!==false&&goods_data.length==0}}">
+                    <image class="no-content-img" mode="widthFix" src="http://www.ixiaochengxu.cc/resource/images/common/no-message.png"></image>
+                    <view class="mt10">等待商家添加~~</view>
+                </view>
+                <block wx:else>
+                    <view class="ress-item flex" wx:for="{{goods_data}}" wx:for-item="gitem">
+                        <view bindtap="goods_info_bind" class="ress-item-l mr10" id="{{gitem.id}}">
+                            <view class="ress-item-avatar">
+                                <image class="scale-rule" mode="aspectFill" src="{{gitem.g_img}}"></image>
+                            </view>
+                        </view>
+                        <view class="ress-item-con sub">
+                            <view bindtap="goods_info_bind" class="ress-item-name f18" id="{{gitem.id}}">
+                                <text>{{gitem.g_name}}</text>
+                            </view>
+                            <view bindtap="goods_info_bind" class="ress-item-info f12 grey" id="{{gitem.id}}">
+                                <text class="mr10">赞 {{gitem.goods_like_num}}</text>
+                            </view>
+                            <view class="flex goods-bottom">
+                                <view class="ress-price f18 red sub">￥{{gitem.shop_price}}</view>
+                                <view>
+                                    <view bindtap="guige_select_bind" class="count-spec" data-goodsindex="{{index}}" id="{{gitem.id}}" wx:if="{{gitem.goods_specification}}">
+                                        <text class="count-spec-c">{{gitem.cart_goods_num||0}}</text>
+                                        <text>选择规格</text>
+                                    </view>
+                                    <view class="count-set tc" wx:else>
+                                        <block wx:if="{{gitem.cart_goods_num>0}}">
+                                            <view bindtap="bind_cart_number_jian" class="count-btn gridFourCirle" data-classifyindex="{{classifyindex}}" data-goodsindex="{{index}}" id="{{gitem.id}}">
+                                                <text class="iconfont icon-move"></text>
+                                            </view>
+                                            <input class="buy-couts" disabled="true" type="number" value="{{gitem.cart_goods_num}}"></input>
+                                        </block>
+                                        <view bindtap="bind_cart_number_jia" class="count-btn" data-classifyindex="{{classifyindex}}" data-goodsindex="{{index}}" id="{{gitem.id}}">
+                                            <text class="count-btn iconfont icon-add"></text>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </block>
+    </view>
+    <block wx:if="{{tabTit==1}}">
+        <view class="ress-float-box" wx:if="{{all_g_number>0}}">
+            <view class="ress-float gridXt flex">
+                <view bindtap="cart_list_show_bind" class="float-cart">
+                    <view class="cart-circle">
+                        <text class="iconfont icon-gouwuche"></text>
+                        <text class="counts">{{all_g_number}}</text>
+                    </view>
+                </view>
+                <view class="float-price sub">
+                    <view class="price-count f20 red">
+                        <text>￥{{all_g_price}}</text>
+                    </view>
+                    <view class="f12 grey mt5 lineText" wx:if="{{store_data.waimai_limit_jiner>0&&store_data.waimai_peisong_jiner>0&&store_data.store_is_waimai==1}}">外卖{{store_data.waimai_limit_jiner}}元起送，基础配送费{{store_data.waimai_peisong_jiner}}元</view>
+                    <view class="f12 grey mt5 lineText" wx:if="{{store_data.waimai_limit_jiner>0&&store_data.waimai_peisong_jiner<=0&&store_data.store_is_waimai==1}}">外卖{{store_data.waimai_limit_jiner}}元起送，无配送费</view>
+                    <view class="f12 grey mt5 lineText" wx:if="{{store_data.waimai_limit_jiner<=0&&store_data.waimai_peisong_jiner>0&&store_data.store_is_waimai==1}}">基础配送费{{store_data.waimai_peisong_jiner}}元</view>
+                </view>
+                <view class="float-btn">
+                    <button bindtap="goods_order_bind" class="float-btn-s" data-type="1" disabled="{{store_data.is_yingye_status==true?false:true}}" loading="{{submitIsLoading}}" type="primary">{{store_data.is_yingye_status==true?'选好了':'未营业'}}</button>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view class="ress-comm sub" wx:if="{{tabTit==2}}">
+        <view class="no-content tc" wx:if="{{comments.length==0}}">
+            <image class="no-content-img" mode="widthFix" src="http://www.ixiaochengxu.cc/resource/images/common/no-order.png"></image>
+            <view class="mt10">还没有评价哦~~</view>
+            <view class="mt20"></view>
+        </view>
+        <scroll-view class="ress-scroll" scrollY="true">
+            <view class="comm-item gridXt" wx:for="{{comments}}" wx:for-index="cidx" wx:for-item="citem">
+                <view class="comm-info grey">
+                    <text class="fr linght">{{citem.add_time}}</text>
+                    <text class="comm-name">{{citem.user_nickname}}</text>
+                    <view class="res-star">
+                        <text class="iconfont icon-xingjifull" wx:for="{{citem.shi_xing_arr}}"></text>
+                        <text class="iconfont icon-xingjiline" wx:for="{{citem.kong_xing_arr}}"></text>
+                    </view>
+                </view>
+                <view class="comm-text">
+                    <text>{{citem.content}}</text>
+                </view>
+                <view class="comm-album clearfix">
+                    <view class="comm-album-box" wx:for="{{citem.comment_imgs}}" wx:for-item="imgitem">
+                        <image bindtap="img_max_bind" class="comm-album-item" data-key="{{cidx}}" data-url="{{imgitem.imgurl}}" mode="aspectFill" src="{{imgitem.imgurl}}"></image>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="floatBox floatBoxBg spec-popup {{guigeIsShow?'guige_show':''}}">
+        <view class="mid spec-box">
+            <view bindtap="attr_select_clost_bind" class="fr iconfont icon-close f24" style="position:relative;"></view>
+            <view class="f18">{{goods_a_info.g_name}}</view>
+            <view class="sp-item f14 flex" wx:for="{{goods_specification}}" wx:for-item="itemType">
+                <view class="sp-n grey">{{itemType.name}}</view>
+                <view class="sub">
+                    <view class="sub-i-i clearfix">
+                        <block wx:for="{{itemType.values}}" wx:for-item="itemVal">
+                            <text bindtap="select_attr_bind" class="sp-item-i gridFourCirle active" data-type="{{itemType.name}}" id="{{itemVal.id}}" wx:if="{{itemVal.ischeck}}">{{itemVal.label}}</text>
+                            <text bindtap="select_attr_bind" class="sp-item-i gridFourCirle" data-type="{{itemType.name}}" id="{{itemVal.id}}" wx:else>{{itemVal.label}}</text>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <view class="gridXt mt15 flex" style="padding-top:40rpx;">
+                <view class="sub" style="line-height:72rpx;">
+                    <text class="f18 red">￥{{goods_a_info.shop_price}}</text>
+                    <text></text>
+                </view>
+                <view class="s-r-box">
+                    <button bindtap="bind_cart_number_jia" class="s-r-box-btn" data-goodsindex="{{goods_index}}" data-is_attr="1" id="{{goods_a_info.id}}" style="display:block;" type="primary">加入购物车</button>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="mallcart" wx:if="{{cart_list_isshow}}">
+        <view class="mc-box">
+            <view bindtap="cart_delete_bind" class="mc-t tr">
+                <view class="mc-t-de green f16">
+                    <text class="iconfont icon-delete"></text> 清空购物车</view>
+            </view>
+            <scroll-view scrollY="true" style="max-height:720rpx;">
+                <view class="mc-item gridXt flex" wx:for="{{cart_list}}">
+                    <view class="f18 mc-name sub mr10">
+                        <view class="lineText">{{item.goods_name}}</view>
+                        <view class="guige f12 linght">{{item.goods_attr}}</view>
+                    </view>
+                    <view class="red mc-price f18">
+              ￥{{item.goods_price}}
+            </view>
+                    <view class="mc-m ml15">
+                        <view class="count-set mc-set tc">
+                            <view bindtap="bind_cart_number_jian" class="count-btn gridFourCirle" data-cid="{{item.id}}" data-type="1" id="{{item.goods_id}}" itemAttr="">
+                                <text class="iconfont icon-move"></text>
+                            </view>
+                            <input class="buy-couts" disabled="true" type="number" value="{{item.goods_number}}"></input>
+                            <view bindtap="bind_cart_number_jia" class="count-btn" data-cid="{{item.id}}" data-type="1" id="{{item.goods_id}}">
+                                <text class="count-btn iconfont icon-add"></text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <view bindtap="cart_list_show_bind" class="mc-bg"></view>
+    </view>
+</view>

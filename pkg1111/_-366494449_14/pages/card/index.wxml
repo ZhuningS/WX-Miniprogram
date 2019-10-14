@@ -1,0 +1,465 @@
+<include src="/components/index.wxml"></include>
+<include src="/components/tabbar/index.wxml"></include>
+<include src="/components/im/index.wxml"></include>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="page" hidden="{{!dataLoaded}}">
+    <official-account wx:if="{{account.title=='card'&&account.pos==1}}"></official-account>
+    <view class="btn">
+        <button bindtap="_jump" class="share-btn" data-opentype="redirectTo" data-url="/pages/cardList/index">
+            <image mode="widthFix" src="/images/card/cards.png"></image>
+        </button>
+    </view>
+    <view class="card-mod">
+        <view class="card-style1" wx:if="{{cardDetail.theme.id=='1'}}">
+            <view class="company" wx:if="{{cardDetail.company}}">
+                <view class="text">
+                    <image src="{{cardDetail.companylogo}}" style="width: 48rpx;height: 48rpx;margin-right: 10rpx;border-radius: 6rpx;"></image>
+                    <view style="width: 550rpx; white-space: nowrap;overflow: hidden; text-overflow: ellipsis; ">{{cardDetail.company}}</view>
+                </view>
+                <view class="bg">
+                    <image src="/images/card/wenzi@3x.png"></image>
+                </view>
+            </view>
+            <view class="avatar">
+                <image bindtap="previewOneImg" data-url="{{cardDetail.avatar}}" mode="aspectFill" src="{{cardDetail.avatar}}"></image>
+            </view>
+            <view class="name">
+                <view>{{cardDetail.name}}</view>
+                <view class="position" wx:if="{{cardDetail.position}}">{{cardDetail.position}}</view>
+            </view>
+            <view bindtap="_callPhone" data-phone="{{cardDetail.mobile_open}}" style="margin-left: 60rpx;font-size: 28rpx; color: #999" wx:if="{{cardDetail.mobile_open!=''}}">
+            {{cardDetail.mobile_open}}
+            </view>
+        </view>
+        <view class="card-style2" style="background-image: url({{cardDetail.theme.theme}})" wx:if="{{cardDetail.theme.id=='2'}}">
+            <view class="company" wx:if="{{companyInfo.logo}}">
+                <image src="{{companyInfo.logo}}"></image>
+                <text style="width: 320rpx; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 24rpx;">{{companyInfo.name}}</text>
+            </view>
+            <view class="left_part">
+                <view class="avatar">
+                    <image bindtap="previewOneImg" data-url="{{cardDetail.avatar}}" mode="aspectFill" src="{{cardDetail.avatar}}"></image>
+                </view>
+            </view>
+            <view class="right_part">
+                <view class="name">{{cardDetail.name}}</view>
+                <view class="position" wx:if="{{cardDetail.position}}">{{cardDetail.position}}</view>
+                <view style="margin-top: 30rpx">
+                    <view class="mobile" wx:if="{{cardDetail.mobile_open}}">
+                        <image src="/images/card/phone@3x.png"></image>
+                        <text>{{cardDetail.mobile_open}}</text>
+                    </view>
+                    <view class="email" wx:if="{{cardDetail.email}}">
+                        <image src="/images/card/Email@3x.png"></image>
+                        <text style="word-break:break-all">{{cardDetail.email}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="card-style3" style="background-image: url({{cardDetail.theme.theme}})" wx:if="{{cardDetail.theme.id=='3'}}">
+            <view class="company" wx:if="{{companyInfo.logo}}">
+                <text style="line-height: 24rpx;">{{companyInfo.name}}</text>
+                <image src="{{companyInfo.logo}}"></image>
+            </view>
+            <view class="left_part">
+                <view class="avatar">
+                    <image bindtap="previewOneImg" data-url="{{cardDetail.avatar}}" mode="aspectFill" src="{{cardDetail.avatar}}"></image>
+                </view>
+                <view class="position" style="margin-top:24rpx;" wx:if="{{cardDetail.position}}">{{cardDetail.position}}</view>
+            </view>
+            <view class="right_part">
+                <view class="name">{{cardDetail.name}}</view>
+                <view style="margin-top: 60rpx">
+                    <view class="mobile" wx:if="{{cardDetail.mobile_open}}">
+                        <text>{{cardDetail.mobile_open}}</text>
+                        <image src="/images/card/shouji@3x.png"></image>
+                    </view>
+                    <view class="email" wx:if="{{cardDetail.email}}">
+                        <text style="word-break:break-all">{{cardDetail.email}}</text>
+                        <image src="/images/card/Email2@3x.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="card-style4" style="background-image: url({{cardDetail.theme.theme}})" wx:if="{{cardDetail.theme.id=='4'}}">
+            <view class="company" wx:if="{{companyInfo.logo}}">
+                <image src="{{companyInfo.logo}}"></image>
+                <text style="line-height: 24rpx;">{{companyInfo.name}}</text>
+            </view>
+            <view class="right_part">
+                <view class="name">
+                    <view style="font-weight:500; white-space: nowrap">{{cardDetail.name}}</view>
+                    <view class="position" wx:if="{{cardDetail.position}}">{{cardDetail.position}}</view>
+                </view>
+                <view style="margin-top: 40rpx">
+                    <view class="mobile" wx:if="{{cardDetail.mobile_open}}">
+                        <view style="font-size: 0">
+                            <image src="/images/card/shouji@3x.png"></image>
+                        </view>
+                        <text style="line-height: 24rpx;">{{cardDetail.mobile_open}}</text>
+                    </view>
+                    <view class="email" wx:if="{{cardDetail.email}}">
+                        <image src="/images/card/Email2@3x.png"></image>
+                        <text style="word-break:break-all">{{cardDetail.email}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="left_part">
+                <view class="avatar">
+                    <image bindtap="previewOneImg" data-url="{{cardDetail.avatar}}" mode="aspectFill" src="{{cardDetail.avatar}}"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="_changeCardStatus" class="changeCard">
+        <block wx:if="{{!cardStatus}}">
+        展开全部名片信息<image class="icon_arrow" src="/images/card/icon_down.png"></image>
+        </block>
+        <block wx:else>
+        收起以下名片信息<image class="icon_arrow rotate180" src="/images/card/icon_down.png"></image>
+        </block>
+    </view>
+    <view class="info-mod" hidden="{{!cardStatus}}" style="margin-top: 0">
+        <form bindsubmit="_callPhone" data-phone="{{cardDetail.mobile_open}}" reportSubmit="true" wx:if="{{cardDetail.mobile_open!=''}}">
+            <button class="nobutton" formType="submit">
+                <view class="item">
+                    <image src="/images/card/mobile.png"></image>
+                    <text>{{cardDetail.mobile_open}}</text>
+                    <view class="btn-active">拨打</view>
+                </view>
+            </button>
+        </form>
+        <form bindsubmit="_copyText" data-copy-success="微信号已复制" data-copy-val="{{cardDetail.weixin}}" data-type="1" reportSubmit="true" wx:if="{{cardDetail.weixin!=''}}">
+            <button class="nobutton" formType="submit">
+                <view class="item">
+                    <image src="/images/card/weixin.png"></image>
+                    <text>{{cardDetail.weixin}}</text>
+                    <view class="btn-active">复制</view>
+                </view>
+            </button>
+        </form>
+        <form bindsubmit="_copyText" data-copy-success="邮箱已复制" data-copy-val="{{cardDetail.email}}" data-type="2" reportSubmit="true" wx:if="{{cardDetail.email!=''}}">
+            <button class="nobutton" formType="submit">
+                <view class="item">
+                    <image src="/images/card/email.png"></image>
+                    <text>{{cardDetail.email}}</text>
+                    <view class="btn-active">复制</view>
+                </view>
+            </button>
+        </form>
+        <form bindsubmit="_copyText" data-copy-success="QQ号已复制" data-copy-val="{{cardDetail.qq}}" data-type="3" reportSubmit="true" wx:if="{{cardDetail.qq!=''}}">
+            <button class="nobutton" formType="submit">
+                <view class="item">
+                    <image src="/images/card/QQ.png"></image>
+                    <text>{{cardDetail.qq}}</text>
+                    <view class="btn-active">复制</view>
+                </view>
+            </button>
+        </form>
+        <view class="item" wx:if="{{cardDetail.company!=''}}">
+            <image src="/images/card/company.png"></image>
+            <text>{{cardDetail.company}}</text>
+        </view>
+        <view class="item" wx:if="{{cardDetail.address!=''}}">
+            <image src="/images/card/addr.png"></image>
+            <text>{{cardDetail.address}}</text>
+        </view>
+        <form bindsubmit="_callPhone" data-phone="{{cardDetail.telephone}}" reportSubmit="true" wx:if="{{cardDetail.telephone!=''}}">
+            <button class="nobutton" formType="submit">
+                <view class="item">
+                    <image src="/images/card/tel.png"></image>
+                    <text>{{cardDetail.telephone}}</text>
+                    <view class="btn-active">拨打</view>
+                </view>
+            </button>
+        </form>
+    </view>
+    <view style="display: flex; padding: 40rpx 30rpx; background: #fff">
+        <button bindtap="_openShareLayer" class="btn-primary2" style="flex:1;border-radius: 6rpx; margin-right: 16rpx">分享名片</button>
+        <form bindsubmit="_addPhonebook" reportSubmit="true" style="flex:1; margin-left: 16rpx">
+            <button class="nobutton" formType="submit" style="text-align:center">
+                <view>
+                    <button class="btn-primary" style="border-radius: 6rpx;">存入手机通讯录</button>
+                </view>
+            </button>
+        </form>
+    </view>
+    <view style="background: #f0eff5">
+        <view class="zanList">
+            <view class="zanListLeft">
+                <view class="avatarList">
+                    <view class="avatar-item" wx:for="{{cardDetail.invites.items}}">
+                        <image src="{{item.logo}}"></image>
+                    </view>
+                    <view style="position:relative;top:-2rpx;font-size:24rpx;color:#999" wx:if="{{cardDetail.invites.count>10}}">...</view>
+                </view>
+                <view class="text">最近{{cardDetail.invites.count}}人浏览</view>
+            </view>
+            <view class="zanListRight">
+                <view class="state">
+                    <form bindsubmit="_zan" reportSubmit="true">
+                        <button class="nobutton" formType="submit" style="text-align: center">
+                            <view class="item" style="line-height:42rpx;">
+                                <image src="{{zanIcon}}" style="width: 50rpx; height: 50rpx; display: block; margin: 0 auto"></image>
+                                <text style="color: #999; font-size: 22rpx">靠谱: {{hits}}</text>
+                            </view>
+                        </button>
+                    </form>
+                </view>
+            </view>
+        </view>
+        <view class="info-mod" style="padding:0 40rpx 20rpx;word-break: break-all; font-size: 30rpx" wx:if="{{cardDetail.remark&&cardDetail.remark!=''||hasVoice}}">
+            <view class="title" style="padding:30rpx 0">我的个人简介</view>
+            <view style="margin-top:-4rpx;" wx:if="{{cardDetail.remark!=''}}">“{{cardDetail.remark}}”</view>
+            <view class="recordWarp" wx:if="{{hasVoice}}">
+                <view class="avatar">
+                    <image mode="aspectFill" src="{{cardDetail.avatar}}"></image>
+                </view>
+                <view bindtap="_playRecord" class="record" data-record="{{cardDetail.record_url}}">
+                    <view class="text">播放语音<text>{{cardDetail.record_second}}''</text>
+                    </view>
+                    <view class="laba {{playStatus==1?'play':''}}"></view>
+                </view>
+            </view>
+        </view>
+        <view class="info-mod" style="padding:0 40rpx 20rpx;word-break: break-all; font-size: 30rpx" wx:if="{{cardDetail.video_url&&cardDetail.video_url!=''}}">
+            <view class="title" style="padding:30rpx 0">我的视频</view>
+            <view bindtap="_jump" data-url="/pages/video/index?url={{cardDetail.video_url}}" style="position:relative;border-radius: 8rpx; position: relative; background: #000;font-size:0;">
+                <image mode="aspectFit" src="{{cardDetail.video_url}}?vframe/jpg/offset/0" style="border-radius:8rpx; position: relative;z-index:98; width: 100%;height: 420rpx;"></image>
+                <image src="/images/card/play@2x.png" style="width:106rpx;height: 106rpx;position: absolute; left: 50%;top: 50%; margin-left: -53rpx; margin-top: -53rpx; z-index:99"></image>
+            </view>
+        </view>
+        <view class="info-mod" style="padding:0 40rpx 20rpx;word-break: break-all; font-size: 30rpx" wx:if="{{cardDetail.label&&cardDetail.label.length>0}}">
+            <view class="title" style="padding:30rpx 0">我的印象标签</view>
+            <view class="label-group">
+                <view bindtap="_clickLabel" class="label" data-index="{{index}}" data-label="{{item.name}}" wx:for="{{labelList}}">
+                    <view class="mask"></view>
+                    <view class="text">
+                          {{item.name}}
+                          <text style="margin-left: 10rpx; color: #54bc3e" wx:if="{{currentLabel==index}}">{{currentHits}}</text>
+                        <text style="margin-left: 10rpx; color: #54bc3e" wx:else>{{item.hits}}</text>
+                        <text class="jia1 {{currentLabel===index?'ani':''}}">+1</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="info-mod" style="word-break: break-all; font-size: 30rpx; padding-bottom: 30rpx" wx:if="{{cardDetail.product&&cardDetail.product.length>0}}">
+            <view class="title">推荐商品</view>
+            <scroll-view wx:if="{{cardDetail.product&&cardDetail.product.length>1}}">
+                <view class="goodsList" style="width: {{width}}rpx">
+                    <block wx:for="{{cardDetail.product}}" wx:key="id">
+                        <view bindtap="_jump" class="goods" data-url="/pages/goodsDetail/detail/index?id={{item.id}}" wx:if="{{item.isgroups!=1&&item.isseckill!=1}}">
+                            <view class="goods_wrap">
+                                <view class="goods__imgWrap">
+                                    <image class="goods__img" mode="aspectFill" src="{{item.thumb}}"></image>
+                                </view>
+                                <view class="goods__name">{{item.name}}</view>
+                                <view class="goodsInfoWrap" wx:if="{{item.discount>0}}">
+                                    <view class="goods__price">
+                                        <text class="goods__price__unit">￥</text>{{item.price_discount}}
+                              </view>
+                                </view>
+                                <view class="goodsInfoWrap" wx:else>
+                                    <view class="goods__price">
+                                        <text class="goods__price__unit">￥</text>
+                                  {{item.price}}
+                              </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view bindtap="_jump" class="goods" data-url="/pages/goodsDetail/detailGroup/index?id={{item.goods_id}}" wx:if="{{item.isgroups==1}}">
+                            <view class="goods_wrap">
+                                <image src="/images/card/biaoqian@3x.png" style="width:72rpx;height: 72rpx; position: absolute; left: 0; top: 0; z-index: 99"></image>
+                                <view class="goods__imgWrap">
+                                    <image class="goods__img" mode="aspectFill" src="{{item.thumb}}"></image>
+                                </view>
+                                <view class="goods__name">{{item.name}}</view>
+                                <view class="goodsInfoWrap">
+                                    <view class="goods__price">
+                                        <text class="goods__price__unit">￥</text>
+                                {{item.groups_price}}
+                            </view>
+                                </view>
+                            </view>
+                        </view>
+                        <view bindtap="_jump" class="goods" data-url="/pages/goodsDetail/detailMs/index?id={{item.goods_id}}" wx:if="{{item.isseckill==1}}">
+                            <view class="goods_wrap">
+                                <view class="goods__imgWrap">
+                                    <image class="goods__img" mode="aspectFill" src="{{item.thumb}}"></image>
+                                </view>
+                                <view class="goods__name">{{item.name}}</view>
+                                <view class="goodsInfoWrap">
+                                    <view class="goods__price">
+                                        <text class="goods__price__unit">￥</text>
+                                {{item.seckill_money}}
+                            </view>
+                                </view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </scroll-view>
+            <view class="goodsList" style="padding-bottom: 40rpx" wx:if="{{cardDetail.product&&cardDetail.product.length==1}}">
+                <block wx:for="{{cardDetail.product}}" wx:key="id">
+                    <view bindtap="_jump" class="goods" data-url="/pages/goodsDetail/detail/index?id={{item.id}}" style="margin: 0 40rpx; width: 100%" wx:if="{{item.isgroups!=1}}">
+                        <view class="goods_wrap" style="display:flex;">
+                            <view class="goods__imgWrap" style="width: 240rpx;height: 240rpx;margin-bottom: 0">
+                                <image class="goods__img" mode="aspectFill" src="{{item.thumb}}"></image>
+                            </view>
+                            <view style="margin:20rpx  0rpx">
+                                <view class="goods__name" style="min-height: 42rpx; font-size: 32rpx;width: 400rpx">{{item.name}}</view>
+                                <view class="goods__shorttitle">{{item.shorttitle}}</view>
+                                <view class="goodsInfoWrap" wx:if="{{item.discount>0}}">
+                                    <view class="goods__price" style="font-size:32rpx">
+                                        <text class="goods__price__unit">￥</text>{{item.price_discount}}
+                              </view>
+                                </view>
+                                <view class="goodsInfoWrap" wx:else>
+                                    <view class="goods__price" style="font-size:32rpx">
+                                        <text class="goods__price__unit">￥</text>{{item.price}}
+                              </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view bindtap="_jump" class="goods" data-url="/pages/goodsDetail/detailGroup/index?id={{item.goods_id}}" style="margin: 0 40rpx;width: 100%" wx:if="{{item.isgroups==1}}">
+                        <view class="goods_wrap" style="display:flex;">
+                            <image src="/images/card/biaoqian@3x.png" style="width:72rpx;height: 72rpx; position: absolute; left: 0; top: 0; z-index: 99"></image>
+                            <view class="goods__imgWrap" style="width: 240rpx; height: 240rpx;margin-bottom: 0">
+                                <image class="goods__img" mode="aspectFill" src="{{item.thumb}}"></image>
+                            </view>
+                            <view style="margin:20rpx  0rpx">
+                                <view class="goods__name" style="min-height: 42rpx; font-size: 32rpx; width: 400rpx">{{item.name}}</view>
+                                <view class="goods__shorttitle">{{item.shorttitle}}</view>
+                                <view class="goodsInfoWrap">
+                                    <view class="goods__price" style="font-size:32rpx">
+                                        <text class="goods__price__unit">￥</text>
+                                  {{item.groups_price}}
+                              </view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </view>
+        </view>
+        <view class="info-mod" style="word-break: break-all; font-size: 0" wx:if="{{cardDetail.photo&&cardDetail.photo.length>0}}">
+            <view class="title">照片墙</view>
+            <image bindtap="previewImg" data-url="{{item}}" data-urls="{{cardDetail.photo}}" mode="widthFix" src="{{item}}" wx:for="{{cardDetail.photo}}"></image>
+        </view>
+        <official-account wx:if="{{account.title=='card'&&account.pos==2}}"></official-account>
+    </view>
+    <template is="im" data="{{hasMobile:hasMobile,msgNum:msgNum}}"></template>
+    <template is="tabbar" data="{{tabbar:tabbar,data:'card'}}"></template>
+    <template is="login" data="{{...companyInfo}}" wx:if="{{isAuth==false}}"></template>
+    <template is="msgTip" data="{{...msgInfo,msgStatus:msgStatus,cardAvatar:cardAvatar,hasMobile:hasMobile}}"></template>
+    <template is="shareLayer" data wx:if="{{!!shareLayer}}"></template>
+    <view class="popCard" hidden="{{!isPopCard}}">
+        <view bindtap="_closePopCard" class="mask"></view>
+        <view class="content">
+            <view class="top">
+                <image src="{{cardDetail.avatar}}"></image>
+                <view class="text">这是我的名片，请惠存</view>
+            </view>
+            <view class="body">
+                <view class="card-small-style1" wx:if="{{cardDetail.theme.id=='1'}}">
+                    <view class="company" wx:if="{{cardDetail.company}}">
+                        <view class="text">
+                            <image src="{{cardDetail.companylogo}}" style="width: 32rpx;height: 32rpx;margin-right: 6rpx;"></image>{{cardDetail.company}}</view>
+                        <view class="bg">
+                            <image src="/images/card/wenzi@3x.png"></image>
+                        </view>
+                    </view>
+                    <view class="avatar">
+                        <image mode="aspectFill" src="{{cardDetail.avatar}}"></image>
+                    </view>
+                    <view class="name">
+                        <view>{{cardDetail.name}}</view>
+                        <view class="position" wx:if="{{cardDetail.position}}">{{cardDetail.position}}</view>
+                    </view>
+                    <view bindtap="_callPhone" data-phone="{{cardDetail.mobile_open}}" style="margin-left: 20rpx;font-size: 24rpx; color: #999" wx:if="{{cardDetail.mobile_open!=''}}">
+                          {{cardDetail.mobile_open}}
+                          </view>
+                </view>
+                <view class="card-small-style2" style="background-image: url({{cardDetail.theme.theme}})" wx:if="{{cardDetail.theme.id=='2'}}">
+                    <view class="company" wx:if="{{cardDetail.company}}">
+                        <image src="{{cardDetail.companylogo}}"></image>
+                        <text style="color: #ddd;font-size: 20rpx">{{cardDetail.company}}</text>
+                    </view>
+                    <view class="left_part">
+                        <view class="avatar">
+                            <image mode="aspectFill" src="{{cardDetail.avatar}}"></image>
+                        </view>
+                    </view>
+                    <view class="right_part">
+                        <view class="name">{{cardDetail.name}}</view>
+                        <view class="position" wx:if="{{cardDetail.position}}">{{cardDetail.position}}</view>
+                        <view style="margin-top: 10rpx">
+                            <view class="mobile" wx:if="{{cardDetail.mobile_open}}">
+                                <image src="/images/card/phone@3x.png"></image>
+                                <text>{{cardDetail.mobile_open}}</text>
+                            </view>
+                            <view class="email" wx:if="{{cardDetail.email}}">
+                                <image src="/images/card/Email@3x.png"></image>
+                                <text style="word-break:break-all">{{cardDetail.email}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="card-small-style3" style="background-image: url({{cardDetail.theme.theme}})" wx:if="{{cardDetail.theme.id=='3'}}">
+                    <view class="company" wx:if="{{companyInfo.logo}}">{{companyInfo.name}}<image src="{{companyInfo.logo}}"></image>
+                    </view>
+                    <view class="left_part">
+                        <view class="avatar">
+                            <image mode="aspectFill" src="{{cardDetail.avatar}}"></image>
+                        </view>
+                        <view class="position" wx:if="{{cardDetail.position}}">{{cardDetail.position}}</view>
+                    </view>
+                    <view class="right_part">
+                        <view class="name">{{cardDetail.name}}</view>
+                        <view style="margin-top: 40rpx">
+                            <view class="mobile" wx:if="{{cardDetail.mobile_open}}">
+                                <text>{{cardDetail.mobile_open}}</text>
+                                <image src="/images/card/shouji@3x.png"></image>
+                            </view>
+                            <view class="email" wx:if="{{cardDetail.email}}">
+                                <text style="word-break:break-all">{{cardDetail.email}}</text>
+                                <image src="/images/card/Email2@3x.png"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="card-small-style4" style="background-image: url({{cardDetail.theme.theme}})" wx:if="{{cardDetail.theme.id=='4'}}">
+                    <view class="company" wx:if="{{companyInfo.logo}}">
+                        <image src="{{companyInfo.logo}}"></image>{{companyInfo.name}}</view>
+                    <view class="right_part">
+                        <view class="name">
+                            <view style="font-weight:500; white-space: nowrap">{{cardDetail.name}}</view>
+                            <view class="position" wx:if="{{cardDetail.position}}">{{cardDetail.position}}</view>
+                        </view>
+                        <view style="margin-top: 20rpx">
+                            <view class="mobile" wx:if="{{cardDetail.mobile_open}}">
+                                <image src="/images/card/shouji@3x.png"></image>
+                                <text>{{cardDetail.mobile_open}}</text>
+                            </view>
+                            <view class="email" wx:if="{{cardDetail.email}}">
+                                <image src="/images/card/Email2@3x.png"></image>
+                                <text style="word-break:break-all">{{cardDetail.email}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="left_part">
+                        <view class="avatar">
+                            <image mode="aspectFill" src="{{cardDetail.avatar}}"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="_addPhonebook" class="btn-primary" style="text-align: center; border-radius: 10rpx;">存入手机通讯录</view>
+            <view bindtap="_closePopCard" class="btn-kankan">看看再说</view>
+        </view>
+    </view>
+</view>

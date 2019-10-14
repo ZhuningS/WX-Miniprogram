@@ -1,0 +1,24 @@
+<template name="mCase">
+    <view class="mcase" style="margin-top:{{style.marginTop}};margin-bottom:{{style.marginBottom}};margin-left:{{style.marginLeft}};margin-right:{{style.marginRight}}">
+        <view class="arrange" wx:for="{{dataset.imgList}}" wx:key="{{uid}}">
+            <view bindtap="_jump" class="inner" data-url="/pages/goodsDetail/detail/index?id={{item.linkData.id}}" wx:if="{{item.linkType=='goods'}}">
+                <image mode="widthFix" src="{{item.img}}"></image>
+            </view>
+            <view bindtap="_jump" class="inner" data-url="/pages/goodsDetail/detailMs/index?id={{item.linkData.id}}" wx:if="{{item.linkType=='msgoods'}}">
+                <image mode="widthFix" src="{{item.img}}"></image>
+            </view>
+            <view bindtap="_jump" class="inner" data-url="/pages/goodsDetail/detailGroup/index?id={{item.linkData.id}}" wx:if="{{item.linkType=='tggoods'}}">
+                <image mode="widthFix" src="{{item.img}}"></image>
+            </view>
+            <view bindtap="_jump" class="innner" data-url="{{item.linkData.path}}" wx:if="{{item.linkType=='page'}}">
+                <image mode="widthFix" src="{{item.img}}"></image>
+            </view>
+            <view bindtap="_jump" class="inner" data-url="/pages/shop/home/index?id={{item.linkData.sid}}" wx:if="{{item.linkType=='shop'}}">
+                <image mode="widthFix" src="{{item.img}}"></image>
+            </view>
+            <view class="inner" wx:if="{{item.linkType==''}}">
+                <image mode="widthFix" src="{{item.img}}"></image>
+            </view>
+        </view>
+    </view>
+</template>

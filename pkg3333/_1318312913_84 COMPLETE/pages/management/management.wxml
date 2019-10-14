@@ -1,0 +1,33 @@
+<view class="header">
+    <view bindtap="onTapType" class="button {{current==='magazine'?'selected':''}}" data-type="magazine">杂志</view>
+    <view bindtap="onTapType" class="button {{current==='follow'?'selected':''}}" data-type="follow">关注的人</view>
+</view>
+<view class="cate-ctn {{cate.section.events[0].category.status==='forbidden'?'hide':''}}" wx:if="{{current==='magazine'}}" wx:for="{{cates}}" wx:for-item="cate" wx:key="{{ index }}">
+    <view bindtap="switchTab" class="cate-title" data-cid="{{cate.section.events[0].category.id}}">
+        <text>{{cate.section.events[0].category.name}}</text>
+    </view>
+    <view class="actions">
+        <view bindtap="hide" class="button" data-cid="{{cate.section.events[0].category.id}}" wx:if="{{cate.section.events[0].category.status!=='forbidden'}}">隐藏</view>
+        <view bindtap="show" class="button" data-cid="{{cate.section.events[0].category.id}}" wx:else>显示</view>
+        <block wx:if="{{cate.section.events[0].category.status!=='forbidden'}}">
+            <view bindtap="top" class="button" data-cid="{{cate.section.events[0].category.id}}" wx:if="{{index!==0}}">置顶</view>
+        </block>
+    </view>
+    <form reportSubmit bindsubmit="hackForm">
+        <view class="cate" wx:if="{{index>=1&&item.magazine.status==='subscribed'}}" wx:for="{{cate.section.events}}" wx:key="{{ index }}">
+            <view>{{item.magazine.name}}</view>
+            <button bindtap="onTapUnsubscribe" class="button width-60" data-mid="{{item.magazine.id}}" formType="submit" hoverClass="none" wx:if="{{subscribed[item.magazine.id]}}">已订阅</button>
+            <button bindtap="onTapSubscribe" class="button" data-mid="{{item.magazine.id}}" formType="submit" hoverClass="none" wx:else>订阅</button>
+        </view>
+    </form>
+</view>
+<view class="followers-ctn" wx:if="{{current==='follow'}}">
+    <navigator class="user" hoverClass="none" openType="navigate" url="/pages/profile/user?uid={{item.user.uid}}" wx:for="{{followers}}" wx:key="{{ index }}">
+        <image class="avatar" src="{{item.user.avatar}}"></image>
+        <view class="info">
+            <view class="name">{{item.user.name}}</view>
+        </view>
+        <view catchtap="unfollow" class="button border" data-uid="{{item.user.uid}}" wx:if="{{followed[item.user.uid]}}">已关注</view>
+        <view catchtap="follow" class="button" data-uid="{{item.user.uid}}" wx:else>关注</view>
+    </navigator>
+</view>

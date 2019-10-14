@@ -1,0 +1,41 @@
+.wrap {
+    padding-bottom: 20rpx;
+}
+
+page {
+    background: #fff;
+}
+
+.new_item2 {
+    display: flex;
+    padding: 20rpx 20rpx;
+    border-bottom: 1px solid #ececec;
+}
+
+.new_img2 {
+    width: 180rpx;
+    height: 140rpx;
+    margin-right: 30rpx;
+}
+
+.new_img2 image {
+    width: 180rpx;
+    height: 140rpx;
+}
+
+.new_info2 {
+    flex: 1;
+}
+
+.new_info2 .title {
+    font-size: 30rpx;
+}
+
+.new_info2 .time {
+    color: #999;
+    margin-top: 16rpx;
+    font-size: 24rpx;
+}
+
+.new_wrap2 {
+}

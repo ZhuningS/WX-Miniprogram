@@ -1,0 +1,29 @@
+<view class="re-bg f fv fc fj fc-h rel">
+    <view class="re-userList f fc fc-h" wx:if="{{vm.isok&&vm.peoNum!=0}}">
+        <view class="f fc">
+            <image class="re-user mr20" mode="aspectFill" src="{{item.HeadImgUrl}}" wx:for="{{vm.userList}}" wx:key="key"></image>
+        </view>
+        <view class="f fc">
+            <view class="re-noUser mr20" wx:for="{{vm.peoNum}}" wx:key="key">?</view>
+        </view>
+    </view>
+    <view class="re-success f fv fc" wx:if="{{vm.isok&&vm.peoNum==0}}">
+        <text class="re-sc1">满{{vm.coup.LimitMoneyStr}}立减{{vm.coup.MoneyStr}}元立减金</text>
+        <text class="re-sc2 mt10">已发放在您的【我的优惠券】中</text>
+        <text class="re-sc2 mt10">可在本小程序店铺中抵扣</text>
+    </view>
+    <view class="re-userList f40 cred" wx:if="{{vm.show}}">亲,下次点快点吧~</view>
+    <text class="re-txt f30 t-b" wx:if="{{vm.isok&&vm.peoNum!=0}}">还差{{vm.peoNum}}人即可成功领取立减金</text>
+    <text class="re-txt" wx:if="{{vm.isok==false}}">{{vm.msg}}</text>
+    <button class="re-btn f28" openType="share" wx:if="{{vm.isok&&vm.peoNum!=0}}">邀请好友一起领取</button>
+    <view bindtap="goHome" class="re-btn tc" wx:if="{{vm.isok&&vm.peoNum==0}}">立即使用</view>
+    <block wx:if="{{vm.isok}}">
+        <text class="time" wx:if="{{vm.coup.ValType==0}}">还剩  {{time||'00:00:00'}}  结束</text>
+        <text class="f24 time" wx:if="{{vm.coup.ValType==1}}">活动期限在领取成功后次日开始{{vm.coup.ValDay}}天内有效</text>
+        <text class="f24 time" wx:if="{{vm.coup.ValType==2}}">活动期限在领取成功后开始{{vm.coup.ValDay}}天内有效</text>
+    </block>
+    <view class="time" wx:if="{{vm.isok==false}}">该立减金不存在</view>
+    <view class="time" wx:if="{{vm.show}}">{{vm.txt}}</view>
+    <text class="re-bottom" wx:if="{{vm.peoNum!=0}}">快邀请好友来领取</text>
+    <navigator class="re-home" openType="reLaunch" url="/pages/index/index" wx:if="{{vm.peoNum==0}}">去首页逛逛</navigator>
+</view>

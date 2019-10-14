@@ -1,0 +1,41 @@
+<view class="container">
+    <view class="head">
+        <view bindtap="select" class="{{activeindex==index?'select':''}}" data-index="{{index}}" wx:for="{{array}}">{{item}}</view>
+    </view>
+    <view class="commodity">
+        <view class="child">
+            <view bindtap="goods_info" class="goods rel" id="{{item.id}}" wx:if="{{item.is_show==1&activeindex==0}}" wx:for="{{store_shop}}">
+                <image class="goods_img" mode="aspectFill" src="{{item.lb_imgs}}"></image>
+                <view>{{item.goods_name}}</view>
+                <view style="color:#ED414A">￥{{item.goods_cost}}</view>
+                <view class="ab" style="display:none"></view>
+                <view class="ab">
+                    <image mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/car1.png"></image>
+                </view>
+            </view>
+            <view bindtap="goods_info" class="goods rel" id="{{item.id}}" wx:if="{{item.is_show==1&activeindex==1&item.is_tuijian==1}}" wx:for="{{store_shop}}">
+                <image class="goods_img" mode="aspectFill" src="{{item.lb_imgs}}"></image>
+                <view>{{item.goods_name}}</view>
+                <view style="color:#ED414A">￥{{item.goods_cost}}</view>
+                <view class="ab">
+                    <text>推荐</text>
+                </view>
+                <view class="ab">
+                    <image mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/car1.png"></image>
+                </view>
+            </view>
+            <view bindtap="goods_info" class="goods rel" id="{{item.id}}" wx:if="{{item.is_show==1&activeindex==2&item.is_remen==1}}" wx:for="{{store_shop}}">
+                <image class="goods_img" mode="aspectFill" src="{{item.lb_imgs}}"></image>
+                <view>{{item.goods_name}}</view>
+                <view style="color:#ED414A">￥{{item.goods_cost}}</view>
+                <view class="ab">
+                    <text>热门</text>
+                </view>
+                <view class="ab">
+                    <image mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/car1.png"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="none_info">没有更多信息了</view>
+</view>

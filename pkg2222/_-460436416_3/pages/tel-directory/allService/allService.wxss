@@ -1,0 +1,44 @@
+@import "../../../__wuBaseWxss__/13.wxss";
+
+@import "../../../__wuBaseWxss__/2.wxss";
+
+.head {
+    position: relative;
+    padding: 30rpx 0;
+}
+
+.head::before,.head::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 14rpx;
+    height: 14rpx;
+    background-color: currentColor;
+}
+
+.head::before {
+    transform-origin: 50% 50%;
+    transform: translate(-34rpx,-50%) rotate(45deg);
+}
+
+.head::after {
+    transform-origin: 50% 50%;
+    -webkit-transform: translate(20rpx,-50%) rotate(-45deg);
+    transform: translate(20rpx,-50%) rotate(-45deg);
+}
+
+.serList {
+    padding-bottom: 20rpx;
+    font-size: 30rpx;
+}
+
+.serItem {
+    width: 25%;
+    text-align: center;
+    padding: 12rpx 0;
+    display: inline-block;
+}
+
+.serItem:active {
+    background-color: rgba(0,0,0,0.05);
+}

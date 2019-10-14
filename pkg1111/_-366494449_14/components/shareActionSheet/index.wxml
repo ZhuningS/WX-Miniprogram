@@ -1,0 +1,22 @@
+<template name="shareActionSheet">
+    <view class="actionSheet {{asShow?'show':''}}">
+        <view animation="{{asMaskAniData}}" bindtap="med_{{scopeKey}}" class="actionSheet__mask" data-med-name="hide"></view>
+        <view animation="{{asAniData}}" class="actionSheet__content">
+            <view class="shareList">
+                <button class="nobutton shareItem" openType="share">
+                    <image class="shareItem__icon" mode="aspectFit" src="http://cdn2.taojinzi.com/xcx/imgs/shareFriend.png"></image>
+                    <view class="shareItem__text">发送给朋友</view>
+                </button>
+                <view class="shareItem" wx:if="{{gening}}">
+                    <image class="shareItem__icon shareItem__icon_loading" data-med-name="genShareImg" mode="aspectFit" src="/images/loading.gif"></image>
+                    <view class="shareItem__text" data-med-name="genShareImg">生成中</view>
+                </view>
+                <view bindtap="med_{{scopeKey}}" class="shareItem" data-med-name="genShareImg" wx:else>
+                    <image class="shareItem__icon" data-med-name="genShareImg" mode="aspectFit" src="http://cdn1.taojinzi.com/xcx/imgs/shareImg.png"></image>
+                    <view class="shareItem__text" data-med-name="genShareImg">生成分享图片</view>
+                </view>
+            </view>
+            <view bindtap="med_{{scopeKey}}" class="actionSheet__cancel" data-med-name="hide">取消</view>
+        </view>
+    </view>
+</template>

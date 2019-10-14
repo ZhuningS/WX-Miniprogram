@@ -1,0 +1,237 @@
+page {
+    background: #F5F5F5;
+}
+
+.wrapper.iPhoneX {
+    padding-bottom: 72rpx;
+}
+
+.section {
+    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 60rpx;
+    margin-bottom: 16rpx;
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
+
+.express-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px dashed #ececec;
+    padding-top: 40rpx;
+    padding-bottom: 40rpx;
+}
+
+.express-company-logo {
+    width: 106rpx;
+    height: 106rpx;
+    border-radius: 53rpx;
+    background: #fbfbfb;
+}
+
+.express-company-info {
+    padding-left: 32rpx;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.express-company-info .row {
+    font-size: 30rpx;
+    font-weight: bold;
+    margin-top: 10rpx;
+}
+
+.express-company-info .row:first-child {
+    margin-top: 0;
+}
+
+.express-company {
+    color: #353535;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 23rpx 0;
+}
+
+.detail .item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 23rpx 0;
+    position: relative;
+}
+
+.detail .item .info {
+    flex: 1;
+    font-size: 28rpx;
+    color: #888;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 66rpx;
+}
+
+.detail .item .info .desc {
+    font-size: 30rpx;
+    line-height: 46rpx;
+}
+
+.detail .item .info .date-time {
+    font-size: 26rpx;
+    color: #888;
+    margin-top: 6rpx;
+}
+
+.detail .item:first-child .desc {
+    color: #000;
+}
+
+.detail .item .info.empty {
+    padding-left: 0;
+}
+
+.no-express {
+    font-size: 28rpx;
+    color: rgba(0,0,0,0.50);
+    line-height: 44rpx;
+}
+
+.status-graph {
+    position: absolute;
+    width: 34rpx;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.status-graph .line {
+    width: 1rpx;
+    height: 100%;
+    background: #D8D8D8;
+}
+
+.status-graph .dot {
+    position: absolute;
+    left: 50%;
+    top: calc(50% - 10px);
+    transform: translate(-50%,-50%);
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 6rpx;
+    background: #D8D8D8;
+}
+
+.detail .item:first-child .status-graph .line {
+    margin-top: 17rpx;
+}
+
+.detail .item:first-child .status-graph .dot {
+    top: 23rpx;
+    width: 34rpx;
+    height: 34rpx;
+    border-radius: 17rpx;
+    background: rgba(9,187,7,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detail .item:first-child .status-graph .dot::before {
+    content: '';
+    width: 16rpx;
+    height: 16rpx;
+    border-radius: 8rpx;
+    background: #09BB07;
+}
+
+.detail .item:last-child .status-graph .line {
+    height: calc(50% - 10px);
+}
+
+.header {
+    padding: 40rpx 0 16rpx;
+    font-weight: bold;
+    font-size: 28rpx;
+    color: #000;
+    line-height: 44rpx;
+}
+
+.separator {
+    border-top: 1rpx solid #ECECEC;
+}
+
+.goods-detail {
+    background: #FFF;
+    padding: 24rpx 0 44rpx;
+}
+
+.goods {
+    padding: 16rpx 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.goods-img {
+    width: 162rpx;
+    height: 162rpx;
+}
+
+.goods-info {
+    margin-left: 40rpx;
+    flex-grow: 1;
+}
+
+.goods-info__name {
+    font-size: 28rpx;
+    color: #000;
+    margin-bottom: 20rpx;
+}
+
+.goods-info__desc {
+    font-size: 26rpx;
+    color: #B2B2B2;
+    margin-bottom: 32rpx;
+}
+
+.goods-info__price-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.goods-info__price {
+    font-family: WeChat Sans Std;
+    font-weight: bold;
+    font-size: 30rpx;
+    color: #000;
+    flex-grow: 1;
+}
+
+.goods-info__quantity {
+    font-size: 28rpx;
+    color: #000;
+}
+
+.bottom {
+    display: flex;
+}
+
+.order-detail-btn {
+    margin: 64rpx auto;
+    font-size: 28rpx;
+    color: #576B95;
+    line-height: 44rpx;
+}

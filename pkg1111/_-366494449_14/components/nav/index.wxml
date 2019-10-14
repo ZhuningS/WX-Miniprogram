@@ -1,0 +1,8 @@
+<template name="nav">
+    <view class="nav" style="margin-top: 14rpx">
+        <navigator class="blockItem" hoverClass="none" url="{{item.url}}" wx:for="{{nav}}" wx:key="{{name}}">
+            <image class="blockItem__img" mode="aspectFit" src="{{item.icon}}"></image>
+            <view class="blockItem__text">{{item.name}}</view>
+        </navigator>
+    </view>
+</template>

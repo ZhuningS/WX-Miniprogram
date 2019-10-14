@@ -1,0 +1,7 @@
+<qm-popup isVisible="{{isVisible}}">
+    <view class="{{rootClassNames}}">
+        <view class="main-body">
+      @TODO: Creator
+    </view>
+    </view>
+</qm-popup>

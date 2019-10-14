@@ -1,0 +1,8 @@
+<view class="container {{isLastOne?'':'separtor'}}">
+    <view class="content">
+        <slot></slot>
+    </view>
+    <view class="icon" wx:if="{{withArrow}}">
+        <image src="../../res/img/icon-arrow-right-light.png"></image>
+    </view>
+</view>

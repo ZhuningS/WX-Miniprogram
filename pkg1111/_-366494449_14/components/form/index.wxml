@@ -1,0 +1,87 @@
+<template name="form">
+    <view class="form">
+        <form bindreset="" bindsubmit="_formSubmit" reportSubmit="true">
+            <input hidden="true" name="form_id" type="text" value="{{id}}"></input>
+            <block wx:for="{{options}}">
+                <view class="form__item" wx:if="{{item.type=='text'}}">
+                    <view class="required" wx:if="{{item.required=='true'}}">*</view>
+                    <view class="required" wx:else></view>
+                    <view class="label">{{item.name}}</view>
+                    <view class="controller">
+                        <input name="{{item.name}}" placeholder="{{item.placeholder}}" type="text" value="{{form_info}}"></input>
+                    </view>
+                </view>
+                <view class="form__item" wx:elif="{{item.type=='textarea'}}">
+                    <view class="required" wx:if="{{item.required=='true'}}">*</view>
+                    <view class="required" wx:else></view>
+                    <view class="label">{{item.name}}</view>
+                    <view class="controller">
+                        <textarea autoHeight="true" name="{{item.name}}" placeholder="{{item.placeholder}}" style="margin:10rpx 0" value="{{form_info}}"></textarea>
+                    </view>
+                </view>
+                <view class="form__item" wx:elif="{{item.type=='radio'}}">
+                    <view class="required" wx:if="{{item.required=='true'}}">*</view>
+                    <view class="required" wx:else></view>
+                    <view class="label">{{item.name}}
+            </view>
+                    <view class="controller">
+                        <radio-group class="radio-group" name="{{item.name}}">
+                            <label class="radio" wx:for="{{item.tags}}">
+                                <radio checked="{{form_info2}}" value="{{item}}"></radio> {{item}}
+                </label>
+                        </radio-group>
+                    </view>
+                </view>
+                <view class="form__item" wx:elif="{{item.type=='checkbox'}}">
+                    <view class="required" wx:if="{{item.required=='true'}}">*</view>
+                    <view class="required" wx:else></view>
+                    <view class="label">
+              {{item.name}}
+            </view>
+                    <view class="controller">
+                        <checkbox-group class="checkbox-group" name="{{item.name}}">
+                            <label class="checkbox" wx:for="{{item.tags}}">
+                                <checkbox checked="{{form_info2}}" value="{{item}}"></checkbox> {{item}}
+                </label>
+                        </checkbox-group>
+                    </view>
+                </view>
+                <view class="form__item" wx:elif="{{item.type=='date'}}">
+                    <view class="required" wx:if="{{item.required=='true'}}">*</view>
+                    <view class="required" wx:else></view>
+                    <view class="label">{{item.name}}</view>
+                    <picker bindchange="_bindDateChange" mode="date" name="{{item.name}}" value="">
+                        <view class="picker">{{date}}</view>
+                    </picker>
+                    <image src="/images/icon/arrow.png" style="width:24rpx; height: 24rpx;"></image>
+                </view>
+                <view class="form__item" wx:elif="{{item.type=='time'}}">
+                    <view class="required" wx:if="{{item.required=='true'}}">*</view>
+                    <view class="required" wx:else></view>
+                    <view class="label">{{item.name}}</view>
+                    <picker bindchange="_bindTimeChange" mode="time" name="{{item.name}}" value="">
+                        <view class="picker">{{time}}</view>
+                    </picker>
+                    <image src="/images/icon/arrow.png" style="width:24rpx; height: 24rpx;"></image>
+                </view>
+                <block wx:else>
+                    <view class="form__item">
+                        <view class="required" wx:if="{{item.required=='true'}}">*</view>
+                        <view class="required" wx:else></view>
+                        <view class="label">{{item.name}}</view>
+                        <picker bindchange="_bindRegionChange" customItem="{{customItem}}" mode="region" name="{{item.name}}" value="">
+                            <view class="picker">{{region[0]}}{{region[1]}}{{region[2]}}</view>
+                        </picker>
+                        <image src="/images/icon/arrow.png" style="width:24rpx; height: 24rpx;"></image>
+                    </view>
+                    <view class="form__item">
+                        <view class="required"></view>
+                        <view class="label">详细地址</view>
+                        <textarea name="详细地址" placeholder=" " value="{{form_info}}"></textarea>
+                    </view>
+                </block>
+            </block>
+            <button class="btn-formcom" formType="submit">立即提交</button>
+        </form>
+    </view>
+</template>

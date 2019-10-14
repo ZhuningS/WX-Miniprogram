@@ -1,0 +1,31 @@
+<import src="../components/widgets.wxml"></import>
+<form reportSubmit bindsubmit="submitForm" wx:if="{{fields}}">
+    <view class="form-item" wx:for="{{fields}}" wx:key="id">
+        <label class="label">
+        {{item.label}}<text style="color:red" wx:if="{{item.required}}"> *</text>
+        </label>
+        <picker bindchange="changePicker" class="value {{item.value?'':'unset'}}" id="{{item.id}}" mode="date" name="{{item.id}}" value="{{item.value}}" wx:if="{{item.type==='fullDate'}}">
+            <view>{{item.value?item.value:item.placeholder?item.placeholder:'-'}}</view>
+        </picker>
+        <picker bindchange="changePicker" class="value {{item.value?'':'unset'}}" id="{{item.id}}" mode="date" name="{{item.id}}" value="{{item.value}}" wx:elif="{{item.type==='date'}}">
+            <view>{{item.value?item.value:item.placeholder?item.placeholder:'-'}}</view>
+        </picker>
+        <picker bindchange="changePicker" class="value {{item.value?'':'unset'}}" id="{{item.id}}" mode="region" name="{{item.id}}" value="{{item.value?item.value:[]}}" wx:elif="{{item.type==='location'}}">
+            <view>{{item.value?item.value[0]+' - '+item.value[1]+' - '+item.value[2]:item.placeholder?item.placeholder:'-'}}</view>
+        </picker>
+        <picker bindchange="changePicker" class="value {{item.value!==undefined?'':'unset'}}" id="{{item.id}}" name="{{item.id}}" range="{{item.options}}" value="{{item.value}}" wx:elif="{{item.type==='options'}}">
+            <view>{{item.value>=0?item.options[item.value]:item.placeholder?item.placeholder:'-'}}</view>
+        </picker>
+        <view catchtap="changeText" class="value {{item.value?'':'unset'}}" id="{{item.id}}" name="{{item.id}}" wx:else>
+          {{item.value?item.value:item.placeholder?item.placeholder:'-'}}
+        </view>
+        <image class="icon" src="/images/new_assets/icon_corner_small_right.svg"></image>
+    </view>
+    <button class="button large" formType="submit" style="margin: 20px 60rpx;">
+      完成
+    </button>
+</form>
+<view class="loading-ctn" wx:else>
+    <template is="loading" data="{{loading:true}}"></template>
+</view>
+<include src="../components/global.wxml"></include>

@@ -1,0 +1,82 @@
+.login {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.login-box {
+    margin: 0 15px;
+    height: 44px;
+    font-size: 15px;
+    color: #333;
+    line-height: 44px;
+    border-bottom: 1px solid #eee;
+}
+
+.login-box-label {
+    float: left;
+}
+
+.login-box-input {
+    width: 300rpx;
+    float: left;
+    height: 44px;
+    margin-left: 40rpx;
+}
+
+.login-input {
+    width: 240rpx;
+    float: left;
+    height: 44px;
+    margin-left: 40rpx;
+}
+
+.login-box-code {
+    border-left: 1px solid #eee;
+    float: right;
+    height: 15px;
+    line-height: 15px;
+    margin: 15px 0;
+    padding-left: 14rpx;
+    color: #f4c09b;
+}
+
+.login-btn {
+    background: #ff6900;
+    color: #fff;
+    margin: 0 15px;
+}
+
+.login-btn[disabled]:not([type]) {
+    background: #f7ccae;
+    color: #fff;
+}
+
+.login-btn::after {
+    border: 0;
+}
+
+.active {
+    background: #ff6900;
+}
+
+.active-code {
+    color: #ff6900;
+}
+
+.get-active-code {
+    color: #696969;
+}
+
+.login-captcha-pic {
+    width: 100px;
+    height: 24px;
+    margin-top: 10px;
+    float: right;
+}
+
+.login-captcha-input {
+    width: 300rpx;
+    float: left;
+    height: 44px;
+    margin-left: 40rpx;
+}

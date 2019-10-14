@@ -1,0 +1,91 @@
+<view>
+    <view class="cell  flex mb10">
+        <image class="topPic mr10" mode="aspectFill" src="{{this_tel_info.t_logo}}"></image>
+        <view class="sub flex flexC flexMArd">
+            <view class="title  lineText2">{{this_tel_info.t_name}}</view>
+            <view class="mt5 labBox clearfix">
+                <view class="label  mainColor_bg lineText fl">{{this_tel_info.t_one_cate_title}}</view>
+                <view class="update grey f12  fr">更新日期：{{this_tel_info.t_update_time}}</view>
+            </view>
+        </view>
+    </view>
+    <view></view>
+    <view class=" mb10">
+        <view bindtap="onCallTap" class="cell flex flexMBtw gridXb">
+            <view>电话</view>
+            <view>{{this_tel_info.yincang_t_contact_phone}}</view>
+        </view>
+        <view bindtap="on_fuzhi_bind" class="cell flex flexMBtw gridXb" wx:if="{{this_tel_info.t_contact_weixin}}">
+            <view>微信号</view>
+            <view>{{this_tel_info.t_contact_weixin}}</view>
+        </view>
+    </view>
+    <view class="cell mb10">
+        <view class="mb15 grey f14">详细地址</view>
+        <view bindtap="openLocation" class="addBox telNum flex  gridXt flexCCen f20">
+            <text class="iconfont icon-dizhi mr15 subColor "></text>
+            <text class="f16">{{this_tel_info.t_address}}</text>
+        </view>
+    </view>
+    <view class="cell mb15">
+        <view class="mb15 grey f14 ">商家介绍</view>
+        <view class="telNum gridXt">
+            <view class="descContent mb10">
+                <rich-text nodes="{{this_tel_info.t_info}}" style="{{style}}" wx:if="{{richText}}"></rich-text>
+                <text wx:else>{{this_tel_info.t_info}}</text>
+            </view>
+            <view>
+                <image bindtap="img_max_bind" class="descPic" data-url="{{item.img_url}}" mode="aspectFill" src="{{item.img_url}}" wx:for="{{this_tel_info.t_pic_list}}" wx:key="index"></image>
+            </view>
+        </view>
+    </view>
+    <button catchtap="toRuzhu" class="cell uploadBtn flex ">
+        <view class="plus red">+</view>
+        <view class=" mainColor">我也要上传自己的电话号码</view>
+    </button>
+    <view class="descBox">
+        <view class="descTit tc mb5">相关说明</view>
+        <view class="descCon grey" wx:if="{{this_tel_info.explain}}">{{this_tel_info.explain}}</view>
+        <view class="descCon grey" wx:else>通过用户提供、网络收集等渠道获取，不免会出现错误或过期号码，若发现有误，请你及时联系我们!</view>
+    </view>
+    <view class="footer gridXt white_bg flex">
+        <view class="footLf tc f12 sub flex">
+            <button catchtap="toShare" class="sub shareBtn">
+                <text class="iconfont icon-fenxiang"></text>
+                <view class="iconTit">分享</view>
+            </button>
+            <button bindtap="openLocation" class="sub shareBtn">
+                <text class="iconfont icon-daohang"></text>
+                <view class="iconTit">导航</view>
+            </button>
+            <button bindtap="quxiao_shoucang_bind" class="sub shareBtn" wx:if="{{this_tel_info.is_user_shoucang==1}}">
+                <text class="iconfont icon-shoucang-dianji"></text>
+                <view class="iconTit">收藏</view>
+            </button>
+            <button bindtap="queren_shoucang_bind" class="sub shareBtn" wx:if="{{this_tel_info.is_user_shoucang==0}}">
+                <text class="iconfont icon-shoucang-weidianji "></text>
+                <view class="iconTit">收藏</view>
+            </button>
+        </view>
+        <button bindtap="onCallTap" class="telBtn mainColor_bg f16">电话联系</button>
+    </view>
+</view>
+<view class="shade_bg {{is_share?'':'display_hide'}}">
+    <view class="class_share white_bg tc bounce">
+        <view class="shareBox flex ">
+            <button class="sub" openType="share">
+                <view class="subIconBox  mb15">
+                    <text class="iconfont icon-weixin"></text>
+                </view>
+                <view>发送给朋友</view>
+            </button>
+            <button catchtap="shareHaibao" class="sub">
+                <view class="subIconBox mb15">
+                    <text class="iconfont icon-shengchenghaibao"></text>
+                </view>
+                <view>生成海报分享</view>
+            </button>
+        </view>
+        <view catchtap="closeShare" class="cancleBtn  gridXt">取消</view>
+    </view>
+</view>

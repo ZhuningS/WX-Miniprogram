@@ -1,0 +1,101 @@
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view class="write-addr" hidden="{{myHidden?true:false}}">
+        <form bindsubmit="_submit" reportSubmit="true">
+            <view class="name">
+                <text>收货人</text>
+                <input name="userName" placeholder="姓名" value="{{name}}"></input>
+            </view>
+            <view class="tel">
+                <text>联系方式</text>
+                <input name="telPhone" placeholder="手机号码" type="number" value="{{tel}}"></input>
+            </view>
+            <view class="provinces">
+                <text>省市区</text>
+                <form bindsubmit="_open" reportSubmit="true">
+                    <button class="nobutton" formType="submit">
+                        <view class="linkage">{{province}}-{{city}}-{{county}}</view>
+                    </button>
+                </form>
+            </view>
+            <view class="detailed-address">
+                <text>详细地址</text>
+                <input name="addr" placeholder="街道地址" value="{{addr}}"></input>
+            </view>
+            <button class="btn-success btn-margin" disabled="{{submiting}}" formType="submit">确认</button>
+        </form>
+        <form bindsubmit="_del" reportSubmit="true">
+            <button class="btn-default btn-del btn-margin" formType="submit" hidden="{{hideDel}}">删除地址</button>
+        </form>
+        <form bindsubmit="_cancel" reportSubmit="true">
+            <button class="btn-cancel btn-margin" formType="submit">取消</button>
+        </form>
+    </view>
+    <view class="addr-list-wrap" hidden="{{myHidden?false:true}}">
+        <view class="addr-list" wx:for="{{addrList}}">
+            <view class="addr-info">
+                <view class="name-phone">
+                    <view class="user-name">
+                        <text>{{item.name}}</text>
+                    </view>
+                    <view class="user-phone">
+                        <text>{{item.tel}}</text>
+                    </view>
+                </view>
+                <view class="addr">
+                    <text>{{item.province}}{{item.city}}{{item.county}}{{item.address}}</text>
+                </view>
+            </view>
+            <view class="addr-handle">
+                <form bindsubmit="_selectDefault" class="default-wrap" data-index="{{index}}" reportSubmit="true">
+                    <button class="default nobutton" formType="submit" wx:if="{{addrList[index].isDefault==0}}">
+                        <image data-index="{{index}}" src="../../images/select_int.png"></image>
+                        <text>设为默认</text>
+                    </button>
+                    <button class="default nobutton" formType="submit" wx:if="{{addrList[index].isDefault==1}}">
+                        <image data-index="{{index}}" src="../../images/selected.png"></image>
+                        <text class="default-addr">默认地址</text>
+                    </button>
+                </form>
+                <form bindsubmit="_edit" class="edit" data-index="{{index}}" reportSubmit="true">
+                    <button class="nobutton" formType="submit">
+                        <text>编辑</text>
+                    </button>
+                </form>
+            </view>
+        </view>
+        <button bindtap="_add" class="add-addr" formType="submit">
+            <text>新增收货地址</text>
+        </button>
+    </view>
+    <view class="citypickers" wx:if="{{condition}}">
+        <picker-view bindchange="bindChange" class="citybody" indicatorStyle="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}">
+            <view class="cityheader">
+                <form bindsubmit="_close" reportSubmit="true">
+                    <button class="nobutton" formType="submit">
+                        <view class="city-true">×</view>
+                    </button>
+                </form>
+            </view>
+            <picker-view-column>
+                <view style="line-height: 50px;padding-left:10px;" wx:for="{{provinces}}" wx:key="item">{{item.name}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view style="line-height: 50px;padding-left:10px;" wx:for="{{citys}}" wx:key="item">{{item.name}}</view>
+            </picker-view-column>
+            <picker-view-column>
+                <view style="line-height: 50px;padding-left:10px;" wx:for="{{countys}}" wx:key="item">{{item.name}}</view>
+            </picker-view-column>
+        </picker-view>
+    </view>
+    <view class="zan-toptips {{zanTopTips.show?'zan-toptips-show':''}}">{{zanTopTips.content}}</view>
+    <view class="nodata" wx:if="{{isNotAny&&myHidden}}">
+        <image class="icon" mode="aspectFit" src="../../images/nodata-order.png"></image>
+        <view>
+            <text>您还没有收货地址哦！</text>
+        </view>
+    </view>
+</view>

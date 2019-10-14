@@ -1,0 +1,82 @@
+<view class="{{currentSkin}}">
+    <block wx:if="{{type==1}}">
+        <view class="header">
+            <view class="f fc fsa">
+                <view bindtap="select" class="{{vmCount.state==item.id?'skin_bottom':'c333'}}" data-wpyselect-a="{{item.id}}" wx:for="{{state}}" wx:key="key">{{item.txt}}</view>
+            </view>
+        </view>
+        <view class="more-person" wx:if="{{vmCount.list[1]!=null}}">
+            <block wx:for="{{vmCount.list}}" wx:for-item="person" wx:key="key">
+                <view class="w-100 person-item f fc" wx:for="{{person}}" wx:key="key">
+                    <image class="person-img" mode="aspectFill" src="{{item.ImgLogo}}"></image>
+                    <view class="person-content f1">
+                        <view class="f fj fc">
+                            <text class="f36">{{item.NickName}}</text>
+                            <text class="per-pro f30">{{item.cur_protected_time}}天</text>
+                        </view>
+                        <view class="f fj fc mt20">
+                            <text class="per-order f30">{{item.orderCount}}</text>
+                            <text class="per-succ f30">{{item.orderMoneyStr}}</text>
+                            <text class="per-price f30">{{item.cpsMoneyStr}}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <wxc-abnor type="DATA" wx:if="{{vmCount.list[1]==null}}"></wxc-abnor>
+    </block>
+    <block wx:if="{{type==2}}">
+        <view class="oreder" wx:if="{{vmCount.list[1]!=null}}">
+            <block wx:for="{{vmCount.list}}" wx:for-item="order" wx:key="key">
+                <view class="oreder-item" wx:for="{{order}}" wx:for-item="good" wx:key="key">
+                    <view class="order-top f fj">
+                        <text class="f32 c666">{{good.orderNumber}}</text>
+                        <text class="cf97">已结算</text>
+                    </view>
+                    <block wx:for="{{good.listOrderGoodsDetail}}" wx:key="key">
+                        <view class="order-main f fc w-100">
+                            <image class="order-img" mode="aspectFill" src="{{item.goodImgUrl}}"></image>
+                            <view class="f fv fj ml20 f1" style="height:110rpx;">
+                                <text class="line line1 f32">{{item.goodname}}</text>
+                                <view class="order-price f fc fj">
+                                    <text>￥{{item.price}}</text>
+                                    <text style="color:#F20033">收益占比:{{item.cps_rate}}%</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="order-tiem w-100 f fc fj">
+                            <text class="c666">{{good.addTimeStr}}</text>
+                            <text class="f32">赚取佣金：￥{{item.cpsMoneyStr}}</text>
+                        </view>
+                    </block>
+                </view>
+            </block>
+        </view>
+        <wxc-abnor type="ORDER" wx:if="{{vmCount.list[1]==null}}"></wxc-abnor>
+    </block>
+    <block wx:if="{{type==3}}">
+        <view class="sell-header">
+            <view class="sell-search f fc">
+                <view class="dzicon icon-sousuo_rearch f40 c123"></view>
+                <input bindconfirm="search" class="sell-input" placeholder="请输入您要查询的商品" placeholderClass="c999"></input>
+            </view>
+            <view class="sell-classify f fc fsa">
+                <view bindtap="select" class="pb30 {{vmCount.state==item.id?'skin_bottom':'c333'}}" data-wpyselect-a="{{item.id}}" wx:for="{{priceState}}" wx:key="key">{{item.txt}}</view>
+            </view>
+        </view>
+        <view class="sell-list f fw fj" wx:if="{{vmCount.list[1].length!=0}}">
+            <block wx:for="{{vmCount.list}}" wx:for-item="pro" wx:key="key">
+                <view bindtap="navGood" class="sell-item" data-wpynavgood-a="{{item.goodsId}}" wx:for="{{pro}}" wx:key="key">
+                    <image mode="aspectFill" src="{{item.goodsImg}}"></image>
+                    <view class="p10 f fv">
+                        <text class="f32 m20-b line line1">{{item.goodsName}}</text>
+                        <text class="sell-str sell-price" wx:if="{{item.is_show_cps_type==0}}">￥{{item.cps_Money}}</text>
+                        <text class="sell-rate sell-price" wx:else>{{item.cps_rate}}%</text>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <wxc-loadmore icon="https://s10.mogucdn.com/mlcdn/c45406/171016_47j96cl3hdhhdf7ajg8hg2kd13gdc_400x400.png" isEnd="{{true}}" text="到底啦" wx:if="{{vmCount.list[1].length!=0&&vmCount.loadall}}"></wxc-loadmore>
+        <wxc-abnor type="DATA" wx:if="{{vmCount.list[1].length==0}}"></wxc-abnor>
+    </block>
+</view>

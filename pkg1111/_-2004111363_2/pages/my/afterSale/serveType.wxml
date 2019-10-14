@@ -1,0 +1,24 @@
+<view class="serve-type {{currentSkin}}">
+    <view class="body f fv bg-w">
+        <view bindtap="changeGood" class="f1 item f fv">
+            <view class="item-top f fj fc">
+                <text class="f28">
+                    <text class="dzicon icon-Onlyrefunds_jintuihuo f36 mr10 skin_txt"></text>仅换货</text>
+                <text class="dzicon icon-xiala-copy-right"></text>
+            </view>
+            <view class="item-bottom c999 f22 mt10">
+          已收到货，需要退换已收到的货物
+        </view>
+        </view>
+        <view bindtap="returnMoney" class="f1 item f fv">
+            <view class="item-top f fj fc">
+                <text class="f28">
+                    <text class="dzicon icon-Refundofrefunds_tuihuo f36 mr10 skin_txt"></text>退货退款</text>
+                <text class="dzicon icon-xiala-copy-right"></text>
+            </view>
+            <view class="item-bottom c999 f22 mt10">
+          已收到货，需要退回已收到的货物并退款
+        </view>
+        </view>
+    </view>
+</view>

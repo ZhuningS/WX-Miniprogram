@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "navigator": "../navigator/navigator"
+    }
+}

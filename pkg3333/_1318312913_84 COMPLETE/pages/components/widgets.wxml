@@ -1,0 +1,197 @@
+<template name="post-group-actions">
+    <block wx:if="{{relation}}">
+        <block wx:if="{{relation.role.type==='stranger'}}">
+            <block wx:if="{{action&&action.type==='protect'}}"></block>
+            <button bindgetuserinfo="{{needLogin?'joinGroup':''}}" catchtap="{{needLogin?'':'joinGroup'}}" class="button fixed" data-group-id="{{id}}" data-group-type="{{action?action.type:undefined}}" data-product-id="{{action&&action.products?action.products[0].id:undefined}}" formType="submit" hoverClass="none" openType="getUserInfo" wx:else>
+                <block wx:if="{{action.products.length>0}}">{{action.products[0].priceDesc}}</block>
+                <block wx:else>立即加入</block>
+            </button>
+        </block>
+    </block>
+</template>
+<template name="group-actions">
+    <block wx:if="{{relation}}">
+        <button catchtap="onTapAddTopic" class="float-button bounce" data-url="{{'/pages/post/create?id='+id+(ticket?'&ticket='+ticket:'')}}" formType="submit" hoverClass="none" openType="navigate" wx:if="{{relation.enablePost}}">
+            <image class="icon" src="../../images/new_assets/icon_create_w.svg"></image>
+        </button>
+        <block wx:elif="{{relation.role.type==='stranger'}}">
+            <block wx:if="{{action&&action.type==='protect'}}"></block>
+            <button bindgetuserinfo="{{needLogin?'joinGroup':''}}" catchtap="{{needLogin?'':'joinGroup'}}" class="button fixed" data-group-id="{{id}}" data-group-type="{{action?action.type:undefined}}" data-product-id="{{action&&action.products?action.products[0].id:undefined}}" formType="submit" hoverClass="none" openType="getUserInfo" wx:else>
+                <block wx:if="{{action.products.length>0}}">{{action.products[0].priceDesc}}</block>
+                <block wx:else>加入</block>
+            </button>
+        </block>
+    </block>
+</template>
+<template name="share-bar">
+    <view class="share-bar-ctn">
+        <view bindtap="shareToPhotos" class="action" data-share-image="{{shareData.shareImage}}">
+            <image class="icon" mode="aspectFit" src="/images/new_assets/icon_photo.svg"></image>
+            <view class="caption">保存海报</view>
+        </view>
+        <view bindtap="shareToMoment" class="action" data-content="{{shareData.content}}" data-doc-id="{{shareData.docId}}" data-id="{{shareData.id}}" data-share-image="{{shareData.shareImage}}" data-type="{{shareData.type}}">
+            <image class="icon" mode="aspectFit" src="/images/icon-moments.svg"></image>
+            <view class="caption">发朋友圈</view>
+        </view>
+        <button bindtap="share" class="action" data-content="{{shareData.content}}" data-doc-id="{{shareData.docId}}" data-id="{{shareData.id}}" data-image="{{shareData.image}}" data-mid="{{shareData.mid}}" data-path="{{shareData.path}}" data-title="{{shareData.title}}" data-type="{{shareData.type}}" hoverClass="none" openType="share">
+            <image class="icon" mode="aspectFit" src="/images/icon-wechat.svg"></image>
+            <view class="caption">送给好友</view>
+        </button>
+    </view>
+</template>
+<template name="toast">
+    <view class="toast-ctn animated {{toast.show?'slideInDown':'slideOutUp'}}">
+    {{toast.title}} +1
+  </view>
+</template>
+<template name="error">
+    <view class="error-ctn">
+        <image class="image" mode="aspectFill" src="/images/tip_error.png"></image>
+        <ad unitId="adunit-52cff82fde7a2713"></ad>
+        <view class="tip">
+            <text catchtap="refreshPage" style="font-weight:bold;">重新加载</text>
+        </view>
+    </view>
+</template>
+<template name="loading">
+    <image class="loading-spinner" src="/images/spinner_gray.svg" style="visibility:{{loading?'visible':'hidden'}};"></image>
+</template>
+<template name="rank">
+    <view class="rank-ctn">
+        <block wx:if="{{curators.length>0}}">
+            <navigator navigate class="rank-item" hoverClass="none" url="/pages/profile/user?uid={{item.user.uid}}" wx:for="{{curators}}" wx:key="{{ index }}">
+                <view class="avatar-ctn">
+                    <image lazyLoad class="`avatar" src="{{item.user.avatar}}"></image>
+                    <view class="rank">{{item.rank||'...'}}</view>
+                </view>
+                <view style="flex:1;">
+                    <view class="headline1">{{item.user.name}}</view>
+                    <view class="progress-ctn" wx:if="{{item.value}}">
+                        <view class="progress" style="background-color: #{{magazine.color}}; width: {{item.value/curators[0].value*400}}rpx;"></view>
+                        <view class="value">{{item.value}}</view>
+                    </view>
+                </view>
+            </navigator>
+        </block>
+        <block wx:else></block>
+    </view>
+</template>
+<template name="article-actions">
+    <view catchtap="hack" class="article-actions-ctn">
+        <button bindtap="showShareCard" class="share-button item" data-share-data="{{id:article.docIdString,docId:article.docIdString,type:type,content:content,mid:article.mid}}" formType="submit" hoverClass="none">
+            <image class="icon" src="{{white?'/images/new_assets/icon_share_w.svg':'/images/new_assets/icon_share.svg'}}"></image>
+        </button>
+        <button bindtap="mark" class="mark-button item" data-doc-id="{{article.docIdString}}" data-id="{{article.docIdString}}" data-magazine-name="{{article.magazineName}}" data-mid="{{article.mid}}" data-type="{{type}}" formType="submit" hoverClass="none" wx:if="{{!marked[article.docIdString]}}">
+            <image class="icon" src="{{white?'/images/new_assets/icon_mark_w.svg':'/images/new_assets/icon_mark.svg'}}"></image>
+        </button>
+        <button bindtap="unmark" class="mark-button item" data-doc-id="{{article.docIdString}}" data-id="{{article.docIdString}}" data-mid="{{article.mid}}" data-type="{{type}}" formType="submit" hoverClass="none" wx:else>
+            <image class="icon" src="{{white?'/images/new_assets/icon_marked_w.svg':'/images/new_assets/icon_marked.svg'}}"></image>
+        </button>
+    </view>
+</template>
+<template name="mark-actions">
+    <view catchtap="hack" class="article-actions-ctn">
+        <button bindtap="showShareCard" class="share-button item" data-share-data="{{id:mark.mockId?mark.mockId:'m'+mark.id,docId:mark.docIdString,type:'mark',mid:mark.mid}}" formType="submit" hoverClass="none">
+            <image class="icon" src="/images/new_assets/icon_share.svg"></image>
+        </button>
+        <button catchtap="mark" class="mark-button item" data-doc-id="{{mark.docIdString}}" data-end="{{mark.end}}" data-id="{{mark.pid+mark.start+mark.end}}" data-magazine-name="{{mark.magazineName}}" data-mark-id="{{mark.id}}" data-mid="{{mark.mid}}" data-pid="{{mark.pid}}" data-start="{{mark.start}}" data-type="mark" formType="submit" hoverClass="none" wx:if="{{!marked[mark.pid+mark.start+mark.end]}}">
+            <image class="icon" src="/images/new_assets/icon_mark.svg"></image>
+        </button>
+        <button catchtap="unmark" class="mark-button item" data-doc-id="{{mark.docIdString}}" data-end="{{mark.end}}" data-id="{{mark.pid+mark.start+mark.end}}" data-mark-id="{{mark.id}}" data-mid="{{mark.mid}}" data-pid="{{mark.pid}}" data-start="{{mark.start}}" data-type="mark" formType="submit" hoverClass="none" wx:else>
+            <image class="icon" src="/images/new_assets/icon_marked.svg"></image>
+        </button>
+    </view>
+</template>
+<template name="image-actions">
+    <view catchtap="hack" class="article-actions-ctn">
+        <button bindtap="showShareCard" class="share-button item" data-share-data="{{id:imageItem.pid||imageItem.image.encodedUrl,docId:imageItem.docIdString,type:type,content:content,mid:imageItem.mid,image:imageItem.encodedUrl}}" formType="submit" hoverClass="none">
+            <image class="icon" src="{{white?'/images/new_assets/icon_share_w.svg':'/images/new_assets/icon_share.svg'}}"></image>
+        </button>
+        <button catchtap="mark" class="mark-button" data-doc-id="{{imageItem.docIdString}}" data-id="{{imageItem.pid||imageItem.image.encodedUrl}}" data-magazine-name="{{imageItem.magazineName}}" data-mid="{{imageItem.mid}}" data-pid="{{imageItem.pid}}" data-type="{{type}}" formType="submit" hoverClass="none" wx:if="{{!marked[imageItem.pid||imageItem.image.encodedUrl]}}">
+            <image class="icon" src="/images/new_assets/icon_mark.svg"></image>
+        </button>
+        <button catchtap="unmark" class="mark-button" data-doc-id="{{imageItem.docIdString}}" data-id="{{imageItem.pid||imageItem.image.encodedUrl}}" data-mid="{{imageItem.mid}}" data-pid="{{imageItem.pid}}" data-type="{{type}}" formType="submit" hoverClass="none" wx:else>
+            <image class="icon" src="/images/new_assets/icon_marked.svg"></image>
+        </button>
+    </view>
+</template>
+<template name="provider-info">
+    <view class="source" style="{{config.enableMagazine?'':'display:flex;'}}">{{appName}}<block wx:if="{{appChannels.length>0&&appName!==appChannels[0].title}}">・{{appChannels[0].title}}</block>
+    </view>
+</template>
+<template name="magazine-info">
+    <view class="title-ctn" wx:if="{{!config||config.enableMagazine}}">
+        <navigator navigate catchtap="hack" class="label1" style="color: #{{color?color:''}}" url="/pages/magazine/magazine?id={{mid}}&content=clip" wx:if="{{magazineName}}">
+      # {{magazineName}}
+    </navigator>
+    </view>
+</template>
+<template name="mark-info">
+    <view class="mark-info-ctn">
+        <navigator catchtap="hack" class="avatar-ctn" hoverClass="none" openType="navigate" style="z-index:{{10-index}}" url="/pages/profile/user?uid={{item.user.uid}}" wx:if="{{index<=2&&item.user.avatar}}" wx:for="{{notes}}" wx:key="{{ index }}">
+            <image lazyLoad class="avatar small" src="{{item.user.avatar}}"></image>
+        </navigator>
+        <view class="info">
+            <block wx:if="{{notes&&notes.length>0}}">{{notes[0].user.name}}</block>{{widgets.markInfoTip(widgets.markUserNumber(markCount,notes),markCount,type,history,config)}}</view>
+    </view>
+</template>
+<template name="menu-info">
+    <button catchtap="onTapBlock" class="menu-button" data-id="{{docIdString}}" data-mid="{{mid}}" data-name="{{magazineName}}" formType="submit" hoverClass="none">
+        <image class="icon" mode="aspectFill" src="/images/new_assets/icon_menu.svg"></image>
+    </button>
+</template>
+<wxs module="widgets">
+var markInfoTip = (function(userTip, markCount, type, history, config) {
+    var tip = '';
+    if (markCount === 0) {
+        if (history) {
+            tip = '已读'
+        } else if (config.enableSubscribe) {
+            tip = "来自你订阅的杂志"
+        } else {
+            tip = "推荐"
+        }
+    } else {
+        if (userTip === '') {
+            tip = ''
+        } else if (userTip[(0)] === '+') {
+            tip = '等 ' + markCount + ' 人'
+        } else {
+            tip = markCount + ' 人'
+        };
+        actionName = config.actions.mark + '了';
+        if (type === 'mark') {
+            tip += actionName
+        } else if (type === 'image') {
+            tip += actionName
+        } else if (type === 'shortVideo') {
+            tip += actionName
+        } else {
+            tip += actionName
+        }
+    };
+    return (tip)
+});
+var markUserNumber = (function(markCount, friends) {
+    var avatarNumber = 0;
+    if (friends && friends.length > 0) {
+        var maxNumber = friends.length > 3 ? 3 : friends.length;
+        for (var i = 0; i < maxNumber; i++) {
+            if (friends[((nt_1 = (i), null == nt_1 ? undefined : 'number' === typeof nt_1 ? nt_1 : "" + nt_1))].user.avatar) {
+                avatarNumber += 1
+            }
+        }
+    };
+    if (avatarNumber >= markCount) {
+        return ('')
+    } else if (avatarNumber > 0) {
+        return ('+' + (markCount - avatarNumber))
+    } else {
+        return (markCount)
+    }
+});
+module.exports = ({
+    markInfoTip: markInfoTip,
+    markUserNumber: markUserNumber,
+});
+</wxs>

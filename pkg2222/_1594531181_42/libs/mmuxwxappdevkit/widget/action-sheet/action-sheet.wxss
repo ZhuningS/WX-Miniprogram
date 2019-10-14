@@ -1,0 +1,75 @@
+.action-sheet-wrap {
+    width: 100%;
+}
+
+.action-sheet-mask {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    z-index: 1000;
+}
+
+.action-sheet-content {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFFFFF;
+    transform: translateY(100%);
+    transition: all 0.3s;
+    z-index: 1001;
+}
+
+.action-sheet-title {
+    position: relative;
+    padding: 20px 20px;
+    line-height: 1.4;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    text-align: center;
+    font-size: 14px;
+    color: #808080;
+    background: #FCFCFD;
+}
+
+.action-sheet-item {
+    text-align: center;
+    font-size: 18px;
+}
+
+.action-sheet-desc {
+    font-size: 12px;
+    text-align: center;
+    color: #888;
+}
+
+.action-sheet-cancel {
+    padding: 25rpx 15px;
+}
+
+.action-sheet-cancel.iPhoneX {
+    padding-top: 35rpx;
+}
+
+.action-sheet-button {
+    position: absolute;
+    left: 0rpx;
+    top: 0rpx;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.action-sheet-button__hover {
+    background-color: rgba(0,0,0,0.15);
+}

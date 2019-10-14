@@ -1,0 +1,141 @@
+<import src="/components/tabbar/index.wxml"></import>
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view class="wrap" hidden="{{!dataLoaded}}" style="min-height: {{winHei}}px">
+    <view class="user section" style="height:{{mark_auth.member!=2&&vip?'280rpx':'210rpx'}};margin-bottom: 0;">
+        <view style="display:flex;align-items:center; padding: 40rpx;">
+            <view style="height: 120rpx;">
+                <image class="user__img" mode="aspectFill" src="{{userInfo.avatar||userInfo.logo}}"></image>
+            </view>
+            <view class="user_info">
+                <view class="user__name">
+                    <text style="margin-left:6rpx">{{userInfo.nickname}}</text>
+                </view>
+                <view class="memberlabel" wx:if="{{vip_log&&mark_auth.member!=2}}">
+                    <image src="/images/kan/VV@3x.png" style="width: 24rpx;height: 24rpx; margin-right:6rpx;"></image>{{levelName}}</view>
+            </view>
+        </view>
+        <view class="{{!vip_log?'level1':''}} memberlevel" style="background-image:url({{cover_image||'https://img.weixin.sundayer.cn/ruyitui/member/wenli@3x.png'}});background-color:{{cover_color}}" wx:if="{{mark_auth.member!=2&&vip}}">
+            <view class="cardbg" wx:if="{{!vip_log}}">
+                <view style="font-size: 24rpx; color: #fff">您有一张店铺会员卡尚未领取</view>
+                <view bindtap="_jump" class="btn-ljlq" data-url="/pages/member/member">立即领取</view>
+            </view>
+            <view class="cardbg" wx:else>
+                <view style="font-size: 24rpx; color: #fff">您已经是{{levelName}}，可享受会员权益</view>
+                <view bindtap="_jump" class="btn-ljlq" data-url="/pages/memberCenter/memberCenter">立即查看</view>
+            </view>
+        </view>
+    </view>
+    <view class="orderSection section">
+        <form bindsubmit="_jump" class="barItem_orderTitle barItem_noBorder" data-url="/pages/my/myOrderList/orderList?type=pay">
+            <button class="barItem nobutton" formType="submit">
+                <image class="barItem__icon" src="/images/kan/dingdan@3x.png"></image>
+                <view class="barItem__info">
+                    <view class="barItem__info__hd">我的订单</view>
+                </view>
+                <view style="display:flex; align-items: center">
+                    <text style="color: #999; font-size: 24rpx;">全部</text>
+                    <image class="barItem__arrowIcon" src="/images/icon/arrow.png"></image>
+                </view>
+            </button>
+        </form>
+        <view class="orderTypes">
+            <form bindsubmit="_jump" class="orderTypes__item" data-url="/pages/my/myOrderList/orderList?type=pay" reportSubmit="true">
+                <button class="icon-wrap nobutton" data-open-type="navigate" formType="submit">
+                    <view class="redpoint" wx:if="{{stat.order.pay>0}}">{{stat.order.pay}}</view>
+                    <image class="icon" mode="aspectFit" src="/images/kan/fukuan@3x.png"></image>
+                    <view class="order-status">待付款</view>
+                </button>
+            </form>
+            <form bindsubmit="_jump" class="orderTypes__item" data-url="/pages/my/myOrderList/orderList?type=deliver" reportSubmit="true">
+                <button class="icon-wrap nobutton" data-open-type="navigate" formType="submit">
+                    <view class="redpoint" wx:if="{{stat.order.deliver>0}}">{{stat.order.deliver}}</view>
+                    <image class="icon" mode="aspectFit" src="/images/kan/fahuo@3x.png"></image>
+                    <view class="order-status">待发货</view>
+                </button>
+            </form>
+            <form bindsubmit="_jump" class="orderTypes__item" data-url="/pages/my/myOrderList/orderList?type=receive" reportSubmit="true">
+                <button class="icon-wrap nobutton" data-open-type="navigate" formType="submit">
+                    <view class="redpoint" wx:if="{{stat.order.receive>0}}">{{stat.order.receive}}</view>
+                    <image class="icon" mode="aspectFit" src="/images/kan/shouhuo@3x.png"></image>
+                    <view class="order-status">待收货</view>
+                </button>
+            </form>
+            <form bindsubmit="_jump" class="orderTypes__item" data-url="/pages/my/myOrderList/orderList?type=over" reportSubmit="true">
+                <button class="icon-wrap nobutton" data-open-type="navigate" formType="submit">
+                    <image class="icon" mode="aspectFit" src="/images/kan/wancheng@3x.png"></image>
+                    <view class="order-status">已完成</view>
+                </button>
+            </form>
+            <form bindsubmit="_jump" class="orderTypes__item" data-url="/pages/my/myOrderList/orderList?type=refund" reportSubmit="true">
+                <button class="icon-wrap nobutton" data-open-type="navigate" formType="submit">
+                    <image class="icon" mode="aspectFit" src="/images/kan/shouhou@3x.png"></image>
+                    <view class="order-status">退款/售后</view>
+                </button>
+            </form>
+        </view>
+    </view>
+    <view class="orderSection section">
+        <form bindsubmit="_jump" data-url="/pages/my/myTGOrderList/index" reportSubmit="true" wx:if="{{mark_auth.groupbuy!=2}}">
+            <button class="barItem nobutton" formType="submit">
+                <image class="barItem__icon" src="/images/kan/tuan@3x.png"></image>
+                <view class="barItem__info">
+                    <view class="barItem__info__hd">我的拼团</view>
+                </view>
+                <image class="barItem__arrowIcon" src="/images/icon/arrow.png"></image>
+            </button>
+        </form>
+        <form bindsubmit="_jump" data-url="/pages/my/myKJOrderList/index" reportSubmit="true" wx:if="{{mark_auth.bargain!=2}}">
+            <button class="barItem nobutton" formType="submit">
+                <image class="barItem__icon" src="/images/kan/kanjia@3x.png"></image>
+                <view class="barItem__info">
+                    <view class="barItem__info__hd">我的砍价</view>
+                </view>
+                <image class="barItem__arrowIcon" src="/images/icon/arrow.png"></image>
+            </button>
+        </form>
+        <form bindsubmit="_jump" data-url="/pages/fx/index/index" reportSubmit="true" wx:if="{{mark_auth.fenxiao!=2}}">
+            <button class="barItem nobutton" formType="submit">
+                <image class="barItem__icon" src="/images/mine/icon-fx.png"></image>
+                <view class="barItem__info">
+                    <view class="barItem__info__hd">我的分销</view>
+                </view>
+                <image class="barItem__arrowIcon" src="/images/icon/arrow.png"></image>
+            </button>
+        </form>
+        <form bindsubmit="_jump" data-url="/pages/my/myAct/index" reportSubmit="true" wx:if="{{mark_auth.invite!=2}}">
+            <button class="barItem nobutton" formType="submit">
+                <image class="barItem__icon" src="/images/mine/icon-appoint.png"></image>
+                <view class="barItem__info">
+                    <view class="barItem__info__hd">我的活动</view>
+                </view>
+                <image class="barItem__arrowIcon" src="/images/icon/arrow.png"></image>
+            </button>
+        </form>
+        <form bindsubmit="_jump" data-url="/pages/my/myCouponList/index" reportSubmit="true" wx:if="{{mark_auth.discount!=2}}">
+            <button class="barItem nobutton" formType="submit">
+                <image class="barItem__icon" src="/images/mine/icon-coupon.png"></image>
+                <view class="barItem__info">
+                    <view class="barItem__info__hd">我的优惠券</view>
+                    <view class="barItem__info__bd barItem__info__bd_right couponNum" wx:if="{{couponAmount&&couponAmount>0}}">
+                        {{couponAmount}}个
+                    </view>
+                </view>
+                <image class="barItem__arrowIcon" src="/images/icon/arrow.png"></image>
+            </button>
+        </form>
+        <form bindsubmit="_jump" data-url="/pages/my/myAddr/index" reportSubmit="true">
+            <button class="barItem nobutton" formType="submit">
+                <image class="barItem__icon" src="/images/mine/icon-addr.png"></image>
+                <view class="barItem__info">
+                    <view class="barItem__info__hd">地址管理</view>
+                </view>
+                <image class="barItem__arrowIcon" src="/images/icon/arrow.png"></image>
+            </button>
+        </form>
+    </view>
+</view>
+<view class="version">版本号：1.3.0</view>
+<template is="tabbar" data="{{tabbar:tabbar,data:'usercenter'}}" wx:if="{{isShowTab}}"></template>

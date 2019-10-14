@@ -1,0 +1,88 @@
+<template name="article-progress-bar">
+    <view catchtap="scrollToId" class="progress-bar">
+        <block wx:if="{{n.progressLeft}}" wx:for="{{note.list}}" wx:for-item="n" wx:key="nid">
+            <view class="progress-dot" style="left:{{n.progressLeft}}px;" wx:if="{{n.progressLeft&&n.myself}}"></view>
+            <view class="progress-dot-other" style="left:{{n.progressLeft}}px;" wx:else></view>
+        </block>
+        <block wx:for="{{conversation.followedUsers}}" wx:for-index="idx" wx:for-item="user" wx:key="uid">
+            <image animation="{{user.animation}}" class="user-avatar-progress {{user.animationClass}}" id="{{user.uid}}" mode="scaleToFill" src="{{user.avatar?user.avatar:'/images/profile-default.svg'}}" style="{{noProgress?'left:'+24+42*idx+'rpx':''}}"></image>
+            <template is="tips" data="{{message:user.message,left:user.messageLeft,right:user.messageRight,bottom:'31px',arrow:user.messageStyle,class:user.animationClassTips}}" wx:if="{{user.message}}"></template>
+        </block>
+        <view style="color: #bbb;line-height:36px;width:726rpx;text-align:right;font-size:12px;font-weight:300;" wx:if="{{conversation.totalUserNumber>1}}">
+      {{conversation.totalUserNumber}} 人一起读
+    </view>
+    </view>
+</template>
+<template name="article-mark-button">
+    <form reportSubmit bindsubmit="hackForm">
+        <button catchtap="{{marked[docIdString]?'unmark':'mark'}}" class="float_bar white" data-doc-id="{{docIdString}}" data-event-id="{{eventId}}" data-id="{{docIdString}}" data-magazine-name="{{magazineName}}" data-mid="{{mid}}" data-type="{{type}}" formType="submit" hoverClass="none" style="position:absolute;bottom:0;right:15px;">
+            <image class="mark-icon icon_20px" mode="aspectFit" src="/images/new_assets/icon_marked.svg" wx:if="{{marked[docIdString]}}"></image>
+            <image class="mark-icon icon_20px" mode="aspectFit" src="/images/new_assets/icon_mark.svg" wx:else></image>
+        </button>
+    </form>
+</template>
+<template name="article-share-bar">
+    <form reportSubmit bindsubmit="hackForm">
+        <button bindtap="showShareCard" class="float_bar" data-share-data="{{id:docId,docId:docId,type:'article',mid:mid}}" formType="submit" hoverClass="none" style="position:absolute;bottom:0;left:50%;transform:translate(-50%,0);">
+            <image class="icon_20px" mode="aspectFit" src="{{'/images/new_assets/icon_share_w.svg'}}" style="margin-right: 5px;"></image>
+            <text>分享给好友</text>
+        </button>
+    </form>
+</template>
+<template name="article-share-button">
+    <form reportSubmit bindsubmit="hackForm">
+        <button bindtap="showShareCard" class="float_button article-share-button {{withDiscuss&&'with-discuss'}}" data-share-data="{{id:docId,docId:docId,type:'article',mid:mid}}" formType="submit" hoverClass="none" id="sharePage">
+            <image class="icon_20px" mode="aspectFit" src="{{'/images/new_assets/icon_share_w.svg'}}"></image>
+        </button>
+    </form>
+</template>
+<template name="article-topic-button">
+    <form reportSubmit bindsubmit="hackForm">
+        <button catchtap="onTapAddTopic" class="float_bar white topic-button {{withDiscuss&&'with-discuss'}}" formType="submit" hoverClass="none" id="addTopic">
+            <image class="icon_20px" mode="aspectFit" src="{{'/images/new_assets/icon_talk_black.svg'}}"></image>
+        </button>
+    </form>
+</template>
+<template name="fake-compose-panel">
+    <view catchtap="writeConversation" class="fake_compose_bar">
+        <text class="share_compose_message">我想说</text>
+    </view>
+</template>
+<template name="message">
+    <view class="message">
+        <image class="share_notification_avatar" mode="scaleToFill" src="{{user.avatar?user.avatar:'/images/profile-default.svg'}}"></image>
+        <template is="raml-content" data="{{content:content}}"></template>
+    </view>
+</template>
+<template name="article-conversation-list-black">
+    <view class="note_list_panel black_mask20 animated fadeIn quick">
+        <view style="position:absolute;width:100%;flex-grow:1;top:0;bottom:160px;">
+            <scroll-view class="conversation_list_container" scrollIntoView="{{keepInBottom?'fake_bottom':''}}" scrollY="true">
+                <template is="message" data="{{user:event.user,content:event.notification.content}}" wx:for="{{events}}" wx:for-item="event" wx:key="eid"></template>
+            </scroll-view>
+        </view>
+        <view class="conversation_list_bottom_panel">
+            <template is="fake-compose-panel" data="{{user:user}}"></template>
+            <view catchtap="triggerConversationList" class="float_button" style="background-color:white;">
+                <image class="icon_20px" src="/images/new_assets/icon_cancel.svg"></image>
+            </view>
+        </view>
+    </view>
+</template>
+<template name="notification-bar">
+    <view class="message notification_bar_message {{notification.animationClass}}">
+        <template is="raml-content" data="{{content:notification.content}}"></template>
+        <view catchtap="triggerConversationList" class="mask"></view>
+    </view>
+</template>
+<template name="article-notification-bar">
+    <block wx:if="{{conversationOptions.enable&&!share}}">
+        <view class="notification-bar" wx:if="{{!conversationOptions.expand}}">
+            <template is="notification-bar" data="{{notification:notification}}"></template>
+        </view>
+        <template is="article-conversation-list-black" data="{{events:conversation.events,keepInBottom:keepInBottom}}" wx:else></template>
+    </block>
+</template>
+<import src="event-card.wxml"></import>
+<import src="article-content.wxml"></import>
+<import src="tips.wxml"></import>

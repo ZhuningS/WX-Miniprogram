@@ -1,0 +1,50 @@
+.sell-hear {
+    width: 100%;
+    height: 160rpx;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.sell-hear .sell-hearitem {
+    width: 50%;
+}
+
+.sell-lstitle {
+    position: fixed;
+    top: 180rpx;
+    left: 0;
+    width: 100%;
+    height: 120rpx;
+    background: #fff;
+    font-size: 32rpx;
+    line-height: 120rpx;
+    z-index: 1;
+}
+
+.sell-lstitle>text {
+    width: 50%;
+    text-align: center;
+}
+
+.sell-lst {
+    width: 100%;
+    background: #fff;
+}
+
+.sell-lst .sell-main {
+    width: 100%;
+    height: 100rpx;
+    border-top: 1px solid #f7f7f7;
+}
+
+.sell-lst .sell-main>view {
+    width: 50%;
+}
+
+.sell-lst .sell-main image {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+}

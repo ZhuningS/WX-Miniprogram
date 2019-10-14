@@ -1,0 +1,129 @@
+.popDis {
+    position: relative;
+}
+
+.popDis_mask {
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    opacity: .8;
+}
+
+.popDis_content {
+    position: fixed;
+    left: 50%;
+    width: 580rpx;
+    height: 580rpx;
+    margin-left: -290rpx;
+    color: #ff6061;
+    z-index: 9999;
+    background-image: url("http://img.weixin.sundayer.cn/card/moren@3x.png");
+    background-size: 100%;
+    animation: popDisAni .4s linear forwards;
+}
+
+.popDis_content2 {
+    position: fixed;
+    top: 16%;
+    left: 50%;
+    width: 580rpx;
+    height: 580rpx;
+    margin-left: -270rpx;
+    color: #ff6061;
+    z-index: 9999;
+    background-image: url("http://img.weixin.sundayer.cn/card/yichai@3x.png");
+    background-size: 100%;
+}
+
+@-webkit-keyframes popDisAni {
+    from {
+        top: -100%;
+    }
+
+    to {
+        top: 16%;
+    }
+}
+
+@keyframes popDisAni {
+    from {
+        top: -100%;
+    }
+
+    to {
+        top: 16%;
+    }
+}
+
+.red-title {
+    position: absolute;
+    bottom: 336rpx;
+    left: 170rpx;
+    text-align: center;
+    font-size: 120rpx;
+    color: #ff6061;
+    height: 100rpx;
+    line-height: 100rpx;
+    width: 150rpx;
+}
+
+.lq {
+    background: #ffe603;
+    color: #f35c25;
+    font-size: 32rpx;
+    padding: 0 30rpx;
+    display: inline-block;
+    height: 56rpx;
+    line-height: 56rpx;
+    border-radius: 16rpx;
+}
+
+.t1 {
+    font-size: 120rpx;
+    color: #ff6061;
+    height: 187rpx;
+}
+
+.popDis_close {
+    position: absolute;
+    left: 50%;
+    margin-left: -32rpx;
+    bottom: -170rpx;
+    width: 64rpx;
+    height: 64rpx;
+    z-index: 10000;
+}
+
+.popDis_close image {
+    width: 64rpx;
+    height: 64rpx;
+}
+
+.popDis_content .avatar image {
+    width: 138rpx;
+    height: 138rpx;
+    border-radius: 100%;
+    border: 6rpx solid #fff;
+}
+
+.popDis_content .name {
+    color: #fbf0d8;
+    font-size: 28rpx;
+}
+
+.popDis_content .text {
+    color: #fff;
+    font-size: 40rpx;
+    margin-top: 20rpx;
+}
+
+.popDis_content .popbtn {
+    color: #333;
+    font-size: 32rpx;
+    margin-top: 75rpx;
+    letter-spacing: 4rpx;
+}

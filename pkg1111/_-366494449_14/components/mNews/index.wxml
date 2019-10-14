@@ -1,0 +1,13 @@
+<template name="mNews">
+    <view style="margin-bottom:{{style.marginBottom}};margin-top:{{style.marginTop}};background: #fff;padding: 20rpx 0 20rpx 0">
+        <view bindtap="_jump" class="new_item" data-url="/pages/news/detail/index?id={{item.id}}" wx:for="{{dataset.selectGoodsList}}" wx:key="id">
+            <view class="new_img" wx:if="{{item.thumb}}">
+                <image mode="aspectFit" src="{{item.thumb}}"></image>
+            </view>
+            <view class="new_info">
+                <view class="title">{{item.name}}</view>
+                <view class="time">{{item.createtime}}</view>
+            </view>
+        </view>
+    </view>
+</template>

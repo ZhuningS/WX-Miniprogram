@@ -1,0 +1,63 @@
+<template name="couponList">
+    <view class="couponList" wx:if="{{couponList&&couponList.length>0}}">
+        <view class="coupon" wx:for="{{couponList}}" wx:key="id">
+            <view style="position:absolute">
+                <image mode="aspectFit" src="../../../images/new/q2.png" style="width:658rpx;height:204rpx" wx:if="{{item.used==0}}"></image>
+                <image mode="aspectFit" src="../../../images/new/q4.png" style="width:658rpx;height:204rpx" wx:elif="{{item.used==1}}"></image>
+                <image mode="aspectFit" src="../../../images/new/q5.png" style="width:658rpx;height:204rpx" wx:else></image>
+            </view>
+            <view class="coupon__info">
+                <view class="coupon_wrap">
+                    <view class="coupon_amount">
+                        <text style="font-size:48rpx; margin-right:10rpx;font-weight:300">¥</text>{{item.fissionmoney}}</view>
+                    <view class="coupon__name">满{{item.enough}}元可使用</view>
+                </view>
+                <view class="coupon__times">
+                    <view class="coupon__time">
+                        <text class="coupon__time__title">有效期至</text>
+                            {{item.endtime2}}
+                        </view>
+                </view>
+                <view style="font-size: 24rpx;color: #444;text-align:left;margin-left:40rpx;font-weight:300;margin-top:6rpx;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" wx:if="{{item.goods&&typeof(item.goods)!='undefined'}}">限定商品: <block wx:for="{{item.goods}}" wx:for-item="goods">
+                        {{goods.name}}
+                    </block>
+                </view>
+                <view style="font-size: 24rpx;color: #444;text-align:left;margin-left:40rpx;font-weight:300;margin-top:6rpx;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;" wx:else>茂业全场通用红包</view>
+            </view>
+        </view>
+    </view>
+    <view class="nodata" wx:else>
+        <image class="icon" mode="aspectFit" src="../../../images/coupon/empty.png"></image>
+        <view wx:if="{{currentTab==0}}">
+            <text>啊哦,您还没有红包哦!</text>
+        </view>
+        <view wx:if="{{currentTab==1}}">
+            <text>暂无已使用红包!</text>
+        </view>
+        <view wx:if="{{currentTab==2}}">
+            <text>暂无已过期红包!</text>
+        </view>
+    </view>
+</template>
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view class="tabs">
+        <view class="navs">
+            <form bindsubmit="_tabSwitch" class="nav-item {{currentTab==0?'selected':''}}" data-current="{{0}}" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">未使用</button>
+            </form>
+            <form bindsubmit="_tabSwitch" class="nav-item {{currentTab==1?'selected':''}}" data-current="{{1}}" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">已使用
+                </button>
+            </form>
+            <form bindsubmit="_tabSwitch" class="nav-item {{currentTab==2?'selected':''}}" data-current="{{2}}" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">已过期</button>
+            </form>
+        </view>
+        <view class="tab-content-list">
+            <view class="tab-content">
+                <template is="couponList" data="{{couponList:couponList,currentTab:currentTab,copyright:copyright}}"></template>
+            </view>
+        </view>
+    </view>
+</view>

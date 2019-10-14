@@ -1,0 +1,6 @@
+<view class="success f fv fc">
+    <icon size="70" type="success"></icon>
+    <text class="f40 mt30">支付成功</text>
+    <text class="c666 f26 mt20">{{buyMode}}￥{{totalMoney}}</text>
+    <navigator class="btn" openType="reLaunch" url="/pages/index/index">返回主页</navigator>
+</view>

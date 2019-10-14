@@ -1,0 +1,16 @@
+<view class="font">
+    <view class="kefu">
+        <view bindtap="tel" class="kefu_one">
+            <image src="https://api.cnmmsc.org/apitc/img/image/tel-kefu.png"></image>
+            <view>联系电话</view>
+            <text class="more">></text>
+        </view>
+        <view class="kefu_one kefu_two">
+            <button class="kfbtn" openType="contact"></button>
+            <image src="https://api.cnmmsc.org/apitc/img/image/renwu.png"></image>
+            <view>在线客服</view>
+            <text class="more">></text>
+        </view>
+    </view>
+</view>
+<view class="loading rel"></view>

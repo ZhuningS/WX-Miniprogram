@@ -1,0 +1,29 @@
+.more-items {
+    margin-bottom: 120rpx;
+}
+
+.more-items .magazine-cover {
+    display: inline-block;
+    margin-right: 30rpx;
+    width: 630rpx;
+}
+
+.more-items .magazine-cover:first-child {
+    margin-left: 60rpx;
+}
+
+.more-items .magazine-cover:last-child {
+    margin-right: 60rpx;
+}
+
+.tags-ctn {
+    margin-top: 20px;
+}
+
+.single-card .actions-ctn .source {
+    display: block;
+}
+
+.single-card .actions-ctn .title-ctn {
+    display: none;
+}

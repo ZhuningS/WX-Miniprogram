@@ -1,0 +1,40 @@
+.c-gr {
+    width: 100%;
+}
+
+.c-gr .c-gr-title {
+    color: #666;
+    font-size: 24rpx;
+    padding: 30rpx 0;
+}
+
+.c-gr .c-gr-title .icon-xiantiao- {
+    color: #d0d0d0;
+}
+
+.c-gr .c-gr-title .rote {
+    transform: rotate(180deg);
+}
+
+.c-gr .c-gr-info {
+    width: 100%;
+    padding: 30rpx 30rpx 0 30rpx;
+    background-color: #fff;
+}
+
+.c-gr .c-gr-info .c-gr-up {
+    transform: rotate(180deg);
+    transition: transform .2s linear;
+}
+
+.c-gr .c-gr-info .c-gr-down {
+    transform: rotate(0);
+    transition: transform .2s linear;
+}
+
+.c-gr .c-gr-rich {
+    width: 100%;
+    padding: 30rpx 0;
+    background-color: #fff;
+    word-break: break-all;
+}

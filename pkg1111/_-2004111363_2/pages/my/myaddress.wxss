@@ -1,0 +1,204 @@
+.add-wrap {
+    width: 100%;
+}
+
+.add-wrap .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.add-wrap .header>text {
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+}
+
+.add-wrap .header .sel-nor {
+    font-size: 30rpx;
+}
+
+.add-wrap .header .sel {
+    font-weight: bold;
+    font-size: 50rpx;
+}
+
+.add-wrap .add-express {
+    width: 100%;
+}
+
+.add-wrap .add-express .wrap {
+    width: 100%;
+    height: 268rpx;
+    padding-left: 30rpx;
+    background: #fff;
+    margin-bottom: 25rpx;
+}
+
+.add-wrap .add-express .wrap .wrap-up {
+    width: 100%;
+    height: 180rpx;
+    padding-right: 30rpx;
+}
+
+.add-wrap .add-express .wrap .wrap-up .wrap-address {
+    margin-top: 26rpx;
+    font-size: 26rpx;
+    color: #666;
+    width: 519rpx;
+}
+
+.add-wrap .add-express .wrap .wrap-down {
+    width: 100%;
+    height: 88rpx;
+    border-top: 1px solid #eee;
+    padding-right: 30rpx;
+}
+
+.add-wrap .add-express .add-down {
+    width: 100%;
+    position: fixed;
+    bottom: 20rpx;
+    left: 0;
+    padding: 0 60rpx;
+}
+
+.add-wrap .add-express .add-down .add-btn {
+    width: 300rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    color: #fff;
+    border-radius: 10rpx;
+}
+
+.add-wrap .add-self {
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+.add-wrap .add-self .self-write {
+    width: 100%;
+    padding: 0 30rpx;
+    position: fixed;
+    left: 0;
+    z-index: 2;
+    background: #fff;
+}
+
+.add-wrap .add-self .self-write>text {
+    width: 100%;
+    height: 104rpx;
+    line-height: 104rpx;
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    display: inline-block;
+}
+
+.add-wrap .add-self .self-write>input {
+    width: 100%;
+    height: 88rpx;
+    line-height: 88rpx;
+    font-size: 26rpx;
+    background-color: #f6f6f6;
+    padding-left: 31rpx;
+    border-radius: 5rpx;
+    margin-bottom: 20rpx;
+}
+
+.add-wrap .add-self .self-write plac-style {
+    color: #d0d0d0;
+}
+
+.add-wrap .add-self .self-title {
+    width: 100%;
+    padding: 9rpx 0 10rpx 0;
+    text-align: center;
+    font-size: 30rpx;
+    color: #333;
+    font-weight: bold;
+}
+
+.add-wrap .add-self .self-lst {
+    width: 100%;
+    padding-left: 30rpx;
+}
+
+.add-wrap .add-self .self-lst .self-item {
+    padding: 29rpx 30rpx 32rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.add-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+}
+
+.add-mask .a-dialog {
+    width: 85%;
+    height: 600rpx;
+    background: #fff;
+    z-index: 5;
+    border-radius: 8rpx;
+    margin: 120rpx auto;
+}
+
+.add-mask .a-dialog .dig-title {
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    font-size: 34rpx;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.add-mask .a-dialog .dig-input {
+    padding: 0 20rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.add-mask .a-dialog .dig-input text {
+    width: 120rpx;
+}
+
+.add-mask .a-dialog .dig-btn {
+    width: 80%;
+    height: 88rpx;
+    line-height: 88rpx;
+    text-align: center;
+    color: #fff;
+    border-radius: 10rpx;
+    margin: 50rpx auto;
+}
+
+.add-mask .a-dialog .dig-cancle {
+    position: absolute;
+    bottom: -130rpx;
+    left: 42%;
+    z-index: 4;
+    font-size: 80rpx;
+    color: #fff;
+}
+
+.wrap-btn {
+    width: 120rpx;
+    height: 50rpx;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 26rpx;
+    color: #333;
+    border: 1px solid #d9d9d9;
+}

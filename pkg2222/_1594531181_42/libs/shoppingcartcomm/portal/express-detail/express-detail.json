@@ -1,0 +1,9 @@
+{
+    "navigationBarTitleText": "物流信息",
+    "navigationBarBackgroundColor": "#ffffff",
+    "enablePullDownRefresh": false,
+    "usingComponents": {
+        "navigation-bar": "../../../mmuxwxappdevkit/widget/navigation-bar/navigation-bar",
+        "image-view": "../../../mmuxwxappdevkit/widget/image-view/image-view"
+    }
+}

@@ -1,0 +1,36 @@
+.content {
+    width: 710rpx;
+    margin: 20rpx auto;
+    background: #fff;
+    padding: 30rpx;
+}
+
+.addimg {
+    width: 200rpx;
+    height: 200rpx;
+    position: relative;
+}
+
+.addimg text {
+    display: block;
+    width: 200rpx;
+    height: 200rpx;
+    line-height: 200rpx;
+    font-size: 80rpx;
+    border: 2rpx solid #ddd;
+}
+
+.addimg image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+textarea {
+    width: 650rpx;
+    height: 250rpx;
+    padding: 10rpx;
+    border: 2rpx solid #eee;
+}

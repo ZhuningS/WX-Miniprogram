@@ -1,0 +1,4 @@
+<view>
+    <rich-text nodes="{{node}}"></rich-text>
+</view>
+<view class="loading rel"></view>

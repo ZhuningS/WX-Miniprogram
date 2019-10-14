@@ -1,0 +1,126 @@
+<canvas canvasId="fake-canvas-id" class="fake-canvas" hidden="{{removeFakeCanvas}}"></canvas>
+<canvas canvasId="post-canvas-id" class="post-canvas" style="height: {{postCanvasHeight}}px; top: -{{postCanvasHeight}}px;" wx:if="{{showPostCanvas}}"></canvas>
+<canvas canvasId="qrcode-canvas-id" class="qrcode-canvas" wx:if="{{showQrCodeCanvas}}"></canvas>
+<view class="background-view" style="background: {{mainBgColor}}"></view>
+<scroll-view bindscroll="onPageScroll" class="scroll-view" scrollY="{{scrollEnable}}" style="height: {{scrollEnable==''?'':screenHeight+'px'}};" wx:if="{{main.header}}">
+    <navigation-bar backgroundColor="{{navigationbarColor}}" hidePlaceholder="true" hideTitleImg="{{hideTitleImg}}" titleImg="{{titleImg}}"></navigation-bar>
+    <block wx:if="{{!main.header.disable_mall&&main.header.has_mall&&!main.header.jump_wxapp.appid}}">
+        <view class="header {{mode}}" style="height: 370rpx;">
+            <view class="header-banner {{mode}}" mode="aspectFill" style="background-image: url('{{headerUrl}}'); height: 380rpx;">
+                <view class="header-banner__mask" wx:if="{{main.header&&(!main.header.banner_url||main.header.banner_url.length==0)}}"></view>
+                <view class="header-banner__gradient-share" wx:else></view>
+                <view class="header-banner__hjGradient" style="background: {{mainBgGradient}}"></view>
+            </view>
+            <button bindlongpress="onLongPressContact" bindtap="onClickContact" class="header-contact {{mode}}" wx:if="{{actionSheetItems.length>0}}">
+                <image class="header-contact__img" src="../../assets/share.png"></image>
+            </button>
+        </view>
+        <view class="boutique-section">
+            <image-view bindlongpress="onLongPressContact" class="boutique-section__img" src="{{main.header.logo_url}}"></image-view>
+            <view class="boutique-section__nickname">{{main.header.nickname}}</view>
+            <navigator appId="{{main.header.jump_wxapp.appid}}" innerClass="boutique-section__button-ctr" path="{{main.header.jump_wxapp.path}}" target="miniProgram" wx:if="{{main.header.jump_wxapp.appid}}">
+                <view class="boutique-section__button-third" hoverClass="boutique-section__boutique-active">在线购买</view>
+            </navigator>
+            <view bindtap="onClickBoutique" class="boutique-section__button-boutique" hoverClass="boutique-section__boutique-active" wx:else>在线购买</view>
+        </view>
+        <view class="boutique-seperator"></view>
+    </block>
+    <view class="header {{mode}}" wx:else>
+        <view class="header-banner {{mode}}" mode="aspectFill" style="background-image: url('{{headerUrl}}')">
+            <view class="header-banner__mask" wx:if="{{main.header&&(!main.header.banner_url||main.header.banner_url.length==0)}}"></view>
+            <view class="header-banner__gradient" wx:else>
+                <view class="header-banner__gradient-mask"></view>
+            </view>
+            <view class="header-banner__hjGradient" style="background: {{mainBgGradient}}"></view>
+        </view>
+        <image-view bindlongpress="onLongPressContact" class="header-logo {{phoneModel}}" src="{{main.header.logo_url}}" style="margin-top: 250rpx;"></image-view>
+        <view class="header-middle {{phoneModel}}" style="margin-top: 290rpx;">
+            <view class="header-nickname">{{main.header.nickname}}</view>
+        </view>
+        <button bindlongpress="onLongPressContact" bindtap="onClickContact" class="header-contact {{mode}}" style="margin-top: 253rpx" wx:if="{{actionSheetItems.length>0}}">
+            <image class="header-contact__img" src="../../assets/share.png"></image>
+        </button>
+    </view>
+    <action-sheet bShow="{{showActionSheet}}" bindhide="hideActionSheet" bindoncustomclick="onClickActionSheet" items="{{actionSheetItems}}" style="display: block;" title="{{actionSheetTitle}}"></action-sheet>
+    <modal bindcancel="{{modal.cancel}}" bindconfirm="{{modal.confirm}}" content="{{modal.content}}" openType="{{modal.openType}}" showCancel="{{modal.showCancel}}" showModal="{{modal.show}}" title="{{modal.title}}" userinfo="{{modal.userinfo}}"></modal>
+    <view class="section" wx:for="{{main.data}}" wx:for-item="data" wx:key="type">
+        <block wx:if="{{Util.shouldShowSection(data)}}">
+            <view bindtap="onClickHeader" class="section-header weui-cell weui-cell_access" data-data="{{data}}" data-index="{{index}}" hoverClass="{{data.no_detail?'':'weui-cell_active'}}" id="section-{{data.type}}">
+                <view class="weui-cel__bd section-header__title">{{data.title}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access section-header__ft" wx:if="{{!data.no_detail}}">
+                    {{Util.genSubTitle(data)}}
+                </view>
+            </view>
+            <brand-base class="main-base" desc="{{item.brand_desc}}" scopes="{{Util.genScopes(item)}}" seperator="{{false}}" wx:if="{{data.type==='TYPE_BRAND_CARD'}}" wx:for="{{data.brand_card}}" wx:key="brand_desc+business_scope"></brand-base>
+            <manage-product bindtapbanner="onClickManageBanner" bindtapproduct="onClickManageProduct" data="{{data}}" wx:if="{{data.type=='TYPE_MANAGE_PRODUCT'}}"></manage-product>
+            <block wx:if="{{data.type==='TYPE_ADDRESS'}}">
+                <view bindtap="onClickHeader" class="location-err-tip" data-data="{{data}}" data-index="{{index}}" hoverClass="weui-cell_active" wx:if="{{locationAuthStatus!='permit'}}">点击“门店信息”授权地理位置，获取门店信息。</view>
+                <block wx:else>
+                    <address-item bind:openlocation="onAddressLocationClick" bind:phonecall="onAddressPhoneClick" index="{{index}}" rawAddress="{{item}}" seperator="{{index!=data.address_items.length-1}}" wx:for="{{data.address_items}}" wx:key="store_id"></address-item>
+                </block>
+            </block>
+            <mini-feature bindtapcol="onClickMiniFeature" items="{{data.service_items}}" wx:if="{{data.type=='TYPE_SERVICE'}}"></mini-feature>
+            <mp-article bindclick="onClickMpArticle" index="{{index}}" seperator="{{index!=data.items.length-1}}" thumbUrl="{{item.pic_url}}" timestamp="{{item.create_time}}" title="{{item.title}}" url="{{item.url}}" wx:if="{{data.type==='TYPE_MP_ARTICLE'}}" wx:for="{{data.article_items}}" wx:key="title+url"></mp-article>
+            <contact-item bindcopybiz="onContactBizNameCopy" bindphonecall="onContactPhoneClick" contactInfo="{{data.contact_items[0]}}" onlineKfCount="{{supportInfo.online_kf_count||0}}" showKf="{{main.header.has_mall&&supportInfo.kf_count>0&&data.contact_items[0].has_kefu}}" wx:if="{{data.type==='TYPE_CONTACT'&&data.contact_items&&data.contact_items[0]}}"></contact-item>
+            <view class="section-footer" wx:if="{{index!=main.data.length-1}}"></view>
+        </block>
+    </view>
+    <view id="fixBottomView" style="background:#F7F7F7; width: 100%; height: {{fixBottomViewHeight}}px"></view>
+</scroll-view>
+<error-page errorSubTitle="请稍后重试" errorTitle="数据加载失败" style="margin-top: {{phoneModel=='iPhoneX'?88:64}}px; display:block;" wx:if="{{hasError}}"></error-page>
+<wxs module="Util">
+var genScopes = (function(res) {
+    var businessScope = res.business_scope;
+    if (res.business_scopes && res.business_scopes.length) {
+        businessScope = res.business_scopes.map((function(scope) {
+            if (scope && scope.items.length && scope.items[((nt_0 = (scope.items.length - 1), null == nt_0 ? undefined : 'number' === typeof nt_0 ? nt_0 : "" + nt_0))]) {
+                return (scope.items[((nt_1 = (scope.items.length - 1), null == nt_1 ? undefined : 'number' === typeof nt_1 ? nt_1 : "" + nt_1))].name)
+            };
+            return ("")
+        })).filter((function(scope) {
+            return (scope && scope.length)
+        })).join("/")
+    };
+    var scopes = [({
+        icon: "../../assets/time.png",
+        title: "成立时间",
+        content: res.established_time,
+    }), ({
+        icon: "../../assets/loctaion.png",
+        title: "成立地点",
+        content: res.established_location,
+    }), ({
+        icon: "../../assets/store.png",
+        title: "主营业务",
+        content: businessScope,
+    })];
+    return (scopes)
+});
+var sliceFirst = (function(arr) {
+    if (!arr || !arr.slice) {
+        return ([])
+    };
+    return (arr.slice(0, 1))
+});
+var shouldShowSection = (function(data) {
+    var items = null;
+    if (data.type == 'TYPE_BRAND_CARD') items = data.brand_card;
+    else if (data.type == 'TYPE_ADDRESS') items = data.address_items;
+    else if (data.type == 'TYPE_CONTACT') items = data.contact_items;
+    else if (data.type == 'TYPE_MP_ARTICLE') items = data.article_items;;
+    return (items && items.length > 0)
+});
+var genSubTitle = (function(data) {
+    if (data.type == 'TYPE_NEW_PRODUCT') {
+        return (data.product_info.release_topic)
+    } else if (data.type == 'TYPE_MANAGE_PRODUCT') {
+        return ("全部")
+    } else {
+        return ("")
+    }
+});
+module.exports.genScopes = genScopes;
+module.exports.sliceFirst = sliceFirst;
+module.exports.shouldShowSection = shouldShowSection;
+module.exports.genSubTitle = genSubTitle;
+</wxs>

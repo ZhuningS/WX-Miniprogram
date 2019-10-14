@@ -1,0 +1,25 @@
+<navigation-bar backgroundColor="#F7F7F7" title=""></navigation-bar>
+<view catch:ongotoconfirmorder="goToConfirmOrder" catch:ongotogoodsdetail="goToGoodsDetail" catch:ongotomallfromorderdetail="goToMallFromOrderDetail" class="container counter {{phoneModel}}">
+    <view class="wrapper-header">
+        <header></header>
+        <view class="tab">
+            <view bindtap="switchTab" class="tab-item-container" data-tab="wish" hoverClass="hover">
+                <view class="tab-item first {{currentTab==='wish'?'activated':''}}">待购商品</view>
+            </view>
+            <view bindtap="switchTab" class="tab-item-container" data-tab="order" hoverClass="hover">
+                <view class="tab-item last {{currentTab==='order'?'activated':''}}">已购商品</view>
+            </view>
+        </view>
+    </view>
+    <view class="wrapper-list">
+        <cart-list binddeleteitem="onDeleteItem" bindselectallitems="onSelectSectionItems" bindselectitem="onSelectItem" merchantList="{{merchantList}}" wx:if="{{currentTab==='wish'}}"></cart-list>
+        <order-list binddeleteorder="onDeleteOrder" bindgotoorderdetail="goToOrderDetail" bindloadmoreorder="getOrderList" hasMoreOrder="{{hasMoreOrder}}" orderList="{{orderList}}" wx:if="{{currentTab==='order'}}"></order-list>
+    </view>
+    <view bindtap="onClickTips" class="shopping-list-tips" wx:if="{{currentTab=='wish'&&merchantList.length>0||currentTab=='order'&&orderList.length>0}}">
+        <image class="shopping-list-tips__img" src="../../../assets/shopping-list.jpeg"></image>
+        <view class="shopping-list-tips__text">已同步至微信购物单</view>
+    </view>
+</view>
+<view class="wrapper-counter" hidden="{{currentTab!=='wish'}}">
+    <counter catchonclickselectall="onSelectAllItems" catchoncountall="countAll" cost="{{totalCost}}" quantity="{{totalQuantity}}" selectall="{{selectAll}}"></counter>
+</view>

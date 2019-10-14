@@ -1,0 +1,2 @@
+<navigation-bar backgroundColor="#F7F7F7" title="品牌资讯"></navigation-bar>
+<mp-article bindclick="onClickMpArticle" index="{{index}}" seperator="{{index!=articles.length-1}}" thumbUrl="{{item.pic_url}}" timestamp="{{item.create_time}}" title="{{item.title}}" url="{{item.url}}" wx:for="{{articles}}"></mp-article>

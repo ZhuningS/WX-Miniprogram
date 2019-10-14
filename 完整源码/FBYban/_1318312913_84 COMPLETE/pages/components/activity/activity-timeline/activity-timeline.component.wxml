@@ -1,0 +1,15 @@
+<view class="card-comments {{inPostPage?'':''}}" style="background-color: {{inPostPage?'EBEBEB':backgroundColor}}">
+    <view catchtap="handlePreReplyTap" class="card-comments-preview" wx:if="{{comments.hasPreMore&&!loading&&inPostPage}}">
+    查看更早的讨论
+  </view>
+    <qm-loading wx:elif="{{loading}}"></qm-loading>
+    <block wx:if="{{!inPostPage}}">
+        <common-comment backgroundColor="{{card.backgroundColor}}" event="{{item}}" inPostPage="{{inPostPage}}" postId="{{postId}}" wx:for="{{latestComments}}" wx:key="comment.id"></common-comment>
+        <view class="comment-count" wx:if="{{commentCount>=20}}">
+      查看全部 {{commentCount}} 条讨论
+    </view>
+    </block>
+    <block wx:else>
+        <common-comment backgroundColor="{{card.backgroundColor}}" event="{{item}}" inPostPage="{{inPostPage}}" postId="{{postId}}" wx:for="{{comments.events}}" wx:key="comment.id"></common-comment>
+    </block>
+</view>

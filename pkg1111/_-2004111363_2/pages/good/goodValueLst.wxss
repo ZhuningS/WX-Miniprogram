@@ -1,0 +1,84 @@
+.c-value {
+    width: 100%;
+}
+
+.c-value .c-value-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+.c-value .c-value-top>view {
+    font-size: 30rpx;
+    width: 50%;
+    height: 100rpx;
+}
+
+.c-value .c-value-main {
+    width: 100%;
+}
+
+.c-value .c-value-main .c-value-item {
+    width: 100%;
+    padding: 30rpx;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+}
+
+.c-value .c-value-main .c-value-item .c-value-item-logo {
+    width: 66rpx;
+    height: 66rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.c-value .c-value-main .c-value-item .c-value-item-imgs {
+    width: 100%;
+    margin-top: 30rpx;
+}
+
+.c-value .c-value-main .c-value-item .c-value-item-imgs>image {
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 5rpx;
+    margin: 0 10rpx 30rpx 0;
+}
+
+.c-value .c-value-main .c-value-item .c-value-item-btn {
+    width: 136rpx;
+    height: 58rpx;
+    border-radius: 29rpx;
+}
+
+.c-value .c-value-main .c-value-item .c-value-item-no {
+    border: 1px solid #d0d0d0;
+    color: #333;
+}
+
+.c-value .c-value-main .c-value-item .c-value-item-replay {
+    width: 100%;
+    padding: 30rpx;
+    border-radius: 5rpx;
+    background-color: #eee;
+    margin-bottom: 30rpx;
+}
+
+.c-value .c-value-main .c-value-item .c-value-item-replay .c-value-item-sanjiao {
+    position: absolute;
+    top: -40rpx;
+    left: 10rpx;
+    width: 0;
+    height: 0;
+    border-top: 30rpx solid transparent;
+    border-bottom: 30rpx solid #EEEEEE;
+    border-right: 30rpx solid transparent;
+    border-left: 30rpx solid transparent;
+}
+
+.c-value .c-value-main .c-value-main-none {
+    color: #d9d8d9;
+    height: 80vh;
+}

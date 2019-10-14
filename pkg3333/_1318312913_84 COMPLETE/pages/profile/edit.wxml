@@ -1,0 +1,35 @@
+<view class="form-content">
+    <form bindsubmit="addUserProfile">
+        <view class="label">头像</view>
+        <view catchtap="selectAvatar" class="avatar-ctn">
+            <image class="avatar" src="{{avatar}}" wx:if="{{avatar}}"></image>
+            <image class="avatar empty" src="/images/new_assets/icon_add.svg" wx:else></image>
+        </view>
+        <view class="label">名字</view>
+        <view class="input-wrapper">
+            <input class="input" maxlength="20" name="name" placeholder="输入名字" value="{{name}}"></input>
+        </view>
+        <view class="label">签名</view>
+        <view class="input-wrapper">
+            <input class="input" maxlength="20" name="desc" placeholder="十个字以内的介绍" value="{{desc}}"></input>
+        </view>
+        <view class="label">详细描述</view>
+        <textarea class="textarea" name="intro" style="margin-top:10px;" value="{{intro}}"></textarea>
+        <view class="label" style="display:flex;" wx:if="{{roles}}">
+            <text>头衔：</text>
+            <picker bindchange="selectRole" range="{{roles}}">
+        {{roles[selectedRole]}}
+      </picker>
+        </view>
+        <view class="actions-ctn">
+            <button class="button large" formType="submit">
+                <block wx:if="{{isEdit}}">保存</block>
+                <block wx:else>添加</block>
+            </button>
+            <button catchtap="removeUserProfile" class="button text large" wx:if="{{isEdit&&gid}}">
+        删除身份
+      </button>
+        </view>
+    </form>
+</view>
+<include src="../components/global.wxml"></include>

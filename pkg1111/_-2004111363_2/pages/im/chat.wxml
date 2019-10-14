@@ -1,0 +1,31 @@
+<view class="f fv chat-wrap">
+    <scroll-view bindscrolltoupper="loadMore" bindtap="clickChat" class="f1 rel chat-msglist" enableBackToTop="true" scrollIntoView="msg{{vm.lastids}}" scrollWithAnimation="true" scrollY="true">
+        <view class="chat-msg {{item.fuserId==fuserInfo.userid?'self':''}} f cl" id="msg{{item.ids}}" wx:for="{{vm.list}}" wx:key="key">
+            <image class="chat-photo" src="{{tuserInfo.headimg}}" wx:if="{{item.fuserId!=fuserInfo.userid}}"></image>
+            <view class="rel msg-wrap">
+                <view class="msg-txt" wx:if="{{item.msgType==0}}">{{item.msg}}</view>
+                <view class="msg-img" wx:elif="{{item.msgType==1}}">
+                    <image bindtap="previewImage" data-wpypreviewimage-a="{{item.msg}}" mode="aspectFill" src="{{item.msg}}"></image>
+                </view>
+                <view class="msg-arrow"></view>
+            </view>
+            <image class="chat-photo" src="{{fuserInfo.headimg}}" wx:if="{{item.fuserId==fuserInfo.userid}}"></image>
+        </view>
+    </scroll-view>
+    <view catchtap="hideMore" class="input-box f fc">
+        <view class="rel f1">
+            <input bindblur="inputBlur" bindconfirm="clickToSend" bindinput="inputTxtMsg" class="input-txt " confirmType="发送" cursorSpacing="20" focus="{{inputfocus}}" placeholder="请输入" type="text" value="{{msg}}"></input>
+            <view class="inputMask" wx:if="{{!inputfocus}}"></view>
+        </view>
+        <view catchtap="toggleMore" class="dzicon icon-jiahao input-more" wx:if="{{msg==''}}"></view>
+        <view catchtap="clickToSend" class="input-send" wx:if="{{msg!=''}}">发送</view>
+    </view>
+    <view class="more-wrap" wx:if="{{showMore}}">
+        <view class="f ">
+            <view catchtap="clickImgBtn" class="more-item">
+                <view class="dzicon icon-tupian"></view>
+                <view class="more-txt">图片</view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,101 @@
+<view class="container">
+    <view>
+        <view>
+            <text>订单编号：</text>
+            <text>{{oreder_info.order_num}}</text>
+        </view>
+    </view>
+    <view>
+        <view>
+            <text>下单时间：</text>
+            <text>{{oreder_info.time}}</text>
+        </view>
+    </view>
+    <view>
+        <view>
+            <text>客户姓名：</text>
+            <text>{{oreder_info.user_name}}</text>
+        </view>
+    </view>
+    <view>
+        <view>
+            <text>客户电话：</text>
+            <text>{{oreder_info.tel}}</text>
+        </view>
+    </view>
+    <view>
+        <view>
+            <text>客户地址：</text>
+            <text style="line-height:{{height}}rpx">{{oreder_info.address}}</text>
+        </view>
+    </view>
+    <view>
+        <view>
+            <text>商品名称：</text>
+            <text>{{oreder_info.good_name}}</text>
+        </view>
+    </view>
+    <view>
+        <view>
+            <text>商品价格：</text>
+            <text>{{oreder_info.good_money}}</text>
+        </view>
+    </view>
+    <view>
+        <view>
+            <text>商品数量：</text>
+            <text>{{oreder_info.good_num}}</text>
+        </view>
+    </view>
+    <view>
+        <view>
+            <text>运费：</text>
+            <text>{{oreder_info.freight}}</text>
+        </view>
+    </view>
+    <view>
+        <view class="rel">
+            <text>订单状态：</text>
+            <text wx:if="{{oreder_info.state==1}}">等待买家付款</text>
+            <text wx:if="{{oreder_info.state==2}}">待发货</text>
+            <text wx:if="{{oreder_info.state==3}}">等待买家确认收货</text>
+            <text wx:if="{{oreder_info.state==4}}">订单已完成</text>
+            <text wx:if="{{oreder_info.state==5}}">退款中</text>
+            <text wx:if="{{oreder_info.state==6}}">已退款</text>
+            <text wx:if="{{oreder_info.state==7}}">退款已被拒绝</text>
+            <text bindtap="Deliver" class="ab ud" wx:if="{{oreder_info.state==2}}">确认发货</text>
+        </view>
+    </view>
+    <view class="rel" wx:if="{{system.wuliu==1&&oreder_info.state>2}}">
+        <view>
+            <text>物流订单号：</text>
+            <text>{{oreder_info.order_express}}</text>
+        </view>
+        <text bindtap="showWuliu" class="ab ud" style="right:20rpx;top:20rpx;font-size:26rpx;color:red">查看物流</text>
+    </view>
+</view>
+<view style="background:white;padding-bottom:20rpx" wx:if="{{system.wuliu==1&&oreder_info.state==2}}">
+    <input bindinput="wlInput" class="wuliu_inp" placeholder="请输入快递订单号" style="background:white;" type="number"></input>
+    <view style="background:white;color:gray;font-size:30rpx;text-align:center;margin:10rpx 0;color:red">*Tips:商家填写物流单号</view>
+</view>
+<block wx:if="{{showModal}}">
+    <view catchtap="cancelSpec" style="position:fixed; top:0;bottom:0;left:0;right:0;background:rgba(0,0,0,0.6);z-index:99999999;"></view>
+    <view class="weui-form-preview box" style="position:fixed; width:80%;height:90%;border:1px solid #eee; z-index:999999999999999;background:#fafafc; margin-left:7%;top:40px;overflow:hidden">
+        <scroll-view scrollY bindscroll="scroll" bindscrolltolower="lower" bindscrolltoupper="upper" style="height: 500px;">
+            <view style="text-align:center">物流信息</view>
+            <view class="state1" wx:if="{{wuliu_state==3}}">已签收</view>
+            <view class="state2" wx:else>未签收</view>
+            <view class="wuliuMes" style="margin:20rpx 0" wx:for="{{wuliu_message}}">
+                <view style="margin-top:10rpx;margin-right:5rpx">
+                    <view>时间: {{item.time}}</view>
+                    <view>地址: {{item.context}}</view>
+                </view>
+            </view>
+            <view></view>
+            <view></view>
+        </scroll-view>
+    </view>
+</block>
+<view class="qrtk" wx:if="{{oreder_info.state==5}}">
+    <button bindtap="sjqrtk" disabled="{{is_business==1}}" size="mini" type="primary"> {{is_business==1?'等待平台确认退款':'商家确认退款'}} </button>
+</view>

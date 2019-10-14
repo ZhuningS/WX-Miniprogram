@@ -1,0 +1,104 @@
+.container {
+    width: 100%;
+    margin-top: 20rpx;
+}
+
+.container>view {
+    width: 100%;
+    min-height: 80rpx;
+    background: #fff;
+}
+
+.wuliu_inp {
+    padding-top: 20rpx;
+    width: 93%;
+    height: 80rpx;
+    padding: 5rpx 23rpx;
+    border-radius: 4rpx;
+    font-size: 28rpx;
+    border: 1px solid gray;
+    background: white;
+}
+
+.container>view view {
+    width: 95%;
+    height: 100%;
+    margin: 0 auto 0;
+    border-bottom: 1rpx solid #f7f7f7;
+    box-sizing: border-box;
+}
+
+.container>view view text {
+    display: inline-block;
+    line-height: 80rpx;
+    font-size: 28rpx;
+}
+
+.container>view view text:nth-child(1) {
+    width: 25%;
+    word-break: break-all;
+}
+
+.container>view view text:nth-child(2) {
+    color: #999;
+    width: 75%;
+    word-break: break-all;
+}
+
+.container>view view text:nth-child(3) {
+    width: 170rpx;
+    height: 80%;
+    background: #ed414a;
+    right: 0;
+    line-height: 64rpx;
+    color: #fff;
+    text-align: center;
+    border-radius: 15rpx;
+}
+
+.address>view {
+    display: inline-block;
+    min-height: 80rpx;
+    line-height: 80rpx;
+    font-size: 28rpx;
+}
+
+.address>view:nth-child(1) {
+    width: 20%;
+}
+
+.address>view:nth-child(2) {
+    width: 80%;
+}
+
+.wuliuMes {
+    font-size: 26rpx;
+    display: flex;
+    align-items: center;
+}
+
+.box {
+    padding: 10rpx 25rpx;
+}
+
+.state1 {
+    text-align: right;
+    background: fafafc;
+    padding-right: 20rpx;
+    color: green;
+    font-size: 30rpx;
+}
+
+.state2 {
+    text-align: right;
+    padding-right: 20rpx;
+    color: red;
+    font-size: 30rpx;
+    background: fafafc;
+}
+
+.qrtk {
+    display: flex;
+    justify-content: center;
+    margin-top: 30rpx;
+}

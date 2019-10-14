@@ -1,0 +1,64 @@
+<view class="contenter">
+    <radio-group bindchange="onValueChange">
+        <view class="tip-list gridXb transition-duration-150 active-bg">
+            <label>
+                <radio checked="{{remind_time==-1?'checked':''}}" value="-1"></radio>
+                <text>不提醒</text>
+            </label>
+        </view>
+        <view class="tip-list gridXb transition-duration-150 active-bg">
+            <label>
+                <radio checked="{{remind_time==0?'checked':''}}" value="0"></radio>
+                <text>事件发生时</text>
+            </label>
+        </view>
+        <view class="tip-list gridXb transition-duration-150 active-bg">
+            <label>
+                <radio checked="{{remind_time==5*60?'checked':''}}" data-text="sss" value="{{5*60}}"></radio>
+                <text>5分钟前</text>
+            </label>
+        </view>
+        <view class="tip-list gridXb gridXb transition-duration-150 active-bg">
+            <label>
+                <radio checked="{{remind_time==15*60?'checked':''}}" value="{{15*60}}"></radio>
+                <text>15分钟前</text>
+            </label>
+        </view>
+        <view class="tip-list gridXb gridXb transition-duration-150 active-bg">
+            <label>
+                <radio checked="{{remind_time==30*60?'checked':''}}" value="{{30*60}}"></radio>
+                <text>30分钟前</text>
+            </label>
+        </view>
+        <view class="tip-list gridXb gridXb transition-duration-150 active-bg">
+            <label>
+                <radio checked="{{remind_time==60*60?'checked':''}}" value="{{60*60}}"></radio>
+                <text>1小时前</text>
+            </label>
+        </view>
+        <view class="tip-list gridXb gridXb transition-duration-150 active-bg">
+            <label>
+                <radio checked="{{remind_time==2*60*60?'checked':''}}" value="{{2*60*60}}"></radio>
+                <text>2小时前</text>
+            </label>
+        </view>
+        <view class="tip-list gridXb gridXb transition-duration-150 active-bg">
+            <label>
+                <radio checked="{{remind_time==24*60*60?'checked':''}}" value="{{24*60*60}}"></radio>
+                <text>1天前</text>
+            </label>
+        </view>
+        <view class="tip-list gridXb gridXb transition-duration-150 active-bg">
+            <label>
+                <radio checked="{{remind_time==2*24*60*60?'checked':''}}" value="{{2*24*60*60}}"></radio>
+                <text>2天前</text>
+            </label>
+        </view>
+        <view class="tip-list gridXb gridXb transition-duration-150 active-bg">
+            <label>
+                <radio checked="{{remind_time==7*24*60*60?'checked':''}}" value="{{7*24*60*60}}"></radio>
+                <text>1周前</text>
+            </label>
+        </view>
+    </radio-group>
+</view>

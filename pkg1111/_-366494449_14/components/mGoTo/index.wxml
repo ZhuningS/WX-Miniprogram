@@ -1,0 +1,8 @@
+<template name="mGoTo">
+    <view bindtap="_jumpToMiniProgram" data-id="{{dataset.appId}}" data-path="{{dataset.pageUrl||''}}" style="padding:20rpx;font-size:28rpx;color:#333;background:#fff;">
+        <image mode="widthFix" src="{{dataset.imageUrl}}" wx:if="{{dataset.contentType=='image'}}"></image>
+        <block wx:elif="{{dataset.contentType=='text'}}">
+                {{dataset.linkText}}
+          </block>
+    </view>
+</template>

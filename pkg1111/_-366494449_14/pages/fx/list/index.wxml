@@ -1,0 +1,86 @@
+<template name="orderList">
+    <scroll-view bindscrolltolower="_loadMore" class="order-list" scrollY="true">
+        <block wx:if="{{list&&list.length>0}}">
+            <view style="margin-bottom: 20rpx;" wx:for="{{list}}">
+                <view class="fx-state">
+                    <view>
+                        <view style="font-size: 32rpx;">佣金：<text style="color: #e53947;font-size: 38rpx;">¥{{item.distribute_money_out}}</text>
+                        </view>
+                        <view style="color: #333">订单金额：<text style="color: #e53947;font-size: 32rpx;">¥{{item.realmoney}}</text>
+                        </view>
+                    </view>
+                    <view style="color: #666; font-size: 30rpx;">{{item.timer}}</view>
+                </view>
+                <view class="order-item" wx:for="{{item.rows}}" wx:key="id">
+                    <view class="buyInfo">
+                        <view>买家：<text style="font-size: 24rpx;color: #333">{{item.nickname}}</text>
+                        </view>
+                        <view style="margin-left: 40rpx">购买时间：<text style="font-size: 24rpx;color: #333">{{item.dateline}}</text>
+                        </view>
+                    </view>
+                    <view class="order-info" wx:for="{{item.goodslist}}">
+                        <view class="bg-img">
+                            <image mode="aspectFill" src="{{item.thumb}}"></image>
+                        </view>
+                        <view class="order-r">
+                            <view class="label-text" style="margin-bottom: 10rpx;">
+                                <text class="name">{{item.name}}</text>
+                            </view>
+                            <view class="label-text">
+                                <view class="price">售价 <text>￥{{item.price}}</text>
+                                </view>
+                            </view>
+                            <view class="label-text">
+                                <view class="price">佣金 <text>￥{{item.distribute_money_out}}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view style="color:#999;margin:left: 20rpx;text-align:right;font-size: 24rpx">
+                            <view>X {{item.num}}</view>
+                            <button class="nobutton" data-id="{{item.id}}" data-imageUrl="{{item.thumb}}" data-title="{{item.name}}" openType="share" style="margin-top: 40rpx; color: #666">
+                                <image src="/images/card/share3.png" style="width:32rpx;height: 32rpx; display: block; margin: 0  auto 10rpx"></image>
+                                    分享
+                                    </button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view class="nodata" wx:else>
+            <image class="icon" mode="aspectFit" src="/images/card/noorder.png"></image>
+            <view>
+                <text>订单空空如也，要继续加油哦～</text>
+            </view>
+        </view>
+        <view class="more-loading" hidden="{{!moreLoading}}">
+            <text>加载中...</text>
+        </view>
+    </scroll-view>
+</template>
+<loading hidden="{{dataLoaded}}">加载中...</loading>
+<view class="wrap" hidden="{{!dataLoaded}}">
+    <view class="tabs">
+        <view class="navs">
+            <form bindsubmit="_tabSwitch" class="nav__item {{currentTab=='all'?'selected':''}}" data-current="all" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">全部</button>
+            </form>
+            <form bindsubmit="_tabSwitch" class="nav__item {{currentTab=='accounting'?'selected':''}}" data-current="accounting" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">未入账</button>
+            </form>
+            <form bindsubmit="_tabSwitch" class="nav__item {{currentTab=='enable'?'selected':''}}" data-current="enable" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">可提现</button>
+            </form>
+            <form bindsubmit="_tabSwitch" class="nav__item {{currentTab=='audit'?'selected':''}}" data-current="audit" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">提现中</button>
+            </form>
+            <form bindsubmit="_tabSwitch" class="nav__item {{currentTab=='accounted'?'selected':''}}" data-current="accounted" reportSubmit="true">
+                <button class="btn nobutton" formType="submit">已提现</button>
+            </form>
+        </view>
+        <view class="tab-content-list">
+            <view class="tab-content">
+                <template is="orderList" data="{{list:list}}"></template>
+            </view>
+        </view>
+    </view>
+</view>

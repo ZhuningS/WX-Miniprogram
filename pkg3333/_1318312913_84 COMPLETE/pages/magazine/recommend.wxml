@@ -1,0 +1,21 @@
+<import src="../components/widgets.wxml"></import>
+<import src="../components/card.wxml"></import>
+<import src="../components/nav.wxml"></import>
+<view class="{{showShareCard?'blur':''}}" style="min-height:100vh;background-color:{{color}}">
+    <template is="fixed-nav" data="{{tabs:tabs,selectedTab:current,style:'left'}}"></template>
+    <block wx:if="{{events.length>0}}">
+        <template is="single-card-seperator" data></template>
+        <template is="single-card-description" data="{{ descriptions:['以下是我们的人工智能编辑助理小花为你建议的内容。如果你认为一篇图文值得被推荐给其他读者，请点击⭕️。否则，请点击❌。如果你有特定的文章想添加，可以直接通过右下角的按钮添加。'] }}"></template>
+        <template is="single-card-seperator" data></template>
+        <template is="card-recommend" data="{{marked:marked,itemsStatus:itemsStatus,...item}}" wx:if="{{item.type==='article'}}" wx:for="{{events}}" wx:key="{{ index }}"></template>
+    </block>
+    <view></view>
+    <template is="error" data wx:if="{{error}}"></template>
+    <view class="loading-ctn">
+        <template is="loading" data="{{loading:loading}}"></template>
+    </view>
+    <view catchtap="selectArticle" class="float-button bounce" hoverClass="none">
+        <image class="icon" src="../../images/new_assets/icon_create_w.svg"></image>
+    </view>
+</view>
+<include src="../components/global.wxml"></include>

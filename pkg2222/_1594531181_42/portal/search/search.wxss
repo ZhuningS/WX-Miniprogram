@@ -1,0 +1,89 @@
+@import "../../__wuBaseWxss__/3.wxss";
+
+.search-wrap {
+    width: 100%;
+    height: 100%;
+}
+
+.search-sug {
+    width: 100%;
+    height: 100%;
+}
+
+.item-list {
+    width: 100%;
+    padding-bottom: 44rpx;
+}
+
+.line-item-wrap {
+    padding: 50rpx 0;
+    position: relative;
+}
+
+.line-item-wrap::after {
+    position: absolute;
+    background: #E5E5E5;
+    left: 280rpx;
+    bottom: 0;
+    height: 1rpx;
+    transform: scaleY(0.5);
+    width: 470rpx;
+    content: "";
+}
+
+.line-item-wrap__no-border::after {
+    height: 0;
+}
+
+.line-item-inner-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 50rpx;
+    padding-right: 46rpx;
+}
+
+.line-item-active-mask {
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.line-item-active-mask:active {
+    background-color: #000;
+    opacity: 0.1;
+}
+
+.line-item-img {
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.line-item-text__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-left: 42rpx;
+}
+
+.line-item-text__title {
+    font-size: 15px;
+    color: #000;
+}
+
+.line-item-text__price {
+    font-family: WeChat Sans Std;
+    margin-top: 28rpx;
+    font-size: 14px;
+    color: #888;
+}
+
+.no-more-footer {
+    text-align: center;
+    font-size: 14px;
+    color: #8C8C8C;
+    padding-bottom: 20px;
+}

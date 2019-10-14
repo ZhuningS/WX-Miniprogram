@@ -1,0 +1,102 @@
+page {
+}
+
+.bankCard {
+    margin: 20rpx;
+}
+
+.bankCard .item {
+    position: relative;
+    padding: 30rpx 40rpx;
+    background-image: -webkit-linear-gradient(45deg,#ef9077,#ea6068);
+    border-radius: 8rpx;
+    font-size: 24rpx;
+    color: #fff;
+    box-shadow: 0rpx 4rpx 10rpx rgba(7,17,27,.1);
+    margin: 30rpx 0;
+}
+
+.bankCard .item .bankno {
+    font-size: 48rpx;
+    letter-spacing: 2rpx;
+}
+
+.btn-bindard {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #05b00f;
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: normal;
+    border: none;
+    text-align: center;
+}
+
+.addBankCard .item {
+    display: flex;
+    background: #fff;
+    align-items: center;
+    padding: 30rpx;
+    border-bottom: 1px solid #eee;
+}
+
+.addBankCard .item .label {
+    font-size: 28rpx;
+    margin-right: 20rpx;
+    width: 100rpx;
+    color: #777;
+    text-align: left;
+}
+
+.addBankCard .item .controller {
+    flex: 1;
+}
+
+.addBankCard .item .controller input {
+    font-size: 28rpx;
+}
+
+.btn-save {
+    margin: 40rpx 30rpx 0;
+    background-color: #05b00f;
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #fff;
+    font-size: 32rpx;
+    font-weight: normal;
+    border: none;
+    text-align: center;
+    border-radius: 8rpx;
+}
+
+.btn-cancel {
+    margin: 20rpx 30rpx 0;
+    background-color: #fff;
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #666;
+    font-size: 32rpx;
+    font-weight: normal;
+    border: none;
+    text-align: center;
+    border-radius: 8rpx;
+}
+
+.optionbar {
+    position: absolute;
+    right: 10rpx;
+    top: 10rpx;
+    display: flex;
+}
+
+.optionbar view {
+    margin-left: 10rpx;
+    border: 1px solid #fff;
+    padding: 0 6rpx;
+    border-radius: 6rpx;
+    font-size: 20rpx;
+}

@@ -1,0 +1,182 @@
+.vote-create-ctn {
+    padding: 70rpx 60rpx;
+    box-sizing: border-box;
+}
+
+.vote-create-ctn .body {
+    font-weight: normal;
+}
+
+.vote-create-ctn .description {
+    font-weight: normal;
+}
+
+.vote-create-ctn .vote-content-type-ctn {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    margin-top: 70rpx;
+}
+
+.vote-create-ctn .vote-content-type-ctn .vote-type-option {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 130rpx;
+    width: 630rpx;
+    padding: 40rpx;
+    border: 1rpx solid rgba(72,84,92,0.25);
+    font-size: 14px;
+}
+
+.vote-create-ctn .vote-content-type-ctn .vote-type-option+.vote-type-option {
+    margin-top: 20rpx;
+}
+
+.vote-create-ctn .vote-content-type-ctn .vote-type-option.selected {
+    border: 1px #48545c solid;
+    background-color: rgba(72,84,92,0.05);
+}
+
+.vote-create-ctn .option-ctn {
+    margin-top: 35px;
+}
+
+.vote-create-ctn .option-ctn .input-ctn {
+    margin: 9px 0 0;
+}
+
+.vote-create-ctn .option-ctn .input-ctn .input-wrapper {
+    position: relative;
+}
+
+.vote-create-ctn .option-ctn .input-ctn .input-wrapper .badge {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+
+.vote-create-ctn .option-ctn .button.large {
+    margin-top: 9px;
+}
+
+.vote-create-ctn .option-ctn .image-ctn {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px 0;
+}
+
+.vote-create-ctn .option-ctn .image-ctn .image-option {
+    overflow: visible;
+    position: relative;
+}
+
+.vote-create-ctn .option-ctn .image-ctn .image-option.notline1 {
+    margin-top: 20rpx;
+}
+
+.vote-create-ctn .option-ctn .image-ctn .image-option .image {
+    position: relative;
+    height: 300rpx;
+    width: 300rpx;
+    background-color: #000000;
+    display: block;
+}
+
+.vote-create-ctn .option-ctn .image-ctn .image-option .badge {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    top: -10px;
+    z-index: 1;
+}
+
+.vote-create-ctn .option-ctn .image-ctn .image-option .icon_20px {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.vote-create-ctn .option-ctn .image-ctn .image-option .description {
+    margin-top: 8rpx;
+}
+
+.vote-create-ctn .option-ctn.timer {
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vote-create-ctn .option-ctn.timer .body {
+    display: flex;
+    align-items: center;
+}
+
+.vote-create-ctn .option-ctn.timer .body .icon_16px {
+    transform: translateX(-10px);
+    margin-left: 30rpx;
+}
+
+.vote-create-ctn .title {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+}
+
+.vote-create-ctn .title .more {
+    margin-left: 20rpx;
+    height: 30px;
+    width: 30px;
+    transition: 0.3s ease;
+}
+
+.vote-create-ctn .title .more.open {
+    transform: rotate(-180deg);
+}
+
+.vote-create-ctn .moreOptions-ctn {
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+}
+
+.vote-create-ctn .moreOptions-ctn.open {
+    max-height: 250px;
+    transition: max-height 0.3s ease-in;
+}
+
+.vote-create-ctn .moreOptions-ctn .option-ctn {
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vote-create-ctn .moreOptions-ctn .option-ctn .checkbox {
+    color: #000000;
+}
+
+.vote-create-ctn .moreOptions-ctn .option-ctn .body {
+    display: flex;
+    align-items: center;
+}
+
+.vote-create-ctn .moreOptions-ctn .option-ctn .body .icon_16px {
+    transform: translateX(-10px);
+    margin-left: 30rpx;
+}
+
+.vote-create-ctn .moreOptions-ctn .option-ctn+.option-ctn {
+    margin-top: 33px;
+}
+
+.vote-create-ctn .button.large {
+    margin-top: 50px;
+}

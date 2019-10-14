@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="3363 81 20 20">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7f7f7;
+        opacity: 0;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="icon_play" transform="translate(3173 -165)">
+    <rect id="_61aae0655334aab62317b2b8943b8b13" data-name="61aae0655334aab62317b2b8943b8b13" class="cls-1" width="20" height="20" transform="translate(190 246)"/>
+    <path id="Path_926" data-name="Path 926" class="cls-2" d="M2,3.446v9l7.5-4.5Z" transform="translate(195 248.054)"/>
+  </g>
+</svg>

@@ -1,0 +1,105 @@
+<view class="my {{currentSkin}} {{showVip?'pageHide':''}}">
+    <view class="btn-submit__normal x-user">
+        <view class="x-show-none fsa fc" style="background-color:#666" wx:if="{{!vm.user.isgetPhone&&vm.user.TelePhone.length!=11&&vm.user.tel.length!=11}}">
+            <button bindgetuserinfo="loginTap" class="btn-none x-userLogo dzicon icon-mine_wode f90" openType="getUserInfo" wx:if="{{vm.user.newUser}}"></button>
+            <image class="x-userLogo" src="{{vm.user.HeadImgUrl}}" wx:else></image>
+            <button bindgetphonenumber="getPhoneNumber" class="btn-none x-getWxCard" openType="getPhoneNumber">
+                <text class="dzicon icon-huangguan"></text>
+                <text class="f24 ml10">{{vm.model.pricestr>0?'绑定手机号码':'注册会员'}}</text>
+            </button>
+        </view>
+        <view class="x-show-none vipBg-icon" style="background-color:{{vm.model.levelInfo.bgcolor}}" wx:if="{{vm.user.isgetPhone||vm.user.TelePhone.length==11||vm.user.tel.length==11}}">
+            <view class="f p30 fc">
+                <button bindgetuserinfo="loginTap" class="btn-none x-userLogo dzicon icon-mine_wode f90" openType="getUserInfo" wx:if="{{vm.user.newUser}}"></button>
+                <image class="x-userLogo" src="{{vm.user.HeadImgUrl}}" wx:else></image>
+                <view class="f fv fj cfff ml20">
+                    <text class="t-b f34">{{vm.model.levelInfo.name}}</text>
+                    <view class="f fc" wx:if="{{vm.user.newUser}}">
+                        <text class="mr10">同步微信头像和昵称</text>
+                        <button bindgetuserinfo="loginTap" class="btn-none dzicon icon-tongbu cfff" openType="getUserInfo"></button>
+                    </view>
+                    <text class="f26" wx:else>{{vm.user.NickName}} </text>
+                </view>
+            </view>
+            <view class="f fc-h">
+                <view bindtap="getWxCard" class="check-vipinfo f22 mr20" wx:if="{{vm.wxCard}}">放入卡包</view>
+                <view bindtap="showVipFunc" class="check-vipinfo">查看会员权益
+                        <text class="dzicon icon-xiala-copy-right cfff"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="m-value f">
+        <view bindtap="goStore" class="f1 f fv fc-h fc">
+            <text class="f50 skin_txt t-b">{{vm.model.valueMoney}}</text>
+            <text class="c999 f26">储值余额</text>
+        </view>
+        <view class="f1 f fv fc-h fc">
+            <text class="f50 skin_txt t-b">{{vm.model.pricestr}}</text>
+            <text class="c999 f26">累计消费</text>
+        </view>
+    </view>
+    <view class="m-valSc" wx:if="{{vm.plst.length&&vm.openvip&&vm.switch.SaveMoney}}">
+        <view class="f fc pw20">
+            <text class="f30 f1">储值有礼</text>
+            <view bindtap="navHistory" class="f26 c999 f fc">查看账单记录
+                    <text class="dzicon icon-xiala-copy-right"></text>
+            </view>
+        </view>
+        <scroll-view>
+            <view class="f">
+                <view bindtap="selPrice" class="m-price f fv rel" data-wpyselprice-a="{{index}}" wx:if="{{index<7}}" wx:for="{{vm.plst}}" wx:key="key">
+                    <text class="dzicon icon-Choice_xuanze skin_txt" wx:if="{{item.sel}}"></text>
+                    <text class="f50 f">{{item.JoinMoneyStr}}<text class="f30">元</text>
+                    </text>
+                    <text class="f22 c666 mt20">{{item.SetName}}</text>
+                </view>
+                <view bindtap="goSave" class="m-price f fc c999" style="background-image:none;border:1px dotted #dedede" wx:if="{{vm.plst.length>7}}">
+                    <text style="width:260rpx;text-align:center">查看更多
+                                                    <text class="dzicon icon-xiala-copy-right" style="width:0"></text>
+                    </text>
+                </view>
+            </view>
+        </scroll-view>
+        <view bindtap="recharge" class="m-valbtn skin_br">立即储值</view>
+    </view>
+    <view class="m-tab f fc">
+        <text class="f30 f1">我的订单</text>
+        <view bindtap="checkOlt" class="f26 c999 f fc">查看所有订单
+                <text class="dzicon icon-xiala-copy-right"></text>
+        </view>
+    </view>
+    <view class="m-lst f fc">
+        <view bindtap="navOlt" class="f fv fc f1 rel" data-wpynavolt-a="0">
+            <text class="dzicon icon-daifukuan1 f50 m-item"></text>
+            <text class="f26 c333">待付款</text>
+            <text class="record-num skin_bg" wx:if="{{vm.count.waitPayRecord!=0}}">{{vm.count.waitPayRecord}}</text>
+        </view>
+        <view bindtap="navOlt" class="f fv fc f1 rel" data-wpynavolt-a="1">
+            <text class="dzicon icon-daifahuo1 f50 m-item"></text>
+            <text class="f26 c333">待发货</text>
+            <text class="record-num skin_bg" wx:if="{{vm.count.waitSendRecord!=0}}">{{vm.count.waitSendRecord}}</text>
+        </view>
+        <view bindtap="navOlt" class="f fv fc f1 rel" data-wpynavolt-a="2">
+            <text class="dzicon icon-daishouhuo1 f50"></text>
+            <text class="f26 c333">待收货</text>
+            <text class="record-num skin_bg" wx:if="{{vm.count.waitReceiveRecord!=0}}">{{vm.count.waitReceiveRecord}}</text>
+        </view>
+        <view bindtap="navOlt" class="f fv fc f1 rel" data-wpynavolt-a="3">
+            <text class="dzicon icon-yiwancheng1 f50 m-item"></text>
+            <text class="f26 c333">售后</text>
+            <text class="record-num skin_bg" wx:if="{{vm.count.afterSale!=0}}">{{vm.count.afterSale}}</text>
+        </view>
+    </view>
+    <view class="m-plug f fw fc">
+        <view bindtap="nav" class="m-plugitem f fv fc" data-wpynav-a="{{item.url}}" wx:for="{{vm.switch.list}}" wx:key="key">
+            <text class="{{item.icon}} f50" style="background: -webkit-linear-gradient(top, {{item.c1}}, {{item.c2}});-webkit-background-clip: text;color: transparent;"></text>
+            <text class="f26 c333 mt10">{{item.title}}</text>
+        </view>
+        <view bindtap="clearStorage" class="m-plugitem f fv fc">
+            <text class="dzicon icon-qinglihuancun f50" style="background: -webkit-linear-gradient(top, #94D972, #6AD9B4);-webkit-background-clip: text;color: transparent;"></text>
+            <text class="f26 c333 mt10">清理缓存</text>
+        </view>
+    </view>
+    <view class="w-100 f fc-h ccc" style="margin:30rpx 0;">{{isIndependent?'v':'pv'}}1.7.9</view>
+</view>

@@ -1,0 +1,74 @@
+<view class="mini-feature_likePanel" wx:if="{{showLikeBtn}}">
+    <view class="mini_feature_likeAction">
+        <view bindtap="onClickAction" class="likeAction__wrap" data-action="{{!actionInfo.favor.status}}" data-like-type="0">
+            <image class="mini_feature_likeBtn" src="{{actionInfo.favor.status?likedIcon:likeIcon}}" style="width: {{likeIconSize}}; height: {{likeIconSize}}"></image>
+            <text class="mini_feature_likeTip">{{likeTip}}</text>
+        </view>
+        <view style="border-left: 1rpx solid #E5E5E5; height: 38rpx;"></view>
+        <view bindtap="onClickAction" class="likeAction__wrap" data-action="{{!actionInfo.not_favor.status}}" data-like-type="1">
+            <image class="mini_feature_likeBtn" src="{{actionInfo.not_favor.status?unlikedIcon:unlikeIcon}}" style="width: {{likeIconSize}}; height: {{likeIconSize}}" wx:if="{{unlikeIcon&&unlikedIcon}}"></image>
+            <image class="mini_feature_likeBtn reverse" src="{{actionInfo.not_favor.status?likedIcon:likeIcon}}" style="width: {{likeIconSize}}; height: {{likeIconSize}}" wx:else></image>
+            <text class="mini_feature_likeTip">{{unlikeTip}}</text>
+        </view>
+    </view>
+    <view class="mini_feature_actionInput {{actionInfo.not_favor.status?'unlike_action_input':''}}" wx:if="{{showInput}}">
+        <input adjustPosition="{{false}}" bindblur="onInputBlur" bindconfirm="onInputConfirm" bindfocus="onInputFocus" bindinput="onInputChange" class="input" confirmHold="{{actionInfo.not_favor.status&&inputValue.length<20}}" focus="{{focusInput}}" id="input" maxlength="200" placeholder="{{actionInfo.not_favor.status?'觉得不好用的理由（必填）':'觉得好用的理由...'}}" placeholderClass="placeholder"></input>
+        <view class="count-word {{inputValue.length<20?'warning':''}}" wx:if="{{actionInfo.not_favor.status}}">{{inputValue.length}}/20</view>
+    </view>
+    <view class="comment-area" wx:if="{{actionInfo.favor.likes.length}}">
+        <view class="comment-area__tip">{{actionInfo.favor.likes.length}}个朋友觉得好用</view>
+        <view class="comment-area__likeWrap">
+            <image class="mini_feature_likeBtn before-avatar-icon" src="{{likedIcon}}"></image>
+            <view class="comment-area__avatars {{actionInfo.favor.comments.length?'':'no-border'}}">
+                <image class="avatar" src="{{userItem.HeadImgUrl?userItem.HeadImgUrl+'/64':'assets/default_headimage@2x.png'}}" wx:for="{{actionInfo.favor.likes}}" wx:for-index="idx" wx:for-item="userItem"></image>
+            </view>
+        </view>
+        <view class="comment-area__commentWrap" wx:if="{{actionInfo.favor.comments.length}}">
+            <image class="icon-comment" src="./assets/icon-comment.png"></image>
+            <view class="comment-area__comments">
+                <view class="comment-area__comment-item {{item.IsMySelf?'operation-space':''}}" wx:for="{{actionInfo.favor.comments}}">
+                    <image class="comment-avatar" src="{{item.HeadImgUrl?item.HeadImgUrl+'/64':'assets/default_headimage@2x.png'}}"></image>
+                    <view class="comment-info">
+                        <view class="comment-header">
+                            <view class="comment-header__nickname">{{item.NickName}}</view>
+                            <view class="comment-header__createtime">{{item.datetime}}</view>
+                        </view>
+                        <view class="comment-body">{{item.Comment}}</view>
+                        <view class="comment-operation" wx:if="{{item.IsMySelf}}">
+                            <view bindtap="onClickDelete" class="delete" data-like-type="0">删除</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="comment-area" wx:if="{{actionInfo.not_favor.unlikes.length}}">
+        <view class="comment-area__tip">{{actionInfo.not_favor.unlikes.length}}个朋友觉得不好用</view>
+        <view class="comment-area__likeWrap">
+            <image class="mini_feature_likeBtn before-avatar-icon" src="{{unlikedIcon}}" wx:if="{{unlikedIcon}}"></image>
+            <image class="mini_feature_likeBtn before-avatar-icon reverse" src="{{likedIcon}}" wx:else></image>
+            <view class="comment-area__avatars">
+                <image class="avatar" src="{{userItem.HeadImgUrl?userItem.HeadImgUrl+'/64':'assets/default_headimage@2x.png'}}" wx:for="{{actionInfo.not_favor.unlikes}}" wx:for-index="idx" wx:for-item="userItem"></image>
+            </view>
+        </view>
+        <view class="comment-area__commentWrap" wx:if="{{actionInfo.not_favor.comments.length}}">
+            <image class="icon-comment" src="./assets/icon-comment.png"></image>
+            <view class="comment-area__comments">
+                <view class="comment-area__comment-item {{item.IsMySelf?'operation-space':''}}" wx:for="{{actionInfo.not_favor.comments}}">
+                    <image class="comment-avatar" src="{{item.HeadImgUrl?item.HeadImgUrl+'/64':'assets/default_headimage@2x.png'}}"></image>
+                    <view class="comment-info">
+                        <view class="comment-header">
+                            <view class="comment-header__nickname">{{item.NickName}}</view>
+                            <view class="comment-header__createtime">{{item.datetime}}</view>
+                        </view>
+                        <view class="comment-body">{{item.Comment}}</view>
+                        <view class="comment-operation" wx:if="{{item.IsMySelf}}">
+                            <view bindtap="onClickDelete" class="delete" data-like-type="1">删除</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<action-sheet bShow="{{actionSheet.show}}" bindhide="hideActionSheet" bindoncustomclick="confirmActionSheet" items="{{actionSheet.items}}" style="display: block;" title="{{actionSheet.title}}"></action-sheet>

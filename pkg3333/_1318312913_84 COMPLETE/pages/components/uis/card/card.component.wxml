@@ -1,0 +1,5 @@
+<view class="{{rootClassNames}}">
+    <slot name="header"></slot>
+    <slot name="body"></slot>
+    <slot name="header"></slot>
+</view>

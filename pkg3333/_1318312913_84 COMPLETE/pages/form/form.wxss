@@ -1,0 +1,28 @@
+.form-item {
+    margin: 0 60rpx;
+    display: flex;
+    flex: auto;
+    align-items: center;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.form-item .label {
+    font-size: 14px;
+    line-height: 20px;
+    width: 200rpx;
+    color: rgba(0,0,0,0.4);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.form-item .value {
+    padding: 20px 0;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    flex-grow: 1;
+}
+
+.form-item .value.unset {
+    color: rgba(0,0,0,0.2);
+}

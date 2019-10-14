@@ -1,0 +1,103 @@
+.zbj-wx {
+    background: #eeeeee;
+}
+
+.zbj-head {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    background: url(http://bgl.zbjimg.com/bgl%2Fbjclound%2Fzbj-top.jpg%2Forigine%2Ff5d150f5-5198-40e7-8249-b009592450d3?imageMogr2/auto-orient/strip/quality/90) no-repeat top;
+    background-size: 100% 400rpx;
+    text-align: center;
+}
+
+.zbj-logo {
+    height: 90rpx;
+    width: 180rpx;
+    padding: 58rpx 0 14rpx 0;
+}
+
+.zbj-find-title {
+    font-size: 28rpx;
+    color: #ffffff;
+    display: block;
+}
+
+.zbj-search {
+    padding: 0 60rpx 80rpx 60rpx;
+    margin-top: 32rpx;
+}
+
+.zbj-search-img {
+    width: 28rpx;
+    height: 28rpx;
+    padding-right: 10rpx;
+    vertical-align: -3rpx;
+}
+
+.zbj-search-text {
+    height: 70rpx;
+    line-height: 70rpx;
+    padding: 0 40rpx 0rpx 80rpx;
+    border-radius: 40rpx;
+    width: 100%;
+    background: white;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.zbj-place-text {
+    font-size: 28rpx;
+    color: #bdbdbd;
+}
+
+.text-part {
+    margin-top: 20rpx;
+    background: #ffffff;
+}
+
+.ad-title {
+    border-bottom: 1px solid #eee;
+    padding-left: 4rpx;
+}
+
+.ad-icon {
+    padding-left: 15px;
+    display: inline-block;
+    max-width: 15px;
+    max-height: 15px;
+    vertical-align: -2px;
+}
+
+.ad-head {
+    display: inline-block;
+    padding-left: 7px;
+    font-size: 16px;
+    color: #333;
+    height: 40px;
+    text-align: left;
+    line-height: 40px;
+}
+
+.high-text {
+    color: #ed722e;
+}
+
+.ad-body {
+    font-size: 14px;
+}
+
+.ad-text {
+    width: 33%;
+    float: left;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ad-text:nth-child(3n) {
+    border-right: 0;
+}

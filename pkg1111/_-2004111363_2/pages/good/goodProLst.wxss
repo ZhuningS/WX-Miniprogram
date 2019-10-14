@@ -1,0 +1,130 @@
+page {
+    background: #fff;
+}
+
+.c-goodlst {
+    width: 100%;
+}
+
+.c-goodlst__big {
+    padding: 0 20rpx;
+}
+
+.c-goodlst__big .main {
+    width: 100%;
+    padding-bottom: 40rpx;
+}
+
+.c-goodlst__big .main>image {
+    width: 100%;
+}
+
+.c-goodlst__big .main .m-title {
+    margin: 29rpx 0 10rpx 0;
+}
+
+.c-goodlst__big .main .m-label {
+    height: 40rpx;
+    margin-bottom: 10rpx;
+    overflow: hidden;
+    display: -webkit-box;
+}
+
+.c-goodlst__big .main .m-price .m-sub {
+    width: 88rpx;
+    height: 50rpx;
+    font-size: 24rpx;
+    line-height: 50rpx;
+    text-align: center;
+    margin-right: 10rpx;
+}
+
+.c-goodlst__small {
+    padding: 20rpx;
+}
+
+.c-goodlst__small .main {
+    width: 350rpx;
+}
+
+.c-goodlst__small .main>image {
+    width: 350rpx;
+    height: 350rpx;
+}
+
+.c-goodlst__small .main .m-title {
+    margin-top: 19rpx;
+}
+
+.c-goodlst__small .main .m-price {
+    margin-bottom: 28rpx;
+}
+
+.c-goodlst__small .main .m-price .m-sub {
+    width: 88rpx;
+    height: 44rpx;
+    font-size: 24rpx;
+    line-height: 44rpx;
+    text-align: center;
+    margin-right: 10rpx;
+}
+
+.c-goodlst__detail {
+    padding: 0 20rpx;
+}
+
+.c-goodlst__detail .main {
+    width: 100%;
+    padding: 30rpx 0;
+    border-bottom: 1px solid #f7f5f5;
+}
+
+.c-goodlst__detail .main image {
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.c-goodlst__detail .main .m-label {
+    margin-top: 10rpx;
+    height: 40rpx;
+    overflow: hidden;
+    display: -webkit-box;
+}
+
+.c-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.c-nav .item {
+    padding: 0 30rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.c-nav .item-bd {
+    padding: 0 30rpx;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+.f-r {
+    width: 78%;
+    float: right;
+    background: #fff;
+}
+
+.f-l {
+    width: 100%;
+    float: left;
+    background: #fff;
+}

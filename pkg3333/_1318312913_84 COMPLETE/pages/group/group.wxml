@@ -1,0 +1,20 @@
+<import src="../components/timeline.wxml"></import>
+<import src="../components/widgets.wxml"></import>
+<import src="../components/cover.wxml"></import>
+<import src="../components/nav.wxml"></import>
+<view class="{{showShareCard?'blur':''}}">
+    <block wx:if="{{cover}}">
+        <template is="category-cover" data="{{subscribed:subscribed,cover:cover}}"></template>
+        <template is="timeline" data="{{route:route,user:user,itemsStatus:itemsStatus,cover:cover,marked:marked,current:current,currentPlaying:currentPlaying,config:config,events:events,mid:mid,magazine:magazine}}"></template>
+    </block>
+    <view class="empty" wx:if="{{!error&&!loading&&events.length===0}}">
+        <view class="tip">暂无内容</view>
+    </view>
+    <view class="empty" wx:if="{{error==='forbidden'}}">
+        <view class="tip">暂无权限</view>
+    </view>
+    <template is="error" data wx:if="{{error}}"></template>
+    <qm-loading class="page-footer-loading-wrap" comClass="page-footer-loading" isLoading="{{hasMore||loading}}"></qm-loading>
+    <template is="group-actions" data="{{relation:magazine.relation,needLogin:needLogin,current:current,id:magazine.id,ticket:articleTicket,action:enterAction}}"></template>
+</view>
+<include src="../components/global.wxml"></include>

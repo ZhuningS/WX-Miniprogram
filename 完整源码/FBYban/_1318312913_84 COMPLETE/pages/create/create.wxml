@@ -1,0 +1,12 @@
+<import src="../components/widgets.wxml"></import>
+<view class="{{showShareCard?'blur':''}}">
+    <form bindsubmit="submit">
+        <view class="section-ctn">
+            <view class="caption">杂志名</view>
+            <view class="input-wrapper">
+                <input bindinput="onInput" class="input" focus="{{true}}" name="magazineName" placeholder="为新杂志题写刊名…"></input>
+            </view>
+        </view>
+        <button class="button fixed" formType="submit">下一步</button>
+    </form>
+</view>

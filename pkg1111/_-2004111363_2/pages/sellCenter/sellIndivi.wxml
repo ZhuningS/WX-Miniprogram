@@ -1,0 +1,94 @@
+<view class="{{currentSkin}}">
+    <view class="person skin_bg f fc-h fc rel" style="background-image: url('http://j.vzan.cc/miniapp/img/enterprise/sell-bg.png');">
+        <view class="f fv fc">
+            <image src="{{vm.headerImg}}"></image>
+            <text>{{vm.nickName}}</text>
+        </view>
+        <view class="main">
+            <view class="m-price f fv fc-h">
+                <text class="f32 c999">当前累计收益</text>
+                <text class="f70">￥{{vm.totalIncome}}</text>
+            </view>
+            <view class="m-pricebtn f fj">
+                <view class="f32 f fc">可提现佣金{{vm.useCashStr}}元</view>
+                <view bindtap="goMoney" class="f28 f fc ccc">立即提现<text class="dzicon icon-xiala-copy-right"></text>
+                </view>
+            </view>
+            <view class="m-sell f fc fc-h">
+                <view bindtap="mysell" class="m-sellitem f fv fc">
+                    <text class="dzicon icon-icon_wodefenxiao icon1"></text>
+                    <text class="f28 c999">我的分销</text>
+                </view>
+                <view bindtap="goSecond" class="m-sellitem f fv fc" style="border-left:1px solid #EFEFEF" wx:if="{{vm.secondSate}}">
+                    <text class="dzicon icon-icon_xiajifenxiao icon1"></text>
+                    <text class="f28 c999">下级分销</text>
+                </view>
+            </view>
+            <view bindtap="goMore" class="m-method f fc" wx:if="{{vm.secondSate}}">
+                <view class="f fc f1">
+                    <text class="dzicon icon-icon_xiajifenxiao icon3" style="font-size:55rpx"></text>
+                    <view class="f fv">
+                        <text class="f32">招募下级分销商</text>
+                        <text class="f22 mt10 c999">可获得下级销售佣金分成</text>
+                    </view>
+                </view>
+                <view class="f28 c999 f fc">去招募<text class="dzicon icon-xiala-copy-right"></text>
+                </view>
+            </view>
+            <view bindtap="openSell" class="m-method f fc" style="border-top:1px solid #f7f7f7" wx:if="{{vm.secondSate}}">
+                <view class="f fc f1">
+                    <text class="dzicon icon-xPX_erweima icon5 f47"></text>
+                    <view class="f fv">
+                        <text class="f32">邀请码</text>
+                        <text class="f22 mt10 c999">下载分销邀请码</text>
+                    </view>
+                </view>
+                <view class="f28 c999 f fc">去下载<text class="dzicon icon-xiala-copy-right"></text>
+                </view>
+            </view>
+            <view bindtap="goPro" class="m-method f fc" style="border-top:1px solid #f7f7f7">
+                <view class="f fc f1">
+                    <text class="dzicon icon-xPX_dianpu icon4 f44"></text>
+                    <view class="f fv">
+                        <text class="f32">整店推广</text>
+                        <text class="f22 mt10 c999">一键分享所有分销商品</text>
+                    </view>
+                </view>
+                <view class="f28 c999 f fc">去分享<text class="dzicon icon-xiala-copy-right"></text>
+                </view>
+            </view>
+            <view bindtap="openShare" class="m-method f fc" style="border-top:1px solid #f7f7f7">
+                <view class="f fc f1">
+                    <text class="dzicon icon-xPX_erweima icon5 f47"></text>
+                    <view class="f fv">
+                        <text class="f32">推广码</text>
+                        <text class="f22 mt10 c999">下载分销商品推广码</text>
+                    </view>
+                </view>
+                <view class="f28 c999 f fc">去下载<text class="dzicon icon-xiala-copy-right"></text>
+                </view>
+            </view>
+            <view bindtap="navPro" class="m-method f fc" style="border-top:1px solid #f7f7f7">
+                <view class="f fc f1">
+                    <text class="dzicon icon-icon_tuiguang icon2 f47"></text>
+                    <view class="f fv">
+                        <text class="f32">推广商品</text>
+                        <text class="f22 mt10 c999">赚取直接销售佣金</text>
+                    </view>
+                </view>
+                <view class="f28 c999 f fc">去推广<text class="dzicon icon-xiala-copy-right"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="qrcode-mask" wx:if="{{showMask}}">
+        <view class="bg"></view>
+        <view class="qrcode-main f fc fv">
+            <canvas canvasId="sellCanvas"></canvas>
+            <view class="qrcodeBtn">
+                <view bindtap="saveQrcode" class="qrcode-btn skin_bg">下载到相册</view>
+            </view>
+            <view bindtap="hidemask" class="dzicon icon-zhuanyebaniconkuozhan_Close vas-cancle"></view>
+        </view>
+    </view>
+</view>

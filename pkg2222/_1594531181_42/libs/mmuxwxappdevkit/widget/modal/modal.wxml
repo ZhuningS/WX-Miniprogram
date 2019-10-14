@@ -1,0 +1,20 @@
+<view class="modal-wrap">
+    <view animation="{{modalMaskAnimation}}" bindtap="onClickMask" class="modal-wrap-mask" hidden="{{!showModal}}"></view>
+    <view class="modal-content" hidden="{{!showModal}}">
+        <view class="modal-title">
+            {{title}}
+        </view>
+        <view class="modal-desc">
+            {{content}}
+        </view>
+        <view class="modal-action">
+            <view bindtap="onClickCancel" class="modal-action__item cancel" style="color: {{cancelColor}}" wx:if="{{showCancel}}">
+                {{cancelText}}
+            </view>
+            <navigator appId="{{appId}}" class="modal-action__item confirm" display="{{target=='miniProgram'}}" openType="{{openType}}" path="{{path}}" style="color: {{confirmColor}}">
+                <view>{{confirmText}}</view>
+                <button bindtap="onClickConfirm" class="modal-action__item-btn" openType="{{openType}}"></button>
+            </navigator>
+        </view>
+    </view>
+</view>

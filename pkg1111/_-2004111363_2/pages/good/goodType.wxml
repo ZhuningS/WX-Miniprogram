@@ -1,0 +1,45 @@
+<view class="{{currentSkin}}">
+    <view class="t-search">
+        <view bindtap="pathSear" class="search f fc">
+            <text class="dzicon icon-sousuo_rearch f50"></text>
+            <text class="ml10 f26">搜索商品名称</text>
+        </view>
+    </view>
+    <scroll-view scrollY class="t-first">
+        <view bindtap="selallFirst" class="t-firstname" data-wpyselallfirst-a="{{tIndex}}">全部</view>
+        <view bindtap="selChange" class="t-firstname line line1  {{typeIndex==tIndex?'skin_bg':'selnone'}}" data-wpyselchange-a="{{tIndex}}" wx:for="{{vm}}" wx:for-index="tIndex" wx:key="key">{{item.FirstGoodType.name}}</view>
+    </scroll-view>
+    <scroll-view scrollY class="t-sec" wx:if="{{style!=5}}">
+        <view class="f fv">
+            <view class="f pt40">
+                <text class="f1">{{vm[typeIndex].FirstGoodType.name}}</text>
+                <view bindtap="selallType" class="f fc f24 c666" data-wpyselalltype-a="{{typeIndex}}">
+                    <text>查看更多</text>
+                    <text class="dzicon icon-xiala-copy-right"></text>
+                </view>
+            </view>
+            <view class="f fw fj" wx:if="{{vm[typeIndex].SecondGoodTypes.length}}">
+                <view bindtap="seloneType" class="sec line line1" data-wpyselonetype-a="{{second}}" wx:for="{{vm[typeIndex].SecondGoodTypes}}" wx:for-item="second" wx:key="key">{{second.name}}</view>
+            </view>
+            <wxc-abnor type="DATA" wx:else></wxc-abnor>
+        </view>
+    </scroll-view>
+    <scroll-view scrollY class="t-sec" wx:if="{{style==5}}">
+        <view class="f fv">
+            <view class="f pt40">
+                <text class="f1">{{vm[typeIndex].FirstGoodType.name}}</text>
+                <view bindtap="selallType" class="f fc f24 c666" data-wpyselalltype-a="{{typeIndex}}">
+                    <text>查看更多</text>
+                    <text class="dzicon icon-xiala-copy-right"></text>
+                </view>
+            </view>
+            <view class="f fw" wx:if="{{vm[typeIndex].SecondGoodTypes.length}}">
+                <view bindtap="seloneType" class="imgItem f fv fc" data-wpyselonetype-a="{{second}}" wx:for="{{vm[typeIndex].SecondGoodTypes}}" wx:for-item="second" wx:key="key">
+                    <image src="{{second.Img}}"></image>
+                    <text class="line line1">{{second.name}}</text>
+                </view>
+            </view>
+            <wxc-abnor type="DATA" wx:else></wxc-abnor>
+        </view>
+    </scroll-view>
+</view>

@@ -1,0 +1,48 @@
+<view class="goods-item" style="{{not_ship?'opacity:0.4;':''}}">
+    <div class="main">
+        <view class="item-image-container">
+            <image class="item-image" mode="aspectFit" src="{{goods_img_url+'/162'}}"></image>
+        </view>
+        <view class="info">
+            <view class="title">{{goods_name}}</view>
+            <view class="desc">{{goods_desc||'-'}}</view>
+            <view class="price">{{Util.fixPrice(goods_price)}}</view>
+        </view>
+    </div>
+    <view class="goods-item-section">
+        <view class="label__err_tip flex__all" wx:if="{{not_ship}}">该商品不在配送范围内</view>
+        <view class="label__left_count" wx:if="{{stock_number<10||stock_number<quantity}}">剩余{{stock_number}}件</view>
+        <view class="content">
+            <selector bindincrease="onIncreaseQuantity" bindminus="onMinusQuantity" item="{{item_code+sku_id}}" maxvalue="{{not_ship?0:stock_number}}" quantity="{{quantity}}"></selector>
+        </view>
+    </view>
+    <view class="dash_border"></view>
+    <view class="goods-item-section" wx:if="{{is_last_one}}">
+        <view class="label flex__all">运费</view>
+        <view class="content">
+            <view class="express-fee">{{Util.fixExpressFee(express_fee)}}</view>
+        </view>
+    </view>
+    <view class="goods-item-section remarks" wx:if="{{is_last_one}}">
+        <view class="label min">买家留言</view>
+        <input adjustPosition="{{false}}" bindblur="onInputBlur" bindfocus="onInputFocus" class="input flex__all" disabled="{{not_ship}}" maxlength="200" placeholder="选填" placeholderClass="placeholder"></input>
+    </view>
+</view>
+<wxs module="Util">
+module.exports.fixPrice = (function(num) {
+    if (typeof num !== 'number' || !num || num < 0) {
+        return ('-')
+    };
+    return ("￥" + (num / 100).toFixed(2))
+});
+module.exports.fixExpressFee = (function(num) {
+    num = parseInt(num, 10);
+    if (typeof num !== 'number' || num < 0 || num.toString() === 'NaN') {
+        return (' -')
+    };
+    if (num === 0) {
+        return ('免运费')
+    };
+    return ("￥" + ((num / 100).toFixed(2)))
+});
+</wxs>

@@ -1,0 +1,79 @@
+<import src="../../utils/form.wxml"></import>
+<form bindsubmit="onPushSubmit" hidden="{{!config}}" reportSubmit="true">
+    <view class="write-msg">
+        <view catchtap="onChooseAddrTap" class="select-address bgwhite gridXb active-bg transition-duration-100">
+            <text class="iconfont icon-locationfill grey"></text> 选择地址</view>
+        <view class="form-item" wx:if="{{config.fields.true_name}}">
+            <label class="form-tit">姓名</label>
+            <view class="form-cot">
+                <input class="content sub" name="true_name" placeholder="填写联系人姓名" type="text" value="{{true_name}}"></input>
+            </view>
+        </view>
+        <view class="form-item" wx:if="{{config.fields.mobile}}">
+            <label class="form-tit">电话</label>
+            <view class="form-cot">
+                <input class="content sub" name="mobile" placeholder="填写联系人电话" type="number" value="{{mobile}}"></input>
+            </view>
+        </view>
+        <view class="form-item">
+            <label class="form-tit">预约时间</label>
+            <view class="form-cot">
+                <view class="flex">
+                    <view class="time-item">
+                        <picker bindchange="bindDataChange" data-bind-name="date" end="{{endDate}}" mode="date" start="{{startDate}}">
+                            <input hidden="true" name="reseve_time" type="text" value="{{date}} {{time}}"></input> {{date}}
+            </picker>
+                    </view>
+                    <view class="time-item">
+                        <picker bindchange="bindDataChange" data-bind-name="time" mode="time" start="{{startTime}}">
+              {{time}}
+            </picker>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="form-item" wx:if="{{config.fields.age}}">
+            <label class="form-tit">联系人年龄</label>
+            <view class="form-cot">
+                <input name="age" placeholder="填写联系人年龄" type="number"></input>
+            </view>
+        </view>
+        <view class="form-item" wx:if="{{config.fields.address}}">
+            <view class="form-tit">联系人地址</view>
+            <view class="form-cot">
+                <view class="flex">
+                    <input class="sub" name="address" placeholder="填写联系人地址" value="{{address}}"></input>
+                </view>
+            </view>
+        </view>
+        <view class="form-item" wx:if="{{config.fields.remark}}">
+            <label class="form-tit">备注</label>
+            <view class="form-cot">
+                <textarea class="form-tear" maxlength="-1" name="remark" placeholder="填写备注"></textarea>
+            </view>
+        </view>
+        <template is="form" data="{{data:form}}"></template>
+        <view class="price mt10 tr" wx:if="{{config.single_pay==1}}">
+            <view class="f16">
+                <text class="green" wx:if="{{total>0}}">{{config.single_name}}：￥{{total}}</text>
+                <text class="green" wx:if="{{total<=0}}">{{config.single_name}}：免费</text>
+            </view>
+        </view>
+        <view class="price mt10 tr" wx:else>
+            <view class="f16">
+                <text class="red" wx:if="{{earnest_total>0}}">预付款：￥{{earnest_total}}</text>
+                <text class="red" wx:if="{{earnest_total<=0}}">预付款：免费</text>
+            </view>
+            <view class="f16">
+                <text class="green" wx:if="{{total>0}}">尾款：￥{{total}}</text>
+                <text class="green" wx:if="{{total<=0}}">尾款：免费</text>
+            </view>
+        </view>
+    </view>
+    <view class="btn-box">
+        <view class="order-btn">
+            <button formType="submit" hoverClass="none" type="primary">立即预约</button>
+        </view>
+    </view>
+</form>
+<view style="height:400rpx"></view>

@@ -1,0 +1,42 @@
+.popup {
+    position: fixed;
+    z-index: 10001;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    overscroll-behavior-y: none;
+}
+
+.popup-content,.popup-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.popup-content {
+    z-index: 10001;
+    width: 100%;
+}
+
+.popup-mask {
+    z-index: 10000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.popup.is-show {
+    animation: fadeIn 318ms linear;
+}
+
+.popup.is-hide {
+    animation: fadeOut 318ms linear;
+}
+
+.popup.is-panel .popup-content {
+    top: 20vh;
+    bottom: 0;
+    background-color: #FFFFFF;
+}

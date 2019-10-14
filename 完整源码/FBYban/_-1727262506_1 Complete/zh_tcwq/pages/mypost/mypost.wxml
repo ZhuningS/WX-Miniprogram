@@ -1,0 +1,208 @@
+<view class="page__bd">
+    <view class="weui-navbar flex-bet">
+        <view bindtap="tabClick" class="weuiitem {{activeIndex==index?'weui-bar__item_on':''}}" id="{{index}}" wx:for="{{tabs}}">
+            <view>{{item}}</view>
+        </view>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+    </view>
+    <view style="background:#e5e5e5;width:100%;height:5rpx;"></view>
+    <view class="rel" hidden="{{activeIndex!=0}}">
+        <view class="content" wx:if="{{slide!=null||slide.length!=0}}" wx:for="{{slide}}" wx:for-item="post">
+            <view class="content_top">
+                <view class="content_left">
+                    <image class="content_img" src="{{user_img}}"></image>
+                    <view class="content_zhong">
+                        <view class="content_name">{{post.user_name}}
+            <text bindtap="zdxf" data-id="{{post.id}}" style="color:red;font-size:24rpx;border:1px solid red;padding:1px 2px;margin-left:2px" wx:if="{{post.top==2}}">置頂到期</text>
+                        </view>
+                        <view class="content_text">
+                            <view class="content_zheng color2" wx:if="{{post.top==1}}">置顶</view>
+                            <view class="content_zheng color1" wx:if="{{post.type2_name!=null}}">{{post.type2_name}}</view>
+                            <view class="content_zheng color1" wx:if="{{post.type2_name==null}}">商家福利</view>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="phone" class="content_right" data-id="{{post.user_tel}}">
+                    <view bindtap="bianji" class="rel" data-id="{{post.id}}">
+                        <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/bianji.png"></image>
+                    </view>
+                    <view bindtap="cancel" class="rel" data-id="{{post.id}}">
+                        <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/cancel.png"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="content_wen gobyndmulit">{{post.details}}
+      </view>
+            <view class="content_picture" wx:if="{{item.img!=''}}">
+                <image mode="aspectFill" src="{{post.is_houtai==1?url3:''}}{{item}}" wx:for="{{post.img}}"></image>
+            </view>
+            <view class="content_chakan">
+                <view class="content_info">{{post.time}}发布</view>
+                <view bindtap="see" class="content_info2" data-id="{{post.id}}">查看详情>></view>
+            </view>
+            <view class="content_liulan">
+                <image class="eye" src="https://api.cnmmsc.org/apitc/img/image/liulan.png"></image>
+                <view class="content_num">{{post.views}}</view>
+                <view class="content_ren">人浏览</view>
+                <image class="zan" src="https://api.cnmmsc.org/apitc/img/image/zan.png"></image>
+                <view class="content_num">{{post.givelike}}</view>
+                <view class="content_ren">人点赞</view>
+                <view class="kuang"></view>
+            </view>
+        </view>
+        <view class="none ab udlr" wx:if="{{slide==null||slide.length==0}}">
+            <view>
+                <image mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/tie2.png"></image>
+                <view class="center">你还没有发布帖子喔</view>
+            </view>
+        </view>
+    </view>
+    <view class="rel" hidden="{{activeIndex!=1}}">
+        <view class="content" wx:if="{{audit!=null||audit.length!=0}}" wx:for="{{audit}}" wx:for-item="post">
+            <view class="content_top">
+                <view class="content_left">
+                    <image class="content_img" src="{{user_img}}"></image>
+                    <view class="content_zhong">
+                        <view class="content_name">{{post.user_name}}</view>
+                        <view class="content_text">
+                            <view class="content_zheng">{{post.type2_name}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="phone" class="content_right" data-id="{{post.user_tel}}">
+                    <view class="rel">
+                        <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/phone1.gif"></image>
+                    </view>
+                    <view class="rel">
+                        <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/phone1.gif"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="content_wen">{{post.details}}
+      </view>
+            <view class="content_picture" wx:if="{{post.img!=''}}">
+                <image src="{{post.is_houtai==1?url3:''}}{{item}}" wx:for="{{item.img}}"></image>
+            </view>
+            <view class="content_chakan">
+                <view class="content_info">{{post.time}}发布</view>
+                <view bindtap="see" class="content_info2" data-id="{{post.id}}">查看详情>></view>
+            </view>
+            <view class="content_liulan">
+                <image class="eye" src="https://api.cnmmsc.org/apitc/img/image/liulan.png"></image>
+                <view class="content_num">{{post.views}}</view>
+                <view class="content_ren">人浏览</view>
+                <image class="zan" src="https://api.cnmmsc.org/apitc/img/image/zan.png"></image>
+                <view class="content_num">{{post.givelike}}</view>
+                <view class="content_ren">人点赞</view>
+                <view class="kuang"></view>
+            </view>
+        </view>
+        <view class="none ab udlr" wx:if="{{audit==null||audit.length==0}}">
+            <view>
+                <image mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/tie2.png"></image>
+                <view class="center">暂无审核中的帖子</view>
+            </view>
+        </view>
+    </view>
+    <view class="rel" hidden="{{activeIndex!=2}}">
+        <view class="content" wx:if="{{adopt!=null||adopt.length!=0}}" wx:for="{{adopt}}" wx:for-item="post">
+            <view class="content_top">
+                <view class="content_left">
+                    <image class="content_img" src="{{user_img}}"></image>
+                    <view class="content_zhong">
+                        <view class="content_name">
+            {{post.user_name}}
+            <text style="color:red;font-size:24rpx;border:1px solid red;padding:1px 2px;margin-left:2px" wx:if="{{post.top==0}}">置頂到期</text>
+                        </view>
+                        <view class="content_text">
+                            <view class="content_zheng color2" wx:if="{{post.top==1}}">置顶</view>
+                            <view class="content_zheng color1" wx:if="{{post.type2_name!=null}}">{{post.type2_name}}</view>
+                            <view class="content_zheng color1" wx:if="{{post.type2_name==null}}">商家福利</view>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="phone" class="content_right" data-id="{{post.user_tel}}">
+                    <view class="rel">
+                        <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/phone1.gif"></image>
+                    </view>
+                    <view>拨打电话</view>
+                </view>
+            </view>
+            <view class="content_wen">{{post.details}}
+      </view>
+            <view class="content_picture" wx:if="{{post.img!=''}}">
+                <image src="{{post.is_houtai==1?url3:''}}{{item}}" wx:for="{{post.img}}"></image>
+            </view>
+            <view class="content_chakan">
+                <view class="content_info">{{post.time}}发布</view>
+                <view bindtap="see" class="content_info2" data-id="{{post.id}}">查看详情>></view>
+            </view>
+            <view class="content_liulan">
+                <image class="eye" src="https://api.cnmmsc.org/apitc/img/image/liulan.png"></image>
+                <view class="content_num">{{post.views}}</view>
+                <view class="content_ren">人浏览</view>
+                <image class="zan" src="https://api.cnmmsc.org/apitc/img/image/zan.png"></image>
+                <view class="content_num">{{post.givelike}}</view>
+                <view class="content_ren">人点赞</view>
+                <view class="kuang"></view>
+            </view>
+        </view>
+        <view class="none ab udlr" wx:if="{{adopt==null||adopt.length==0}}">
+            <view>
+                <image mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/tie2.png"></image>
+                <view class="center">暂无已通过的帖子</view>
+            </view>
+        </view>
+    </view>
+    <view class="rel" hidden="{{activeIndex!=3}}">
+        <view class="content" wx:if="{{refuse!=null||refuse.length!=0}}" wx:for="{{refuse}}" wx:for-item="post">
+            <view class="content_top">
+                <view class="content_left">
+                    <image class="content_img" src="{{user_img}}"></image>
+                    <view class="content_zhong">
+                        <view class="content_name">{{post.user_name}}</view>
+                        <view class="content_text">
+                            <view class="content_zheng">{{post.type2_name}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="phone" class="content_right" data-id="{{item.user_tel}}">
+                    <view class="rel">
+                        <image class="ab udlr" mode="aspectFill" src="https://api.cnmmsc.org/apitc/img/image/phone1.gif"></image>
+                    </view>
+                    <view>拨打电话</view>
+                </view>
+            </view>
+            <view class="content_wen">{{post.details}}
+      </view>
+            <view class="content_picture" wx:if="{{post.img!=''}}">
+                <image src="{{post.is_houtai==1?url3:''}}{{item}}" wx:for="{{post.img}}"></image>
+            </view>
+            <view class="content_chakan">
+                <view class="content_info">{{post.time}}发布</view>
+                <view bindtap="see" class="content_info2" data-id="{{post.id}}">查看详情>></view>
+            </view>
+            <view class="content_liulan">
+                <image class="eye" src="https://api.cnmmsc.org/apitc/img/image/liulan.png"></image>
+                <view class="content_num">{{post.views}}</view>
+                <view class="content_ren">人浏览</view>
+                <image class="zan" src="https://api.cnmmsc.org/apitc/img/image/zan.png"></image>
+                <view class="content_num">{{post.givelike}}</view>
+                <view class="content_ren">人点赞</view>
+                <view class="kuang"></view>
+            </view>
+        </view>
+        <view class="none ab udlr" wx:if="{{refuse==null||refuse.length==0}}">
+            <view>
+                <image mode="widthFix" src="https://api.cnmmsc.org/apitc/img/image/tie2.png"></image>
+                <view class="center">暂无被拒绝的帖子</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="base" wx:if="{{iszd==true}}">
+    <view class="rel">置顶续费</view>
+    <view bindtap="selected" class="array rel" id="{{index}}" wx:for="{{renew}}">{{item.money}}/{{item.zd_name}}</view>
+    <view bindtap="qxzd" class="rel">关闭</view>
+</view>
+<view class="loading rel"></view>

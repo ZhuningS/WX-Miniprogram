@@ -1,0 +1,24 @@
+<view class="appeal-reason">
+    <view class="f bg-w pw20 fj h96">
+        <text>投诉原因</text>
+        <picker bindchange="bindPickerChange" class="c666 ml40 pr20 picker" range="{{reasonList}}" value="{{currIndex}}">
+            <view>
+                <text class="fl">{{reasonList[currIndex]}}</text>
+                <text class="dzicon icon-xiajiantou_downarrow fr"></text>
+            </view>
+        </picker>
+    </view>
+    <view class="bg-w mt20 p20">
+        <view class="f fj">
+            <text class="f30 c11">投诉说明</text>
+            <text class="c666 f24">您可以输入170字以内</text>
+        </view>
+        <view class="section mt20">
+            <textarea class="height180 w-100" placeholder="请描述您遇到的物流问题。（最多170字）" placeholderStyle="color:#666;"></textarea>
+        </view>
+    </view>
+    <view class="bg-w mt20 p20 f30">
+      联系电话    17665075231
+    </view>
+    <button class="btn-appeal mt20 f32" type="warn">提交投诉</button>
+</view>

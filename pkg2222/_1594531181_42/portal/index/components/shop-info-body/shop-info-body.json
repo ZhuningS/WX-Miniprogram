@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+        "scroll-item-list": "./scroll-item-list/scroll-item-list",
+        "main-item-line": "./main-item-line/main-item-line",
+        "banner": "./banner/banner",
+        "category-line": "./category-line/category-line"
+    }
+}

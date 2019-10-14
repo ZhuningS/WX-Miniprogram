@@ -1,0 +1,11 @@
+<view class="glo_load_view" wx:if="{{glo_is_load}}">
+    <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+    <text>正在努力加载</text>
+</view>
+<view class="kd-lsit" wx:else>
+    <view class="kd-item grey flex gridXb" wx:for="{{wldata}}">
+        <view class="kd-per mr15">{{item.ftime}}</view>
+        <text class="iconfont icon-time mr10 iconfontc"></text>
+        <view class="kd-con sub">{{item.context}}</view>
+    </view>
+</view>

@@ -1,0 +1,14 @@
+<import src="../template/nodataAndLoading.wxml"></import>
+<view>
+    <view class="record-item gridXb" wx:for="{{list}}" wx:key="{{index}}">
+        <view>
+            <view>{{item.cash_type_text}}</view>
+            <view class="f12 grey">{{item.create_time}}</view>
+        </view>
+        <view class="statusBox">
+            <view class="{{item.status_text_class}} record-money f16">{{item.status_text}}</view>
+            <view class="red record-money">-￥{{item.money}}</view>
+        </view>
+    </view>
+    <template is="nodataAndLoading" data="{{list:list,isShowLoading:isShowLoading}}"></template>
+</view>

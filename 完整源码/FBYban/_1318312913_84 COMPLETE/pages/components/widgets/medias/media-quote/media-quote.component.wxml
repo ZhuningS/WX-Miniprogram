@@ -1,0 +1,8 @@
+<view class="{{rootClassNames}}">
+    <view class="quote-image-wrap" wx:if="{{mediaData.imageUrl}}">
+        <image class="quote-image" mode="widthFix" src="{{mediaData.imageUrl}}" style="height: {{simulateQuoteMinHeight}}px"></image>
+    </view>
+    <view class="quote-text-content" wx:else>
+    {{mediaData.content}}
+   </view>
+</view>

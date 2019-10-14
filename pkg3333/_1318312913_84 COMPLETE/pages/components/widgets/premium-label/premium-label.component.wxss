@@ -1,0 +1,8 @@
+.premium-label {
+    display: inline-flex;
+    line-height: 20px;
+}
+
+.premium-label .has-paid-label {
+    margin-left: 1px;
+}

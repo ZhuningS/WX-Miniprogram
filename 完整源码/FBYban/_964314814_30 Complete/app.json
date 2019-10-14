@@ -1,0 +1,249 @@
+{
+    "pages": [
+        "page/index/custom-page/custom-page-5/custom-page-5",
+        "page/message/index",
+        "page/discover/discover",
+        "page/my/my",
+        "page/index/appointment/appointment_tab",
+        "page/index/category-list/category-list-hot-tab",
+        "page/index/category-list/category-list-new-tab",
+        "page/index/category-list/category-list-promotion-tab",
+        "page/index/category-list/category-list-clear-tab",
+        "page/index/category-list/category-list-dzti-tab",
+        "page/index/category-list/category-list-preSale-tab",
+        "page/index/category-list/category-list-kanjia-tab",
+        "page/index/category-list/category-list-pintuan-tab",
+        "page/index/shequn/shequn_tab",
+        "page/index/custom-page/custom-page-1/custom-page-1",
+        "page/index/custom-page/custom-page-2/custom-page-2",
+        "page/index/custom-page/custom-page-3/custom-page-3",
+        "page/index/custom-page/custom-page-4/custom-page-4",
+        "page/index/custom-page/custom-page-6/custom-page-6",
+        "page/index/custom-page/custom-page-7/custom-page-7",
+        "page/index/custom-page/custom-page-8/custom-page-8",
+        "page/index/custom-page/custom-page-9/custom-page-9",
+        "page/index/custom-page/custom-page-10/custom-page-10",
+        "page/index/custom-page/custom-page-11/custom-page-11",
+        "page/index/custom-page/custom-page-12/custom-page-12",
+        "page/index/custom-page/custom-page-13/custom-page-13",
+        "page/index/custom-page/custom-page-14/custom-page-14",
+        "page/message/pages/more_coupon/more_coupon_tab",
+        "page/my/pages/link_us/link_us_tab",
+        "page/message/pages/special_selling/special_selling_tab",
+        "page/buy_car/buy_car",
+        "page/message/pages/limit_shopping/limit_shopping_tab",
+        "page/dongtai/circle-friends-css/circle-friends-css",
+        "components/wx-tpl/custom-page-tpl/custom-page/float-button/float-button",
+        "subPackage/business/pages/coupon_detail_my/coupon_detail_my",
+        "subPackage/business/pages/coupon_detail_other/coupon_detail_other",
+        "subPackage/business/pages/coupon_list/coupon_list",
+        "subPackage/business/pages/coupon_list_detail/coupon_list_detail",
+        "subPackage/business/pages/custom_page/custom_page",
+        "subPackage/business/pages/find_detail/find_detail",
+        "subPackage/business/pages/imglist/imglist",
+        "subPackage/business/pages/limit_shopping/limit_shopping",
+        "subPackage/business/pages/more_coupon/more_coupon",
+        "subPackage/business/pages/pay_page/pay_page",
+        "subPackage/business/pages/pay_page/pay_complete",
+        "subPackage/business/pages/pay_page/pay_record",
+        "subPackage/business/pages/QRCode_collection/QRCode_collection",
+        "subPackage/business/pages/set_Account/set_Account",
+        "subPackage/business/pages/special_selling/special_selling",
+        "subPackage/discover/pages/cut_price/cut_price",
+        "subPackage/discover/pages/goods_detail/goods_detail",
+        "subPackage/discover/pages/goods_detail_new/goods_detail",
+        "subPackage/discover/pages/pintuan_detail/pintuan_detail",
+        "subPackage/discover/pages/pintuan_list/pintuan_list",
+        "subPackage/discover/pages/search/search",
+        "subPackage/discover/pages/search/search_result/search_result",
+        "subPackage/discover/pages/goods_share/goods_share",
+        "subPackage/index/pages/appointment/appointment",
+        "subPackage/index/pages/category-list/category-list",
+        "subPackage/index/pages/shequn/shequn",
+        "subPackage/vipCenter/pages/index/index",
+        "subPackage/vipCenter/pages/recharge/index",
+        "subPackage/vipCenter/pages/record/index",
+        "subPackage/vipCenter/pages/superVip/superVip",
+        "subPackage/vipCenter/pages/rechargeSuccess/index",
+        "subPackage/superVip/pages/index/index",
+        "subPackage/superVip/pages/exchange/index",
+        "subPackage/superVip/pages/exchange-rule/index",
+        "subPackage/superVip/pages/exchange-cash/index",
+        "subPackage/superVip/pages/exchange-underline/index",
+        "subPackage/superVip/pages/special/index",
+        "subPackage/superVip/pages/suerp-vip-guide/index",
+        "subPackage/superVip/pages/exchange-record/index",
+        "subPackage/superVip/pages/gold-detail/index",
+        "subPackage/superVip/pages/gold-rule/index",
+        "subPackage/my/pages/business_make_program/business_mack_program",
+        "subPackage/my/pages/buy_car/buy_car",
+        "subPackage/my/pages/cut_price/cut_price_list",
+        "subPackage/my/pages/historical_order/historical_order",
+        "subPackage/my/pages/introduce/introduce",
+        "subPackage/my/pages/link_us/link_us",
+        "subPackage/my/pages/my_order/my_order",
+        "subPackage/my/pages/my_pintuan_list/my_pintuan_list",
+        "subPackage/my/pages/my_reservation/my_reservation",
+        "subPackage/my/pages/new_order_detail/new_order_detail",
+        "subPackage/my/pages/order/cancle_order/cancle_order",
+        "subPackage/my/pages/order/order_sure_pickup/order_sure_pickup",
+        "subPackage/my/pages/order/order_sure_price/order_sure_price",
+        "subPackage/my/pages/order/schedule_time/schedule_time",
+        "subPackage/my/pages/order_detail/order_detail",
+        "subPackage/my/pages/support/support",
+        "subPackage/my/pages/login/login",
+        "subPackage/my/pages/vip_security_center/vip_security_center",
+        "subPackage/my/pages/vip_security_center/set_password/set_password"
+    ],
+    "window": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "小程序",
+        "navigationBarBackgroundColor": "#fff",
+        "backgroundColor": "#f4f4f4",
+        "enablePullDownRefresh": false
+    },
+    "tabBar": {
+        "color": "#222",
+        "selectedColor": "#ff7800",
+        "borderStyle": "#e6e6e6",
+        "backgroundColor": "#fff",
+        "list": [
+            {
+                "pagePath": "page/index/custom-page/custom-page-5/custom-page-5",
+                "text": "企业文化",
+                "iconPath": "image/shenghuo_normal.png",
+                "selectedIconPath": "image/shenghuo_press.png"
+            },
+            {
+                "pagePath": "page/discover/discover",
+                "text": "产品中心",
+                "iconPath": "image/sc_normal.png",
+                "selectedIconPath": "image/sc_press.png"
+            },
+            {
+                "pagePath": "page/message/index",
+                "text": "首页",
+                "iconPath": "image/home_normal.png",
+                "selectedIconPath": "image/home_press.png"
+            },
+            {
+                "pagePath": "page/index/shequn/shequn_tab",
+                "text": "每日动态",
+                "iconPath": "image/new_normal.png",
+                "selectedIconPath": "image/new_press.png"
+            },
+            {
+                "pagePath": "page/my/my",
+                "text": "我的",
+                "iconPath": "image/me_normal.png",
+                "selectedIconPath": "image/me_press.png"
+            }
+        ]
+    },
+    "networkTimeout": {
+        "request": 30000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "subPackages": [
+        {
+            "root": "subPackage/business/",
+            "pages": [
+                "subPackage/business/pages/coupon_detail_my/coupon_detail_my",
+                "subPackage/business/pages/coupon_detail_other/coupon_detail_other",
+                "subPackage/business/pages/coupon_list/coupon_list",
+                "subPackage/business/pages/coupon_list_detail/coupon_list_detail",
+                "subPackage/business/pages/custom_page/custom_page",
+                "subPackage/business/pages/find_detail/find_detail",
+                "subPackage/business/pages/imglist/imglist",
+                "subPackage/business/pages/limit_shopping/limit_shopping",
+                "subPackage/business/pages/more_coupon/more_coupon",
+                "subPackage/business/pages/pay_page/pay_page",
+                "subPackage/business/pages/pay_page/pay_complete",
+                "subPackage/business/pages/pay_page/pay_record",
+                "subPackage/business/pages/QRCode_collection/QRCode_collection",
+                "subPackage/business/pages/set_Account/set_Account",
+                "subPackage/business/pages/special_selling/special_selling"
+            ]
+        },
+        {
+            "root": "subPackage/discover/",
+            "pages": [
+                "subPackage/discover/pages/cut_price/cut_price",
+                "subPackage/discover/pages/goods_detail/goods_detail",
+                "subPackage/discover/pages/goods_detail_new/goods_detail",
+                "subPackage/discover/pages/pintuan_detail/pintuan_detail",
+                "subPackage/discover/pages/pintuan_list/pintuan_list",
+                "subPackage/discover/pages/search/search",
+                "subPackage/discover/pages/search/search_result/search_result",
+                "subPackage/discover/pages/goods_share/goods_share"
+            ]
+        },
+        {
+            "root": "subPackage/index/",
+            "pages": [
+                "subPackage/index/pages/appointment/appointment",
+                "subPackage/index/pages/category-list/category-list",
+                "subPackage/index/pages/shequn/shequn"
+            ]
+        },
+        {
+            "root": "subPackage/vipCenter/",
+            "pages": [
+                "subPackage/vipCenter/pages/index/index",
+                "subPackage/vipCenter/pages/recharge/index",
+                "subPackage/vipCenter/pages/record/index",
+                "subPackage/vipCenter/pages/superVip/superVip",
+                "subPackage/vipCenter/pages/rechargeSuccess/index"
+            ]
+        },
+        {
+            "root": "subPackage/superVip/",
+            "pages": [
+                "subPackage/superVip/pages/index/index",
+                "subPackage/superVip/pages/exchange/index",
+                "subPackage/superVip/pages/exchange-rule/index",
+                "subPackage/superVip/pages/exchange-cash/index",
+                "subPackage/superVip/pages/exchange-underline/index",
+                "subPackage/superVip/pages/special/index",
+                "subPackage/superVip/pages/suerp-vip-guide/index",
+                "subPackage/superVip/pages/exchange-record/index",
+                "subPackage/superVip/pages/gold-detail/index",
+                "subPackage/superVip/pages/gold-rule/index"
+            ]
+        },
+        {
+            "root": "subPackage/my/",
+            "pages": [
+                "subPackage/my/pages/business_make_program/business_mack_program",
+                "subPackage/my/pages/buy_car/buy_car",
+                "subPackage/my/pages/cut_price/cut_price_list",
+                "subPackage/my/pages/historical_order/historical_order",
+                "subPackage/my/pages/introduce/introduce",
+                "subPackage/my/pages/link_us/link_us",
+                "subPackage/my/pages/my_order/my_order",
+                "subPackage/my/pages/my_pintuan_list/my_pintuan_list",
+                "subPackage/my/pages/my_reservation/my_reservation",
+                "subPackage/my/pages/new_order_detail/new_order_detail",
+                "subPackage/my/pages/order/cancle_order/cancle_order",
+                "subPackage/my/pages/order/order_sure_pickup/order_sure_pickup",
+                "subPackage/my/pages/order/order_sure_price/order_sure_price",
+                "subPackage/my/pages/order/schedule_time/schedule_time",
+                "subPackage/my/pages/order_detail/order_detail",
+                "subPackage/my/pages/support/support",
+                "subPackage/my/pages/login/login",
+                "subPackage/my/pages/vip_security_center/vip_security_center",
+                "subPackage/my/pages/vip_security_center/set_password/set_password"
+            ]
+        }
+    ],
+    "navigateToMiniProgramAppIdList": [
+        "wx606d9e8f20c1ca30",
+        "wx13e4d48d9081b0d1",
+        "wxd667d6b2d0682272",
+        "wx0830c12a419ce575",
+        "wx3588d6d2084ed524"
+    ],
+    "debug": false
+}

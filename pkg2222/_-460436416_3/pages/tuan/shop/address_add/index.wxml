@@ -1,0 +1,41 @@
+<form bindsubmit="formSubmit">
+    <view class="list">
+        <view class="item flex">
+            <label>收货人</label>
+            <view class="sub">
+                <input name="consignee" placeholder="名字" value="{{info!=''?info.consignee:''}}"></input>
+            </view>
+        </view>
+        <view class="item flex">
+            <label>手机号</label>
+            <view class="sub">
+                <input name="mobile" placeholder="11位手机号" type="text" value="{{info!=''?info.mobile:''}}"></input>
+            </view>
+        </view>
+        <view class="item flex">
+            <label>邮箱</label>
+            <view class="sub">
+                <input name="email" placeholder="常用邮箱" type="text" value="{{info!=''?info.email:''}}"></input>
+            </view>
+        </view>
+        <view bindtap="choosearea" class="item flex">
+            <label>配送区域</label>
+            <view class="sub">
+                <text class="arrowR" style="float:right; line-height:36px; padding-right:20px;">{{address||'请选择'}}</text>
+                <input name="select_code" style="display:none;" type="text" value="{{selectedCode||0}}"></input>
+                <input name="aid" style="display:none;" type="text" value="{{info.id||0}}"></input>
+            </view>
+        </view>
+        <view class="item flex">
+            <label>详细地址</label>
+            <view class="sub">
+                <input name="address" placeholder="详细地址" value="{{info!=''?info.address:''}}"></input>
+            </view>
+        </view>
+    </view>
+    <view class="item add-bt">
+        <button class="btn" disabled="{{buttonIsDisabled}}" formType="submit" loading="{{submitIsLoading}}">{{info!=''?'修改':'添加'}}</button>
+        <button bindtap="deleteAddress" class="btn" wx:if="{{info!=''}}">删除</button>
+    </view>
+</form>
+<include src="../../../../utils/selectarea/selectarea.wxml"></include>

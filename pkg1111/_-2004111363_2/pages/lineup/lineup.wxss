@@ -1,0 +1,65 @@
+.l-main .l-num {
+    height: 100rpx;
+    color: #333;
+    background: #fff;
+    font-size: 30rpx;
+    padding: 0 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.l-main .l-num image {
+    width: 24rpx;
+    height: 30rpx;
+}
+
+.l-main .l-btn {
+    width: 92%;
+    height: 100rpx;
+    line-height: 100rpx;
+    margin-top: 200rpx;
+}
+
+.l-now .l-item {
+    height: 180rpx;
+    padding: 0 24rpx;
+}
+
+.l-now .l-num {
+    height: 100rpx;
+    color: #333;
+    background: #fff;
+    font-size: 30rpx;
+    padding: 0 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.l-now .l-num image {
+    width: 24rpx;
+    height: 30rpx;
+}
+
+.l-now .l-btn {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.l-now .l-btn form {
+    width: 50%;
+}
+
+.l-now .l-btn form button {
+    font-size: 36rpx;
+    color: white;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.bgc535f {
+    background-color: #ff535f;
+}
+
+.o8 {
+    opacity: .8;
+}

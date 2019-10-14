@@ -1,0 +1,260 @@
+<view wx:if="{{!isContactPage}}">
+    <view class="module" wx:if="{{troduce_list.length!=0||orgInfo.businessHours||orgInfo.orgFacilities.length>0}}">
+        <colours_title hasLine="{{true}}" title="{{title}}" type="{{3}}" wx:if="{{!isContactPage}}"></colours_title>
+        <view class="link_us_head" wx:else>
+            <view class="logo">
+                <image alt="" src="{{logo}}"></image>
+            </view>
+            <view class="content">
+                <view class="name">{{orgName}}</view>
+                <view class="distance">
+                    <image src="/page/message/images/ico_distance.jpg"></image>
+                    <text>{{distance}}</text>
+                </view>
+            </view>
+            <view class="wechat">
+                <view class="wechat_view">
+                    <image mode="aspectFill" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/shop-multi/weixin.png"></image>
+                </view>
+                <view class="text">联系商家</view>
+                <button class="contact" openType="contact"></button>
+            </view>
+        </view>
+        <view style="height:14rpx"></view>
+        <view class="detailed_infor" wx:if="{{isContactPage}}">
+            <commonUl bindtap="openMap" dataText="{{orgInfo.address}}" imgData="{{picdatas[0]}}" wx:if="{{orgInfo.address}}"></commonUl>
+            <commonUl bindtap="makePhoneCall" data-phone="{{phone}}" dataText="{{orgInfo.phone}}" imgData="{{picdatas[1]}}" wx:if="{{orgInfo.phone}}"></commonUl>
+        </view>
+        <view class="serve">
+            <commonUl dataText="{{orgInfo.businessHours}}" imgData="{{navigatorList[2]}}" style="margin:0;" wx:if="{{orgInfo.businessHours}}"></commonUl>
+            <view class="facilities" wx:if="{{orgInfo.orgFacilities.length>0}}">
+                <view class="img">
+                    <image src="https://xcximg.197.com/xcx/provide.png" style="width:24rpx; height:24rpx;"></image>
+                </view>
+                <view class="text" wx:for="{{orgInfo.orgFacilities}}" wx:key="item">{{serveArr[item-1]}}</view>
+            </view>
+        </view>
+        <view class="" style="margin:14rpx  30rpx 0 30rpx;" wx:if="{{imgList.length>0&&isContactPage}}">
+            <commonUl dataText="{{shopTitle}}" imgData="{{navigatorList[0]}}" url="/subPackage/business/pages/imglist/imglist?orgId={{orgId}}"></commonUl>
+            <view style="margin-top:-16rpx;">
+                <merchantPictures refresh="{{refresh}}"></merchantPictures>
+            </view>
+        </view>
+        <view class="origin_content custom_page" style="margin-top: 15rpx">
+            <commonUl dataText="{{title}}" imgData="{{navigatorList[1]}}" wx:if="{{pageList.length>0}}"></commonUl>
+            <block wx:if="{{pageList.length>0}}" wx:for="{{pageList}}" wx:for-index="i" wx:for-item="page" wx:key="{{i}}">
+                <view class="{{i==0?'carousel nonMarginTop':'carousel'}}" wx:if="{{page.type==2}}">
+                    <swiper autoplay="{{autoplay}}" circular="{{circular}}" current="{{currentIndex}}" duration="{{duration}}" indicatorActiveColor="#fff" indicatorColor="rgba(255,255,255,.5)" indicatorDots="{{true}}" interval="{{interval}}">
+                        <swiper-item wx:for="{{page.showImgs}}" wx:key="key">
+                            <image bindtap="showBannerImg" class="slide-image" data-index="{{i}}" data-src="{{item}}" mode="widthFix" src="{{item}}"></image>
+                        </swiper-item>
+                    </swiper>
+                </view>
+                <view bindtap="previewImage" class="{{i==0?'custom_img nonMarginTop':'custom_img'}}" data-src="{{page.showImgs[0]}}" wx:elif="{{page.type==3}}">
+                    <image mode="widthFix" src="{{page.showImgs[0]}}"></image>
+                </view>
+                <view class="{{i==0?'custom_video nonMarginTop':'custom_video'}}" wx:elif="{{page.type==4}}">
+                    <video controls class="video" id="myVideo{{i}}" objectFit="fill" poster="{{page.poster.length>0?page.poster:defaultPoster}}" src="{{page.videoUrl}}"></video>
+                </view>
+                <view class="{{i==0?'custom_text nonMarginTop paddingTop40':'custom_text'}}" style="{{page.divPageModuleTextDto.style}}" wx:elif="{{page.type==5}}">
+                    <text selectable="true">{{page.divPageModuleTextDto.content}}</text>
+                </view>
+                <view class="{{i==0?'custom_btn nonMarginTop paddingTop40':'custom_btn'}}" wx:elif="{{page.type==6}}">
+                    <button class="c_btn" openType="contact" style="{{page.divPageModuleButtonDto.style}}" wx:if="{{page.divPageModuleButtonDto.functionType==1}}">{{page.divPageModuleButtonDto.name}}</button>
+                    <button bindtap="makePhoneCall" class="c_btn" data-phone="{{page.divPageModuleButtonDto.phone}}" style="{{page.divPageModuleButtonDto.style}}" wx:else>{{page.divPageModuleButtonDto.name}}</button>
+                </view>
+                <view class="{{i==0?'custom_form nonMarginTop':'custom_form'}}" wx:elif="{{page.type==7}}">
+                    <view class="submit_title">{{page.content}}</view>
+                    <view class="submit_row">
+                        <text class="submit_desc">姓名</text>
+                        <input bindinput="formInput" class="submit_input" data-type="1" placeholder="请填写您的称呼" placeholderStyle="color:#b6b8bd" value="{{applyInfo.name}}"></input>
+                    </view>
+                    <view class="submit_row">
+                        <text class="submit_desc">电话</text>
+                        <input bindinput="formInput" class="submit_input" data-type="2" placeholder="请填写联系电话" placeholderStyle="color:#b6b8bd" type="number" value="{{applyInfo.tel}}"></input>
+                    </view>
+                    <view class="submit_row">
+                        <text class="submit_desc">行业</text>
+                        <input bindinput="formInput" class="submit_input" data-type="3" placeholder="请填写您所在的行业" placeholderStyle="color:#b6b8bd" value="{{applyInfo.industry}}"></input>
+                    </view>
+                    <view class="submit_row">
+                        <text class="submit_desc">备注</text>
+                        <input bindinput="formInput" class="submit_input" data-type="4" placeholder="请填写给我的留言备注" placeholderStyle="color:#b6b8bd" value="{{applyInfo.remark}}"></input>
+                    </view>
+                    <view class="warp_btn">
+                        <button catchtap="submitApply" class="submit_btn" loading="{{btnLoading}}">提交</button>
+                    </view>
+                </view>
+                <custom-banner classlist="{{classList}}" sowingList="{{page.sowing}}" wx:elif="{{page.type=='sowing'}}"></custom-banner>
+                <custom-nav classlist="{{classList}}" navList="{{page.icon}}" wx:elif="{{page.type=='icon'}}"></custom-nav>
+                <custom-button button="{{page.button}}" classlist="{{classList}}" wx:elif="{{page.type=='button'}}"></custom-button>
+                <custom-text text="{{page.text}}" wx:elif="{{page.type=='text'}}"></custom-text>
+                <view class="mb30" wx:elif="{{page.type=='picture'}}">
+                    <custom-image classlist="{{classList}}" image="{{page.picture}}"></custom-image>
+                </view>
+                <view class="mb30" wx:elif="{{page.type=='video'}}">
+                    <custom-video bind:startplay="stopOther" indexes="{{i}}" thisIndexes="{{thisIndexes}}" video="{{page.video}}"></custom-video>
+                </view>
+                <custom-form form="{{page.form}}" wx:elif="{{page.type=='form'}}"></custom-form>
+                <custom-line line="{{page.segmentingLine}}" wx:elif="{{page.type=='segmentingLine'}}"></custom-line>
+                <greeting refresh="{{true}}" wx:elif="{{page.type=='sayHello'}}"></greeting>
+                <view class="" data-type="{{page.type}}" wx:elif="{{page.type=='timeLimit'}}">
+                    <limit_shopping countKey="{{i}}" hideTime="{{hideTime}}" isUser="{{1}}" maxLen="{{page.timeLimit.goodsNumber}}" name="{{page.timeLimit.title}}" refresh="{{refresh}}" refreshCountdown="{{refreshCountdown}}"></limit_shopping>
+                </view>
+                <view class="" data-type="{{page.type}}" wx:elif="{{page.type=='bargain'}}">
+                    <custom-classify alias="{{page.type}}" appointmentCopy="{{appointmentCopy}}" hideTime="{{hideTime}}" isUser="{{1}}" maxLen="{{page.bargain.goodsNumber}}" name="{{page.bargain.title}}" purchaseCopy="{{purchaseCopy}}" refresh="{{refresh}}" refreshCountdown="{{refreshCountdown}}"></custom-classify>
+                </view>
+                <view class="" data-type="{{page.type}}" wx:elif="{{page.type=='pintuan'}}">
+                    <custom-classify alias="{{page.type}}" appointmentCopy="{{appointmentCopy}}" hideTime="{{hideTime}}" isUser="{{1}}" maxLen="{{page.pintuan.goodsNumber}}" name="{{page.pintuan.title}}" purchaseCopy="{{purchaseCopy}}" refresh="{{refresh}}" refreshCountdown="{{refreshCountdown}}"></custom-classify>
+                </view>
+                <view class="" data-type="{{page.type}}" wx:elif="{{page.type=='goodsLabel'}}">
+                    <custom-classify alias="{{page.goodsLabel.tagType}}" appointmentCopy="{{appointmentCopy}}" countKey="{{i}}" hideTime="{{hideTime}}" isUser="{{1}}" maxLen="{{page.goodsLabel.goodsNumber}}" name="{{page.goodsLabel.title}}" purchaseCopy="{{purchaseCopy}}" refresh="{{refresh}}" refreshCountdown="{{refreshCountdown}}" templateId="{{page.goodsLabel.layoutStyle}}"></custom-classify>
+                </view>
+                <view class="" wx:elif="{{page.type=='singleGoods'}}">
+                    <singleRowGoods countKey="{{i}}" goodsData="{{page.singleGoods}}" loadData="{{onSingleRowGoodsShow}}" refresh="{{refresh}}"></singleRowGoods>
+                </view>
+                <view class="" wx:elif="{{page.type=='doubleGoods'}}">
+                    <doubleRowGoods alias="{{page.doubleGoods.cuttingRatio}}" countKey="{{i}}" goodsData="{{page.doubleGoods}}" loadData="{{onSingleRowGoodsShow}}"></doubleRowGoods>
+                </view>
+                <view class="shoppinglist" wx:elif="{{page.type=='leftAndRightGoods'}}">
+                    <scrollRowGoods countKey="{{i}}" goodsData="{{page.leftAndRightGoods}}" loadData="{{onSingleRowGoodsShow}}"></scrollRowGoods>
+                </view>
+                <view class="" wx:elif="{{page.type=='waterFallGoods'}}">
+                    <custom-waterfall countKey="{{i}}" goodsData="{{page.waterFallGoods}}" loadData="{{onSingleRowGoodsShow}}"></custom-waterfall>
+                </view>
+                <view wx:elif="{{page.type=='associatedPublicNumber'}}">
+                    <official-account></official-account>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>
+<view class="module" wx:else>
+    <colours_title hasLine="{{true}}" title="{{title}}" type="{{3}}" wx:if="{{!isContactPage}}"></colours_title>
+    <view class="link_us_head" wx:else>
+        <view class="logo">
+            <image alt="" src="{{logo}}"></image>
+        </view>
+        <view class="content">
+            <view class="name">{{orgName}}</view>
+            <view class="distance">
+                <image src="/page/message/images/ico_distance.jpg"></image>
+                <text>{{distance}}</text>
+            </view>
+        </view>
+        <view class="wechat">
+            <view class="wechat_view">
+                <image mode="aspectFill" src="http://yamxcx.oss-cn-shenzhen.aliyuncs.com/shop-multi/weixin.png"></image>
+            </view>
+            <view class="text">联系商家</view>
+            <button class="contact" openType="contact"></button>
+        </view>
+    </view>
+    <view style="height:14rpx"></view>
+    <view class="detailed_infor" wx:if="{{isContactPage}}">
+        <commonUl bindtap="openMap" dataText="{{orgInfo.address}}" imgData="{{picdatas[0]}}" wx:if="{{orgInfo.address}}"></commonUl>
+        <commonUl bindtap="makePhoneCall" data-phone="{{phone}}" dataText="{{orgInfo.phone}}" imgData="{{picdatas[1]}}" wx:if="{{orgInfo.phone}}"></commonUl>
+    </view>
+    <view class="serve">
+        <commonUl dataText="{{orgInfo.businessHours}}" imgData="{{navigatorList[2]}}" style="margin:0;" wx:if="{{orgInfo.businessHours}}"></commonUl>
+        <view class="facilities" wx:if="{{orgInfo.orgFacilities.length>0}}">
+            <view class="img">
+                <image src="https://xcximg.197.com/xcx/provide.png" style="width:24rpx; height:24rpx;"></image>
+            </view>
+            <view class="text" wx:for="{{orgInfo.orgFacilities}}" wx:key="item">{{serveArr[item-1]}}</view>
+        </view>
+    </view>
+    <view class="" style="margin:14rpx  30rpx 0 30rpx;" wx:if="{{imgList.length>0&&isContactPage}}">
+        <commonUl dataText="{{shopTitle}}" imgData="{{navigatorList[0]}}" url="/subPackage/business/pages/imglist/imglist?orgId={{orgId}}"></commonUl>
+        <view style="margin-top:-16rpx;">
+            <merchantPictures refresh="{{refresh}}"></merchantPictures>
+        </view>
+    </view>
+    <view class="origin_content custom_page" style="margin-top: 15rpx">
+        <commonUl dataText="{{title}}" imgData="{{navigatorList[1]}}" wx:if="{{pageList.length>0}}"></commonUl>
+        <block wx:if="{{pageList.length>0}}" wx:for="{{pageList}}" wx:for-index="i" wx:for-item="page" wx:key="{{i}}">
+            <view class="{{i==0?'carousel nonMarginTop':'carousel'}}" wx:if="{{page.type==2}}">
+                <swiper autoplay="{{autoplay}}" circular="{{circular}}" current="{{currentIndex}}" duration="{{duration}}" indicatorActiveColor="#fff" indicatorColor="rgba(255,255,255,.5)" indicatorDots="{{true}}" interval="{{interval}}">
+                    <swiper-item wx:for="{{page.showImgs}}" wx:key="key">
+                        <image bindtap="showBannerImg" class="slide-image" data-index="{{i}}" data-src="{{item}}" mode="widthFix" src="{{item}}"></image>
+                    </swiper-item>
+                </swiper>
+            </view>
+            <view bindtap="previewImage" class="{{i==0?'custom_img nonMarginTop':'custom_img'}}" data-src="{{page.showImgs[0]}}" wx:elif="{{page.type==3}}">
+                <image mode="widthFix" src="{{page.showImgs[0]}}"></image>
+            </view>
+            <view class="{{i==0?'custom_video nonMarginTop':'custom_video'}}" wx:elif="{{page.type==4}}">
+                <video controls class="video" id="myVideo{{i}}" objectFit="fill" poster="{{page.poster.length>0?page.poster:defaultPoster}}" src="{{page.videoUrl}}"></video>
+            </view>
+            <view class="{{i==0?'custom_text nonMarginTop paddingTop40':'custom_text'}}" style="{{page.divPageModuleTextDto.style}}" wx:elif="{{page.type==5}}">
+                <text selectable="true">{{page.divPageModuleTextDto.content}}</text>
+            </view>
+            <view class="{{i==0?'custom_btn nonMarginTop paddingTop40':'custom_btn'}}" wx:elif="{{page.type==6}}">
+                <button class="c_btn" openType="contact" style="{{page.divPageModuleButtonDto.style}}" wx:if="{{page.divPageModuleButtonDto.functionType==1}}">{{page.divPageModuleButtonDto.name}}</button>
+                <button bindtap="makePhoneCall" class="c_btn" data-phone="{{page.divPageModuleButtonDto.phone}}" style="{{page.divPageModuleButtonDto.style}}" wx:else>{{page.divPageModuleButtonDto.name}}</button>
+            </view>
+            <view class="{{i==0?'custom_form nonMarginTop':'custom_form'}}" wx:elif="{{page.type==7}}">
+                <view class="submit_title">{{page.content}}</view>
+                <view class="submit_row">
+                    <text class="submit_desc">姓名</text>
+                    <input bindinput="formInput" class="submit_input" data-type="1" placeholder="请填写您的称呼" placeholderStyle="color:#b6b8bd" value="{{applyInfo.name}}"></input>
+                </view>
+                <view class="submit_row">
+                    <text class="submit_desc">电话</text>
+                    <input bindinput="formInput" class="submit_input" data-type="2" placeholder="请填写联系电话" placeholderStyle="color:#b6b8bd" type="number" value="{{applyInfo.tel}}"></input>
+                </view>
+                <view class="submit_row">
+                    <text class="submit_desc">行业</text>
+                    <input bindinput="formInput" class="submit_input" data-type="3" placeholder="请填写您所在的行业" placeholderStyle="color:#b6b8bd" value="{{applyInfo.industry}}"></input>
+                </view>
+                <view class="submit_row">
+                    <text class="submit_desc">备注</text>
+                    <input bindinput="formInput" class="submit_input" data-type="4" placeholder="请填写给我的留言备注" placeholderStyle="color:#b6b8bd" value="{{applyInfo.remark}}"></input>
+                </view>
+                <view class="warp_btn">
+                    <button catchtap="submitApply" class="submit_btn" loading="{{btnLoading}}">提交</button>
+                </view>
+            </view>
+            <custom-banner classlist="{{classList}}" sowingList="{{page.sowing}}" wx:elif="{{page.type=='sowing'}}"></custom-banner>
+            <custom-nav classlist="{{classList}}" navList="{{page.icon}}" wx:elif="{{page.type=='icon'}}"></custom-nav>
+            <custom-button button="{{page.button}}" classlist="{{classList}}" wx:elif="{{page.type=='button'}}"></custom-button>
+            <custom-text text="{{page.text}}" wx:elif="{{page.type=='text'}}"></custom-text>
+            <view class="mb30" wx:elif="{{page.type=='picture'}}">
+                <custom-image classlist="{{classList}}" image="{{page.picture}}"></custom-image>
+            </view>
+            <view class="mb30" wx:elif="{{page.type=='video'}}">
+                <custom-video bind:startplay="stopOther" indexes="{{i}}" thisIndexes="{{thisIndexes}}" video="{{page.video}}"></custom-video>
+            </view>
+            <custom-form form="{{page.form}}" wx:elif="{{page.type=='form'}}"></custom-form>
+            <custom-line line="{{page.segmentingLine}}" wx:elif="{{page.type=='segmentingLine'}}"></custom-line>
+            <greeting refresh="{{true}}" wx:elif="{{page.type=='sayHello'}}"></greeting>
+            <view class="" data-type="{{page.type}}" wx:elif="{{page.type=='timeLimit'}}">
+                <limit_shopping countKey="{{i}}" hideTime="{{hideTime}}" isUser="{{1}}" maxLen="{{page.timeLimit.goodsNumber}}" name="{{page.timeLimit.title}}" refresh="{{refresh}}" refreshCountdown="{{refreshCountdown}}"></limit_shopping>
+            </view>
+            <view class="" data-type="{{page.type}}" wx:elif="{{page.type=='bargain'}}">
+                <custom-classify alias="{{page.type}}" appointmentCopy="{{appointmentCopy}}" hideTime="{{hideTime}}" isUser="{{1}}" maxLen="{{page.bargain.goodsNumber}}" name="{{page.bargain.title}}" purchaseCopy="{{purchaseCopy}}" refresh="{{refresh}}" refreshCountdown="{{refreshCountdown}}"></custom-classify>
+            </view>
+            <view class="" data-type="{{page.type}}" wx:elif="{{page.type=='pintuan'}}">
+                <custom-classify alias="{{page.type}}" appointmentCopy="{{appointmentCopy}}" hideTime="{{hideTime}}" isUser="{{1}}" maxLen="{{page.pintuan.goodsNumber}}" name="{{page.pintuan.title}}" purchaseCopy="{{purchaseCopy}}" refresh="{{refresh}}" refreshCountdown="{{refreshCountdown}}"></custom-classify>
+            </view>
+            <view class="" data-type="{{page.type}}" wx:elif="{{page.type=='goodsLabel'}}">
+                <custom-classify alias="{{page.goodsLabel.tagType}}" appointmentCopy="{{appointmentCopy}}" countKey="{{i}}" hideTime="{{hideTime}}" isUser="{{1}}" maxLen="{{page.goodsLabel.goodsNumber}}" name="{{page.goodsLabel.title}}" purchaseCopy="{{purchaseCopy}}" refresh="{{refresh}}" refreshCountdown="{{refreshCountdown}}" templateId="{{page.goodsLabel.layoutStyle}}"></custom-classify>
+            </view>
+            <view class="" wx:elif="{{page.type=='singleGoods'}}">
+                <singleRowGoods countKey="{{i}}" goodsData="{{page.singleGoods}}" loadData="{{onSingleRowGoodsShow}}" refresh="{{refresh}}"></singleRowGoods>
+            </view>
+            <view class="" wx:elif="{{page.type=='doubleGoods'}}">
+                <doubleRowGoods alias="{{page.doubleGoods.cuttingRatio}}" countKey="{{i}}" goodsData="{{page.doubleGoods}}" loadData="{{onSingleRowGoodsShow}}"></doubleRowGoods>
+            </view>
+            <view class="shoppinglist" wx:elif="{{page.type=='leftAndRightGoods'}}">
+                <scrollRowGoods countKey="{{i}}" goodsData="{{page.leftAndRightGoods}}" loadData="{{onSingleRowGoodsShow}}"></scrollRowGoods>
+            </view>
+            <view class="" wx:elif="{{page.type=='waterFallGoods'}}">
+                <custom-waterfall countKey="{{i}}" goodsData="{{page.waterFallGoods}}" loadData="{{onSingleRowGoodsShow}}"></custom-waterfall>
+            </view>
+            <view wx:elif="{{page.type=='associatedPublicNumber'}}">
+                <official-account></official-account>
+            </view>
+        </block>
+    </view>
+</view>

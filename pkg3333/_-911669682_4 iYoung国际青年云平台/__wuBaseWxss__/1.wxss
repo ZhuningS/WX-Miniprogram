@@ -1,0 +1,27 @@
+.nothing {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nothing .line {
+    height: 1px;
+    background: #ddd;
+    margin-top: 22rpx;
+}
+
+.bgwhite,.search-box,.search-show,.fenlei,.msg-list,.paixu,.top,.content {
+    background: #fff;
+}
+
+.green,.title-item.active {
+    color: #6430ba;
+}
+
+button[type="primary"] {
+    background: #6430ba;
+}
+
+.button-hover[type="primary"],button[type="primary"][disabled],button[type="primary"][loading] {
+    background: #5026ac;
+}

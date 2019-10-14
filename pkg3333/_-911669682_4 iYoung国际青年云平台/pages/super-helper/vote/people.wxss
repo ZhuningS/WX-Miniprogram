@@ -1,0 +1,25 @@
+.item-title {
+    padding: 20rpx 30rpx;
+    background: #fff;
+}
+
+.people-item {
+    padding: 30rpx;
+}
+
+.people-list {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    border: 6rpx solid #fff;
+    overflow: hidden;
+}
+
+.people-list:nth-child(n+2) {
+    margin-left: -20rpx;
+}
+
+.people-list image {
+    width: 100%;
+    height: 100%;
+}

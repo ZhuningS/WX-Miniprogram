@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-icon√</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-icon√" transform="translate(-162.000000, -87.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="page_icon" transform="translate(20.000000, -21.000000)">
+                <g id="topBar">
+                    <g id="explore_btn_menu" transform="translate(142.160704, 0.926311)">
+                        <g id="Group-8" transform="translate(5.243408, 112.643555)">
+                            <polygon id="Line-4" points="0 6 0 4 10 4 10 6"></polygon>
+                            <polygon id="Line-4" points="6 10 4 10 4 0 6 0"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

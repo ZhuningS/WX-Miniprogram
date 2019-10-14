@@ -1,0 +1,8 @@
+.tween {
+    transition: 268ms;
+    backface-visibility: hidden;
+}
+
+.tween.need-appear-tween {
+    opacity: 0;
+}

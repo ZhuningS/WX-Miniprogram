@@ -1,0 +1,22 @@
+<template name="shopInfo">
+    <view class="shop-info">
+        <view class="shop-panel">
+            <view class="img_wrap">
+                <image class="shop-logo" mode="aspectFill" src="{{shop.logo}}"></image>
+            </view>
+            <view class="shop-infos">
+                <view class="shop-name">{{shop.name}}</view>
+                <view class="shop-info-item">
+        {{shop.cname}}
+      </view>
+                <view class="shop-des">公司简介: {{shop.intro}}</view>
+            </view>
+        </view>
+        <view class="shop-pos">
+            <text style="font-size:30rpx; float:left">公司地址: {{shop.address}}</text>
+            <view bindtap="_callPhone" class="shop-phone" data-phone="{{shop.tel}}" wx:if="{{!!shop.tel}}">
+                <image mode="aspectFit" src="../../../images/new/icon_tel.png" style="width: 48rpx;height:48rpx"></image>
+            </view>
+        </view>
+    </view>
+</template>

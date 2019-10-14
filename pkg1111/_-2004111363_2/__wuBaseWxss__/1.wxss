@@ -1,0 +1,64 @@
+.c-coupLst {
+    width: 100%;
+    padding: 0 30rpx;
+}
+
+.c-coupLst .c-coupLst-bgNone {
+    background-image: url('http://vzan-img.oss-cn-hangzhou.aliyuncs.com/upload/img/20180927/bdf3f2e6cd2648d5b92609560f419525.png');
+}
+
+.c-coupLst .c-coupLst-bgShow {
+    background-image: url('http://vzan-img.oss-cn-hangzhou.aliyuncs.com/upload/img/20180927/058cff7252e54dd6b98087ed21d8c268.png');
+}
+
+.c-coupLst .c-coupLst-main-item {
+    width: 100%;
+    height: 230rpx;
+    margin-top: 30rpx;
+    background-size: cover;
+    padding: 30rpx 20rpx 30rpx 40rpx;
+}
+
+.c-coupLst .c-coupLst-main-item .c-coupLst-main-item-title {
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.c-coupLst .c-coupLst-main-item .c-coupLst-main-item-tip {
+    font-size: 22rpx;
+    color: #FFE5D2;
+}
+
+.c-coupLst .c-coupLst-main-item .c-coupLst-main-item-Lit {
+    font-size: 22rpx;
+    color: #FF7443;
+    background-color: #FFD3B2;
+    padding: 5rpx 20rpx;
+}
+
+.c-coupLst .c-coupLst-main-item .c-coupLst-nouse {
+    color: #666666;
+    background-color: #E1E1E1;
+}
+
+.c-coupLst .c-coupLst-main-item .c-coupLst-canuse {
+    color: #FF7443;
+    background-color: #FFD3B2;
+}
+
+.c-coupLst .c-coupLst-main-item .c-coupLst-main-item-btn {
+    width: 98rpx;
+    height: 36rpx;
+    font-size: 20rpx;
+    border-radius: 18rpx;
+}
+
+.c-coupLst .c-coupLst-main-item .c-btnone {
+    background-color: #a1a2a3;
+    color: #fff;
+}
+
+.c-coupLst .c-coupLst-main-item .c-btnshow {
+    color: #FF7443;
+    background: -webkit-linear-gradient(right,#FFD3B2,#FFC091);
+}

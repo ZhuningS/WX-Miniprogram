@@ -1,0 +1,67 @@
+page {
+    background: #f8f8f8;
+}
+
+.top {
+    width: 100%;
+    height: 300rpx;
+}
+
+.userInfo {
+    background: #f8f8f8;
+    margin-top: -130rpx;
+    border-radius: 50% 50% 0 0;
+    padding-top: 1rpx;
+    min-height: 132rpx;
+}
+
+.user-img {
+    width: 160rpx;
+    height: 160rpx;
+    margin: -60rpx auto 0;
+    border: 6rpx solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-img image {
+    width: 100%;
+    height: 100%;
+}
+
+.active-msg {
+    width: 640rpx;
+    background: #fff;
+    margin: 80rpx auto;
+    padding: 50rpx 40rpx;
+    border-radius: 6rpx;
+    word-break: break-all;
+}
+
+.active-msg .title {
+    width: 500rpx;
+    margin: 0 auto;
+}
+
+.active-msg .title .line {
+    height: 1px;
+    background: #bbb;
+    margin-top: 20rpx;
+}
+
+.active-title {
+    padding: 30rpx 0;
+}
+
+.active-time,.active-place {
+    padding: 4rpx 0;
+}
+
+.btn {
+    width: 400rpx;
+    border-radius: 80rpx;
+}
+
+.bgcolor {
+    background: #09bb07;
+}

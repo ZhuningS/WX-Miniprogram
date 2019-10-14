@@ -1,0 +1,17 @@
+<view class="action-sheet-wrap">
+    <view animation="{{actionSheetMaskAnimation}}" bindtap="onClickMask" class="action-sheet-mask" hidden="{{!showActionSheet}}"></view>
+    <view animation="{{actionSheetAnimation}}" class="action-sheet-content" hidden="{{!showActionSheet}}">
+        <view class="action-sheet-title" wx:if="{{title.length>0}}">{{title}}</view>
+        <view class="weui-cell" hoverClass="action-sheet-button__hover" style="padding-top: 25rpx; padding-bottom: 25rpx;" wx:for="{{items}}">
+            <view class="weui-cell__bd weui-cell_primary action-sheet-item">
+                {{item.content}}
+            </view>
+            <button bindtap="onClickItem" class="action-sheet-button" data-content="{{item.content}}" data-index="{{index}}" data-type="{{item.type}}" data-userinfo="{{item.userInfo}}" openType="{{item.type=='contact'?'contact':''}}"></button>
+        </view>
+        <view style="height: 6px; background: #EDEDED;"></view>
+        <view bindtap="onClickItem" data-index="-1" data-type="cancel" hoverClass="action-sheet-button__hover">
+            <view class="action-sheet-item action-sheet-cancel">取消</view>
+            <view style="height: 34px; background: white;" wx:if="{{phoneModel=='iPhoneX'}}"></view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,13 @@
+<form reportSubmit bindsubmit="onSubmit">
+    <view class="box">
+        <view class="box-header">充值金额</view>
+        <view class="box-content">
+            <view class="recharge-icon">￥</view>
+            <input autoFocus bindinput="onMoneyInput" class="recharge-input" name="money" type="digit"></input>
+        </view>
+        <view class="box-footer">当前余额：{{recharge}}</view>
+    </view>
+    <view class="btn-row">
+        <button formType="submit" type="primary">充值</button>
+    </view>
+</form>

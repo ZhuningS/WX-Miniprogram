@@ -1,0 +1,23 @@
+<import src="../components/article-content.wxml"></import>
+<import src="../components/widgets.wxml"></import>
+<view class="article" wx:if="{{article}}">
+    <view class="article-content">
+        <view class="headline2">{{article.title}}</view>
+        <view class="meta" wx:if="{{article.packageName}}">
+            <view class="provider">
+                <image class="icon" mode="aspectFill" src="{{article.appIcon}}"></image>
+                <text class="name" wx:if="{{article.author}}">{{article.appName}} · {{article.author}}
+          <text class="date" wx:if="{{article.date}}"> · {{article.date}}</text>
+                </text>
+                <text class="name" wx:else>{{article.appName}}
+          <text class="date"> · {{article.date}}</text>
+                </text>
+            </view>
+        </view>
+        <template is="raml-content" data="{{docIdString:article.docIdString,content:content}}"></template>
+    </view>
+</view>
+<view class="loading-ctn" wx:else>
+    <template is="loading" data="{{loading:true}}"></template>
+</view>
+<button catchtap="doPreviewAction" class="button fixed" wx:if="{{action}}">{{action}}</button>

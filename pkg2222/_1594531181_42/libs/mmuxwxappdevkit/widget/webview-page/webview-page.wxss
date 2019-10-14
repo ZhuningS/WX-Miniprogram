@@ -1,0 +1,5 @@
+.webview {
+    position: fixed;
+    top: 88px;
+    height: calc(100% - 88px);
+}

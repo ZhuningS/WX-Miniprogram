@@ -1,0 +1,1 @@
+<image class="{{rootClassNames}}" src="./assets/icon-{{name}}.svg"></image>

@@ -1,0 +1,31 @@
+<view class="{{rootClassNames}}">
+    <view class="magazine-cover {{cover.image&&'has-image'}}" style="background-color: {{cover.background}}; background-image: url({{cover.image}})"></view>
+    <view class="magazine-info">
+        <view class="info-title">
+      {{cover.title}}
+    </view>
+        <view class="section-meta">
+            <view class="stats-items">
+                <block wx:if="{{isShowStatisticsMeta&&dsSubscribeAction}}">
+                    <view class="info-stats-subscription">
+                        <text class="count-number">{{cover.statistics.subscriberCount}}</text>人订阅
+          </view>
+                    <view class="info-gap">
+            ·
+          </view>
+                </block>
+                <view class="info-stats-mark" wx:if="{{isShowStatisticsMeta}}">
+                    <text class="count-number">{{cover.statistics.markedCount}}</text>个{{__.markAction}}
+        </view>
+            </view>
+            <view class="operations-bar">
+                <qm-button catchtap="handleShareButtonTap" theme="text">
+                    <qm-icon name="share"></qm-icon>
+                </qm-button>
+                <qm-button catchtap="handleMoreButtonTap" theme="text">
+                    <qm-icon name="menu"></qm-icon>
+                </qm-button>
+            </view>
+        </view>
+    </view>
+</view>

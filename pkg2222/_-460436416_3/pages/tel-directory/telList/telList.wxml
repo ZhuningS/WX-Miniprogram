@@ -1,0 +1,64 @@
+<view class="topBox mainColor_bg flex flexCCen">
+    <view class="topLf white_bg f14 sub ">
+        <input bindinput="chang_this_keyword" class="seaInp" placeholder="输入关键词" value="{{this_keywords}}"></input>
+    </view>
+    <view bindtap="search_index_data" class="iconfont icon-sousuo "></view>
+</view>
+<view>
+    <view class="tabBox white_bg tc gridXb">
+        <view class="sub ">
+            <picker bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" mode="multiSelector" range="{{multiArray}}" value="{{multiIndex[0]==-1?'请选择':multiIndex}}">
+                <view class="picker">
+                    <text wx:if="{{multiIndex[0]!=-1}}">{{multiArray[1][ multiIndex[1] ]?multiArray[1][ multiIndex[1] ]:multiArray[0][ multiIndex[0] ]}}</text>
+                    <text wx:if="{{is_opcate}}">{{catename}}</text>
+                    <text class="iconfont icon-xiangxiajiantou ml5 "></text>
+                    <text class="iconfont icon-xiangshangjiantou ml5 display_hide"></text>
+                </view>
+            </picker>
+        </view>
+        <view class="sub">
+            <picker bindchange="bindRegionChange" customItem="{{customItem}}" mode="region" value="{{region}}">
+                <view class="picker">
+                    <text>{{region[1]}}</text>
+                    <text class="iconfont icon-xiangxiajiantou ml5"></text>
+                    <text class="iconfont icon-xiangshangjiantou ml5 display_hide"></text>
+                </view>
+            </picker>
+        </view>
+        <view class="sub">
+            <picker bindchange="bindPickerChange" mode="selector" range="{{synSortArr}}" value="{{index}}">
+                <view class="picker">
+                    <text>{{synSortArr[index]}}</text>
+                    <text class="iconfont icon-xiangxiajiantou ml5"></text>
+                    <text class="iconfont icon-xiangshangjiantou ml5 display_hide"></text>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class="list ">
+        <view bindtap="go_detail_bind" class="item white_bg mb10" id="{{item.id}}" wx:for="{{this_tel_data}}">
+            <view class="mr10 flex flexCCen flexMBtw">
+                <view class="sub flex flexCCen">
+                    <image class="itemPic mr10" mode="aspectFill" src="{{item.t_logo}}"></image>
+                    <view class="titBox sub ">
+                        <view class="lineText">{{item.t_name}}</view>
+                        <view class="grey f14">
+                            <text class="iconfont icon-dianhua mr5"></text>
+                            <text>{{item.yincang_t_contact_phone}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view catchtap="onCallTap" class="telBox mainColor_bg flex MCCen" data-id="{{item.id}}" data-mobile="{{item.t_contact_phone}}">
+                    <text class="iconfont icon-dianhua"></text>
+                </view>
+            </view>
+            <view catchtap="openLocation" class="itemBot grey f14 flex flexMBtw" data-address="{{item.t_address}}" data-lat="{{item.t_lat}}" data-lng="{{item.t_lng}}" data-name="{{item.t_name}}">
+                <view class="sub mr15 lineText">
+                    <text></text>
+                    <text>{{item.t_address}}</text>
+                </view>
+                <view>距离 {{item.juli}} Km</view>
+            </view>
+        </view>
+    </view>
+</view>

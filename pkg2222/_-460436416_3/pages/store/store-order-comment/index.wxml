@@ -1,0 +1,42 @@
+<view class="glo_load_view" wx:if="{{glo_is_load}}">
+    <text class="iconfont icon-loading animated infinite rotate mr5"></text>
+    <text>正在努力加载</text>
+</view>
+<form bindreset="formReset" bindsubmit="formSubmit" wx:else>
+    <view class="r-comm">
+        <view class="rc-head gridXb">
+            <image class="rc-a-img mr10" mode="aspectFill" src="{{oinfo.store_logo}}"></image>
+            <text class="f18 rc-n">{{oinfo.store_name}}<text wx:if="{{oinfo.store_quyu}}">({{oinfo.store_quyu}})</text>
+            </text>
+        </view>
+        <view class="rc-comm">
+            <view class="grey mt20 tc">为商家打分</view>
+            <view class="star-con f36 mt20 tc">
+                <text bindtap="set_score_bind" class="iconfont icon-xingji{{gitem.ischeck==true?'full':'line'}}" id="{{gitem.val}}" wx:for="{{score_arr}}" wx:for-item="gitem"></text>
+            </view>
+            <view class="text-a">
+                <textarea class="gridFourRadio teS mt20" name="post_content" placeholder="写下对商家的评价吧（至少8个字）"></textarea>
+            </view>
+            <view class="upload-img">
+                <view class="item" wx:for="{{postimg}}">
+                    <image mode="aspectFill" src="{{item}}"></image>
+                    <text bindtap="del_pic_bind" class="iconfont icon-close item-del" id="{{index}}"></text>
+                </view>
+                <view bindtap="chooseimg_bind" class="item add"></view>
+            </view>
+            <view class="goods-item gridXt">
+                <view bindtap="goods_zan_bind" class="flex" id="{{gitem.goods_id}}" wx:for="{{oinfo.glist}}" wx:for-item="gitem">
+                    <view class="sub lineText">
+                  {{gitem.goods_name}}
+                </view>
+                    <view class="zan-btn zan-active">
+                        <text class="iconfont icon-appreciatefill"></text> 赞
+                </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="od-f">
+        <button class="od-f-btn" disabled="{{buttonIsDisabled}}" formType="submit" hoverClass="none" loading="{{submitIsLoading}}" type="primary">提交评价</button>
+    </view>
+</form>

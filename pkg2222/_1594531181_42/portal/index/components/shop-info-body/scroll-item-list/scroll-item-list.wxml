@@ -1,0 +1,8 @@
+<view class="wrap">
+    <swiper duration="250" indicatorActiveColor="#CCCCCC" indicatorColor="rgba(216,216,216,0.4)" indicatorDots="true" style="{{width}}{{height}}" wx:if="{{component&&component.comm_products&&component.comm_products.length>1}}">
+        <swiper-item wx:for="{{component.comm_products}}" wx:key="pic_url">
+            <image-view bindtap="onItemClick" class="scroll-item" data-item="{{item}}" src="{{item.pic_url+'/0'}}" style="{{width}}{{height}}"></image-view>
+        </swiper-item>
+    </swiper>
+    <image-view bindtap="onItemClick" class="scroll-item" data-item="{{component.comm_products[0]}}" imgStyle="{{width}}{{height}}" src="{{component.comm_products[0].pic_url+'/0'}}" style="{{width}}{{height}}" wx:if="{{component&&component.comm_products&&component.comm_products.length==1}}"></image-view>
+</view>

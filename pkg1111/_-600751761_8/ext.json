@@ -1,0 +1,13 @@
+{
+    "extEnable": true,
+    "extAppid": "wxff703dbf9dc1f052",
+    "ext": {
+        "aid": 16934751,
+        "wxappAid": 245785,
+        "wxappId": 101,
+        "wxappAppId": "wxff703dbf9dc1f052",
+        "wxappDomain": "https://i.qz.fkw.com/wxAppConnectionV3.jsp",
+        "wxappDomainUrl": "https://i.qz.fkw.com/",
+        "isOem": false
+    }
+}

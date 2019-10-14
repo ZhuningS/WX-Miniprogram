@@ -1,0 +1,26 @@
+<view class="__indexTask">
+    <view class="swiper-tab">
+        <view class="tab-item {{currentTab==0 ? 'active' : ''}}" data-current="0" bindtap="swichNav">未开始</view>
+        <view class="tab-item {{currentTab==1 ? 'active' : ''}}" data-current="1" bindtap="swichNav">进行中</view>
+        <view class="tab-item {{currentTab==2 ? 'active' : ''}}" data-current="2" bindtap="swichNav">已结束</view>
+    </view>
+    <!--内容主体-->
+    <view class="swiper" style="height:{{[windowHeight]}}px;" current="{{currentTab}}" duration="200">
+        <view wx:if="{{queryTasks.length==0}}" class="pageTextCon">暂无数据</view>
+        <view wx:else>
+            <view class="blockList" wx:for="{{queryTasks}}" wx:for-item="item" wx:index="index" data-item-uuid="{{item.uuid}}" bindtap="clickViewPage">
+                <image wx:if="{{item.coverpicList.length==0}}" class="bg" src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"></image>
+                <image wx:else class="bg" src="{{item.coverpicList[0]}}"></image>
+                <text class="title">{{item.name}}</text>
+                <view class="time">
+                    <image src="../image/time.png"></image>
+                    <text>{{item.createName}}</text>
+                </view>
+                <view class="place">
+                    <image src="../image/place.png"></image>
+                    <text>{{item.location}}</text>
+                </view>
+            </view>
+        </view>
+        </view>
+</view>

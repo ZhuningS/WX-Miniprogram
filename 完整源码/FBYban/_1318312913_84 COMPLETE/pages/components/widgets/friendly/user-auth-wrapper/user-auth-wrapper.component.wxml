@@ -1,0 +1,4 @@
+<button bindgetuserinfo="handleUserInfoFetch" capture-catch:tap="handleRootTap" class="{{rootClassNames}}" hoverClass="none" openType="getUserInfo" wx:if="{{!isAuthed}}">
+    <slot></slot>
+</button>
+<slot wx:else></slot>

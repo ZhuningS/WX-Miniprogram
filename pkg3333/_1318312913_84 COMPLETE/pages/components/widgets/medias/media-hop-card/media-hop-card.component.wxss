@@ -1,0 +1,13 @@
+.icon_20px {
+    width: 20px;
+    height: 20px;
+}
+
+.meta-hop-card {
+    position: relative;
+    padding: 0;
+}
+
+.media-image-hero {
+    width: 100%;
+}

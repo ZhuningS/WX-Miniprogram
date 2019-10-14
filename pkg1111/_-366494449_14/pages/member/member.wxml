@@ -1,0 +1,89 @@
+<view class="load4" hidden="{{dataLoaded}}">
+    <view class="loader"></view>
+    <image src="https://img.weixin.sundayer.cn/card/mingpian@3x.png"></image>
+</view>
+<view hidden="{{!dataLoaded}}">
+    <view style="position: relative">
+        <view class="bg"></view>
+        <view class="{{!vip_log?'level1':''}} memberCard" style="background-image: url({{vip.user.cover_image}})">
+            <view style="display:flex;align-items:center;padding: 40rpx;">
+                <view style="height:104rpx;">
+                    <image class="logo" mode="aspectFill" src="{{vip.vip.logo}}"></image>
+                </view>
+                <view class="cardInfo">
+                    <view class="cardName">{{vip.vip.title}}</view>
+                    <view class="memberlabel">
+                        <image src="/images/kan/VV2@3x.png" style="width: 24rpx;height: 24rpx; margin-right:6rpx;"></image>{{vip.user.levelName}}</view>
+                </view>
+            </view>
+            <text style="color: #fff; font-weight: 300;position:absolute;bottom:30rpx;right:30rpx;">会员永久有效</text>
+        </view>
+    </view>
+    <view class="memberform">
+        <view class="title">信息填写</view>
+        <view class="form">
+            <form bindreset="" bindsubmit="_formSubmit" reportSubmit="true">
+                <input hidden="true" name="form_id" type="text"></input>
+                <block wx:for="{{vip.activate_field}}">
+                    <view class="form__item" wx:if="{{item.id=='textarea'}}">
+                        <view class="required" wx:if="{{item.required==1}}">*</view>
+                        <view class="required" wx:else></view>
+                        <view class="label">{{item.name}}</view>
+                        <view class="controller">
+                            <textarea autoHeight="true" name="{{item.name}}" placeholder="{{item.placeholder}}" style="margin:10rpx 0" value="{{form_info}}"></textarea>
+                        </view>
+                    </view>
+                    <view class="form__item" wx:elif="{{item.id=='7'}}">
+                        <view class="required" wx:if="{{item.required==1}}">*</view>
+                        <view class="required" wx:else></view>
+                        <view class="label">{{item.name}}
+            </view>
+                        <view class="controller">
+                            <radio-group class="radio-group" name="{{item.name}}">
+                                <label class="radio" wx:for="{{['男','女']}}">
+                                    <radio checked="{{form_info2}}" value="{{item}}"></radio> {{item}}
+                </label>
+                            </radio-group>
+                        </view>
+                    </view>
+                    <view class="form__item" wx:elif="{{item.id=='5'}}">
+                        <view class="required" wx:if="{{item.required==1}}">*</view>
+                        <view class="required" wx:else></view>
+                        <view class="label">{{item.name}}</view>
+                        <picker bindchange="bindDateChange" mode="date" name="{{item.name}}" value="">
+                            <view class="picker">{{date}}</view>
+                        </picker>
+                        <image src="/images/icon/arrow.png" style="width:24rpx; height: 24rpx;"></image>
+                    </view>
+                    <block wx:elif="{{item.id=='4'}}">
+                        <view class="form__item">
+                            <view class="required" wx:if="{{item.required==1}}">*</view>
+                            <view class="required" wx:else></view>
+                            <view class="label">{{item.name}}</view>
+                            <picker bindchange="bindRegionChange" customItem="{{customItem}}" mode="region" name="{{item.name}}" value="">
+                                <view class="picker">{{region[0]}}{{region[1]}}{{region[2]}}</view>
+                            </picker>
+                            <image src="/images/icon/arrow.png" style="width:24rpx; height: 24rpx;"></image>
+                        </view>
+                        <view class="form__item">
+                            <view class="required"></view>
+                            <view class="label">详细地址</view>
+                            <textarea name="详细地址" placeholder="" style="height: 140rpx" value="{{form_info}}"></textarea>
+                        </view>
+                    </block>
+                    <view class="form__item" wx:else>
+                        <view class="required" wx:if="{{item.required==1}}">*</view>
+                        <view class="required" wx:else></view>
+                        <view class="label">{{item.name}}</view>
+                        <view class="controller">
+                            <input name="{{item.name}}" placeholder="{{item.placeholder}}" type="text" value="{{form_info}}"></input>
+                        </view>
+                    </view>
+                </block>
+                <button class="btn-form" formType="submit">立即领取</button>
+            </form>
+        </view>
+        <view style=" font-size: 24rpx;color: #999; margin-top : 20rpx; text-align: center">领取即同意<text style="color: #648DC9">《会员授权协议》</text>
+        </view>
+    </view>
+</view>

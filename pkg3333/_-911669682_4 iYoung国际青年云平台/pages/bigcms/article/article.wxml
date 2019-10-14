@@ -1,0 +1,422 @@
+<import src="/wxParse/wxParse.wxml"></import>
+<duoguan_ad ad_type="duoguanbigcms_info_top"></duoguan_ad>
+<view wx:if="{{info_data.c_info.typeid==3}}">
+    <block wx:if="{{info_data.pddata.is_openPay==1}}">
+        <view class="" wx:if="{{info_data.c_info.is_pay==1&&info_data.pddata.is_userpay==0}}">
+            <view class="article grey" style="text-align:center;">
+                <view>~该文章中所含视频/内容需付费~</view>
+                <view>~点击下方“继续阅读”支付后即可观看全部内容~</view>
+            </view>
+        </view>
+        <view class="" wx:else>
+            <view class="article-video" wx:if="{{info_data.c_info.is_show_av==1}}">
+                <video controls autoplay="{{is_avAutoPlay==1?true:''}}" binderror="videoErrorCallback" bindpause="toparse" bindplay="topaly" bindtimeupdate="onTimejindu" customCache="{{false}}" src="{{info_data.c_info.upurl}}"></video>
+            </view>
+            <view wx:if="{{jindu==0&&isToplay==true}}">
+        正在加载中...
+      </view>
+            <view wx:if="{{jindu>0&&jindu<100&&isToplay==false}}">
+        播放进程{{jindu}}%
+      </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="article-video" wx:if="{{info_data.c_info.is_show_av==1}}">
+            <video controls autoplay="{{is_avAutoPlay==1?true:''}}" binderror="videoErrorCallback" bindpause="toparse" bindplay="topaly" bindtimeupdate="onTimejindu" customCache="{{false}}" src="{{info_data.c_info.upurl}}"></video>
+        </view>
+        <view wx:if="{{jindu==0&&isToplay==true}}">
+      正在加载中...
+    </view>
+        <view wx:if="{{jindu>0&&jindu<100&&isToplay==false}}">
+      播放进程{{jindu}}%
+    </view>
+    </block>
+</view>
+<view class="contenter bgwhite">
+    <view class="top-title gridXb">
+        <view class="title f18">{{info_data.c_info.title}}</view>
+        <view class="grey mt5">
+            <text class="time">时间：{{info_data.c_info.juli_time}}</text>
+            <text class="ml10 author mcolor">{{info_data.c_info.author}}</text>
+            <text class="ml10">
+                <text>阅读</text>
+                <text class="ml5">{{readnum}}</text>
+            </text>
+        </view>
+    </view>
+    <view wx:if="{{info_data.c_info.typeid==2}}">
+        <block wx:if="{{info_data.pddata.is_openPay==1}}">
+            <view class="" wx:if="{{info_data.c_info.is_pay==1&&info_data.pddata.is_userpay==0}}">
+                <view class="article grey" style="text-align:center;">
+                    <view>~该文章中所含音频/内容需付费~</view>
+                    <view>~点击下方“继续阅读”支付后即可观看全部内容~</view>
+                </view>
+            </view>
+            <view class="" wx:else>
+                <view class="voice flex" wx:if="{{info_data.c_info.is_show_av==1}}">
+                    <audio bindpause="onPause" bindplay="onPlay" bindtimeupdate="onTimeUpdate" id="myAudio" src="{{info_data.c_info.upurl}}"></audio>
+                    <view catchtap="onTogglePlayTap" class="voice-img write mr5 tc f16">
+                        <text class="iconfont {{playStatus?'icon-bofang':'icon-bofang1'}} "></text>
+                    </view>
+                    <text class="timesize grey">{{stepTime}}</text>
+                    <view class="timeline sub ml15 mr15">
+                        <view class="progress-bar" style="width:{{progress}}%;"></view>
+                    </view>
+                    <text class="timeshow grey">{{durationTime}}</text>
+                </view>
+                <view wx:if="{{playStatus&&downloadPercent<100}}">
+          正在缓冲{{downloadPercent}}%
+        </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="voice flex" wx:if="{{info_data.c_info.is_show_av==1}}">
+                <audio bindpause="onPause" bindplay="onPlay" bindtimeupdate="onTimeUpdate" id="myAudio" src="{{info_data.c_info.upurl}}"></audio>
+                <view catchtap="onTogglePlayTap" class="voice-img write mr5 tc f16">
+                    <text class="iconfont {{playStatus?'icon-bofang':'icon-bofang1'}} "></text>
+                </view>
+                <text class="timesize grey">{{stepTime}}</text>
+                <view class="timeline sub ml15 mr15">
+                    <view class="progress-bar" style="width:{{progress}}%;"></view>
+                </view>
+                <text class="timeshow grey">{{durationTime}}</text>
+            </view>
+            <view wx:if="{{playStatus&&downloadPercent<100}}">
+        正在缓冲{{downloadPercent}}%
+      </view>
+        </block>
+    </view>
+    <block wx:if="{{info_data.pddata.is_openPay==1}}">
+        <view class="" wx:if="{{info_data.c_info.is_pay==1&&info_data.pddata.is_userpay==0}}">
+            <view class="article f16">
+                <view class="wxParse">
+                    <template is="wxParse" data="{{wxParseData:freeinfo.nodes}}"></template>
+                </view>
+            </view>
+        </view>
+        <view class="" wx:else>
+            <view class="article f16">
+                <view class="wxParse">
+                    <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+                </view>
+            </view>
+            <view class="niceBox" wx:if="{{info_data.link_goods&&isPackGoods}}">
+                <view class="tc">
+                    <view class=" f16 red niceBlink">
+                        <view class="iconfont icon-attention_light"></view>
+                        <view>慧眼识物</view>
+                    </view>
+                    <view class="grey mt5">文中提到的好物都在这里了！</view>
+                </view>
+                <view class="niceList">
+                    <view class="flex niceItem" wx:for="{{info_data.link_goods}}" wx:key="{{index}}">
+                        <image class="niceImg" mode="aspectFill" src="{{item.imgurl}}"></image>
+                        <view class="sub  flex flexC">
+                            <view class="niceTitle lineText2">{{item.g_name}}</view>
+                            <view class="flex">
+                                <view class="sub red">￥{{item.price}}</view>
+                                <view catchtap="toLookGoods" class="niceLookBtn" data-goodsid="{{item.id}}">去瞅瞅</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:else>
+        <view class="article f16">
+            <view class="wxParse">
+                <template is="wxParse" data="{{wxParseData:content.nodes}}"></template>
+            </view>
+        </view>
+        <view class="niceBox" wx:if="{{info_data.link_goods&&isPackGoods}}">
+            <view class="tc">
+                <view class=" f16 red niceBlink">
+                    <view class="iconfont icon-attention_light"></view>
+                    <view>慧眼识物</view>
+                </view>
+                <view class="grey mt5">文中提到的好物都在这里了！</view>
+            </view>
+            <view class="niceList">
+                <view class="flex niceItem" wx:for="{{info_data.link_goods}}" wx:key="{{index}}">
+                    <image class="niceImg" mode="aspectFill" src="{{item.imgurl}}"></image>
+                    <view class="sub">
+                        <view class="niceTitle lineText2">{{item.g_name}}</view>
+                        <view class="flex">
+                            <view class="sub red">￥{{item.price}}</view>
+                            <view catchtap="toLookGoods" class="niceLookBtn" data-goodsid="{{item.id}}">去瞅瞅</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <block wx:if="{{info_data.pddata.is_openPay==1}}">
+        <view class="read-continue tc" wx:if="{{info_data.c_info.is_pay==1&&info_data.pddata.is_userpay==0}}">
+            <view>
+                <button bindtap="continue_read" class="f16" hoverClass="none" type="primary">继续阅读</button>
+            </view>
+        </view>
+    </block>
+    <view class="popup" wx:if="{{continue_read}}">
+        <view class="read-pay tc mid bgwhite">
+            <view class="title flex grey f16">
+                <view bindtap="single_read_change" class="pay sub active">单篇阅读</view>
+            </view>
+            <view>
+                <view class="pay-item mt20" wx:if="{{single_read=='single'}}">
+                    <view class="single">
+                        <view class="price mb15 red" style="font-size:52rpx;line-height:100%;overflow:hidden;">￥{{info_data.c_info.pay_price}}</view>
+                        <view class="grey f12">单篇付费仅供本篇文章使用哦~~</view>
+                    </view>
+                    <button bindtap="formArticlePay" class="f16" data-money="{{info_data.c_info.pay_price}}" hoverClass="none" id="{{info_data.c_info.id}}" type="primary">提交</button>
+                </view>
+                <view class="pay-item tl mt20" wx:if="{{single_read=='to_vip'}}">
+                    <view>
+                        <view bindtap="to_vip_month" class="time-price flex mt10 {{to_vip=='month'?'active':''}}">
+                            <view class="sub">
+                                <text class="f18 grey mr10 iconfont {{to_vip=='month'?'icon-roundcheckfill':'icon-round'}}"></text>按月付费</view>
+                            <view class="price">￥3.00</view>
+                        </view>
+                        <view bindtap="to_vip_quarter" class="time-price flex mt10 {{to_vip=='quarter'?'active':''}}">
+                            <view class="sub">
+                                <text class="f18 grey mr10 iconfont {{to_vip=='quarter'?'icon-roundcheckfill':'icon-round'}}"></text>按季度付费</view>
+                            <view class="price">￥5.50</view>
+                        </view>
+                        <view bindtap="to_vip_year" class="time-price flex mt10 {{to_vip=='year'?'active':''}}">
+                            <view class="sub">
+                                <span class="f18 grey mr10 iconfont {{to_vip=='year'?'icon-roundcheckfill':'icon-round'}}"></span>按年付费</view>
+                            <view class="price">￥7.00</view>
+                        </view>
+                    </view>
+                    <button class="f16" hoverClass="none" type="primary">提交</button>
+                </view>
+            </view>
+        </view>
+        <view bindtap="toCloseRead" class="popup" style="display:block"></view>
+    </view>
+    <view class="zan bt" wx:if="{{info_data.pddata.is_openDs==1}}">
+        <view>
+            <button bindtap="zanshang_show" class="btn-zan f16" type="warn">打赏</button>
+        </view>
+        <view class="peo-num grey tc mb10">
+            <span class="mcolor">{{info_data.dashang.num}}</span>人打赏</view>
+        <view class="peo">
+            <image class="peo-img mr5 mb5" mode="aspectFill" src="{{item.headimg}}" wx:for="{{info_data.dashang}}" wx:key="*this"></image>
+        </view>
+    </view>
+    <view class="popup zanshang" style="display:{{is_otherShang?'none':'block'}}" wx:if="{{zanshang_show}}">
+        <view class="app-admire mid tc bgwhite">
+            <view class="top">
+                <view class="topbg"></view>
+                <image class="user-img" mode="aspectFill" src="{{info_data.c_info.userimg}}"></image>
+                <view class="mt10 f18">{{info_data.c_info.username}}</view>
+                <view class="grey f12">您的打赏是对我最大的鼓励</view>
+            </view>
+            <view class="money">
+                <view class="red mb10">
+                    <view bindtap="shangMoney" class="list mt10 mr10" data-name="5">5
+            <text class="f14">元</text>
+                    </view>
+                    <view bindtap="shangMoney" class="list mt10 mr10" data-name="10">10
+            <text class="f14">元</text>
+                    </view>
+                    <view bindtap="shangMoney" class="list mt10 mr10" data-name="20">20
+            <text class="f14">元</text>
+                    </view>
+                    <view bindtap="shangMoney" class="list mt10 mr10" data-name="50">50
+            <text class="f14">元</text>
+                    </view>
+                    <view bindtap="shangMoney" class="list mt10 mr10" data-name="80">80
+            <text class="f14">元</text>
+                    </view>
+                    <view bindtap="shangMoney" class="list mt10 mr10" data-name="100">100
+            <text class="f14">元</text>
+                    </view>
+                </view>
+                <text bindtap="otherShangMoney" class="other f14 blue">其他金额</text>
+            </view>
+            <view class="tips grey f12">打赏是表示鼓励而对文章内容的无偿赠与</view>
+        </view>
+        <view bindtap="toCloseShang" class="popup zanshang" style="display:block"></view>
+    </view>
+    <view class="pop-input" style="display:{{is_otherShang?'block':'none'}}">
+        <view class="other-money mid">
+            <view class="title bb tc">其他金额
+        <text bindtap="closeOther" class="grey fr close iconfont icon-close"></text>
+            </view>
+            <view class="input-box flex">
+                <text>金额(元)</text>
+                <input class="ml10 sub" placeholder="可填写1-256"></input>
+            </view>
+            <button class="f16" hoverClass="none" type="primary">打赏</button>
+        </view>
+    </view>
+    <view class="niceAva" wx:if="{{info_data.link_goods&&info_data.seegoods_users.seenum>0&&isPackGoods}}">
+        <view class="niceAvaHead flex">
+            <view class=" sub"></view>
+            <view class="niceLine">牛逼的人已去瞅过{{info_data.seegoods_users.seenum}}次了</view>
+            <view class=" sub"></view>
+        </view>
+        <view class="niceAvaBox">
+            <image class="niceAvator" mode="aspectFill" src="{{item.see_uhead}}" wx:if="{{info_data.seegoods_users}}" wx:for="{{info_data.seegoods_users.seeuser}}" wx:key="{{index}}"></image>
+            <view class="niceAvator" wx:if="{{info_data.seegoods_users.length>7}}">
+                <view></view>
+                <view></view>
+                <view></view>
+            </view>
+        </view>
+    </view>
+    <view class="mt10">
+        <view class="mcolor">
+            <text catchtap="toCateList" class="f16 mr10" data-param="cid={{info_data.c_info.cateid}}" data-url="../index/index">#{{info_data.c_info.catename}}#</text>
+            <text catchtap="toKeywordList" class="art-sort-tag" data-param="keyword={{item}}" data-url="../index/index" wx:for="{{info_data.c_info.keyword}}" wx:key="{{index}}">{{item}}</text>
+        </view>
+    </view>
+</view>
+<duoguan_ad ad_type="duoguanbigcms_info_bottom"></duoguan_ad>
+<view class="mt10" wx:if="{{info_data.same_art}}">
+    <view class="relevant-tit flex">
+        <view class="sub">相关文章</view>
+        <view catchtap="toCateList" class="right-more arrowR" data-param="cid={{info_data.c_info.cateid}}" data-url="../index/index">更多</view>
+    </view>
+    <view wx:for="{{info_data.same_art}}" wx:key="{{index}}">
+        <view catchtap="onNavigateTap" class="relevant-item flex gridXt" data-url="../article/article?id={{item.id}}&typeid={{item.typeid}}">
+            <view class="sub mr10 relevant-cont">
+                <view class="relevant-arttit lineText2">{{item.title}}</view>
+                <view class="f12 grey">
+                    <text>{{item.juli_time}}</text>
+                    <text class="ml10">
+                        <text class="iconfont icon-attention_light"></text> {{item.readnum}}</text>
+                    <text class="ml10">
+                        <text class="iconfont icon-appreciate"></text>{{item.good_count}}</text>
+                </view>
+            </view>
+            <view class="relevant-artimg" wx:if="{{item.is_show_img==1}}">
+                <image mode="aspectFill" src="{{item.imgurl}}"></image>
+                <view wx:if="{{item.typeid==2}}">
+                    <view class="media-mask">
+                        <text class="iconfont icon-tongzhi video-icon"></text>
+                    </view>
+                </view>
+                <view wx:elif="{{item.typeid==3}}">
+                    <view class="media-mask">
+                        <text class="iconfont icon-bofang1 video-icon"></text>
+                    </view>
+                </view>
+                <view wx:else></view>
+            </view>
+        </view>
+    </view>
+</view>
+<view wx:if="{{info_data.pddata.is_comment==1}}">
+    <view class="saying" id="comment">
+        <view class="ml15 mb10 f16">用户评论</view>
+        <view class="no-content tc" wx:if="{{comment_list.length==0&&is_load_more==false}}">
+            <image class="no-content-img" mode="widthFix" src="http://www.ixiaochengxu.cc/resource/images/common/no-order.png"></image>
+            <view class="grey f12">还没有评论哦~快来说两句</view>
+        </view>
+        <view wx:else>
+            <view class="userlist flex" wx:for="{{comment_list}}" wx:key="*this">
+                <image class="img mr15" mode="aspectFill" src="{{item.app_user_headimg}}"></image>
+                <view class="sub">
+                    <view class="flex">
+                        <view class="sub grey">{{item.app_user_name}}</view>
+                        <view bindtap="toDianzan" class="zan-num grey" id="{{item.id}}">
+                            <span class="{{item.iszanpl==1?'mcolor':'linght'}} f18 mr5 iconfont icon-appreciatefill"></span>{{item.good_count}}</view>
+                    </view>
+                    <view class="text">{{item.content}}</view>
+                    <view class="time grey f12">{{item.add_time}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="nothing grey mt10 mb10 tc f14 flex" wx:if="{{is_load_more==false&&comment_list.length!=0}}">
+        <text class="line sub mr10"></text>
+        <text>没有更多评论了</text>
+        <text class="line sub ml10"></text>
+    </view>
+</view>
+<view class="floatBox" wx:if="{{write_msg}}">
+    <view class="pinglun-input flex">
+        <input bindconfirm="toSubmit" class="mr10 sub" confirmType="send" name="content" placeholder="说点什么吧~~"></input>
+    </view>
+</view>
+<view class="right-btn tc write">
+    <view catchtap="toIndex" class="little-btn mb5" data-url="../index/index">
+        <text class="iconfont icon-home"></text>
+    </view>
+</view>
+<view class="right-btn left-btn tc write">
+    <view catchtap="getCode" class="little-btn mb5">
+        <text class="iconfont iconfont icon-erweima1 #fff" style="font-size:15px"></text>
+    </view>
+</view>
+<view class="bottom-fixed-box">
+    <view class="bottom-fixed flex grey">
+        <view class="sub flex">
+            <view bindtap="toCollection" class="sub bottom-fixed-btn {{is_collection?'collect':''}}" id="{{info_data.c_info.id}}">
+                <text class="iconfont icon-favor{{is_collection?'fill':''}}"></text>
+                <view>{{is_collection?'已收藏':'收藏'}}</view>
+            </view>
+            <view class="sub bottom-fixed-btn">
+                <button class="share-brn" openType="share"></button>
+                <text class="iconfont icon-share"></text>
+                <view>分享</view>
+            </view>
+            <view bindtap="toZan" class="sub bottom-fixed-btn {{iszan==1?'mcolor zan-active':''}}" id="{{info_data.c_info.id}}">
+                <text class="iconfont icon-appreciate{{iszan==1?'fill':''}}"></text>
+                <view>{{article_good_count}}</view>
+            </view>
+            <view class="sub bottom-fixed-btn" wx:if="{{info_data.pddata.is_comment==1}}">
+                <text catchtap="commentLocation" class="iconfont icon-comment"></text>
+                <view>{{info_data.c_info.comment_num}}</view>
+            </view>
+        </view>
+        <view bindtap="toShowLink" class="aboutNice bgcolor" wx:if="{{info_data.pddata.is_show_link==1&&isPackGoods&&info_data.link_goods}}">相关好物({{info_data.link_goods.length}})</view>
+    </view>
+</view>
+<view class="popupBox" wx:if="{{is_show_linkgoods}}">
+    <view catchtap="toCloseShowLink" class="shadeBg"></view>
+    <view class="nicePopup">
+        <view catchtap="toCloseShowLink" class="closeBtn"></view>
+        <view class="nicePopTit">好物列表</view>
+        <scroll-view scrollY class="niceList scrollNice">
+            <block wx:if="{{info_data.pddata.is_openPay==1}}">
+                <block wx:if="{{info_data.c_info.is_pay==1&&info_data.pddata.is_userpay==0}}">
+                    <view class="flex niceItem" wx:for="{{info_data.link_goods}}" wx:key="{{index}}">
+                        <image class="niceImg" mode="aspectFill" src="/images/default.png"></image>
+                        <view class="popTips sub">文章付费过后才能查看</view>
+                        <view class="suoIcon grey">
+                            <text class="iconfont icon-suo"></text>
+                        </view>
+                    </view>
+                </block>
+                <block wx:else>
+                    <view class="flex niceItem" wx:for="{{info_data.link_goods}}" wx:key="{{index}}">
+                        <image class="niceImg" mode="aspectFill" src="{{item.imgurl}}"></image>
+                        <view class="sub  flex flexC">
+                            <view class="niceTitle lineText2">{{item.g_name}}</view>
+                            <view class="flex">
+                                <view class="sub red">￥{{item.price}}</view>
+                                <view catchtap="toLookGoods" class="niceLookBtn" data-goodsid="{{item.id}}">去瞅瞅</view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+            </block>
+            <block wx:else>
+                <view class="flex niceItem" wx:for="{{info_data.link_goods}}" wx:key="{{index}}">
+                    <image class="niceImg" mode="aspectFill" src="{{item.imgurl}}"></image>
+                    <view class="sub">
+                        <view class="niceTitle lineText2">{{item.g_name}}</view>
+                        <view class="flex">
+                            <view class="sub red">￥{{item.price}}</view>
+                            <view catchtap="toLookGoods" class="niceLookBtn" data-goodsid="{{item.id}}">去瞅瞅</view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+</view>

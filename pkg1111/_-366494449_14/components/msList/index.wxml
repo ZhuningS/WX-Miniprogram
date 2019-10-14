@@ -1,0 +1,18 @@
+<template name="msList">
+    <view bindtap="_jump" class="goods-wrap" data-url="/pages/goods/detail/detail?id={{item.id}}" wx:for="{{list}}" wx:key="{{id}}">
+        <view style="text-align:center">
+            <image mode="aspectFit" src="{{item.thumb}}" style="height:300rpx"></image>
+        </view>
+        <view class="title">{{item.name}}</view>
+        <view class="price">
+  ¥ {{item.seckill_money}}<text class="old">¥ {{item.priceshow}}</text>
+            <view class="btn-go">
+                <text class="btn">立即秒杀</text>
+            </view>
+        </view>
+        <view class="time" style="display:none">
+            <view class="left">距开始</view>
+            <view class="right">已抢{{item.nunsell}}件</view>
+        </view>
+    </view>
+</template>

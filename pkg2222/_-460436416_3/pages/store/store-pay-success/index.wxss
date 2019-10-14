@@ -1,0 +1,10 @@
+@import "../../../__wuBaseWxss__/8.wxss";
+
+page {
+    background-color: #fff;
+}
+
+.weui-msg__opr-area {
+    width: 92%;
+    margin: 150rpx auto;
+}

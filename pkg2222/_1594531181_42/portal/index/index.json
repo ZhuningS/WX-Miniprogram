@@ -1,0 +1,9 @@
+{
+    "backgroundColor": "#F7F7F7",
+    "usingComponents": {
+        "shop-info-header": "./components/shop-info-header/shop-info-header",
+        "shop-info-body": "./components/shop-info-body/shop-info-body",
+        "navigation-bar": "../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar"
+    },
+    "enablePullDownRefresh": true
+}

@@ -1,0 +1,3 @@
+<view animation="{{tweenData}}" catchtransitionend="handleRootTransitionend" class="{{rootClassNames}}" wx:if="{{isVisible||!isVisible&&!isOutTweened}}">
+    <slot></slot>
+</view>

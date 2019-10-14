@@ -1,0 +1,84 @@
+<template name="coupon">
+    <view class="coupon-tem" wx:if="{{item.has==2&&item.grant_num==item.num}}">
+        <image src="/images/coupon/huise@3x.png"></image>
+        <view class="left">
+            <view class="discount">
+        {{item.discount}}
+        <text>{{item.dotcount?'.'+item.dotcount:''}}折</text>
+            </view>
+            <view class="tip bgover">折扣券</view>
+        </view>
+        <view class="mid">
+            <view class="cou-title mulellipsis over">{{item.title}}</view>
+            <view class="cou-time over">
+                <view style="color:#999" wx:if="{{item.time_type==1}}">领取后{{item.time_days}}日内有效</view>
+                <view style="color:#999" wx:else>有效期至:{{item.time_end1}}</view>
+            </view>
+            <view class="cou-info ellipsis over">{{item.type==1?item.typeTips:'参与'+item.typeTips}},无使用门槛</view>
+        </view>
+        <view class="right">
+            <view class="remain"></view>
+            <view class="prog"></view>
+            <view class="btn bgover">
+        立即领取
+      </view>
+        </view>
+        <view class="corner">
+            <image src="/images/coupon/lingwan@3x.png"></image>
+        </view>
+    </view>
+    <view class="coupon-tem" wx:else>
+        <image src="/images/coupon/zhekou@3x.png"></image>
+        <view class="left">
+            <view class="discount">
+        {{item.discount}}
+        <text>{{item.dotcount?'.'+item.dotcount:''}}折</text>
+            </view>
+            <view class="tip">折扣券</view>
+        </view>
+        <view class="mid">
+            <view class="cou-title mulellipsis">{{item.title}}</view>
+            <view class="cou-time">
+                <block wx:if="{{item.has==1}}">
+                    <block wx:if="{{item.exist_coupon.expire_note<=7}}">
+                        <view wx:if="{{item.exist_coupon.expire_note==0}}">今日到期</view>
+                        <view wx:elif="{{item.exist_coupon.expire_note==1}}">明日到期</view>
+                        <view wx:else>仅剩{{item.exist_coupon.expire_note}}天有效期</view>
+                    </block>
+                    <view style="color:#999;font-size: 22rpx;" wx:else>有效期至:{{item.exist_coupon.end_time_fmt}}</view>
+                </block>
+                <block wx:else>
+                    <text style="color:#999" wx:if="{{item.time_type==1}}">领取后{{item.time_days}}日内有效</text>
+                    <block wx:else>
+                        <block wx:if="{{item.expire_note<=7}}">
+                            <text wx:if="{{item.expire_note==0}}">今日到期</text>
+                            <text wx:elif="{{item.expire_note==1}}">明日到期</text>
+                            <text wx:else>仅剩{{item.expire_note}}天有效期</text>
+                        </block>
+                        <text style="color:#999" wx:else>有效期至:{{item.time_end1}}</text>
+                    </block>
+                </block>
+            </view>
+            <view class="cou-info ellipsis">{{item.type==1?item.typeTips:'参与'+item.typeTips}},无使用门槛</view>
+        </view>
+        <view class="right">
+            <view class="remain">
+                <block wx:if="{{item.has==2}}">
+          {{item.remain!=0?'已领'+item.remain+'%':'已领1%'}}
+        </block>
+            </view>
+            <view class="prog">
+                <progress activeColor="#fb8052" percent="{{item.remain==0?1:item.remain}}" wx:if="{{item.has==2}}"></progress>
+            </view>
+            <view bindtap="_jump" class="btn" data-opentype="redirectTo" data-url="{{item.topage}}" wx:if="{{item.has==1}}">
+        去使用
+      </view>
+            <view bindtap="{{hasMobile==0?'':'_getCoupon'}}" class="btn" data-id="{{item.id}}" data-index="{{index}}" wx:else>
+        立即领取
+      </view>
+        </view>
+        <view class="corner" wx:if="{{item.has==1}}">
+            <image src="/images/coupon/lingqu@3x.png"></image>
+        </view>
+    </view>
+</template>

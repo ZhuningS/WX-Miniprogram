@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "toast": "../../components/toast/toast",
+        "order-item": "./orderItem/orderItem"
+    },
+    "backgroundColor": "#f4f4f4"
+}

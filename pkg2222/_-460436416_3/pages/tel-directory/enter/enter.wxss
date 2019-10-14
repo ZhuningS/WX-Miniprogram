@@ -1,0 +1,123 @@
+@import "../../../__wuBaseWxss__/13.wxss";
+
+@import "../../../__wuBaseWxss__/2.wxss";
+
+.cell {
+    padding: 30rpx;
+}
+
+.shopPic {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.cellLf {
+    width: 30%;
+}
+
+.inp {
+    text-align: right;
+}
+
+.priPlaceholder {
+    color: #ff5050;
+}
+
+.picker,.coor {
+    text-align: right;
+    padding-right: 30rpx;
+    margin-left: 20rpx;
+}
+
+.notice {
+    padding-left: 30rpx;
+}
+
+.btn {
+    color: #fff;
+    width: auto;
+    margin: 60rpx;
+    line-height: 88rpx;
+}
+
+.btn:active {
+    opacity: 0.85;
+}
+
+.btn::after {
+    width: 0;
+    height: 0;
+}
+
+.butui {
+    padding-left: 30rpx;
+}
+
+.textarea {
+    width: 100%;
+    min-height: 200rpx;
+    font-size: 30rpx;
+    color: #555;
+}
+
+.upPicBox {
+    display: inline-block;
+    position: relative;
+    width: 200rpx;
+    height: 200rpx;
+    margin: 30rpx 15rpx 0 15rpx;
+}
+
+.uploadPic {
+    width: 100%;
+    height: 100%;
+}
+
+.cancalBox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    color: #fff;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.cancalBox:active {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.upBtn {
+    display: inline-block;
+    position: relative;
+    width: 200rpx;
+    height: 200rpx;
+    background-color: #ccc;
+    margin: 30rpx 15rpx 0 15rpx;
+    vertical-align: bottom;
+    opacity: 0.7;
+}
+
+.upBtn::before,.upBtn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100rpx;
+    height: 8rpx;
+    background-color: #fff;
+}
+
+.upBtn::before {
+    transform: translate(-50%,-50%);
+}
+
+.upBtn::after {
+    transform: translate(-50%,-50%) rotate(90deg);
+}
+
+.upBtn:active {
+    opacity: 1;
+}

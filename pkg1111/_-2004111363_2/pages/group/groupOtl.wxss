@@ -1,0 +1,121 @@
+@import "../../__wuBaseWxss__/3.wxss";
+
+.d-status {
+    position: relative;
+    width: 100%;
+    height: 290rpx;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.d-status .d-img {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.d-status .d-btn {
+    width: 140rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 22rpx;
+    border-radius: 8rpx;
+}
+
+.d-info {
+    background: #fff;
+    height: 180rpx;
+    margin-bottom: 20rpx;
+}
+
+.d-info .d-person {
+    font-size: 32rpx;
+    color: #111;
+    margin: 42rpx 23rpx 20rpx 65rpx;
+}
+
+.d-info .d-address {
+    font-size: 26rpx;
+    color: #666;
+    margin: 0 20rpx;
+}
+
+.d-price {
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #f3f3f3;
+    text-align: right;
+    padding: 35rpx 22rpx 35rpx 0;
+}
+
+.p-price {
+    color: #f20033;
+}
+
+.p-order::before {
+    content: "商品金额:";
+    margin-left: 20rpx;
+}
+
+.p-dis::before {
+    content: "优惠金额:-";
+}
+
+.p-pay::before {
+    color: #111;
+    content: "实付金额:";
+}
+
+.d-order {
+    padding: 23rpx;
+    background: #fff;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.d-left {
+    font-size: 26rpx;
+    color: #666;
+}
+
+.d-right {
+    margin-top: 2rpx;
+    width: 140rpx;
+    height: 50rpx;
+    text-align: center;
+    line-height: 50rpx;
+    border: 1px solid #666;
+    font-size: 24rpx;
+    color: #666;
+    border-radius: 25rpx;
+}
+
+.d-back {
+    width: 100%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 36rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.olt-bg {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.olt-btn {
+    width: 200rpx;
+    height: 60rpx;
+    text-align: center;
+    line-height: 60rpx;
+    border: 1px solid #fff;
+    font-size: 26rpx;
+    border-radius: 30rpx;
+    z-index: 2;
+}

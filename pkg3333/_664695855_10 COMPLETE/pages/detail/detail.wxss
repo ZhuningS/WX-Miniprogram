@@ -1,0 +1,229 @@
+page {
+    background: #eee;
+}
+
+.detail-min {
+    border-top: 1px solid #eee;
+}
+
+.detail-shop {
+    padding: 30rpx;
+    height: 100rpx;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-shop-image {
+    width: 100rpx;
+    height: 100rpx;
+    float: left;
+    overflow: hidden;
+}
+
+.detail-shop-title {
+    width: 445rpx;
+    height: 100rpx;
+    float: left;
+}
+
+.detail-shop-name {
+    width: 442rpx;
+    padding-left: 14rpx;
+    height: 25px;
+    line-height: 25px;
+    color: #333;
+    font-size: 17px;
+}
+
+.detail-shop-loaction {
+    width: 414rpx;
+    padding-left: 40rpx;
+    height: 25px;
+    line-height: 25px;
+    color: #666;
+    font-size: 13px;
+    background-image: url(http://bgl.zbjimg.com/bgl%2Fbjclound%2Fmap.png%2Forigine%2Fdb5c7986-672f-4c63-a076-bc037ab737da?imageMogr2/auto-orient/strip/quality/90);
+    background-repeat: no-repeat;
+    background-size: 22rpx;
+    background-position: 10rpx center;
+}
+
+.detail-shop-type {
+    color: #ff5647;
+    font-size: 11px;
+    border: 1px solid #ff5647;
+    float: left;
+    width: 110rpx;
+    border-radius: 8rpx;
+    text-align: center;
+    margin-top: 10rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+}
+
+.detail-shop-num {
+    text-align: center;
+    background: #fff;
+    padding: 0 30rpx;
+    height: 100rpx;
+}
+
+.detail-shop-num view {
+    display: block;
+    width: 225rpx;
+    float: left;
+    height: 100rpx;
+}
+
+.buhuanhang {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.detail-shop-money {
+    font-size: 11px;
+    color: #484848;
+    height: 50rpx;
+    line-height: 55rpx;
+}
+
+.detail-shop-moun {
+    font-size: 10px;
+    color: #b0b0b0;
+    height: 50rpx;
+    line-height: 40rpx;
+}
+
+.money-center {
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+}
+
+.detail-three {
+    background-color: #fafafa;
+    display: block;
+    font-size: 11px;
+    color: #8f8f8f;
+    text-align: left;
+    padding: 0 15px;
+    margin-bottom: 10rpx;
+}
+
+.detail-three view {
+    display: inline-block;
+    width: 130rpx;
+    background: url(http://bgl.zbjimg.com/bgl%2Fbjclound%2Ficon.png%2Forigine%2F06c8b7df-5b0f-4663-acd7-ff3d520d6c6a?imageMogr2/auto-orient/strip/quality/90);
+    background-repeat: no-repeat;
+    background-size: 22rpx;
+    background-position: 10rpx center;
+    padding-left: 40rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+}
+
+.shop-message {
+    background: #fff;
+    padding: 30rpx;
+    margin-bottom: 11rpx;
+}
+
+.shop-messge-title {
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+.shop-messgae-detail {
+    font-size: 26rpx;
+    color: #666;
+}
+
+.phone-call {
+    text-align: center;
+    font-size: 34rpx;
+    background: #ff6900;
+    position: fixed;
+    bottom: 0;
+    height: 98rpx;
+    color: #fff;
+    width: 100%;
+    line-height: 98rpx;
+    text-indent: 40rpx;
+    background-image: url(http://bgl.zbjimg.com/bgl%2Fbjclound%2Fphone.png%2Forigine%2F7e34199f-5fc8-4445-8cd8-dd546df7d5ec?imageMogr2/auto-orient/strip/quality/90);
+    background-repeat: no-repeat;
+    background-size: 40rpx;
+    background-position: 280rpx center;
+}
+
+.shop-server {
+    background: #fff;
+    padding: 30rpx;
+    margin-bottom: 134rpx;
+}
+
+.shop-server-title {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 23rpx;
+}
+
+.shop-server-min {
+    font-size: 0;
+    overflow: hidden;
+}
+
+.server-url {
+    display: inline-block;
+    width: 330rpx;
+    overflow: hidden;
+    margin-bottom: 36rpx;
+}
+
+.server-url image {
+    width: 330rpx;
+    height: 330rpx;
+}
+
+.server-url-title {
+    font-size: 14px;
+    height: 30px;
+    line-height: 15px;
+    margin: 5px 0;
+    color: #666;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.server-url-pic {
+    font-size: 12px;
+    color: #f60;
+}
+
+.server-url:nth-of-type(2n+1) {
+    margin-right: 30rpx;
+}
+
+.server-url-pic text {
+    font-size: 16rpx;
+    color: #fff;
+    background-color: #ffa922;
+    padding: 7rpx 7rpx 7rpx 25rpx;
+    border-radius: 6rpx;
+    background-image: url(http://bgl.zbjimg.com/bgl%2Fbjclound%2Fpic.png%2Forigine%2Fc73ef169-3632-4839-a635-c4d4c25a0cb3?imageMogr2/auto-orient/strip/quality/90);
+    background-repeat: no-repeat;
+    background-size: 16rpx;
+    background-position: 7rpx center;
+}
+
+.loading {
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    border-bottom: 1px solid #fff;
+}

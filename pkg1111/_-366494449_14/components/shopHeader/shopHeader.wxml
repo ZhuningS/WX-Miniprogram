@@ -1,0 +1,16 @@
+<template name="shopHead">
+    <view class="shopHead">
+        <image mode="aspectFill" src="{{dataset.shopImg}}" style="position:absolute;width: 100%;height: 200rpx; z-index:10"></image>
+        <view style="position:absolute;width: 100%;height: 200rpx;z-index:11; opacity:.5 ;background: #000"></view>
+        <view class="shopname">
+            <image src="{{dataset.logo}}"></image>
+            <view class="text">
+                <view style="font-size: 32rpx; position: relative; top: -6rpx">{{dataset.shopname}}</view>
+                <view class="renzheng">
+                    <image src="/images/card/renzheng@3x.png"></image>
+          认证公司
+        </view>
+            </view>
+        </view>
+    </view>
+</template>

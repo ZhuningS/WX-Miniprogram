@@ -1,0 +1,27 @@
+<view class="contenter">
+    <view bindtap="onNavigateTap" class="notice-list mb10 transition-duration-150 active-bg" data-id="{{item.id}}" data-url="detail?id={{item.id}}" wx:for="{{data}}" wx:key="{{index}}">
+        <text class="notice-list-content f18 mb5 lineText">{{item.title}}</text>
+        <text class="notice-list-content f16">{{item.remark}}</text>
+        <view class="notice-list-bottom mt10 flex grey">
+            <view class="people-msg sub">
+                <text class="iconfont icon-peoplefill linght"></text>
+                <text class="people-look ml10">{{item.click}}人已阅</text>
+            </view>
+            <view class="time">{{item.create_time}}</view>
+        </view>
+    </view>
+</view>
+<view class="nothing tc linght flex mb10" hidden="{{hasMore}}">
+    <text class="sub line mr10"></text>
+    <text>没有更多了，我是有底线的</text>
+    <text class="sub line ml10"></text>
+</view>
+<view class="aside-float">
+    <button bindtap="onNavigateTap" data-url="write" type="primary">
+        <text class="iconfont icon-add"></text>
+    </button>
+</view>
+<view class="tab-tit flex tc tabbar">
+    <view catchtap="tabBarEvent" class="tab-sub gridXb {{tabBar=='released'?'tab-sub-active':''}} sub" data-tab-bar="released">我发布的</view>
+    <view catchtap="tabBarEvent" class="tab-sub gridXb {{tabBar=='received'?'tab-sub-active':''}} sub" data-tab-bar="received">我接收的</view>
+</view>

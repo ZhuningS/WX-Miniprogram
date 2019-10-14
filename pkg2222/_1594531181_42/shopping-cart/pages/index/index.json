@@ -1,0 +1,12 @@
+{
+    "usingComponents": {
+        "header": "../../components/header/header",
+        "cart-list": "../../components/cart-list/cart-list",
+        "order-list": "../../components/order-list/order-list",
+        "navigation-bar": "../../../libs/mmuxwxappdevkit/widget/navigation-bar/navigation-bar",
+        "counter": "../../components/counter/counter"
+    },
+    "navigationBarTitleText": " ",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#F7F7F7"
+}

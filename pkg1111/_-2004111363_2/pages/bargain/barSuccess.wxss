@@ -1,0 +1,20 @@
+page {
+    background-color: #fff;
+}
+
+.success {
+    width: 100%;
+    margin-top: 100rpx;
+}
+
+.success .btn {
+    width: 310rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    font-size: 32rpx;
+    border: 1px solid #666;
+    border-radius: 10rpx;
+    color: #666;
+    margin-top: 30rpx;
+}
